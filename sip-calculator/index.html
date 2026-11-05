@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f8fc">
+<meta name="description" content="Use this free SIP calculator to estimate mutual fund investment value, total invested amount and estimated returns from a monthly SIP in India.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SIP Calculator – Estimate Mutual Fund Returns | InvestCalc">
+<meta property="og:description" content="Estimate the future value of your monthly SIP, total investment and potential wealth gained with this free SIP calculator.">
+<link rel="canonical" href="https://calculator.net/sip-calculator/">
+<title>SIP Calculator – Free Monthly SIP Returns Calculator | InvestCalc</title>
+<style>
+:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--shadow:0 12px 35px rgba(28,55,90,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+.hero{padding:52px 0 38px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:42px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(35px,4.8vw,51px);line-height:1.12;letter-spacing:-1.8px;margin:18px 0 14px}.intro{font-size:16px;color:var(--muted);max-width:550px;margin:0 0 20px}.trust{display:flex;gap:15px;flex-wrap:wrap;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.field{margin:14px 0}.field label{display:block;font-size:13px;color:#52627a;font-weight:750;margin-bottom:6px}.input-wrap{position:relative}.prefix{position:absolute;left:13px;top:10px;color:#64748b;font-weight:700}.field input{width:100%;height:47px;border:1px solid #dce4ef;border-radius:9px;padding:0 13px 0 34px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.hint{font-size:11px;color:var(--muted);margin-top:4px}.btn{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;min-height:48px;font:inherit;font-weight:800;cursor:pointer;margin-top:8px}.btn:hover{filter:brightness(.94)}.secondary{background:#edf4ff;color:var(--blue)}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:13px;margin-top:12px}.error.show{display:block}
+.results{display:none;margin-top:20px}.results.show{display:block}.result-main{padding:18px;border-radius:12px;background:#eff6ff;border:1px solid #dceaff}.result-label{font-size:12px;color:#52627a;font-weight:750}.big{font-size:32px;font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:12px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.metric{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.metric span{display:block;color:var(--muted);font-size:11px;font-weight:750}.metric strong{font-size:17px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}.visual{margin-top:14px;border:1px solid var(--line);border-radius:11px;padding:14px}.bar-row{display:grid;grid-template-columns:105px 1fr;gap:9px;align-items:center;margin:9px 0;font-size:11px;color:#52627a}.bar-track{height:12px;background:#edf1f7;border-radius:20px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;width:0}.bar-invested{background:#8aa6cc}.bar-gain{background:#1769e0}
+.section{padding:42px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 24px}.section-head h2{font-size:28px;letter-spacing:-.7px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px}.icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#edf4ff;font-size:20px;margin-bottom:10px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:13px;color:var(--muted);margin:0}.content{background:#fff;border:1px solid var(--line);border-radius:13px;padding:23px;margin:14px 0}.content h3{margin:0 0 8px;font-size:17px}.content p,.content li{font-size:14px;color:#52627a}.formula{background:#f5f8fc;border:1px solid var(--line);border-radius:10px;padding:15px;text-align:center;overflow-wrap:anywhere}.formula code{font-family:ui-monospace,monospace;font-size:clamp(13px,2vw,17px);font-weight:750;color:#135fc9}.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 17px;margin:9px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:750}.faq p{font-size:13px;color:var(--muted);margin:10px 0 0}.disclaimer{font-size:12px;color:var(--muted);text-align:center;padding:8px 0 30px}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:25px}.hero{padding-top:38px}.cards{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:calc(100% - 28px)}.hero{padding:32px 0 26px}h1{font-size:37px;letter-spacing:-1.2px}.intro{font-size:15px}.panel{padding:18px}.cards{grid-template-columns:1fr}.section{padding:33px 0}.section-head h2{font-size:24px}.metrics{gap:8px}.metric{padding:11px}.metric strong{font-size:15px}.bar-row{grid-template-columns:88px 1fr}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">FREE • MONTHLY SIP ESTIMATE</span><h1>Plan your monthly investment with a SIP calculator.</h1>
+<p class="intro">Estimate how much your regular mutual fund investments could grow over time. Enter your monthly SIP, expected annual return and investment period to see the estimated future value, amount invested and potential gains.</p>
+<div class="trust"><span>No sign-up needed</span><span>INR calculations</span><span>Works on mobile</span></div>
+</div>
+<section class="panel" aria-labelledby="sip-title">
+<div class="panel-head"><h2 id="sip-title">SIP Calculator</h2><span class="pill">INSTANT</span></div>
+<form id="sip-form" novalidate>
+<div class="field"><label for="monthly">Monthly investment</label><div class="input-wrap"><span class="prefix">₹</span><input id="monthly" type="number" min="1" max="100000000" step="any" value="5000" inputmode="decimal" required></div><div class="hint">Amount you plan to invest every month.</div></div>
+<div class="field"><label for="rate">Expected annual return (%)</label><div class="input-wrap"><span class="prefix">%</span><input id="rate" type="number" min="-99.9" max="100" step="any" value="12" inputmode="decimal" required></div><div class="hint">This is an assumption, not a guaranteed mutual fund return.</div></div>
+<div class="field"><label for="years">Investment period (years)</label><div class="input-wrap"><input id="years" type="number" min="0.0834" max="100" step="any" value="10" inputmode="decimal" required></div><div class="hint">You can enter a fraction of a year, such as 5.5.</div></div>
+<button class="btn" type="submit">Calculate SIP returns</button><div class="error" id="error" role="alert"></div>
+</form>
+<div class="results" id="results" aria-live="polite">
+<div class="result-main"><div class="result-label">Estimated future value</div><div class="big" id="future">₹11,61,695</div><div class="result-sub" id="summary">Your estimated value after 10 years.</div></div>
+<div class="metrics">
+<div class="metric"><span>Total amount invested</span><strong id="invested">₹6,00,000</strong></div>
+<div class="metric"><span>Estimated wealth gained</span><strong id="gain" class="positive">₹5,61,695</strong></div>
+<div class="metric"><span>Monthly SIP</span><strong id="sip-amount">₹5,000</strong></div>
+<div class="metric"><span>Investment duration</span><strong id="duration">10 years</strong></div>
+</div>
+<div class="visual" aria-label="Estimated invested amount and wealth gained comparison">
+<div class="bar-row"><span>Amount invested</span><div class="bar-track"><div class="bar-fill bar-invested" id="invested-bar"></div></div></div>
+<div class="bar-row"><span>Wealth gained</span><div class="bar-track"><div class="bar-fill bar-gain" id="gain-bar"></div></div></div>
+<div class="result-sub" id="breakdown-note">Illustrative estimate based on monthly contributions.</div>
+</div>
+<button class="btn secondary" id="reset" type="button">Reset calculator</button>
+</div>
+</section></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>How to use this SIP calculator</h2><p>Three inputs are enough to estimate the future value of a regular monthly investment.</p></div>
+<div class="cards">
+<article class="card"><div class="icon">💰</div><h3>1. Enter monthly SIP</h3><p>Enter the amount you plan to invest each month, such as ₹1,000, ₹5,000 or ₹10,000.</p></article>
+<article class="card"><div class="icon">📈</div><h3>2. Choose an expected return</h3><p>Enter an assumed annual rate of return. Actual mutual fund returns can be higher or lower.</p></article>
+<article class="card"><div class="icon">🗓️</div><h3>3. Set your time period</h3><p>Enter how many years you expect to continue your monthly investments.</p></article>
+</div></div></section>
+<section class="section" id="sip-formula"><div class="wrap"><div class="section-head"><h2>SIP calculator formula</h2><p>This calculator uses the future value of a regular monthly investment (ordinary annuity).</p></div>
+<div class="content"><div class="formula"><code>FV = P × [((1 + i)<sup>n</sup> − 1) ÷ i]</code></div>
+<p>Here, <strong>FV</strong> is the estimated future value, <strong>P</strong> is the monthly investment, <strong>i</strong> is the assumed monthly rate of return (annual rate divided by 12), and <strong>n</strong> is the total number of monthly investments.</p>
+<p>When the assumed return is zero, the estimated future value is simply the monthly investment multiplied by the number of months.</p>
+<p><strong>Timing assumption:</strong> Contributions are assumed to be made at the end of each month. If you invest at the beginning of each month, the result may be slightly higher.</p></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>Understand your SIP estimate</h2><p>Know what the calculator's three main figures mean before making an investment decision.</p></div>
+<div class="cards">
+<article class="card"><div class="icon">🧾</div><h3>Total amount invested</h3><p>This is the sum of all monthly contributions over the selected period. It does not include investment growth.</p></article>
+<article class="card"><div class="icon">🌱</div><h3>Estimated wealth gained</h3><p>This is the difference between the estimated future value and the total amount invested.</p></article>
+<article class="card"><div class="icon">🎯</div><h3>Estimated future value</h3><p>This is the projected value of your monthly contributions plus the assumed investment growth.</p></article>
+</div></div></section>
+<section class="section faq"><div class="wrap"><div class="section-head"><h2>Frequently asked questions</h2><p>Common questions about monthly SIP calculations.</p></div>
+<details><summary>What is a SIP?</summary><p>A Systematic Investment Plan (SIP) is a way to invest a fixed amount at regular intervals, commonly every month, in a mutual fund. The investment value can rise or fall with the market.</p></details>
+<details><summary>Are SIP calculator returns guaranteed?</summary><p>No. The return rate is an assumption entered by you. Mutual fund investments are subject to market risk, and actual returns may differ from this estimate.</p></details>
+<details><summary>Does this calculator include taxes and mutual fund charges?</summary><p>No. This basic estimate does not separately account for taxes, exit loads, expense ratios, transaction costs or changes in the investment amount.</p></details>
+<details><summary>Does the SIP calculator assume investment at the start or end of the month?</summary><p>This calculator assumes each monthly contribution is made at the end of the month. Beginning-of-month contributions can produce a slightly different estimate.</p></details>
+<details><summary>Can I use this calculator for a 0% expected return?</summary><p>Yes. At a 0% assumed return, the estimated future value equals the total amount you contribute over the selected period.</p></details>
+</div></section>
+<section class="disclaimer wrap">This calculator provides an illustration, not a prediction or guarantee. Mutual fund investments are subject to market risks. Read all scheme-related documents carefully and consider your financial goals and risk tolerance before investing. This page is for general educational information and is not investment advice.</section>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script>
+(() => {
+'use strict';
+const form=document.getElementById('sip-form');
+const monthly=document.getElementById('monthly');
+const rate=document.getElementById('rate');
+const years=document.getElementById('years');
+const error=document.getElementById('error');
+const results=document.getElementById('results');
+const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(value);
+const compact=value=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:1}).format(value);
+form.addEventListener('submit',event=>{
+ event.preventDefault();
+ const p=Number(monthly.value), annual=Number(rate.value), duration=Number(years.value);
+ if([monthly.value,rate.value,years.value].some(v=>v.trim()==='') || ![p,annual,duration].every(Number.isFinite) || p<=0 || p>100000000 || annual<=-100 || annual>100 || duration<=0 || duration>100){
+  error.textContent='Enter a monthly investment above ₹0, a return between -99.9% and 100%, and a period greater than 0 and up to 100 years.';
+  error.classList.add('show'); results.classList.remove('show'); return;
+ }
+ const months=Math.max(1,Math.round(duration*12));
+ const monthlyRate=annual/100/12;
+ const invested=p*months;
+ const future=monthlyRate===0?invested:p*(Math.pow(1+monthlyRate,months)-1)/monthlyRate;
+ const gain=future-invested;
+ if(!Number.isFinite(future) || future<0){
+  error.textContent='These inputs produce a value that cannot be displayed. Please adjust the return rate or investment period.';
+  error.classList.add('show'); results.classList.remove('show'); return;
+ }
+ document.getElementById('future').textContent=money(future);
+ document.getElementById('summary').textContent='Estimated value after '+compact(months/12)+' years ('+months.toLocaleString('en-IN')+' monthly investments).';
+ document.getElementById('invested').textContent=money(invested);
+ document.getElementById('gain').textContent=money(gain);
+ document.getElementById('gain').className=gain>=0?'positive':'negative';
+ document.getElementById('sip-amount').textContent=money(p);
+ document.getElementById('duration').textContent=compact(months/12)+' years';
+ const scale=Math.max(invested,Math.abs(gain),1);
+ document.getElementById('invested-bar').style.width=(invested/scale*100)+'%';
+ document.getElementById('gain-bar').style.width=(Math.abs(gain)/scale*100)+'%';
+ document.getElementById('breakdown-note').textContent='Estimated future value: '+money(future)+'. Results are rounded to the nearest rupee.';
+ error.classList.remove('show'); results.classList.add('show');
+});
+document.getElementById('reset').addEventListener('click',()=>{
+ form.reset(); monthly.value='5000'; rate.value='12'; years.value='10';
+ error.classList.remove('show'); results.classList.remove('show');
+});
+form.dispatchEvent(new Event('submit',{cancelable:true}));
+})();
+</script>
+</body>
+</html>
