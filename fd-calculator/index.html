@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Use this free Fixed Deposit Calculator to estimate FD maturity value, interest earned and periodic interest payouts. Compare cumulative and non-cumulative FD returns.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://returnoninvestmentcalculator.in/fd-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InvestCalc">
+  <meta property="og:title" content="Fixed Deposit Calculator – FD Interest & Maturity Calculator">
+  <meta property="og:description" content="Calculate estimated FD maturity amount, interest earned and payout with cumulative or non-cumulative options.">
+  <meta property="og:url" content="https://returnoninvestmentcalculator.in/fd-calculator/">
+  <meta property="og:image" content="https://returnoninvestmentcalculator.in/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fixed Deposit Calculator – InvestCalc">
+  <meta name="twitter:description" content="Estimate fixed deposit interest, maturity value and periodic payouts in India.">
+  <title>Fixed Deposit Calculator – FD Interest & Maturity Calculator | InvestCalc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#17243a;--muted:#64748b;--blue:#1769e0;--line:#e3e9f1;--bg:#f4f7fb;--green:#0b8d65;--gold:#d6b36a;--shadow:0 14px 36px rgba(20,39,68,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+    .hero{padding:46px 0 34px;background:linear-gradient(180deg,#fff 0%,#f4f7fb 100%)}.hero-grid{display:grid;grid-template-columns:1fr .94fr;gap:36px;align-items:start}.eyebrow{display:inline-block;padding:6px 11px;border-radius:30px;background:#edf4ff;color:#1769e0;font-size:11px;font-weight:800;letter-spacing:.08em}.hero h1{font-size:clamp(34px,4.6vw,49px);line-height:1.12;letter-spacing:-1.8px;margin:17px 0 13px}.intro{max-width:600px;color:var(--muted);font-size:16px;margin:0 0 20px}.trust{display:flex;flex-wrap:wrap;gap:10px 17px;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:var(--shadow)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.panel h2{font-size:19px;line-height:1.3;margin:0}.tag{font-size:10px;font-weight:800;color:var(--green);background:#e9f8f1;padding:5px 9px;border-radius:30px;white-space:nowrap}
+    .field{margin:13px 0}.field label,.field legend{display:block;margin-bottom:6px;color:#52627a;font-size:12px;font-weight:750}.field input,.field select{width:100%;min-height:45px;border:1px solid #d8e1ec;border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit;font-size:15px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.field small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.choice{display:flex;gap:9px;flex-wrap:wrap}.choice label{display:flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#43536a;font-size:12px;font-weight:700;cursor:pointer}.choice input{accent-color:var(--blue);margin:0}.btn{width:100%;min-height:47px;border:0;border-radius:10px;background:var(--blue);color:#fff;font:inherit;font-weight:800;cursor:pointer;margin-top:8px}.btn:hover{filter:brightness(.95)}.btn.alt{background:#edf4ff;color:var(--blue)}.error{display:none;margin-top:12px;padding:10px 12px;border:1px solid #ffd7d7;border-radius:9px;background:#fff1f1;color:#a52d2d;font-size:12px}.error.show{display:block}
+    .results{display:none;margin-top:18px}.results.show{display:block}.result-main{padding:17px;border:1px solid #dceaff;border-radius:12px;background:#eff6ff}.result-label{font-size:11px;font-weight:750;color:#52627a}.big{font-size:clamp(27px,4vw,35px);font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.3;overflow-wrap:anywhere}.sub{font-size:11px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.metric{padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:0}.metric span{display:block;color:var(--muted);font-size:10px;font-weight:700}.metric strong{display:block;font-size:17px;overflow-wrap:anywhere}.breakdown{margin-top:13px;padding:14px;border:1px solid var(--line);border-radius:11px}.bar{height:12px;display:flex;overflow:hidden;border-radius:20px;background:#e9eef5;margin:10px 0}.bar-principal{background:#1769e0}.bar-interest{background:#20a77d}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:10px;color:#52627a}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.table-wrap{overflow-x:auto;margin-top:12px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{background:#f6f8fb;color:#52627a;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+    .section{padding:38px 0}.section-head{text-align:center;max-width:740px;margin:0 auto 23px}.section-head h2{font-size:27px;letter-spacing:-.7px;margin:0 0 7px}.section-head p{color:var(--muted);margin:0;font-size:14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px}.card h3{font-size:15px;margin:0 0 6px}.card p{font-size:12px;color:var(--muted);margin:0}.icon{display:grid;place-items:center;width:37px;height:37px;border-radius:10px;background:#edf4ff;margin-bottom:10px;font-size:18px}
+    .content{max-width:900px;margin:auto}.content h2{font-size:23px;letter-spacing:-.5px;margin:25px 0 8px}.content h3{font-size:16px;margin:18px 0 6px}.content p,.content li{font-size:13px;color:#52627a}.content ul{padding-left:21px}.formula{padding:17px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:center;margin:13px 0}.formula code{display:block;color:#135fc9;font-size:clamp(13px,2vw,17px);font-weight:800;white-space:normal;overflow-wrap:anywhere;margin:7px 0}.note{padding:13px 15px;border-left:3px solid var(--gold);background:#fff9ec;border-radius:0 9px 9px 0;color:#705a2c;font-size:12px;margin:14px 0}.faq{border:1px solid var(--line);border-radius:10px;background:#fff;margin:9px 0}.faq summary{padding:13px 15px;font-size:13px;font-weight:750;cursor:pointer}.faq p{padding:0 15px 13px;margin:0;color:var(--muted);font-size:12px}.disclaimer{padding:19px 0 28px;color:var(--muted);font-size:11px;text-align:center}
+    @media(max-width:820px){.hero-grid{grid-template-columns:1fr;gap:23px}.hero{padding-top:34px}.cards{grid-template-columns:1fr 1fr}}@media(max-width:540px){.wrap{width:calc(100% - 28px)}.hero h1{font-size:36px;letter-spacing:-1.2px}.intro{font-size:14px}.panel{padding:17px}.cards{grid-template-columns:1fr}.section{padding:29px 0}.section-head h2{font-size:23px}.three{grid-template-columns:1fr 1fr}.metrics{gap:7px}.metric{padding:10px}.metric strong{font-size:15px}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"WebSite","@id":"https://returnoninvestmentcalculator.in/#website","url":"https://returnoninvestmentcalculator.in/","name":"InvestCalc"},
+      {"@type":"WebPage","@id":"https://returnoninvestmentcalculator.in/fd-calculator/#webpage","url":"https://returnoninvestmentcalculator.in/fd-calculator/","name":"Fixed Deposit Calculator – FD Interest & Maturity Calculator","description":"Estimate fixed deposit maturity value, interest earned and periodic interest payouts.","isPartOf":{"@id":"https://returnoninvestmentcalculator.in/#website"}},
+      {"@type":"SoftwareApplication","name":"InvestCalc Fixed Deposit Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://returnoninvestmentcalculator.in/fd-calculator/","description":"Free online calculator for estimated cumulative and non-cumulative fixed deposit interest and maturity values."},
+      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Fixed Deposit Calculator","item":"https://returnoninvestmentcalculator.in/fd-calculator/"}]},
+      {"@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"How is fixed deposit interest calculated?","acceptedAnswer":{"@type":"Answer","text":"Cumulative FD interest is commonly estimated using compound interest: maturity value = principal × (1 + annual rate ÷ compounding periods) raised to the number of compounding periods. The exact bank method and day-count rules can differ."}},
+        {"@type":"Question","name":"What is the difference between cumulative and non-cumulative FD?","acceptedAnswer":{"@type":"Answer","text":"A cumulative FD reinvests interest and generally pays the accumulated amount at maturity. A non-cumulative FD pays interest at selected intervals such as monthly, quarterly, half-yearly or yearly, while the principal is generally repaid at maturity."}},
+        {"@type":"Question","name":"How often is FD interest compounded in India?","acceptedAnswer":{"@type":"Answer","text":"Many bank cumulative FDs use quarterly compounding, but terms vary by bank and deposit product. Check the rate sheet and deposit terms before investing."}},
+        {"@type":"Question","name":"Does this calculator include TDS and tax?","acceptedAnswer":{"@type":"Answer","text":"No. The estimate is before income tax and TDS. Interest from fixed deposits may be taxable according to the depositor's applicable tax rules."}},
+        {"@type":"Question","name":"Is the maturity amount guaranteed by this calculator?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate based on the rate, tenure and calculation method entered. The bank's deposit advice and applicable terms determine the actual amount."}}
+      ]}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">FREE • INDIA FD ESTIMATOR</span>
+          <h1>Fixed Deposit Calculator</h1>
+          <p class="intro">Estimate how much your fixed deposit may grow. Calculate maturity value, total interest and periodic payouts with cumulative or non-cumulative FD options.</p>
+          <div class="trust"><span>Free to use</span><span>No sign-up</span><span>Calculations in your browser</span></div>
+          <div class="note">Enter the annual interest rate offered by your bank. If you qualify for a senior-citizen rate, enter that applicable rate directly rather than relying on a default assumption.</div>
+        </div>
+        <section class="panel" aria-labelledby="fd-heading">
+          <div class="panel-head"><h2 id="fd-heading">Calculate your FD returns</h2><span class="tag">INSTANT ESTIMATE</span></div>
+          <form id="fd-form" novalidate>
+            <div class="field"><label for="principal">Deposit amount (₹)</label><input id="principal" type="number" min="1" step="any" value="100000" inputmode="decimal" required></div>
+            <div class="two">
+              <div class="field"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0.01" max="100" step="any" value="7" inputmode="decimal" required></div>
+              <div class="field"><label for="years">Tenure (years)</label><input id="years" type="number" min="0" max="100" step="1" value="2" inputmode="numeric" required></div>
+            </div>
+            <div class="field"><label for="months">Additional months</label><select id="months"><option value="0" selected>0 months</option><option value="1">1 month</option><option value="2">2 months</option><option value="3">3 months</option><option value="4">4 months</option><option value="5">5 months</option><option value="6">6 months</option><option value="7">7 months</option><option value="8">8 months</option><option value="9">9 months</option><option value="10">10 months</option><option value="11">11 months</option></select></div>
+            <fieldset class="field" style="border:0;padding:0;margin-left:0;margin-right:0"><legend>Interest type</legend><div class="choice"><label><input type="radio" name="fd-type" value="cumulative" checked> Cumulative (reinvest interest)</label><label><input type="radio" name="fd-type" value="noncumulative"> Non-cumulative (payout)</label></div></fieldset>
+            <div class="field" id="compound-field"><label for="frequency">Compounding frequency</label><select id="frequency"><option value="4" selected>Quarterly (4 times/year)</option><option value="12">Monthly (12 times/year)</option><option value="2">Half-yearly (2 times/year)</option><option value="1">Yearly (once/year)</option></select><small>Use the frequency stated in your bank's FD terms.</small></div>
+            <div class="field" id="payout-field" hidden><label for="payout">Interest payout frequency</label><select id="payout"><option value="12">Monthly</option><option value="4" selected>Quarterly</option><option value="2">Half-yearly</option><option value="1">Yearly</option></select><small>Periodic payout is an approximation; banks may apply their own day-count and discounting method.</small></div>
+            <button class="btn" type="submit">Calculate FD maturity</button>
+            <div class="error" id="fd-error" role="alert"></div>
+          </form>
+          <div class="results" id="fd-results" aria-live="polite">
+            <div class="result-main"><div class="result-label" id="result-title">Estimated maturity amount</div><div class="big" id="maturity">₹1,14,888.00</div><div class="sub" id="result-note">After 2 years at 7.00% p.a.</div></div>
+            <div class="metrics">
+              <div class="metric"><span>Total interest earned</span><strong id="interest">₹14,888.00</strong></div>
+              <div class="metric"><span>Original deposit</span><strong id="deposit-out">₹1,00,000.00</strong></div>
+              <div class="metric"><span>Interest per payout</span><strong id="payout-out">—</strong></div>
+              <div class="metric"><span>Effective annual yield</span><strong id="yield-out">7.19%</strong></div>
+            </div>
+            <div class="breakdown"><strong style="font-size:12px">Deposit breakdown</strong><div class="bar"><div class="bar-principal" id="principal-bar" style="width:87%"></div><div class="bar-interest" id="interest-bar" style="width:13%"></div></div><div class="legend"><span><i class="dot" style="background:#1769e0"></i>Principal</span><span><i class="dot" style="background:#20a77d"></i>Interest</span></div></div>
+            <div class="table-wrap"><table><thead><tr><th>Year</th><th>Estimated balance</th><th>Interest earned</th></tr></thead><tbody id="yearly-rows"></tbody></table></div>
+            <button class="btn alt" id="copy-result" type="button">Copy FD calculation summary</button>
+            <button class="btn alt" id="reset-fd" type="button">Reset calculator</button>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="section"><div class="wrap"><div class="section-head"><h2>Understand your FD calculation</h2><p>Choose the deposit structure that matches the product offered by your bank.</p></div><div class="cards">
+      <article class="card"><div class="icon">📈</div><h3>Cumulative FD</h3><p>Interest is added back to the deposit at the selected compounding intervals. The accumulated amount is generally paid at maturity.</p></article>
+      <article class="card"><div class="icon">💸</div><h3>Non-cumulative FD</h3><p>Interest is paid out at regular intervals. The principal generally remains invested and is repaid at maturity.</p></article>
+      <article class="card"><div class="icon">🧮</div><h3>Transparent estimates</h3><p>See principal, estimated interest, maturity amount and a year-wise balance table. No account or personal details are required.</p></article>
+    </div></div></section>
+    <section class="section" id="formula"><div class="wrap content">
+      <h2>Fixed deposit interest formula</h2>
+      <p>The formula depends on whether interest is reinvested or paid out. This calculator uses the annual rate and tenure you enter to produce an estimate.</p>
+      <div class="formula"><strong>Cumulative FD – compound interest</strong><code>A = P × (1 + r ÷ n)<sup>n × t</sup></code><span class="sub">P = principal · r = annual rate as a decimal · n = compounding periods per year · t = tenure in years</span></div>
+      <div class="formula"><strong>Simple-interest estimate</strong><code>I = P × r × t</code><span class="sub">Used here as a simplified estimate for periodic non-cumulative interest payouts.</span></div>
+      <h2>How to use this FD calculator</h2>
+      <ol><li>Enter the amount you plan to deposit.</li><li>Enter the annual interest rate quoted by the bank.</li><li>Set the tenure in years and any additional months.</li><li>Select cumulative or non-cumulative interest.</li><li>For a cumulative FD, select the compounding frequency. For a payout FD, choose how often you want interest paid.</li><li>Calculate to view estimated interest, maturity value and payout details.</li></ol>
+      <h2>Cumulative vs non-cumulative FD</h2>
+      <div class="table-wrap"><table><thead><tr><th>Feature</th><th>Cumulative FD</th><th>Non-cumulative FD</th></tr></thead><tbody>
+        <tr><td>Interest handling</td><td>Reinvested in the deposit</td><td>Paid out periodically</td></tr>
+        <tr><td>Typical cash flow</td><td>Usually at maturity</td><td>Monthly, quarterly, half-yearly or yearly</td></tr>
+        <tr><td>Compounding benefit</td><td>Yes, according to product terms</td><td>Generally no reinvestment within the same deposit</td></tr>
+        <tr><td>Common use</td><td>Growing a lump sum</td><td>Receiving periodic interest income</td></tr>
+      </tbody></table></div>
+      <div class="note"><strong>Important accuracy note:</strong> Banks may calculate interest using actual days, a 365/366-day year, completed quarters, product-specific compounding rules or discounted monthly payouts. This tool uses a transparent mathematical estimate and may not exactly match a bank's maturity advice.</div>
+      <h2>What can change your actual FD return?</h2>
+      <ul><li><strong>Bank and deposit type:</strong> Interest rates and calculation rules vary by institution and product.</li><li><strong>Tenure:</strong> The rate may depend on the exact deposit period, not just the number of years.</li><li><strong>Senior-citizen rate:</strong> Some banks offer a different rate to eligible depositors. Enter the applicable quoted rate yourself.</li><li><strong>Premature withdrawal:</strong> Closing an FD early may result in a lower applicable rate or penalty.</li><li><strong>Tax and TDS:</strong> FD interest may be taxable. Tax treatment depends on your circumstances and current rules; this calculator shows pre-tax estimates.</li><li><strong>Reinvestment:</strong> The result assumes the selected cumulative interest is reinvested according to the selected frequency.</li></ul>
+      <h2>Frequently asked questions</h2>
+      <details class="faq"><summary>1. How is fixed deposit interest calculated?</summary><p>For a cumulative deposit, interest is commonly estimated using compound interest. The amount depends on principal, annual rate, tenure and compounding frequency. Your bank's terms determine the actual calculation.</p></details>
+      <details class="faq"><summary>2. What is the difference between cumulative and non-cumulative FD?</summary><p>A cumulative FD reinvests interest and generally pays the accumulated amount at maturity. A non-cumulative FD pays interest at selected intervals while the principal is generally repaid at maturity.</p></details>
+      <details class="faq"><summary>3. How often is FD interest compounded in India?</summary><p>Many bank cumulative FDs use quarterly compounding, but the frequency can vary by bank and product. Always check the deposit terms.</p></details>
+      <details class="faq"><summary>4. Can I calculate monthly interest on an FD?</summary><p>Yes. Select non-cumulative and choose monthly payout. The displayed amount is an estimate; a bank may calculate and discount monthly interest differently.</p></details>
+      <details class="faq"><summary>5. Does the calculator include senior-citizen benefits?</summary><p>There is no automatic age-based rate adjustment. Enter the actual rate quoted to the eligible depositor, including any applicable additional rate.</p></details>
+      <details class="faq"><summary>6. Does this calculator deduct TDS or income tax?</summary><p>No. Results are before tax and TDS. FD interest may be taxable under the rules applicable to the depositor.</p></details>
+      <details class="faq"><summary>7. Can I use this for a company or NRE/NRO deposit?</summary><p>You can use it for a rough mathematical estimate, but deposit rules, eligibility, tax treatment, currency and payout terms may differ. Check the specific product documentation.</p></details>
+      <details class="faq"><summary>8. What happens if I withdraw my FD before maturity?</summary><p>The bank may apply a premature withdrawal penalty or a lower interest rate based on the period the deposit actually remained invested. This calculator does not estimate those charges.</p></details>
+      <details class="faq"><summary>9. Is the maturity amount guaranteed?</summary><p>No. This is an estimate based on the inputs and formula selected. The bank's deposit advice and applicable terms determine the actual maturity amount.</p></details>
+      <details class="faq"><summary>10. Is my financial information stored?</summary><p>The calculation runs in your browser. This page does not ask for bank login details, account numbers or identity documents.</p></details>
+      <h2>Related calculators</h2>
+      <p>You may also find these tools useful: <a href="/rd-calculator/">Recurring Deposit Calculator</a>, <a href="/ppf-calculator/">PPF Calculator</a>, <a href="/epf-maturity-calculator/">EPF Maturity Calculator</a>, <a href="/mutual-fund-vs-fd-comparison/">Mutual Fund vs FD Comparison</a> and <a href="/">ROI Calculator</a>.</p>
+    </div></section>
+    <div class="wrap disclaimer">InvestCalc provides educational estimates, not a bank quote, tax calculation or investment recommendation. Confirm rates, tenure conditions, payout rules, tax treatment and premature-closure terms with the deposit-taking institution before making a decision.</div>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+  (() => {
+    'use strict';
+    const form=document.getElementById('fd-form');
+    const byId=id=>document.getElementById(id);
+    const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
+    const pct=value=>Number.isFinite(value)?value.toFixed(2)+'%':'—';
+    const selectedType=()=>document.querySelector('input[name="fd-type"]:checked').value;
+    const syncType=()=>{
+      const cumulative=selectedType()==='cumulative';
+      byId('compound-field').hidden=!cumulative;
+      byId('payout-field').hidden=cumulative;
+    };
+    document.querySelectorAll('input[name="fd-type"]').forEach(el=>el.addEventListener('change',syncType));
+    const calc=()=>{
+      const principal=Number(byId('principal').value);
+      const rate=Number(byId('rate').value);
+      const years=Number(byId('years').value);
+      const months=Number(byId('months').value);
+      const totalYears=years+months/12;
+      if(![principal,rate,years,months,totalYears].every(Number.isFinite)||principal<=0||rate<=0||rate>100||years<0||years>100||totalYears<=0){
+        byId('fd-error').textContent='Please enter a deposit above ₹0, an annual rate greater than 0% and up to 100%, and a tenure greater than zero and no more than 100 years.';
+        byId('fd-error').classList.add('show');byId('fd-results').classList.remove('show');return;
+      }
+      const r=rate/100,type=selectedType(),n=Number(byId('frequency').value);
+      let maturity,interest,payout=null,effectiveYield;
+      if(type==='cumulative'){
+        maturity=principal*Math.pow(1+r/n,n*totalYears);
+        interest=maturity-principal;
+        effectiveYield=(Math.pow(1+r/n,n)-1)*100;
+      }else{
+        const p=Number(byId('payout').value);
+        interest=principal*r*totalYears;
+        maturity=principal;
+        payout=principal*r/p;
+        effectiveYield=r*100;
+      }
+      if(![maturity,interest,effectiveYield].every(Number.isFinite)){
+        byId('fd-error').textContent='These values are too large to calculate safely. Please use a smaller deposit or tenure.';
+        byId('fd-error').classList.add('show');byId('fd-results').classList.remove('show');return;
+      }
+      byId('maturity').textContent=money(maturity);
+      byId('interest').textContent=money(interest);
+      byId('deposit-out').textContent=money(principal);
+      byId('payout-out').textContent=payout===null?'Paid at maturity':money(payout);
+      byId('yield-out').textContent=pct(effectiveYield);
+      byId('result-title').textContent=type==='cumulative'?'Estimated maturity amount':'Principal returned at maturity';
+      byId('result-note').textContent=(type==='cumulative'?'Estimated value after ':'Principal remains invested for ')+totalYears.toFixed(2)+' years at '+rate.toFixed(2)+'% p.a.';
+      const base=type==='cumulative'?maturity:principal+interest;
+      const principalWidth=base>0?Math.max(0,Math.min(100,principal/base*100)):100;
+      byId('principal-bar').style.width=principalWidth+'%';
+      byId('interest-bar').style.width=(100-principalWidth)+'%';
+      const rows=[];
+      const wholeYears=Math.floor(totalYears);
+      for(let y=1;y<=Math.min(wholeYears,30);y++){
+        const balance=type==='cumulative'?principal*Math.pow(1+r/n,n*y):principal;
+        const earned=type==='cumulative'?balance-principal:principal*r*y;
+        rows.push('<tr><td>'+y+'</td><td>'+money(balance)+'</td><td>'+money(earned)+'</td></tr>');
+      }
+      if(totalYears>wholeYears){
+        const balance=type==='cumulative'?maturity:principal;
+        rows.push('<tr><td>'+totalYears.toFixed(2)+' (final)</td><td>'+money(balance)+'</td><td>'+money(interest)+'</td></tr>');
+      }else if(rows.length){
+        rows[rows.length-1]=rows[rows.length-1].replace('</tr>','</tr>');
+      }
+      if(!rows.length) rows.push('<tr><td>At maturity</td><td>'+money(maturity)+'</td><td>'+money(interest)+'</td></tr>');
+      byId('yearly-rows').innerHTML=rows.join('');
+      byId('fd-error').classList.remove('show');byId('fd-results').classList.add('show');
+    };
+    form.addEventListener('submit',event=>{event.preventDefault();calc();});
+    byId('reset-fd').addEventListener('click',()=>{
+      byId('principal').value='100000';byId('rate').value='7';byId('years').value='2';byId('months').value='0';
+      document.querySelector('input[name="fd-type"][value="cumulative"]').checked=true;
+      byId('frequency').value='4';byId('payout').value='4';syncType();byId('fd-results').classList.remove('show');byId('fd-error').classList.remove('show');
+    });
+    byId('copy-result').addEventListener('click',()=>{
+      const summary='InvestCalc FD estimate\nDeposit: '+byId('deposit-out').textContent+'\nAnnual rate: '+byId('rate').value+'% p.a.\nTenure: '+(Number(byId('years').value)+Number(byId('months').value)/12).toFixed(2)+' years\nInterest type: '+(selectedType()==='cumulative'?'Cumulative':'Non-cumulative')+'\nEstimated interest: '+byId('interest').textContent+'\nMaturity principal/value: '+byId('maturity').textContent+'\nNote: Estimate only; bank terms and tax may differ.';
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(summary).then(()=>{byId('copy-result').textContent='Summary copied';setTimeout(()=>{byId('copy-result').textContent='Copy FD calculation summary';},1800);}).catch(()=>{byId('copy-result').textContent='Copy unavailable';});}
+      else{byId('copy-result').textContent='Copy is not supported in this browser';}
+    });
+    syncType();
+  })();
+  </script>
+  <script src="/assets/js/common-header.js" defer></script>
+  <script src="/assets/js/common-footer.js" defer></script>
+</body>
+</html>
