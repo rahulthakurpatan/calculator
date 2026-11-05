@@ -194,7 +194,7 @@
         const earned=type==='cumulative'?balance-principal:principal*r*y;
         rows.push('<tr><td>'+y+'</td><td>'+money(balance)+'</td><td>'+money(earned)+'</td></tr>');
       }
-      if(totalYears>wholeYears){
+      if(totalYears>Math.min(wholeYears,30)){
         const balance=type==='cumulative'?maturity:principal;
         rows.push('<tr><td>'+totalYears.toFixed(2)+' (final)</td><td>'+money(balance)+'</td><td>'+money(interest)+'</td></tr>');
       }else if(rows.length){
