@@ -99,7 +99,7 @@
 <h2 class="section-title">How this Dhan Yog calculator works</h2>
 <p class="section-intro">The calculator separates astronomical positions from traditional astrological interpretation, so you can inspect the basis of each result.</p>
 <h3>1. Birth chart and astronomical positions</h3><p>The entered local birth time is converted to UTC using the UTC offset you select. Geographic coordinates are used to calculate local sidereal time and the ascendant. Planetary geocentric longitudes are calculated using the Astronomy Engine library and converted from tropical to sidereal longitude using an approximate Lahiri ayanamsa.</p>
-<h3>2. Houses and Parashari lordships</h3><p>The chart uses whole-sign houses: the sign containing the ascendant becomes the 1st house, and each following sign becomes the next house. The classical seven planets rule signs using the traditional scheme; Rahu and Ketu are treated as shadow planets and are not assigned sign lordship in this calculator.</p>
+<h3>2. Houses and Parashari lordships</h3><p>The chart uses whole-sign houses: the sign containing the ascendant becomes the 1st house, and each following sign becomes the next house. The classical seven planets rule signs using the traditional scheme; Rahu and Ketu are treated as shadow planets and are not assigned sign lordship in this calculator. Their positions use a mean lunar-node approximation.</p>
 <h3>3. Dhan Yog rules used</h3><p>Traditional wealth analysis often examines the 2nd house (accumulated resources), 11th (gains), 5th (purva punya/intelligence) and 9th (fortune). This tool flags relationships among these house lords through conjunction, mutual sign exchange and classical Parashari aspects. It separately checks a simplified Lakshmi Yoga condition. Every result lists the rule that triggered it.</p>
 <h3>4. Vimshottari dasha</h3><p>The Moon's sidereal longitude determines the birth nakshatra and the remaining balance of its planetary period. The sequence follows the standard 120-year Vimshottari cycle. The displayed current period is an approximate calendar calculation, not a prediction of a financial event.</p>
 <div class="disclaimer">The astronomy library is loaded from a public CDN when the calculator is opened. An internet connection is required for planetary calculations and city lookup. Your entered birth details are processed in the page and are not sent to InvestCalc servers by the calculator code.</div>
@@ -142,7 +142,7 @@ function ascendant(date,lat,lon,ayan){
  return norm(Math.atan2(y,x)*180/Math.PI-ayan);
 }
 function longitude(body,date){
- const v=Astronomy.GeoVector(body,date,true);
+ const bodyId=Astronomy.Body[body];if(bodyId===undefined)throw new Error('Unsupported astronomical body: '+body);const v=Astronomy.GeoVector(bodyId,date,true);
  const e=Astronomy.Ecliptic(v);
  return norm(e.elon);
 }
