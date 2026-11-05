@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Track business income, expenses, profit, loss and profit margin with this free Business Profit & Loss Tracker. Save entries in your browser and export reports to CSV.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/business-profit-loss-tracker/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Business Profit & Loss Tracker – Free Income and Expense Tracker">
+<meta property="og:description" content="Record business income and expenses, check monthly profit or loss, and export your records as a CSV file.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/business-profit-loss-tracker/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Business Profit & Loss Tracker | InvestCalc">
+<meta name="twitter:description" content="A simple browser-based tracker for business revenue, expenses and net profit.">
+<title>Business Profit & Loss Tracker – Free Income & Expense Tracker | InvestCalc</title>
+<style>
+:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--gold:#d6b36a;--shadow:0 12px 35px rgba(28,55,90,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+.hero{padding:45px 0 32px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:start;gap:32px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(34px,4.5vw,48px);line-height:1.13;letter-spacing:-1.7px;margin:17px 0 14px}.intro{font-size:16px;color:var(--muted);margin:0 0 17px}.trust{display:flex;gap:12px;flex-wrap:wrap;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.field{margin:12px 0}.field label{display:block;font-size:13px;color:#52627a;font-weight:750;margin-bottom:6px}.field input,.field select{width:100%;height:45px;border:1px solid #dce4ef;border-radius:9px;padding:0 11px;font:inherit;font-size:15px;color:var(--ink);background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}.btn{border:0;border-radius:9px;background:var(--blue);color:#fff;min-height:45px;padding:9px 15px;font:inherit;font-weight:800;cursor:pointer}.btn:hover{filter:brightness(.94)}.btn.secondary{background:#edf4ff;color:var(--blue)}.btn.danger{background:#fff0f0;color:#b52e2e}.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #1769e055;outline-offset:2px}.form-actions{display:flex;gap:9px;flex-wrap:wrap}.form-actions .btn{flex:1}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:13px;margin-top:12px}.error.show{display:block}.hint{font-size:11px;color:var(--muted);margin-top:4px}
+.section{padding:35px 0}.section-head{max-width:720px;margin:0 auto 20px}.section-head.center{text-align:center}.section-head h2{font-size:27px;letter-spacing:-.6px;margin:0 0 6px}.section-head p{margin:0;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:700}.stat strong{display:block;font-size:clamp(18px,2.2vw,24px);margin-top:4px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}
+.toolbar{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 12px}.toolbar .field{margin:0;min-width:180px}.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:13px}.entries{width:100%;border-collapse:collapse;font-size:13px;min-width:650px}.entries th,.entries td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}.entries th{background:#f2f6fb;color:#52627a;font-size:11px;text-transform:uppercase;letter-spacing:.04em}.entries tr:last-child td{border-bottom:0}.entries td.amount{text-align:right;font-weight:750}.entries td:last-child{text-align:center}.type-income{color:var(--green);font-weight:750}.type-expense{color:var(--red);font-weight:750}.delete-entry{border:0;background:#fff0f0;color:#b52e2e;border-radius:7px;padding:5px 9px;cursor:pointer;font-weight:700}.empty{text-align:center;padding:27px;color:var(--muted);font-size:13px}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px}.content-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px}.content-card h2{font-size:21px;margin:0 0 9px}.content-card h3{font-size:16px;margin:19px 0 6px}.content-card p,.content-card li{font-size:14px;color:#46566c}.content-card ul{padding-left:21px}.bar-list{display:grid;gap:12px;margin-top:14px}.bar-item{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:9px;font-size:12px}.bar-track{height:12px;background:#edf1f7;border-radius:20px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;background:var(--blue);min-width:0}.bar-fill.expense{background:#e49b54}.bar-fill.profit{background:var(--green)}.faq{padding:14px 0;border-bottom:1px solid var(--line)}.faq:last-child{border:0}.faq h3{margin:0 0 5px;font-size:15px}.faq p{margin:0}.related{display:flex;gap:9px;flex-wrap:wrap}.related a{background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:8px 12px;font-size:12px;font-weight:700}.note{font-size:12px;color:var(--muted);padding:15px 0 28px}.privacy-note{background:#f0f7ff;border:1px solid #dceaff;border-radius:10px;padding:11px 13px;color:#405674;font-size:12px;margin-top:14px}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:22px}.stats{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:1fr}}@media(max-width:540px){.wrap{width:calc(100% - 28px)}.hero{padding:29px 0 23px}h1{font-size:35px;letter-spacing:-1.2px}.intro{font-size:15px}.panel{padding:16px}.section{padding:29px 0}.section-head h2{font-size:24px}.two{gap:8px}.stat{padding:12px}.stat strong{font-size:18px}.toolbar{align-items:stretch}.toolbar .field{width:100%}.toolbar-actions{width:100%}.toolbar-actions .btn{flex:1}.bar-item{grid-template-columns:67px 1fr auto;gap:7px}}
+</style>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@graph":[
+  {"@type":"WebSite","@id":"https://returnoninvestmentcalculator.in/#website","url":"https://returnoninvestmentcalculator.in/","name":"InvestCalc"},
+  {"@type":"WebPage","@id":"https://returnoninvestmentcalculator.in/business-profit-loss-tracker/#webpage","url":"https://returnoninvestmentcalculator.in/business-profit-loss-tracker/","name":"Business Profit & Loss Tracker","description":"A browser-based tracker to record business income and expenses and review profit or loss.","isPartOf":{"@id":"https://returnoninvestmentcalculator.in/#website"}},
+  {"@type":"SoftwareApplication","name":"Business Profit & Loss Tracker","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://returnoninvestmentcalculator.in/business-profit-loss-tracker/","description":"Free browser-based business income and expense tracker with CSV export."},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Business Profit & Loss Tracker","item":"https://returnoninvestmentcalculator.in/business-profit-loss-tracker/"}]},
+  {"@type":"FAQPage","mainEntity":[
+   {"@type":"Question","name":"How is business net profit calculated?","acceptedAnswer":{"@type":"Answer","text":"Net profit in this tracker is calculated as the total income entries minus the total expense entries for the selected period. It is only as complete as the entries you record."}},
+   {"@type":"Question","name":"Where are my business records saved?","acceptedAnswer":{"@type":"Answer","text":"Entries are saved in this browser on this device using local storage. They are not synced to an online account. Clearing browser data or changing devices may remove or make the records unavailable."}},
+   {"@type":"Question","name":"Can I export my profit and loss records?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Export CSV button to download the entries currently selected by the date filter and open them in a spreadsheet application."}},
+   {"@type":"Question","name":"Does this tracker replace accounting or tax software?","acceptedAnswer":{"@type":"Answer","text":"No. It is a simple record-keeping and estimation tool. It does not prepare statutory financial statements, calculate tax, or replace advice from a qualified accountant."}}
+  ]}
+ ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">FREE • PRIVATE • SIMPLE</span><h1>Keep your business profit and loss clear.</h1>
+<p class="intro">Record daily business income and expenses, check how much you are earning or spending, and understand your net profit for any month. Your entries stay in this browser.</p>
+<div class="trust"><span>No sign-up required</span><span>Mobile friendly</span><span>CSV export</span><span>Browser storage</span></div>
+<div class="privacy-note"><strong>Privacy note:</strong> This tracker saves records in your current browser using local storage. It does not sync records between devices. Export a backup regularly.</div>
+</div>
+<section class="panel" aria-labelledby="entry-title">
+<div class="panel-head"><h2 id="entry-title">Add a business entry</h2><span class="pill">QUICK ENTRY</span></div>
+<form id="entry-form" novalidate>
+<div class="two">
+<div class="field"><label for="entry-type">Entry type</label><select id="entry-type"><option value="income">Income / Sale</option><option value="expense">Expense</option></select></div>
+<div class="field"><label for="entry-date">Date</label><input id="entry-date" type="date" required></div>
+</div>
+<div class="field"><label for="entry-amount">Amount (₹)</label><input id="entry-amount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="e.g. 2500" required><div class="hint">Enter a positive amount. Use a separate entry for each transaction.</div></div>
+<div class="two">
+<div class="field"><label for="entry-category">Category</label><select id="entry-category"></select></div>
+<div class="field"><label for="entry-note">Description (optional)</label><input id="entry-note" type="text" maxlength="100" placeholder="e.g. Product sale"></div>
+</div>
+<div class="form-actions"><button class="btn" type="submit">＋ Add entry</button><button class="btn secondary" type="reset">Clear form</button></div>
+<div class="error" id="form-error" role="alert"></div>
+</form>
+</section>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><h2>Business performance</h2><p>Totals update automatically when you add or remove entries. Select a month or view all recorded transactions.</p></div>
+<div class="stats" aria-live="polite">
+<div class="stat"><span>Total income</span><strong class="positive" id="total-income">₹0.00</strong></div>
+<div class="stat"><span>Total expenses</span><strong class="negative" id="total-expenses">₹0.00</strong></div>
+<div class="stat"><span>Net profit / loss</span><strong id="net-profit">₹0.00</strong></div>
+<div class="stat"><span>Profit margin</span><strong id="profit-margin">—</strong></div>
+</div>
+<div class="toolbar">
+<div class="field"><label for="month-filter">Report period</label><select id="month-filter"><option value="all">All recorded entries</option></select></div>
+<div class="toolbar-actions"><button class="btn secondary" id="export-csv" type="button">Export CSV</button><button class="btn danger" id="clear-all" type="button">Clear all data</button></div>
+</div>
+<div class="table-wrap"><table class="entries"><thead><tr><th>Date</th><th>Type</th><th>Category</th><th>Description</th><th style="text-align:right">Amount</th><th>Action</th></tr></thead><tbody id="entries-body"></tbody></table><div class="empty" id="empty-state">No entries yet. Add your first income or expense above.</div></div>
+<div class="summary-grid">
+<section class="content-card"><h2>Income vs expenses</h2><p>Visual comparison for the selected period.</p><div class="bar-list"><div class="bar-item"><span>Income</span><div class="bar-track"><div class="bar-fill" id="income-bar"></div></div><strong id="income-bar-label">₹0</strong></div><div class="bar-item"><span>Expenses</span><div class="bar-track"><div class="bar-fill expense" id="expense-bar"></div></div><strong id="expense-bar-label">₹0</strong></div><div class="bar-item"><span>Net result</span><div class="bar-track"><div class="bar-fill profit" id="profit-bar"></div></div><strong id="profit-bar-label">₹0</strong></div></div></section>
+<section class="content-card"><h2>Quick interpretation</h2><p id="interpretation" aria-live="polite">Add your business entries to see a summary for the selected period.</p><h3>What these numbers mean</h3><ul><li><strong>Income:</strong> all recorded sales and other business receipts.</li><li><strong>Expenses:</strong> all recorded business costs and payments.</li><li><strong>Net result:</strong> income minus expenses.</li><li><strong>Profit margin:</strong> net profit divided by income, multiplied by 100.</li></ul></section>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap"><div class="content-card">
+<h2>How to use this Business Profit & Loss Tracker</h2>
+<ol>
+<li>Choose whether the transaction is income or an expense.</li>
+<li>Enter its date, amount and category. Add a short description if useful.</li>
+<li>Press <strong>Add entry</strong>. Your record will appear in the table and the totals will update.</li>
+<li>Use the report period filter to review one month or all saved entries.</li>
+<li>Export the visible report to CSV for a spreadsheet backup or further analysis.</li>
+</ol>
+<h3>Formula used</h3>
+<p><strong>Net profit or loss = Total business income − Total business expenses</strong></p>
+<p><strong>Profit margin (%) = (Net profit ÷ Total income) × 100</strong></p>
+<p>If income is zero, the tracker displays the profit margin as not available rather than dividing by zero. A negative net result indicates that recorded expenses exceed recorded income for the selected period.</p>
+<h3>Example</h3>
+<p>Suppose a small business records ₹80,000 in sales and ₹55,000 in expenses during a month. Its estimated net profit is ₹25,000. The profit margin is ₹25,000 ÷ ₹80,000 × 100 = 31.25%.</p>
+<h3>Important limitations</h3>
+<p>This is a simple cash-entry tracker, not a full accounting system. It does not automatically handle inventory valuation, depreciation, unpaid invoices, loans, GST, income tax, owner drawings, or accounting adjustments. Record transactions consistently and consult an accountant for formal books, tax returns and statutory reporting.</p>
+</div></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head"><h2>Frequently asked questions</h2></div><div class="content-card">
+<div class="faq"><h3>How is business net profit calculated?</h3><p>Net profit in this tracker is total recorded income minus total recorded expenses for the selected period. The result depends on the completeness and accuracy of your entries.</p></div>
+<div class="faq"><h3>Where are my business records saved?</h3><p>Entries are saved in this browser on this device using local storage. They are not synced to an online account. Clearing browser data, using private browsing, or changing devices may make the records unavailable. Export a CSV backup regularly.</p></div>
+<div class="faq"><h3>Can I export my profit and loss records?</h3><p>Yes. Select a report period and use Export CSV. The download includes the entries shown for that selected period and can be opened in spreadsheet software.</p></div>
+<div class="faq"><h3>Does this tracker replace accounting or tax software?</h3><p>No. It is a basic record-keeping and estimation tool. It does not prepare statutory financial statements, calculate GST or income tax, or replace advice from a qualified accountant.</p></div>
+</div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>Explore more free calculators</h2><p>Use these tools to estimate investment returns and plan your savings.</p></div><div class="related"><a href="/">ROI Calculator</a><a href="/sip-calculator/">SIP Calculator</a><a href="/lump-sum-calculator/">Lump Sum Calculator</a><a href="/step-up-sip-calculator/">Step-Up SIP Calculator</a></div></div></section>
+</main>
+<p class="note wrap">Disclaimer: Figures are based only on the entries you add and are for general information and record-keeping. This tracker is not accounting, legal or tax advice.</p>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script>
+(() => {
+ 'use strict';
+ const KEY='investcalc_business_profit_loss_v1';
+ const $=id=>document.getElementById(id);
+ const categories={income:['Sales','Services','Other income'],expense:['Inventory / Purchases','Rent','Salary / Wages','Marketing','Utilities','Transport','Software / Tools','Taxes / Fees','Other expense']};
+ let entries=[];
+ const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+ const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n);
+ const safeNumber=n=>Number.isFinite(n)?n:0;
+ function load(){try{const parsed=JSON.parse(localStorage.getItem(KEY)||'[]');entries=Array.isArray(parsed)?parsed.filter(x=>x&&typeof x.id==='string'&&['income','expense'].includes(x.type)&&Number.isFinite(Number(x.amount))&&Number(x.amount)>0&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)):[]}catch(e){entries=[]}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(entries));return true}catch(e){$('form-error').textContent='Your browser could not save this entry. Check available storage or export your records.';$('form-error').classList.add('show');return false}}
+ function updateCategories(){const type=$('entry-type').value;const select=$('entry-category');select.replaceChildren();categories[type].forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;select.append(o)})}
+ function selected(){const m=$('month-filter').value;return entries.filter(e=>m==='all'||e.date.slice(0,7)===m).sort((a,b)=>b.date.localeCompare(a.date)||b.id.localeCompare(a.id))}
+ function populateMonths(){const select=$('month-filter'),old=select.value;const months=[...new Set(entries.map(e=>e.date.slice(0,7)))].sort().reverse();select.replaceChildren();const all=document.createElement('option');all.value='all';all.textContent='All recorded entries';select.append(all);months.forEach(m=>{const o=document.createElement('option');o.value=m;const [y,mo]=m.split('-').map(Number);o.textContent=new Date(y,mo-1,1).toLocaleDateString('en-IN',{month:'long',year:'numeric'});select.append(o)});select.value=months.includes(old)?old:'all'}
+ function render(){populateMonths();const rows=selected();let income=0,expense=0;rows.forEach(e=>{if(e.type==='income')income+=Number(e.amount);else expense+=Number(e.amount)});const net=income-expense,margin=income>0?net/income*100:null;
+ $('total-income').textContent=money(income);$('total-expenses').textContent=money(expense);$('net-profit').textContent=money(net);$('net-profit').className=net>=0?'positive':'negative';$('profit-margin').textContent=margin===null?'—':margin.toFixed(2)+'%';$('profit-margin').className=margin===null?'':margin>=0?'positive':'negative';
+ const body=$('entries-body');body.replaceChildren();rows.forEach(e=>{const tr=document.createElement('tr');const values=[e.date,e.type==='income'?'Income':'Expense',e.category,e.note||'—'];values.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i===1)td.className=e.type==='income'?'type-income':'type-expense';tr.append(td)});const amount=document.createElement('td');amount.className='amount';amount.textContent=money(Number(e.amount));tr.append(amount);const action=document.createElement('td');const del=document.createElement('button');del.type='button';del.className='delete-entry';del.textContent='Delete';del.setAttribute('aria-label','Delete '+e.type+' entry '+e.date);del.addEventListener('click',()=>removeEntry(e.id));action.append(del);tr.append(action);body.append(tr)});
+ $('empty-state').hidden=rows.length>0;$('entries-body').hidden=rows.length===0;
+ const max=Math.max(income,expense,Math.abs(net),1);$('income-bar').style.width=(income/max*100)+'%';$('expense-bar').style.width=(expense/max*100)+'%';$('profit-bar').style.width=(Math.abs(net)/max*100)+'%';$('profit-bar').style.background=net>=0?'var(--green)':'var(--red)';
+ $('income-bar-label').textContent=money(income);$('expense-bar-label').textContent=money(expense);$('profit-bar-label').textContent=money(net);
+ const period=$('month-filter').value==='all'?'all recorded periods':$('month-filter').selectedOptions[0].textContent;
+ $('interpretation').textContent=rows.length===0?'No entries are available for this period. Add an income or expense entry to begin.':net>0?'Your recorded income is higher than expenses by '+money(net)+' for '+period+'. This is a positive result based on the entries saved.':net<0?'Your recorded expenses are higher than income by '+money(Math.abs(net))+' for '+period+'. Review the entries and costs for accuracy.':'Your recorded income and expenses are equal for '+period+'. There is no net profit or loss in these entries.';
+ }
+ function removeEntry(id){if(!confirm('Delete this entry?'))return;const before=entries.length;entries=entries.filter(e=>e.id!==id);if(entries.length!==before){save();render()}}
+ $('entry-type').addEventListener('change',updateCategories);$('month-filter').addEventListener('change',render);
+ $('entry-form').addEventListener('submit',e=>{e.preventDefault();const type=$('entry-type').value,date=$('entry-date').value,amount=Number($('entry-amount').value),category=$('entry-category').value,note=$('entry-note').value.trim();const error=$('form-error');error.classList.remove('show');if(!date||!/^\d{4}-\d{2}-\d{2}$/.test(date)){error.textContent='Please select a valid transaction date.';error.classList.add('show');return}if(!Number.isFinite(amount)||amount<=0){error.textContent='Enter an amount greater than zero.';error.classList.add('show');$('entry-amount').focus();return}if(date>today()){error.textContent='Please use today or an earlier date for a recorded transaction.';error.classList.add('show');return}if(!category){error.textContent='Please choose a category.';error.classList.add('show');return}const item={id:(Date.now().toString(36)+Math.random().toString(36).slice(2,9)),type,date,amount:Math.round((amount+Number.EPSILON)*100)/100,category,note};entries.push(item);if(!save()){entries.pop();return}$('entry-form').reset();$('entry-date').value=today();updateCategories();render();});
+ $('export-csv').addEventListener('click',()=>{const rows=selected();if(!rows.length){alert('There are no entries to export for this period.');return}const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv=[['Date','Type','Category','Description','Amount (INR)'],...rows.map(e=>[e.date,e.type,e.category,e.note,e.amount])].map(r=>r.map(quote).join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='business-profit-loss-'+($('month-filter').value==='all'?'all-periods':$('month-filter').value)+'.csv';document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)});
+ $('clear-all').addEventListener('click',()=>{if(!entries.length){alert('There are no saved entries.');return}if(!confirm('This will permanently remove all entries saved by this tracker in this browser. Export a backup first if needed. Continue?'))return;entries=[];try{localStorage.removeItem(KEY)}catch(e){}render()});
+ $('entry-date').value=today();updateCategories();load();render();
+})();
+</script>
+</body>
+</html>
