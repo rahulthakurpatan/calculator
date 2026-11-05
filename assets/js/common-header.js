@@ -9,54 +9,69 @@
 
   const categories = [
     {
-      label: 'Investment Returns',
+      label: 'Invest & Mutual Funds',
       tools: [
-        ['ROI Calculator', '/', 'Calculate investment profit and ROI percentage'],
-        ['Compound Interest Calculator', '/compound-interest-calculator/', 'Estimate the power of compounding'],
-        ['CAGR Calculator', '/cagr-calculator/', 'Measure annualized investment growth']
+        ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
+        ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
+        ['Lumpsum Return Calculator', '/lumpsum-return-calculator/', 'Estimate returns from a one-time investment'],
+        ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
+        ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
+        ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal']
       ]
     },
     {
-      label: 'SIP & Mutual Funds',
+      label: 'Tax & Salary',
       tools: [
-        ['SIP Calculator', '/sip-calculator/', 'Estimate the future value of monthly SIPs'],
-        ['Lump Sum Calculator', '/lump-sum-calculator/', 'Project one-time investment growth'],
-        ['Mutual Fund Returns Calculator', '/mutual-fund-returns-calculator/', 'Estimate mutual fund investment returns'],
-        ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Plan an SIP with yearly contribution increases'],
-        ['SWP Calculator', '/swp-calculator/', 'Estimate withdrawals from a mutual fund corpus']
+        ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
+        ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
+        ['GST Calculator', '/gst-calculator/', 'Calculate GST-inclusive and exclusive amounts'],
+        ['Company / Corporate Tax Calculator', '/corporate-tax-calculator/', 'Estimate company income tax'],
+        ['Gratuity & HRA Calculator', '/gratuity-hra-calculator/', 'Estimate gratuity and HRA exemption']
       ]
     },
     {
-      label: 'Savings & Deposits',
+      label: 'Business & Creator',
       tools: [
-        ['FD Calculator', '/fd-calculator/', 'Calculate fixed deposit maturity value'],
-        ['RD Calculator', '/rd-calculator/', 'Estimate recurring deposit returns'],
-        ['PPF Calculator', '/ppf-calculator/', 'Project Public Provident Fund growth'],
-        ['Simple Interest Calculator', '/simple-interest-calculator/', 'Calculate simple interest and maturity value']
+        ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/', 'Track revenue, expenses and net profit'],
+        ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
+        ['Instagram Sponsored Post Estimator', '/instagram-sponsored-post-estimator/', 'Estimate sponsored post pricing'],
+        ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/', 'Set an hourly rate from income goals'],
+        ['Blog Traffic to Income Converter', '/blog-traffic-income-converter/', 'Estimate blog earnings from traffic'],
+        ['Crypto / Bitcoin Profit & Tax Calculator', '/crypto-profit-tax-calculator/', 'Estimate crypto gains and tax'],
+        ['Affiliate Commission Predictor', '/affiliate-commission-predictor/', 'Forecast affiliate commission income']
       ]
     },
     {
-      label: 'Stocks & Dividends',
+      label: 'Family & Goals',
       tools: [
-        ['Stock Average Calculator', '/stock-average-calculator/', 'Find the average purchase price of shares'],
-        ['Dividend Yield Calculator', '/dividend-yield-calculator/', 'Calculate dividend yield from share price']
+        ['Child Future & Education Planner', '/child-future-education-planner/', 'Plan savings for a child’s education'],
+        ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/', 'Estimate savings for a future wedding goal'],
+        ['Sukanya Samriddhi Yojana Calculator', '/ssy-calculator/', 'Estimate SSY contributions and maturity'],
+        ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/', 'Explore a traditional astrology-based reading'],
+        ['Wedding Budget & Expense Planner', '/wedding-budget-expense-planner/', 'Plan and track wedding expenses'],
+        ['Age & Govt Form Eligibility Calculator', '/age-govt-form-eligibility-calculator/', 'Check age limits for government forms']
       ]
     },
     {
-      label: 'Financial Planning',
+      label: 'Savings & Loans',
       tools: [
-        ['Inflation Calculator', '/inflation-calculator/', 'Understand the future cost of money'],
-        ['Retirement Calculator', '/retirement-calculator/', 'Estimate the corpus needed for retirement'],
-        ['Goal-Based Investment Calculator', '/goal-based-investment-calculator/', 'Plan investments for a financial goal']
+        ['Personal Loan EMI Calculator', '/personal-loan-emi-calculator/', 'Calculate personal loan EMI and interest'],
+        ['Home Loan Eligibility & EMI Tool', '/home-loan-eligibility-emi/', 'Estimate home loan eligibility and EMI'],
+        ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
+        ['Recurring Deposit Calculator', '/rd-calculator/', 'Estimate RD maturity and interest'],
+        ['Public Provident Fund Calculator', '/ppf-calculator/', 'Project PPF balance and maturity'],
+        ['EPF Maturity Calculator', '/epf-maturity-calculator/', 'Estimate EPF balance at retirement'],
+        ['Inflation Impact Calculator', '/inflation-impact-calculator/', 'Understand how inflation changes purchasing power']
       ]
     },
     {
-      label: 'Business Finance',
+      label: 'Property & Tools',
       tools: [
-        ['NPV Calculator', '/npv-calculator/', 'Evaluate the net present value of cash flows'],
-        ['IRR Calculator', '/irr-calculator/', 'Estimate the internal rate of return'],
-        ['Payback Period Calculator', '/payback-period-calculator/', 'Find how long an investment takes to pay back'],
-        ['Break-Even Calculator', '/break-even-calculator/', 'Calculate the break-even point']
+        ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/', 'Estimate solar savings and payback period'],
+        ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
+        ['AI Hindi Text-to-Speech', '/hindi-text-to-speech/', 'Convert Hindi text into spoken audio'],
+        ['Land Unit Converter', '/land-unit-converter/', 'Convert Bigha, Acre, Hectare and more'],
+        ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/', 'Estimate the value of gold and silver']
       ]
     }
   ];
