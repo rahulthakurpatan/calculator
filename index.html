@@ -1,117 +1,84 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f5f8fc">
-  <meta name="description" content="Estimate electricity and household utility costs with simple, free online bill calculators. No sign-up required.">
-  <title>Bill Calculator – Free Online Utility Bill Estimator</title>
-  <style>
-    :root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--blue-dark:#1054bd;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--shadow:0 12px 35px rgba(28,55,90,.08)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
-    .topbar{background:#fff;border-bottom:1px solid var(--line)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:800;letter-spacing:-.5px}.brandmark{width:36px;height:36px;border-radius:11px;background:var(--blue);display:grid;place-items:center;color:#fff;font-size:21px}
-    .navlinks{display:flex;gap:28px;color:#52627a;font-size:14px;font-weight:600}.navlinks a:hover{color:var(--blue)}.nav-cta{padding:10px 16px;border-radius:9px;background:#edf4ff;color:var(--blue);font-size:13px;font-weight:700}
-    .hero{padding:64px 0 42px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:54px}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.04em}
-    h1{font-size:clamp(36px,5vw,54px);line-height:1.1;letter-spacing:-2px;margin:18px 0 16px;max-width:620px}.hero p{font-size:17px;color:var(--muted);max-width:560px;margin:0 0 25px}
-    .trust{display:flex;gap:20px;flex-wrap:wrap;color:#52627a;font-size:13px;font-weight:600}.trust span{display:flex;align-items:center;gap:7px}.check{color:var(--green);font-weight:900}
-    .quick{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.quick-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.quick h2{font-size:18px;margin:0}.live{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}
-    .field{margin:13px 0}.field label{display:block;font-size:12px;color:#52627a;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;height:46px;border:1px solid #dce4ef;border-radius:9px;padding:0 12px;font:inherit;color:var(--ink);background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.estimate{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;height:47px;font:inherit;font-weight:800;cursor:pointer;margin-top:6px}.estimate:hover{background:var(--blue-dark)}
-    .result{display:none;margin-top:16px;padding:15px;border-radius:11px;background:#eff6ff;border:1px solid #dceaff}.result.show{display:block}.result small{display:block;color:#52627a;font-size:12px}.amount{font-size:29px;font-weight:850;color:#135fc9;letter-spacing:-1px}
-    .section{padding:46px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 28px}.section-head h2{font-size:30px;letter-spacing:-1px;margin:0 0 8px}.section-head p{margin:0;color:var(--muted)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tool{background:#fff;border:1px solid var(--line);border-radius:14px;padding:21px;transition:transform .18s,box-shadow .18s}.tool:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#edf4ff;font-size:22px;margin-bottom:14px}.tool h3{margin:0 0 6px;font-size:16px}.tool p{margin:0;color:var(--muted);font-size:13px}.tool .tag{display:inline-block;margin-top:14px;color:var(--blue);font-size:12px;font-weight:800}
-    .info{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:30px 0}.info h3{font-size:15px;margin:0 0 5px}.info p{font-size:13px;color:var(--muted);margin:0}
-    .note{font-size:12px;color:var(--muted);text-align:center;padding:24px 0 34px}.footer{background:#13243b;color:#d5dfed;padding:30px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.foot strong{color:#fff}.foot-links{display:flex;gap:18px;font-size:12px;color:#c1cee0}
-    @media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:30px}.hero{padding-top:42px}.cards{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.info-grid{grid-template-columns:1fr;gap:18px}}
-    @media(max-width:520px){.wrap{width:min(100% - 28px,1120px)}.nav{height:64px}.hero{padding:36px 0 28px}h1{font-size:38px;letter-spacing:-1.5px}.hero p{font-size:15px}.quick{padding:18px}.cards{grid-template-columns:1fr}.section{padding:36px 0}.section-head h2{font-size:25px}.two{gap:9px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f8fc">
+<meta name="description" content="Free ROI calculator to calculate return on investment, profit or loss, ROI percentage and annualized return (CAGR).">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ROI Calculator – Free Return on Investment Calculator">
+<meta property="og:description" content="Calculate investment profit or loss, ROI percentage and annualized return in seconds.">
+<title>ROI Calculator – Free Return on Investment Calculator</title>
+<style>
+:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--shadow:0 12px 35px rgba(28,55,90,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+.topbar{background:#fff;border-bottom:1px solid var(--line)}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:800;letter-spacing:-.5px}.brandmark{width:38px;height:38px;border-radius:11px;background:var(--blue);display:grid;place-items:center;color:#fff;font-size:20px}.navlinks{display:flex;gap:26px;color:#52627a;font-size:14px;font-weight:650}.navlinks a:hover{color:var(--blue)}.nav-cta{padding:10px 16px;border-radius:9px;background:#edf4ff;color:var(--blue);font-size:13px;font-weight:750}
+.hero{padding:58px 0 42px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(36px,5vw,53px);line-height:1.12;letter-spacing:-2px;margin:18px 0 15px;max-width:580px}.intro{font-size:17px;color:var(--muted);max-width:540px;margin:0 0 22px}.trust{display:flex;gap:17px;flex-wrap:wrap;color:#52627a;font-size:13px;font-weight:600}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.field{margin:13px 0}.field label{display:block;font-size:13px;color:#52627a;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;height:47px;border:1px solid #dce4ef;border-radius:9px;padding:0 12px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{font-size:11px;color:var(--muted);margin-top:4px}.btn{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;min-height:48px;font:inherit;font-weight:800;cursor:pointer;margin-top:9px}.btn:hover{filter:brightness(.94)}.secondary{background:#edf4ff;color:var(--blue)}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:13px;margin-top:12px}.error.show{display:block}
+.results{display:none;margin-top:20px}.results.show{display:block}.result-main{padding:18px;border-radius:12px;background:#eff6ff;border:1px solid #dceaff}.result-label{font-size:12px;color:#52627a;font-weight:700}.big{font-size:34px;font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:12px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.metric{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.metric span{display:block;color:var(--muted);font-size:11px;font-weight:700}.metric strong{font-size:18px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}
+.section{padding:43px 0}.section-head{text-align:center;max-width:690px;margin:0 auto 25px}.section-head h2{font-size:29px;letter-spacing:-.8px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px}.icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#edf4ff;font-size:20px;margin-bottom:11px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:13px;color:var(--muted);margin:0}.formula{background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px;text-align:center}.formula code{display:block;font-family:ui-monospace,monospace;font-size:clamp(14px,2.5vw,19px);font-weight:700;color:#135fc9;white-space:normal;overflow-wrap:anywhere;margin:9px 0}.disclaimer{font-size:12px;color:var(--muted);text-align:center;padding:10px 0 30px}.footer{background:#13243b;color:#d5dfed;padding:27px 0}.foot{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}.foot strong{color:#fff}.foot-links{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#c1cee0}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero{padding-top:40px}.cards{grid-template-columns:1fr 1fr}.navlinks{display:none}}@media(max-width:520px){.wrap{width:calc(100% - 28px)}.nav{min-height:64px}.hero{padding:34px 0 28px}h1{font-size:38px;letter-spacing:-1.4px}.intro{font-size:15px}.panel{padding:18px}.cards{grid-template-columns:1fr}.section{padding:34px 0}.section-head h2{font-size:25px}.two{gap:9px}.metrics{gap:8px}.metric{padding:11px}.metric strong{font-size:16px}}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#" aria-label="Bill Calculator home"><span class="brandmark">₹</span><span>Bill Calculator</span></a>
-      <nav class="navlinks" aria-label="Main navigation"><a href="#calculators">Calculators</a><a href="#how-it-works">How it works</a><a href="#about">About</a></nav>
-      <a class="nav-cta" href="#calculators">Explore tools →</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <span class="eyebrow">SIMPLE • FREE • INSTANT</span>
-          <h1>Know your bill before it arrives.</h1>
-          <p>Estimate everyday electricity and household energy costs with easy-to-use calculators. Enter your usage, adjust the rate and get a quick estimate in seconds.</p>
-          <div class="trust"><span><b class="check">✓</b> No sign-up needed</span><span><b class="check">✓</b> Works on mobile</span><span><b class="check">✓</b> Your inputs stay in your browser</span></div>
-        </div>
-        <section class="quick" aria-labelledby="quick-title">
-          <div class="quick-head"><h2 id="quick-title">Quick electricity estimate</h2><span class="live">INSTANT</span></div>
-          <div class="field"><label for="units">Electricity used (units / kWh)</label><input id="units" type="number" min="0" step="any" value="150" inputmode="decimal"></div>
-          <div class="two">
-            <div class="field"><label for="rate">Rate per unit (₹)</label><input id="rate" type="number" min="0" step="any" value="6" inputmode="decimal"></div>
-            <div class="field"><label for="fixed">Fixed charges (₹)</label><input id="fixed" type="number" min="0" step="any" value="50" inputmode="decimal"></div>
-          </div>
-          <button class="estimate" id="calculate" type="button">Calculate estimate</button>
-          <div class="result" id="result" aria-live="polite"><small>Estimated energy + fixed charges</small><div class="amount" id="amount">₹950.00</div><small id="breakdown">150 units × ₹6 + ₹50 fixed charges</small></div>
-        </section>
-      </div>
-    </section>
-
-    <section class="section" id="calculators">
-      <div class="wrap">
-        <div class="section-head"><h2>Explore bill calculators</h2><p>Choose a tool to estimate the cost of your everyday electricity and home energy use.</p></div>
-        <div class="cards">
-          <article class="tool"><div class="tool-icon">⚡</div><h3>Electricity Bill Calculator</h3><p>Estimate your electricity cost using units consumed, rate per unit and fixed charges.</p><a class="tag" href="#quick-title">Use quick calculator →</a></article>
-          <article class="tool"><div class="tool-icon">🔌</div><h3>Appliance Running Cost</h3><p>Understand how much an appliance may cost based on its wattage and daily usage.</p><span class="tag">Coming soon</span></article>
-          <article class="tool"><div class="tool-icon">💧</div><h3>Water Bill Calculator</h3><p>Estimate a water bill when you know your consumption and local rate.</p><span class="tag">Coming soon</span></article>
-          <article class="tool"><div class="tool-icon">🔥</div><h3>Gas Bill Calculator</h3><p>Work out an approximate gas cost from your usage and the price charged by your provider.</p><span class="tag">Coming soon</span></article>
-          <article class="tool"><div class="tool-icon">🧾</div><h3>Bill Split Calculator</h3><p>Split a shared household bill between people with a simple calculation.</p><span class="tag">Coming soon</span></article>
-          <article class="tool"><div class="tool-icon">📊</div><h3>Monthly Cost Planner</h3><p>Keep a simple estimate of recurring household utility expenses.</p><span class="tag">Coming soon</span></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="info" id="how-it-works">
-      <div class="wrap info-grid">
-        <div><h3>1. Enter your usage</h3><p>Add the units shown on your meter or bill.</p></div>
-        <div><h3>2. Add your local rate</h3><p>Use the per-unit rate and fixed charges from your provider.</p></div>
-        <div><h3>3. See an estimate</h3><p>Get a quick result to help plan your household budget.</p></div>
-      </div>
-    </section>
-    <section class="note wrap" id="about">Independent estimation tool. Actual bills may include slab rates, taxes, subsidies, fuel adjustments and other provider-specific charges. This quick estimate is not an official bill or payment amount. Always check your latest tariff and official utility statement.</section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap foot"><strong>₹ Bill Calculator</strong><div class="foot-links"><a href="#calculators">Calculators</a><a href="#how-it-works">How it works</a><a href="#about">Disclaimer</a></div><span style="font-size:12px;color:#aebdd1">© <span id="year"></span> Bill Calculator</span></div>
-  </footer>
-  <script>
-    (() => {
-      const units = document.getElementById('units');
-      const rate = document.getElementById('rate');
-      const fixed = document.getElementById('fixed');
-      const result = document.getElementById('result');
-      const amount = document.getElementById('amount');
-      const breakdown = document.getElementById('breakdown');
-      const money = n => new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
-      document.getElementById('calculate').addEventListener('click', () => {
-        const u = Number(units.value), r = Number(rate.value), f = Number(fixed.value);
-        if (![u,r,f].every(Number.isFinite) || u < 0 || r < 0 || f < 0 || units.value === '' || rate.value === '' || fixed.value === '') {
-          result.classList.add('show'); amount.textContent = 'Check your inputs'; breakdown.textContent = 'Please enter valid non-negative numbers in all fields.'; return;
-        }
-        const energy = u * r, total = energy + f;
-        amount.textContent = money(total);
-        breakdown.textContent = money(u) + ' units × ' + money(r) + ' per unit + ' + money(f) + ' fixed charges';
-        result.classList.add('show');
-      });
-      document.getElementById('year').textContent = new Date().getFullYear();
-      document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', e => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
-      }));
-    })();
-  </script>
+<header class="topbar"><div class="wrap nav">
+<a class="brand" href="#" aria-label="ROI Calculator home"><span class="brandmark">%</span><span>ROI Calculator</span></a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#formula">ROI formula</a></nav>
+<a class="nav-cta" href="#calculator">Calculate ROI →</a>
+</div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">FREE • SIMPLE • INSTANT</span><h1>Know how much your investment earns.</h1>
+<p class="intro">Calculate your return on investment in seconds. Enter the amount invested, the final value and the investment period to see your profit or loss, ROI percentage and annualized return.</p>
+<div class="trust"><span>No sign-up needed</span><span>Works on mobile</span><span>Calculations in your browser</span></div></div>
+<section class="panel" id="calculator" aria-labelledby="calc-title">
+<div class="panel-head"><h2 id="calc-title">Return on Investment Calculator</h2><span class="pill">INSTANT</span></div>
+<form id="roi-form" novalidate>
+<div class="field"><label for="invested">Total amount invested (₹)</label><input id="invested" type="number" min="0.01" step="any" value="100000" inputmode="decimal" required></div>
+<div class="field"><label for="final">Current or final investment value (₹)</label><input id="final" type="number" min="0" step="any" value="125000" inputmode="decimal" required></div>
+<div class="field"><label for="period">Investment period</label><div class="two"><input id="period" type="number" min="0.0001" step="any" value="2" inputmode="decimal" aria-label="Investment period value" required><select id="unit" aria-label="Investment period unit"><option value="years">Years</option><option value="months">Months</option></select></div><div class="hint">Used to calculate annualized return (CAGR).</div></div>
+<button class="btn" type="submit">Calculate my ROI</button><div class="error" id="error" role="alert"></div>
+</form>
+<div class="results" id="results" aria-live="polite">
+<div class="result-main"><div class="result-label">Return on investment (ROI)</div><div class="big" id="roi">25.00%</div><div class="result-sub" id="gain-label">You gained ₹25,000.00 on your investment.</div></div>
+<div class="metrics"><div class="metric"><span>Profit / Loss</span><strong id="gain">₹25,000.00</strong></div><div class="metric"><span>Annualized return (CAGR)</span><strong id="cagr">11.80%</strong></div><div class="metric"><span>Amount invested</span><strong id="principal">₹1,00,000.00</strong></div><div class="metric"><span>Final value</span><strong id="ending">₹1,25,000.00</strong></div></div>
+<button class="btn secondary" id="reset" type="button">Reset calculator</button>
+</div></section></div></section>
+<section class="section" id="how-it-works"><div class="wrap"><div class="section-head"><h2>How to calculate your ROI</h2><p>Use these three simple steps to understand the return generated by an investment.</p></div>
+<div class="cards"><article class="card"><div class="icon">💰</div><h3>1. Enter your investment</h3><p>Add the total amount you originally invested. Use the same currency for both amounts.</p></article>
+<article class="card"><div class="icon">📈</div><h3>2. Enter the final value</h3><p>Enter what the investment is worth now, or the amount you received when you sold it.</p></article>
+<article class="card"><div class="icon">🗓️</div><h3>3. Add the time period</h3><p>Choose the number of years or months. The calculator estimates the annualized return too.</p></article></div></div></section>
+<section class="section" id="formula"><div class="wrap"><div class="section-head"><h2>ROI formula</h2><p>Return on investment compares the gain or loss with the original amount invested.</p></div>
+<div class="formula"><strong>Return on Investment</strong><code>ROI (%) = ((Final Value − Amount Invested) ÷ Amount Invested) × 100</code><p class="result-sub">Annualized return (CAGR) = ((Final Value ÷ Amount Invested) ^ (1 ÷ Years)) − 1</p></div></div></section>
+<section class="disclaimer wrap">This calculator provides an estimate for general information only. It does not separately account for taxes, fees, inflation, dividends, withdrawals or additional contributions unless they are already reflected in the values entered. It is not financial advice.</section>
+</main>
+<footer class="footer"><div class="wrap foot"><strong>% ROI Calculator</strong><div class="foot-links"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#formula">ROI formula</a></div><span style="font-size:12px;color:#aebdd1">© <span id="year"></span> ROI Calculator</span></div></footer>
+<script>
+(() => {
+const form=document.getElementById('roi-form'), invested=document.getElementById('invested'), finalValue=document.getElementById('final'), period=document.getElementById('period'), unit=document.getElementById('unit'), error=document.getElementById('error'), results=document.getElementById('results');
+const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
+const percent=value=>Number.isFinite(value)?value.toFixed(2)+'%':'Not available';
+form.addEventListener('submit',event=>{
+event.preventDefault();
+const principal=Number(invested.value), ending=Number(finalValue.value), duration=Number(period.value);
+if(invested.value.trim()===''||finalValue.value.trim()===''||period.value.trim()===''||![principal,ending,duration].every(Number.isFinite)||principal<=0||ending<0||duration<=0){
+error.textContent='Enter a positive invested amount and period, and a final value of zero or more.';error.classList.add('show');results.classList.remove('show');return;
+}
+const years=unit.value==='months'?duration/12:duration, gain=ending-principal, roi=gain/principal*100, cagr=ending===0?-100:(Math.pow(ending/principal,1/years)-1)*100;
+document.getElementById('roi').textContent=percent(roi);
+document.getElementById('gain').textContent=money(gain);
+document.getElementById('gain').className=gain>=0?'positive':'negative';
+document.getElementById('gain-label').textContent=(gain>=0?'You gained ':'You lost ')+money(Math.abs(gain))+' on your investment.';
+document.getElementById('cagr').textContent=percent(cagr);
+document.getElementById('cagr').className=cagr>=0?'positive':'negative';
+document.getElementById('principal').textContent=money(principal);
+document.getElementById('ending').textContent=money(ending);
+error.classList.remove('show');results.classList.add('show');
+});
+document.getElementById('reset').addEventListener('click',()=>{form.reset();invested.value='100000';finalValue.value='125000';period.value='2';unit.value='years';results.classList.remove('show');error.classList.remove('show');});
+document.getElementById('year').textContent=new Date().getFullYear();
+form.dispatchEvent(new Event('submit',{cancelable:true}));
+})();
+</script>
 </body>
 </html>
