@@ -21,11 +21,7 @@
 </style>
 </head>
 <body>
-<header class="topbar"><div class="wrap nav">
-<a class="brand" href="#" aria-label="ROI Calculator home"><span class="brandmark">%</span><span>ROI Calculator</span></a>
-<nav class="navlinks" aria-label="Main navigation"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#formula">ROI formula</a></nav>
-<a class="nav-cta" href="#calculator">Calculate ROI →</a>
-</div></header>
+<div id="site-header"></div>
 <main>
 <section class="hero"><div class="wrap hero-grid">
 <div><span class="eyebrow">FREE • SIMPLE • INSTANT</span><h1>Know how much your investment earns.</h1>
@@ -80,6 +76,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
 form.dispatchEvent(new Event('submit',{cancelable:true}));
 })();
 </script>
+  <script src="/assets/js/common-header.js" defer></script>
   <script src="/assets/js/common-footer.js" defer></script>
 </body>
 </html>
