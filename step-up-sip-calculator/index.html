@@ -137,7 +137,7 @@ function calculate(){
  document.getElementById('future').textContent=money(corpus);
  document.getElementById('summary').textContent='Estimated value after '+years+' year'+(years===1?'':'s')+' at an assumed annual return of '+annual+'%.';
  document.getElementById('invested').textContent=money(total);
- document.getElementById('gains').textContent=money(corpus-total);
+ const gainsEl=document.getElementById('gains');gainsEl.textContent=money(corpus-total);gainsEl.className=corpus>=total?'positive':'negative';
  document.getElementById('start-sip').textContent=money(monthly);
  document.getElementById('last-sip').textContent=money(finalSip);
  const max=Math.max(...rows.map(x=>x.corpus),1);
