@@ -84,32 +84,79 @@
   if (mount) mount.replaceWith(header);
   else document.body.insertBefore(header, document.body.firstChild);
   
-  // Temporary festive cursor sparkle. Automatically expires after 10 November 2026.
-  const sparkleExpiry = new Date('2026-11-11T00:00:00');
-  if (new Date() < sparkleExpiry) {
-    const sparkleStyle = document.createElement('style');
-    sparkleStyle.id = 'investcalc-diwali-sparkle-styles';
-    sparkleStyle.textContent = `
-      .investcalc-diwali-sparkle{position:fixed;left:0;top:0;z-index:99999;pointer-events:none;font-size:14px;line-height:1;will-change:transform,opacity;animation:investcalc-sparkle-float .85s ease-out forwards}
-      @keyframes investcalc-sparkle-float{0%{opacity:0;transform:translate(-50%,-50%) scale(.35) rotate(0deg)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-34px) scale(1.15) rotate(100deg)}}
-      @media(prefers-reduced-motion:reduce){.investcalc-diwali-sparkle{display:none!important}}
-    `;
-    document.head.appendChild(sparkleStyle);
-    let sparkleLast = 0;
-    const sparkleSymbols = ['✦','✧','✨','⋆','✺'];
-    document.addEventListener('pointermove', event => {
-      const now = Date.now();
-      if (now - sparkleLast < 55) return;
-      sparkleLast = now;
-      const sparkle = document.createElement('span');
-      sparkle.className = 'investcalc-diwali-sparkle';
-      sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
-      sparkle.style.left = event.clientX + 'px';
-      sparkle.style.top = event.clientY + 'px';
-      sparkle.style.color = ['#f5b700','#f08a24','#e6b8ff','#ffffff'][Math.floor(Math.random() * 4)];
-      document.body.appendChild(sparkle);
-      window.setTimeout(() => sparkle.remove(), 900);
-    }, {passive:true});
+  // Temporary full-page Diwali confetti. Automatically expires after 10 November 2026.
+  const festiveExpiry = new Date('2026-11-11T00:00:00');
+  if (new Date() < festiveExpiry && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'investcalc-diwali-confetti';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:99998;pointer-events:none;';
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0, lastSpawn = 0, particles = [];
+    const colors = ['#f5b700','#ff7a00','#ff4d8d','#9b6cff','#35bde5','#35b879','#fff1a8'];
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = window.innerWidth; height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    const addParticle = () => {
+      const type = Math.random();
+      particles.push({
+        x: Math.random() * width, y: -18 - Math.random() * 35,
+        vx: (Math.random() - .5) * 1.1, vy: 1.0 + Math.random() * 1.7,
+        rotation: Math.random() * Math.PI, spin: (Math.random() - .5) * .12,
+        size: 4 + Math.random() * 7, width: 3 + Math.random() * 7,
+        height: 7 + Math.random() * 12, color: colors[Math.floor(Math.random() * colors.length)],
+        type: type < .48 ? 'paper' : type < .88 ? 'gel' : 'star',
+        alpha: .62 + Math.random() * .34, phase: Math.random() * 6.28
+      });
+      if (particles.length > 95) particles.splice(0, particles.length - 95);
+    };
+    const draw = (time) => {
+      ctx.clearRect(0, 0, width, height);
+      if (time - lastSpawn > 95) { addParticle(); if (Math.random() > .48) addParticle(); lastSpawn = time; }
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx + Math.sin(time / 650 + p.phase) * .45;
+        p.y += p.vy;
+        p.rotation += p.spin;
+        if (p.y > height + 30 || p.x < -35 || p.x > width + 35) { particles.splice(i, 1); continue; }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.globalAlpha = p.alpha;
+        if (p.type === 'paper') {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
+        } else if (p.type === 'gel') {
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.alpha * .48;
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 7;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size * .72, p.size * .42, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = p.alpha * .8;
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = .8;
+          ctx.stroke();
+        } else {
+          ctx.fillStyle = p.color;
+          ctx.shadowColor = p.color;
+          ctx.shadowBlur = 8;
+          ctx.font = (p.size + 5) + 'px system-ui';
+          ctx.fillText('✦', -p.size / 2, p.size / 2);
+        }
+        ctx.restore();
+      }
+      window.requestAnimationFrame(draw);
+    };
+    resize();
+    window.addEventListener('resize', resize, {passive:true});
+    window.requestAnimationFrame(draw);
   }
 
 })();
