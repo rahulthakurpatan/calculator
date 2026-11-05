@@ -83,4 +83,33 @@
   const mount = document.getElementById('site-header');
   if (mount) mount.replaceWith(header);
   else document.body.insertBefore(header, document.body.firstChild);
+  
+  // Temporary festive cursor sparkle. Automatically expires after 10 November 2026.
+  const sparkleExpiry = new Date('2026-11-11T00:00:00');
+  if (new Date() < sparkleExpiry) {
+    const sparkleStyle = document.createElement('style');
+    sparkleStyle.id = 'investcalc-diwali-sparkle-styles';
+    sparkleStyle.textContent = `
+      .investcalc-diwali-sparkle{position:fixed;left:0;top:0;z-index:99999;pointer-events:none;font-size:14px;line-height:1;will-change:transform,opacity;animation:investcalc-sparkle-float .85s ease-out forwards}
+      @keyframes investcalc-sparkle-float{0%{opacity:0;transform:translate(-50%,-50%) scale(.35) rotate(0deg)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-34px) scale(1.15) rotate(100deg)}}
+      @media(prefers-reduced-motion:reduce){.investcalc-diwali-sparkle{display:none!important}}
+    `;
+    document.head.appendChild(sparkleStyle);
+    let sparkleLast = 0;
+    const sparkleSymbols = ['✦','✧','✨','⋆','✺'];
+    document.addEventListener('mousemove', event => {
+      const now = Date.now();
+      if (now - sparkleLast < 55) return;
+      sparkleLast = now;
+      const sparkle = document.createElement('span');
+      sparkle.className = 'investcalc-diwali-sparkle';
+      sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+      sparkle.style.left = event.clientX + 'px';
+      sparkle.style.top = event.clientY + 'px';
+      sparkle.style.color = ['#f5b700','#f08a24','#e6b8ff','#ffffff'][Math.floor(Math.random() * 4)];
+      document.body.appendChild(sparkle);
+      window.setTimeout(() => sparkle.remove(), 900);
+    }, {passive:true});
+  }
+
 })();
