@@ -97,7 +97,7 @@
     document.head.appendChild(sparkleStyle);
     let sparkleLast = 0;
     const sparkleSymbols = ['✦','✧','✨','⋆','✺'];
-    document.addEventListener('mousemove', event => {
+    document.addEventListener('pointermove', event => {
       const now = Date.now();
       if (now - sparkleLast < 55) return;
       sparkleLast = now;
