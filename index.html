@@ -1,262 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101827">
-  <meta name="description" content="A clean, responsive calculator demo page.">
-  <title>Calculator — Sample Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <meta name="description" content="Estimate electricity and household utility costs with simple, free online bill calculators. No sign-up required.">
+  <title>Bill Calculator – Free Online Utility Bill Estimator</title>
   <style>
-    :root {
-      color-scheme: dark;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1220;
-      color: #edf2f7;
-    }
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 28px 16px;
-      background: radial-gradient(ellipse at 50% 0%, #1b2a43 0%, #0b1220 58%);
-    }
-    .shell { width: min(100%, 390px); }
-    .eyebrow {
-      margin: 0 0 10px;
-      color: #8fa4c2;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    h1 { margin: 0 0 22px; font-size: 25px; font-weight: 650; text-align: center; }
-    .calculator {
-      padding: 18px;
-      border: 1px solid #2b3a50;
-      border-radius: 25px;
-      background: rgba(17, 27, 43, .94);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
-    }
-    .display {
-      min-height: 118px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      gap: 9px;
-      overflow: hidden;
-      padding: 15px 8px 22px;
-    }
-    .previous { min-height: 20px; color: #8fa4c2; font-size: 14px; }
-    .current {
-      width: 100%;
-      overflow: hidden;
-      color: #f8fafc;
-      font-size: clamp(34px, 10vw, 48px);
-      font-weight: 550;
-      letter-spacing: -.04em;
-      text-align: right;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    button {
-      min-height: 66px;
-      border: 1px solid transparent;
-      border-radius: 17px;
-      background: #243248;
-      color: #edf2f7;
-      cursor: pointer;
-      font: inherit;
-      font-size: 20px;
-      font-weight: 600;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    button:hover { background: #30425d; }
-    button:active { transform: scale(.96); }
-    button:focus-visible { outline: 3px solid #7dd3fc; outline-offset: 2px; }
-    .utility { background: #34445b; color: #c7d5e8; }
-    .operator { background: #173c59; color: #8bd5ff; }
-    .operator.active { border-color: #72caff; background: #20577c; }
-    .equals { background: #1683b8; color: white; }
-    .equals:hover { background: #2198cf; }
-    .zero { grid-column: span 2; }
-    .hint { margin: 16px 4px 0; color: #8193ad; font-size: 12px; line-height: 1.5; text-align: center; }
-    footer { margin-top: 20px; color: #64748b; font-size: 11px; text-align: center; }
-    @media (max-width: 360px) {
-      .calculator { padding: 13px; }
-      .keys { gap: 8px; }
-      button { min-height: 59px; border-radius: 14px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: .01ms !important; }
-    }
+    :root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--blue-dark:#1054bd;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--shadow:0 12px 35px rgba(28,55,90,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .topbar{background:#fff;border-bottom:1px solid var(--line)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:800;letter-spacing:-.5px}.brandmark{width:36px;height:36px;border-radius:11px;background:var(--blue);display:grid;place-items:center;color:#fff;font-size:21px}
+    .navlinks{display:flex;gap:28px;color:#52627a;font-size:14px;font-weight:600}.navlinks a:hover{color:var(--blue)}.nav-cta{padding:10px 16px;border-radius:9px;background:#edf4ff;color:var(--blue);font-size:13px;font-weight:700}
+    .hero{padding:64px 0 42px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:54px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.04em}
+    h1{font-size:clamp(36px,5vw,54px);line-height:1.1;letter-spacing:-2px;margin:18px 0 16px;max-width:620px}.hero p{font-size:17px;color:var(--muted);max-width:560px;margin:0 0 25px}
+    .trust{display:flex;gap:20px;flex-wrap:wrap;color:#52627a;font-size:13px;font-weight:600}.trust span{display:flex;align-items:center;gap:7px}.check{color:var(--green);font-weight:900}
+    .quick{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.quick-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.quick h2{font-size:18px;margin:0}.live{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}
+    .field{margin:13px 0}.field label{display:block;font-size:12px;color:#52627a;font-weight:700;margin-bottom:6px}.field input,.field select{width:100%;height:46px;border:1px solid #dce4ef;border-radius:9px;padding:0 12px;font:inherit;color:var(--ink);background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.estimate{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;height:47px;font:inherit;font-weight:800;cursor:pointer;margin-top:6px}.estimate:hover{background:var(--blue-dark)}
+    .result{display:none;margin-top:16px;padding:15px;border-radius:11px;background:#eff6ff;border:1px solid #dceaff}.result.show{display:block}.result small{display:block;color:#52627a;font-size:12px}.amount{font-size:29px;font-weight:850;color:#135fc9;letter-spacing:-1px}
+    .section{padding:46px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 28px}.section-head h2{font-size:30px;letter-spacing:-1px;margin:0 0 8px}.section-head p{margin:0;color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tool{background:#fff;border:1px solid var(--line);border-radius:14px;padding:21px;transition:transform .18s,box-shadow .18s}.tool:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#edf4ff;font-size:22px;margin-bottom:14px}.tool h3{margin:0 0 6px;font-size:16px}.tool p{margin:0;color:var(--muted);font-size:13px}.tool .tag{display:inline-block;margin-top:14px;color:var(--blue);font-size:12px;font-weight:800}
+    .info{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:30px 0}.info h3{font-size:15px;margin:0 0 5px}.info p{font-size:13px;color:var(--muted);margin:0}
+    .note{font-size:12px;color:var(--muted);text-align:center;padding:24px 0 34px}.footer{background:#13243b;color:#d5dfed;padding:30px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.foot strong{color:#fff}.foot-links{display:flex;gap:18px;font-size:12px;color:#c1cee0}
+    @media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:30px}.hero{padding-top:42px}.cards{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.info-grid{grid-template-columns:1fr;gap:18px}}
+    @media(max-width:520px){.wrap{width:min(100% - 28px,1120px)}.nav{height:64px}.hero{padding:36px 0 28px}h1{font-size:38px;letter-spacing:-1.5px}.hero p{font-size:15px}.quick{padding:18px}.cards{grid-template-columns:1fr}.section{padding:36px 0}.section-head h2{font-size:25px}.two{gap:9px}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <p class="eyebrow">GitHub repository test</p>
-    <h1>Simple Calculator</h1>
-    <section class="calculator" aria-label="Calculator">
-      <div class="display" aria-live="polite" aria-atomic="true">
-        <div class="previous" id="previous"></div>
-        <div class="current" id="display">0</div>
-      </div>
-      <div class="keys">
-        <button class="utility" data-action="clear" aria-label="Clear all">AC</button>
-        <button class="utility" data-action="sign" aria-label="Change sign">+/−</button>
-        <button class="utility" data-action="percent" aria-label="Percent">%</button>
-        <button class="operator" data-operator="÷" aria-label="Divide">÷</button>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Bill Calculator home"><span class="brandmark">₹</span><span>Bill Calculator</span></a>
+      <nav class="navlinks" aria-label="Main navigation"><a href="#calculators">Calculators</a><a href="#how-it-works">How it works</a><a href="#about">About</a></nav>
+      <a class="nav-cta" href="#calculators">Explore tools →</a>
+    </div>
+  </header>
 
-        <button data-number="7">7</button>
-        <button data-number="8">8</button>
-        <button data-number="9">9</button>
-        <button class="operator" data-operator="×" aria-label="Multiply">×</button>
-
-        <button data-number="4">4</button>
-        <button data-number="5">5</button>
-        <button data-number="6">6</button>
-        <button class="operator" data-operator="−" aria-label="Subtract">−</button>
-
-        <button data-number="1">1</button>
-        <button data-number="2">2</button>
-        <button data-number="3">3</button>
-        <button class="operator" data-operator="+" aria-label="Add">+</button>
-
-        <button class="zero" data-number="0">0</button>
-        <button data-action="decimal" aria-label="Decimal point">.</button>
-        <button class="equals" data-action="equals" aria-label="Equals">=</button>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">SIMPLE • FREE • INSTANT</span>
+          <h1>Know your bill before it arrives.</h1>
+          <p>Estimate everyday electricity and household energy costs with easy-to-use calculators. Enter your usage, adjust the rate and get a quick estimate in seconds.</p>
+          <div class="trust"><span><b class="check">✓</b> No sign-up needed</span><span><b class="check">✓</b> Works on mobile</span><span><b class="check">✓</b> Your inputs stay in your browser</span></div>
+        </div>
+        <section class="quick" aria-labelledby="quick-title">
+          <div class="quick-head"><h2 id="quick-title">Quick electricity estimate</h2><span class="live">INSTANT</span></div>
+          <div class="field"><label for="units">Electricity used (units / kWh)</label><input id="units" type="number" min="0" step="any" value="150" inputmode="decimal"></div>
+          <div class="two">
+            <div class="field"><label for="rate">Rate per unit (₹)</label><input id="rate" type="number" min="0" step="any" value="6" inputmode="decimal"></div>
+            <div class="field"><label for="fixed">Fixed charges (₹)</label><input id="fixed" type="number" min="0" step="any" value="50" inputmode="decimal"></div>
+          </div>
+          <button class="estimate" id="calculate" type="button">Calculate estimate</button>
+          <div class="result" id="result" aria-live="polite"><small>Estimated energy + fixed charges</small><div class="amount" id="amount">₹950.00</div><small id="breakdown">150 units × ₹6 + ₹50 fixed charges</small></div>
+        </section>
       </div>
     </section>
-    <p class="hint">Use the buttons or your keyboard. Press Enter for equals and Backspace to delete.</p>
-    <footer>Sample page · HTML, CSS and JavaScript · No external libraries</footer>
+
+    <section class="section" id="calculators">
+      <div class="wrap">
+        <div class="section-head"><h2>Explore bill calculators</h2><p>Choose a tool to estimate the cost of your everyday electricity and home energy use.</p></div>
+        <div class="cards">
+          <article class="tool"><div class="tool-icon">⚡</div><h3>Electricity Bill Calculator</h3><p>Estimate your electricity cost using units consumed, rate per unit and fixed charges.</p><a class="tag" href="#quick-title">Use quick calculator →</a></article>
+          <article class="tool"><div class="tool-icon">🔌</div><h3>Appliance Running Cost</h3><p>Understand how much an appliance may cost based on its wattage and daily usage.</p><span class="tag">Coming soon</span></article>
+          <article class="tool"><div class="tool-icon">💧</div><h3>Water Bill Calculator</h3><p>Estimate a water bill when you know your consumption and local rate.</p><span class="tag">Coming soon</span></article>
+          <article class="tool"><div class="tool-icon">🔥</div><h3>Gas Bill Calculator</h3><p>Work out an approximate gas cost from your usage and the price charged by your provider.</p><span class="tag">Coming soon</span></article>
+          <article class="tool"><div class="tool-icon">🧾</div><h3>Bill Split Calculator</h3><p>Split a shared household bill between people with a simple calculation.</p><span class="tag">Coming soon</span></article>
+          <article class="tool"><div class="tool-icon">📊</div><h3>Monthly Cost Planner</h3><p>Keep a simple estimate of recurring household utility expenses.</p><span class="tag">Coming soon</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="info" id="how-it-works">
+      <div class="wrap info-grid">
+        <div><h3>1. Enter your usage</h3><p>Add the units shown on your meter or bill.</p></div>
+        <div><h3>2. Add your local rate</h3><p>Use the per-unit rate and fixed charges from your provider.</p></div>
+        <div><h3>3. See an estimate</h3><p>Get a quick result to help plan your household budget.</p></div>
+      </div>
+    </section>
+    <section class="note wrap" id="about">Independent estimation tool. Actual bills may include slab rates, taxes, subsidies, fuel adjustments and other provider-specific charges. This quick estimate is not an official bill or payment amount. Always check your latest tariff and official utility statement.</section>
   </main>
 
+  <footer class="footer">
+    <div class="wrap foot"><strong>₹ Bill Calculator</strong><div class="foot-links"><a href="#calculators">Calculators</a><a href="#how-it-works">How it works</a><a href="#about">Disclaimer</a></div><span style="font-size:12px;color:#aebdd1">© <span id="year"></span> Bill Calculator</span></div>
+  </footer>
   <script>
     (() => {
-      const display = document.getElementById('display');
-      const previous = document.getElementById('previous');
-      const keys = document.querySelector('.keys');
-      let current = '0';
-      let stored = null;
-      let operator = null;
-      let waitingForOperand = false;
-      let justCalculated = false;
-
-      const render = () => {
-        display.textContent = current;
-        previous.textContent = stored !== null && operator ? `${stored} ${operator}` : '';
-        keys.querySelectorAll('[data-operator]').forEach(button => {
-          button.classList.toggle('active', button.dataset.operator === operator);
-        });
-      };
-
-      const format = value => {
-        if (!Number.isFinite(value)) return 'Error';
-        const rounded = Number.parseFloat(value.toPrecision(12));
-        return String(rounded);
-      };
-
-      const inputNumber = number => {
-        if (current === 'Error' || waitingForOperand || justCalculated) {
-          current = number;
-          waitingForOperand = false;
-          justCalculated = false;
-        } else if (current === '0') {
-          current = number;
-        } else if (current.replace('-', '').length < 14) {
-          current += number;
+      const units = document.getElementById('units');
+      const rate = document.getElementById('rate');
+      const fixed = document.getElementById('fixed');
+      const result = document.getElementById('result');
+      const amount = document.getElementById('amount');
+      const breakdown = document.getElementById('breakdown');
+      const money = n => new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+      document.getElementById('calculate').addEventListener('click', () => {
+        const u = Number(units.value), r = Number(rate.value), f = Number(fixed.value);
+        if (![u,r,f].every(Number.isFinite) || u < 0 || r < 0 || f < 0 || units.value === '' || rate.value === '' || fixed.value === '') {
+          result.classList.add('show'); amount.textContent = 'Check your inputs'; breakdown.textContent = 'Please enter valid non-negative numbers in all fields.'; return;
         }
-        render();
-      };
-
-      const chooseOperator = nextOperator => {
-        const value = Number(current);
-        if (!Number.isFinite(value)) return;
-        if (operator && !waitingForOperand) calculate();
-        stored = Number(current);
-        operator = nextOperator;
-        waitingForOperand = true;
-        justCalculated = false;
-        render();
-      };
-
-      const calculate = () => {
-        if (operator === null || stored === null) return;
-        const a = stored;
-        const b = Number(current);
-        let result;
-        switch (operator) {
-          case '+': result = a + b; break;
-          case '−': result = a - b; break;
-          case '×': result = a * b; break;
-          case '÷': result = b === 0 ? NaN : a / b; break;
-          default: return;
-        }
-        previous.textContent = `${a} ${operator} ${b} =`;
-        current = format(result);
-        stored = null;
-        operator = null;
-        waitingForOperand = true;
-        justCalculated = true;
-        render();
-      };
-
-      const act = action => {
-        switch (action) {
-          case 'clear':
-            current = '0'; stored = null; operator = null;
-            waitingForOperand = false; justCalculated = false; break;
-          case 'decimal':
-            if (current === 'Error' || waitingForOperand || justCalculated) {
-              current = '0.'; waitingForOperand = false; justCalculated = false;
-            } else if (!current.includes('.')) current += '.';
-            break;
-          case 'sign':
-            if (current !== '0' && current !== 'Error') current = current.startsWith('-') ? current.slice(1) : '-' + current;
-            break;
-          case 'percent':
-            if (current !== 'Error') current = format(Number(current) / 100);
-            break;
-          case 'equals': calculate(); return;
-          case 'backspace':
-            if (current === 'Error' || waitingForOperand || justCalculated) {
-              current = '0'; waitingForOperand = false; justCalculated = false;
-            } else {
-              current = current.length > 1 ? current.slice(0, -1) : '0';
-              if (current === '-') current = '0';
-            }
-            break;
-        }
-        render();
-      };
-
-      keys.addEventListener('click', event => {
-        const button = event.target.closest('button');
-        if (!button) return;
-        if (button.dataset.number !== undefined) inputNumber(button.dataset.number);
-        else if (button.dataset.operator) chooseOperator(button.dataset.operator);
-        else if (button.dataset.action) act(button.dataset.action);
+        const energy = u * r, total = energy + f;
+        amount.textContent = money(total);
+        breakdown.textContent = money(u) + ' units × ' + money(r) + ' per unit + ' + money(f) + ' fixed charges';
+        result.classList.add('show');
       });
-
-      document.addEventListener('keydown', event => {
-        if (/^[0-9]$/.test(event.key)) inputNumber(event.key);
-        else if (event.key === '.') act('decimal');
-        else if (event.key === '+') chooseOperator('+');
-        else if (event.key === '-') chooseOperator('−');
-        else if (event.key === '*') chooseOperator('×');
-        else if (event.key === '/') { event.preventDefault(); chooseOperator('÷'); }
-        else if (event.key === 'Enter' || event.key === '=') { event.preventDefault(); act('equals'); }
-        else if (event.key === 'Backspace') act('backspace');
-        else if (event.key === 'Escape') act('clear');
-        else if (event.key === '%') act('percent');
-      });
-
-      render();
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+      }));
     })();
   </script>
 </body>
