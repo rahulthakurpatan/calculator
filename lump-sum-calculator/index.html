@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f8fc">
+<meta name="description" content="Use this free lump sum calculator to estimate the future value, total growth and year-wise returns of a one-time investment in India.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lump Sum Calculator – Estimate One-Time Investment Returns | InvestCalc">
+<meta property="og:description" content="Calculate the estimated future value and year-wise growth of a one-time investment with this free lump sum calculator.">
+<title>Lump Sum Calculator – Free One-Time Investment Calculator | InvestCalc</title>
+<style>
+:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--shadow:0 12px 35px rgba(28,55,90,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+.hero{padding:52px 0 38px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:42px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(35px,4.8vw,51px);line-height:1.12;letter-spacing:-1.8px;margin:18px 0 14px}.intro{font-size:16px;color:var(--muted);max-width:550px;margin:0 0 20px}.trust{display:flex;gap:15px;flex-wrap:wrap;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.field{margin:14px 0}.field label{display:block;font-size:13px;color:#52627a;font-weight:750;margin-bottom:6px}.input-wrap{position:relative}.prefix{position:absolute;left:13px;top:10px;color:#64748b;font-weight:700}.field input{width:100%;height:47px;border:1px solid #dce4ef;border-radius:9px;padding:0 13px 0 34px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.hint{font-size:11px;color:var(--muted);margin-top:4px}.btn{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;min-height:48px;font:inherit;font-weight:800;cursor:pointer;margin-top:8px}.btn:hover{filter:brightness(.94)}.secondary{background:#edf4ff;color:var(--blue)}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:13px;margin-top:12px}.error.show{display:block}
+.results{display:none;margin-top:20px}.results.show{display:block}.result-main{padding:18px;border-radius:12px;background:#eff6ff;border:1px solid #dceaff}.result-label{font-size:12px;color:#52627a;font-weight:750}.big{font-size:32px;font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:12px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.metric{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.metric span{display:block;color:var(--muted);font-size:11px;font-weight:750}.metric strong{font-size:17px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}.visual{margin-top:14px;border:1px solid var(--line);border-radius:11px;padding:14px}.chart-wrap{position:relative;width:100%;height:220px}.chart-wrap canvas{width:100%;height:100%;display:block}.table-wrap{overflow-x:auto;margin-top:15px;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:430px;font-size:13px}th,td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}th:first-child,td:first-child{text-align:left}thead{background:#f5f8fc;color:#52627a}tbody tr:last-child td{border-bottom:0}
+.section{padding:42px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 24px}.section-head h2{font-size:28px;letter-spacing:-.7px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px}.icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#edf4ff;font-size:20px;margin-bottom:10px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:13px;color:var(--muted);margin:0}.content{background:#fff;border:1px solid var(--line);border-radius:13px;padding:23px;margin:14px 0}.content h3{margin:0 0 8px;font-size:17px}.content p,.content li{font-size:14px;color:#52627a}.formula{background:#f5f8fc;border:1px solid var(--line);border-radius:10px;padding:15px;text-align:center;overflow-wrap:anywhere}.formula code{font-family:ui-monospace,monospace;font-size:clamp(13px,2vw,17px);font-weight:750;color:#135fc9}.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 17px;margin:9px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:750}.faq p{font-size:13px;color:var(--muted);margin:10px 0 0}.disclaimer{font-size:12px;color:var(--muted);text-align:center;padding:8px 0 30px}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:25px}.hero{padding-top:38px}.cards{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:calc(100% - 28px)}.hero{padding:32px 0 26px}h1{font-size:37px;letter-spacing:-1.2px}.intro{font-size:15px}.panel{padding:18px}.cards{grid-template-columns:1fr}.section{padding:33px 0}.section-head h2{font-size:24px}.metrics{gap:8px}.metric{padding:11px}.metric strong{font-size:15px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">FREE • ONE-TIME INVESTMENT ESTIMATE</span><h1>See how your one-time investment could grow.</h1>
+<p class="intro">Use this lump sum calculator to estimate the future value of a single investment. Enter the amount, an assumed annual return and your investment period to see potential growth and a year-by-year breakdown.</p>
+<div class="trust"><span>No sign-up needed</span><span>INR calculations</span><span>Works on mobile</span></div></div>
+<section class="panel" aria-labelledby="lump-title">
+<div class="panel-head"><h2 id="lump-title">Lump Sum Calculator</h2><span class="pill">INSTANT</span></div>
+<form id="lump-form" novalidate>
+<div class="field"><label for="principal">Initial investment amount</label><div class="input-wrap"><span class="prefix">₹</span><input id="principal" type="number" min="1" max="1000000000000" step="any" value="100000" inputmode="decimal" required></div><div class="hint">The amount you invest once at the beginning.</div></div>
+<div class="field"><label for="rate">Expected annual return (%)</label><div class="input-wrap"><span class="prefix">%</span><input id="rate" type="number" min="-99.9" max="100" step="any" value="12" inputmode="decimal" required></div><div class="hint">An assumed annual rate, not a guaranteed return.</div></div>
+<div class="field"><label for="years">Investment period (years)</label><div class="input-wrap"><input id="years" type="number" min="0.01" max="100" step="any" value="10" inputmode="decimal" required></div><div class="hint">Enter a period from a fraction of a year up to 100 years.</div></div>
+<button class="btn" type="submit">Calculate lump sum returns</button><div class="error" id="error" role="alert"></div>
+</form>
+<div class="results show" id="results" aria-live="polite">
+<div class="result-main"><div class="result-label">Estimated future value</div><div class="big" id="future">₹3,10,585</div><div class="result-sub" id="summary">Estimated value after 10 years.</div></div>
+<div class="metrics">
+<div class="metric"><span>Initial investment</span><strong id="invested">₹1,00,000</strong></div>
+<div class="metric"><span>Estimated returns</span><strong id="gain" class="positive">₹2,10,585</strong></div>
+<div class="metric"><span>Annual return assumption</span><strong id="rate-value">12%</strong></div>
+<div class="metric"><span>Investment duration</span><strong id="duration">10 years</strong></div>
+</div>
+<div class="visual"><strong style="font-size:13px">Estimated investment growth</strong><div class="chart-wrap"><canvas id="growth-chart" role="img" aria-label="Line chart showing estimated investment value over time"></canvas></div><div class="result-sub" id="chart-note">Illustrative year-wise growth based on annual compounding.</div></div>
+<div class="table-wrap"><table><thead><tr><th>Year</th><th>Estimated value</th><th>Growth in year</th></tr></thead><tbody id="year-rows"></tbody></table></div>
+<button class="btn secondary" id="reset" type="button">Reset calculator</button>
+</div>
+</section></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>How to use this lump sum calculator</h2><p>Enter three details to estimate how a one-time investment may grow.</p></div>
+<div class="cards">
+<article class="card"><div class="icon">💰</div><h3>1. Enter your investment</h3><p>Enter the amount you plan to invest once, such as ₹50,000, ₹1 lakh or ₹5 lakh.</p></article>
+<article class="card"><div class="icon">📈</div><h3>2. Set an expected return</h3><p>Choose an annual return assumption for your illustration. Actual returns can vary and may be negative.</p></article>
+<article class="card"><div class="icon">🗓️</div><h3>3. Choose the duration</h3><p>Enter how long you plan to keep the investment. The calculator shows the estimated value at the end.</p></article>
+</div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>Lump sum calculator formula</h2><p>The estimate uses the compound growth formula for a one-time investment.</p></div>
+<div class="content"><div class="formula"><code>FV = P × (1 + r)<sup>t</sup></code></div>
+<p><strong>FV</strong> is the estimated future value, <strong>P</strong> is the initial investment, <strong>r</strong> is the assumed annual rate of return expressed as a decimal, and <strong>t</strong> is the investment period in years.</p>
+<p>For example, if you invest ₹1,00,000 for 10 years at an assumed 12% annual return, the illustrative future value is approximately ₹3,10,585, before taxes, fees and other costs.</p>
+<p><strong>Compounding assumption:</strong> This calculator compounds annually. For a fractional year, it applies the annual growth rate proportionally to the remaining fraction of the year.</p></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>Understand your results</h2><p>These figures help separate your original investment from its estimated growth.</p></div>
+<div class="cards">
+<article class="card"><div class="icon">🧾</div><h3>Initial investment</h3><p>The one-time amount you put in at the start. No additional monthly contributions are included.</p></article>
+<article class="card"><div class="icon">🌱</div><h3>Estimated returns</h3><p>The difference between the estimated future value and your original investment.</p></article>
+<article class="card"><div class="icon">🎯</div><h3>Future value</h3><p>The projected value of your initial investment after applying the assumed annual growth.</p></article>
+</div></div></section>
+<section class="section faq"><div class="wrap"><div class="section-head"><h2>Frequently asked questions</h2><p>Common questions about one-time investments and lump sum calculations.</p></div>
+<details><summary>What is a lump sum investment?</summary><p>A lump sum investment means investing a single amount at one time instead of making regular contributions. The value can rise or fall depending on the asset and market conditions.</p></details>
+<details><summary>Are the returns shown by this calculator guaranteed?</summary><p>No. The annual return is only an assumption entered by you. Market-linked investments can deliver different returns, including losses.</p></details>
+<details><summary>Does this calculator include taxes or fees?</summary><p>No. The estimate does not separately include taxes, fund expenses, brokerage, exit loads, inflation or other charges. These can reduce the amount you ultimately receive.</p></details>
+<details><summary>How is the year-wise growth calculated?</summary><p>The table applies the assumed annual compound growth rate to the investment value. A final partial year, if any, is shown as a fraction of a year.</p></details>
+<details><summary>Can I enter a negative annual return?</summary><p>Yes. You can enter a negative rate down to -99.9% to illustrate a loss scenario. The result is still an estimate, not a forecast.</p></details>
+<details><summary>What is the difference between SIP and lump sum?</summary><p>A SIP invests smaller amounts at regular intervals, often monthly. A lump sum invests one amount at a single point in time. This calculator models only the one-time investment.</p></details>
+</div></section>
+<section class="disclaimer wrap">This calculator provides an illustration, not a prediction or guarantee. Investment values can go down as well as up. Consider your financial goals, time horizon and risk tolerance before investing. This page is for general educational information and is not investment advice.</section>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script>
+(() => {
+'use strict';
+const form=document.getElementById('lump-form');
+const principal=document.getElementById('principal');
+const rate=document.getElementById('rate');
+const years=document.getElementById('years');
+const error=document.getElementById('error');
+const results=document.getElementById('results');
+const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(value);
+const number=value=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(value);
+let chartValues=[];
+function drawChart(){
+ const canvas=document.getElementById('growth-chart');
+ const rect=canvas.getBoundingClientRect();
+ const dpr=window.devicePixelRatio||1;
+ canvas.width=Math.max(1,Math.round(rect.width*dpr));canvas.height=Math.max(1,Math.round(rect.height*dpr));
+ const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+ const w=rect.width,h=rect.height,pad={l:58,r:12,t:16,b:30};
+ const values=chartValues.length?chartValues:[100000];
+ const max=Math.max(...values,1)*1.08,min=Math.min(0,...values);
+ const x=i=>pad.l+(w-pad.l-pad.r)*(values.length===1?0:i/(values.length-1));
+ const y=v=>h-pad.b-(v-min)/(max-min||1)*(h-pad.t-pad.b);
+ ctx.clearRect(0,0,w,h);ctx.font='10px system-ui';ctx.fillStyle='#64748b';ctx.strokeStyle='#e4eaf2';ctx.lineWidth=1;
+ for(let i=0;i<=4;i++){const val=min+(max-min)*i/4,yy=y(val);ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();ctx.fillText(new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:1}).format(val),2,yy+3);}
+ ctx.beginPath();values.forEach((v,i)=>{if(i===0)ctx.moveTo(x(i),y(v));else ctx.lineTo(x(i),y(v));});ctx.strokeStyle='#1769e0';ctx.lineWidth=2.5;ctx.stroke();
+ values.forEach((v,i)=>{ctx.beginPath();ctx.arc(x(i),y(v),3,0,Math.PI*2);ctx.fillStyle='#1769e0';ctx.fill();});
+ ctx.fillStyle='#64748b';ctx.fillText('Start',pad.l,h-8);ctx.fillText('End',w-35,h-8);
+}
+form.addEventListener('submit',event=>{
+ event.preventDefault();
+ const p=Number(principal.value),annual=Number(rate.value),duration=Number(years.value);
+ if([principal.value,rate.value,years.value].some(v=>v.trim()==='')||![p,annual,duration].every(Number.isFinite)||p<=0||p>1000000000000||annual<=-100||annual>100||duration<=0||duration>100){
+  error.textContent='Enter an investment above ₹0, a return between -99.9% and 100%, and a period greater than 0 and up to 100 years.';
+  error.classList.add('show');results.classList.remove('show');return;
+ }
+ const r=annual/100;
+ const valueAt=t=>p*Math.pow(1+r,t);
+ const future=valueAt(duration),gain=future-p;
+ if(!Number.isFinite(future)||future<0||!Number.isFinite(gain)){
+  error.textContent='These inputs produce a value that cannot be displayed. Please adjust the return rate or investment period.';
+  error.classList.add('show');results.classList.remove('show');return;
+ }
+ document.getElementById('future').textContent=money(future);
+ document.getElementById('summary').textContent='Estimated value after '+number(duration)+' years.';
+ document.getElementById('invested').textContent=money(p);
+ document.getElementById('gain').textContent=money(gain);
+ document.getElementById('gain').className=gain>=0?'positive':'negative';
+ document.getElementById('rate-value').textContent=number(annual)+'%';
+ document.getElementById('duration').textContent=number(duration)+' years';
+ chartValues=[p];
+ const rows=[];
+ const wholeYears=Math.floor(duration);
+ for(let yr=1;yr<=wholeYears;yr++){chartValues.push(valueAt(yr));rows.push({label:'Year '+yr,value:valueAt(yr),growth:valueAt(yr)-valueAt(yr-1)});}
+ if(duration>wholeYears){chartValues.push(future);rows.push({label:'Final period ('+number(duration-wholeYears)+' year)',value:future,growth:future-valueAt(wholeYears)});}
+ if(rows.length===0){rows.push({label:number(duration)+' year',value:future,growth:gain});chartValues.push(future);}
+ document.getElementById('year-rows').innerHTML=rows.map(row=>'<tr><td>'+row.label+'</td><td>'+money(row.value)+'</td><td>'+money(row.growth)+'</td></tr>').join('');
+ document.getElementById('chart-note').textContent='Illustrative annual compounding. Values are rounded to the nearest rupee.';
+ error.classList.remove('show');results.classList.add('show');
+ requestAnimationFrame(drawChart);
+});
+document.getElementById('reset').addEventListener('click',()=>{
+ form.reset();principal.value='100000';rate.value='12';years.value='10';
+ error.classList.remove('show');results.classList.remove('show');
+});
+window.addEventListener('resize',()=>{if(results.classList.contains('show'))drawChart();});
+form.dispatchEvent(new Event('submit',{cancelable:true}));
+})();
+</script>
+</body>
+</html>
