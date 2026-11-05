@@ -52,7 +52,7 @@
 <div class="formula"><strong>Return on Investment</strong><code>ROI (%) = ((Final Value − Amount Invested) ÷ Amount Invested) × 100</code><p class="result-sub">Annualized return (CAGR) = ((Final Value ÷ Amount Invested) ^ (1 ÷ Years)) − 1</p></div></div></section>
 <section class="disclaimer wrap">This calculator provides an estimate for general information only. It does not separately account for taxes, fees, inflation, dividends, withdrawals or additional contributions unless they are already reflected in the values entered. It is not financial advice.</section>
 </main>
-<footer class="footer"><div class="wrap foot"><strong>% ROI Calculator</strong><div class="foot-links"><a href="#calculator">Calculator</a><a href="#how-it-works">How it works</a><a href="#formula">ROI formula</a></div><span style="font-size:12px;color:#aebdd1">© <span id="year"></span> ROI Calculator</span></div></footer>
+<div id="site-footer"></div>
 <script>
 (() => {
 const form=document.getElementById('roi-form'), invested=document.getElementById('invested'), finalValue=document.getElementById('final'), period=document.getElementById('period'), unit=document.getElementById('unit'), error=document.getElementById('error'), results=document.getElementById('results');
@@ -80,5 +80,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
 form.dispatchEvent(new Event('submit',{cancelable:true}));
 })();
 </script>
+  <script src="/assets/js/common-footer.js" defer></script>
 </body>
 </html>
