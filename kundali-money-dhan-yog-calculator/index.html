@@ -275,7 +275,8 @@ function drawWealthGraph(svg,rows){
  try{
   const ayan=lahiri(utc),lagnaLon=ascendant(utc,lat,lon,ayan),lagna=signOf(lagnaLon),planets=planetaryData(utc,ayan);
   const houseByPlanet={};for(const [p,v] of Object.entries(planets))houseByPlanet[p]=(signOf(v.longitude)-lagna+12)%12+1;
-  const analysis=yogaAnalysis(lagna,planets,houseByPlanet),dasha=dashaData(planets.Moon.longitude,utc,new Date());\n  const wealthRows=projectWealth(date);
+  const analysis=yogaAnalysis(lagna,planets,houseByPlanet),dasha=dashaData(planets.Moon.longitude,utc,new Date());
+  const wealthRows=projectWealth(date);
   $('report-name').textContent=($('birth-name').value.trim()||'Your')+' Vedic birth chart';
   $('birth-meta').textContent=$('birth-place').value+' · '+date+' '+time+' local · UTC '+(offset>=0?'+':'')+offset;
   $('lagna-stat').textContent=SIGNS[lagna]+' ('+degText(lagnaLon)+')';$('moon-stat').textContent=SIGNS[signOf(planets.Moon.longitude)];$('nak-stat').textContent=dasha.nak+' · '+dasha.nakLord;$('ayan-stat').textContent=ayan.toFixed(4)+'°';
