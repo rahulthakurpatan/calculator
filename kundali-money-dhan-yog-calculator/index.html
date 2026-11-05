@@ -289,7 +289,7 @@ function drawWealthGraph(svg,rows){
    (dasha.ad?'<div class="dasha-row"><span><strong>Current Antardasha</strong><br><small>'+dateText(dasha.ad.start)+' – '+dateText(dasha.ad.end)+'</small></span><strong>'+dasha.ad.name+'</strong></div>':'')+
    '<h4 style="font-size:12px;margin:13px 0 5px">Mahadasha sequence</h4>'+dasha.seq.map(x=>'<div class="dasha-row"><span>'+x.name+' <small>'+x.years.toFixed(2)+' years</small></span><span>'+dateText(x.start)+' – '+dateText(x.end)+'</span></div>').join('');
   $('results').classList.add('show');$('form-error').classList.remove('show');$('results').scrollIntoView({behavior:'smooth',block:'start'});
-  lastReport='Kundali Money & Dhan Yog report\n'+$('report-name').textContent+'\n'+$('birth-meta').textContent+'\nLagna: '+SIGNS[lagna]+'\nMoon sign: '+SIGNS[signOf(planets.Moon.longitude)]+'\nNakshatra: '+dasha.nak+'\nDhan Yog indicators: '+analysis.results.map(x=>x.title+' ('+x.basis+')').join('\n')+'\nEducational astrology reading only; not a financial prediction.';
+  lastReport='Kundali Money & Dhan Yog report\n'+$('report-name').textContent+'\n'+$('birth-meta').textContent+'\nLagna: '+SIGNS[lagna]+'\nMoon sign: '+SIGNS[signOf(planets.Moon.longitude)]+'\nNakshatra: '+dasha.nak+'\nIllustrative corpus at age '+wealthRows[wealthRows.length-1].age+': ₹'+wealthRows[wealthRows.length-1].crore.toFixed(3)+' crore (assumption-based, not an astrology prediction)\nDhan Yog indicators: '+analysis.results.map(x=>x.title+' ('+x.basis+')').join('\n')+'\nEducational astrology reading only; not a financial prediction.';
  }catch(e){$('form-error').textContent='Chart calculation failed: '+e.message+'. Please reload the page and try again.';$('form-error').classList.add('show');}
 }
 function loadEngine(){
