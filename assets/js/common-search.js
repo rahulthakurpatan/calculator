@@ -9,6 +9,7 @@
 
   const items = [
     { title:'ROI Calculator', subtitle:'Calculate investment profit, loss and returns', category:'Invest & Mutual Funds', href:'/', keywords:'return on investment roi profit loss cagr' },
+    { title:'SWP Calculator', subtitle:'Plan systematic mutual fund withdrawals and retirement income', category:'Invest & Mutual Funds', href:'/swp-calculator/', keywords:'systematic withdrawal plan monthly income retirement corpus redemption withdrawal calculator' },
     { title:'SIP Calculator', subtitle:'Estimate mutual fund SIP returns', category:'Invest & Mutual Funds', href:'/sip-calculator/', keywords:'systematic investment plan mutual fund monthly sip' },
     { title:'Lumpsum Return Calculator', subtitle:'Estimate one-time investment growth', category:'Invest & Mutual Funds', href:'/lump-sum-calculator/', keywords:'lump sum lumpsum one time investment' },
     { title:'Mutual Fund vs FD Calculator', subtitle:'Compare estimated mutual fund and fixed deposit returns after tax', category:'Invest & Mutual Funds', href:'/mutual-fund-vs-fd-comparison/', keywords:'mutual fund versus fd fixed deposit comparison tax return interest' },
