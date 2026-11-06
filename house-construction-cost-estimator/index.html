@@ -184,6 +184,7 @@ const states=['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh
 const cities=[
 ['Ahmedabad','Gujarat',2301,1948,2653],['Bengaluru','Karnataka',2631,2185,3077],['Bhopal','Madhya Pradesh',2123,1805,2440],['Bhubaneswar','Odisha',2123,1805,2440],['Chandigarh','Chandigarh',2377,1995,2759],['Chennai','Tamil Nadu',2478,2090,2865],['Coimbatore','Tamil Nadu',2274,1948,2600],['Dehradun','Uttarakhand',2301,1948,2653],['Guwahati','Assam',2200,1853,2546],['Hyderabad','Telangana',2377,1995,2759],['Indore','Madhya Pradesh',2174,1853,2494],['Jaipur','Rajasthan',2250,1900,2600],['Kochi','Kerala',2578,2185,2971],['Kolkata','West Bengal',2351,1995,2706],['Lucknow','Uttar Pradesh',2200,1853,2546],['Mumbai','Maharashtra',3086,2565,3607],['Nagpur','Maharashtra',2223,1900,2546],['New Delhi','Delhi',2832,2375,3289],['Patna','Bihar',1996,1710,2282],['Pune','Maharashtra',2578,2185,2971],['Raipur','Chhattisgarh',2073,1758,2388],['Ranchi','Jharkhand',2073,1758,2388],['Surat','Gujarat',2301,1948,2653]
 ];
+const nearest={ 'Andhra Pradesh':'Hyderabad','Arunachal Pradesh':'Guwahati','Assam':'Guwahati','Bihar':'Patna','Chhattisgarh':'Raipur','Goa':'Pune','Gujarat':'Ahmedabad','Haryana':'New Delhi','Himachal Pradesh':'Chandigarh','Jharkhand':'Ranchi','Karnataka':'Bengaluru','Kerala':'Kochi','Madhya Pradesh':'Bhopal','Maharashtra':'Pune','Manipur':'Guwahati','Meghalaya':'Guwahati','Mizoram':'Guwahati','Nagaland':'Guwahati','Odisha':'Bhubaneswar','Punjab':'Chandigarh','Rajasthan':'Jaipur','Sikkim':'Kolkata','Tamil Nadu':'Chennai','Telangana':'Hyderabad','Tripura':'Kolkata','Uttar Pradesh':'Lucknow','Uttarakhand':'Dehradun','West Bengal':'Kolkata','Andaman and Nicobar Islands':'Chennai','Chandigarh':'Chandigarh','Dadra and Nagar Haveli and Daman and Diu':'Ahmedabad','Delhi':'New Delhi','Jammu and Kashmir':'Chandigarh','Ladakh':'Chandigarh','Lakshadweep':'Kochi','Puducherry':'Chennai' };
 const quality={basic:.82,standard:1,premium:1.28,luxury:1.65};
 const stage=[['Site preparation and foundation',16],['RCC frame, columns and slabs',33],['Masonry and plaster',19],['Plumbing and electrical rough-in',12],['Flooring, doors, windows and paint',16],['Fixtures and handover',4]];
 let latest=null;
@@ -269,7 +270,7 @@ function render(x){
  $('perSqft').textContent=money(x.future/x.area);
  $('extrasCost').textContent=money(x.interiorTotal+x.exteriorTotal+x.site+x.professional+x.utility);
  $('reserveCost').textContent=money(x.reserve*x.mult);
- $('inflationNote').textContent='2026 estimate: '+money(x.baseTotal)+'. '+x.year+' multiplier: '+x.mult.toFixed(4)+' ('+(x.years*6)+'% simple label not used; compounded annual rate 6%). Future budget = 2026 estimate × (1.06)^'+x.years+'. This is a planning assumption, not a guaranteed market forecast.';
+ $('inflationNote').textContent='2026 estimate: '+money(x.baseTotal)+'. '+x.year+' multiplier: '+x.mult.toFixed(4)+' ('+((x.mult-1)*100).toFixed(2)+'% cumulative compound increase at a 6% annual rate). Future budget = 2026 estimate × (1.06)^'+x.years+'. This is a planning assumption, not a guaranteed market forecast.';
  const rows=[
  ['Core construction',x.base,'City rate × area × quality, floors and selected finish adjustments'],
  ...x.interior.map(r=>[r[0],r[1],r[2]]),
@@ -288,7 +289,7 @@ function render(x){
  const factor=x.structure==='load'?[.28,.36,.32]:[.38,.48,.43];
  const steel=x.structure==='load'?[1.2,1.8,1.5]:[3.2,4.5,3.8];
  const cementLow=x.area*factor[0],cementHigh=x.area*factor[1],steelLow=x.area*steel[0],steelHigh=x.area*steel[1];
- const wallArea=x.area*2.15,brickLow=wallArea*8,brickHigh=wallArea*12,paintArea=x.area*3.1,tile=x.area*1.08;
+ const wallArea=x.area*2.15,unitFactor=$('wallFinish').value==='aac'?[4.5,6.5]:$('wallFinish').value==='concrete'?[1.1,1.5]:[8,12],brickLow=wallArea*unitFactor[0],brickHigh=wallArea*unitFactor[1],paintArea=x.area*3.1,tile=x.area*1.08;
  const mats=[
  ['Cement (50 kg bags)',nf.format(Math.ceil(cementLow))+'–'+nf.format(Math.ceil(cementHigh)),'Broad residential planning range; structural drawings and measured BOQ govern'],
  ['TMT reinforcement steel',nf.format(Math.ceil(steelLow))+'–'+nf.format(Math.ceil(steelHigh))+' kg','RCC thumb-rule range only; never order without bar bending schedule'],
@@ -310,6 +311,7 @@ function render(x){
 function calculate(){const x=getData(),err=validate(x);if(err){$('error').textContent=err;$('error').classList.add('show');$('results').classList.remove('show');return false;}render(x);return true;}
 $('houseForm').addEventListener('submit',e=>{e.preventDefault();calculate();$('results').scrollIntoView({behavior:'smooth',block:'start'});});
 $('city').addEventListener('change',updateCityHint);
+$('state').addEventListener('change',()=>{const suggested=nearest[$('state').value];if(suggested)$('city').value=suggested;updateCityHint();});
 $('jumpResults').addEventListener('click',()=>{if(!latest)calculate();$('results').scrollIntoView({behavior:'smooth',block:'start'});});
 $('reset').addEventListener('click',()=>{ $('houseForm').reset();$('state').value='Madhya Pradesh';$('city').value='Bhopal';$('year').value='2026';updateCityHint();$('stickyTotal').textContent='₹—';$('results').classList.remove('show');$('error').classList.remove('show');latest=null;});
 $('downloadCsv').addEventListener('click',()=>{
