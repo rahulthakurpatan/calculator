@@ -321,11 +321,11 @@ function validate(d){
  if(!(d.cap>=.5&&d.cap<=100))return 'Choose a solar capacity between 0.5 kW and 100 kW.';
  if(d.roof>0&&d.roof<d.roofRequired)return 'Available roof area is below the planning requirement of about '+Math.round(d.roofRequired)+' sq. ft. Increase roof space or select a smaller capacity.';
  if(d.costMode==='quote'&&d.gross<10000)return 'Enter a valid vendor quotation.';
- if(d.system==='offgrid'&&d.batteryKwh===0)return 'Off-grid systems need battery storage. Select a battery backup size.';\n if(d.batteryKwh>0&&d.system!=='hybrid'&&d.system!=='offgrid')return 'Battery backup needs a compatible hybrid or off-grid configuration. Select Hybrid or Off-grid.';
+ if((d.system==='offgrid'||d.system==='hybrid')&&d.batteryKwh===0)return 'Hybrid and off-grid systems need a battery selection in this estimate. Choose a backup size.';\n if(d.batteryKwh>0&&d.system!=='hybrid'&&d.system!=='offgrid')return 'Battery backup needs a compatible hybrid or off-grid configuration. Select Hybrid or Off-grid.';
  return '';
 }
 let latest=null;
-function drawChart(rows,net){\n net=net*(1-(latest?.d?.loanShare||0));
+function drawChart(rows,net){
  const canvas=$('cashChart'),ctx=canvas.getContext('2d'),w=canvas.clientWidth||700,h=260,dpr=window.devicePixelRatio||1;
  canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
  const vals=[-net,...rows.map(r=>r.cumulative)],min=Math.min(...vals,0),max=Math.max(...vals,1),pad={l:54,r:14,t:18,b:30};
@@ -366,7 +366,7 @@ function render(d){
  $('billNote').textContent='First-year energy benefit is estimated at '+money(year1/12)+' per month on an annualised basis. Fixed charges, taxes, minimum charges and actual monthly net-metering settlement can make the real bill different. Exported units are valued at an indicative ₹'+d.exportCredit.toFixed(2)+'/unit, not your full retail tariff.';
  $('yearRows').innerHTML=typical.rows.map(r=>'<tr><td>'+r.year+'</td><td>'+fmt(r.gen)+' units</td><td>'+money(r.benefit)+'</td><td>'+money(r.maintenance)+'</td><td>'+money(r.loan)+'</td><td style="font-weight:750;color:'+(r.cumulative>=0?'#08734b':'#b33c42')+'">'+money(r.cumulative)+'</td></tr>').join('');
  $('scenarioRows').innerHTML=[['Lower-cost',low],['Typical',typical],['Higher-cost',high]].map(([name,s])=>'<tr><td>'+name+'</td><td>'+money(s.gross)+'</td><td>'+money(s.subsidy)+'</td><td>'+money(s.net)+'</td><td>'+(s.yearPayback?s.yearPayback+' years':'Over 25 years')+'</td></tr>').join('');
- drawChart(typical.rows,d.net);
+ drawChart(typical.rows,d.net*(1-d.loanShare));
  $('results').classList.add('show');
  latest={d,typical,low,high};
 }
@@ -386,7 +386,7 @@ $('downloadCsv').addEventListener('click',()=>{
 });
 $('copyReport').addEventListener('click',()=>{if(!latest)return;const {d,typical}=latest;const report='Solar Rooftop ROI Estimate\nLocation: '+d.city+', '+d.state+'\nSystem: '+d.cap+' kW '+d.system+'\nGross cost: '+money(d.gross)+'\nEstimated subsidy: '+money(d.subsidy)+'\nNet investment: '+money(d.net)+'\nYear 1 savings: '+money(d.year1Saving)+'\nPayback: '+(typical.yearPayback?typical.yearPayback+' years':'Over 25 years')+'\n25-year net benefit: '+money(typical.netBenefit)+'\nPlanning estimate only; verify tariff, subsidy and vendor quote.';if(navigator.clipboard?.writeText)navigator.clipboard.writeText(report).then(()=>$('copyReport').textContent='Copied').catch(()=>window.prompt('Copy estimate',report));else window.prompt('Copy estimate',report);});
 $('printReport').addEventListener('click',()=>window.print());
-let resizeTimer;window.addEventListener('resize',()=>{if(latest){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>drawChart(latest.typical.rows,latest.d.net),150)}});
+let resizeTimer;window.addEventListener('resize',()=>{if(latest){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>drawChart(latest.typical.rows,latest.d.net*(1-latest.d.loanShare)),150)}});
 $('tariff').addEventListener('focus',e=>{if(e.target.value==='auto')e.target.value=(num($('bill').value)/Math.max(1,num($('units').value))).toFixed(2)});
 $('tariff').addEventListener('blur',e=>{if(!e.target.value)e.target.value='auto'});
 })();
