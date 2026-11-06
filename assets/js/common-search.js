@@ -18,7 +18,7 @@
     { title:'Fixed Deposit Calculator', subtitle:'Estimate FD interest and maturity value', category:'Savings & Loans', href:'/fd-calculator/', keywords:'fd fixed deposit bank deposit interest maturity' },
     { title:'Business Profit & Loss Tracker', subtitle:'Track business revenue, expenses and profit', category:'Business & Creator', href:'/business-profit-loss-tracker/', keywords:'business income expense profit loss tracker' },
     { title:'Kundali Money & Dhan Yog Calculator', subtitle:'Explore a traditional astrology-based reading', category:'Family & Goals', href:'/kundali-money-dhan-yog-calculator/', keywords:'kundali dhan yog astrology money' },
-    { title:'House Construction Cost Estimator', subtitle:'Estimate city-wise house building cost, materials, interiors and exterior work', category:'Property & Tools', href:'/house-construction-cost-estimator/', keywords:'house construction cost estimator calculator home building cost per square foot city wise state wise material quantity cement steel bricks interiors exterior civil construction budget boq' }
+    { title:'House Construction Cost Estimator', subtitle:'Estimate house cost with automatic packages, material quantities and 30-year inflation projection', category:'Property & Tools', href:'/house-construction-cost-estimator/', keywords:'house construction cost calculator estimator india city wise automatic material quantity cement steel bricks interiors kitchen wardrobes exterior construction budget 2026 2056 inflation future cost per square foot' }
   ];
 
   const mount = document.getElementById('investcalc-search-mount');
