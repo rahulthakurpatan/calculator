@@ -75,7 +75,7 @@
 <div class="subhead">1. Your starting mutual fund corpus</div>
 <div class="field"><label for="corpus">Initial investment / current corpus (₹)</label><input id="corpus" type="number" min="1" max="10000000000" step="any" value="5000000" inputmode="decimal" required><div class="hint">Enter the amount available when your SWP projection begins.</div></div>
 <div class="two">
-<div class="field"><label for="withdrawal">Withdrawal amount per month (₹)</label><input id="withdrawal" type="number" min="1" max="100000000" step="any" value="30000" inputmode="decimal" required></div>
+<div class="field"><label for="withdrawal">Monthly withdrawal equivalent (₹)</label><input id="withdrawal" type="number" min="1" max="100000000" step="any" value="30000" inputmode="decimal" required><div class="hint">Quarterly payout = this amount × 3; yearly payout = this amount × 12.</div></div>
 <div class="field"><label for="years">Projection period (years)</label><input id="years" type="number" min="1" max="60" step="1" value="20" inputmode="numeric" required></div>
 </div>
 <div class="subhead">2. Return and withdrawal settings</div>
@@ -265,7 +265,7 @@ function simulate(x,monthlyWithdrawal,stepUp=x.stepUp){
  const yearly=[],schedule=[];
  let yearStart=balance,yearGrowth=0,yearWithdrawn=0;
  for(let month=1;month<=months;month++){
-  const year=Math.floor((month-1)/12), payoutMonth=(month-1)%x.frequency===0;
+  const year=Math.floor((month-1)/12), payoutMonth=x.timing==='start'?((month-1)%x.frequency===0):(month%x.frequency===0);
   const planned=monthlyWithdrawal*Math.pow(1+stepUp/100,year)*x.frequency;
   let before=balance,monthGrowth=0,payout=0,unitsOut=0;
   if(payoutMonth&&x.timing==='start'&&balance>0){
@@ -292,9 +292,8 @@ function simulate(x,monthlyWithdrawal,stepUp=x.stepUp){
   if(balance===0) {
    if(!exhaustedAt)exhaustedAt=month;
    // Keep year rows for the remaining requested period, with zero corpus and no growth.
-   for(let rest=month+1;rest<=months;rest++){
-    if(rest%12===0||rest===months){yearly.push({year:Math.ceil(rest/12),opening:0,growth:0,withdrawn:0,closing:0,real:0,cumulative:withdrawn,month:rest});}
-   }
+   if(month%12!==0)yearly.push({year:Math.ceil(month/12),opening:yearStart,growth:yearGrowth,withdrawn:yearWithdrawn,closing:0,real:0,cumulative:withdrawn,month});
+   for(let rest=Math.ceil(month/12)*12+12;rest<=months;rest+=12){yearly.push({year:Math.ceil(rest/12),opening:0,growth:0,withdrawn:0,closing:0,real:0,cumulative:withdrawn,month:rest});}
    break;
   }
  }
@@ -353,7 +352,9 @@ function render(x,sim){
  const targetSim=simulate(x,x.withdrawal);
  // Estimate corpus needed by binary-searching the starting balance for this exact withdrawal plan.
  let low=0,high=Math.max(x.corpus,1);
- for(let i=0;i<60;i++){const mid=(low+high)/2;const test=simulate({...x,corpus:mid},x.withdrawal);if(test.balance>0||!test.exhaustedAt)high=mid;else low=mid;}
+ const survives=value=>{const test=simulate({...x,corpus:value},x.withdrawal);return test.balance>0||!test.exhaustedAt;};
+ for(let expand=0;expand<40&&!survives(high);expand++)high*=2;
+ for(let i=0;i<60;i++){const mid=(low+high)/2;if(survives(mid))high=mid;else low=mid;}
  $('requiredCorpus').textContent=money(high);
  const returns=[Math.max(-50,x.annual-4),x.annual,Math.min(50,x.annual+4)];
  const withdrawalFactors=[0.8,1,1.2];
