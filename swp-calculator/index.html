@@ -100,7 +100,7 @@
 <div class="metric"><span>Total amount withdrawn</span><strong id="totalWithdrawn">—</strong></div>
 <div class="metric"><span>Estimated growth earned</span><strong id="growthEarned">—</strong></div>
 <div class="metric"><span>Corpus exhaustion</span><strong id="exhaustion">—</strong></div>
-<div class="metric"><span>Final corpus in today's money</span><strong id="realCorpus">—</strong></div>
+<div class="metric"><span>Final corpus in current purchasing power</span><strong id="realCorpus">—</strong></div>
 <div class="metric"><span>First-year withdrawal rate</span><strong id="withdrawalRate">—</strong></div>
 <div class="metric"><span>Estimated units remaining</span><strong id="unitsRemaining">—</strong></div>
 </div>
@@ -159,7 +159,7 @@
 <div class="formula"><code>Withdrawal in year n = Starting withdrawal × (1 + annual step-up)^(n − 1)</code></div>
 <p>The step-up applies after every 12 months. A 5% annual increase means the scheduled payout rises by 5% at the start of each new projection year.</p>
 <h3>4. Show inflation-adjusted value</h3>
-<div class="formula"><code>Value in today's money = Future value ÷ (1 + inflation)^years</code></div>
+<div class="formula"><code>Value in current purchasing power = Future value ÷ (1 + inflation)^years</code></div>
 <p>This is a purchasing-power illustration. It does not change the nominal withdrawal amount unless you separately enter an annual withdrawal increase.</p>
 <h3>5. Estimate units redeemed</h3>
 <p>If you enter a starting NAV, the calculator grows that illustrative NAV at the same constant monthly return and estimates units redeemed as payout divided by the modelled NAV. Real fund NAVs fluctuate independently; this is not a prediction of actual units or redemption statements.</p>
@@ -341,7 +341,7 @@ function render(x,sim){
  const last=sim.yearly[sim.yearly.length-1]||{closing:0};
  const insights=[
   ['Withdrawal outcome',sim.exhaustedAt?'Corpus runs out in year '+Math.ceil(sim.exhaustedAt/12):'Corpus remains after '+x.years+' years','Based on one constant assumed return.'],
-  ['Inflation impact',money(sim.balance)+' nominal vs '+money(sim.balance/Math.pow(1+x.inflation/100,x.years))+' in today's money','Assumed inflation: '+pct(x.inflation)+'.'],
+  ['Inflation impact',money(sim.balance)+' nominal vs '+money(sim.balance/Math.pow(1+x.inflation/100,x.years))+' in current purchasing power','Assumed inflation: '+pct(x.inflation)+'.'],
   ['Withdrawal pattern',x.frequency===1?'Monthly':x.frequency===3?'Quarterly':x.frequency===6?'Half-yearly':'Yearly',pct(x.stepUp)+' annual withdrawal increase']
  ];
  $('insightCards').innerHTML=insights.map(v=>'<article class="card"><h3>'+v[0]+'</h3><p><strong>'+v[1]+'</strong><br>'+v[2]+'</p></article>').join('');
@@ -375,7 +375,7 @@ form.addEventListener('submit',event=>{
 });
 $('reset').addEventListener('click',()=>{form.reset();$('corpus').value='5000000';$('withdrawal').value='30000';$('years').value='20';$('returnRate').value='8';$('frequency').value='1';$('stepUp').value='0';$('inflation').value='6';$('timing').value='end';$('nav').value='100';results.classList.remove('show');output.classList.remove('show');error.classList.remove('show');latest=null;});
 $('csv').addEventListener('click',()=>{
- if(!latest)return;const rows=[['Year','Opening corpus','Growth','Withdrawn','Closing corpus','Closing corpus in today's money'],...latest.sim.yearly.map(r=>[r.year,r.opening.toFixed(2),r.growth.toFixed(2),r.withdrawn.toFixed(2),r.closing.toFixed(2),r.real.toFixed(2)])];
+ if(!latest)return;const rows=[['Year','Opening corpus','Growth','Withdrawn','Closing corpus','Closing corpus in current purchasing power'],...latest.sim.yearly.map(r=>[r.year,r.opening.toFixed(2),r.growth.toFixed(2),r.withdrawn.toFixed(2),r.closing.toFixed(2),r.real.toFixed(2)])];
  const csv=rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='investcalc-swp-yearly-projection.csv';a.click();URL.revokeObjectURL(url);
 });
