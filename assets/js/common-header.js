@@ -152,6 +152,7 @@
     '<div class="ich-wrap">' +
       '<div class="ich-top">' +
         '<a class="ich-brand" href="/" aria-label="Return on Investment Calculator home"><span><span class="ich-return">Return</span><span class="ich-on">on</span><span class="ich-investment">Investment</span><span class="ich-brand-sub">CALCULATOR</span></span></a>' +
+        '<div class="ich-search-mount" id="investcalc-search-mount"></div>' +
         '<div class="ich-top-right"><a class="ich-home" href="/">Home</a><button class="ich-mobile-toggle" type="button" aria-label="Open calculator categories" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>' +
       '</div>' +
       '<nav class="ich-nav" aria-label="Calculator categories"><div class="ich-nav-list">' +
@@ -166,6 +167,14 @@
   const mount = document.getElementById('site-header');
   if (mount) mount.replaceWith(header);
   else document.body.insertBefore(header, document.body.firstChild);
+
+  if (!document.querySelector('script[data-investcalc-search]')) {
+    const searchScript = document.createElement('script');
+    searchScript.src = '/assets/js/common-search.js';
+    searchScript.defer = true;
+    searchScript.dataset.investcalcSearch = 'true';
+    document.head.appendChild(searchScript);
+  }
 
   const mega = header.querySelector('#ich-mega-menu');
   const megaInner = mega.querySelector('.ich-mega-inner');
