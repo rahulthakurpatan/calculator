@@ -1,4 +1,4 @@
-/* Shared footer for all InvestCalc pages.
+/* Shared footer for all Return on Investment pages.
    Add <div id="site-footer"></div> and load /assets/js/common-footer.js.
    If the mount is absent, the footer is appended to the page automatically. */
 (() => {
@@ -68,11 +68,11 @@
   footer.id = 'investcalc-footer';
   footer.innerHTML =
     '<div class="icf-wrap"><div class="icf-grid">' +
-      '<section class="icf-about"><a class="icf-brand" href="/" aria-label="InvestCalc home"><span class="icf-mark">%</span><span>InvestCalc</span></a>' +
-      '<p>Free and easy-to-use calculators to help you understand investments, returns and everyday financial decisions.</p></section>' +
+      '<section class="icf-about"><a class="icf-brand" href="/" aria-label="Return on Investment home"><span class="icf-mark">%</span><span>Return on Investment</span></a>' +
+      '<p>Free and practical calculators for investment returns, mutual funds, savings, banking, loans, business and everyday financial planning.</p></section>' +
       '<section><h2>Popular calculators</h2><div class="icf-links">' + calculators.slice(0, 10).map(link).join('') + '</div></section>' +
       '<section><h2>All calculators</h2><div class="icf-links">' + calculators.slice(10).map(link).join('') + '</div></section>' +
-    '</div><div class="icf-bottom"><span>© <span id="investcalc-footer-year"></span> InvestCalc. All rights reserved.</span>' +
+    '</div><div class="icf-bottom"><span>© <span id="investcalc-footer-year"></span> Return on Investment. All rights reserved.</span>' +
     '<div class="icf-bottom-links"><a href="/">Home</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms/">Terms</a></div></div></div>';
   if (mount) mount.replaceWith(footer);
   else document.body.appendChild(footer);
