@@ -33,6 +33,10 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 - Validate JSON-LD syntax and avoid duplicate/conflicting schema.
 
 ## 4. Technical quality
+- Treat Google Analytics and NameDotify PushDotify as required site-wide technical vitals on every public page.
+- Keep exactly one direct Google Analytics tag in each page's `<head>` using the verified site tag ID.
+- Load `/assets/js/common-pushdotify.js` before `</head>` on every page; keep the NameDotify configuration and provider script centralized in that shared file.
+- Keep the root `/sw.js` service worker available and do not overwrite its existing notification/click-tracking handlers without checking the provider requirements.
 - Keep core page content and SEO metadata in the HTML, not dependent on JavaScript rendering.
 - Avoid duplicate analytics or tracking scripts.
 - Do not add AdSense code until the site is approved and the owner requests it.
