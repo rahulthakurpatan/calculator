@@ -383,20 +383,10 @@ $('reset').addEventListener('click',()=>{setTimeout(()=>{elState.value='Madhya P
 $('downloadCsv').addEventListener('click',()=>{
  if(!latest)return;const {d,typical}=latest;
  const rows=[['Solar Rooftop ROI Estimate'],['Location',d.city+', '+d.state],['Connection',d.consumer],['System type',d.system],['System capacity kW',d.cap],['Monthly units',d.units],['Monthly bill INR',d.bill],['Annual solar yield kWh/kWp',d.yieldYear],['Estimated generation per year',d.generation],['Gross cost INR',d.gross],['Central subsidy estimate INR',d.subsidy],['Net investment INR',d.net],['Year 1 savings INR',d.year1Saving],['Payback years',typical.yearPayback||'Over 25 years'],['25-year net benefit INR',typical.netBenefit],[],['Year','Generation units','Bill benefit INR','Maintenance and replacement INR','Loan payment INR','Cumulative net cash flow INR'],...typical.rows.map(r=>[r.year,Math.round(r.gen),Math.round(r.benefit),Math.round(r.maintenance),Math.round(r.loan),Math.round(r.cumulative)])];
- const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r
-');
+ const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='solar-rooftop-roi-estimate.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
-$('copyReport').addEventListener('click',()=>{if(!latest)return;const {d,typical}=latest;const report='Solar Rooftop ROI Estimate
-Location: '+d.city+', '+d.state+'
-System: '+d.cap+' kW '+d.system+'
-Gross cost: '+money(d.gross)+'
-Estimated subsidy: '+money(d.subsidy)+'
-Net investment: '+money(d.net)+'
-Year 1 savings: '+money(d.year1Saving)+'
-Payback: '+(typical.yearPayback?typical.yearPayback+' years':'Over 25 years')+'
-25-year net benefit: '+money(typical.netBenefit)+'
-Planning estimate only; verify tariff, subsidy and vendor quote.';if(navigator.clipboard?.writeText)navigator.clipboard.writeText(report).then(()=>$('copyReport').textContent='Copied').catch(()=>window.prompt('Copy estimate',report));else window.prompt('Copy estimate',report);});
+$('copyReport').addEventListener('click',()=>{if(!latest)return;const {d,typical}=latest;const report=['Solar Rooftop ROI Estimate','Location: '+d.city+', '+d.state,'System: '+d.cap+' kW '+d.system,'Gross cost: '+money(d.gross),'Estimated subsidy: '+money(d.subsidy),'Net investment: '+money(d.net),'Year 1 savings: '+money(d.year1Saving),'Payback: '+(typical.yearPayback?typical.yearPayback+' years':'Over 25 years'),'25-year net benefit: '+money(typical.netBenefit),'Planning estimate only; verify tariff, subsidy and vendor quote.'].join('\n');if(navigator.clipboard?.writeText)navigator.clipboard.writeText(report).then(()=>$('copyReport').textContent='Copied').catch(()=>window.prompt('Copy estimate',report));else window.prompt('Copy estimate',report);});
 $('printReport').addEventListener('click',()=>window.print());
 let resizeTimer;window.addEventListener('resize',()=>{if(latest){clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>drawChart(latest.typical.rows,latest.d.net*(1-latest.d.loanShare)),150)}});
 $('tariff').addEventListener('focus',e=>{if(e.target.value==='auto')e.target.value=(num($('bill').value)/Math.max(1,num($('units').value))).toFixed(2)});
