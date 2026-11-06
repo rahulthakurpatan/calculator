@@ -45,6 +45,8 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 - Check that page links, images, scripts, and calculator interactions work.
 
 
+- Load the shared predictive search through `/assets/js/common-header.js`; keep its UI and logic in `/assets/js/common-search.js` with a data-driven catalogue of verified, working destinations. Add new live calculators to this catalogue when they launch.
+- Keep future financial-instrument search extensible by asset type (mutual funds/schemes, equities/tickers, ETFs, bonds, deposits and commodities). Do not display live prices, NAVs, tickers or instrument listings until a verified data provider and refresh policy are integrated.
 - Load `/assets/js/common-branding.js` on every public page before `</head>`; it centrally applies the InvestCalc SVG favicon, PNG browser/touch icon, web app manifest, and theme color.
 - Keep the root `/favicon.svg`, `/favicon-180.png`, and `/site.webmanifest` available. Do not create duplicate favicon or manifest tags in individual page templates.
 
