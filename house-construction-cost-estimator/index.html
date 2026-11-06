@@ -81,7 +81,7 @@
 <div class="three">
 <div class="field"><label for="floors">Number of floors</label><select id="floors"><option value="1">Ground floor</option><option value="2" selected>G + 1 (2 floors)</option><option value="3">G + 2 (3 floors)</option><option value="4">G + 3 (4 floors)</option><option value="5">5 floors</option><option value="6">6 floors</option></select></div>
 <div class="field"><label for="quality">Construction quality</label><select id="quality"><option value="basic">Basic / budget</option><option value="standard" selected>Standard</option><option value="premium">Premium</option><option value="luxury">Luxury</option></select></div>
-<div class="field"><label for="structure">Structure type</label><select id="structure"><option value="rcc" selected>RCC frame</option><option value="load">Load-bearing (engineer-designed)</option><option value="other">Other / not sure</option></select></div>
+<div class="field"><label for="structure">Structure type</label><select id="structure"><option value="rcc" selected>RCC frame</option><option value="load">Load-bearing (engineer-designed)</option><option value="other">Other / not sure</option></select></div><div class="hint">The published city benchmark is an RCC residential baseline. If you choose load-bearing construction, replace the city rate with a comparable local quotation; only the preliminary cement and steel ranges change here.</div>
 </div>
 <div class="two">
 <div class="field"><label for="bedrooms">Bedrooms</label><input id="bedrooms" type="number" min="0" max="30" value="3"></div>
@@ -318,7 +318,7 @@ function render(x){
  $('costPerSqft').textContent=money(x.total/x.area);
  $('addonsCost').textContent=money(x.site+x.upgrade+x.interior+x.exterior+x.professional+x.services+x.other);
  $('contingencyCost').textContent=money(x.reserve);
- $('scopeNote').textContent='Base rate: '+money(x.rate)+' per sq. ft. × '+nfmt.format(x.area)+' sq. ft. × '+x.qualityFactor.toFixed(2)+' quality factor × '+x.floorFactor.toFixed(2)+' floor factor. The selected benchmark represents a broad standard turnkey-style planning scope; see inclusions and exclusions below.';
+ $('scopeNote').textContent='Base rate: '+money(x.rate)+' per sq. ft. × '+nfmt.format(x.area)+' sq. ft. × '+x.qualityFactor.toFixed(2)+' quality factor × '+x.floorFactor.toFixed(2)+' floor factor. The selected benchmark represents a broad standard turnkey-style planning scope; see inclusions and exclusions below. If load-bearing is selected, this RCC-based city benchmark is only a rough reference and should be replaced with a local load-bearing quote.';
  const rows=[
  ['Base city benchmark construction',x.base,'Built-up area × city rate × quality and floor factors'],
  ['Site clearing / excavation allowance',x.site,'User-entered amount'],
