@@ -203,7 +203,7 @@
 <li><a href="https://pmsuryaghar.gov.in/" target="_blank" rel="noopener">PM Surya Ghar National Portal</a> – application, vendor and consumer process.</li>
 <li><a href="https://www.pmindia.gov.in/en/news_updates/cabinet-approves-pm-surya-ghar-muft-bijli-yojana-for-installing-rooftop-solar-in-one-crore-households/" target="_blank" rel="noopener">Prime Minister's Office – scheme approval and central subsidy structure</a>.</li>
 <li><a href="https://mperc.in/regulation" target="_blank" rel="noopener">MPERC regulations</a> – Madhya Pradesh grid-interactive renewable energy rules and amendments.</li>
-<li><a href="https://globalsolaratlas.info/" target="_blank" rel="noopener">Global Solar Atlas</a> – solar resource and photovoltaic yield reference.</li>
+<li><a href="https://globalsolaratlas.info/" target="_blank" rel="noopener">Global Solar Atlas</a> – solar resource and photovoltaic yield reference.</li>\n<li><a href="https://indianinstituteofsolarenergy.com/solar-energy/rooftop-solar-system-cost-in-india-2026-state-wise-prices/" target="_blank" rel="noopener">Indian Institute of Solar Energy – 2026 rooftop solar cost guide</a> – indicative market price and roof-area benchmarks; not a government price schedule.</li>
 </ul>
 <p><b>Last reviewed:</b> 7 November 2026. Government scheme terms, market prices, tariff orders and DISCOM procedures can change. Recheck official sources before making a purchase.</p></div>
 <div class="content"><h2>Explore related calculators</h2><div class="related"><a href="/house-construction-cost-estimator/">House Construction Cost Estimator</a><a href="/">ROI Calculator</a><a href="/goal-based-investment-planner/">Goal-Based Investment Planner</a><a href="/fd-calculator/">Fixed Deposit Calculator</a><a href="/mutual-fund-vs-fd-comparison/">Mutual Fund vs FD Comparison</a></div></div>
@@ -354,7 +354,7 @@ function render(d){
  $('outPanels').textContent=fmt(Math.ceil(d.cap*1000/550))+' × 550 W panels';
  $('outSubsidy').textContent=money(d.subsidy);
  $('outRoof').textContent=fmt(d.roofRequired)+' sq. ft.';
- $('outCo2').textContent=(d.generation*25*.0007).toFixed(1)+' tonnes';
+ $('outCo2').textContent=(d.generation*(1-Math.pow(1-d.degradation,25))/d.degradation*.0007).toFixed(1)+' tonnes';
  $('eligibilityNote').textContent=d.subsidy>0?'Central CFA estimate: '+money(d.subsidy)+'. Eligibility depends on residential grid connection, approved application, eligible vendor/equipment and DISCOM commissioning. This is not a subsidy sanction.':d.consumer!=='residential'?'No PM Surya Ghar household CFA has been included because the selected connection is '+d.consumer+'.':d.system==='offgrid'?'No central household CFA has been included for an off-grid system.':d.system==='hybrid'?'Hybrid system subsidy is not auto-assumed. Confirm the current portal and technical eligibility before relying on any CFA.':'No central CFA estimate is included for this configuration; verify the current scheme and DISCOM rules.';
  const rows=[
  ['Solar modules, inverter, structure, wiring and installation',d.gross-d.batteryCost,'Indicative '+d.costMode+' market estimate; not a vendor quote'],
