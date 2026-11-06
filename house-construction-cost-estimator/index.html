@@ -172,7 +172,7 @@
 <div class="chartbox wide"><h3>Budget comparison by construction quality</h3><canvas id="qualityChart" role="img" aria-label="Bar chart comparing basic, standard, premium and luxury estimates"></canvas></div><div class="chartbox wide"><h3>How built-up area changes the estimated budget</h3><canvas id="areaChart" role="img" aria-label="Line chart showing estimated budget at different built-up areas"></canvas></div>
 </div>
 <div class="content"><h2>Cost breakdown</h2><p>Each line is shown separately so you can identify which selections are increasing the project budget.</p><div class="table-wrap"><table><thead><tr><th>Cost head</th><th>Estimate</th><th>Basis</th></tr></thead><tbody id="costRows"></tbody></table></div></div>
-<div class="content"><h2>Preliminary material quantity planner</h2><p>These are broad planning ranges for an RCC-frame residential estimate. They are not a bill of quantities. Final quantities must be measured from architectural and structural drawings.</p><div class="table-wrap"><table><thead><tr><th>Material</th><th>Estimated quantity</th><th>Editable unit rate</th><th>Reference material value*</th></tr></thead><tbody id="materialRows"></tbody></table></div><p class="hint">*Reference material value is a separate procurement cross-check. It is not added to the turnkey construction budget because the benchmark rate already includes standard materials. Brick and paint estimates appear only when you enter wall / paintable area.</p></div>
+<div class="content"><h2>Preliminary material quantity planner</h2><p>These are broad planning ranges based on the selected structural system. They are not a bill of quantities. Final quantities must be measured from architectural and structural drawings.</p><div class="table-wrap"><table><thead><tr><th>Material</th><th>Estimated quantity</th><th>Editable unit rate</th><th>Reference material value*</th></tr></thead><tbody id="materialRows"></tbody></table></div><p class="hint">*Reference material value is a separate procurement cross-check. It is not added to the turnkey construction budget because the benchmark rate already includes standard materials. Brick and paint estimates appear only when you enter wall / paintable area.</p></div>
 <div class="content"><h2>Construction stage payment planner</h2><p>Illustrative stage allocations for cash-flow planning. Actual contractor milestones and payment percentages must follow your written agreement and completed work.</p><div class="table-wrap"><table><thead><tr><th>Stage</th><th>Indicative share</th><th>Budget allocation</th></tr></thead><tbody id="stageRows"></tbody></table></div></div>
 <div class="actions no-print"><button class="btn secondary" id="downloadCsv" type="button">Download cost report (CSV)</button><button class="btn secondary" id="copyReport" type="button">Copy estimate summary</button><button class="btn ghost" id="printReport" type="button">Print / Save as PDF</button></div>
 <div class="callout">This estimate is a budgeting aid. It is not a structural design, engineering BOQ, tender document or contractor quotation. Never use material quantity ranges to order reinforcement or design foundations without an engineer's drawings.</div>
@@ -257,7 +257,7 @@ const stageData=[['Site and foundation',16],['RCC frame and slabs',33],['Brickwo
 let latest=null;
 function fillStates(){ $('state').innerHTML=states.map(s=>'<option value="'+s+'">'+s+'</option>').join('');$('state').value='Madhya Pradesh';fillCities(); }
 function fillCities(){
- const state=$('state').value,found=cities.filter(c=>c[1]===state).sort((a,b)=>a[0].localeCompare(b[0]));
+ const state=$('state').value,found=cities.filter(c=>c[1]===state).sort((a,b)=>a[0].localeCompare(b[0]));$('rateBasis').value='typical';$('manualRate').value='';
  const options=found.map(c=>'<option value="'+c[0]+'">'+c[0]+' — ₹'+nfmt.format(c[2])+'/sq. ft.</option>');
  options.push('<option value="__other">Other city / town (enter local rate)</option>');
  $('city').innerHTML=options.join('');
@@ -277,7 +277,7 @@ function syncRate(){
   $('rateHint').textContent='Published city benchmark in ₹ per built-up sq. ft. Switch to manual to use a local quotation.';
  }else{
   $('rateBasis').value='manual';$('manualRate').disabled=false;
-  $('rateSource').textContent='No city benchmark is loaded for this town. Enter a recent local standard rate from a written quotation or supplier / contractor check.';
+  $('manualRate').value='';$('rateSource').textContent='No city benchmark is loaded for this town. Enter a recent local standard rate from a written quotation or supplier / contractor check.';
   $('rateHint').textContent='Required for towns not covered by the published benchmark dataset.';
  }
 }
@@ -333,8 +333,8 @@ function render(x){
  ['Estimated total project budget',x.total,'Subtotal + contingency']
  ];
  $('costRows').innerHTML=rows.map((r,i)=>'<tr'+(i===rows.length-1?' style="font-weight:900;background:#f3f8ff"':'')+'><td>'+r[0]+'</td><td>'+money(r[1])+'</td><td>'+r[2]+'</td></tr>').join('');
- const cementLow=x.area*.40*(1+x.cementWaste/100),cementHigh=x.area*.48*(1+x.cementWaste/100),cementMid=x.area*.44*(1+x.cementWaste/100);
- const steelLow=x.area*3.5*(1+x.steelWaste/100),steelHigh=x.area*4.5*(1+x.steelWaste/100),steelMid=x.area*4*(1+x.steelWaste/100);
+ const cementFactor=x.structure==='load'?[.32,.38,.35]:[.40,.48,.44];const steelFactor=x.structure==='load'?[1.5,2,1.75]:[3.5,4.5,4];const cementLow=x.area*cementFactor[0]*(1+x.cementWaste/100),cementHigh=x.area*cementFactor[1]*(1+x.cementWaste/100),cementMid=x.area*cementFactor[2]*(1+x.cementWaste/100);
+ const steelLow=x.area*steelFactor[0]*(1+x.steelWaste/100),steelHigh=x.area*steelFactor[1]*(1+x.steelWaste/100),steelMid=x.area*steelFactor[2]*(1+x.steelWaste/100);
  const tileQty=x.area*(1+x.tileWaste/100);
  const mats=[
  ['Cement (50 kg bags)',nfmt.format(Math.ceil(cementLow))+'–'+nfmt.format(Math.ceil(cementHigh))+' bags',money(x.cementPrice)+' / bag',money(cementMid*x.cementPrice)],
@@ -367,7 +367,7 @@ function drawQualityChart(x){
  labels.forEach((lab,i)=>{const y=top+i*rowH;ctx.fillStyle='#52627a';ctx.font='11px Inter, sans-serif';ctx.textAlign='right';ctx.fillText(lab,left-10,y+14);ctx.fillStyle='#edf2f8';ctx.fillRect(left,y,pw,17);ctx.fillStyle=i===labels.indexOf(x.qualityLabel.split(' ')[0])?'#0f9d72':'#5b8def';ctx.fillRect(left,y,pw*vals[i]/max,17);ctx.fillStyle='#34445c';ctx.textAlign='left';ctx.font='10px Inter, sans-serif';ctx.fillText(money(vals[i]),left+pw*vals[i]/max+6,y+13);});
 }
 $('state').addEventListener('change',fillCities);
-$('city').addEventListener('change',syncRate);
+$('city').addEventListener('change',()=>{if($('city').value==='__other')$('manualRate').value='';syncRate();});
 $('rateBasis').addEventListener('change',syncRate);
 $('houseForm').addEventListener('submit',e=>{e.preventDefault();const x=read(),err=validate(x);if(err){$('error').textContent=err;$('error').classList.add('show');$('results').classList.remove('show');return;}render(x);});
 $('jumpResults').addEventListener('click',()=>{if(!latest){$('houseForm').requestSubmit();}setTimeout(()=>$('results').scrollIntoView({behavior:'smooth',block:'start'}),50);});
