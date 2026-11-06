@@ -122,7 +122,7 @@
 <div class="metric"><span>25-year CO₂ avoided</span><strong id="outCo2">—</strong></div>
 </div>
 <div class="callout" id="eligibilityNote" style="margin-top:12px"></div>
-<div class="chartbox"><h3>25-year cumulative solar cash flow</h3><canvas id="cashChart" role="img" aria-label="Chart showing cumulative solar savings and investment over 25 years"></canvas><p class="note">The chart includes initial net investment, annual savings, maintenance, estimated inverter replacement and loan interest where selected.</p></div>
+<div class="chartbox"><h3>25-year cumulative solar cash flow</h3><canvas id="cashChart" role="img" aria-label="Chart showing cumulative solar savings and investment over 25 years"></canvas><p class="note">The chart begins with your estimated upfront contribution (after subsidy and loan funding), then includes annual savings, maintenance, estimated inverter replacement and loan EMIs.</p></div>
 <div class="content"><h2>Solar installation cost breakdown</h2><div class="table-wrap"><table><thead><tr><th>Cost component</th><th>Estimate</th><th>How it is treated</th></tr></thead><tbody id="costRows"></tbody></table></div><p class="note" id="costNote"></p></div>
 <div class="content"><h2>What your electricity bill may look like</h2><div class="metrics">
 <div class="metric"><span>Current monthly bill</span><strong id="currentBill">—</strong></div>
@@ -296,7 +296,7 @@ function getData(){
 function simulate(d,scale=1){
  const gross=d.gross*scale,subsidy=d.subsidy,net=Math.max(0,gross-subsidy),loanPrincipal=net*d.loanShare;
  const rate=d.loanRate/12,n=d.loanYears*12,emi=loanPrincipal<=0?0:rate===0?loanPrincipal/n:loanPrincipal*rate*Math.pow(1+rate,n)/(Math.pow(1+rate,n)-1);
- let cumulative=-net,yearPayback=null,rows=[],totalBenefit=0,totalCost=net;
+ const initialOutlay=net*(1-d.loanShare);\n let cumulative=-initialOutlay,yearPayback=null,rows=[],totalBenefit=0,totalCost=initialOutlay;
  for(let y=1;y<=25;y++){
   const gen=d.generation*Math.pow(1-d.degradation,y-1);
   const use=Math.min(gen,d.annualUse*d.dayShare);
@@ -311,7 +311,7 @@ function simulate(d,scale=1){
   if(yearPayback===null&&cumulative>=0)yearPayback=y;
   rows.push({year:y,gen,benefit,maintenance,loan,cumulative,netFlow});
  }
- return {rows,yearPayback,totalBenefit,totalCost,netBenefit:cumulative,gross,subsidy,net};
+ return {rows,yearPayback,totalBenefit,totalCost,netBenefit:cumulative,gross,subsidy,net,initialOutlay};
 }
 function fmt(n){return Math.round(n).toLocaleString('en-IN')}
 function validate(d){
@@ -319,13 +319,13 @@ function validate(d){
  if(!(d.bill>=100&&d.bill<=10000000))return 'Enter a valid monthly electricity bill between ₹100 and ₹1 crore.';
  if(!(d.tariff>=1&&d.tariff<=100))return 'Check the average electricity rate. It should be between ₹1 and ₹100 per unit.';
  if(!(d.cap>=.5&&d.cap<=100))return 'Choose a solar capacity between 0.5 kW and 100 kW.';
- if(d.roof>0&&d.roof<d.roofRequired*.65)return 'Available roof area looks too small for this system. Increase roof space or select a smaller capacity.';
+ if(d.roof>0&&d.roof<d.roofRequired)return 'Available roof area is below the planning requirement of about '+Math.round(d.roofRequired)+' sq. ft. Increase roof space or select a smaller capacity.';
  if(d.costMode==='quote'&&d.gross<10000)return 'Enter a valid vendor quotation.';
- if(d.system==='offgrid'&&d.batteryKwh===0)return 'Off-grid systems need battery storage. Select a battery backup size.';
+ if(d.system==='offgrid'&&d.batteryKwh===0)return 'Off-grid systems need battery storage. Select a battery backup size.';\n if(d.batteryKwh>0&&d.system!=='hybrid'&&d.system!=='offgrid')return 'Battery backup needs a compatible hybrid or off-grid configuration. Select Hybrid or Off-grid.';
  return '';
 }
 let latest=null;
-function drawChart(rows,net){
+function drawChart(rows,net){\n net=net*(1-(latest?.d?.loanShare||0));
  const canvas=$('cashChart'),ctx=canvas.getContext('2d'),w=canvas.clientWidth||700,h=260,dpr=window.devicePixelRatio||1;
  canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);
  const vals=[-net,...rows.map(r=>r.cumulative)],min=Math.min(...vals,0),max=Math.max(...vals,1),pad={l:54,r:14,t:18,b:30};
@@ -338,7 +338,7 @@ function drawChart(rows,net){
 }
 function render(d){
  const typical=simulate(d),low=simulate(d,.88),high=simulate(d,1.18);
- const currentBill=d.bill,year1=d.year1Saving,remaining=Math.max(0,currentBill*12-year1),newBill=remaining/12;
+ const currentBill=d.bill,year1=d.year1Saving,newBill=Math.max(currentBill*.15,currentBill-year1/12);
  $('stickyCost').textContent=money(d.net);
  $('resultSummary').textContent=d.city+', '+d.state+' · '+d.consumer+' · '+d.cap.toFixed(1)+' kW · '+d.system.replace('ongrid','on-grid').replace('offgrid','off-grid');
  $('payback').textContent=typical.yearPayback?'About '+typical.yearPayback+' years':'More than 25 years';
@@ -350,7 +350,7 @@ function render(d){
  $('outGeneration').textContent=fmt(d.generation/12)+' units / month';
  $('outSubsidy').textContent=money(d.subsidy);
  $('outRoof').textContent=fmt(d.roofRequired)+' sq. ft.';
- $('outCo2').textContent=(d.generation*25*.0007/1000).toFixed(1)+' tonnes';
+ $('outCo2').textContent=(d.generation*25*.0007).toFixed(1)+' tonnes';
  $('eligibilityNote').textContent=d.subsidy>0?'Central CFA estimate: '+money(d.subsidy)+'. Eligibility depends on residential grid connection, approved application, eligible vendor/equipment and DISCOM commissioning. This is not a subsidy sanction.':d.consumer!=='residential'?'No PM Surya Ghar household CFA has been included because the selected connection is '+d.consumer+'.':d.system==='offgrid'?'No central household CFA has been included for an off-grid system.':d.system==='hybrid'?'Hybrid system subsidy is not auto-assumed. Confirm the current portal and technical eligibility before relying on any CFA.':'No central CFA estimate is included for this configuration; verify the current scheme and DISCOM rules.';
  const rows=[
  ['Solar modules, inverter, structure, wiring and installation',d.gross-d.batteryCost,'Indicative '+d.costMode+' market estimate; not a vendor quote'],
