@@ -69,3 +69,14 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 
 ## Current sitemap inventory
 The sitemap should contain only pages that exist and are intended for indexing. Update this inventory whenever pages are added, removed, or renamed.
+
+
+## Current public calculator inventory (2026-11-06)
+- `/` — ROI Calculator
+- `/sip-calculator/` — SIP Calculator
+- `/lump-sum-calculator/` — Lump Sum Calculator
+- `/step-up-sip-calculator/` — Step-Up SIP Calculator
+- `/business-profit-loss-tracker/` — Business Profit & Loss Tracker
+- `/fd-calculator/` — Fixed Deposit Calculator
+- `/kundali-money-dhan-yog-calculator/` — Kundali Money & Dhan Yog Calculator
+- `/mutual-fund-vs-fd-comparison/` — Mutual Fund vs FD Calculator
