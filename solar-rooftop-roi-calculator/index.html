@@ -292,7 +292,7 @@ function getData(){
  const oandmRate=system==='offgrid'?.012:.01;
  const loanShare=num($('loanShare').value),loanPrincipal=net*loanShare,loanYears=num($('loanYears').value),loanRate=num($('loanRate').value)/100;
  const loanEmi=loanPrincipal>0?(loanRate===0?loanPrincipal/(loanYears*12):loanPrincipal*(loanRate/12)*Math.pow(1+loanRate/12,loanYears*12)/(Math.pow(1+loanRate/12,loanYears*12)-1)):0;
- return {state:elState.value,city:elCity.value,consumer,system,quality,cap,units,bill,tariff,yieldYear,monthlyYield,generation,annualUse,dayShare,selfUse:effectiveSelf,exported,exportCredit,year1Saving,gross,batteryCost,batteryKwh,subsidy,net,roofRequired,roof,dayUse:$('dayUse').value,systemFactor,oandmRate,loanShare,loanPrincipal,loanYears,loanRate,loanEmi,escalation:num($('escalation').value),degradation:num($('degradation').value),special:states[elState.value][2],costMode};
+ return {state:elState.value,city:elCity.value,consumer,system,quality,cap,units,bill,tariff,yieldYear:plan.yieldYear,monthlyYield,generation,annualUse,dayShare,selfUse:effectiveSelf,exported,exportCredit,year1Saving,gross,batteryCost,batteryKwh,subsidy,net,roofRequired,roof,dayUse:$('dayUse').value,systemFactor,oandmRate,loanShare,loanPrincipal,loanYears,loanRate,loanEmi,escalation:num($('escalation').value),degradation:num($('degradation').value),special:states[elState.value][2],costMode};
 }
 function simulate(d,scale=1){
  const gross=d.gross*scale,subsidy=d.subsidy,net=Math.max(0,gross-subsidy),loanPrincipal=net*d.loanShare;
