@@ -102,7 +102,7 @@
 <div class="section-box"><h3>Material upgrade allowance (optional)</h3><p>The city benchmark already includes standard construction finishes. Enter only the extra amount above that included standard scope. Do not enter the full material bill again.</p>
 <div class="two">
 <div class="field"><label for="materialUpgrade">Total material upgrade budget (₹)</label><input id="materialUpgrade" type="number" min="0" max="100000000" value="0"></div>
-<div class="field"><label for="wastage">Material wastage allowance (%)</label><input id="wastage" type="number" min="0" max="30" step=".5" value="5"></div>
+<div class="three"><div class="field"><label for="cementWaste">Cement wastage (%)</label><input id="cementWaste" type="number" min="0" max="30" step=".5" value="5"></div><div class="field"><label for="steelWaste">Steel wastage (%)</label><input id="steelWaste" type="number" min="0" max="30" step=".5" value="3"></div><div class="field"><label for="tileWaste">Tile wastage (%)</label><input id="tileWaste" type="number" min="0" max="30" step=".5" value="10"></div><div class="field"><label for="brickWaste">Brick wastage (%)</label><input id="brickWaste" type="number" min="0" max="30" step=".5" value="8"></div><div class="field"><label for="paintWaste">Paint allowance (%)</label><input id="paintWaste" type="number" min="0" max="30" step=".5" value="5"></div></div>
 </div></div>
 <div class="subhead">4. Interior design and room fit-out</div>
 <div class="hint">Enter the extra interior budget you want to add. Standard basic finishes may already be part of the city benchmark.</div>
@@ -112,7 +112,7 @@
 <div class="field"><label for="falseCeiling">False ceiling and decorative lighting (₹)</label><input id="falseCeiling" type="number" min="0" max="100000000" value="0"></div>
 <div class="field"><label for="tvUnit">TV unit, wall panels and living room (₹)</label><input id="tvUnit" type="number" min="0" max="100000000" value="0"></div>
 <div class="field"><label for="bathUpgrade">Bathroom vanity, shower and fittings upgrade (₹)</label><input id="bathUpgrade" type="number" min="0" max="100000000" value="0"></div>
-<div class="field"><label for="furniture">Loose furniture and appliances (₹)</label><input id="furniture" type="number" min="0" max="100000000" value="0"></div>
+<div class="field"><label for="furniture">Loose furniture and appliances (₹)</label><input id="furniture" type="number" min="0" max="100000000" value="0"></div><div class="field"><label for="studyPooja">Study, pooja and storage room interiors (₹)</label><input id="studyPooja" type="number" min="0" max="100000000" value="0"></div>
 </div>
 <div class="subhead">5. Exterior and outdoor work</div>
 <div class="two">
@@ -169,7 +169,7 @@
 <div class="chart-grid">
 <div class="chartbox"><h3>Estimated budget distribution</h3><canvas id="costChart" role="img" aria-label="Doughnut chart of estimated construction cost categories"></canvas><div class="legend" id="costLegend"></div></div>
 <div class="chartbox"><h3>Stage-wise budget allocation</h3><canvas id="stageChart" role="img" aria-label="Bar chart of construction stage budget allocations"></canvas></div>
-<div class="chartbox wide"><h3>Budget comparison by construction quality</h3><canvas id="qualityChart" role="img" aria-label="Bar chart comparing basic, standard, premium and luxury estimates"></canvas></div>
+<div class="chartbox wide"><h3>Budget comparison by construction quality</h3><canvas id="qualityChart" role="img" aria-label="Bar chart comparing basic, standard, premium and luxury estimates"></canvas></div><div class="chartbox wide"><h3>How built-up area changes the estimated budget</h3><canvas id="areaChart" role="img" aria-label="Line chart showing estimated budget at different built-up areas"></canvas></div>
 </div>
 <div class="content"><h2>Cost breakdown</h2><p>Each line is shown separately so you can identify which selections are increasing the project budget.</p><div class="table-wrap"><table><thead><tr><th>Cost head</th><th>Estimate</th><th>Basis</th></tr></thead><tbody id="costRows"></tbody></table></div></div>
 <div class="content"><h2>Preliminary material quantity planner</h2><p>These are broad planning ranges for an RCC-frame residential estimate. They are not a bill of quantities. Final quantities must be measured from architectural and structural drawings.</p><div class="table-wrap"><table><thead><tr><th>Material</th><th>Estimated quantity</th><th>Editable unit rate</th><th>Reference material value*</th></tr></thead><tbody id="materialRows"></tbody></table></div><p class="hint">*Reference material value is a separate procurement cross-check. It is not added to the turnkey construction budget because the benchmark rate already includes standard materials. Brick and paint estimates appear only when you enter wall / paintable area.</p></div>
@@ -291,22 +291,22 @@ function read(){
  const qualityFactor=factors[quality]||1;
  const base=area*standardRate*qualityFactor*floorFactor;
  const site=val('siteWork'),upgrade=val('materialUpgrade');
- const interior=val('kitchen')+val('wardrobes')+val('falseCeiling')+val('tvUnit')+val('bathUpgrade')+val('furniture');
+ const interior=val('kitchen')+val('wardrobes')+val('falseCeiling')+val('tvUnit')+val('bathUpgrade')+val('furniture')+val('studyPooja');
  const exterior=val('elevation')+val('boundary')+val('paving')+val('landscape')+val('terrace')+val('externalLights');
  const professional=val('architect')+val('approvals');
  const services=val('connections')+val('borewell')+val('septic')+val('liftSolar');
  const other=val('demolition')+val('otherCosts');
  const subtotal=base+site+upgrade+interior+exterior+professional+services+other;
  const reserve=subtotal*val('contingency')/100;
- return{state:$('state').value,city:$('city').value==='__other'?'Other city / town':$('city').value,cityData:city,quality:quality,qualityLabel:$('quality').selectedOptions[0].textContent,area:area,plot:val('plotArea'),floors:floors,floorFactor:floorFactor,bedrooms:val('bedrooms'),bathrooms:val('bathrooms'),rate:standardRate,qualityFactor:qualityFactor,base:base,site:site,upgrade:upgrade,interior:interior,exterior:exterior,professional:professional,services:services,other:other,subtotal:subtotal,reserve:reserve,total:subtotal+reserve,contingency:val('contingency'),wastage:val('wastage'),wallArea:val('wallArea'),paintArea:val('paintArea'),cementPrice:val('cementPrice'),steelPrice:val('steelPrice'),brickPrice:val('brickPrice'),tilePrice:val('tilePrice'),paintPrice:val('paintPrice'),paintCoverage:val('paintCoverage'),materials:{cement:$('cementType').value,steel:$('steelType').value,wall:$('wallType').value,floor:$('floorType').value,window:$('windowType').value,door:$('doorType').value,paint:$('paintType').value,sanitary:$('sanitaryType').value},structure:$('structure').value};
+ return{state:$('state').value,city:$('city').value==='__other'?'Other city / town':$('city').value,cityData:city,quality:quality,qualityLabel:$('quality').selectedOptions[0].textContent,area:area,plot:val('plotArea'),floors:floors,floorFactor:floorFactor,bedrooms:val('bedrooms'),bathrooms:val('bathrooms'),rate:standardRate,qualityFactor:qualityFactor,base:base,site:site,upgrade:upgrade,interior:interior,exterior:exterior,professional:professional,services:services,other:other,subtotal:subtotal,reserve:reserve,total:subtotal+reserve,contingency:val('contingency'),cementWaste:val('cementWaste'),steelWaste:val('steelWaste'),tileWaste:val('tileWaste'),brickWaste:val('brickWaste'),paintWaste:val('paintWaste'),wallArea:val('wallArea'),paintArea:val('paintArea'),cementPrice:val('cementPrice'),steelPrice:val('steelPrice'),brickPrice:val('brickPrice'),tilePrice:val('tilePrice'),paintPrice:val('paintPrice'),paintCoverage:val('paintCoverage'),materials:{cement:$('cementType').value,steel:$('steelType').value,wall:$('wallType').value,floor:$('floorType').value,window:$('windowType').value,door:$('doorType').value,paint:$('paintType').value,sanitary:$('sanitaryType').value},structure:$('structure').value};
 }
 function validate(x){
  if(!(x.area>=100&&x.area<=500000))return'Enter a valid total built-up area between 100 and 500,000 sq. ft.';
  if(!(x.rate>0&&x.rate<=20000))return'Choose a benchmark city or enter a valid local standard rate.';
  if(!(x.plot>=0)||x.floors<1||x.floors>6)return'Check the plot area and number of floors.';
- const numeric=['siteWork','materialUpgrade','kitchen','wardrobes','falseCeiling','tvUnit','bathUpgrade','furniture','elevation','boundary','paving','landscape','terrace','externalLights','architect','approvals','connections','borewell','septic','liftSolar','demolition','otherCosts','wallArea','paintArea'];
+ const numeric=['siteWork','materialUpgrade','kitchen','wardrobes','falseCeiling','tvUnit','bathUpgrade','furniture','studyPooja','elevation','boundary','paving','landscape','terrace','externalLights','architect','approvals','connections','borewell','septic','liftSolar','demolition','otherCosts','wallArea','paintArea'];
  for(const id of numeric){if(val(id)<0)return'Please enter zero or a positive amount in all cost fields.';}
- if(x.contingency<0||x.contingency>30)return'Contingency must be between 0% and 30%.';
+ if(x.contingency<0||x.contingency>30)return'Contingency must be between 0% and 30%.';for(const id of ['cementWaste','steelWaste','tileWaste','brickWaste','paintWaste'])if(val(id)<0||val(id)>30)return'Each material wastage allowance must be between 0% and 30%.';
  return'';
 }
 function render(x){
@@ -333,19 +333,19 @@ function render(x){
  ['Estimated total project budget',x.total,'Subtotal + contingency']
  ];
  $('costRows').innerHTML=rows.map((r,i)=>'<tr'+(i===rows.length-1?' style="font-weight:900;background:#f3f8ff"':'')+'><td>'+r[0]+'</td><td>'+money(r[1])+'</td><td>'+r[2]+'</td></tr>').join('');
- const cementLow=x.area*.40*(1+x.wastage/100),cementHigh=x.area*.48*(1+x.wastage/100),cementMid=x.area*.44*(1+x.wastage/100);
- const steelLow=x.area*3.5*(1+x.wastage/100),steelHigh=x.area*4.5*(1+x.wastage/100),steelMid=x.area*4*(1+x.wastage/100);
- const tileQty=x.area*(1+x.wastage/100);
+ const cementLow=x.area*.40*(1+x.cementWaste/100),cementHigh=x.area*.48*(1+x.cementWaste/100),cementMid=x.area*.44*(1+x.cementWaste/100);
+ const steelLow=x.area*3.5*(1+x.steelWaste/100),steelHigh=x.area*4.5*(1+x.steelWaste/100),steelMid=x.area*4*(1+x.steelWaste/100);
+ const tileQty=x.area*(1+x.tileWaste/100);
  const mats=[
  ['Cement (50 kg bags)',nfmt.format(Math.ceil(cementLow))+'–'+nfmt.format(Math.ceil(cementHigh))+' bags',money(x.cementPrice)+' / bag',money(cementMid*x.cementPrice)],
  ['TMT reinforcement steel',nfmt.format(Math.ceil(steelLow))+'–'+nfmt.format(Math.ceil(steelHigh))+' kg',money(x.steelPrice)+' / kg',money(steelMid*x.steelPrice)],
  ['Floor tiles (approx.)',nfmt.format(Math.ceil(tileQty))+' sq. ft.',money(x.tilePrice)+' / sq. ft.',money(tileQty*x.tilePrice)]
  ];
- if(x.wallArea>0){const bricksLow=x.wallArea*8*(1+x.wastage/100),bricksHigh=x.wallArea*12*(1+x.wastage/100),bricksMid=x.wallArea*10*(1+x.wastage/100);mats.push(['Masonry bricks (based on entered wall area)',nfmt.format(Math.ceil(bricksLow))+'–'+nfmt.format(Math.ceil(bricksHigh))+' pieces',money(x.brickPrice)+' / piece',money(bricksMid*x.brickPrice)]);}
- if(x.paintArea>0&&x.paintCoverage>0){const litres=x.paintArea/x.paintCoverage*(1+x.wastage/100);mats.push(['Paint (based on entered paintable area)',litres.toFixed(1)+' litres',money(x.paintPrice)+' / litre',money(litres*x.paintPrice)]);}
+ if(x.wallArea>0){const bricksLow=x.wallArea*8*(1+x.brickWaste/100),bricksHigh=x.wallArea*12*(1+x.brickWaste/100),bricksMid=x.wallArea*10*(1+x.brickWaste/100);mats.push(['Masonry bricks (based on entered wall area)',nfmt.format(Math.ceil(bricksLow))+'–'+nfmt.format(Math.ceil(bricksHigh))+' pieces',money(x.brickPrice)+' / piece',money(bricksMid*x.brickPrice)]);}
+ if(x.paintArea>0&&x.paintCoverage>0){const litres=x.paintArea/x.paintCoverage*(1+x.paintWaste/100);mats.push(['Paint (based on entered paintable area)',litres.toFixed(1)+' litres',money(x.paintPrice)+' / litre',money(litres*x.paintPrice)]);}
  $('materialRows').innerHTML=mats.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>').join('');
  $('stageRows').innerHTML=stageData.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'%</td><td>'+money(x.base*r[1]/100)+'</td></tr>').join('');
- drawCostChart(x);drawStageChart(x);drawQualityChart(x);
+ drawCostChart(x);drawStageChart(x);drawQualityChart(x);drawAreaChart(x);
  $('results').classList.add('show');latest={x:x,materials:mats};$('error').classList.remove('show');
 }
 function canvasSetup(id){const c=$(id),dpr=window.devicePixelRatio||1,w=c.clientWidth||600,h=c.clientHeight||245;c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);const ctx=c.getContext('2d');ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);return{ctx,w,h};}
@@ -361,6 +361,7 @@ function drawStageChart(x){
  const{ctx,w,h}=canvasSetup('stageChart');const left=125,right=12,top=14,bottom=14,pw=w-left-right,rowH=(h-top-bottom)/stageData.length,max=x.base*.36||1;
  stageData.forEach((r,i)=>{const y=top+i*rowH+rowH*.25,bw=pw*(x.base*r[1]/100)/max;ctx.fillStyle='#52627a';ctx.font='10px Inter, sans-serif';ctx.textAlign='right';ctx.fillText(r[0].length>20?r[0].slice(0,19)+'…':r[0],left-8,y+10);ctx.fillStyle='#eaf0f8';ctx.fillRect(left,y,pw,rowH*.48);ctx.fillStyle='#1769e0';ctx.fillRect(left,y,Math.max(2,bw),rowH*.48);ctx.fillStyle='#34445c';ctx.textAlign='left';ctx.font='9px Inter, sans-serif';ctx.fillText(Math.round(r[1])+'% · '+money(x.base*r[1]/100),left+Math.min(pw-70,bw+5),y+10);});
 }
+function drawAreaChart(x){const{ctx,w,h}=canvasSetup('areaChart');const left=62,right=16,top=22,bottom=35,pw=w-left-right,ph=h-top-bottom,mults=[.5,.75,1,1.25,1.5],extra=x.site+x.upgrade+x.interior+x.exterior+x.professional+x.services+x.other,maxArea=Math.max.apply(null,mults)*x.area,vals=mults.map(m=>(x.area*m*x.rate*x.qualityFactor*x.floorFactor+extra)*(1+x.contingency/100)),max=Math.max.apply(null,vals)*1.12||1;ctx.font='10px Inter, sans-serif';ctx.textAlign='right';ctx.fillStyle='#64748b';ctx.strokeStyle='#e7edf5';for(let i=0;i<=4;i++){const y=top+ph*i/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();ctx.fillText(money(max*(1-i/4)),left-6,y+3);}ctx.beginPath();vals.forEach((v,i)=>{const px=left+pw*i/(vals.length-1),py=top+ph*(1-v/max);i?ctx.lineTo(px,py):ctx.moveTo(px,py);});ctx.strokeStyle='#1769e0';ctx.lineWidth=2.5;ctx.stroke();vals.forEach((v,i)=>{const px=left+pw*i/(vals.length-1),py=top+ph*(1-v/max);ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fillStyle='#0f9d72';ctx.fill();ctx.fillStyle='#52627a';ctx.textAlign='center';ctx.font='9px Inter, sans-serif';ctx.fillText(nfmt.format(x.area*mults[i])+' sq ft',px,h-10);});}
 function drawQualityChart(x){
  const{ctx,w,h}=canvasSetup('qualityChart');const labels=['Basic','Standard','Premium','Luxury'],vals=labels.map(k=>x.area*x.rate*(factors[k.toLowerCase()])*x.floorFactor),max=Math.max.apply(null,vals)*1.15||1,left=90,right=90,top=18,rowH=(h-35)/4,pw=w-left-right;
  labels.forEach((lab,i)=>{const y=top+i*rowH;ctx.fillStyle='#52627a';ctx.font='11px Inter, sans-serif';ctx.textAlign='right';ctx.fillText(lab,left-10,y+14);ctx.fillStyle='#edf2f8';ctx.fillRect(left,y,pw,17);ctx.fillStyle=i===labels.indexOf(x.qualityLabel.split(' ')[0])?'#0f9d72':'#5b8def';ctx.fillRect(left,y,pw*vals[i]/max,17);ctx.fillStyle='#34445c';ctx.textAlign='left';ctx.font='10px Inter, sans-serif';ctx.fillText(money(vals[i]),left+pw*vals[i]/max+6,y+13);});
@@ -370,11 +371,11 @@ $('city').addEventListener('change',syncRate);
 $('rateBasis').addEventListener('change',syncRate);
 $('houseForm').addEventListener('submit',e=>{e.preventDefault();const x=read(),err=validate(x);if(err){$('error').textContent=err;$('error').classList.add('show');$('results').classList.remove('show');return;}render(x);});
 $('jumpResults').addEventListener('click',()=>{if(!latest){$('houseForm').requestSubmit();}setTimeout(()=>$('results').scrollIntoView({behavior:'smooth',block:'start'}),50);});
-$('reset').addEventListener('click',()=>{ $('houseForm').reset();$('state').value='Madhya Pradesh';fillCities();$('plotArea').value=1500;$('builtArea').value=1200;$('floors').value='2';$('quality').value='standard';$('bedrooms').value=3;$('bathrooms').value=2;$('contingency').value=10;$('wastage').value=5;$('results').classList.remove('show');$('error').classList.remove('show');latest=null;$('stickyTotal').textContent='₹—';});
+$('reset').addEventListener('click',()=>{ $('houseForm').reset();$('state').value='Madhya Pradesh';fillCities();$('plotArea').value=1500;$('builtArea').value=1200;$('floors').value='2';$('quality').value='standard';$('bedrooms').value=3;$('bathrooms').value=2;$('contingency').value=10;$('cementWaste').value=5;$('steelWaste').value=3;$('tileWaste').value=10;$('brickWaste').value=8;$('paintWaste').value=5;$('results').classList.remove('show');$('error').classList.remove('show');latest=null;$('stickyTotal').textContent='₹—';});
 $('downloadCsv').addEventListener('click',()=>{if(!latest)return;const x=latest.x;const rows=[['House Construction Cost Estimate'],['State',x.state],['City',x.city],['Built-up area sq ft',x.area],['Floors',x.floors],['Quality',x.qualityLabel],['Standard city rate per sq ft',x.rate],[],['Cost head','Amount INR'],['Base construction',x.base],['Site work',x.site],['Material upgrades',x.upgrade],['Interior',x.interior],['Exterior',x.exterior],['Professional and approvals',x.professional],['Services',x.services],['Other costs',x.other],['Subtotal',x.subtotal],['Contingency',x.reserve],['Estimated total',x.total],[],['Material','Estimated quantity','Unit rate','Reference material value'],...latest.materials];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const a=document.createElement('a'),url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download='house-construction-cost-estimate.csv';a.click();URL.revokeObjectURL(url);});
 $('copyReport').addEventListener('click',()=>{if(!latest)return;const x=latest.x;const txt='House Construction Cost Estimate\nLocation: '+x.city+', '+x.state+'\nBuilt-up area: '+x.area+' sq. ft.\nFloors: '+x.floors+'\nQuality: '+x.qualityLabel+'\nBase estimate: '+money(x.base)+'\nSelected add-ons: '+money(x.total-x.base-x.reserve)+'\nContingency: '+money(x.reserve)+'\nEstimated total: '+money(x.total)+'\nCost per sq. ft.: '+money(x.total/x.area)+'\nIndicative planning estimate only; not a contractor quotation.';if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(()=>$('copyReport').textContent='Copied').catch(()=>window.prompt('Copy estimate',txt));else window.prompt('Copy estimate',txt);});
 $('printReport').addEventListener('click',()=>window.print());
-window.addEventListener('resize',()=>{if(latest){drawCostChart(latest.x);drawStageChart(latest.x);drawQualityChart(latest.x);}});
+window.addEventListener('resize',()=>{if(latest){drawCostChart(latest.x);drawStageChart(latest.x);drawQualityChart(latest.x);drawAreaChart(latest.x);}});
 fillStates();$('rateBasis').value='typical';syncRate();$('houseForm').dispatchEvent(new Event('submit',{cancelable:true}));
 })();
 </script>
