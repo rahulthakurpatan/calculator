@@ -17,7 +17,8 @@
     { title:'Step-Up SIP Calculator', subtitle:'Calculate SIP with annual increases', category:'Invest & Mutual Funds', href:'/step-up-sip-calculator/', keywords:'step up sip top up monthly investment' },
     { title:'Fixed Deposit Calculator', subtitle:'Estimate FD interest and maturity value', category:'Savings & Loans', href:'/fd-calculator/', keywords:'fd fixed deposit bank deposit interest maturity' },
     { title:'Business Profit & Loss Tracker', subtitle:'Track business revenue, expenses and profit', category:'Business & Creator', href:'/business-profit-loss-tracker/', keywords:'business income expense profit loss tracker' },
-    { title:'Kundali Money & Dhan Yog Calculator', subtitle:'Explore a traditional astrology-based reading', category:'Family & Goals', href:'/kundali-money-dhan-yog-calculator/', keywords:'kundali dhan yog astrology money' }
+    { title:'Kundali Money & Dhan Yog Calculator', subtitle:'Explore a traditional astrology-based reading', category:'Family & Goals', href:'/kundali-money-dhan-yog-calculator/', keywords:'kundali dhan yog astrology money' },
+    { title:'House Construction Cost Estimator', subtitle:'Estimate city-wise house building cost, materials, interiors and exterior work', category:'Property & Tools', href:'/house-construction-cost-estimator/', keywords:'house construction cost estimator calculator home building cost per square foot city wise state wise material quantity cement steel bricks interiors exterior civil construction budget boq' }
   ];
 
   const mount = document.getElementById('investcalc-search-mount');
