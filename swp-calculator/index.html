@@ -118,11 +118,11 @@
 <h2>SWP sustainability checks</h2>
 <p>These are mathematical break-even estimates under your selected constant-return assumptions. They are not safe withdrawal rates, guaranteed income levels or investment recommendations.</p>
 <div class="three">
-<div class="metric"><span>Monthly withdrawal that exhausts corpus near the end of the period</span><strong id="maxWithdrawal">—</strong></div>
-<div class="metric"><span>Monthly withdrawal that aims to preserve nominal corpus</span><strong id="preserveWithdrawal">—</strong></div>
+<div class="metric"><span>Fixed monthly withdrawal that uses the corpus by the end of the period (no step-up)</span><strong id="maxWithdrawal">—</strong></div>
+<div class="metric"><span>Monthly withdrawal estimate that preserves nominal corpus under these assumptions</span><strong id="preserveWithdrawal">—</strong></div>
 <div class="metric"><span>Corpus required for your current withdrawal plan</span><strong id="requiredCorpus">—</strong></div>
 </div>
-<p class="hint">The first estimate uses the same return, timing and step-up assumptions, with a fixed starting monthly withdrawal. The preservation estimate targets the original corpus at the end of the selected period. Both are solved numerically and are highly sensitive to the return assumption.</p>
+<p class="hint">The first estimate uses fixed monthly withdrawals with no annual step-up and targets a near-zero balance at the end of the selected period. The preservation estimate uses your entered step-up and targets the original nominal corpus at the end. Both are mathematical estimates, not safe withdrawal rates, and are highly sensitive to the return assumption.</p>
 </div>
 <div class="content"><h2>Return and withdrawal stress test</h2><p>Compare how the same starting corpus behaves when assumed annual returns or withdrawals change. This is a deterministic sensitivity check, not a market forecast.</p><div class="stress-grid" id="stressGrid"></div></div>
 <div class="table-title"><h3>Year-wise SWP statement</h3><span class="hint">Amounts in INR</span></div>
@@ -333,7 +333,7 @@ function render(x,sim){
  $('growthEarned').textContent=money(sim.growth);
  $('exhaustion').textContent=sim.exhaustedAt?'Month '+sim.exhaustedAt:'Not exhausted';
  $('realCorpus').textContent=money(sim.balance/Math.pow(1+x.inflation/100,x.years));
- $('withdrawalRate').textContent=pct(x.withdrawal*x.frequency*12/x.corpus*100);
+ $('withdrawalRate').textContent=pct(x.withdrawal*12/x.corpus*100);
  $('unitsRemaining').textContent=num.format(sim.units);
  const firstYear=x.withdrawal*Math.pow(1+x.stepUp/100,0)*Math.min(12/x.frequency,12)*x.frequency;
  $('withdrawalNote').textContent='Planned first-year withdrawal: '+money(x.withdrawal*12)+'. The first-year withdrawal ratio is not a safe withdrawal rate. Tax, exit load and other charges are excluded.';
