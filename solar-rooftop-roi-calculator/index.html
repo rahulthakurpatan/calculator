@@ -117,6 +117,7 @@
 <div class="metric"><span>Year 1 bill savings</span><strong id="outSaving">—</strong></div>
 <div class="metric"><span>25-year net benefit</span><strong id="outLifetime">—</strong></div>
 <div class="metric"><span>Estimated monthly generation</span><strong id="outGeneration">—</strong></div>
+<div class="metric"><span>Approximate panel count</span><strong id="outPanels">—</strong></div>
 <div class="metric"><span>Eligible central subsidy</span><strong id="outSubsidy">—</strong></div>
 <div class="metric"><span>Required roof area</span><strong id="outRoof">—</strong></div>
 <div class="metric"><span>25-year CO₂ avoided</span><strong id="outCo2">—</strong></div>
@@ -342,14 +343,14 @@ function render(d){
  const typical=simulate(d),low=simulate(d,.88),high=simulate(d,1.18);
  const currentBill=d.bill,year1=d.year1Saving,newBill=Math.max(currentBill*.15,currentBill-year1/12);
  $('stickyCost').textContent=money(d.net);
- $('resultSummary').textContent=d.city+', '+d.state+' · '+d.consumer+' · '+d.cap.toFixed(1)+' kW · '+d.system.replace('ongrid','on-grid').replace('offgrid','off-grid');
+ $('resultSummary').textContent=d.city+', '+d.state+' · '+d.consumer+' · '+d.cap.toFixed(1)+' kW · '+d.system.replace('ongrid','on-grid').replace('offgrid','off-grid')+(num($('load').value)>0&&d.cap>num($('load').value)?' · capacity exceeds entered sanctioned load; check DISCOM approval':'');
  $('payback').textContent=typical.yearPayback?'About '+typical.yearPayback+' years':'More than 25 years';
  $('paybackText').textContent=typical.yearPayback?'Estimated cumulative operating savings recover the net investment in year '+typical.yearPayback+'. This is a scenario, not a guaranteed payback.':'The model does not recover the initial net investment within 25 years under these assumptions.';
  $('outCapacity').textContent=d.cap.toFixed(1)+' kW';
  $('outNetCost').textContent=money(d.net);
  $('outSaving').textContent=money(year1/12)+'/month';
  $('outLifetime').textContent=money(typical.netBenefit);
- $('outGeneration').textContent=fmt(d.generation/12)+' units / month';
+ $('outGeneration').textContent=fmt(d.generation/12)+' units / month';\n $('outPanels').textContent=fmt(Math.ceil(d.cap*1000/550))+' × 550 W panels';
  $('outSubsidy').textContent=money(d.subsidy);
  $('outRoof').textContent=fmt(d.roofRequired)+' sq. ft.';
  $('outCo2').textContent=(d.generation*25*.0007).toFixed(1)+' tonnes';
