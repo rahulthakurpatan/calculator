@@ -350,7 +350,8 @@ function render(d){
  $('outNetCost').textContent=money(d.net);
  $('outSaving').textContent=money(year1/12)+'/month';
  $('outLifetime').textContent=money(typical.netBenefit);
- $('outGeneration').textContent=fmt(d.generation/12)+' units / month';\n $('outPanels').textContent=fmt(Math.ceil(d.cap*1000/550))+' × 550 W panels';
+ $('outGeneration').textContent=fmt(d.generation/12)+' units / month';
+ $('outPanels').textContent=fmt(Math.ceil(d.cap*1000/550))+' × 550 W panels';
  $('outSubsidy').textContent=money(d.subsidy);
  $('outRoof').textContent=fmt(d.roofRequired)+' sq. ft.';
  $('outCo2').textContent=(d.generation*25*.0007).toFixed(1)+' tonnes';
