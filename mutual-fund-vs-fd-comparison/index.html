@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <!-- Existing site-wide analytics tag; kept consistent with the current InvestCalc implementation. -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Compare estimated mutual fund and fixed deposit returns with optional tax estimates. See invested amount, growth, maturity value and year-wise projections using your own assumptions.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://returnoninvestmentcalculator.in/mutual-fund-vs-fd-comparison/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InvestCalc">
+  <meta property="og:title" content="Mutual Fund vs FD Calculator – Compare Returns & Tax">
+  <meta property="og:description" content="Compare estimated mutual fund and fixed deposit growth, tax impact and final value side by side.">
+  <meta property="og:url" content="https://returnoninvestmentcalculator.in/mutual-fund-vs-fd-comparison/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mutual Fund vs FD Calculator | InvestCalc">
+  <meta name="twitter:description" content="Compare estimated mutual fund and FD returns with optional tax assumptions.">
+  <title>Mutual Fund vs FD Calculator – Compare Returns & Tax | InvestCalc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="/assets/js/common-pushdotify.js" defer></script>
+  <script src="/assets/js/common-branding.js" defer></script>
+  <style>
+    :root{--ink:#17243a;--muted:#64748b;--blue:#1769e0;--line:#e3e9f1;--bg:#f4f7fb;--green:#0b8d65;--gold:#d6b36a;--red:#c24141;--shadow:0 14px 36px rgba(20,39,68,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+    .hero{padding:45px 0 34px;background:linear-gradient(180deg,#fff 0%,#f4f7fb 100%)}.hero-grid{display:grid;grid-template-columns:1fr .98fr;gap:34px;align-items:start}.eyebrow{display:inline-block;padding:6px 11px;border-radius:30px;background:#edf4ff;color:#1769e0;font-size:11px;font-weight:850;letter-spacing:.08em}.hero h1{font-size:clamp(34px,4.5vw,49px);line-height:1.12;letter-spacing:-1.8px;margin:17px 0 13px}.intro{max-width:610px;color:var(--muted);font-size:16px;margin:0 0 20px}.trust{display:flex;flex-wrap:wrap;gap:10px 17px;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.panel h2{font-size:19px;line-height:1.3;margin:0}.tag{font-size:10px;font-weight:800;color:var(--green);background:#e9f8f1;padding:5px 9px;border-radius:30px;white-space:nowrap}.field{margin:13px 0}.field label,.field legend{display:block;margin-bottom:6px;color:#52627a;font-size:12px;font-weight:750}.field input,.field select{width:100%;min-height:44px;border:1px solid #d8e1ec;border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink);font:inherit;font-size:15px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.field small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice{display:flex;gap:9px;flex-wrap:wrap}.choice label{display:flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#43536a;font-size:12px;font-weight:700;cursor:pointer}.choice input{accent-color:var(--blue);margin:0;min-height:0;width:auto}.btn{width:100%;min-height:47px;border:0;border-radius:10px;background:var(--blue);color:#fff;font:inherit;font-weight:800;cursor:pointer;margin-top:8px}.btn:hover{filter:brightness(.95)}.btn.alt{background:#edf4ff;color:var(--blue)}.error{display:none;margin-top:12px;padding:10px 12px;border:1px solid #ffd7d7;border-radius:9px;background:#fff1f1;color:#a52d2d;font-size:12px}.error.show{display:block}
+    .section{padding:40px 0}.section-head{text-align:center;max-width:760px;margin:0 auto 22px}.section-head h2{font-size:clamp(24px,3vw,31px);letter-spacing:-.8px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted)}.results{display:none}.results.show{display:block}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.result-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.result-card h3{font-size:13px;color:#52627a;margin:0 0 7px}.result-card strong{font-size:clamp(20px,2.5vw,27px);letter-spacing:-.7px;display:block;overflow-wrap:anywhere}.result-card small{font-size:11px;color:var(--muted)}.mf{border-top:3px solid #1769e0}.fd{border-top:3px solid #0b8d65}.winner{background:#f0f8f4;border-color:#b8e1cc}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.compare-box{background:#fff;border:1px solid var(--line);border-radius:13px;padding:17px}.compare-box h3{font-size:15px;margin:0 0 12px}.line-item{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #edf1f6;font-size:12px}.line-item:last-child{border-bottom:0}.line-item span{color:var(--muted)}.line-item strong{text-align:right;overflow-wrap:anywhere}.chart-panel{margin-top:15px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.chart-panel h3{font-size:15px;margin:0 0 10px}.chart-wrap{height:280px;position:relative}.chart-wrap canvas{width:100%;height:100%;display:block}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:13px;margin-top:15px}table{width:100%;border-collapse:collapse;min-width:680px;font-size:12px}th,td{padding:11px 13px;text-align:right;border-bottom:1px solid #edf1f6;white-space:nowrap}th{background:#f7f9fc;color:#52627a;font-weight:800}th:first-child,td:first-child{text-align:left}tbody tr:last-child td{border-bottom:0}.table-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.table-actions .btn{width:auto;padding:0 17px}.content{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px}.content h2{font-size:24px;margin:25px 0 9px;letter-spacing:-.5px}.content h2:first-child{margin-top:0}.content h3{font-size:17px;margin:19px 0 7px}.content p,.content li{color:#4b5b70;font-size:14px}.content ul{padding-left:21px}.note{padding:13px 15px;border-left:3px solid var(--gold);background:#fffaf0;color:#66532a;border-radius:8px;font-size:12px;margin:15px 0}.faq{border-bottom:1px solid var(--line);padding:13px 0}.faq summary{font-weight:750;cursor:pointer;font-size:14px}.faq p{margin:9px 0 0}.disclaimer{color:#68778b;font-size:11px;padding:0 0 28px}.hidden{display:none!important}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-copy{max-width:760px}.result-grid{grid-template-columns:1fr 1fr}.result-card:last-child{grid-column:1/-1}}@media(max-width:600px){.wrap{width:calc(100% - 28px)}.hero{padding:30px 0 25px}.panel{padding:17px}.two,.comparison{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.result-card:last-child{grid-column:auto}.content{padding:18px}.section{padding:28px 0}.chart-wrap{height:230px}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebPage","name":"Mutual Fund vs FD Calculator","url":"https://returnoninvestmentcalculator.in/mutual-fund-vs-fd-comparison/","description":"Compare estimated mutual fund and fixed deposit returns, including optional tax assumptions."},
+    {"@type":"SoftwareApplication","name":"Mutual Fund vs FD Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://returnoninvestmentcalculator.in/mutual-fund-vs-fd-comparison/","description":"A browser-based calculator for comparing lump-sum mutual fund and fixed deposit projections."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Mutual Fund vs FD Calculator","item":"https://returnoninvestmentcalculator.in/mutual-fund-vs-fd-comparison/"}]}
+  ]}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero"><div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">INVESTMENT COMPARISON TOOL</span>
+        <h1>Mutual Fund vs FD Calculator</h1>
+        <p class="intro">Compare how a one-time investment may grow in a mutual fund and a fixed deposit. Adjust returns, tenure and tax assumptions to understand the difference between estimated pre-tax and post-tax values.</p>
+        <div class="trust"><span>Free to use</span><span>Instant comparison</span><span>Runs in your browser</span><span>Custom assumptions</span></div>
+        <div class="note"><strong>Important:</strong> Mutual fund returns are market-linked and not guaranteed. FD rates and payout rules depend on the bank and deposit. This tool is an illustration, not a prediction or investment recommendation.</div>
+      </div>
+      <section class="panel" aria-labelledby="form-title">
+        <div class="panel-head"><h2 id="form-title">Enter investment details</h2><span class="tag">COMPARE BOTH</span></div>
+        <form id="compare-form" novalidate>
+          <div class="field"><label for="principal">One-time investment amount (₹)</label><input id="principal" type="number" min="1" max="1000000000" step="1000" value="500000" inputmode="decimal"><small>Same starting amount is used for both options.</small></div>
+          <div class="two">
+            <div class="field"><label for="years">Investment period (years)</label><input id="years" type="number" min="1" max="50" step="1" value="10"></div>
+            <div class="field"><label for="mf-rate">Expected mutual fund return (% p.a.)</label><input id="mf-rate" type="number" min="-50" max="50" step=".1" value="12"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label for="fd-rate">FD interest rate (% p.a.)</label><input id="fd-rate" type="number" min="0" max="30" step=".05" value="7"></div>
+            <div class="field"><label for="fd-frequency">FD compounding</label><select id="fd-frequency"><option value="4" selected>Quarterly</option><option value="12">Monthly</option><option value="2">Half-yearly</option><option value="1">Yearly</option></select></div>
+          </div>
+          <div class="field"><label for="tax-mode">Tax estimate</label><select id="tax-mode"><option value="yes" selected>Include simplified tax estimate</option><option value="no">Show pre-tax comparison only</option></select></div>
+          <div id="tax-fields">
+            <div class="two">
+              <div class="field"><label for="fd-tax">Your effective tax rate on FD interest (%)</label><input id="fd-tax" type="number" min="0" max="50" step=".1" value="20.8"><small>Enter your applicable rate including cess, if relevant.</small></div>
+              <div class="field"><label for="mf-kind">Mutual fund tax category</label><select id="mf-kind"><option value="equity" selected>Equity-oriented fund (eligible for equity tax rules)</option><option value="custom">Other / debt / international / unsure</option></select></div>
+            </div>
+            <div id="equity-tax-fields" class="two">
+              <div class="field"><label for="stcg-rate">Equity STCG tax rate (%)</label><input id="stcg-rate" type="number" min="0" max="50" step=".1" value="20"></div>
+              <div class="field"><label for="ltcg-rate">Equity LTCG tax rate (%)</label><input id="ltcg-rate" type="number" min="0" max="50" step=".1" value="12.5"></div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="ltcg-exemption">Unused annual equity LTCG exemption (₹)</label><input id="ltcg-exemption" type="number" min="0" max="125000" step="1000" value="125000"><small>Set to zero if already fully used by other eligible gains.</small></div>
+              <div class="field"><label for="mf-custom-tax">Other fund effective tax rate (%)</label><input id="mf-custom-tax" type="number" min="0" max="50" step=".1" value="30"><small>Use only if you know the applicable effective rate.</small></div>
+            </div>
+          </div>
+          <button class="btn" type="submit">Compare Mutual Fund vs FD</button>
+          <button class="btn alt" type="button" id="reset">Reset to defaults</button>
+          <div id="error" class="error" role="alert" aria-live="polite"></div>
+        </form>
+      </section>
+    </div></section>
+    <section class="section results" id="results" aria-live="polite">
+      <div class="wrap">
+        <div class="section-head"><h2>Your comparison result</h2><p>Figures are estimates based on the assumptions entered above.</p></div>
+        <div class="result-grid">
+          <article class="result-card mf"><h3>Mutual fund estimated value</h3><strong id="mf-net">—</strong><small id="mf-net-caption">After estimated tax</small></article>
+          <article class="result-card fd"><h3>FD estimated value</h3><strong id="fd-net">—</strong><small id="fd-net-caption">After estimated tax</small></article>
+          <article class="result-card" id="winner-card"><h3>Estimated difference</h3><strong id="difference">—</strong><small id="winner-text">Based on your assumptions</small></article>
+        </div>
+        <div class="comparison">
+          <article class="compare-box"><h3>Mutual fund breakdown</h3><div class="line-item"><span>Amount invested</span><strong id="mf-invested">—</strong></div><div class="line-item"><span>Estimated gain before tax</span><strong id="mf-gain">—</strong></div><div class="line-item"><span>Estimated tax</span><strong id="mf-tax">—</strong></div><div class="line-item"><span>Value after estimated tax</span><strong id="mf-final">—</strong></div><div class="line-item"><span>Annualised return assumption</span><strong id="mf-cagr">—</strong></div></article>
+          <article class="compare-box"><h3>Fixed deposit breakdown</h3><div class="line-item"><span>Amount deposited</span><strong id="fd-invested">—</strong></div><div class="line-item"><span>Interest before tax</span><strong id="fd-gain">—</strong></div><div class="line-item"><span>Estimated tax paid over tenure</span><strong id="fd-tax-out">—</strong></div><div class="line-item"><span>Value after estimated tax</span><strong id="fd-final">—</strong></div><div class="line-item"><span>FD quoted rate</span><strong id="fd-cagr">—</strong></div></article>
+        </div>
+        <div class="chart-panel"><h3>Projected value over time</h3><div class="chart-wrap"><canvas id="growth-chart" role="img" aria-label="Line chart comparing projected mutual fund and fixed deposit values over time"></canvas></div><small style="color:#64748b;font-size:10px">The chart shows estimated end-of-year values after the selected tax assumptions. Values are illustrative, not guaranteed.</small></div>
+        <div class="table-wrap"><table><thead><tr><th>Year</th><th>MF value before tax</th><th>MF estimated value after tax*</th><th>FD value before tax</th><th>FD estimated value after tax</th></tr></thead><tbody id="year-rows"></tbody></table></div>
+        <div class="table-actions"><button class="btn alt" type="button" id="download-csv">Download year-wise CSV</button><button class="btn alt" type="button" id="copy">Copy summary</button><button class="btn alt" type="button" onclick="window.print()">Print comparison</button></div>
+        <p style="font-size:10px;color:#64748b">*Mutual fund post-tax values in the yearly table are indicative liquidation values if the investment were sold at that year-end, with the simplified exemption assumption applied independently. FD tax is approximated as annual tax on interest, deducted from the deposit balance once per year.</p>
+      </div>
+    </section>
+    <section class="section"><div class="wrap content">
+      <h2>How to use the Mutual Fund vs FD Calculator</h2>
+      <ol>
+        <li>Enter the same lump-sum amount for both options.</li><li>Choose how long you plan to keep the money invested.</li><li>Enter an assumed annual mutual fund return and the FD rate offered by your bank.</li><li>Select the FD compounding frequency stated in the deposit terms.</li><li>Optionally include tax assumptions, then compare pre-tax and estimated post-tax values.</li>
+      </ol>
+      <h2>How the comparison is calculated</h2>
+      <h3>Mutual fund projection</h3><p>The calculator uses annual compounding for the assumed mutual fund CAGR: <strong>Future Value = Investment × (1 + annual return)<sup>years</sup></strong>. This is a mathematical projection. Actual mutual fund NAVs fluctuate, returns are uneven, and the assumed CAGR may not occur.</p>
+      <h3>Fixed deposit projection</h3><p>For a cumulative FD, the pre-tax estimate uses the selected compounding frequency: <strong>Future Value = Principal × (1 + annual rate / compounding periods)<sup>compounding periods × years</sup></strong>. Actual banks may use specific day-count, payout and rounding conventions.</p>
+      <h3>Tax assumptions</h3><p>FD interest is generally taxable according to the depositor’s applicable income-tax slab. This calculator approximates tax by applying your entered effective tax rate to each year's interest and deducting that estimate from the FD balance annually. TDS is not an additional tax; it is a collection mechanism and may be adjustable in your tax return.</p>
+      <p>For an equity-oriented mutual fund, the optional simplified estimate applies the entered STCG rate to gains on holdings of 12 months or less, and the entered LTCG rate to eligible gains after 12 months, after subtracting the unused annual exemption entered by you. Actual tax depends on the fund's legal classification, acquisition/redemption dates, other capital gains, losses, surcharge, cess, residency and the law applicable for the relevant tax year. For other fund categories, enter an effective tax rate only if you know the applicable treatment.</p>
+      <div class="note">Tax treatment can change. The equity-fund defaults are illustrative inputs based on currently published Indian tax guidance, not a personalised tax computation. The annual LTCG exemption is shared across eligible gains and is not a per-fund allowance.</div>
+      <h2>Mutual Fund vs FD: key differences</h2>
+      <ul><li><strong>Return certainty:</strong> an FD has a contracted rate subject to its terms; a mutual fund has no assured return.</li><li><strong>Risk:</strong> mutual funds carry market, credit, interest-rate or other scheme-specific risks. Bank deposits have institution and applicable deposit-insurance limits to consider.</li><li><strong>Liquidity:</strong> mutual funds may have exit loads, settlement timelines or restrictions; FDs may have premature-closure penalties.</li><li><strong>Tax:</strong> FD interest and mutual fund capital gains are generally taxed under different rules.</li><li><strong>Inflation:</strong> compare post-tax returns with inflation to understand possible changes in purchasing power.</li></ul>
+      <h2>Worked example</h2><p>Suppose you invest ₹5,00,000 for 10 years, assume a 12% annual mutual fund CAGR and a 7% cumulative FD rate compounded quarterly. The calculator projects both outcomes using those assumptions. Change the inputs to match an actual FD quote and a return scenario you want to test. The mutual fund figure is not a forecast and should not be treated as an expected or guaranteed result.</p>
+      <h2>Frequently asked questions</h2>
+      <details class="faq"><summary>1. Is a mutual fund better than an FD?</summary><p>There is no universal answer. An FD offers a contracted interest rate subject to terms, while mutual fund returns are market-linked. The suitable choice depends on time horizon, risk capacity, liquidity needs, tax position and goals.</p></details>
+      <details class="faq"><summary>2. Are mutual fund returns guaranteed?</summary><p>No. Mutual fund returns are not guaranteed. The rate entered here is only an assumption used to illustrate a possible compound-growth path.</p></details>
+      <details class="faq"><summary>3. Is FD interest taxable in India?</summary><p>Generally, FD interest is taxable under the applicable income-tax rules and is usually added to taxable income. Your actual tax depends on your income, regime and applicable provisions.</p></details>
+      <details class="faq"><summary>4. Does TDS on FD mean my final tax is paid?</summary><p>No. TDS is tax deducted at source. Your final liability is determined in your income-tax return; you may have additional tax payable or a refund depending on your total income and tax credits.</p></details>
+      <details class="faq"><summary>5. What mutual fund tax rates does this tool use?</summary><p>For the equity-oriented category, the default illustration uses 20% for short-term gains and 12.5% for long-term gains above the entered unused ₹1,25,000 annual exemption. Verify the law and your exact eligibility before relying on a tax figure.</p></details>
+      <details class="faq"><summary>6. Does this calculator support debt mutual funds?</summary><p>It allows a custom effective tax-rate assumption for other fund categories. Debt fund taxation can depend on acquisition date and statutory classification, so the tool does not claim to calculate every debt-fund tax case automatically.</p></details>
+      <details class="faq"><summary>7. Does it include exit load, expense ratio or FD penalties?</summary><p>No. The basic projection does not separately model mutual fund expense ratios, exit loads, stamp duty, transaction costs or FD premature-closure penalties. Use a return assumption net of ongoing fund expenses where appropriate and check product documents.</p></details>
+      <details class="faq"><summary>8. Does the calculation store my investment amount?</summary><p>The calculation runs locally in your browser. The page does not request account credentials or bank details. Standard website analytics and notification scripts may operate as described in the site's privacy policy.</p></details>
+      <h2>Related calculators</h2><p>Continue planning with the <a href="/sip-calculator/">SIP Calculator</a>, <a href="/lump-sum-calculator/">Lump Sum Calculator</a>, <a href="/step-up-sip-calculator/">Step-Up SIP Calculator</a>, <a href="/fd-calculator/">Fixed Deposit Calculator</a> and <a href="/">ROI Calculator</a>.</p>
+    </div></section>
+    <div class="wrap disclaimer">InvestCalc provides educational estimates only and does not provide investment, banking, legal or tax advice. Confirm scheme classification, current tax rules, FD terms, deposit insurance, fees and applicable rates with official sources and qualified professionals before making financial decisions.</div>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+  (() => {
+    'use strict';
+    const $=id=>document.getElementById(id);
+    const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n);
+    const pct=n=>Number(n).toFixed(2)+'%';
+    let lastRows=[],lastSummary='';
+    const form=$('compare-form');
+    function showError(message){$('error').textContent=message;$('error').classList.add('show');$('results').classList.remove('show');}
+    function clearError(){$('error').textContent='';$('error').classList.remove('show');}
+    function fdProjection(principal,rate,frequency,years,taxRate){
+      let balance=principal,totalTax=0,rows=[];
+      const fullYears=Math.floor(years),fraction=years-fullYears;
+      for(let y=1;y<=fullYears;y++){
+        const before=balance*Math.pow(1+rate/(100*frequency),frequency);
+        const interest=before-balance,tax=interest*taxRate/100;
+        balance=before-tax;totalTax+=tax;
+        rows.push({year:y,fdGross:before,fdNet:balance,fdTax:tax});
+      }
+      if(fraction>1e-9){
+        const before=balance*Math.pow(1+rate/(100*frequency),frequency*fraction);
+        const interest=before-balance,tax=interest*taxRate/100;
+        balance=before-tax;totalTax+=tax;
+        rows.push({year:years,fdGross:before,fdNet:balance,fdTax:tax});
+      }
+      const gross=principal*Math.pow(1+rate/(100*frequency),frequency*years);
+      return {gross,net:balance,tax:totalTax,rows};
+    }
+    function mfTax(gain,years,kind,stcg,ltcg,exemption,custom){
+      if(gain<=0)return 0;
+      if(kind==='custom')return gain*custom/100;
+      if(years<=1)return gain*stcg/100;
+      return Math.max(0,gain-Math.min(exemption,gain))*ltcg/100;
+    }
+    function drawChart(labels,mf,fd){
+      const canvas=$('growth-chart'),ctx=canvas.getContext('2d'),box=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+      canvas.width=Math.max(300,box.width*dpr);canvas.height=Math.max(180,box.height*dpr);ctx.scale(dpr,dpr);
+      const w=box.width,h=box.height,p={l:62,r:16,t:18,b:35},cw=w-p.l-p.r,ch=h-p.t-p.b;
+      const max=Math.max(1,...mf,...fd)*1.08;
+      const x=i=>p.l+(labels.length===1?cw/2:i/(labels.length-1)*cw),y=v=>p.t+ch-(v/max)*ch;
+      ctx.clearRect(0,0,w,h);ctx.font='10px Inter, sans-serif';ctx.fillStyle='#64748b';ctx.strokeStyle='#e8edf4';ctx.lineWidth=1;
+      for(let i=0;i<=4;i++){const val=max*i/4,yy=y(val);ctx.beginPath();ctx.moveTo(p.l,yy);ctx.lineTo(w-p.r,yy);ctx.stroke();ctx.textAlign='right';ctx.fillText(val>=1000000?'₹'+(val/1000000).toFixed(1)+'m':'₹'+Math.round(val/1000)+'k',p.l-8,yy+3);}
+      function line(data,color){ctx.beginPath();data.forEach((v,i)=>{if(i===0)ctx.moveTo(x(i),y(v));else ctx.lineTo(x(i),y(v));});ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();data.forEach((v,i)=>{ctx.beginPath();ctx.arc(x(i),y(v),3,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();});}
+      line(mf,'#1769e0');line(fd,'#0b8d65');ctx.textAlign='center';ctx.fillStyle='#64748b';
+      labels.forEach((label,i)=>{if(labels.length<=12||i===0||i===labels.length-1||i%Math.ceil(labels.length/8)===0)ctx.fillText(String(label),x(i),h-10);});
+      ctx.fillStyle='#1769e0';ctx.fillRect(p.l,4,9,9);ctx.fillStyle='#52627a';ctx.textAlign='left';ctx.fillText('Mutual fund',p.l+14,13);ctx.fillStyle='#0b8d65';ctx.fillRect(p.l+105,4,9,9);ctx.fillStyle='#52627a';ctx.fillText('FD',p.l+119,13);
+    }
+    function calculate(){
+      clearError();
+      const p=Number($('principal').value),years=Number($('years').value),mr=Number($('mf-rate').value),fr=Number($('fd-rate').value),freq=Number($('fd-frequency').value);
+      const taxOn=$('tax-mode').value==='yes',fdTax=taxOn?Number($('fd-tax').value):0,kind=$('mf-kind').value,stcg=Number($('stcg-rate').value),ltcg=Number($('ltcg-rate').value),exemption=Number($('ltcg-exemption').value),custom=Number($('mf-custom-tax').value);
+      const vals=[p,years,mr,fr,freq,fdTax,stcg,ltcg,exemption,custom];
+      if(!vals.every(Number.isFinite)||p<=0||p>1e9||years<1||years>50||!Number.isInteger(years)||mr< -50||mr>50||fr<0||fr>30||fdTax<0||fdTax>50||stcg<0||stcg>50||ltcg<0||ltcg>50||exemption<0||exemption>125000||custom<0||custom>50){showError('Please check the inputs. Amount must be ₹1–₹1,00,00,00,000; tenure 1–50 whole years; MF return −50% to 50%; FD rate 0% to 30%; and tax rates within 0% to 50%.');return;}
+      const mfGross=p*Math.pow(1+mr/100,years);
+      if(!Number.isFinite(mfGross)||mfGross<0){showError('These assumptions create an invalid or excessively large result. Please adjust the return or amount.');return;}
+      const fd=fdProjection(p,fr,freq,years,fdTax);
+      const mfGain=mfGross-p,mfEstimatedTax=taxOn?mfTax(mfGain,years,kind,stcg,ltcg,exemption,custom):0,mfNet=mfGross-mfEstimatedTax;
+      if(![fd.gross,fd.net,mfNet].every(Number.isFinite)){showError('The result is outside the calculator’s supported numeric range.');return;}
+      const fdNet=taxOn?fd.net:fd.gross,fdTaxTotal=taxOn?fd.tax:0,mfTaxTotal=taxOn?mfEstimatedTax:0;
+      $('mf-net').textContent=money(mfNet);$('fd-net').textContent=money(fdNet);
+      $('mf-net-caption').textContent=taxOn?'After simplified estimated redemption tax':'Before tax';
+      $('fd-net-caption').textContent=taxOn?'After annual estimated tax deduction':'Before tax';
+      $('mf-invested').textContent=money(p);$('mf-gain').textContent=money(mfGain);$('mf-tax').textContent=money(mfTaxTotal);$('mf-final').textContent=money(mfNet);$('mf-cagr').textContent=pct(mr);
+      $('fd-invested').textContent=money(p);$('fd-gain').textContent=money(fd.gross-p);$('fd-tax-out').textContent=money(fdTaxTotal);$('fd-final').textContent=money(fdNet);$('fd-cagr').textContent=pct(fr);
+      const diff=Math.abs(mfNet-fdNet),mfWins=mfNet>=fdNet;
+      $('difference').textContent=money(diff);$('winner-text').textContent=mfWins?'Mutual fund estimate is higher':'FD estimate is higher';
+      $('winner-card').classList.toggle('winner',diff>0);
+      const mfValues=[],fdValues=[],labels=[],rows=[];
+      for(let y=1;y<=years;y++){
+        const mg=p*Math.pow(1+mr/100,y),mgt=taxOn?mfTax(mg-p,y,kind,stcg,ltcg,exemption,custom):0;
+        const fy=fd.rows[y-1]||fd.rows[fd.rows.length-1];
+        const fg=p*Math.pow(1+fr/(100*freq),freq*y);
+        const fnet=taxOn?(fy?fy.fdNet:fd.net):fg;
+        mfValues.push(mg-mgt);fdValues.push(fnet);labels.push(y);
+        rows.push({year:y,mfGross:mg,mfNet:mg-mgt,fdGross:fg,fdNet:fnet});
+      }
+      $('year-rows').innerHTML=rows.map(r=>'<tr><td>'+r.year+'</td><td>'+money(r.mfGross)+'</td><td>'+money(r.mfNet)+'</td><td>'+money(r.fdGross)+'</td><td>'+money(r.fdNet)+'</td></tr>').join('');
+      lastRows=rows;
+      lastSummary='InvestCalc Mutual Fund vs FD estimate\nInvestment: '+money(p)+'\nTenure: '+years+' years\nMF assumed return: '+pct(mr)+'\nFD rate: '+pct(fr)+'\nMF value after estimated tax: '+money(mfNet)+'\nFD value after estimated tax: '+money(fdNet)+'\nDifference: '+money(diff)+' ('+(mfWins?'MF estimate higher':'FD estimate higher')+')\nIllustrative only; not a forecast or tax advice.';
+      $('results').classList.add('show');drawChart(labels,mfValues,fdValues);
+      $('results').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    form.addEventListener('submit',e=>{e.preventDefault();calculate();});
+    $('tax-mode').addEventListener('change',()=>{$('tax-fields').classList.toggle('hidden',$('tax-mode').value==='no');});
+    $('mf-kind').addEventListener('change',()=>{$('equity-tax-fields').classList.toggle('hidden',$('mf-kind').value!=='equity');$('mf-custom-tax').closest('.field').classList.toggle('hidden',$('mf-kind').value!=='custom');});
+    $('reset').addEventListener('click',()=>{form.reset();$('tax-fields').classList.remove('hidden');$('equity-tax-fields').classList.remove('hidden');$('mf-custom-tax').closest('.field').classList.add('hidden');$('results').classList.remove('show');clearError();});
+    $('download-csv').addEventListener('click',()=>{if(!lastRows.length)return;const rows=[['Year','MF value before tax','MF estimated liquidation value after tax','FD value before tax','FD estimated value after tax'],...lastRows.map(r=>[r.year,r.mfGross.toFixed(2),r.mfNet.toFixed(2),r.fdGross.toFixed(2),r.fdNet.toFixed(2)])];const csv=rows.map(r=>r.join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mutual-fund-vs-fd-comparison.csv';a.click();URL.revokeObjectURL(url);});
+    $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(lastSummary);$('copy').textContent='Copied';setTimeout(()=>$('copy').textContent='Copy summary',1600);}catch(e){$('copy').textContent='Copy unavailable';}});
+    $('mf-custom-tax').closest('.field').classList.add('hidden');
+    if('ResizeObserver'in window){new ResizeObserver(()=>{if($('results').classList.contains('show')){const rows=lastRows;drawChart(rows.map(r=>r.year),rows.map(r=>r.mfNet),rows.map(r=>r.fdNet));}}).observe($('growth-chart'));}
+    calculate();
+  })();
+  </script>
+  <script src="/assets/js/common-header.js" defer></script>
+  <script src="/assets/js/common-footer.js" defer></script>
+</body>
+</html>
