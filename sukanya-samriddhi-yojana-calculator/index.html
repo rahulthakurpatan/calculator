@@ -59,7 +59,7 @@ function validate(){
  if(!Number.isFinite(rate)||rate<=0||rate>15)return 'Enter a valid annual rate between 0.1% and 15%.';
  if(!Number.isFinite(inc)||inc<0||inc>100)return 'Enter a valid annual increase between 0% and 100%.';
  const scheduleStart=mode==='existing'?asof:op,interval={monthly:1,quarterly:3,halfyearly:6,yearly:12}[freq],annual={};
- for(let n=0;n<180;n++){const month=addM(new Date(op.getFullYear(),op.getMonth(),1,12),n),scheduleMonth=new Date(scheduleStart.getFullYear(),scheduleStart.getMonth(),1,12);if(month<scheduleMonth)continue;const nominal=new Date(month.getFullYear(),month.getMonth(),$('depositDay').value==='early'?1:10,12),depositDate=nominal<scheduleStart?scheduleStart:nominal;if(depositDate>=addY(op,15))break;if(n%interval===0){const yr=Math.floor(n/12),planned=Math.round(amt*Math.pow(1+inc,yr)/50)*50,k=fy(depositDate);annual[k]=(annual[k]||0)+planned;if(annual[k]>150000)return 'Your annual increase makes deposits exceed ₹1,50,000 in FY '+fyText(k)+'. Reduce the amount or step-up.';}}
+ for(let n=0;n<180;n++){const month=addM(new Date(op.getFullYear(),op.getMonth(),1,12),n),scheduleMonth=new Date(scheduleStart.getFullYear(),scheduleStart.getMonth(),1,12);if(month<scheduleMonth)continue;const nominal=new Date(month.getFullYear(),month.getMonth(),$('depositDay').value==='early'?1:10,12),depositDate=nominal<scheduleStart?($('depositDay').value==='early'&&scheduleStart.getDate()<=5?scheduleStart:null):nominal;if(!depositDate)continue;if(depositDate>=addY(op,15))break;if(n%interval===0){const yr=Math.floor(n/12),planned=Math.round(amt*Math.pow(1+inc,yr)/50)*50,k=fy(depositDate);annual[k]=(annual[k]||0)+planned;if(annual[k]>150000)return 'Your annual increase makes deposits exceed ₹1,50,000 in FY '+fyText(k)+'. Reduce the amount or step-up.';}}
  if(mode==='existing'&&(!Number.isFinite(Number($('balance').value))||Number($('balance').value)<0))return 'Enter a valid current balance.';
  if($('withdrawal').value==='yes'&&(!Number($('withdrawYear').value)||Number($('fees').value)<0))return 'Enter a valid education withdrawal year and expense.';
  return '';
@@ -71,10 +71,10 @@ function simulate(rate,doWithdraw=true){
   const monthEnd=new Date(m.getFullYear(),m.getMonth()+1,0,12),key=fy(m);let dep=0;
   if(m>=new Date(start.getFullYear(),start.getMonth(),1,12)&&m<depEnd){
    const n=(m.getFullYear()-op.getFullYear())*12+m.getMonth()-op.getMonth(),interval={monthly:1,quarterly:3,halfyearly:6,yearly:12}[freq];
-   if(n>=0&&n%interval===0){const yr=Math.max(0,Math.floor(n/12));const nominal=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominal<start?start:nominal;if(depositDate<depEnd){dep=Math.round(base*Math.pow(1+inc,yr)/50)*50;}}
+   if(n>=0&&n%interval===0){const yr=Math.max(0,Math.floor(n/12));const nominal=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominal<start?(early&&start.getDate()<=5?start:null):nominal;if(depositDate&&depositDate<depEnd){dep=Math.round(base*Math.pow(1+inc,yr)/50)*50;}}
   }
-  const nominalDate=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominalDate<start?start:nominalDate;
-  const firstMonth=start.getFullYear()===m.getFullYear()&&start.getMonth()===m.getMonth(),eligible=firstMonth&&start.getDate()>5?0:(depositDate.getDate()<=5?bal+dep:bal),mi=eligible*rate/1200;bal+=dep;invest+=dep;fyDep+=dep;fyDepMap[key]=(fyDepMap[key]||0)+dep;fyInt+=mi;
+  const nominalDate=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominalDate<start?(early&&start.getDate()<=5?start:null):nominalDate;
+  const firstMonth=start.getFullYear()===m.getFullYear()&&start.getMonth()===m.getMonth(),eligible=firstMonth&&start.getDate()>5?0:(depositDate&&depositDate.getDate()<=5?bal+dep:bal),mi=eligible*rate/1200;bal+=dep;invest+=dep;fyDep+=dep;fyDepMap[key]=(fyDepMap[key]||0)+dep;fyInt+=mi;
   if(m.getMonth()===2){
    const credited=Math.round(fyInt);bal+=credited;intTotal+=credited;fyInt=0;
    if(withdrawEnabled&&key===withdrawYear){
