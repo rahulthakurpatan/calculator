@@ -74,7 +74,7 @@ function simulate(rate,doWithdraw=true){
    if(n>=0&&n%interval===0){const yr=Math.max(0,Math.floor(n/12));const nominal=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominal<start?start:nominal;if(depositDate<depEnd){dep=Math.round(base*Math.pow(1+inc,yr)/50)*50;}}
   }
   const nominalDate=new Date(m.getFullYear(),m.getMonth(),early?1:10,12),depositDate=nominalDate<start?start:nominalDate;
-  const eligible=depositDate.getDate()<=5?bal+dep:bal,mi=eligible*rate/1200;bal+=dep;invest+=dep;fyDep+=dep;fyDepMap[key]=(fyDepMap[key]||0)+dep;fyInt+=mi;
+  const firstMonth=start.getFullYear()===m.getFullYear()&&start.getMonth()===m.getMonth(),eligible=firstMonth&&start.getDate()>5?0:(depositDate.getDate()<=5?bal+dep:bal),mi=eligible*rate/1200;bal+=dep;invest+=dep;fyDep+=dep;fyDepMap[key]=(fyDepMap[key]||0)+dep;fyInt+=mi;
   if(m.getMonth()===2){
    const credited=Math.round(fyInt);bal+=credited;intTotal+=credited;fyInt=0;
    if(withdrawEnabled&&key===withdrawYear){
