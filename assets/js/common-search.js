@@ -11,6 +11,7 @@
     { title:'ROI Calculator', subtitle:'Calculate investment profit, loss and returns', category:'Invest & Mutual Funds', href:'/', keywords:'return on investment roi profit loss cagr' },
     { title:'SIP Calculator', subtitle:'Estimate mutual fund SIP returns', category:'Invest & Mutual Funds', href:'/sip-calculator/', keywords:'systematic investment plan mutual fund monthly sip' },
     { title:'Lumpsum Return Calculator', subtitle:'Estimate one-time investment growth', category:'Invest & Mutual Funds', href:'/lump-sum-calculator/', keywords:'lump sum lumpsum one time investment' },
+    { title:'Mutual Fund vs FD Calculator', subtitle:'Compare estimated mutual fund and fixed deposit returns after tax', category:'Invest & Mutual Funds', href:'/mutual-fund-vs-fd-comparison/', keywords:'mutual fund versus fd fixed deposit comparison tax return interest' },
     { title:'Step-Up SIP Calculator', subtitle:'Calculate SIP with annual increases', category:'Invest & Mutual Funds', href:'/step-up-sip-calculator/', keywords:'step up sip top up monthly investment' },
     { title:'Fixed Deposit Calculator', subtitle:'Estimate FD interest and maturity value', category:'Savings & Loans', href:'/fd-calculator/', keywords:'fd fixed deposit bank deposit interest maturity' },
     { title:'Business Profit & Loss Tracker', subtitle:'Track business revenue, expenses and profit', category:'Business & Creator', href:'/business-profit-loss-tracker/', keywords:'business income expense profit loss tracker' },
