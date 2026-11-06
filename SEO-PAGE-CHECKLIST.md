@@ -44,6 +44,10 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 - Check keyboard navigation, focus states, contrast, and accessible error messages.
 - Check that page links, images, scripts, and calculator interactions work.
 
+
+- Load `/assets/js/common-branding.js` on every public page before `</head>`; it centrally applies the InvestCalc SVG favicon, PNG browser/touch icon, web app manifest, and theme color.
+- Keep the root `/favicon.svg`, `/favicon-180.png`, and `/site.webmanifest` available. Do not create duplicate favicon or manifest tags in individual page templates.
+
 ## 5. Sitemap and crawlability — mandatory for every new page
 - Add the canonical, indexable page URL to the root `/sitemap.xml` in the same task as creating the page.
 - Use the full HTTPS domain and the final trailing-slash URL.
