@@ -370,8 +370,8 @@ function render(d){
  $('billNote').textContent='First-year energy benefit is estimated at '+money(year1/12)+' per month on an annualised basis. Fixed charges, taxes, minimum charges and actual monthly net-metering settlement can make the real bill different. Exported units are valued at an indicative ₹'+d.exportCredit.toFixed(2)+'/unit, not your full retail tariff.';
  $('yearRows').innerHTML=typical.rows.map(r=>'<tr><td>'+r.year+'</td><td>'+fmt(r.gen)+' units</td><td>'+money(r.benefit)+'</td><td>'+money(r.maintenance)+'</td><td>'+money(r.loan)+'</td><td style="font-weight:750;color:'+(r.cumulative>=0?'#08734b':'#b33c42')+'">'+money(r.cumulative)+'</td></tr>').join('');
  $('scenarioRows').innerHTML=[['Lower-cost',low],['Typical',typical],['Higher-cost',high]].map(([name,s])=>'<tr><td>'+name+'</td><td>'+money(s.gross)+'</td><td>'+money(s.subsidy)+'</td><td>'+money(s.net)+'</td><td>'+(s.yearPayback?s.yearPayback+' years':'Over 25 years')+'</td></tr>').join('');
- drawChart(typical.rows,d.net*(1-d.loanShare));
  $('results').classList.add('show');
+ drawChart(typical.rows,d.net*(1-d.loanShare));
  latest={d,typical,low,high};
 }
 function calculate(scroll=true){
