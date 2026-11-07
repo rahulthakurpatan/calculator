@@ -11,7 +11,12 @@ function toggle(){
  $("bookProfit").disabled=foreign?false:regime.value==="s200"||regime.value==="s201";
  $("matCredit").disabled=foreign||!(regime.value==="s200"||regime.value==="s201")||year.value!=="TY2026-27";
  if(foreign)regime.value="standard";
- $("regime-hint").textContent=year.value==="TY2026-27"?"Section 200: 22%; Section 201: qualifying new manufacturing companies; Section 199: qualifying manufacturing companies.":"Legacy Income-tax Act, 1961 provisions apply for this assessment year.";
+ const legacy=year.value==="AY2026-27";
+ const opts=regime.options;
+ opts[1].text=legacy?"Concessional domestic regime – 22% (Section 115BAA)":"Concessional domestic regime – 22% (Section 200)";
+ opts[2].text=legacy?"Eligible new manufacturing company – Section 115BAB":"Eligible new manufacturing company – Section 201";
+ opts[3].text=legacy?"Eligible manufacturing company – 25% (Section 115BA)":"Eligible manufacturing company – 25% (Section 199)";
+ $("regime-hint").textContent=year.value==="TY2026-27"?"Section 200: 22%; Section 201: qualifying new manufacturing companies; Section 199: qualifying manufacturing companies.":"Legacy equivalents: Sections 115BAA (22%), 115BAB (eligible manufacturing) and 115BA (25% manufacturing). MAT is 15% for this period.";
 }
 function row(label,value){return "<tr><td>"+label+"</td><td>"+fmt(value)+"</td></tr>";}
 type.addEventListener("change",toggle);regime.addEventListener("change",toggle);year.addEventListener("change",toggle);
