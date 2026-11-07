@@ -23,7 +23,7 @@ function run(e){if(e)e.preventDefault();try{
  const r=engine.calculate(v,rules);showResult(r);
  }catch(err){$('tds-error').textContent=err.message;$('tds-error').classList.add('show');$('tds-result').classList.remove('show');}}
 fillSelect();form.addEventListener('submit',run);
-$('paymentType').addEventListener('change',()=>{const id=select.value;const isRent=id.startsWith('rent-');$('monthly-wrap').hidden=!isRent;$('property-wrap').hidden=id!=='property';$('interest-wrap').hidden=id!=='interest';$('contractor-wrap').hidden=id!=='contractor';$('goods-wrap').hidden=id!=='goods';$('vda-wrap').hidden=id!=='vda';});
+$('paymentType').addEventListener('change',()=>{const id=select.value;const isRent=id.startsWith('rent-');$('monthly-wrap').hidden=!isRent;$('property-wrap').hidden=id!=='property';$('property-stamp-wrap').hidden=id!=='property';$('interest-wrap').hidden=id!=='interest';$('contractor-wrap').hidden=id!=='contractor';$('goods-wrap').hidden=id!=='goods';$('vda-wrap').hidden=id!=='vda';});
 $('certificate').addEventListener('change',e=>$('certificate-rate-wrap').hidden=e.target.value!=='yes');
 $('residency').addEventListener('change',e=>$('nri-rate-wrap').hidden=e.target.value!=='nonresident');
 $('reset').addEventListener('click',()=>{form.reset();$('tds-result').classList.remove('show');$('tds-error').classList.remove('show');$('paymentType').dispatchEvent(new Event('change'));});
