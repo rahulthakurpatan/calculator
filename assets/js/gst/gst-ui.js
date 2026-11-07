@@ -8,11 +8,10 @@ const rate=$('rate');
 function showError(id,msg){$(id).textContent=msg;$(id).classList.add('show');}
 function clearError(id){$(id).textContent='';$(id).classList.remove('show');}
 function rateValue(select,custom){return select.value==='custom'?Number(custom.value):Number(select.value);}
-function rateNote(){const r=rate.value;$('custom-rate-wrap').hidden=r!=='custom';$('rate-note').textContent=r==='custom'?'Enter the notified GST rate for your supply. Historical rates may be entered here.':rules.rateNote;}
+function rateNote(){const r=rate.value;$('custom-rate-wrap').hidden=r!=='custom';const historical=$('rate-date').value&&$('rate-date').value<'2025-09-22';$('rate-note').textContent=(historical?'Historical supply date selected. Enter the exact historical rate applicable to the HSN/SAC; this tool does not reconstruct past notifications. ':'')+(r==='custom'?'Enter the notified GST rate for your supply. Historical rates may be entered here.':rules.rateNote);}
 rate.addEventListener('change',rateNote);rate.value='18';rateNote();
-function dateWarning(id){const d=$(id).value;$('rate-note').textContent=(d&&d<'2025-09-22'?'Historical supply date selected. Enter the exact historical rate applicable to the HSN/SAC; this tool does not reconstruct past notifications. ':'')+rules.rateNote;}
-$('rate-date').addEventListener('change',()=>dateWarning('rate-date'));
-$('invoice-date').addEventListener('change',()=>{if($('invoice-date').value<'2025-09-22')$('invoice-error').textContent='Historical invoice date: choose the exact rate applicable on that date; this calculator does not automatically map historical rates.';});
+$('rate-date').addEventListener('change',rateNote);
+$('invoice-date').addEventListener('change',()=>{if($('invoice-date').value<'2025-09-22')showError('invoice-error','Historical invoice date: choose the exact rate applicable on that date; this calculator does not automatically map historical rates.');else clearError('invoice-error');});
 document.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b===btn));$('quick-panel').hidden=btn.dataset.tab!=='quick';$('invoice-panel').hidden=btn.dataset.tab!=='invoice';}));
 function breakdownHTML(r){const rows=[['Taxable value',r.taxable],['CGST',r.cgst],[$('utgst')?.value==='yes'?'UTGST':'SGST',r.sgst],['IGST',r.igst],['Compensation cess',r.cess],['Total before round-off',r.rawTotal],['Round-off adjustment',r.roundOff],['Final amount',r.finalTotal]];return '<div class="table-wrap"><table><tbody>'+rows.filter(x=>x[1]||['Taxable value','Total before round-off','Round-off adjustment','Final amount'].includes(x[0])).map(x=>'<tr><th>'+x[0]+'</th><td>'+fmt(x[1])+'</td></tr>').join('')+'</tbody></table></div>';}
 let quickText='';
