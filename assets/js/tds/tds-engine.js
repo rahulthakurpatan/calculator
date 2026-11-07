@@ -28,7 +28,7 @@ function calculate(v,rules){
  if(!amount) throw new Error('Enter a payment amount greater than zero.');
  const date=v.eventDate||'2026-11-07', old=date<='2026-03-31';
  const period=old?rules.periods.old:rules.periods.current;
- const result=applicable(item,{...v,amount,aggregate});
+ const result=v.residency==='nonresident'?{applies:true,base:item.id==='property'?Math.max(amount,money(v.stampValue)):amount,threshold:0,explanation:'Non-resident payment: resident threshold tests are not applied. Confirm chargeability, rates in force and treaty position.'}:applicable(item,{...v,amount,aggregate});
  let rate=item.rateType==='contractor'?(v.contractor==='individual'?1:2):item.rate;
  let warnings=[];
  if(item.id==='rent-building'&&v.payer==='individual') rate=item.individualRate;
@@ -41,7 +41,8 @@ function calculate(v,rules){
    warnings.push('Non-resident payments generally require separate Section 393(2)/Section 195 analysis, nature-of-income classification, rates in force and possible DTAA relief. This resident-rate estimate must not be used as a final NRI deduction rate.');
    if(!(Number(v.customRate)>0)) throw new Error('For a non-resident payment, enter the indicative rate confirmed by your tax adviser. The calculator cannot independently determine Section 393(2), treaty relief or rates in force.');
  }
- if(v.pan==='no'&&item.panHigher){warnings.push('PAN not furnished: higher-rate provisions may override the standard rate. The 20% statutory higher-rate rule and its exceptions need transaction-specific verification; shown amount uses the standard rate only.');}
+ if(v.pan==='no'&&(item.panHigher||v.residency==='nonresident')){warnings.push('PAN not furnished: higher-rate provisions may override the selected rate. The applicable statutory higher-rate rule and its exceptions need transaction-specific verification; shown amount uses the selected rate only.');}
+ if(v.residency==='nonresident'&&item.id==='property') warnings.push('For specified non-resident property transfers from 1 October 2026, Form 141 Schedule E may be the challan-cum-statement route for an eligible resident individual/HUF buyer.');
  if(v.certificate==='yes') warnings.push('A valid lower/nil deduction certificate may override the normal rate. Enter the certificate rate below if you want an indicative calculation.');
  if(v.residency==='nonresident'&&Number(v.customRate)>0) rate=Number(v.customRate);
  if(v.certificate==='yes'&&Number(v.certificateRate)>0) rate=Number(v.certificateRate);
