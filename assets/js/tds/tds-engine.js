@@ -15,6 +15,7 @@ function applicable(item,v){
     threshold=v.bank==='yes'?(senior?100000:50000):10000;
     applies=aggregate>threshold; explanation='Selected interest threshold: ₹'+threshold.toLocaleString('en-IN')+'. Confirm payer type and senior-citizen eligibility.'; break;
   case 'single': applies=amount>=item.threshold; explanation='Single-transaction threshold ₹'+item.threshold.toLocaleString('en-IN')+'.'; break;
+  case 'none': applies=true; explanation='No general monetary threshold in the selected table entry; check statutory no-deduction exceptions.'; break;
   case 'annual': applies=aggregate>item.threshold; explanation='Annual aggregate threshold ₹'+item.threshold.toLocaleString('en-IN')+'.'; break;
   default: applies=aggregate>threshold; explanation='Annual threshold ₹'+threshold.toLocaleString('en-IN')+'.';
  }
@@ -30,7 +31,8 @@ function calculate(v,rules){
  const result=applicable(item,{...v,amount,aggregate});
  let rate=item.rateType==='contractor'?(v.contractor==='individual'?1:2):item.rate;
  let warnings=[];
- if(item.id==='rent-building'&&v.payer==='individual') warnings.push('Rent paid by an individual/HUF may fall under the special non-specified-person route. Confirm the correct statutory route and monthly test.');
+ if(item.id==='rent-building'&&v.payer==='individual') rate=item.individualRate;
+ if(item.id==='rent-building'&&v.payer!=='individual') rate=item.rate;
  if(item.id==='professional'&&v.payer==='individual') warnings.push('For an individual/HUF not otherwise liable to deduct, the special ₹50 lakh route may apply; select the dedicated option where eligible.');
  if(item.id==='goods'&&v.turnover!=='yes'){result.applies=false;warnings.push('The buyer turnover condition (preceding-year turnover above ₹10 crore) is not selected, so this estimate does not trigger TDS under the goods-purchase rule.');}
  if(v.residency==='nonresident'){
@@ -38,11 +40,11 @@ function calculate(v,rules){
  }
  if(v.pan==='no'&&item.panHigher){warnings.push('PAN not furnished: higher-rate provisions may override the standard rate. The 20% statutory higher-rate rule and its exceptions need transaction-specific verification; shown amount uses the standard rate only.');}
  if(v.certificate==='yes') warnings.push('A valid lower/nil deduction certificate may override the normal rate. Enter the certificate rate below if you want an indicative calculation.');
- if(v.residency==='nonresident'&&Number(v.customRate)>=0&&v.customRate!=='') rate=Number(v.customRate);
+ if(v.residency==='nonresident'&&Number(v.customRate)>0) rate=Number(v.customRate);
  if(v.certificate==='yes'&&Number(v.certificateRate)>0) rate=Number(v.certificateRate);
  const taxableBase=result.applies?result.base:0;
  const tds=taxableBase*rate/100;
- if(item.id==='goods'&&result.applies) warnings.push('The ₹50 lakh threshold is aggregate-based. This output estimates the current payment only; reconcile the cumulative excess and prior payments.');
+ if(item.id==='goods'&&result.applies){result.base=Math.min(amount,Math.max(0,aggregate-item.threshold));warnings.push('The ₹50 lakh threshold is aggregate-based. This output estimates the current payment portion above the threshold; reconcile prior purchases and TDS.');}
  if(item.id==='contractor'&&result.applies) warnings.push('The calculator tests the entered single payment and annual aggregate. If the annual threshold is crossed, review prior payments and deduct on the legally relevant amount.');
  return {item,period,old,rate,amount,aggregate,applies:result.applies,threshold:result.threshold,thresholdExplanation:result.explanation,taxableBase,tds,net:amount-tds,warnings};
 }
