@@ -19,7 +19,7 @@
     ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/'],
 
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
-    ['Instagram Sponsored Post Estimator', '/instagram-sponsored-post-estimator/'],
+    ['Instagram Earning Calculator', '/instagram-earning-calculator/'],
     ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],
     ['Blog Traffic to Income Converter', '/blog-traffic-income-converter/'],
     ['Crypto / Bitcoin Profit & Tax Calculator', '/crypto-profit-tax-calculator/'],
