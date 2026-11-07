@@ -60,7 +60,7 @@
 </div>
 <div class="two">
 <div class="field"><label for="otherIncome">Other ordinary-rate income</label><input id="otherIncome" type="number" min="0" step="1000" value="30000" inputmode="numeric"><div class="hint">For example, taxable bank interest. Exclude special-rate income.</div></div>
-<div class="field"><label for="houseIncome">House property income / eligible loss (₹)</label><input id="houseIncome" type="number" step="1000" value="0" inputmode="numeric"><div class="hint">Enter the eligible taxable net amount. Negative loss treatment can differ by regime; see limitation below.</div></div>
+<div class="field"><label for="houseIncome">Taxable house-property income (₹)</label><input id="houseIncome" type="number" min="0" step="1000" value="0 inputmode="numeric"><div class="hint">Enter positive taxable income only. House-property losses require separate regime-specific set-off rules and are not modelled here.</div></div>
 </div>
 <div class="subhead">OLD REGIME DEDUCTIONS (₹)</div>
 <div class="two">
@@ -118,7 +118,7 @@
 <article class="content"><h2>Official tax references</h2><p>Tax rules and rates should always be checked against current official notifications and Income Tax Department guidance.</p><ul class="source-list">
 <li><a href="https://www.incometax.gov.in/iec/foportal/income-tax-calculator" target="_blank" rel="noopener">Income Tax Department – Income and Tax Calculator</a></li>
 <li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/income-tax-calculator-um" target="_blank" rel="noopener">Income Tax Calculator User Manual</a></li>
-<li><a href="https://www.incometax.gov.in/iec/foportal/help/objective-and-scope-new-act" target="_blank" rel="noopener">Income-tax Act, 2025 – Objective and scope</a></li>
+<li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/objective-and-scope-new-act" target="_blank" rel="noopener">Income-tax Act, 2025 – Objective and scope</a></li>
 <li><a href="https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1" target="_blank" rel="noopener">Salaried Individuals – Tax slabs and deductions</a></li>
 </ul><p class="hint">Rules database last reviewed: 7 November 2026. Update it after every Finance Act, relevant CBDT notification or official clarification.</p></article>
 <div class="disclaimer">This calculator is for general educational estimates only and does not constitute tax, legal or financial advice. Tax treatment depends on individual facts, applicable law and official notifications.</div>
@@ -133,7 +133,7 @@ const $=id=>document.getElementById(id), fmt=n=>'₹'+Math.round(n).toLocaleStri
 const form=$('tax-form'), results=$('results'), error=$('error');
 const ids=['taxYear','age','resident','salary','basic','hra','rent','metro','otherIncome','houseIncome','c80c','c80d','npsSelf','homeInterest','employerNps','otherDeductions'];
 function values(){const o={};ids.forEach(id=>o[id]=$(id).value);return o;}
-function validate(v){for(const id of ids.slice(3)){if(v[id]===''||!Number.isFinite(Number(v[id])))return 'Please enter valid numbers in all income and deduction fields.';if(id!=='houseIncome'&&Number(v[id])<0)return 'Income and deduction amounts cannot be negative.';}if(Number(v.basic)>Number(v.salary))return 'Basic salary plus eligible DA should not exceed gross salary in this simplified HRA estimator.';return '';}
+function validate(v){for(const id of ids.slice(3)){if(v[id]===''||!Number.isFinite(Number(v[id])))return 'Please enter valid numbers in all income and deduction fields.';if(Number(v[id])<0)return 'Income and deduction amounts cannot be negative.';}if(Number(v.basic)>Number(v.salary))return 'Basic salary plus eligible DA should not exceed gross salary in this simplified HRA estimator.';return '';}
 function run(event){if(event)event.preventDefault();const v=values(),msg=validate(v);if(msg){error.textContent=msg;error.classList.add('show');results.classList.remove('show');return;}
 const rules=window.INCOMETAX_RULES[v.taxYear];if(!rules||!window.IncomeTaxEngine){error.textContent='Tax rules could not be loaded. Refresh the page and try again.';error.classList.add('show');return;}
 const result=window.IncomeTaxEngine.calculate(v,rules),old=result.old,nw=result.newer,best=result.recommended;
