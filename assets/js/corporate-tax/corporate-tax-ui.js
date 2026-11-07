@@ -4,6 +4,7 @@ const $=id=>document.getElementById(id),form=$("corp-form"),year=$("taxYear"),ty
 const fmt=n=>"₹"+Math.round(n).toLocaleString("en-IN");
 function toggle(){
  const foreign=type.value==="foreign",s201=regime.value==="s201";
+ $("foreign-pe-wrap").hidden=!foreign;
  $("regime-wrap").hidden=foreign;$("turnover-wrap").hidden=foreign||regime.value!=="standard";
  $("s201-fields").hidden=foreign||!s201;$("profit-wrap").hidden=!foreign&&!s201;
  $("mat-fields").hidden=foreign&&false;
@@ -24,7 +25,7 @@ form.addEventListener("submit",e=>{
  e.preventDefault();const err=$("error");err.classList.remove("show");
  try{
   const key=year.value,rules=window.CORPORATE_TAX_RULES[key];
-  const data=window.CorporateTaxEngine.calculate({companyType:type.value,regime:regime.value,taxableIncome:$("taxableIncome").value,turnover:$("turnover").value,bookProfit:$("bookProfit").value,matCredit:$("matCredit").value,manufacturingIncome:$("manufacturingIncome").value,otherIncome201:$("otherIncome201").value},rules);
+  const data=window.CorporateTaxEngine.calculate({companyType:type.value,regime:regime.value,taxableIncome:$("taxableIncome").value,turnover:$("turnover").value,bookProfit:$("bookProfit").value,matCredit:$("matCredit").value,foreignPE:$("foreignPE").value,manufacturingIncome:$("manufacturingIncome").value,otherIncome201:$("otherIncome201").value},rules);
   const t=data.selected,base=t.baseTax,sur=t.surcharge,cess=t.cess,total=t.total;
   $("total-tax").textContent=fmt(total);$("effective-rate").textContent="Applicable basic rate: "+data.rateLabel+" · "+data.period+" · "+data.act;
   $("base-tax").textContent=fmt(base);$("surcharge").textContent=fmt(sur);$("cess").textContent=fmt(cess);$("mat-tax").textContent=data.matApplicable&&data.mat?fmt(data.mat.total):"Not applicable";
