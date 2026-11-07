@@ -16,7 +16,7 @@
     ['Company Tax Calculator', '/company-corporate-tax-calculator/'],
     ['Company / Corporate Tax Calculator', '/corporate-tax-calculator/'],
     ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/'],
-    ['Gratuity & HRA Calculator', '/gratuity-hra-calculator/'],
+
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
     ['Instagram Sponsored Post Estimator', '/instagram-sponsored-post-estimator/'],
     ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],
