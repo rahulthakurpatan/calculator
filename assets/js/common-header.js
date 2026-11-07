@@ -36,7 +36,7 @@
       tools: [
         ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/', 'Track revenue, expenses and net profit'],
         ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
-        ['Instagram Earning Calculator', '/instagram-earning-calculator/', 'Estimate sponsored post pricing'],
+        ['Instagram Earning Calculator', '/instagram-earning-calculator/', 'Estimate creator income from brand deals and other sources'],
         ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/', 'Set an hourly rate from income goals'],
         ['Blog Traffic to Income Converter', '/blog-traffic-income-converter/', 'Estimate blog earnings from traffic'],
         ['Crypto / Bitcoin Profit & Tax Calculator', '/crypto-profit-tax-calculator/', 'Estimate crypto gains and tax'],
