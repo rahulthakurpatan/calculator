@@ -25,6 +25,7 @@
         ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
         ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
         ['GST Calculator', '/gst-calculator/', 'Calculate GST-inclusive and exclusive amounts'],
+        ['Company Tax Calculator', '/company-corporate-tax-calculator/', 'Estimate company income tax, surcharge and MAT'],
         ['Company / Corporate Tax Calculator', '/corporate-tax-calculator/', 'Estimate company income tax'],
         ['Gratuity & HRA Calculator', '/gratuity-hra-calculator/', 'Estimate gratuity and HRA exemption']
       ]
