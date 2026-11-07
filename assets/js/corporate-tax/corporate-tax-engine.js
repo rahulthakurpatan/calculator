@@ -26,7 +26,7 @@
   if(type==="foreign"){
    if(regime!=="standard")throw new Error("Special domestic-company regimes are not available to foreign companies.");
    if(!profit)throw new Error("Enter taxable income greater than zero.");
-   base=profit*rules.foreign.rate/100;rateLabel=rules.foreign.rate+"%";bands=rules.foreign.surcharge;matRate=rules.foreign.mat;matApplicable=true;
+   base=profit*rules.foreign.rate/100;rateLabel=rules.foreign.rate+"%";bands=rules.foreign.surcharge;matRate=rules.foreign.mat;matApplicable=input.foreignPE!=="no";
   }else{
    const d=rules.domestic;
    if(regime==="standard"){
