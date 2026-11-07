@@ -13,6 +13,7 @@ function toggle(){
  $("matCredit").disabled=foreign||!(regime.value==="s200"||regime.value==="s201")||year.value!=="TY2026-27";
  if(foreign)regime.value="standard";
  const legacy=year.value==="AY2026-27";
+ $("turnover").previousElementSibling.textContent="Turnover / gross receipts in previous year "+(legacy?"2023–24":"2024–25")+" (₹)";
  const opts=regime.options;
  opts[1].text=legacy?"Concessional domestic regime – 22% (Section 115BAA)":"Concessional domestic regime – 22% (Section 200)";
  opts[2].text=legacy?"Eligible new manufacturing company – Section 115BAB":"Eligible new manufacturing company – Section 201";
