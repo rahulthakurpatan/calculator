@@ -8,7 +8,7 @@ function applicable(item,v){
  switch(item.thresholdType){
   case 'single-or-annual': applies=amount>item.threshold||aggregate>item.aggregateThreshold; explanation='Single-payment threshold ₹'+item.threshold.toLocaleString('en-IN')+' OR annual aggregate threshold ₹'+item.aggregateThreshold.toLocaleString('en-IN')+'.'; break;
   case 'monthly': applies=monthly>item.threshold; explanation='Monthly rent is compared with the ₹'+item.threshold.toLocaleString('en-IN')+' threshold.'; break;
-  case 'property': applies=money(v.consideration)>item.threshold||money(v.stampValue)>item.threshold; base=Math.max(amount,money(v.stampValue)); explanation='Compare consideration and stamp-duty value with ₹50 lakh; TDS is generally based on the higher value.'; break;
+  case 'property': applies=money(v.consideration)>=item.threshold||money(v.stampValue)>=item.threshold; base=Math.max(amount,money(v.stampValue)); explanation='Compare consideration and stamp-duty value with ₹50 lakh; TDS is generally based on the higher value.'; break;
   case 'goods': applies=aggregate>item.threshold; base=Math.max(0,amount); explanation='Buyer turnover condition and annual purchase threshold of ₹50 lakh must both be satisfied.'; break;
   case 'vda': threshold=v.specified==='yes'?50000:10000; applies=aggregate>threshold; explanation='Threshold is ₹'+threshold.toLocaleString('en-IN')+' based on specified-person status.'; break;
   case 'interest':
@@ -32,6 +32,8 @@ function calculate(v,rules){
  let rate=item.rateType==='contractor'?(v.contractor==='individual'?1:2):item.rate;
  let warnings=[];
  if(item.id==='rent-building'&&v.payer==='individual') rate=item.individualRate;
+ if(item.id==='contractor'&&v.payer==='individual') warnings.push('This contractor route is for a designated person. An individual/HUF payer not otherwise required to deduct may need the separate ₹50 lakh route (old Section 194M / new Section 393(1), Table 6(ii)).');
+ if(['professional','technical','commission'].includes(item.id)&&v.payer==='individual') warnings.push('An individual/HUF payer may fall under the special Table 6(ii) route (old Section 194M) if not otherwise required to deduct. Confirm eligibility before using this standard payer route.');
  if(item.id==='rent-building'&&v.payer!=='individual') rate=item.rate;
  if(item.id==='professional'&&v.payer==='individual') warnings.push('For an individual/HUF not otherwise liable to deduct, the special ₹50 lakh route may apply; select the dedicated option where eligible.');
  if(item.id==='goods'&&v.turnover!=='yes'){result.applies=false;warnings.push('The buyer turnover condition (preceding-year turnover above ₹10 crore) is not selected, so this estimate does not trigger TDS under the goods-purchase rule.');}
