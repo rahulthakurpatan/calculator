@@ -69,7 +69,7 @@
     const oldHra=hraExemption;
     const oldTaxable=round10(Math.max(0,grossSalary-oldHra-standardOld+otherIncome+houseIncome-oldDeductions));
     const newTaxable=round10(Math.max(0,grossSalary-standardNew+otherIncome+houseIncome-newDeductions));
-    const oldSlabs=age>=80?rules.oldRegime.slabs.superSenior:age>=60?rules.oldRegime.slabs.senior:rules.oldRegime.slabs.below60;
+    const oldSlabs=resident&&age>=80?rules.oldRegime.slabs.superSenior:resident&&age>=60?rules.oldRegime.slabs.senior:rules.oldRegime.slabs.below60;
     const old=computeTax(oldTaxable,{...rules.oldRegime,slabs:oldSlabs,surchargeBands:rules.oldSurcharge},rules,resident);
     const newer=computeTax(newTaxable,rules.newRegime,rules,resident);
     return {
