@@ -37,6 +37,7 @@ function calculate(v,rules){
  if(item.id==='goods'&&v.turnover!=='yes'){result.applies=false;warnings.push('The buyer turnover condition (preceding-year turnover above ₹10 crore) is not selected, so this estimate does not trigger TDS under the goods-purchase rule.');}
  if(v.residency==='nonresident'){
    warnings.push('Non-resident payments generally require separate Section 393(2)/Section 195 analysis, nature-of-income classification, rates in force and possible DTAA relief. This resident-rate estimate must not be used as a final NRI deduction rate.');
+   if(!(Number(v.customRate)>0)) throw new Error('For a non-resident payment, enter the indicative rate confirmed by your tax adviser. The calculator cannot independently determine Section 393(2), treaty relief or rates in force.');
  }
  if(v.pan==='no'&&item.panHigher){warnings.push('PAN not furnished: higher-rate provisions may override the standard rate. The 20% statutory higher-rate rule and its exceptions need transaction-specific verification; shown amount uses the standard rate only.');}
  if(v.certificate==='yes') warnings.push('A valid lower/nil deduction certificate may override the normal rate. Enter the certificate rate below if you want an indicative calculation.');
@@ -46,7 +47,9 @@ function calculate(v,rules){
  const tds=taxableBase*rate/100;
  if(item.id==='goods'&&result.applies){result.base=Math.min(amount,Math.max(0,aggregate-item.threshold));warnings.push('The ₹50 lakh threshold is aggregate-based. This output estimates the current payment portion above the threshold; reconcile prior purchases and TDS.');}
  if(item.id==='contractor'&&result.applies) warnings.push('The calculator tests the entered single payment and annual aggregate. If the annual threshold is crossed, review prior payments and deduct on the legally relevant amount.');
- return {item,period,old,rate,amount,aggregate,applies:result.applies,threshold:result.threshold,thresholdExplanation:result.explanation,taxableBase,tds,net:amount-tds,warnings};
+ const oldSection=v.residency==='nonresident'?'195 (non-resident payments)':item.oldSection;
+ const newSection=v.residency==='nonresident'?(item.id==='property'?'Section 393(2), Table 17':'Section 393(2), relevant non-resident table'):item.newSection;
+ return {item,period,old,oldSection,newSection,rate,amount,aggregate,applies:result.applies,threshold:result.threshold,thresholdExplanation:result.explanation,taxableBase,tds,net:amount-tds,warnings};
 }
 window.TDSEngine={calculate};
 })();
