@@ -77,7 +77,7 @@
 </div>
 </div>
 <div class="subhead">REVENUE METHOD</div>
-<div class="field"><label for="method">How do you want to estimate revenue?</label><select id="method"><option value="rpm">Use creator RPM (recommended)</option><option value="cpm">Estimate from CPM (long-form ads only)</option></select><div class="hint">RPM is creator-side revenue per 1,000 views. CPM is advertiser cost per 1,000 ad impressions before revenue share.</div></div>
+<div class="field"><label for="method">How do you want to estimate revenue?</label><select id="method"><option value="rpm">Use creator RPM (recommended)</option><option value="cpm">Estimate from playback-based CPM (long-form only)</option></select><div class="hint">RPM is creator-side revenue per 1,000 views. Playback-based CPM is advertiser cost per 1,000 monetized playbacks before revenue share.</div></div>
 <div id="rpm-fields">
 <div id="long-rpm-wrap" class="field"><label for="long-rpm">Long-form RPM per 1,000 views (<span class="currency-symbol">₹</span>)</label><input id="long-rpm" type="number" min="0" step="any" value="50" inputmode="decimal"><div class="hint">Prefer your channel's YouTube Studio RPM. This example value is only an editable assumption, not an official India rate.</div></div>
 <div id="short-rpm-wrap" class="field hidden"><label for="short-rpm">Shorts RPM per 1,000 engaged views (<span class="currency-symbol">₹</span>)</label><input id="short-rpm" type="number" min="0" step="any" value="0.7" inputmode="decimal"><div class="hint">Use the Shorts RPM shown in YouTube Studio. Example value is illustrative, not an official rate.</div></div>
@@ -89,12 +89,8 @@
 </div>
 <div id="cpm-fields" class="hidden">
 <div class="field"><label for="cpm">Playback-based CPM (<span class="currency-symbol">₹</span>)</label><input id="cpm" type="number" min="0" step="any" value="200" inputmode="decimal"></div>
-<div class="two">
 <div class="field"><label for="monetized">Monetized playback rate (%)</label><input id="monetized" type="number" min="0" max="100" step="any" value="40" inputmode="decimal"></div>
-<div class="field"><label for="ad-impressions">Ad impressions per monetized playback</label><input id="ad-impressions" type="number" min="0" max="10" step="any" value="1.2" inputmode="decimal"></div>
-</div>
-<div class="hint">Simplified watch-page ad estimate only. It excludes Premium, memberships, Supers and other revenue. YouTube's standard creator share for watch-page ads is 55% of net ad revenue.</div>
-</div>
+<div class="hint">Simplified watch-page ad estimate only. CPM is per 1,000 monetized playbacks in this mode. It excludes Premium, memberships, Supers and other revenue. YouTube's standard creator share for watch-page ads is 55% of net ad revenue.</div>
 <div class="error" id="yt-error" role="alert"></div>
 <div class="actions"><button class="btn" type="submit">Calculate YouTube earnings</button><button class="btn secondary" id="yt-reset" type="button">Reset</button></div>
 </form>
@@ -155,7 +151,7 @@
 <div class="formula"><code>Estimated revenue = Total views ÷ 1,000 × RPM</code></div>
 <p>RPM is already measured from the creator's side after YouTube's revenue share. Do not subtract the 55% watch-page share again when using RPM. For Shorts, use Shorts RPM with eligible engaged views; do not subtract the Shorts revenue share a second time.</p>
 <h3>Long-form CPM estimate formula</h3>
-<div class="formula"><code>Estimated ad revenue = (Views × Monetized playback rate × Ad impressions per playback ÷ 1,000) × CPM × 55%</code></div>
+<div class="formula"><code>Estimated ad revenue = (Views × Monetized playback rate ÷ 1,000) × Playback-based CPM × 55%</code></div>
 <p>This is a simplified estimate of eligible watch-page ad revenue only. It does not include YouTube Premium, memberships, Super Chat, Super Stickers, Super Thanks or other revenue sources. The 55% share is applied to the estimated net watch-page ad revenue in this model.</p>
 <h3>Why does YouTube not pay a fixed amount per 1,000 views?</h3>
 <p>Not every view has an ad. Advertiser demand, audience location, video topic, season, viewer device, ad suitability, video length, ad formats and viewer behaviour can change revenue. Two channels with the same views can therefore report very different RPMs.</p>
@@ -243,8 +239,8 @@ function syncFormat(){
  $('short-fields').classList.toggle('hidden',f==='long');
  $('long-rpm-wrap').classList.toggle('hidden',f==='shorts');
  $('short-rpm-wrap').classList.toggle('hidden',f==='long');
- $('method').querySelector('option[value="cpm"]').disabled=f==='shorts';
- if(f==='shorts'&&$('method').value==='cpm')$('method').value='rpm';
+ $('method').querySelector('option[value="cpm"]').disabled=f!=='long';
+ if(f!=='long'&&$('method').value==='cpm')$('method').value='rpm';
  $('rpm-fields').classList.toggle('hidden',$('method').value!=='rpm');
  $('cpm-fields').classList.toggle('hidden',$('method').value!=='cpm');
  $('long-rpm-wrap').classList.toggle('hidden',f==='shorts'||$('method').value!=='rpm');
@@ -266,11 +262,11 @@ function calculate(){
   }
   longRevenue=lv/1000*longRPM;shortRevenue=sv/1000*shortRPM;
  }else{
-  const cpm=number('cpm'),rate=number('monetized'),ads=number('ad-impressions');
-  if(!validNonNegative(cpm)||!validNonNegative(rate)||rate>100||!validNonNegative(ads)||ads>10){
-   $('yt-error').textContent='Check CPM, monetized playback rate (0–100%) and ad impressions (0–10).';$('yt-error').classList.add('show');$('yt-results').classList.remove('show');return;
+  const cpm=number('cpm'),rate=number('monetized');
+  if(!validNonNegative(cpm)||!validNonNegative(rate)||rate>100){
+   $('yt-error').textContent='Check CPM and monetized playback rate (0–100%).';$('yt-error').classList.add('show');$('yt-results').classList.remove('show');return;
   }
-  longRevenue=(lv*(rate/100)*ads/1000)*cpm*.55;
+  longRevenue=(lv*(rate/100)/1000)*cpm*.55;
  }
  const total=longRevenue+shortRevenue,views=lv+sv;
  const effectiveRPM=views>0?total/views*1000:0;
