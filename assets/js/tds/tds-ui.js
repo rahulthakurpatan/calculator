@@ -12,7 +12,7 @@ function showResult(r){
  $('tds-amount').textContent=fmt(r.tds);$('net-amount').textContent=fmt(r.net);$('rate-value').textContent=pct(r.rate);
  $('threshold-status').textContent=r.applies?'TDS applicable':'No TDS triggered on entered threshold details';
  $('threshold-status').className='status '+(r.applies?'yes':'no');
- $('result-meta').textContent=r.period.label+' · '+(r.old?r.item.oldSection:r.item.newSection);
+ $('result-meta').textContent=r.period.label+' · '+(r.old?r.oldSection:r.newSection);
  $('tax-base').textContent=fmt(r.taxableBase);$('gross-value').textContent=fmt(r.amount);
  $('threshold-note').textContent=r.thresholdExplanation;
  $('warning-list').innerHTML=r.warnings.map(w=>'<li>'+w+'</li>').join('');
