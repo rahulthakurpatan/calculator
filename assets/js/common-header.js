@@ -25,8 +25,9 @@
         ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
         ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
         ['GST Calculator', '/gst-calculator/', 'Calculate GST-inclusive and exclusive amounts'],
-        ['Company / Corporate Tax Calculator', '/company-corporate-tax-calculator/', 'Estimate company income tax, surcharge and MAT'],\n        ['Gratuity Calculator', '/gratuity-calculator/', 'Estimate gratuity under current labour-code rules'],\n        ['HRA Calculator', '/hra-calculator/', 'Calculate HRA exemption under old and new tax regimes'],
-        ['Company / Corporate Tax Calculator', '/corporate-tax-calculator/', 'Estimate company income tax'],
+        ['Company / Corporate Tax Calculator', '/company-corporate-tax-calculator/', 'Estimate company income tax, surcharge and MAT'],
+        ['Gratuity Calculator', '/gratuity-calculator/', 'Estimate gratuity under current labour-code rules'],
+        ['HRA Calculator', '/hra-calculator/', 'Calculate HRA exemption under old and new tax regimes'],
 
       ]
     },
