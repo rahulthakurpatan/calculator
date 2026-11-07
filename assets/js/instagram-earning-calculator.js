@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 const $ = id => document.getElementById(id);
-const ids = ['currency','followers','reelViews','postReach','storyReach','avgLikes','avgComments','brandCpm','reelDeals','photoDeals','carouselDeals','storyDeals','usageRights','exclusivity','partnershipAds','productionFee','revisionFee','affiliateClicks','affiliateConversion','orderValue','commission','giftsIncome','subscribers','subscriptionPrice','subscriptionShare','productSales','productProfit','bonusIncome','otherIncome'];
+const ids = ['followers','reelViews','postReach','storyReach','avgLikes','avgComments','brandCpm','reelDeals','photoDeals','carouselDeals','storyDeals','storyFrames','usageRights','exclusivity','partnershipAds','productionFee','revisionFee','affiliateClicks','affiliateConversion','orderValue','commission','giftsIncome','subscribers','subscriptionPrice','subscriptionShare','productSales','productProfit','bonusIncome','otherIncome'];
 const num = id => {
   const el=$(id); if(!el) return 0;
   const value=Number(el.value);
@@ -9,9 +9,8 @@ const num = id => {
 };
 const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
 const money=(value)=>{
-  const currency=$('currency').value;
-  try{return new Intl.NumberFormat(currency==='INR'?'en-IN':'en-US',{style:'currency',currency:currency,maximumFractionDigits:0}).format(Number.isFinite(value)?value:0);}
-  catch(e){return (currency==='INR'?'₹':'$')+Math.round(value).toLocaleString();}
+  try{return new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Number.isFinite(value)?value:0);}
+  catch(e){return '₹'+Math.round(value).toLocaleString();}
 };
 const pct=v=>(Number.isFinite(v)?v:0).toFixed(2)+'%';
 const set=(id,value)=>{const el=$(id);if(el)el.textContent=value;};
@@ -21,14 +20,14 @@ function calculate(){
   const engagement=followers>0?((safeNum('avgLikes')+safeNum('avgComments'))/followers)*100:0;
   const engagementFactor=clamp(1+((engagement-2)*0.05),0.8,1.3);
   const cpm=safeNum('brandCpm');
-  const rights=(safeNum('usageRights')+safeNum('exclusivity')+safeNum('partnershipAds'))/100;
+  const rights=(clamp(safeNum('usageRights'),0,500)+clamp(safeNum('exclusivity'),0,500)+clamp(safeNum('partnershipAds'),0,500))/100;
   const fixed=safeNum('productionFee')+safeNum('revisionFee');
   const quote=(reach)=>((reach/1000)*cpm*engagementFactor*(1+rights))+fixed;
   const rates={
     'Sponsored Reel':quote(safeNum('reelViews')),
     'Sponsored photo post':quote(safeNum('postReach')),
     'Sponsored carousel':quote(safeNum('postReach')),
-    'Sponsored Story set':quote(safeNum('storyReach'))
+    'Sponsored Story set':quote(safeNum('storyReach')*clamp(safeNum('storyFrames'),1,30))
   };
   const brand={
     'Sponsored Reels':rates['Sponsored Reel']*safeNum('reelDeals'),
@@ -37,9 +36,9 @@ function calculate(){
     'Sponsored Story sets':rates['Sponsored Story set']*safeNum('storyDeals')
   };
   const brandTotal=Object.values(brand).reduce((a,b)=>a+b,0);
-  const affiliate=safeNum('affiliateClicks')*(safeNum('affiliateConversion')/100)*safeNum('orderValue')*(safeNum('commission')/100);
+  const affiliate=safeNum('affiliateClicks')*(clamp(safeNum('affiliateConversion'),0,100)/100)*safeNum('orderValue')*(clamp(safeNum('commission'),0,100)/100);
   const gifts=safeNum('giftsIncome');
-  const subscriptions=safeNum('subscribers')*safeNum('subscriptionPrice')*(safeNum('subscriptionShare')/100);
+  const subscriptions=safeNum('subscribers')*safeNum('subscriptionPrice')*(clamp(safeNum('subscriptionShare'),0,100)/100);
   const ownProducts=safeNum('productSales')*safeNum('productProfit');
   const bonus=safeNum('bonusIncome');
   const other=safeNum('otherIncome');
@@ -73,12 +72,12 @@ function calculate(){
   notes.push('Low/high scenarios change only estimated brand-deal income by ±20%; other sources use the values you entered.');
   notes.push('Feature availability and eligibility are account-specific. Confirm Gifts, Subscriptions and any bonus inside your Professional Dashboard.');
   set('resultNote',notes.join(' '));
-  window.__instagramEarningSummary={currency:$('currency').value,expected:expected,low:low,high:high,breakdown:breakdown,rates:rates,engagement:engagement};
+  window.__instagramEarningSummary={currency:'INR',expected:expected,low:low,high:high,breakdown:breakdown,rates:rates,engagement:engagement};
 }
 function reset(){
   const defaults={
-    currency:'INR',followers:'10000',reelViews:'8000',postReach:'3000',storyReach:'1500',avgLikes:'500',avgComments:'35',brandCpm:'500',
-    reelDeals:'2',photoDeals:'0',carouselDeals:'1',storyDeals:'2',usageRights:'20',exclusivity:'15',partnershipAds:'20',productionFee:'0',revisionFee:'0',
+    followers:'10000',reelViews:'8000',postReach:'3000',storyReach:'1500',avgLikes:'500',avgComments:'35',brandCpm:'500',
+    reelDeals:'2',photoDeals:'0',carouselDeals:'1',storyDeals:'2',storyFrames:'3',usageRights:'20',exclusivity:'15',partnershipAds:'20',productionFee:'0',revisionFee:'0',
     affiliateClicks:'500',affiliateConversion:'2',orderValue:'1500',commission:'8',giftsIncome:'0',subscribers:'0',subscriptionPrice:'0',subscriptionShare:'100',
     productSales:'0',productProfit:'0',bonusIncome:'0',otherIncome:'0'
   };
