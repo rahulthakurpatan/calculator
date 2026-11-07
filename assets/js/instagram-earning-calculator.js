@@ -96,6 +96,7 @@ $('copyResults').addEventListener('click',()=>{
     navigator.clipboard.writeText(textOut).then(()=>{set('copyResults','Copied!');setTimeout(()=>set('copyResults','Copy income summary'),1800);}).catch(()=>window.prompt('Copy your summary:',textOut));
   }else window.prompt('Copy your summary:',textOut);
 });
+$('calculateEarnings').addEventListener('click',()=>{calculate();$('results').scrollIntoView({behavior:'smooth',block:'start'});});
 $('printResults').addEventListener('click',()=>window.print());
 $('resetAll').addEventListener('click',reset);
 calculate();
