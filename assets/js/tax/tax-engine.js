@@ -26,13 +26,13 @@
       rebate=Math.min(regime.rebateMax,Math.max(0,taxBeforeRebate-marginalRelief87A));
     }
     const taxAfterRebate=Math.max(0,taxBeforeRebate-rebate);
-    const sRate=Math.min(regime.surchargeCap,surchargeRate(income,rules.surcharge));
+    const sRate=Math.min(regime.surchargeCap,surchargeRate(income,regime.surchargeBands||rules.surcharge));
     let surcharge=taxAfterRebate*sRate, surchargeRelief=0;
     if (sRate>0) {
       const thresholds=[5000000,10000000,20000000,50000000].filter(x=>income>x);
       const threshold=thresholds[thresholds.length-1];
       if (threshold) {
-        const prevRate=Math.min(regime.surchargeCap,surchargeRate(threshold,rules.surcharge));
+        const prevRate=Math.min(regime.surchargeCap,surchargeRate(threshold,regime.surchargeBands||rules.surcharge));
         const prevBase=slabTax(threshold,regime.slabs);
         let prevRebate=resident&&threshold<=regime.rebateLimit?Math.min(regime.rebateMax,prevBase):0;
         const prevTax=Math.max(0,prevBase-prevRebate);
@@ -70,7 +70,7 @@
     const oldTaxable=round10(Math.max(0,grossSalary-oldHra-standardOld+otherIncome+houseIncome-oldDeductions));
     const newTaxable=round10(Math.max(0,grossSalary-standardNew+otherIncome+houseIncome-newDeductions));
     const oldSlabs=age>=80?rules.oldRegime.slabs.superSenior:age>=60?rules.oldRegime.slabs.senior:rules.oldRegime.slabs.below60;
-    const old=computeTax(oldTaxable,{...rules.oldRegime,slabs:oldSlabs},rules,resident);
+    const old=computeTax(oldTaxable,{...rules.oldRegime,slabs:oldSlabs,surchargeBands:rules.oldSurcharge},rules,resident);
     const newer=computeTax(newTaxable,rules.newRegime,rules,resident);
     return {
       old:{...old,standardDeduction:standardOld,hraExemption:oldHra,deductions:oldDeductions,slabTax:old.taxBeforeRebate},
