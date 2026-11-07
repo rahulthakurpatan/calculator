@@ -20,7 +20,8 @@ window.INCOMETAX_RULES = {
       rebateLimit: 500000, rebateMax: 12500, standardDeduction: 50000, surchargeCap: 0.37
     },
     cess: 0.04,
-    surcharge: [[5000000,0],[10000000,0.10],[20000000,0.15],[50000000,0.25],[Infinity,0.25]]
+    surcharge: [[5000000,0],[10000000,0.10],[20000000,0.15],[50000000,0.25],[Infinity,0.25]],
+    oldSurcharge: [[5000000,0],[10000000,0.10],[20000000,0.15],[50000000,0.25],[Infinity,0.37]]
   },
   "AY2026-27": {
     label: "FY 2025–26 / AY 2026–27",
