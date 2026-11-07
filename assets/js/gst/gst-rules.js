@@ -16,6 +16,7 @@ window.GST_RULES={
   {value:3,label:'3% — Specified goods'},
   {value:5,label:'5% — Merit rate'},
   {value:18,label:'18% — Standard rate'},
+  {value:20,label:'20% — Specific notified entries'},
   {value:40,label:'40% — Select demerit goods'}
  ],
  historicalRates:[
