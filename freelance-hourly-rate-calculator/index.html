@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f5ff">
+<meta name="description" content="Find a sustainable freelance hourly rate based on your income goal, billable hours, business expenses, tax reserve and platform fees. Calculate daily and project rates too.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Freelance Hourly Rate Calculator – Set Your Freelance Price">
+<meta property="og:description" content="Calculate a sustainable freelance hourly, daily and project rate using income goals, expenses, billable time, taxes and fees.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<title>Freelance Hourly Rate Calculator – Set Your Freelance Price</title>
+<style>
+:root{--ink:#20243a;--muted:#687087;--line:#e3e7f1;--blue:#4b63d3;--purple:#7956d8;--green:#16815d;--surface:#fff;--shadow:0 14px 38px rgba(58,71,135,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:18px}body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.62;background:linear-gradient(135deg,#fafaff 0%,#f0f3ff 48%,#f2faff 100%)}a{color:#4b55bd;text-underline-offset:3px}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.hero{padding:45px 0 34px;background:linear-gradient(125deg,rgba(248,247,255,.96),rgba(237,243,255,.93) 58%,rgba(239,250,255,.95));border-bottom:1px solid #e4e6f3}.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start}.eyebrow{display:inline-flex;padding:6px 11px;border:1px solid #dcdffc;background:#fff9;border-radius:30px;color:#535bc2;font-size:11px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}h1{font-size:clamp(34px,4.5vw,49px);line-height:1.1;letter-spacing:-1.6px;margin:16px 0 14px}.intro{max-width:600px;color:#626b83;font-size:15px;margin:0 0 17px}.trust{display:flex;flex-wrap:wrap;gap:9px 15px;color:#58627b;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}.notice{margin-top:17px;padding:12px 14px;border-left:3px solid #8290e8;background:#ffffffb8;border-radius:0 10px 10px 0;color:#5e6680;font-size:12px}
+.panel,.surface{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:17px;padding:21px;box-shadow:var(--shadow)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.panel h2{font-size:19px;margin:0}.tag{padding:5px 9px;border-radius:30px;background:#eef0ff;color:#4f5bc1;font-size:10px;font-weight:850}.subhead{font-size:13px;font-weight:850;color:#3e4964;margin:17px 0 7px;padding-bottom:6px;border-bottom:1px solid #edf0f6}.field{margin:10px 0}.field label{display:block;font-size:12px;color:#505c75;font-weight:750;margin-bottom:5px}.field input,.field select{width:100%;min-height:43px;padding:9px 11px;border:1px solid #dce2ef;border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:14px;outline:none}.field input:focus,.field select:focus{border-color:#7d87dd;box-shadow:0 0 0 3px #7582df20}.field small,.hint{display:block;color:#798197;font-size:10px;line-height:1.5;margin-top:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:11px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.btn{border:0;border-radius:10px;background:linear-gradient(110deg,#5966d4,#7956d8);color:#fff;min-height:45px;padding:10px 15px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.btn:hover{filter:brightness(.96)}.btn.secondary{background:#eef0ff;color:#4f58bd;border:1px solid #dfe2fb}.btn.ghost{background:#f4f6fa;color:#46516a;border:1px solid var(--line)}.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #9ba5f0;outline-offset:2px}.calculate-action{margin:19px 0 4px;text-align:center;padding:17px;background:linear-gradient(110deg,#f2efff,#edf5ff);border:1px solid #e0e3f7;border-radius:13px}.calculate-main{min-width:min(100%,330px);min-height:51px;font-size:15px;box-shadow:0 7px 18px #606bd326}.calculate-action p{margin:7px 0 0;color:#707991;font-size:10px}.error{display:none;color:#9e2f3a;background:#fff0f1;border:1px solid #f4d0d4;padding:10px 12px;border-radius:9px;font-size:12px;margin-top:11px}.error.show{display:block}
+.results{display:none;margin-top:17px}.results.show{display:block}.result-main{padding:18px;border-radius:13px;background:linear-gradient(120deg,#f0efff,#edf6ff);border:1px solid #dfe2fb}.result-label{font-size:12px;font-weight:750;color:#5d6482}.big{font-size:clamp(32px,5vw,43px);font-weight:900;letter-spacing:-1.4px;color:#4f58bd;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:11px;color:#69728b}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:11px}.metric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.metric span{display:block;color:#788096;font-size:10px;font-weight:750}.metric strong{display:block;font-size:16px;overflow-wrap:anywhere;line-height:1.35}.positive{color:var(--green)}.negative{color:#b44352}.breakdown{width:100%;border-collapse:collapse;margin-top:14px;font-size:12px}.breakdown th,.breakdown td{padding:9px 8px;border-bottom:1px solid #eceef5;text-align:left}.breakdown th:last-child,.breakdown td:last-child{text-align:right;font-weight:750}.scenario{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}.scenario>div{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.scenario span{display:block;font-size:10px;color:var(--muted);font-weight:750}.scenario strong{font-size:15px;overflow-wrap:anywhere}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.actions .btn{flex:1}.section{padding:37px 0}.section-head{text-align:center;max-width:770px;margin:0 auto 21px}.section-head h2{font-size:clamp(24px,3vw,30px);letter-spacing:-.7px;margin:0 0 7px}.section-head p{color:var(--muted);margin:0;font-size:14px}.field-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.info-card,.content{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:13px;padding:18px}.info-card h3{font-size:14px;margin:0 0 6px}.info-card p,.content p,.content li{font-size:13px;color:#5e6880}.info-card p{margin:0}.content{margin:13px 0}.content h2{font-size:21px;margin:0 0 8px}.content h3{font-size:16px;margin:16px 0 5px}.content p{margin:8px 0}.content ul,.content ol{padding-left:21px}.formula{padding:16px;background:#f6f7ff;border:1px solid #e2e5f6;border-radius:11px;text-align:center;overflow-wrap:anywhere}.formula code{display:block;color:#505bbd;font-weight:850;font-size:clamp(12px,2vw,16px);white-space:normal}.faq{max-width:850px;margin:auto}.faq details{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin:9px 0}.faq summary{font-size:13px;font-weight:800;cursor:pointer}.faq details p{color:#626d84;font-size:12px;margin:9px 0 0}.related{display:flex;gap:9px;flex-wrap:wrap}.related a{background:#f0f1ff;border:1px solid #e0e3fb;border-radius:30px;padding:8px 12px;font-size:12px;font-weight:700}.disclaimer{font-size:11px;color:#737d93;padding:8px 0 28px}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr}.field-grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.wrap{width:calc(100% - 28px)}.hero{padding:29px 0 24px}h1{font-size:35px;letter-spacing:-1.2px}.intro{font-size:14px}.panel,.surface{padding:15px}.field-grid,.metrics{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.two{gap:8px}.three{grid-template-columns:1fr 1fr}.scenario{gap:6px}.scenario>div{padding:8px}.scenario strong{font-size:13px}.section{padding:29px 0}.actions{display:grid;grid-template-columns:1fr 1fr}.actions .btn{width:100%}.breakdown{font-size:11px}.breakdown th,.breakdown td{padding:8px 5px}}@media(max-width:380px){.field-grid,.metrics,.three{grid-template-columns:1fr}.big{font-size:30px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/freelance-hourly-rate-calculator.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/#webpage","url":"https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/","name":"Freelance Hourly Rate Calculator","description":"Calculate freelance hourly, daily and project rates from income goals, expenses, billable hours and fees."},
+{"@type":"WebApplication","name":"Freelance Hourly Rate Calculator","url":"https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free browser-based freelance pricing calculator for hourly, daily and project rates."},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Freelance Hourly Rate Calculator","item":"https://returnoninvestmentcalculator.in/freelance-hourly-rate-calculator/"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I calculate my freelance hourly rate?","acceptedAnswer":{"@type":"Answer","text":"Start with the take-home income you want, add annual business expenses, account for a tax reserve and payment or marketplace fees, then divide the required billings by realistic annual billable hours. This calculator makes those assumptions visible."}},
+{"@type":"Question","name":"Why should freelancers count only billable hours?","acceptedAnswer":{"@type":"Answer","text":"Freelancers also spend time on proposals, administration, learning, marketing, bookkeeping and client communication. Those hours may not be invoiced, so dividing income needs by every working hour can understate the rate required for paid work."}},
+{"@type":"Question","name":"Should I include platform fees in my hourly rate?","acceptedAnswer":{"@type":"Answer","text":"Yes, if a marketplace or payment provider deducts a percentage from client payments. Estimate the total percentage and gross up your quote so the amount remaining can support your income target. Check the provider's current fee schedule."}},
+{"@type":"Question","name":"Does this calculator calculate income tax exactly?","acceptedAnswer":{"@type":"Answer","text":"No. The tax percentage is an editable planning reserve, not an income-tax assessment. Actual tax depends on jurisdiction, income type, deductions, legal status and applicable rules. Consult a qualified tax professional for filing advice."}},
+{"@type":"Question","name":"Is GST included in the freelance hourly rate?","acceptedAnswer":{"@type":"Answer","text":"The recommended rate is calculated before GST. If GST applies to your service and registration, add it separately to the invoice. GST collected is not the freelancer's income."}},
+{"@type":"Question","name":"How do I calculate a freelance project price?","acceptedAnswer":{"@type":"Answer","text":"Multiply your sustainable hourly rate by estimated project hours, including revisions or additional scope time. Add a clearly stated scope buffer where appropriate, and define deliverables and revision limits in the proposal."}},
+{"@type":"Question","name":"Should I charge the same rate for every client?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. Complexity, expertise, urgency, usage rights, client requirements, market positioning and project risk can affect a quote. Use the calculated rate as a sustainable baseline, then price the scope transparently."}}
+]}]}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">FREE • INDIA + WORLDWIDE • INSTANT</span><h1>Freelance Hourly Rate Calculator</h1>
+<p class="intro">Find a sustainable rate for your freelance work. Start with the income you want, account for the hours you can actually bill, and include business expenses, tax reserves and platform fees. Get hourly, daily and project pricing estimates.</p>
+<div class="trust"><span>Hourly and project rates</span><span>INR and global currencies</span><span>Transparent calculations</span><span>Runs in your browser</span></div>
+<div class="notice"><strong>Pricing reminder:</strong> Not every working hour is billable. Proposals, admin, marketing, learning and client calls take time too. This calculator uses your billable-time estimate instead of assuming every work hour earns money.</div>
+</div>
+<section class="panel" aria-labelledby="calc-title">
+<div class="panel-head"><h2 id="calc-title">Calculate your freelance rate</h2><span class="tag">RATE PLANNER</span></div>
+<form id="freelance-form" novalidate>
+<div class="two">
+<div class="field"><label for="currency">Display currency</label><select id="currency"><option value="INR">Indian Rupee (₹)</option><option value="USD">US Dollar ($)</option><option value="GBP">British Pound (£)</option><option value="EUR">Euro (€)</option><option value="AED">UAE Dirham (د.إ)</option></select></div>
+<div class="field"><label for="income">Desired monthly take-home income</label><input id="income" type="number" min="1" step="any" value="100000" inputmode="decimal"><small>Amount you want to keep after your estimated tax reserve.</small></div>
+</div>
+<div class="subhead">WORKING TIME & BILLABLE HOURS</div>
+<div class="three">
+<div class="field"><label for="hours-day">Working hours per day</label><input id="hours-day" type="number" min="1" max="24" step="0.5" value="8"></div>
+<div class="field"><label for="days-week">Working days per week</label><input id="days-week" type="number" min="1" max="7" step="0.5" value="5"></div>
+<div class="field"><label for="weeks-off">Weeks off per year</label><input id="weeks-off" type="number" min="0" max="52" step="0.5" value="4"></div>
+</div>
+<div class="two">
+<div class="field"><label for="billable">Billable share of working time (%)</label><input id="billable" type="number" min="1" max="100" step="1" value="60"><small>Example: 60% means 24 billable hours from a 40-hour work week.</small></div>
+<div class="field"><label for="buffer">Safety / income buffer (%)</label><input id="buffer" type="number" min="0" max="100" step="1" value="10"><small>Optional allowance for slow periods, unpaid gaps and uncertainty.</small></div>
+</div>
+<div class="subhead">BUSINESS COSTS & DEDUCTIONS</div>
+<div class="two">
+<div class="field"><label for="expenses">Monthly business expenses</label><input id="expenses" type="number" min="0" step="any" value="5000"><small>Software, internet, equipment, workspace, accounting and other costs.</small></div>
+<div class="field"><label for="tax">Estimated effective tax reserve (%)</label><input id="tax" type="number" min="0" max="90" step="0.5" value="10"><small>Editable planning assumption, not an official tax calculation.</small></div>
+</div>
+<div class="two">
+<div class="field"><label for="platform-fee">Marketplace / platform fee (%)</label><input id="platform-fee" type="number" min="0" max="90" step="0.1" value="10"><small>Use the fee that applies to your account or contract.</small></div>
+<div class="field"><label for="payment-fee">Payment / transfer fee (%)</label><input id="payment-fee" type="number" min="0" max="50" step="0.1" value="2"><small>Include payment processing or currency conversion percentage if relevant.</small></div>
+</div>
+<div class="subhead">PROJECT QUOTE & INVOICE</div>
+<div class="two">
+<div class="field"><label for="project-hours">Estimated project hours</label><input id="project-hours" type="number" min="0" step="0.5" value="20"><small>Enter delivery hours before additional revision allowance.</small></div>
+<div class="field"><label for="revision">Extra revision / scope time (%)</label><input id="revision" type="number" min="0" max="200" step="1" value="10"></div>
+</div>
+<div class="two">
+<div class="field"><label for="gst">GST on invoice (%) – optional</label><select id="gst"><option value="0">Do not add GST</option><option value="5">5%</option><option value="12">12%</option><option value="18">18%</option><option value="28">28%</option></select><small>Only select a rate if it applies to your service and registration.</small></div>
+<div class="field"><label for="current-rate">Your current hourly rate (optional)</label><input id="current-rate" type="number" min="0" step="any" placeholder="e.g. 800"></div>
+</div>
+<div class="error" id="calc-error" role="alert"></div>
+<div class="calculate-action"><button class="btn calculate-main" type="submit">Calculate My Freelance Rate</button><p>Review the hourly rate, take-home estimate and project quotation below.</p></div>
+</form>
+<div class="results" id="results" aria-live="polite">
+<div class="result-main"><div class="result-label">Recommended sustainable hourly rate</div><div class="big" id="hourly-rate">₹0</div><div class="result-sub" id="rate-note">Based on the income, costs, fees and billable time entered above.</div></div>
+<div class="metrics">
+<div class="metric"><span>Daily rate (working day)</span><strong id="daily-rate">—</strong></div>
+<div class="metric"><span>Weekly billable value</span><strong id="weekly-rate">—</strong></div>
+<div class="metric"><span>Monthly billable value</span><strong id="monthly-rate">—</strong></div>
+<div class="metric"><span>Annual client billings target</span><strong id="annual-billings">—</strong></div>
+<div class="metric"><span>Annual billable hours</span><strong id="annual-hours">—</strong></div>
+<div class="metric"><span>Estimated take-home / month</span><strong id="takehome">—</strong></div>
+</div>
+<div class="subhead">RATE OPTIONS & PROJECT QUOTE</div>
+<div class="scenario"><div><span>Minimum baseline</span><strong id="minimum-rate">—</strong></div><div><span>Recommended</span><strong id="recommended-rate">—</strong></div><div><span>Premium (+20%)</span><strong id="premium-rate">—</strong></div></div>
+<div class="metrics">
+<div class="metric"><span>Project price before GST</span><strong id="project-price">—</strong></div>
+<div class="metric"><span>GST amount (if selected)</span><strong id="gst-amount">—</strong></div>
+<div class="metric"><span>Project invoice total</span><strong id="invoice-total">—</strong></div>
+</div>
+<table class="breakdown"><tbody>
+<tr><th>Annual income you want to keep</th><td id="out-takehome">—</td></tr>
+<tr><th>Estimated annual tax reserve</th><td id="out-tax">—</td></tr>
+<tr><th>Annual business expenses</th><td id="out-expenses">—</td></tr>
+<tr><th>Safety buffer amount</th><td id="out-buffer">—</td></tr>
+<tr><th>Estimated platform and payment fees</th><td id="out-fees">—</td></tr>
+<tr><th>Annual client billings required</th><td id="out-gross">—</td></tr>
+</tbody></table>
+<div class="notice" id="comparison-note">Your current rate comparison will appear here if you enter a current hourly rate.</div>
+<div class="actions"><button class="btn secondary" id="copy-result" type="button">Copy rate summary</button><button class="btn ghost" id="print-result" type="button">Print / Save PDF</button><button class="btn ghost" id="reset-form" type="button">Reset calculator</button></div>
+</div>
+</section>
+</div></section>
+<section class="section"><div class="wrap">
+<div class="section-head"><h2>What goes into a sustainable freelance rate?</h2><p>Your quote must cover more than the time spent delivering the final work.</p></div>
+<div class="cards">
+<article class="info-card"><h3>1. Your income target</h3><p>Choose the monthly amount you want to retain after your estimated tax reserve. The calculator annualises this target before working out the required billings.</p></article>
+<article class="info-card"><h3>2. Real billable capacity</h3><p>Account for leave and the share of your work week that can actually be invoiced. Marketing, proposals, admin and learning are real working hours too.</p></article>
+<article class="info-card"><h3>3. Business expenses</h3><p>Include recurring tools and subscriptions, internet, equipment, insurance, workspace, accounting and other costs required to operate your freelance business.</p></article>
+<article class="info-card"><h3>4. Tax and cash reserves</h3><p>Use a cautious tax reserve based on your own circumstances. Keep a separate buffer for delayed projects, cancellations, unpaid invoices and quiet months.</p></article>
+<article class="info-card"><h3>5. Marketplace and payment fees</h3><p>Some platforms or payment providers deduct a percentage from the amount paid by a client. Enter your actual applicable fee rather than relying on a universal default.</p></article>
+<article class="info-card"><h3>6. Scope and revisions</h3><p>For a fixed project quote, estimate delivery hours and include revision or scope time. Define deliverables and revision limits in your client agreement.</p></article>
+</div>
+<div class="content">
+<h2>How to use the Freelance Hourly Rate Calculator</h2>
+<ol>
+<li>Choose the currency in which you want to see your rates. Currency selection changes display only; it does not convert exchange rates.</li>
+<li>Enter the monthly take-home income you want after your estimated tax reserve.</li>
+<li>Set your normal work hours, work days, weeks off and realistic billable share. Do not assume every working hour is chargeable.</li>
+<li>Add monthly business expenses, a tax reserve, platform commission and payment fees. Use the current fee schedule that applies to your account.</li>
+<li>Enter project hours, revision allowance and optional GST to estimate a fixed project invoice.</li>
+<li>Select Calculate My Freelance Rate. Review the rate options and the full annual breakdown before quoting a client.</li>
+</ol>
+<h3>How many hours should a freelancer count as billable?</h3>
+<p>There is no universal billable percentage. A new freelancer may spend substantial time finding clients and building a portfolio, while an established consultant may have more repeat work. Estimate your own billable share from a typical month and update it as your workload changes. If you count every hour as billable when many hours are actually spent on sales, administration or learning, your hourly rate may be too low to meet your income target.</p>
+<h3>Hourly rate vs daily rate vs project rate</h3>
+<p>An hourly rate is useful when scope is uncertain or work is ongoing. A day rate can simplify workshops, consulting or dedicated client days. A project price is often easier for a client to approve when deliverables and boundaries are clear. Use your sustainable hourly rate as a baseline, then estimate project hours, revisions, risk and the value of the outcome. Do not promise unlimited revisions in a fixed-price quote.</p>
+<h3>How to price work for international clients</h3>
+<p>Choose a currency that is clear to both parties and confirm who bears bank, marketplace and conversion charges. This calculator does not fetch live exchange rates, so it will not silently convert INR into USD, GBP, EUR or AED. Your international quote should also consider time-zone overlap, contract terms, withholding or indirect taxes where applicable, payment delays and currency risk.</p>
+<h3>Understanding the tax reserve and GST</h3>
+<p>The tax reserve is a percentage-based planning assumption only. It is not a substitute for a tax return, tax slab calculation or professional advice. Actual tax depends on your country, tax residency, business structure, income classification, deductions and applicable law. GST or another indirect tax, where applicable, is treated separately from your freelance earnings and should be added to the invoice only when legally appropriate. Confirm registration, place-of-supply and rate requirements with a qualified tax professional.</p>
+</div>
+<div class="content">
+<h2>Freelance hourly rate formula</h2>
+<p>The calculator first estimates the annual billable hours available, then calculates how much client billing is needed to support the selected take-home goal, expenses, reserve and fees.</p>
+<div class="formula"><code>Annual billable hours = Hours/day × Days/week × (52 − Weeks off) × Billable %</code></div>
+<div class="formula"><code>Required annual billings = [(Annual take-home ÷ (1 − Tax reserve)) + Annual expenses] × (1 + Buffer) ÷ (1 − Total fees)</code></div>
+<div class="formula"><code>Recommended hourly rate = Required annual billings ÷ Annual billable hours</code></div>
+<p>For conservative planning, this simplified model treats the tax reserve as a percentage of the take-home income requirement and adds business expenses separately. It does not model deductible expenses, progressive tax slabs, tax credits or jurisdiction-specific rules. The fee percentages are applied to gross client billings; the calculator combines platform and payment fees into one effective deduction.</p>
+<h3>Worked example (illustrative)</h3>
+<p>Suppose a freelancer wants to retain ₹1,00,000 per month, has ₹5,000 monthly business costs, works 8 hours per day for 5 days a week, takes 4 weeks off annually and estimates that 60% of working time is billable. If the freelancer uses a 10% tax reserve, 10% combined platform/payment fees and a 10% buffer, the tool derives annual billable capacity and the hourly billing target from those inputs. The example is a planning scenario, not a market-rate recommendation or tax assessment.</p>
+</div>
+<div class="content">
+<h2>Freelance pricing mistakes to avoid</h2>
+<ul>
+<li>Dividing your income goal by all calendar working hours instead of billable hours.</li>
+<li>Forgetting software, equipment replacement, internet, insurance and accounting costs.</li>
+<li>Ignoring platform commission, payment processing or currency conversion deductions.</li>
+<li>Confusing client invoice value with money retained after fees and tax.</li>
+<li>Adding GST to your income target instead of treating it as a separate invoice tax where applicable.</li>
+<li>Quoting a fixed project without estimating revisions, meetings, delivery and scope changes.</li>
+<li>Copying another freelancer's rate without considering experience, deliverables, client market and workload.</li>
+</ul>
+</div>
+<div class="content">
+<h2>Related free calculators</h2>
+<div class="related"><a href="/business-profit-loss-tracker/">Business Profit & Loss Tracker</a><a href="/gst-calculator/">GST Calculator</a><a href="/income-tax-calculator/">Income Tax Calculator</a><a href="/">ROI Calculator</a><a href="/youtube-adsense-revenue-calculator/">YouTube AdSense Revenue Calculator</a></div>
+</div>
+<div class="content faq">
+<h2>Frequently asked questions</h2>
+<details><summary>How do I calculate my freelance hourly rate?</summary><p>Start with the take-home income you want, add annual business expenses, account for a tax reserve and payment or marketplace fees, then divide the required billings by realistic annual billable hours. This calculator makes those assumptions visible.</p></details>
+<details><summary>Why should freelancers count only billable hours?</summary><p>Freelancers also spend time on proposals, administration, learning, marketing, bookkeeping and client communication. Those hours may not be invoiced, so dividing income needs by every working hour can understate the rate required for paid work.</p></details>
+<details><summary>Should I include platform fees in my hourly rate?</summary><p>Yes, if a marketplace or payment provider deducts a percentage from client payments. Estimate the total percentage and gross up your quote so the amount remaining can support your income target. Check the provider's current fee schedule.</p></details>
+<details><summary>Does this calculator calculate income tax exactly?</summary><p>No. The tax percentage is an editable planning reserve, not an income-tax assessment. Actual tax depends on jurisdiction, income type, deductions, legal status and applicable rules. Consult a qualified tax professional for filing advice.</p></details>
+<details><summary>Is GST included in the freelance hourly rate?</summary><p>The recommended rate is calculated before GST. If GST applies to your service and registration, add it separately to the invoice. GST collected is not the freelancer's income.</p></details>
+<details><summary>How do I calculate a freelance project price?</summary><p>Multiply your sustainable hourly rate by estimated project hours, including revisions or additional scope time. Add a clearly stated scope buffer where appropriate, and define deliverables and revision limits in the proposal.</p></details>
+<details><summary>Should I charge the same rate for every client?</summary><p>Not necessarily. Complexity, expertise, urgency, usage rights, client requirements, market positioning and project risk can affect a quote. Use the calculated rate as a sustainable baseline, then price the scope transparently.</p></details>
+</div>
+<p class="disclaimer">Disclaimer: This tool provides estimates for planning and pricing discussions. It does not guarantee income, recommend a market rate, calculate exact tax liability or determine whether GST applies. Verify current platform fees, tax rules and invoice obligations for your circumstances. Your entries are processed locally in your browser.</p>
+</div></section>
+</main>
+<div id="site-footer"></div>
+</body>
+</html>
