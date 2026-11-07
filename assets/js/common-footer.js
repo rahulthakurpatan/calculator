@@ -13,8 +13,9 @@
     ['Income Tax Calculator', '/income-tax-calculator/'],
     ['All-in-One TDS Calculator', '/tds-calculator/'],
     ['GST Calculator', '/gst-calculator/'],
-    ['Company Tax Calculator', '/company-corporate-tax-calculator/'],
-    ['Company / Corporate Tax Calculator', '/corporate-tax-calculator/'],
+    ['Company / Corporate Tax Calculator', '/company-corporate-tax-calculator/'],
+    ['Gratuity Calculator', '/gratuity-calculator/'],
+    ['HRA Calculator', '/hra-calculator/'],
     ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/'],
 
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
