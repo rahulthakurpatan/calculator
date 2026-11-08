@@ -73,7 +73,8 @@
         ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
         ['AI Hindi Text-to-Speech', '/hindi-text-to-speech/', 'Convert Hindi text into spoken audio'],
         ['Land Unit Converter', '/land-unit-converter/', 'Convert Bigha, Acre, Hectare and more'],
-        ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/', 'Estimate the value of gold and silver']
+        ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/', 'Estimate the value of gold and silver'],
+        ['CPCT Typing Practice', '/cpct-typing-practice/', 'Practise English and Hindi Unicode typing for CPCT']
       ]
     }
   ];
