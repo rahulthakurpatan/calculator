@@ -41,7 +41,8 @@
     ['AI Hindi Text-to-Speech', '/hindi-text-to-speech/'],
     ['Land Unit Converter', '/land-unit-converter/'],
     ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/'],
-    ['Age & Govt Form Eligibility Calculator', '/age-govt-form-eligibility-calculator/']
+    ['Age & Govt Form Eligibility Calculator', '/age-govt-form-eligibility-calculator/'],
+    ['CPCT Typing Practice', '/cpct/']
   ];
   const style = document.createElement('style');
   style.id = 'investcalc-common-footer-style';
