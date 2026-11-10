@@ -162,12 +162,12 @@ function choosePassage(){
  const bank=mode==='kruti'?['Hkkjr ,d fofo/k laLd`fr okyk ns'k gSA ;gka fofHkUu Hkk"kk,a vkSj ijEijk,a ikbZ tkrh gSaA fu;fer vH;kl ls Vad.k dh xfr vkSj 'kq)rk esa lq/kkj gksrk gSA','dk;kZy; esa Li"V vkSj lgh vfHkys[k j[kuk vko';d gSA fdlh uke] rkjh[k ;k la[;k esa NksVh lh xyrh ijs'kkuh iSnk dj ldrh gSA']:passages[mode];
  const targetWords={1:100,2:200,5:500,10:1000,15:1500,30:3000}[duration()]||500;
  let text='',words=0,idx=Math.floor(Math.random()*bank.length),n=0;
- while(words<targetWords&&n<500){const p=bank[(idx+n)%bank.length];text+=(text?'\\n\\n':'')+p;words+=p.trim().split(/\\s+/).length;n++;}
+ while(words<targetWords&&n<500){const p=bank[(idx+n)%bank.length];text+=(text?'\n\n':'')+p;words+=p.trim().split(/\s+/).length;n++;}
  activePassage=customPassage||text;
  $('passage').classList.toggle('kruti',mode==='kruti');
  $('typingInput').classList.toggle('kruti',mode==='kruti');
  $('passage').lang=mode==='hi'?'hi':'en';
- $('passageCount').textContent=customPassage?'Custom passage · '+activePassage.trim().split(/\\s+/).length+' words':duration()+' minute passage · '+words+' words';
+ $('passageCount').textContent=customPassage?'Custom passage · '+activePassage.trim().split(/\s+/).length+' words':duration()+' minute passage · '+words+' words';
  renderPassage();$('typingInput').value='';$('result').classList.remove('show');
 }
 function renderPassage(){const target=Array.from(norm(activePassage)),typed=Array.from(norm($('typingInput').value));let html='';for(let i=0;i<target.length;i++){let cls='';if(i<typed.length)cls=typed[i]===target[i]?'correct':'wrong';else if(i===typed.length)cls='current';html+='<span class="'+cls+'">'+(target[i]===' '?'&nbsp;':escapeHtml(target[i]))+'</span>';}if(typed.length>target.length)html+='<span class="wrong">'+typed.slice(target.length).map(escapeHtml).join('')+'</span>';$('passage').innerHTML=html;}
