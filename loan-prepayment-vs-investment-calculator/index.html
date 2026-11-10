@@ -157,6 +157,13 @@
  let latest = null;
  let latestRows = [];
  const locales = {USD:'en-US',GBP:'en-GB',EUR:'en-IE',CAD:'en-CA',AUD:'en-AU',INR:'en-IN',NZD:'en-NZ',SGD:'en-SG',JPY:'ja-JP',CNY:'zh-CN',CHF:'de-CH',AED:'en-AE',SAR:'en-SA',ZAR:'en-ZA',BRL:'pt-BR',MXN:'es-MX'};
+ // Select a sensible starting currency from the browser locale; users can always override it.
+ try {
+   const locale = new Intl.NumberFormat().resolvedOptions().locale || 'en-US';
+   const region = (locale.match(/[-_]([A-Z]{2})$/i) || [])[1]?.toUpperCase();
+   const regionalCurrency = {US:'USD',GB:'GBP',IE:'EUR',DE:'EUR',FR:'EUR',ES:'EUR',IT:'EUR',NL:'EUR',BE:'EUR',PT:'EUR',AT:'EUR',FI:'EUR',GR:'EUR',IN:'INR',CA:'CAD',AU:'AUD',NZ:'NZD',SG:'SGD',JP:'JPY',CN:'CNY',HK:'HKD',AE:'AED',SA:'SAR',ZA:'ZAR',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',MX:'MXN',BR:'BRL',KR:'KRW',MY:'MYR',TH:'THB',PH:'PHP',ID:'IDR',TR:'TRY',IL:'ILS',PK:'PKR',BD:'BDT',NG:'NGN'};
+   if (regionalCurrency[region] && Array.from($('currency').options).some(option => option.value===regionalCurrency[region])) $('currency').value=regionalCurrency[region];
+ } catch (_) {}
  function currency(){return $('currency').value}
  // Add every ISO currency code supported by the browser's Intl implementation.
  // The visible fallback list remains available on older browsers.
