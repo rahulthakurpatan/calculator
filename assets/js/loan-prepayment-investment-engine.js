@@ -95,6 +95,7 @@
 
       // Invest path: scheduled loan payment continues; monthly surplus is
       // invested at month end.
+      let investRedirectedPayment = 0;
       if (investLoanBalance > EPS) {
         const interest = investLoanBalance * monthlyRate(loanRate);
         investInterest += interest;
@@ -104,11 +105,15 @@
         if (investLoanBalance <= EPS) {
           investLoanBalance = 0;
           investLoanPaidMonth = month;
+          investRedirectedPayment = Math.max(0, standardPayment - due);
         }
+      } else {
+        investRedirectedPayment = standardPayment;
       }
       investBalance = grow(investBalance);
-      investBalance = addContribution(investBalance, extraMonthly);
-      investContributions += extraMonthly;
+      const investContributionThisMonth = extraMonthly + investRedirectedPayment;
+      investBalance = addContribution(investBalance, investContributionThisMonth);
+      investContributions += investContributionThisMonth;
 
       if (month % 12 === 0 || month === months) {
         const prepayNet = investmentNet(prepayInvest, prepayContributions, taxRate) - prepayBalance;
