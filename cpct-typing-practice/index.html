@@ -195,6 +195,100 @@ function choosePassage(){
  environment:{en:['A clean neighbourhood encourages better health and improves the quality of public spaces. Residents can take part in local cleanliness drives and report blocked drains or unsafe waste disposal to the proper authority.','Saving electricity is another practical step. Switch off lights and equipment when they are not needed, choose efficient appliances and make use of daylight whenever possible.'],hi:['स्वच्छ मोहल्ला बेहतर स्वास्थ्य और अच्छे सार्वजनिक वातावरण में मदद करता है। नागरिक सफाई अभियान में भाग ले सकते हैं और कचरे के गलत निपटान की सूचना संबंधित विभाग को दे सकते हैं।','बिजली की बचत भी पर्यावरण संरक्षण का सरल उपाय है। जरूरत न होने पर उपकरण बंद रखें और जहां संभव हो प्राकृतिक रोशनी का उपयोग करें।']},
  society:{en:['A responsible citizen respects public property and helps maintain order in shared places. Patience, polite communication and cooperation make services more accessible to everyone.','During an emergency, people should remain calm, follow verified instructions and contact the appropriate service. Sharing rumours can create confusion and delay necessary help.'],hi:['जिम्मेदार नागरिक सार्वजनिक संपत्ति का सम्मान करता है और साझा स्थानों को व्यवस्थित रखने में सहयोग देता है। धैर्य और विनम्र व्यवहार से सभी को सुविधा मिलती है।','आपात स्थिति में शांत रहना और सही निर्देशों का पालन करना चाहिए। अपुष्ट संदेश फैलाने से भ्रम पैदा हो सकता है और सहायता पहुंचने में देरी हो सकती है।']}
  };
+
+ const extraPracticePassages={
+ general:{
+ en:[
+ 'A person preparing for a typing examination should create a quiet study space and keep the required documents ready. Practising at a fixed time helps build a routine. It is useful to record speed and accuracy after each test and compare progress at the end of the week.',
+ 'Good typing depends on posture as well as finger movement. Keep the screen at a comfortable height, sit with the back supported and place the fingers gently on the home row. Avoid pressing the keys harder than necessary. Relaxed hands can support longer and more consistent practice.',
+ 'Reading newspapers, notices and short articles can improve familiarity with common words and sentence structures. After reading, select a paragraph and type it carefully. Check spelling, spacing and punctuation. This activity combines reading comprehension with practical keyboard training.',
+ 'A practice target should be challenging but achievable. If accuracy falls, reduce the pace and focus on correct characters. Once the error rate becomes lower, increase speed gradually. Small improvements repeated over many days are more useful than rushing through a single session.',
+ 'Before beginning a mock test, check the keyboard, language setting and timer. Read the instructions and make sure the typing area is ready. During the test, maintain a steady rhythm and avoid unnecessary pauses. Review the result afterwards to identify the next area for improvement.'
+ ],
+ hi:[
+ 'टाइपिंग परीक्षा की तैयारी करने वाले विद्यार्थी को शांत स्थान चुनना चाहिए और अभ्यास के लिए आवश्यक सामग्री पहले से तैयार रखनी चाहिए। प्रतिदिन निश्चित समय पर अभ्यास करने से अच्छी आदत बनती है। हर सत्र के बाद गति और शुद्धता लिखकर सप्ताह के अंत में प्रगति देखी जा सकती है।',
+ 'अच्छी टाइपिंग के लिए सही बैठने की मुद्रा भी जरूरी है। स्क्रीन को आरामदायक ऊंचाई पर रखें, पीठ को सहारा दें और उंगलियों को कीबोर्ड पर सहज स्थिति में रखें। कुंजियों को बहुत जोर से दबाने की आवश्यकता नहीं होती। आराम से अभ्यास करने पर लंबे समय तक एकाग्रता बनी रहती है।',
+ 'समाचार पत्र, सूचनाएं और छोटे लेख पढ़ने से सामान्य शब्दों तथा वाक्य रचना की समझ बढ़ती है। पढ़ने के बाद किसी अनुच्छेद को ध्यान से टाइप करें। फिर वर्तनी, रिक्त स्थान और विराम चिह्न जांचें। इस अभ्यास से पढ़ने और कीबोर्ड चलाने दोनों कौशलों में मदद मिलती है।',
+ 'अभ्यास का लक्ष्य ऐसा होना चाहिए जिसे लगातार पूरा किया जा सके। यदि शुद्धता कम हो रही है तो गति घटाकर सही अक्षर टाइप करने पर ध्यान दें। गलतियां कम होने पर धीरे धीरे गति बढ़ाएं। कई दिनों तक किया गया छोटा सुधार एक दिन की जल्दबाजी से अधिक उपयोगी होता है।',
+ 'मॉक टेस्ट शुरू करने से पहले कीबोर्ड, भाषा सेटिंग और टाइमर की जांच करें। निर्देश पढ़ें और सुनिश्चित करें कि टाइपिंग बॉक्स तैयार है। परीक्षा के दौरान समान गति बनाए रखें और अनावश्यक रुकावट से बचें। परिणाम देखने के बाद तय करें कि आगे किस कौशल पर काम करना है।'
+ ]},
+ office:{
+ en:[
+ 'An office receives letters, applications and reports from many people. Each document should be entered with the correct date and reference details. Staff members should arrange files so that authorised colleagues can find information without delay. Careful record keeping supports transparent administration.',
+ 'When preparing a meeting notice, include the date, time, venue and purpose in a clear format. Check the names of participants and attach the required agenda. A well prepared notice reduces confusion and allows everyone to make suitable arrangements before the meeting.',
+ 'Attendance registers and leave records should be updated according to the rules of the organisation. Entries must be readable and supported by the required documents. If a correction is needed, follow the approved procedure instead of overwriting information without explanation.',
+ 'A public help desk should listen patiently and guide visitors towards the correct service counter. Employees can explain which form is needed and which documents should be attached. Polite communication and accurate information help citizens complete their work with fewer visits.',
+ 'Office computers often contain important letters, spreadsheets and scanned records. Save files in clearly named folders and make backups according to workplace policy. Lock the computer when leaving the desk and do not share passwords or confidential information with unauthorised people.'
+ ],
+ hi:[
+ 'कार्यालय में अनेक लोगों के पत्र, आवेदन और प्रतिवेदन प्राप्त होते हैं। प्रत्येक दस्तावेज में सही तारीख और संदर्भ विवरण दर्ज करना चाहिए। फाइलों को इस प्रकार व्यवस्थित रखना चाहिए कि अधिकृत कर्मचारी आवश्यक जानकारी आसानी से खोज सकें। सही अभिलेख व्यवस्था पारदर्शी प्रशासन में मदद करती है।',
+ 'बैठक की सूचना तैयार करते समय तारीख, समय, स्थान और बैठक का उद्देश्य स्पष्ट रूप से लिखना चाहिए। प्रतिभागियों के नाम जांचें और आवश्यक कार्यसूची संलग्न करें। अच्छी तरह तैयार सूचना से भ्रम कम होता है और सभी लोग समय पर तैयारी कर पाते हैं।',
+ 'उपस्थिति पंजिका और अवकाश अभिलेख संस्था के नियमों के अनुसार अपडेट किए जाने चाहिए। प्रविष्टियां स्पष्ट होनी चाहिए और आवश्यक दस्तावेजों से समर्थित होनी चाहिए। सुधार की जरूरत होने पर बिना कारण जानकारी मिटाने के बजाय निर्धारित प्रक्रिया अपनाएं।',
+ 'लोक सहायता कक्ष में आने वाले व्यक्ति की बात धैर्य से सुननी चाहिए और उसे सही सेवा काउंटर की जानकारी देनी चाहिए। कर्मचारी बता सकते हैं कि कौन सा आवेदन और कौन से दस्तावेज जरूरी हैं। विनम्र व्यवहार और सही जानकारी से नागरिकों का समय बचता है।',
+ 'कार्यालय के कंप्यूटर में महत्वपूर्ण पत्र, स्प्रेडशीट और स्कैन किए हुए अभिलेख रखे जा सकते हैं। फाइलों को स्पष्ट नाम वाले फोल्डर में सुरक्षित करें और नियम के अनुसार बैकअप बनाएं। मेज छोड़ते समय कंप्यूटर लॉक करें और पासवर्ड किसी अनधिकृत व्यक्ति से साझा न करें।'
+ ]},
+ education:{
+ en:[
+ 'A school timetable helps students and teachers organise the working day. It gives each subject a suitable period and allows time for activities, breaks and revision. Students should check the timetable regularly and bring the books required for the lessons planned on that day.',
+ 'A library supports independent learning by providing textbooks, reference material and a quiet place to read. Students should return borrowed books on time and handle them carefully. Maintaining a simple reading record can help learners remember useful ideas and discover new subjects.',
+ 'Science becomes easier to understand when students observe carefully and record what happens during an experiment. Laboratory instructions should be followed in the correct order. Equipment must be used safely, and the work area should be cleaned after the activity is complete.',
+ 'Teachers can make lessons more effective by explaining the learning goal and giving students opportunities to ask questions. Short notes, examples and classroom discussions help learners connect new information with what they already know. Regular revision makes these ideas easier to recall.',
+ 'An educational certificate contains important personal and academic details. Before submitting a form for admission or examination, check the spelling of the name, date of birth and roll number. Keep photocopies and digital scans in a safe place for future reference.'
+ ],
+ hi:[
+ 'विद्यालय की समय सारणी विद्यार्थियों और शिक्षकों को पूरे दिन के कार्य व्यवस्थित करने में मदद करती है। इसमें प्रत्येक विषय के लिए उचित समय रखा जाता है और गतिविधियों, अवकाश तथा पुनरावृत्ति के लिए भी समय मिलता है। विद्यार्थियों को रोज समय सारणी देखकर आवश्यक पुस्तकें लानी चाहिए।',
+ 'पुस्तकालय स्वतंत्र अध्ययन को बढ़ावा देता है। यहां पाठ्य पुस्तकें, संदर्भ सामग्री और शांत वातावरण उपलब्ध होता है। विद्यार्थियों को ली गई पुस्तकें समय पर लौटानी चाहिए और उन्हें सावधानी से रखना चाहिए। पढ़ी गई पुस्तकों का छोटा विवरण लिखने से उपयोगी विचार याद रहते हैं।',
+ 'जब विद्यार्थी किसी प्रयोग को ध्यान से देखते हैं और उसके परिणाम लिखते हैं, तब विज्ञान को समझना आसान होता है। प्रयोगशाला के निर्देश सही क्रम में अपनाने चाहिए। उपकरणों का सुरक्षित उपयोग करें और कार्य पूरा होने के बाद स्थान को साफ रखें।',
+ 'शिक्षक यदि पाठ का उद्देश्य स्पष्ट करें और विद्यार्थियों को प्रश्न पूछने का अवसर दें तो सीखना अधिक प्रभावी होता है। छोटे नोट्स, उदाहरण और कक्षा में चर्चा नई जानकारी को पुराने ज्ञान से जोड़ते हैं। नियमित पुनरावृत्ति से विषय लंबे समय तक याद रहता है।',
+ 'शैक्षणिक प्रमाण पत्र में व्यक्तिगत और अध्ययन से जुड़ी महत्वपूर्ण जानकारी होती है। प्रवेश या परीक्षा का आवेदन जमा करने से पहले नाम की वर्तनी, जन्मतिथि और अनुक्रमांक जांचें। भविष्य में उपयोग के लिए प्रमाण पत्रों की प्रतियां और डिजिटल स्कैन सुरक्षित रखें।'
+ ]},
+ digital:{
+ en:[
+ 'A strong password should be difficult for another person to guess. Use a different password for important accounts and enable additional verification where it is available. Never share a one time password, recovery code or private login link through an unknown call or message.',
+ 'Digital payments are convenient, but users should check the recipient name and amount before confirming a transaction. Keep the transaction message for reference and report an unfamiliar payment through the official bank or service channel as soon as possible.',
+ 'A spreadsheet can organise lists, budgets and attendance details in rows and columns. Use clear headings and check the figures before applying a formula. Save a separate copy before making major changes so that important information can be recovered if a mistake occurs.',
+ 'Government websites may provide forms, certificates and status updates online. Use the official website address and read the instructions before entering personal information. After submitting an application, note the acknowledgement number and check the status through the authorised portal.',
+ 'People should think carefully before sharing photographs, documents or personal details on social media. Review privacy settings and avoid posting information that could expose another person. If a suspicious link arrives, verify its source instead of opening it immediately.'
+ ],
+ hi:[
+ 'मजबूत पासवर्ड का अनुमान लगाना दूसरे व्यक्ति के लिए कठिन होना चाहिए। महत्वपूर्ण खातों के लिए अलग पासवर्ड रखें और उपलब्ध होने पर अतिरिक्त सुरक्षा सुविधा चालू करें। ओटीपी, रिकवरी कोड या निजी लॉगिन लिंक किसी अनजान कॉल अथवा संदेश पर साझा न करें।',
+ 'डिजिटल भुगतान सुविधाजनक है, लेकिन लेनदेन की पुष्टि करने से पहले प्राप्तकर्ता का नाम और राशि जांचें। संदेश को संदर्भ के लिए सुरक्षित रखें। यदि कोई अनजान भुगतान दिखाई दे तो तुरंत बैंक या संबंधित सेवा के आधिकारिक माध्यम से सूचना दें।',
+ 'स्प्रेडशीट में सूचियां, बजट और उपस्थिति का विवरण पंक्तियों तथा स्तंभों में व्यवस्थित किया जा सकता है। स्पष्ट शीर्षक लिखें और फार्मूला लगाने से पहले आंकड़े जांचें। बड़े बदलाव करने से पहले अलग प्रति सुरक्षित रखें ताकि गलती होने पर जानकारी वापस मिल सके।',
+ 'सरकारी वेबसाइटों पर आवेदन, प्रमाण पत्र और स्थिति संबंधी जानकारी ऑनलाइन मिल सकती है। व्यक्तिगत जानकारी भरने से पहले आधिकारिक वेबसाइट का पता और निर्देश जांचें। आवेदन जमा करने के बाद पावती क्रमांक लिख लें और अधिकृत पोर्टल पर स्थिति देखें।',
+ 'सोशल मीडिया पर फोटो, दस्तावेज या निजी जानकारी साझा करने से पहले सावधानी बरतनी चाहिए। गोपनीयता सेटिंग जांचें और ऐसी जानकारी पोस्ट न करें जिससे किसी अन्य व्यक्ति की सुरक्षा प्रभावित हो। संदिग्ध लिंक मिलने पर उसे खोलने के बजाय उसके स्रोत की पुष्टि करें।'
+ ]},
+ environment:{
+ en:[
+ 'Trees provide shade, support wildlife and help improve the local environment. Communities can protect existing trees and choose suitable native plants for public spaces. Young plants need regular care, water and protection from damage, especially during their early years.',
+ 'Waste should be separated into suitable categories wherever local arrangements allow it. Wet kitchen waste can often be composted, while clean paper, metal and some plastics may be sent for recycling. Keeping waste separate makes collection and processing more effective.',
+ 'Water is essential for homes, farms and public services. Repairing leaking taps, using water carefully and collecting rainwater can reduce avoidable waste. People should also keep drains and nearby water bodies free from plastic and other discarded material.',
+ 'Walking, cycling and using public transport for suitable journeys can reduce traffic and fuel use. When a private vehicle is necessary, regular maintenance and sensible driving help it operate more efficiently. Small choices across a community can make a useful difference.',
+ 'Environmental awareness begins with observing local needs. Residents can report overflowing bins, blocked drains and unsafe dumping to the responsible department. Schools and community groups can organise clean-up activities and explain practical ways to protect shared spaces.'
+ ],
+ hi:[
+ 'पेड़ छाया देते हैं, वन्य जीवों को सहारा देते हैं और स्थानीय पर्यावरण को बेहतर बनाते हैं। समुदाय को पुराने पेड़ों की रक्षा करनी चाहिए और सार्वजनिक स्थानों पर उपयुक्त स्थानीय प्रजातियों के पौधे लगाने चाहिए। नए पौधों को शुरुआती वर्षों में पानी और सुरक्षा की जरूरत होती है।',
+ 'जहां स्थानीय व्यवस्था उपलब्ध हो, वहां कचरे को अलग अलग श्रेणियों में रखना चाहिए। रसोई का गीला कचरा खाद बनाने में उपयोगी हो सकता है, जबकि साफ कागज, धातु और कुछ प्लास्टिक पुनर्चक्रण के लिए भेजे जा सकते हैं। अलग कचरा रखने से उसका प्रबंधन आसान होता है।',
+ 'घर, खेत और सार्वजनिक सेवाओं के लिए पानी आवश्यक है। टपकते नल ठीक करना, पानी का सावधानी से उपयोग करना और वर्षा जल जमा करना अनावश्यक बर्बादी घटा सकता है। नालियों और जल स्रोतों में प्लास्टिक तथा अन्य कचरा नहीं डालना चाहिए।',
+ 'उपयुक्त दूरी के लिए पैदल चलना, साइकिल चलाना और सार्वजनिक परिवहन का उपयोग करना यातायात तथा ईंधन की खपत कम कर सकता है। निजी वाहन जरूरी हो तो उसकी नियमित देखभाल और समझदारी से चलाना उपयोगी है। छोटे प्रयास मिलकर अच्छा परिणाम दे सकते हैं।',
+ 'पर्यावरण के प्रति जागरूकता स्थानीय समस्याओं को पहचानने से शुरू होती है। नागरिक भरे हुए कूड़ेदान, बंद नालियों और गलत तरीके से फेंके गए कचरे की सूचना संबंधित विभाग को दे सकते हैं। विद्यालय और सामाजिक समूह सफाई अभियान आयोजित कर सकते हैं।'
+ ]},
+ society:{
+ en:[
+ 'A neighbourhood becomes safer and more welcoming when residents know one another and communicate respectfully. People can share useful local information, help older neighbours when needed and report damaged public facilities to the responsible authority.',
+ 'Road safety depends on the choices of every road user. Drivers should follow speed limits, wear seat belts and avoid using a phone while driving. Pedestrians should use safe crossing points and remain alert near moving traffic.',
+ 'A community health centre provides basic services and guidance to local families. Visitors should carry relevant records, follow appointment instructions and explain their concerns clearly. Staff members can then direct them to the appropriate service or further consultation.',
+ 'Public parks and playgrounds are shared spaces for people of different ages. Visitors should use bins, protect plants and follow safety instructions. Looking after common facilities allows more families to enjoy them and reduces the need for frequent repairs.',
+ 'During a local event, volunteers can help manage queues, guide visitors and keep pathways clear. Clear announcements and cooperation with organisers make the event safer. Everyone should follow instructions and take care of children and older people in crowded areas.'
+ ],
+ hi:[
+ 'जब मोहल्ले के निवासी एक दूसरे को जानते हैं और सम्मान से बातचीत करते हैं, तब आसपास का वातावरण अधिक सुरक्षित और सहयोगपूर्ण बनता है। लोग उपयोगी स्थानीय जानकारी साझा कर सकते हैं, जरूरत पड़ने पर बुजुर्ग पड़ोसियों की मदद कर सकते हैं और खराब सार्वजनिक सुविधाओं की सूचना दे सकते हैं।',
+ 'सड़क सुरक्षा प्रत्येक सड़क उपयोगकर्ता के व्यवहार पर निर्भर करती है। वाहन चालकों को गति सीमा का पालन करना चाहिए, सीट बेल्ट लगानी चाहिए और वाहन चलाते समय मोबाइल का उपयोग नहीं करना चाहिए। पैदल चलने वालों को सुरक्षित स्थान से सड़क पार करनी चाहिए।',
+ 'सामुदायिक स्वास्थ्य केंद्र स्थानीय परिवारों को बुनियादी सेवाएं और मार्गदर्शन देता है। वहां जाते समय जरूरी अभिलेख साथ रखें, समय संबंधी निर्देशों का पालन करें और अपनी समस्या स्पष्ट रूप से बताएं। इससे कर्मचारी उचित सेवा या आगे की सलाह दे सकते हैं।',
+ 'सार्वजनिक उद्यान और खेल के मैदान अलग अलग आयु के लोगों के साझा स्थान हैं। वहां कूड़ेदान का उपयोग करें, पौधों की रक्षा करें और सुरक्षा निर्देशों का पालन करें। सार्वजनिक सुविधाओं की देखभाल से अधिक परिवार उनका लाभ उठा पाते हैं।',
+ 'स्थानीय कार्यक्रम के दौरान स्वयंसेवक कतार संभालने, आगंतुकों को रास्ता बताने और रास्ते खुले रखने में मदद कर सकते हैं। स्पष्ट घोषणाएं और आयोजकों के साथ सहयोग कार्यक्रम को सुरक्षित बनाते हैं। भीड़ में बच्चों और बुजुर्गों का विशेष ध्यान रखना चाहिए।'
+ ]}
+ };
+ if(mode!=='kruti')bank.push(...extraPracticePassages[$('category').value||'general'][mode]);
  if(mode!=='kruti')bank.push(...categoryExtras[$('category').value||'general'][mode]);
  const targetWords={1:100,2:200,5:500,10:1000,15:1500,30:3000}[duration()]||500;
  let text='',words=0,idx=Math.floor(Math.random()*bank.length),n=0;
