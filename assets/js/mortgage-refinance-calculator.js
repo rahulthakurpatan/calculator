@@ -83,8 +83,8 @@
       const o = oldSched.rows[m] || oldSched.rows[oldSched.rows.length-1];
       const n = newSched.rows[m] || newSched.rows[newSched.rows.length-1];
       if (m>0) {
-        cumulativeOld += (o.paid - (oldSched.rows[m-1]?.paid || oldSched.paid));
-        cumulativeNew += (n.paid - (newSched.rows[m-1]?.paid || newSched.paid));
+        cumulativeOld += (o.paid - (oldSched.rows[m-1]?.paid ?? oldSched.paid));
+        cumulativeNew += (n.paid - (newSched.rows[m-1]?.paid ?? newSched.paid));
       }
       const oldCost = cumulativeOld + o.balance;
       const newCost = cumulativeNew + n.balance;
