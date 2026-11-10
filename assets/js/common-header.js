@@ -56,6 +56,7 @@
       label: 'Savings & Loans',
       tools: [
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
+        ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
       ]
     },
     {
