@@ -252,7 +252,7 @@ function calculate(event){
  const sponsors=num('sponsor-count')*num('sponsor-price'),products=num('product-sales')*num('product-profit');
  const gross=ads+affiliate+sponsors+products;
  const costs=num('hosting')+num('content-cost')+num('tools-cost')+num('other-cost');
- const net=gross-costs,goal=num('goal'),nonAd=affiliate+sponsors+products;
+ const net=gross-costs,goal=num('goal');
  const fixedOtherIncome=sponsors+products;
  const affiliatePerPageview=(share/100)*(ctr/100)*(conv/100)*num('commission');
  const totalRevenuePerPageview=(rpm/1000)+affiliatePerPageview;
@@ -264,10 +264,13 @@ function calculate(event){
  set('result-summary','Based on '+whole(pv)+' monthly pageviews, a Page RPM of '+money(rpm)+', and the optional income and cost assumptions.');
  set('gross',money(gross));set('expenses',money(costs));set('yearly-profit',money(net*12));set('daily-ads',money(ads/30));
  set('ad-income',money(ads));set('affiliate-income',money(affiliate));set('sponsor-income',money(sponsors));set('product-income',money(products));set('gross-row',money(gross));set('cost-row',money(costs));set('net-row',money(net));
- if(rpm>0){
-   if(adRevenueNeeded===0){set('required-views','No extra ad traffic needed');set('required-visitors','Your entered non-ad income already covers the profit goal and expenses in this simplified estimate.');}
-   else{set('required-views',whole(requiredViews)+' pageviews / month');set('required-visitors','Approximately '+whole(requiredVisitors)+' visitors / month at '+effectivePagesPerVisitor.toFixed(2)+' pages per visitor.');}
- }else{set('required-views','Cannot estimate with a zero Page RPM');set('required-visitors','Enter a Page RPM above zero to calculate the traffic required.');}
+ if(revenueStillNeeded===0){
+   set('required-views','No extra traffic needed');set('required-visitors','Your entered sponsorship and product income already cover the profit goal and expenses in this simplified estimate.');
+ }else if(totalRevenuePerPageview>0){
+   set('required-views',whole(requiredViews)+' pageviews / month');set('required-visitors','Approximately '+whole(requiredVisitors)+' visitors / month at '+effectivePagesPerVisitor.toFixed(2)+' pages per visitor.');
+ }else{
+   set('required-views','Cannot estimate with zero traffic-based income');set('required-visitors','Enter a Page RPM or add affiliate click and conversion assumptions above zero.');
+ }
  const gap=goal-net;
  set('goal-gap',gap<=0?'You are '+money(Math.abs(gap))+' above your monthly profit goal based on these inputs.':'You are '+money(gap)+' below your monthly profit goal based on these inputs.');
  error.classList.remove('show');results.classList.add('show');
