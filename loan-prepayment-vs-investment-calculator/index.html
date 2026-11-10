@@ -112,7 +112,8 @@
 <div class="metrics">
 <div class="metric"><span>Break-even investment return</span><strong id="break-even">—</strong></div>
 <div class="metric"><span>Monthly regular payment used</span><strong id="monthly-payment">—</strong></div>
-<div class="metric"><span>Investment gain tax estimate</span><strong id="tax-estimate">—</strong></div>
+<div class="metric"><span>Prepay-path tax estimate</span><strong id="tax-prepay">—</strong></div>
+<div class="metric"><span>Invest-path tax estimate</span><strong id="tax-invest">—</strong></div>
 <div class="metric"><span>Comparison period</span><strong id="period-used">—</strong></div>
 </div>
 <div class="chartbox"><h3>Estimated net-worth path over time</h3><svg id="comparison-chart" class="chart" viewBox="0 0 760 300" role="img" aria-label="Line chart comparing estimated net worth for loan prepayment and investing"></svg><div class="legend"><span><i class="dot" style="background:#365eea"></i>Pay down loan</span><span><i class="dot" style="background:#079b83"></i>Invest extra cash</span></div></div>
@@ -144,7 +145,7 @@
 <p class="note wrap">Educational illustration only, not financial, investment, tax or legal advice. Results depend on the assumptions entered and may differ from lender statements, investment outcomes and local tax treatment. Verify loan terms, prepayment restrictions, fees and applicable tax rules before acting.</p>
 </main>
 <div id="site-footer"></div>
-<script src="/assets/js/loan-prepayment-investment-engine.js" defer></script>
+<script src="/assets/js/loan-prepayment-investment-engine.js"></script>
 <script src="/assets/js/common-header.js" defer></script>
 <script src="/assets/js/common-footer.js" defer></script>
 <script src="/assets/js/common-search.js" defer></script>
@@ -213,13 +214,13 @@
    $('monthly-payment').textContent=money(data.assumptions.payment,0);
    const taxPre=Math.max(0,pre.grossInvestmentValue-pre.investmentContributions)*data.assumptions.taxRate/100;
    const taxInv=Math.max(0,inv.grossInvestmentValue-inv.investmentContributions)*data.assumptions.taxRate/100;
-   $('tax-estimate').textContent=money(taxPre+taxInv,0);
+   $('tax-prepay').textContent=money(taxPre,0);$('tax-invest').textContent=money(taxInv,0);
    $('period-used').textContent=(data.assumptions.horizonMonths/12).toFixed(1)+' years';
    const rows=r.rows;
    latestRows=rows;
    $('year-rows').innerHTML=rows.map(row=>'<tr><td>'+((row.month/12).toFixed(row.month%12?1:0))+' years</td><td>'+money(row.prepayBalance,0)+'</td><td>'+money(row.prepayInvest,0)+'</td><td><strong>'+money(row.prepayNet,0)+'</strong></td><td>'+money(row.investLoanBalance,0)+'</td><td>'+money(row.investBalance,0)+'</td><td><strong>'+money(row.investNet,0)+'</strong></td></tr>').join('');
    drawChart([{month:0,prepayNet:-Number($('balance').value),investNet:-Number($('balance').value)},...rows]);
-   $('break-even-note').textContent=data.breakEven===null?'A break-even return was not found within the model search range (-99% to 100%). Under the current assumptions, one strategy remains ahead across that range.':'Estimated break-even investment return: '+data.breakEven.toFixed(2)+'% per year. At approximately this assumed return, the two strategies produce similar net worth in this model.';
+   const noExtraCash=Number($('lump-sum').value||0)===0&&Number($('extra-monthly').value||0)===0;\n   $('break-even-note').textContent=data.breakEven===null?(noExtraCash?'No extra cash is allocated in either strategy, so both follow the same loan repayment path. A break-even investment return is not applicable.':'A break-even return was not found within the model search range (-99% to 100%). Under the current assumptions, one strategy remains ahead across that range.'):'Estimated break-even investment return: '+data.breakEven.toFixed(2)+'% per year. At approximately this assumed return, the two strategies produce similar net worth in this model.';
    $('results').classList.add('show');
    $('results').scrollIntoView({behavior:'smooth',block:'start'});
  }
