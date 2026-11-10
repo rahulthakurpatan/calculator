@@ -13,7 +13,7 @@
       tools: [
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
         ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
-        ['Lumpsum Return Calculator', '/lumpsum-return-calculator/', 'Estimate returns from a one-time investment'],
+        ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
         ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
         ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal']
@@ -38,32 +38,22 @@
         ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
         ['Instagram Earning Calculator', '/instagram-earning-calculator/', 'Estimate creator income from brand deals and other sources'],
         ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/', 'Set an hourly rate from income goals'],
-        ['Blog Traffic to Income Converter', '/blog-traffic-income-converter/', 'Estimate blog earnings from traffic'],
-        ['Crypto / Bitcoin Profit & Tax Calculator', '/crypto-profit-tax-calculator/', 'Estimate crypto gains and tax'],
-        ['Affiliate Commission Predictor', '/affiliate-commission-predictor/', 'Forecast affiliate commission income']
+        ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/', 'Estimate blog earnings from traffic'],
+        ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/', 'Project the future value of manually entered crypto holdings'],
       ]
     },
     {
       label: 'Family & Goals',
       tools: [
-        ['Child Future & Education Planner', '/child-future-education-planner/', 'Plan savings for a child’s education'],
         ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/', 'Estimate savings for a future wedding goal'],
-        ['Sukanya Samriddhi Yojana Calculator', '/ssy-calculator/', 'Estimate SSY contributions and maturity'],
+        ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/', 'Estimate SSY contributions and maturity'],
         ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/', 'Explore a traditional astrology-based reading'],
-        ['Wedding Budget & Expense Planner', '/wedding-budget-expense-planner/', 'Plan and track wedding expenses'],
-        ['Age & Govt Form Eligibility Calculator', '/age-govt-form-eligibility-calculator/', 'Check age limits for government forms']
       ]
     },
     {
       label: 'Savings & Loans',
       tools: [
-        ['Personal Loan EMI Calculator', '/personal-loan-emi-calculator/', 'Calculate personal loan EMI and interest'],
-        ['Home Loan Eligibility & EMI Tool', '/home-loan-eligibility-emi/', 'Estimate home loan eligibility and EMI'],
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
-        ['Recurring Deposit Calculator', '/rd-calculator/', 'Estimate RD maturity and interest'],
-        ['Public Provident Fund Calculator', '/ppf-calculator/', 'Project PPF balance and maturity'],
-        ['EPF Maturity Calculator', '/epf-maturity-calculator/', 'Estimate EPF balance at retirement'],
-        ['Inflation Impact Calculator', '/inflation-impact-calculator/', 'Understand how inflation changes purchasing power']
       ]
     },
     {
@@ -71,9 +61,6 @@
       tools: [
         ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/', 'Estimate solar savings and payback period'],
         ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
-        ['AI Hindi Text-to-Speech', '/hindi-text-to-speech/', 'Convert Hindi text into spoken audio'],
-        ['Land Unit Converter', '/land-unit-converter/', 'Convert Bigha, Acre, Hectare and more'],
-        ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/', 'Estimate the value of gold and silver'],
         ['CPCT Typing Practice', '/cpct-typing-practice/', 'Practise English and Hindi Unicode typing for CPCT']
       ]
     }
