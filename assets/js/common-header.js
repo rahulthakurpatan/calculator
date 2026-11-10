@@ -57,6 +57,7 @@
       tools: [
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
         ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
+        ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/', 'Compare refinance fees, monthly savings and break-even time']
       ]
     },
     {
