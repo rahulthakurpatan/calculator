@@ -1,142 +1,210 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
-<!-- Google tag (provided by Google Analytics) -->
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f5f8fc">
-<meta name="description" content="Use this free SIP calculator to estimate mutual fund investment value, total invested amount and estimated returns from a monthly SIP in India.">
+<meta name="description" content="Use this free SIP calculator to estimate mutual fund SIP returns in India. Calculate your future corpus, monthly investment, step-up SIP, inflation-adjusted value and year-wise growth with charts and tables.">
+<meta name="keywords" content="SIP calculator, SIP return calculator, mutual fund SIP calculator, SIP maturity calculator, SIP calculator India, step up SIP, SIP goal calculator">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/sip-calculator/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="SIP Calculator – Estimate Mutual Fund Returns | InvestCalc">
-<meta property="og:description" content="Estimate the future value of your monthly SIP, total investment and potential wealth gained with this free SIP calculator.">
-<title>SIP Calculator – Free Monthly SIP Returns Calculator | InvestCalc</title>
+<meta property="og:title" content="SIP Calculator – Calculate SIP Returns Online in India | InvestCalc">
+<meta property="og:description" content="Estimate your SIP maturity value, total investment, returns and inflation-adjusted corpus. Explore interactive charts, year-wise tables and goal planning.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/sip-calculator/">
+<meta name="twitter:card" content="summary">
+<title>SIP Calculator – Calculate SIP Returns Online in India | InvestCalc</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://returnoninvestmentcalculator.in/sip-calculator/#webpage","url":"https://returnoninvestmentcalculator.in/sip-calculator/","name":"SIP Calculator – Calculate SIP Returns Online in India","description":"Estimate monthly SIP maturity value, investment amount, returns and inflation-adjusted corpus using an interactive calculator.","inLanguage":"en-IN","isPartOf":{"@id":"https://returnoninvestmentcalculator.in/#website"}},
+{"@type":"WebApplication","@id":"https://returnoninvestmentcalculator.in/sip-calculator/#app","name":"Free SIP Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"url":"https://returnoninvestmentcalculator.in/sip-calculator/","description":"A browser-based SIP planning calculator with goal mode, step-up projections, charts and year-wise results."},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"SIP Calculator","item":"https://returnoninvestmentcalculator.in/sip-calculator/"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a SIP calculator?","acceptedAnswer":{"@type":"Answer","text":"A SIP calculator estimates the future value of regular mutual fund contributions using the investment amount, duration and an assumed rate of return. It is an illustration, not a prediction."}},
+{"@type":"Question","name":"Are SIP returns guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. Mutual fund returns are market-linked and are not guaranteed. Actual values may be higher or lower than calculator estimates."}},
+{"@type":"Question","name":"How is the monthly return calculated?","acceptedAnswer":{"@type":"Answer","text":"This calculator converts the effective annual assumed return to a monthly rate using (1 + annual rate) to the power of 1/12, minus 1."}},
+{"@type":"Question","name":"Does the SIP calculator include tax and fund expenses?","acceptedAnswer":{"@type":"Answer","text":"No. Estimates do not separately deduct taxes, expense ratios, exit loads, transaction charges or other scheme-specific costs."}},
+{"@type":"Question","name":"What is a step-up SIP?","acceptedAnswer":{"@type":"Answer","text":"A step-up SIP increases the contribution periodically, usually once a year, by a selected percentage. The calculator models the higher contribution from each new investment year."}}
+]}
+]}
+</script>
 <style>
-:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--shadow:0 12px 35px rgba(28,55,90,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
-.hero{padding:52px 0 38px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:42px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(35px,4.8vw,51px);line-height:1.12;letter-spacing:-1.8px;margin:18px 0 14px}.intro{font-size:16px;color:var(--muted);max-width:550px;margin:0 0 20px}.trust{display:flex;gap:15px;flex-wrap:wrap;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.field{margin:14px 0}.field label{display:block;font-size:13px;color:#52627a;font-weight:750;margin-bottom:6px}.input-wrap{position:relative}.prefix{position:absolute;left:13px;top:10px;color:#64748b;font-weight:700}.field input{width:100%;height:47px;border:1px solid #dce4ef;border-radius:9px;padding:0 13px 0 34px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.hint{font-size:11px;color:var(--muted);margin-top:4px}.btn{width:100%;border:0;border-radius:10px;background:var(--blue);color:#fff;min-height:48px;font:inherit;font-weight:800;cursor:pointer;margin-top:8px}.btn:hover{filter:brightness(.94)}.secondary{background:#edf4ff;color:var(--blue)}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:13px;margin-top:12px}.error.show{display:block}
-.results{display:none;margin-top:20px}.results.show{display:block}.result-main{padding:18px;border-radius:12px;background:#eff6ff;border:1px solid #dceaff}.result-label{font-size:12px;color:#52627a;font-weight:750}.big{font-size:32px;font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:12px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.metric{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.metric span{display:block;color:var(--muted);font-size:11px;font-weight:750}.metric strong{font-size:17px;overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}.visual{margin-top:14px;border:1px solid var(--line);border-radius:11px;padding:14px}.bar-row{display:grid;grid-template-columns:105px 1fr;gap:9px;align-items:center;margin:9px 0;font-size:11px;color:#52627a}.bar-track{height:12px;background:#edf1f7;border-radius:20px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;width:0}.bar-invested{background:#8aa6cc}.bar-gain{background:#1769e0}
-.section{padding:42px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 24px}.section-head h2{font-size:28px;letter-spacing:-.7px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px}.icon{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;background:#edf4ff;font-size:20px;margin-bottom:10px}.card h3{font-size:15px;margin:0 0 5px}.card p{font-size:13px;color:var(--muted);margin:0}.content{background:#fff;border:1px solid var(--line);border-radius:13px;padding:23px;margin:14px 0}.content h3{margin:0 0 8px;font-size:17px}.content p,.content li{font-size:14px;color:#52627a}.formula{background:#f5f8fc;border:1px solid var(--line);border-radius:10px;padding:15px;text-align:center;overflow-wrap:anywhere}.formula code{font-family:ui-monospace,monospace;font-size:clamp(13px,2vw,17px);font-weight:750;color:#135fc9}.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 17px;margin:9px 0}.faq summary{cursor:pointer;font-size:14px;font-weight:750}.faq p{font-size:13px;color:var(--muted);margin:10px 0 0}.disclaimer{font-size:12px;color:var(--muted);text-align:center;padding:8px 0 30px}
-@media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:25px}.hero{padding-top:38px}.cards{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:calc(100% - 28px)}.hero{padding:32px 0 26px}h1{font-size:37px;letter-spacing:-1.2px}.intro{font-size:15px}.panel{padding:18px}.cards{grid-template-columns:1fr}.section{padding:33px 0}.section-head h2{font-size:24px}.metrics{gap:8px}.metric{padding:11px}.metric strong{font-size:15px}.bar-row{grid-template-columns:88px 1fr}}
+:root{--ink:#152238;--muted:#64748b;--blue:#1769e0;--line:#e4eaf2;--bg:#f5f8fc;--green:#0f9d72;--red:#d64545;--gold:#d6a84f;--shadow:0 12px 35px rgba(28,55,90,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:var(--blue)}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.hero{padding:48px 0 36px;background:linear-gradient(180deg,#fff 0%,#f5f8fc 100%)}.hero-grid{display:grid;grid-template-columns:.85fr 1.15fr;align-items:start;gap:34px}.eyebrow{display:inline-block;color:var(--blue);background:#edf4ff;border:1px solid #dceaff;border-radius:30px;padding:6px 11px;font-size:12px;font-weight:800;letter-spacing:.05em}h1{font-size:clamp(34px,4.5vw,49px);line-height:1.12;letter-spacing:-1.7px;margin:17px 0 13px}.intro{font-size:16px;color:var(--muted);max-width:550px;margin:0 0 19px}.trust{display:flex;gap:12px;flex-wrap:wrap;color:#52627a;font-size:12px;font-weight:650}.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.panel h2{font-size:19px;margin:0}.pill{font-size:11px;color:var(--green);font-weight:800;background:#eaf8f2;border-radius:20px;padding:5px 9px}.mode-tabs{display:flex;gap:7px;padding:5px;background:#f1f5fa;border-radius:10px;margin-bottom:17px}.mode-tabs button{flex:1;border:0;border-radius:7px;padding:9px 7px;background:transparent;color:#52627a;font:750 12px inherit;cursor:pointer}.mode-tabs button[aria-pressed=true]{background:#fff;color:var(--blue);box-shadow:0 1px 5px #1b35501a}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 13px}.field{margin:10px 0}.field label{display:block;font-size:12px;color:#52627a;font-weight:750;margin-bottom:5px}.input-wrap{position:relative}.prefix,.suffix{position:absolute;top:10px;color:#64748b;font-weight:750;font-size:14px}.prefix{left:12px}.suffix{right:12px}.field input,.field select{width:100%;height:44px;border:1px solid #dce4ef;border-radius:9px;padding:0 12px;font:inherit;font-size:15px;color:var(--ink);background:#fff;outline:none}.field .has-prefix{padding-left:30px}.field .has-suffix{padding-right:36px}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769e018}.hint{font-size:10px;color:var(--muted);margin-top:4px}.range-line{display:flex;align-items:center;gap:10px}.range-line input[type=range]{flex:1;accent-color:var(--blue);height:5px}.range-line output{min-width:42px;text-align:right;font-size:11px;font-weight:800;color:var(--blue)}.timing{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0 2px;font-size:12px;color:#52627a}.timing label{display:flex;align-items:center;gap:5px;cursor:pointer}.timing input{accent-color:var(--blue)}.btn{border:0;border-radius:10px;background:var(--blue);color:#fff;min-height:46px;padding:0 16px;font:750 13px inherit;cursor:pointer}.btn:hover{filter:brightness(.94)}.btn.block{width:100%;margin-top:10px}.btn.secondary{background:#edf4ff;color:var(--blue)}.error{display:none;color:#a52c2c;background:#fff0f0;border:1px solid #ffd7d7;padding:10px 12px;border-radius:9px;font-size:12px;margin-top:12px}.error.show{display:block}
+.results{padding:24px 0 6px}.results[hidden],.goal-fields[hidden]{display:none}.result-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:15px}.result-main{padding:19px;border-radius:13px;background:#eff6ff;border:1px solid #dceaff}.result-label{font-size:12px;color:#52627a;font-weight:750}.big{font-size:clamp(27px,4vw,37px);font-weight:850;letter-spacing:-1px;color:#135fc9;line-height:1.25;overflow-wrap:anywhere}.result-sub{font-size:11px;color:#52627a}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}.metric span{display:block;color:var(--muted);font-size:10px;font-weight:750}.metric strong{font-size:16px;overflow-wrap:anywhere}.positive{color:var(--green)}.visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.visual{min-width:0;background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px}.visual h3{font-size:14px;margin:0 0 10px}.chart-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:10px;color:#52627a;margin:8px 0 0}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}.chart-wrap{width:100%;overflow:hidden}.chart-wrap svg{display:block;width:100%;height:auto;min-height:170px}.donut-row{display:flex;align-items:center;gap:18px;justify-content:center;min-height:160px}.donut{width:142px;height:142px;border-radius:50%;position:relative;flex:none}.donut:after{content:"";position:absolute;inset:27px;background:#fff;border-radius:50%}.donut-center{position:absolute;z-index:1;inset:0;display:grid;place-content:center;text-align:center;font-size:10px;color:var(--muted)}.donut-center strong{font-size:15px;color:var(--ink)}.legend-list{font-size:11px;color:#52627a;display:grid;gap:9px}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px;background:#fff}table{width:100%;border-collapse:collapse;min-width:540px;font-size:12px}th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}thead th{background:#f5f8fc;color:#52627a;font-size:10px;text-transform:uppercase;letter-spacing:.04em}tbody tr:last-child td{border-bottom:0}.table-actions{display:flex;gap:8px;flex-wrap:wrap;margin:11px 0}.section{padding:39px 0}.section-head{text-align:center;max-width:730px;margin:0 auto 23px}.section-head h2{font-size:clamp(23px,3vw,29px);letter-spacing:-.7px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted);font-size:14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card,.content{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px}.icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#edf4ff;font-size:19px;margin-bottom:9px}.card h3,.content h3{font-size:15px;margin:0 0 6px}.card p,.content p,.content li{font-size:13px;color:#52627a}.content{margin:13px 0}.formula{background:#f5f8fc;border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;overflow-wrap:anywhere}.formula code{font-family:ui-monospace,monospace;font-size:clamp(13px,2vw,17px);font-weight:750;color:#135fc9}.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:8px 0}.faq summary{cursor:pointer;font-size:13px;font-weight:750}.faq details p{font-size:12px;color:var(--muted);margin:9px 0 0}.related{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.related a{display:block;background:#fff;border:1px solid var(--line);border-radius:11px;padding:15px;text-decoration:none;font-size:13px;font-weight:750}.related a span{display:block;color:var(--muted);font-size:11px;font-weight:450;margin-top:4px}.disclaimer{font-size:11px;color:var(--muted);padding:8px 0 28px}.note{font-size:11px;color:var(--muted)}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:23px}.hero{padding-top:35px}.result-layout{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.wrap{width:calc(100% - 28px)}.hero{padding:29px 0 24px}h1{font-size:35px;letter-spacing:-1.2px}.intro{font-size:14px}.panel{padding:16px}.field-grid,.visual-grid{grid-template-columns:1fr}.cards,.related{grid-template-columns:1fr}.section{padding:30px 0}.metrics{gap:7px}.metric{padding:10px}.metric strong{font-size:14px}.donut{width:125px;height:125px}.donut:after{inset:24px}}
+@media print{#site-header,#site-footer,.hero,.section,.table-actions,.btn,.disclaimer{display:none!important}body{background:#fff}.wrap{width:100%}.results{display:block!important}.visual,.result-main,.metric{break-inside:avoid}.visual-grid{grid-template-columns:1fr 1fr}}
 </style>
-  <script src="/assets/js/common-branding.js" defer></script>
-  <script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
 </head>
 <body>
 <div id="site-header"></div>
 <main>
 <section class="hero"><div class="wrap hero-grid">
-<div><span class="eyebrow">FREE • MONTHLY SIP ESTIMATE</span><h1>Plan your monthly investment with a SIP calculator.</h1>
-<p class="intro">Estimate how much your regular mutual fund investments could grow over time. Enter your monthly SIP, expected annual return and investment period to see the estimated future value, amount invested and potential gains.</p>
-<div class="trust"><span>No sign-up needed</span><span>INR calculations</span><span>Works on mobile</span></div>
+<div><span class="eyebrow">FREE • INDIA • INSTANT ESTIMATES</span><h1>SIP Calculator – Plan your monthly mutual fund investment</h1>
+<p class="intro">Estimate how your monthly investment could grow over time. Calculate a future corpus, find the SIP needed for a goal, compare step-up contributions and see the impact of inflation with interactive charts and year-wise tables.</p>
+<div class="trust"><span>No sign-up needed</span><span>INR calculations</span><span>Mobile friendly</span><span>Results in your browser</span></div>
+<div class="content"><h3>What this calculator helps you estimate</h3><p>Explore a regular monthly SIP, an annual step-up plan or the monthly contribution required for a target amount. Results depend on the return and inflation assumptions you enter; they are not guaranteed outcomes.</p></div>
 </div>
 <section class="panel" aria-labelledby="sip-title">
-<div class="panel-head"><h2 id="sip-title">SIP Calculator</h2><span class="pill">INSTANT</span></div>
+<div class="panel-head"><h2 id="sip-title">SIP Calculator</h2><span class="pill">FREE TOOL</span></div>
+<div class="mode-tabs" role="group" aria-label="Calculator mode"><button type="button" data-mode="monthly" aria-pressed="true">Monthly SIP</button><button type="button" data-mode="goal" aria-pressed="false">Goal amount</button></div>
 <form id="sip-form" novalidate>
-<div class="field"><label for="monthly">Monthly investment</label><div class="input-wrap"><span class="prefix">₹</span><input id="monthly" type="number" min="1" max="100000000" step="any" value="5000" inputmode="decimal" required></div><div class="hint">Amount you plan to invest every month.</div></div>
-<div class="field"><label for="rate">Expected annual return (%)</label><div class="input-wrap"><span class="prefix">%</span><input id="rate" type="number" min="-99.9" max="100" step="any" value="12" inputmode="decimal" required></div><div class="hint">This is an assumption, not a guaranteed mutual fund return.</div></div>
-<div class="field"><label for="years">Investment period (years)</label><div class="input-wrap"><input id="years" type="number" min="0.0834" max="100" step="any" value="10" inputmode="decimal" required></div><div class="hint">You can enter a fraction of a year, such as 5.5.</div></div>
-<button class="btn" type="submit">Calculate SIP returns</button><div class="error" id="error" role="alert"></div>
+<div id="monthly-fields">
+<div class="field"><label for="monthly">Monthly investment</label><div class="input-wrap"><span class="prefix">₹</span><input class="has-prefix" id="monthly" type="number" min="1" max="100000000" step="any" value="5000" inputmode="decimal" required></div><div class="range-line"><input id="monthly-range" type="range" min="500" max="100000" step="500" value="5000" aria-label="Monthly investment slider"><output id="monthly-output">₹5,000</output></div></div>
+</div>
+<div id="goal-fields" class="goal-fields" hidden>
+<div class="field"><label for="goal">Target corpus / goal amount</label><div class="input-wrap"><span class="prefix">₹</span><input class="has-prefix" id="goal" type="number" min="1" max="10000000000" step="any" value="10000000" inputmode="decimal"></div><div class="hint">Enter the future amount you want to estimate a monthly SIP for.</div></div>
+</div>
+<div class="field-grid">
+<div class="field"><label for="rate">Expected annual return</label><div class="input-wrap"><input class="has-suffix" id="rate" type="number" min="0" max="40" step="0.1" value="12" inputmode="decimal"><span class="suffix">%</span></div><div class="hint">An assumption, not a promised return.</div></div>
+<div class="field"><label for="years">Investment duration</label><div class="input-wrap"><input class="has-suffix" id="years" type="number" min="1" max="50" step="1" value="10" inputmode="numeric"><span class="suffix">years</span></div></div>
+<div class="field"><label for="stepup">Annual SIP increase (step-up)</label><div class="input-wrap"><input class="has-suffix" id="stepup" type="number" min="0" max="100" step="1" value="0" inputmode="decimal"><span class="suffix">%</span></div><div class="hint">0% keeps the monthly contribution unchanged.</div></div>
+<div class="field"><label for="inflation">Annual inflation assumption</label><div class="input-wrap"><input class="has-suffix" id="inflation" type="number" min="0" max="30" step="0.1" value="6" inputmode="decimal"><span class="suffix">%</span></div><div class="hint">Used to estimate today's purchasing-power value.</div></div>
+</div>
+<div class="timing"><strong>Contribution timing:</strong><label><input type="radio" name="timing" value="end" checked> End of month</label><label><input type="radio" name="timing" value="begin"> Beginning of month</label></div>
+<button class="btn block" type="submit">Calculate SIP projection</button><div class="error" id="error" role="alert"></div>
 </form>
-<div class="results" id="results" aria-live="polite">
-<div class="result-main"><div class="result-label">Estimated future value</div><div class="big" id="future">₹11,61,695</div><div class="result-sub" id="summary">Your estimated value after 10 years.</div></div>
+</section></div></section>
+<section class="results wrap" id="results" hidden aria-live="polite">
+<div class="section-head"><h2>Your SIP projection</h2><p id="result-summary">Illustrative projection based on your inputs.</p></div>
+<div class="result-layout">
+<div class="result-main"><div class="result-label" id="main-result-label">Estimated future value</div><div class="big" id="future">₹11,61,695</div><div class="result-sub" id="real-value">Estimated value in today's money: —</div></div>
 <div class="metrics">
 <div class="metric"><span>Total amount invested</span><strong id="invested">₹6,00,000</strong></div>
-<div class="metric"><span>Estimated wealth gained</span><strong id="gain" class="positive">₹5,61,695</strong></div>
-<div class="metric"><span>Monthly SIP</span><strong id="sip-amount">₹5,000</strong></div>
-<div class="metric"><span>Investment duration</span><strong id="duration">10 years</strong></div>
+<div class="metric"><span>Estimated wealth gain</span><strong id="gain" class="positive">₹5,61,695</strong></div>
+<div class="metric"><span>Monthly SIP / required SIP</span><strong id="sip-amount">₹5,000</strong></div>
+<div class="metric"><span>Number of instalments</span><strong id="instalments">120</strong></div>
+</div></div>
+<div class="visual-grid">
+<div class="visual"><h3>SIP corpus growth over time</h3><div class="chart-wrap" id="growth-chart" role="img" aria-label="Line chart showing invested amount and estimated SIP corpus by year"></div><div class="chart-legend"><span><i class="dot" style="background:#8aa6cc"></i>Invested amount</span><span><i class="dot" style="background:#1769e0"></i>Estimated corpus</span></div></div>
+<div class="visual"><h3>Investment vs estimated gain</h3><div class="donut-row"><div class="donut" id="donut"><div class="donut-center"><span>Future value</span><strong id="donut-total">₹11.1L</strong></div></div><div class="legend-list"><div><i class="dot" style="background:#8aa6cc"></i>Invested<br><strong id="donut-invested">—</strong></div><div><i class="dot" style="background:#1769e0"></i>Estimated gain<br><strong id="donut-gain">—</strong></div></div></div></div>
+<div class="visual"><h3>Return scenario comparison</h3><div class="chart-wrap" id="scenario-chart" role="img" aria-label="Bar chart comparing projected corpus at different assumed annual returns"></div><p class="note">Scenarios use the same monthly contribution, duration, step-up and contribution timing.</p></div>
+<div class="visual"><h3>How inflation changes purchasing power</h3><div class="result-main"><div class="result-label">Estimated future corpus in today's money</div><div class="big" style="font-size:25px" id="inflation-value">—</div><div class="result-sub" id="inflation-note">Illustrative value after applying your inflation assumption.</div></div></div>
 </div>
-<div class="visual" aria-label="Estimated invested amount and wealth gained comparison">
-<div class="bar-row"><span>Amount invested</span><div class="bar-track"><div class="bar-fill bar-invested" id="invested-bar"></div></div></div>
-<div class="bar-row"><span>Wealth gained</span><div class="bar-track"><div class="bar-fill bar-gain" id="gain-bar"></div></div></div>
-<div class="result-sub" id="breakdown-note">Illustrative estimate based on monthly contributions.</div>
-</div>
-<button class="btn secondary" id="reset" type="button">Reset calculator</button>
-</div>
-</section></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><h2>How to use this SIP calculator</h2><p>Three inputs are enough to estimate the future value of a regular monthly investment.</p></div>
-<div class="cards">
-<article class="card"><div class="icon">💰</div><h3>1. Enter monthly SIP</h3><p>Enter the amount you plan to invest each month, such as ₹1,000, ₹5,000 or ₹10,000.</p></article>
-<article class="card"><div class="icon">📈</div><h3>2. Choose an expected return</h3><p>Enter an assumed annual rate of return. Actual mutual fund returns can be higher or lower.</p></article>
-<article class="card"><div class="icon">🗓️</div><h3>3. Set your time period</h3><p>Enter how many years you expect to continue your monthly investments.</p></article>
+<div class="visual" style="margin-top:14px"><div class="panel-head"><h3 style="margin:0">Year-wise SIP growth table</h3><span class="note">Values rounded to nearest rupee</span></div><div class="table-wrap"><table id="year-table"><thead><tr><th>Year</th><th>Monthly SIP</th><th>Total invested</th><th>Estimated corpus</th><th>Estimated gain</th></tr></thead><tbody></tbody></table></div><div class="table-actions"><button class="btn secondary" id="csv-btn" type="button">Download CSV</button><button class="btn secondary" id="print-btn" type="button">Print / Save PDF</button></div></div>
+</section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>How to use this SIP calculator</h2><p>Enter a few assumptions to estimate a monthly investment plan or work backwards from a target corpus.</p></div><div class="cards">
+<article class="card"><div class="icon">💰</div><h3>1. Choose your calculation mode</h3><p>Select Monthly SIP to estimate a future value, or Goal Amount to estimate the monthly contribution needed for your target.</p></article>
+<article class="card"><div class="icon">📈</div><h3>2. Enter a return assumption</h3><p>Enter an annual rate for illustration. Market-linked mutual fund returns vary and cannot be known in advance.</p></article>
+<article class="card"><div class="icon">🗓️</div><h3>3. Set duration and step-up</h3><p>Choose the investment period. Optionally increase your SIP contribution each year and add an inflation assumption.</p></article>
 </div></div></section>
-<section class="section" id="sip-formula"><div class="wrap"><div class="section-head"><h2>SIP calculator formula</h2><p>This calculator uses the future value of a regular monthly investment (ordinary annuity).</p></div>
-<div class="content"><div class="formula"><code>FV = P × [((1 + i)<sup>n</sup> − 1) ÷ i]</code></div>
-<p>Here, <strong>FV</strong> is the estimated future value, <strong>P</strong> is the monthly investment, <strong>i</strong> is the assumed monthly rate of return (annual rate divided by 12), and <strong>n</strong> is the total number of monthly investments.</p>
-<p>When the assumed return is zero, the estimated future value is simply the monthly investment multiplied by the number of months.</p>
-<p><strong>Timing assumption:</strong> Contributions are assumed to be made at the end of each month. If you invest at the beginning of each month, the result may be slightly higher.</p></div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><h2>Understand your SIP estimate</h2><p>Know what the calculator's three main figures mean before making an investment decision.</p></div>
-<div class="cards">
-<article class="card"><div class="icon">🧾</div><h3>Total amount invested</h3><p>This is the sum of all monthly contributions over the selected period. It does not include investment growth.</p></article>
-<article class="card"><div class="icon">🌱</div><h3>Estimated wealth gained</h3><p>This is the difference between the estimated future value and the total amount invested.</p></article>
-<article class="card"><div class="icon">🎯</div><h3>Estimated future value</h3><p>This is the projected value of your monthly contributions plus the assumed investment growth.</p></article>
+<section class="section" id="formula"><div class="wrap"><div class="section-head"><h2>SIP calculator formula and methodology</h2><p>The estimate compounds regular contributions using a monthly rate derived from the effective annual return assumption.</p></div>
+<div class="content"><div class="formula"><code>Monthly rate = (1 + Annual return)<sup>1/12</sup> − 1</code><br><code>FV = Σ [Monthly contribution × (1 + monthly rate)<sup>remaining months</sup>]</code></div>
+<p><strong>Monthly contribution (P):</strong> The amount invested at each monthly interval. <strong>Annual return (R):</strong> The effective annual rate entered as an assumption. <strong>Monthly rate (i):</strong> The equivalent monthly rate calculated as (1 + R)<sup>1/12</sup> − 1. <strong>Number of instalments (n):</strong> Investment duration in years multiplied by 12.</p>
+<p>For a fixed monthly contribution made at the end of each month, the equivalent annuity formula is FV = P × (((1 + i)<sup>n</sup> − 1) ÷ i). For a beginning-of-month contribution, each instalment receives one additional month of assumed growth. This tool calculates the monthly cash flows directly so it can also model an annual step-up contribution.</p>
+<p>When the assumed return is 0%, the future value equals the sum of contributions. The goal mode solves for the monthly SIP using an iterative numerical method and uses the same contribution timing and step-up assumptions as the projection mode.</p></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><h2>What the SIP calculator results mean</h2><p>Understand the estimated figures before using them for financial planning.</p></div><div class="cards">
+<article class="card"><div class="icon">🧾</div><h3>Total amount invested</h3><p>The sum of your monthly contributions. With a step-up SIP, this total increases as contributions rise each year.</p></article>
+<article class="card"><div class="icon">🌱</div><h3>Estimated wealth gain</h3><p>The estimated future corpus minus the total amount contributed. It is not a guaranteed profit.</p></article>
+<article class="card"><div class="icon">🎯</div><h3>Inflation-adjusted value</h3><p>An estimate of what the projected future corpus may be worth in today's purchasing power, using your inflation assumption.</p></article>
 </div></div></section>
-<section class="section faq"><div class="wrap"><div class="section-head"><h2>Frequently asked questions</h2><p>Common questions about monthly SIP calculations.</p></div>
-<details><summary>What is a SIP?</summary><p>A Systematic Investment Plan (SIP) is a way to invest a fixed amount at regular intervals, commonly every month, in a mutual fund. The investment value can rise or fall with the market.</p></details>
-<details><summary>Are SIP calculator returns guaranteed?</summary><p>No. The return rate is an assumption entered by you. Mutual fund investments are subject to market risk, and actual returns may differ from this estimate.</p></details>
-<details><summary>Does this calculator include taxes and mutual fund charges?</summary><p>No. This basic estimate does not separately account for taxes, exit loads, expense ratios, transaction costs or changes in the investment amount.</p></details>
-<details><summary>Does the SIP calculator assume investment at the start or end of the month?</summary><p>This calculator assumes each monthly contribution is made at the end of the month. Beginning-of-month contributions can produce a slightly different estimate.</p></details>
-<details><summary>Can I use this calculator for a 0% expected return?</summary><p>Yes. At a 0% assumed return, the estimated future value equals the total amount you contribute over the selected period.</p></details>
+<section class="section"><div class="wrap"><div class="section-head"><h2>Explore related investment calculators</h2><p>Use these tools for other investment and savings calculations.</p></div><div class="related">
+<a href="/step-up-sip-calculator/">Step-Up SIP Calculator<span>Explore annual contribution increases in a dedicated planner.</span></a>
+<a href="/lump-sum-calculator/">Lump Sum Calculator<span>Estimate the future value of a one-time investment.</span></a>
+<a href="/goal-based-investment-planner/">Goal-Based Investment Planner<span>Plan a broader investment target and time horizon.</span></a>
+<a href="/swp-calculator/">SWP Calculator<span>Estimate regular withdrawals from an accumulated corpus.</span></a>
+<a href="/mutual-fund-vs-fd-comparison/">Mutual Fund vs FD Comparison<span>Compare illustrative outcomes across two investment types.</span></a>
+<a href="/">ROI Calculator<span>Calculate profit, loss, ROI percentage and CAGR.</span></a>
+</div></div></section>
+<section class="section faq"><div class="wrap"><div class="section-head"><h2>Frequently asked questions about SIP</h2><p>Common questions about SIP calculations, returns and investment assumptions.</p></div>
+<details><summary>What is a SIP calculator?</summary><p>A SIP calculator estimates the future value of regular mutual fund contributions using the investment amount, duration and an assumed rate of return. It is a planning illustration, not a prediction of actual returns.</p></details>
+<details><summary>Are SIP returns guaranteed?</summary><p>No. Mutual fund returns are market-linked and are not guaranteed. The calculator applies a constant assumed rate for mathematical illustration, while actual returns fluctuate with market and scheme performance.</p></details>
+<details><summary>How much SIP is required to reach ₹1 crore?</summary><p>The monthly amount depends on the investment duration, assumed return, contribution timing and any annual step-up. Select Goal Amount above, enter ₹1 crore and adjust the assumptions to see an estimate. A higher assumed return is not guaranteed and involves investment risk.</p></details>
+<details><summary>How is the monthly return calculated?</summary><p>This calculator converts the effective annual assumed return to a monthly rate using (1 + annual rate) to the power of 1/12, minus 1. This is different from simply dividing the annual rate by 12.</p></details>
+<details><summary>What is a step-up SIP?</summary><p>A step-up SIP increases the monthly contribution at a regular interval, commonly once a year. Enter an annual increase percentage to model the higher contribution from each new investment year.</p></details>
+<details><summary>Does this calculator account for inflation?</summary><p>It displays an approximate value in today's money by discounting the estimated future corpus using the inflation rate you enter. This is a simplified purchasing-power illustration, not a forecast of actual inflation.</p></details>
+<details><summary>Does the SIP calculator include taxes and mutual fund charges?</summary><p>No. This estimate does not separately deduct taxes, expense ratios, exit loads, transaction costs or other scheme-specific charges. These can affect the actual amount received.</p></details>
+<details><summary>Should I use 12% as my expected return?</summary><p>There is no universally correct return assumption. The appropriate assumption depends on the asset class, scheme, investment horizon and risk. Try more than one scenario and avoid treating any assumed rate as a promise.</p></details>
+<details><summary>Can I use this calculator for quarterly SIPs?</summary><p>This version is designed for monthly contributions. For a quarterly investment, you can use the monthly mode only as an approximation by dividing or distributing the contribution across months; the timing will not exactly match a quarterly plan.</p></details>
 </div></section>
-<section class="disclaimer wrap">This calculator provides an illustration, not a prediction or guarantee. Mutual fund investments are subject to market risks. Read all scheme-related documents carefully and consider your financial goals and risk tolerance before investing. This page is for general educational information and is not investment advice.</section>
+<div class="wrap disclaimer"><strong>Important disclaimer:</strong> This calculator is for educational and illustrative purposes only. It does not recommend any mutual fund, security or investment product and is not investment, tax or legal advice. Mutual fund investments are subject to market risks; returns are neither fixed nor guaranteed. Actual results may differ due to market movements, cash-flow dates, scheme expenses, taxes, exit loads and other factors not modelled here. Read all scheme-related documents carefully and consider your financial goals and risk tolerance before investing. For investor education, visit <a href="https://investor.sebi.gov.in/" target="_blank" rel="noopener noreferrer">SEBI Investor</a>.</div>
 </main>
 <div id="site-footer"></div>
-<script src="/assets/js/common-header.js" defer></script>
-<script src="/assets/js/common-footer.js" defer></script>
 <script>
 (() => {
 'use strict';
-const form=document.getElementById('sip-form');
-const monthly=document.getElementById('monthly');
-const rate=document.getElementById('rate');
-const years=document.getElementById('years');
-const error=document.getElementById('error');
-const results=document.getElementById('results');
-const money=value=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(value);
-const compact=value=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:1}).format(value);
-form.addEventListener('submit',event=>{
- event.preventDefault();
- const p=Number(monthly.value), annual=Number(rate.value), duration=Number(years.value);
- if([monthly.value,rate.value,years.value].some(v=>v.trim()==='') || ![p,annual,duration].every(Number.isFinite) || p<=0 || p>100000000 || annual<=-100 || annual>100 || duration<=0 || duration>100){
-  error.textContent='Enter a monthly investment above ₹0, a return between -99.9% and 100%, and a period greater than 0 and up to 100 years.';
-  error.classList.add('show'); results.classList.remove('show'); return;
+const $ = id => document.getElementById(id);
+const form=$('sip-form'), error=$('error'), results=$('results');
+let mode='monthly', lastRows=[];
+const money=v=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Number.isFinite(v)?v:0);
+const compact=v=>new Intl.NumberFormat('en-IN',{notation:'compact',maximumFractionDigits:2}).format(v);
+const num=v=>Number(v);
+const fmt=v=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(v);
+const rateFromAnnual=annual=>Math.pow(1+annual/100,1/12)-1;
+function project(monthly,annual,years,stepup,timing){
+ const months=years*12, r=rateFromAnnual(annual);let balance=0,invested=0,rows=[];
+ for(let m=1;m<=months;m++){
+  const contribution=monthly*Math.pow(1+stepup/100,Math.floor((m-1)/12));
+  if(timing==='begin')balance+=contribution;
+  invested+=contribution;
+  balance*=1+r;
+  if(timing==='end')balance+=contribution;
+  if(m%12===0||m===months)rows.push({year:m/12,monthly:contribution,invested,corpus:balance,gain:balance-invested});
  }
- const months=Math.max(1,Math.round(duration*12));
- const monthlyRate=annual/100/12;
- const invested=p*months;
- const future=monthlyRate===0?invested:p*(Math.pow(1+monthlyRate,months)-1)/monthlyRate;
- const gain=future-invested;
- if(!Number.isFinite(future) || future<0){
-  error.textContent='These inputs produce a value that cannot be displayed. Please adjust the return rate or investment period.';
-  error.classList.add('show'); results.classList.remove('show'); return;
+ return {future:balance,invested,gain:balance-invested,rows,months};
+}
+function requiredSip(goal,annual,years,stepup,timing){
+ let lo=0,hi=goal;
+ for(let k=0;k<90;k++){const mid=(lo+hi)/2;if(project(mid,annual,years,stepup,timing).future<goal)lo=mid;else hi=mid;}
+ return (lo+hi)/2;
+}
+function makeLineChart(rows){
+ const w=620,h=225,pad={l:54,r:14,t:15,b:30},max=Math.max(1,...rows.map(x=>x.corpus)),x=i=>pad.l+(w-pad.l-pad.r)*(i/(rows.length-1||1)),y=v=>h-pad.b-(h-pad.t-pad.b)*(v/max);
+ const grid=[0,.25,.5,.75,1].map(f=>{const yy=y(max*f);return '<line x1="'+pad.l+'" y1="'+yy+'" x2="'+(w-pad.r)+'" y2="'+yy+'" stroke="#e7edf5"/><text x="'+(pad.l-8)+'" y="'+(yy+4)+'" text-anchor="end" fill="#718096" font-size="10">'+compact(max*f)+'</text>'}).join('');
+ const principal=rows.map((d,i)=>x(i)+','+y(d.invested)).join(' '), corpus=rows.map((d,i)=>x(i)+','+y(d.corpus)).join(' ');
+ const labels=rows.filter((d,i)=>i===0||i===rows.length-1||d.year%Math.max(1,Math.ceil(rows.length/5))===0).map(d=>{const i=rows.indexOf(d);return '<text x="'+x(i)+'" y="'+(h-8)+'" text-anchor="middle" fill="#718096" font-size="10">Y'+d.year+'</text>'}).join('');
+ return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Projected invested amount and corpus by year">'+grid+'<polyline points="'+principal+'" fill="none" stroke="#8aa6cc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="'+corpus+'" fill="none" stroke="#1769e0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'+labels+'</svg>';
+}
+function makeScenarioChart(base,annual,years,stepup,timing){
+ const rates=[Math.max(0,annual-4),Math.max(0,annual-2),annual,Math.min(40,annual+3)].filter((v,i,a)=>a.indexOf(v)===i);
+ const vals=rates.map(r=>({rate:r,value:project(base,r,years,stepup,timing).future})),max=Math.max(1,...vals.map(v=>v.value));
+ return '<svg viewBox="0 0 620 220" role="img" aria-label="Bar chart comparing projected values at different assumed returns">'+vals.map((v,i)=>{const y=12+i*50,bar=480*v.value/max;return '<text x="6" y="'+(y+18)+'" fill="#52627a" font-size="12">'+v.rate.toFixed(1)+'%</text><rect x="65" y="'+y+'" width="480" height="25" rx="5" fill="#edf1f7"/><rect x="65" y="'+y+'" width="'+bar+'" height="25" rx="5" fill="#1769e0"/><text x="'+Math.min(555,75+bar)+'" y="'+(y+17)+'" fill="#152238" font-size="11">'+compact(v.value)+'</text>'}).join('')+'</svg>';
+}
+function renderTable(rows){
+ $('year-table').querySelector('tbody').innerHTML=rows.map(r=>'<tr><td>'+r.year+'</td><td>'+money(r.monthly)+'</td><td>'+money(r.invested)+'</td><td>'+money(r.corpus)+'</td><td>'+money(r.gain)+'</td></tr>').join('');
+}
+function calculate(event){
+ if(event)event.preventDefault();
+ const annual=num($('rate').value),years=num($('years').value),stepup=num($('stepup').value),inflation=num($('inflation').value),timing=document.querySelector('input[name="timing"]:checked').value;
+ const goal=num($('goal').value);let monthly=num($('monthly').value);
+ if(!Number.isFinite(annual)||annual<0||annual>40||!Number.isInteger(years)||years<1||years>50||!Number.isFinite(stepup)||stepup<0||stepup>100||!Number.isFinite(inflation)||inflation<0||inflation>30){error.textContent='Enter a return from 0% to 40%, duration from 1 to 50 whole years, step-up from 0% to 100%, and inflation from 0% to 30%.';error.classList.add('show');results.hidden=true;return;}
+ if(mode==='goal'){
+  if(!Number.isFinite(goal)||goal<=0||goal>10000000000){error.textContent='Enter a target amount greater than ₹0 and up to ₹10,000 crore.';error.classList.add('show');results.hidden=true;return;}
+  monthly=requiredSip(goal,annual,years,stepup,timing);
+  $('main-result-label').textContent='Monthly SIP required to reach your goal';
+ }else{
+  if(!Number.isFinite(monthly)||monthly<=0||monthly>100000000){error.textContent='Enter a monthly SIP greater than ₹0 and up to ₹10 crore.';error.classList.add('show');results.hidden=true;return;}
+  $('main-result-label').textContent='Estimated future value';
  }
- document.getElementById('future').textContent=money(future);
- document.getElementById('summary').textContent='Estimated value after '+compact(months/12)+' years ('+months.toLocaleString('en-IN')+' monthly investments).';
- document.getElementById('invested').textContent=money(invested);
- document.getElementById('gain').textContent=money(gain);
- document.getElementById('gain').className=gain>=0?'positive':'negative';
- document.getElementById('sip-amount').textContent=money(p);
- document.getElementById('duration').textContent=compact(months/12)+' years';
- const scale=Math.max(invested,Math.abs(gain),1);
- document.getElementById('invested-bar').style.width=(invested/scale*100)+'%';
- document.getElementById('gain-bar').style.width=(Math.abs(gain)/scale*100)+'%';
- document.getElementById('breakdown-note').textContent='Estimated future value: '+money(future)+'. Results are rounded to the nearest rupee.';
- error.classList.remove('show'); results.classList.add('show');
-});
-document.getElementById('reset').addEventListener('click',()=>{
- form.reset(); monthly.value='5000'; rate.value='12'; years.value='10';
- error.classList.remove('show'); results.classList.remove('show');
-});
+ const out=project(monthly,annual,years,stepup,timing),real=out.future/Math.pow(1+inflation/100,years);
+ $('future').textContent=money(out.future);$('invested').textContent=money(out.invested);$('gain').textContent=money(out.gain);$('sip-amount').textContent=money(monthly);$('instalments').textContent=fmt(out.months);
+ $('result-summary').textContent=(mode==='goal'?'To target '+money(goal)+' in '+years+' years,':'For a starting monthly SIP of '+money(monthly)+' over '+years+' years,')+' using '+annual.toFixed(1)+'% assumed annual return and '+stepup.toFixed(1)+'% annual step-up.';
+ $('real-value').textContent='Estimated value in today’s money: '+money(real)+' (at '+inflation.toFixed(1)+'% assumed inflation).';
+ $('inflation-value').textContent=money(real);$('inflation-note').textContent='Nominal estimated corpus '+money(out.future)+' discounted over '+years+' years at '+inflation.toFixed(1)+'% annual inflation.';
+ $('donut-total').textContent=compact(out.future);$('donut-invested').textContent=money(out.invested);$('donut-gain').textContent=money(out.gain);
+ const principalPct=out.future>0?Math.max(0,Math.min(100,out.invested/out.future*100)):100;
+ $('donut').style.background='conic-gradient(#8aa6cc 0% '+principalPct+'%,#1769e0 '+principalPct+'% 100%)';
+ $('growth-chart').innerHTML=makeLineChart(out.rows);$('scenario-chart').innerHTML=makeScenarioChart(monthly,annual,years,stepup,timing);
+ renderTable(out.rows);lastRows=out.rows;error.classList.remove('show');results.hidden=false;
+}
+function syncMonthly(v){$('monthly').value=v;$('monthly-range').value=Math.min(100000,Math.max(500,v));$('monthly-output').textContent=money(v);}
+$('monthly').addEventListener('input',()=>syncMonthly(num($('monthly').value)||0));
+$('monthly-range').addEventListener('input',()=>syncMonthly($('monthly-range').value));
+document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{mode=btn.dataset.mode;document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));$('monthly-fields').hidden=mode==='goal';$('goal-fields').hidden=mode!=='goal';$('sip-title').textContent=mode==='goal'?'Goal SIP Calculator':'SIP Calculator';calculate();}));
+form.addEventListener('submit',calculate);
+$('csv-btn').addEventListener('click',()=>{const rows=[['Year','Monthly SIP','Total invested','Estimated corpus','Estimated gain'],...lastRows.map(r=>[r.year,r.monthly.toFixed(2),r.invested.toFixed(2),r.corpus.toFixed(2),r.gain.toFixed(2)])];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='sip-year-wise-projection.csv';a.click();URL.revokeObjectURL(url);});
+$('print-btn').addEventListener('click',()=>window.print());
 form.dispatchEvent(new Event('submit',{cancelable:true}));
 })();
 </script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
 </body>
 </html>
