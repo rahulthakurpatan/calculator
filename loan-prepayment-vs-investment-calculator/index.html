@@ -159,7 +159,7 @@
  const form = $('loan-form');
  let latest = null;
  let latestRows = [];
- const locales = {USD:'en-US',GBP:'en-GB',EUR:'en-IE',CAD:'en-CA',AUD:'en-AU',INR:'en-IN',NZD:'en-NZ',SGD:'en-SG',JPY:'ja-JP',CNY:'zh-CN',CHF:'de-CH',AED:'en-AE',SAR:'en-SA',ZAR:'en-ZA',BRL:'pt-BR',MXN:'es-MX'};
+ const displayLocale = (() => { try { return new Intl.NumberFormat().resolvedOptions().locale || 'en'; } catch (_) { return 'en'; } })();
  // Select a sensible starting currency from the browser locale; users can always override it.
  try {
    const locale = new Intl.NumberFormat().resolvedOptions().locale || 'en-US';
@@ -186,7 +186,7 @@
    }
  } catch (_) { /* Keep the curated fallback currency list. */ }
  function money(value, digits=0) {
-   try { return new Intl.NumberFormat(locales[currency()] || 'en', {style:'currency',currency:currency(),maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number.isFinite(value)?value:0); }
+   try { return new Intl.NumberFormat(displayLocale, {style:'currency',currency:currency(),maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number.isFinite(value)?value:0); }
    catch (_) { return currency()+' '+Number(value||0).toLocaleString(); }
  }
  function compact(value) {
