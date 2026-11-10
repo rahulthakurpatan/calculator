@@ -230,7 +230,7 @@
    const rows=r.rows;
    latestRows=rows;
    $('year-rows').innerHTML=rows.map(row=>'<tr><td>'+((row.month/12).toFixed(row.month%12?1:0))+' years</td><td>'+money(row.prepayBalance,0)+'</td><td>'+money(row.prepayInvest,0)+'</td><td><strong>'+money(row.prepayNet,0)+'</strong></td><td>'+money(row.investLoanBalance,0)+'</td><td>'+money(row.investBalance,0)+'</td><td><strong>'+money(row.investNet,0)+'</strong></td></tr>').join('');
-   drawChart([{month:0,prepayNet:-Number($('balance').value),investNet:-Number($('balance').value)},...rows]);
+   const startingNetWorth=Number($('lump-sum').value||0)-Number($('balance').value);\n   drawChart([{month:0,prepayNet:startingNetWorth,investNet:startingNetWorth},...rows]);
    const noExtraCash=Number($('lump-sum').value||0)===0&&Number($('extra-monthly').value||0)===0;
    $('break-even-note').textContent=data.breakEven===null?(noExtraCash?'No extra cash is allocated in either strategy, so both follow the same loan repayment path. A break-even investment return is not applicable.':'A break-even return was not found within the model search range (-99% to 100%). Under the current assumptions, one strategy remains ahead across that range.'):'Estimated break-even investment return: '+data.breakEven.toFixed(2)+'% per year. At approximately this assumed return, the two strategies produce similar net worth in this model.';
    $('results').classList.add('show');
