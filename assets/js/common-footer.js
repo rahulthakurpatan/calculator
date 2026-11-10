@@ -5,6 +5,7 @@
   'use strict';
   const calculators = [
     ['ROI Calculator', '/'],
+    ['SIP Calculator', '/sip-calculator/'],
     ['Step-Up SIP Calculator', '/step-up-sip-calculator/'],
     ['Lump Sum Calculator', '/lump-sum-calculator/'],
     ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/'],
