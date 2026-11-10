@@ -221,7 +221,8 @@
    $('prepay-debt').textContent=money(pre.loanBalance,0);$('prepay-invest').textContent=money(pre.investmentValue,0);$('prepay-date').textContent=payoffLabel(pre.payoffMonth);$('prepay-interest').textContent=money(pre.interestPaid,0);$('prepay-contrib').textContent=money(pre.investmentContributions,0);
    $('invest-debt').textContent=money(inv.loanBalance,0);$('invest-value').textContent=money(inv.investmentValue,0);$('invest-date').textContent=payoffLabel(inv.payoffMonth);$('invest-interest').textContent=money(inv.interestPaid,0);$('invest-contrib').textContent=money(inv.investmentContributions,0);
    $('break-even').textContent=data.breakEven===null?'Not found':data.breakEven.toFixed(2)+'%';
-   $('interest-saved').textContent=money(Math.max(0,inv.interestPaid-pre.interestPaid),0);\n   $('monthly-payment').textContent=money(data.assumptions.payment,0);
+   $('interest-saved').textContent=money(Math.max(0,inv.interestPaid-pre.interestPaid),0);
+   $('monthly-payment').textContent=money(data.assumptions.payment,0);
    const taxPre=Math.max(0,pre.grossInvestmentValue-pre.investmentContributions)*data.assumptions.taxRate/100;
    const taxInv=Math.max(0,inv.grossInvestmentValue-inv.investmentContributions)*data.assumptions.taxRate/100;
    $('tax-prepay').textContent=money(taxPre,0);$('tax-invest').textContent=money(taxInv,0);
