@@ -29,6 +29,7 @@
     ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/'],
     ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/'],
             ['Fixed Deposit Calculator', '/fd-calculator/'],
+    ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/'],
                 ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
         ['CPCT Typing Practice', '/cpct/']
