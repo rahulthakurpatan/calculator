@@ -104,7 +104,7 @@ body{background:linear-gradient(135deg,#f8f8f1 0%,#f0f2e6 48%,#f7f4ea 100%);padd
 <div class="stat"><small>Correct chars</small><strong id="correctChars">0</strong></div>
 </div>
 <div class="progress" aria-label="Test time elapsed"><span id="timeProgress"></span></div>
-<div class="custom-box" id="customBox"><label for="customText">Paste your own practice text</label><textarea id="customText" placeholder="Paste your own English, Hindi Unicode or Kruti Dev 010 text here..."></textarea><div class="actions"><button class="btn secondary" id="useCustomBtn" type="button">Use pasted text</button><button class="btn ghost" id="clearCustomBtn" type="button">Clear</button></div><p class="typing-help">Kruti Dev practice uses legacy 010 text. Install the matching Kruti Dev font to display Hindi glyphs correctly.</p></div>
+<div class="custom-box show" id="customBox"><label for="customText">Paste your own practice text</label><textarea id="customText" placeholder="Paste your own English, Hindi Unicode or Kruti Dev 010 text here..."></textarea><div class="actions"><button class="btn secondary" id="useCustomBtn" type="button">Use pasted text</button><button class="btn ghost" id="clearCustomBtn" type="button">Clear</button></div><p class="typing-help">Kruti Dev practice uses legacy 010 text. Install the matching Kruti Dev font to display Hindi glyphs correctly.</p></div>
 <div class="practice-workspace">
 <div class="practice-pane"><h3>Practice passage <span id="passageCount" style="float:right;font-weight:500;color:#74795e">5 minute passage</span></h3><div class="passage-box"><div id="passage" lang="en"></div></div></div>
 <div class="practice-pane"><h3>Your typing area</h3><textarea id="typingInput" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Press Start test, then begin typing here…" disabled aria-describedby="typingHelp"></textarea><div class="typing-help" id="typingHelp">The passage and typing area are side by side. Paste custom text before starting; pasting is disabled during a timed test.</div></div>
@@ -112,7 +112,7 @@ body{background:linear-gradient(135deg,#f8f8f1 0%,#f0f2e6 48%,#f7f4ea 100%);padd
 <div class="actions">
 <button class="btn" id="startBtn" type="button">Start test</button>
 <button class="btn secondary" id="finishBtn" type="button" disabled>Finish test</button>
-<button class="btn ghost" id="newPassageBtn" type="button">New passage</button><button class="btn ghost" id="customToggleBtn" type="button">Paste my text</button>
+<button class="btn ghost" id="newPassageBtn" type="button">New passage</button><button class="btn ghost" id="customToggleBtn" type="button">Hide paste box</button>
 <button class="btn ghost" id="resetBtn" type="button">Reset</button>
 </div>
 <div class="result" id="result" aria-live="polite">
@@ -250,7 +250,7 @@ function renderHistory(){const h=getHistory();$('historyCount').textContent=Stri
 $('language').addEventListener('change',updateLanguage);
 $('keyboard').addEventListener('change',()=>{updateKeyboardGuide();$('typingHelp').textContent='Make sure the matching Hindi Unicode input method is active on your computer before starting.';});
 $('category').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
-$('customToggleBtn').addEventListener('click',()=>$('customBox').classList.toggle('show'));
+$('customToggleBtn').addEventListener('click',()=>{const box=$('customBox'),open=box.classList.toggle('show');$('customToggleBtn').textContent=open?'Hide paste box':'Paste my own paragraph';if(open)$('customText').focus();});
 $('useCustomBtn').addEventListener('click',()=>{const v=$('customText').value.trim();if(!v){alert('Please paste some text first.');return;}customPassage=v;choosePassage();resetTest(false);});
 $('clearCustomBtn').addEventListener('click',()=>{$('customText').value='';customPassage='';choosePassage();resetTest(false);});
 $('duration').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
