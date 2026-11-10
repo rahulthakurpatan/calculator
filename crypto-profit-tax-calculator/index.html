@@ -18,6 +18,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());</script>
 <script src="/assets/js/common-branding.js" defer></script>
 <script src="/assets/js/common-pushdotify.js" defer></script>
 <title>Crypto Profit & Tax Calculator India – Bitcoin Profit, ROI & TDS</title>
@@ -51,7 +54,7 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap nav"><a class="brand" href="/" aria-label="Return on Investment Calculator home">INVEST<b>CALC</b></a><nav class="navlinks" aria-label="Main navigation"><a href="/">Home</a><a href="/income-tax-calculator/">Income Tax</a><a href="/tds-calculator/">TDS Calculator</a><a href="/sip-calculator/">SIP Calculator</a></nav></div></header>
+<div id="site-header"></div>
 <main>
 <div class="wrap crumb"><a href="/">Home</a> / Crypto Profit & Tax Calculator</div>
 <section class="hero"><div class="wrap hero-grid">
@@ -147,7 +150,7 @@
 <section class="section"><div class="wrap"><div class="section-head"><h2>Related free calculators</h2><p>Explore other investment and tax tools on this website.</p></div><div class="links"><a href="/income-tax-calculator/">Income Tax Calculator India</a><a href="/tds-calculator/">TDS Calculator</a><a href="/">ROI Calculator</a><a href="/lump-sum-calculator/">Lump Sum Calculator</a><a href="/sip-calculator/">SIP Calculator</a></div></div></section>
 <section class="section"><div class="wrap"><div class="disclaimer"><strong>Financial and tax disclaimer:</strong> This calculator is provided for general educational purposes only. Results are estimates based solely on the values and assumptions entered by the user. Tax laws, rates, thresholds, definitions and reporting requirements may change. This tool does not provide legal, investment or tax advice, does not guarantee tax treatment, and does not replace professional review. Verify transaction records, TDS credits and current official provisions before filing or paying tax. Cryptocurrency prices are volatile and losses are possible.</div></div></section>
 </main>
-<footer class="footer"><div class="wrap footer-row"><span>© <span id="year"></span> Return on Investment Calculator. For educational use.</span><span><a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a></span></div></footer>
+<div id="site-footer"></div>
 <script>
 (function(){
 'use strict';
@@ -157,7 +160,7 @@ const num=id=>{const v=Number($(id).value);return Number.isFinite(v)?v:0};
 const showError=(id,msg)=>{$(id).textContent=msg;$(id).classList.add('show')};
 const clearError=id=>{$(id).textContent='';$(id).classList.remove('show')};
 const setText=(id,v)=>$(id).textContent=v;
-$('year').textContent=new Date().getFullYear();
+
 function switchMode(mode){
 const profit=mode==='profit';
 $('profitMode').classList.toggle('active',profit);$('taxMode').classList.toggle('active',!profit);
@@ -219,4 +222,6 @@ $('printProfit').addEventListener('click',()=>window.print());$('printTax').addE
 // Wait for the user to enter transaction values before calculating.
 })();
 </script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
 </body></html>
