@@ -156,10 +156,12 @@ const lang=()=>$('language').value;
 const duration=()=>Number($('duration').value);
 const norm=s=>String(s).normalize('NFC');
 const fmtTime=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
-const selectedMode=()=>lang()==='en'?'English':$('keyboard').value==='gail'?'Hindi · Remington GAIL':'Hindi · Inscript';
+const selectedMode=()=>lang()==='en'?'English':lang()==='kruti'?'Hindi · Kruti Dev 010':$('keyboard').value==='gail'?'Hindi · Remington GAIL':'Hindi · Inscript';
 function choosePassage(){
  const mode=lang()==='en'?'en':lang()==='kruti'?'kruti':'hi';
  const bank=mode==='kruti'?['Hkkjr ,d fofo/k laLd`fr okyk ns'k gSA ;gka fofHkUu Hkk"kk,a vkSj ijEijk,a ikbZ tkrh gSaA fu;fer vH;kl ls Vad.k dh xfr vkSj 'kq)rk esa lq/kkj gksrk gSA','dk;kZy; esa Li"V vkSj lgh vfHkys[k j[kuk vko';d gSA fdlh uke] rkjh[k ;k la[;k esa NksVh lh xyrh ijs'kkuh iSnk dj ldrh gSA']:passages[mode];
+ const categoryText={general:{en:'A balanced routine includes regular practice, careful review and realistic goals. Progress should be measured over several sessions rather than by one unusually fast attempt.',hi:'संतुलित दिनचर्या में नियमित अभ्यास, गलतियों की समीक्षा और वास्तविक लक्ष्य शामिल होते हैं। प्रगति का आकलन कई अभ्यास सत्रों के आधार पर करना चाहिए।'},office:{en:'An office assistant should maintain files in an orderly manner, use clear language and verify every entry. Records must be updated on time and handled according to workplace instructions.',hi:'कार्यालय सहायक को फाइलों को व्यवस्थित रखना चाहिए, स्पष्ट भाषा का उपयोग करना चाहिए और प्रत्येक प्रविष्टि की जांच करनी चाहिए। अभिलेख समय पर अपडेट होने चाहिए।'},education:{en:'Students can improve their learning by reading a topic, writing a short summary and discussing difficult points. Libraries and laboratories provide opportunities to connect theory with practical knowledge.',hi:'विद्यार्थी किसी विषय को पढ़कर उसका सार लिख सकते हैं और कठिन बिंदुओं पर चर्चा कर सकते हैं। पुस्तकालय और प्रयोगशाला सैद्धांतिक ज्ञान को व्यवहार से जोड़ते हैं।'},digital:{en:'Before submitting an online form, read every instruction and check the information entered in each field. Save a copy of the acknowledgement and never share a one time password with another person.',hi:'ऑनलाइन आवेदन जमा करने से पहले सभी निर्देश पढ़ें और प्रत्येक खाने में दर्ज जानकारी जांचें। पावती की प्रति सुरक्षित रखें और अपना ओटीपी किसी अन्य व्यक्ति को न बताएं।'},environment:{en:'Rainwater harvesting, public transport and responsible waste management can reduce pressure on natural resources. Local participation makes environmental programmes more practical and sustainable.',hi:'वर्षा जल संग्रह, सार्वजनिक परिवहन और कचरे का सही प्रबंधन प्राकृतिक संसाधनों पर दबाव कम कर सकते हैं। स्थानीय लोगों की भागीदारी से पर्यावरण कार्यक्रम सफल होते हैं।'},society:{en:'Public facilities work well when citizens use them responsibly. Respecting queues, following traffic rules and keeping shared spaces clean are simple ways to contribute to community life.',hi:'सार्वजनिक सुविधाएं तभी अच्छी तरह काम करती हैं जब नागरिक उनका जिम्मेदारी से उपयोग करते हैं। कतार का पालन, यातायात नियमों का सम्मान और सफाई सामुदायिक जीवन में योगदान देते हैं।'}};
+ if(mode!=='kruti')bank.push(categoryText[$('category').value||'general'][mode]);
  const targetWords={1:100,2:200,5:500,10:1000,15:1500,30:3000}[duration()]||500;
  let text='',words=0,idx=Math.floor(Math.random()*bank.length),n=0;
  while(words<targetWords&&n<500){const p=bank[(idx+n)%bank.length];text+=(text?'\n\n':'')+p;words+=p.trim().split(/\s+/).length;n++;}
@@ -197,7 +199,7 @@ $('category').addEventListener('change',()=>{customPassage='';choosePassage();re
 $('customToggleBtn').addEventListener('click',()=>$('customBox').classList.toggle('show'));
 $('useCustomBtn').addEventListener('click',()=>{const v=$('customText').value.trim();if(!v){alert('Please paste some text first.');return;}customPassage=v;choosePassage();resetTest(false);});
 $('clearCustomBtn').addEventListener('click',()=>{$('customText').value='';customPassage='';choosePassage();resetTest(false);});
-$('duration').addEventListener('change',()=>resetTest(false));
+$('duration').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
 $('startBtn').addEventListener('click',startTest);
 $('finishBtn').addEventListener('click',finishTest);
 $('newPassageBtn').addEventListener('click',()=>{if(running){if(!confirm('A test is running. End this test and load a new passage?'))return;finishTest();}choosePassage();resetTest(false);});
