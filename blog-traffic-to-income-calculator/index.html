@@ -84,8 +84,6 @@
 <div class="field" id="affiliate-epm-wrap" hidden><label for="affiliate-epm">Affiliate earnings per 1,000 eligible pageviews (<span class="sym">₹</span>)</label><input id="affiliate-epm" type="number" min="0" step="any" value="0" inputmode="decimal"></div>
 <div class="field"><label for="affiliate-share">Monthly pageviews on pages with affiliate links (%)</label><input id="affiliate-share" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"><div class="hint">This eligible-pageview share is used by both affiliate methods.</div></div>
 <div id="affiliate-funnel-fields">
-<div class="two">
-
 <div class="field"><label for="affiliate-ctr">Affiliate link click rate (%)</label><input id="affiliate-ctr" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"></div>
 </div>
 <div class="two">
@@ -332,27 +330,6 @@ function renderProjection({pv,rpm,totalRevenuePerPageview,fixedOtherIncome,costs
  set('cumulative-profit',money(cumulative));set('average-profit',money(cumulative/12));
 }
 function updateSymbols(){const symbol=currency()==='INR'?'₹':'$';document.querySelectorAll('.sym').forEach(el=>el.textContent=symbol);}
-$('affiliate-mode').addEventListener('change',()=>{
- const epm=$('affiliate-mode').value==='epm';
- $('affiliate-epm-wrap').hidden=!epm;$('affiliate-funnel-fields').hidden=epm;
- if(results.classList.contains('show'))calculate();
-});
-$('currency').addEventListener('change',()=>{updateSymbols();if(results.classList.contains('show'))calculate();});
-$('copy-result').addEventListener('click',()=>{
- const text='Blog income estimate\nMonthly pageviews: '+whole(num('pageviews'))+'\nPage RPM: '+money(num('rpm'))+'\nGross monthly revenue: '+$('gross').textContent+'\nMonthly expenses: '+$('expenses').textContent+'\nEstimated net profit: '+$('net-profit').textContent+'\nRequired pageviews for goal: '+$('required-views').textContent+'\nEstimate only; actual results may vary.';
- if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{$('copy-result').textContent='Copied';setTimeout(()=>$('copy-result').textContent='Copy my estimate',1800);}).catch(()=>{window.prompt('Copy your estimate:',text);});}else{window.prompt('Copy your estimate:',text);}
-});
-$('share-result').addEventListener('click',()=>{
- const text='My estimated blog profit is '+$('net-profit').textContent+' per month. Calculate your blog income: '+location.href;
- if(navigator.share){navigator.share({title:'Blog income estimate',text,url:location.href}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>{$('share-result').textContent='Link copied';setTimeout(()=>$('share-result').textContent='Share result',1800);});}else{window.prompt('Share this calculator:',text);}
-});
-updateSymbols();
-})();
-</script>
-<script src="/assets/js/common-header.js" defer></script>
-<script src="/assets/js/common-footer.js" defer></script>
-</body>
-</html>;document.querySelectorAll('.sym').forEach(el=>el.textContent=symbol);}
 $('affiliate-mode').addEventListener('change',()=>{
  const epm=$('affiliate-mode').value==='epm';
  $('affiliate-epm-wrap').hidden=!epm;$('affiliate-funnel-fields').hidden=epm;
