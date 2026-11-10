@@ -13,6 +13,7 @@
       tools: [
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
         ['SIP Calculator', '/sip-calculator/', 'Estimate monthly SIP returns, goals and step-up growth'],
+        ['Compound Interest Calculator', '/compound-interest-calculator/', 'Estimate the future corpus of a one-time investment'],
         ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
         ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
