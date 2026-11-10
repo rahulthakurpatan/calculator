@@ -84,12 +84,12 @@
 <div class="advanced-body">
 <div class="subhead">3. AFFILIATE INCOME</div>
 <div class="two">
-<div class="field"><label for="affiliate-share">Pageviews with affiliate links (%)</label><input id="affiliate-share" type="number" min="0" max="100" step="any" value="30" inputmode="decimal"></div>
-<div class="field"><label for="affiliate-ctr">Affiliate link click rate (%)</label><input id="affiliate-ctr" type="number" min="0" max="100" step="any" value="5" inputmode="decimal"></div>
+<div class="field"><label for="affiliate-share">Pageviews with affiliate links (%)</label><input id="affiliate-share" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"></div>
+<div class="field"><label for="affiliate-ctr">Affiliate link click rate (%)</label><input id="affiliate-ctr" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"></div>
 </div>
 <div class="two">
-<div class="field"><label for="affiliate-conversion">Sales per affiliate click (%)</label><input id="affiliate-conversion" type="number" min="0" max="100" step="any" value="2" inputmode="decimal"></div>
-<div class="field"><label for="commission">Average commission per sale (<span class="sym">₹</span>)</label><input id="commission" type="number" min="0" step="any" value="250" inputmode="decimal"></div>
+<div class="field"><label for="affiliate-conversion">Sales per affiliate click (%)</label><input id="affiliate-conversion" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"></div>
+<div class="field"><label for="commission">Average commission per sale (<span class="sym">₹</span>)</label><input id="commission" type="number" min="0" step="any" value="0" inputmode="decimal"></div>
 </div>
 <div class="hint">Affiliate estimate = eligible pageviews × click rate × conversion rate × commission. Enter your own program data where possible.</div>
 <div class="subhead">4. OTHER MONTHLY INCOME</div>
@@ -103,7 +103,7 @@
 </div>
 <div class="subhead">5. MONTHLY RUNNING COSTS</div>
 <div class="two">
-<div class="field"><label for="hosting">Hosting + domain (<span class="sym">₹</span>)</label><input id="hosting" type="number" min="0" step="any" value="300" inputmode="decimal"></div>
+<div class="field"><label for="hosting">Hosting + domain (<span class="sym">₹</span>)</label><input id="hosting" type="number" min="0" step="any" value="0" inputmode="decimal"></div>
 <div class="field"><label for="content-cost">Writing + content (<span class="sym">₹</span>)</label><input id="content-cost" type="number" min="0" step="any" value="0" inputmode="decimal"></div>
 </div>
 <div class="two">
@@ -203,7 +203,7 @@
 <p>The answer depends on the share of income coming from advertising, affiliate commissions, sponsorships and products, as well as your operating costs. If advertising is your only income source, the basic calculation is:</p>
 <div class="formula"><code>Required pageviews = (Monthly income goal ÷ Page RPM) × 1,000</code></div>
 <p>When you include other income and expenses, the calculator first subtracts your non-ad income and adds your expenses to the target profit. It then estimates the ad revenue still needed and converts that amount into pageviews using your Page RPM. If the other income already covers the goal and costs, no additional ad traffic is required by this simplified model.</p>
-<p>This calculation assumes that your Page RPM and other income rates remain unchanged as traffic grows. In real life, audience mix, ad demand and conversion rates can change when a site scales.</p>
+<p>This calculation assumes that your Page RPM and affiliate click/conversion rates remain unchanged as traffic grows. In real life, audience mix, ad demand and conversion rates can change when a site scales.</p>
 </article>
 <article class="content">
 <h2>Frequently asked questions</h2>
@@ -253,16 +253,20 @@ function calculate(event){
  const gross=ads+affiliate+sponsors+products;
  const costs=num('hosting')+num('content-cost')+num('tools-cost')+num('other-cost');
  const net=gross-costs,goal=num('goal'),nonAd=affiliate+sponsors+products;
- const adRevenueNeeded=Math.max(0,goal+costs-nonAd);
- const requiredViews=rpm>0?adRevenueNeeded/rpm*1000:Infinity;
- const requiredVisitors=Number.isFinite(requiredViews)?requiredViews/ppv:Infinity;
+ const fixedOtherIncome=sponsors+products;
+ const affiliatePerPageview=(share/100)*(ctr/100)*(conv/100)*num('commission');
+ const totalRevenuePerPageview=(rpm/1000)+affiliatePerPageview;
+ const revenueStillNeeded=Math.max(0,goal+costs-fixedOtherIncome);
+ const requiredViews=totalRevenuePerPageview>0?revenueStillNeeded/totalRevenuePerPageview:Infinity;
+ const effectivePagesPerVisitor=(vis>0&&pv>0)?pv/vis:ppv;
+ const requiredVisitors=Number.isFinite(requiredViews)?requiredViews/effectivePagesPerVisitor:Infinity;
  set('net-profit',money(net));$('net-profit').className='big '+(net>=0?'':'negative');
- set('result-summary','Based on '+whole(pv)+' monthly pageviews, your entered Page RPM and the optional income and cost assumptions.');
+ set('result-summary','Based on '+whole(pv)+' monthly pageviews, a Page RPM of '+money(rpm)+', and the optional income and cost assumptions.');
  set('gross',money(gross));set('expenses',money(costs));set('yearly-profit',money(net*12));set('daily-ads',money(ads/30));
  set('ad-income',money(ads));set('affiliate-income',money(affiliate));set('sponsor-income',money(sponsors));set('product-income',money(products));set('gross-row',money(gross));set('cost-row',money(costs));set('net-row',money(net));
  if(rpm>0){
    if(adRevenueNeeded===0){set('required-views','No extra ad traffic needed');set('required-visitors','Your entered non-ad income already covers the profit goal and expenses in this simplified estimate.');}
-   else{set('required-views',whole(requiredViews)+' pageviews / month');set('required-visitors','Approximately '+whole(requiredVisitors)+' visitors / month at '+ppv.toFixed(1)+' pages per visitor.');}
+   else{set('required-views',whole(requiredViews)+' pageviews / month');set('required-visitors','Approximately '+whole(requiredVisitors)+' visitors / month at '+effectivePagesPerVisitor.toFixed(2)+' pages per visitor.');}
  }else{set('required-views','Cannot estimate with a zero Page RPM');set('required-visitors','Enter a Page RPM above zero to calculate the traffic required.');}
  const gap=goal-net;
  set('goal-gap',gap<=0?'You are '+money(Math.abs(gap))+' above your monthly profit goal based on these inputs.':'You are '+money(gap)+' below your monthly profit goal based on these inputs.');
@@ -271,8 +275,8 @@ function calculate(event){
 form.addEventListener('submit',calculate);
 $('reset').addEventListener('click',()=>{
  form.reset();$('pageviews').value='10000';$('visitors').value='7000';$('pages-per-visitor').value='1.4';$('rpm').value='30';$('goal').value='10000';
- $('affiliate-share').value='30';$('affiliate-ctr').value='5';$('affiliate-conversion').value='2';$('commission').value='250';
- $('hosting').value='300';$('content-cost').value='0';$('tools-cost').value='0';$('other-cost').value='0';
+ $('affiliate-share').value='0';$('affiliate-ctr').value='0';$('affiliate-conversion').value='0';$('commission').value='0';
+ $('hosting').value='0';$('content-cost').value='0';$('tools-cost').value='0';$('other-cost').value='0';
  results.classList.remove('show');error.classList.remove('show');updateSymbols();
 });
 function updateSymbols(){const symbol=currency()==='INR'?'₹':'$';document.querySelectorAll('.sym').forEach(el=>el.textContent=symbol);}
