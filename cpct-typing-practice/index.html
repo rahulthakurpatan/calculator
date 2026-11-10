@@ -52,9 +52,6 @@ body{background:linear-gradient(135deg,#f8f8f1 0%,#f0f2e6 48%,#f7f4ea 100%);padd
 .actions .btn{border-radius:10px}
 .btn{background:var(--olive-dark)}.btn.secondary{background:#e9ecd9;color:#4f5a2f}.btn.ghost{background:#f0f0e7;color:#51563d}
 .progress span{background:var(--olive)}
-.custom-box{display:none;margin:12px 0;padding:13px;border:1px solid #dce0cf;border-radius:12px;background:#fbfcf5}.custom-box.show{display:block}
-.custom-box label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#536047}
-.custom-box textarea{width:100%;min-height:100px;padding:10px;border:1px solid #d8dfca;border-radius:9px;font:14px/1.7 inherit}
 #passage.kruti,#typingInput.kruti{font-family:"Kruti Dev 010","Kruti Dev","DevLys 010",monospace;font-size:20px}
 .keyboard-dock{position:fixed;z-index:1000;left:0;right:0;bottom:0;padding:10px 16px max(12px,env(safe-area-inset-bottom));background:linear-gradient(135deg,rgba(255,255,250,.94),rgba(237,240,222,.92));border-top:1px solid rgba(126,135,81,.32);box-shadow:0 -12px 35px rgba(66,75,42,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .keyboard-inner{width:min(1160px,100%);margin:auto;display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center}
@@ -104,15 +101,14 @@ body{background:linear-gradient(135deg,#f8f8f1 0%,#f0f2e6 48%,#f7f4ea 100%);padd
 <div class="stat"><small>Correct chars</small><strong id="correctChars">0</strong></div>
 </div>
 <div class="progress" aria-label="Test time elapsed"><span id="timeProgress"></span></div>
-<div class="custom-box show" id="customBox"><label for="customText">Paste your own practice text</label><textarea id="customText" placeholder="Paste your own English, Hindi Unicode or Kruti Dev 010 text here..."></textarea><div class="actions"><button class="btn secondary" id="useCustomBtn" type="button">Use pasted text</button><button class="btn ghost" id="clearCustomBtn" type="button">Clear</button></div><p class="typing-help">Kruti Dev practice uses legacy 010 text. Install the matching Kruti Dev font to display Hindi glyphs correctly.</p></div>
 <div class="practice-workspace">
 <div class="practice-pane"><h3>Practice passage <span id="passageCount" style="float:right;font-weight:500;color:#74795e">5 minute passage</span></h3><div class="passage-box"><div id="passage" lang="en"></div></div></div>
-<div class="practice-pane"><h3>Your typing area</h3><textarea id="typingInput" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Press Start test, then begin typing here…" disabled aria-describedby="typingHelp"></textarea><div class="typing-help" id="typingHelp">The passage and typing area are side by side. Paste custom text before starting; pasting is disabled during a timed test.</div></div>
+<div class="practice-pane"><h3>Your typing area</h3><textarea id="typingInput" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Press Start test, then begin typing here…" disabled aria-describedby="typingHelp"></textarea><div class="typing-help" id="typingHelp">The passage and typing area are side by side. Type the displayed passage; use Backspace to correct mistakes.</div></div>
 </div>
 <div class="actions">
 <button class="btn" id="startBtn" type="button">Start test</button>
 <button class="btn secondary" id="finishBtn" type="button" disabled>Finish test</button>
-<button class="btn ghost" id="newPassageBtn" type="button">New passage</button><button class="btn ghost" id="customToggleBtn" type="button">Hide paste box</button>
+<button class="btn ghost" id="newPassageBtn" type="button">New passage</button>
 <button class="btn ghost" id="resetBtn" type="button">Reset</button>
 </div>
 <div class="result" id="result" aria-live="polite">
@@ -181,7 +177,6 @@ hi:[
 ]};
 let activePassage='',running=false,startedAt=0,endsAt=0,timerId=null,elapsed=0,completed=false,lastInput='',lastResult=null;
 const STORAGE='cpctTypingPracticeHistoryV1';
-let customPassage='';
 const lang=()=>$('language').value;
 const duration=()=>Number($('duration').value);
 const norm=s=>String(s).normalize('NFC');
@@ -204,11 +199,11 @@ function choosePassage(){
  const targetWords={1:100,2:200,5:500,10:1000,15:1500,30:3000}[duration()]||500;
  let text='',words=0,idx=Math.floor(Math.random()*bank.length),n=0;
  while(words<targetWords&&n<500){const p=bank[(idx+n)%bank.length];text+=(text?'\n\n':'')+p;words+=p.trim().split(/\s+/).length;n++;}
- activePassage=customPassage||text;
+ activePassage=text;
  $('passage').classList.toggle('kruti',mode==='kruti');
  $('typingInput').classList.toggle('kruti',mode==='kruti');
  $('passage').lang=mode==='hi'?'hi':'en';
- $('passageCount').textContent=customPassage?'Custom passage · '+activePassage.trim().split(/\s+/).length+' words':duration()+' minute passage · '+words+' words';
+ $('passageCount').textContent=duration()+' minute passage · '+words+' words';
  renderPassage();$('typingInput').value='';$('result').classList.remove('show');
 }
 function renderPassage(){const target=Array.from(norm(activePassage)),typed=Array.from(norm($('typingInput').value));let html='';for(let i=0;i<target.length;i++){let cls='';if(i<typed.length)cls=typed[i]===target[i]?'correct':'wrong';else if(i===typed.length)cls='current';html+='<span class="'+cls+'">'+(target[i]===' '?'&nbsp;':escapeHtml(target[i]))+'</span>';}if(typed.length>target.length)html+='<span class="wrong">'+typed.slice(target.length).map(escapeHtml).join('')+'</span>';$('passage').innerHTML=html;updateKeyboardGuide();const current=$('passage').querySelector('.current');if(current){const p=$('passage'),pr=p.getBoundingClientRect(),cr=current.getBoundingClientRect(),margin=38;if(cr.bottom>pr.bottom-margin)p.scrollTop+=cr.bottom-(pr.bottom-margin);else if(cr.top<pr.top+margin)p.scrollTop-=((pr.top+margin)-cr.top);}}
@@ -238,7 +233,7 @@ function updateKeyboardGuide(){
  $('keyGuide').innerHTML=rows+shift+space;
  if(mode!=='hi'&&key){const active=$('keyGuide').querySelector('[data-key="'+key+'"]');if(active)active.classList.add('active');}
 }
-function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'You can use Backspace to correct mistakes. Paste your own passage before starting; pasting is disabled during the timed test.';updateKeyboardGuide();choosePassage();resetTest(false);}
+function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'Type the displayed passage and use Backspace to correct mistakes.';updateKeyboardGuide();choosePassage();resetTest(false);}
 function startTest(){if(running)return;completed=false;elapsed=0;startedAt=Date.now();endsAt=startedAt+duration()*60000;running=true;$('typingInput').disabled=false;$('typingInput').focus();$('startBtn').disabled=true;$('finishBtn').disabled=false;$('testStatus').textContent='RUNNING';$('result').classList.remove('show');renderPassage();tick();timerId=setInterval(tick,250);}
 function tick(){if(!running)return;const remaining=Math.max(0,Math.ceil((endsAt-Date.now())/1000));elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);$('timeLeft').textContent=fmtTime(remaining);updateStats();if(remaining<=0)finishTest();}
 function finishTest(){if(!running)return;elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);running=false;clearInterval(timerId);timerId=null;completed=true;$('typingInput').disabled=true;$('startBtn').disabled=false;$('finishBtn').disabled=true;$('testStatus').textContent='COMPLETED';$('timeLeft').textContent=fmtTime(duration()*60-elapsed);updateStats();showResult();}
@@ -249,17 +244,14 @@ function saveResult(r){const h=getHistory();h.unshift(r);try{localStorage.setIte
 function renderHistory(){const h=getHistory();$('historyCount').textContent=String(h.length);$('bestWpm').textContent=h.length?Math.max(...h.map(x=>x.net)).toFixed(1):'0';$('historyRows').innerHTML=h.length?h.slice(0,10).map(x=>'<tr><td>'+new Date(x.date).toLocaleDateString()+'</td><td>'+escapeHtml(x.mode)+'</td><td>'+x.duration+' min</td><td>'+x.net.toFixed(1)+'</td><td>'+x.accuracy.toFixed(1)+'%</td></tr>').join(''):'<tr><td colspan="5">No tests completed yet.</td></tr>';}
 $('language').addEventListener('change',updateLanguage);
 $('keyboard').addEventListener('change',()=>{updateKeyboardGuide();$('typingHelp').textContent='Make sure the matching Hindi Unicode input method is active on your computer before starting.';});
-$('category').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
-$('customToggleBtn').addEventListener('click',()=>{const box=$('customBox'),open=box.classList.toggle('show');$('customToggleBtn').textContent=open?'Hide paste box':'Paste my own paragraph';if(open)$('customText').focus();});
-$('useCustomBtn').addEventListener('click',()=>{const v=$('customText').value.trim();if(!v){alert('Please paste some text first.');return;}customPassage=v;choosePassage();resetTest(false);});
-$('clearCustomBtn').addEventListener('click',()=>{$('customText').value='';customPassage='';choosePassage();resetTest(false);});
-$('duration').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
+$('category').addEventListener('change',()=>{choosePassage();resetTest(false);});
+$('duration').addEventListener('change',()=>{choosePassage();resetTest(false);});
 $('startBtn').addEventListener('click',startTest);
 $('finishBtn').addEventListener('click',finishTest);
 $('newPassageBtn').addEventListener('click',()=>{if(running){if(!confirm('A test is running. End this test and load a new passage?'))return;finishTest();}choosePassage();resetTest(false);});
 $('resetBtn').addEventListener('click',()=>resetTest(true));
 $('typingInput').addEventListener('input',()=>{if(!running)return;renderPassage();updateStats();});
-$('typingInput').addEventListener('paste',e=>{if(running){e.preventDefault();$('typingHelp').textContent='Pasting is disabled during a timed test. Please type the passage.';}});
+$('typingInput').addEventListener('paste',e=>{if(running){e.preventDefault();$('typingHelp').textContent='Pasting is disabled during a timed test. Please type the displayed passage.';}});
 $('againBtn').addEventListener('click',()=>{choosePassage();resetTest(false);$('typingInput').focus();});
 $('printBtn').addEventListener('click',()=>window.print());
 $('clearHistoryBtn').addEventListener('click',()=>{if(confirm('Clear all CPCT practice history saved in this browser?')){localStorage.removeItem(STORAGE);renderHistory();}});
