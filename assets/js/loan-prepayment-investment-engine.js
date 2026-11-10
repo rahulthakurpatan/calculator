@@ -205,8 +205,8 @@
     let breakEven = null;
     const noExtraCash = lumpSum <= EPS && extraMonthly <= EPS;
     if (!noExtraCash && Math.abs(lowDiff) < 0.01) breakEven = low;
-    else if (Math.abs(highDiff) < 0.01) breakEven = high;
-    else if (lowDiff * highDiff < 0) {
+    else if (!noExtraCash && Math.abs(highDiff) < 0.01) breakEven = high;
+    else if (!noExtraCash && lowDiff * highDiff < 0) {
       for (let i = 0; i < 55; i++) {
         const mid = (low + high) / 2;
         const diff = simulate(modelInput, mid).difference;
