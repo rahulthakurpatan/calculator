@@ -45,6 +45,8 @@
     const costs = ['exitFee','penalty','applicationFee','legalFee','valuationFee','otherFee','points'].reduce((s,k)=>s+num(input[k]),0);
     const credits = num(input.lenderCredit);
     const netCosts = Math.max(0,costs-credits);
+    const feeInputs = ['exitFee','penalty','applicationFee','legalFee','valuationFee','otherFee','points','lenderCredit'];
+    if (feeInputs.some(k => num(input[k]) < 0)) errors.push('Fees, penalties and lender credits cannot be negative.');
     const financed = input.feeTreatment === 'finance';
     const cashCosts = financed ? 0 : netCosts;
     const newPrincipal = balance + (financed ? netCosts : 0);
