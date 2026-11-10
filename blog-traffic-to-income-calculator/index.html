@@ -63,7 +63,7 @@
 <form id="blog-form" novalidate>
 <div class="two">
 <div class="field"><label for="currency">Display currency</label><select id="currency"><option value="INR">Indian Rupee (₹)</option><option value="USD">US Dollar ($)</option></select></div>
-<div class="field"><label for="blog-stage">Your blog stage</label><select id="blog-stage"><option>New blog</option><option selected>Growing blog</option><option>Established blog</option></select></div>
+<div class="field"><label for="audience">Main audience location</label><select id="audience"><option value="India">India</option><option value="United States">United States</option><option value="United Kingdom">United Kingdom</option><option value="Canada">Canada</option><option value="Australia">Australia</option><option value="Mixed / worldwide">Mixed / worldwide</option></select><div class="hint">Context only; does not apply an assumed country multiplier.</div></div>
 </div>
 <div class="subhead">1. YOUR MONTHLY TRAFFIC</div>
 <div class="two">
@@ -71,14 +71,11 @@
 <div class="field"><label for="visitors">Monthly visitors (optional)</label><input id="visitors" type="number" min="0" step="1" value="7000" inputmode="numeric"><div class="hint">Used to estimate required visitors for your goal.</div></div>
 </div>
 <div class="two">
-<div class="field"><label for="pages-per-visitor">Pages per visitor</label><input id="pages-per-visitor" type="number" min="0.1" max="100" step="0.1" value="1.4" inputmode="decimal"><div class="hint">Pageviews ÷ visitors. Edit if your analytics shows a different value.</div></div>
-<div class="field"><label for="audience">Main audience location</label><select id="audience"><option value="India">India</option><option value="United States">United States</option><option value="United Kingdom">United Kingdom</option><option value="Canada">Canada</option><option value="Australia">Australia</option><option value="Mixed / worldwide">Mixed / worldwide</option></select></div>
+<div class="field"><label for="pages-per-visitor">Pages per visitor</label><input id="pages-per-visitor" type="number" min="0.1" max="100" step="0.1" value="1.4" inputmode="decimal"><div class="hint">Used if visitors are blank; otherwise calculated from pageviews ÷ visitors.</div></div>
+<div class="field"><label for="niche">Blog topic / niche</label><select id="niche"><option>Technology</option><option>Finance</option><option>Education</option><option>Health</option><option>Food</option><option>Travel</option><option>Lifestyle</option><option>Entertainment</option><option>Other</option></select><div class="hint">Context only; enter your actual RPM rather than using a guessed niche rate.</div></div>
 </div>
 <div class="subhead">2. DISPLAY AD INCOME</div>
-<div class="two">
 <div class="field"><label for="rpm">Page RPM (<span class="sym">₹</span> per 1,000 pageviews)</label><input id="rpm" type="number" min="0" step="any" value="30" inputmode="decimal"><div class="hint">Best input: your actual ad-network Page RPM. The prefilled amount is only an editable example.</div></div>
-<div class="field"><label for="niche">Blog topic / niche</label><select id="niche"><option>Technology</option><option>Finance</option><option>Education</option><option>Health</option><option>Food</option><option>Travel</option><option>Lifestyle</option><option>Entertainment</option><option>Other</option></select></div>
-</div>
 <details class="advanced">
 <summary>Advanced income sources (affiliate, sponsorship, products and costs)</summary>
 <div class="advanced-body">
