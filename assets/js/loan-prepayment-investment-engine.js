@@ -8,12 +8,15 @@
   const finite = n => Number.isFinite(n) && !Number.isNaN(n);
   const clamp = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
 
-  function monthlyRate(annualPercent) {
+  function loanMonthlyRate(annualPercent) {
+    return annualPercent / 100 / 12;
+  }
+  function investmentMonthlyRate(annualPercent) {
     return Math.pow(1 + annualPercent / 100, 1 / 12) - 1;
   }
   function paymentFor(balance, annualPercent, months) {
     if (months <= 0 || balance <= 0) return 0;
-    const r = monthlyRate(annualPercent);
+    const r = loanMonthlyRate(annualPercent);
     if (Math.abs(r) < EPS) return balance / months;
     const pow = Math.pow(1 + r, months);
     return balance * r * pow / (pow - 1);
@@ -27,7 +30,7 @@
       balance, loanRate, termMonths, payment, lumpSum, extraMonthly,
       investmentFee, taxRate, horizonMonths
     } = input;
-    const investRate = monthlyRate(annualInvestmentReturn);
+    const investRate = investmentMonthlyRate(annualInvestmentReturn);
     const feeMonthly = investmentFee / 100 / 12;
     const netMonthlyInvestmentRate = (1 + investRate) * (1 - feeMonthly) - 1;
     const standardPayment = payment;
@@ -63,7 +66,7 @@
       // Prepayment path: regular payment, then extra principal. Once debt is
       // cleared, the same monthly cash budget is redirected to investments.
       if (prepayBalance > EPS) {
-        const interest = prepayBalance * monthlyRate(loanRate);
+        const interest = prepayBalance * loanMonthlyRate(loanRate);
         prepayInterest += interest;
         const due = Math.min(prepayBalance + interest, standardPayment);
         const principalPaid = Math.max(0, due - interest);
@@ -97,7 +100,7 @@
       // invested at month end.
       let investRedirectedPayment = 0;
       if (investLoanBalance > EPS) {
-        const interest = investLoanBalance * monthlyRate(loanRate);
+        const interest = investLoanBalance * loanMonthlyRate(loanRate);
         investInterest += interest;
         const due = Math.min(investLoanBalance + interest, standardPayment);
         const principalPaid = Math.max(0, due - interest);
@@ -190,7 +193,7 @@
 
     const payment = paymentInput === null ? paymentFor(balance, loanRate, termMonths) : paymentInput;
     if (!finite(payment) || payment <= 0 || payment > 1e15) return { errors: ['Enter a valid regular monthly loan payment.'] };
-    const firstInterest = balance * monthlyRate(loanRate);
+    const firstInterest = balance * loanMonthlyRate(loanRate);
     if (payment <= firstInterest + EPS && balance > EPS) return { errors: ['The regular payment must be higher than the first month’s interest so the loan balance can reduce.'] };
     if (payment * termMonths < balance && loanRate === 0) return { errors: ['The entered payment is too low to repay this loan within the selected term.'] };
 
