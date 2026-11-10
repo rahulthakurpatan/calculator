@@ -203,7 +203,8 @@
     let lowDiff = simulate(modelInput, low).difference;
     let highDiff = simulate(modelInput, high).difference;
     let breakEven = null;
-    if (Math.abs(lowDiff) < 0.01) breakEven = low;
+    const noExtraCash = lumpSum <= EPS && extraMonthly <= EPS;
+    if (!noExtraCash && Math.abs(lowDiff) < 0.01) breakEven = low;
     else if (Math.abs(highDiff) < 0.01) breakEven = high;
     else if (lowDiff * highDiff < 0) {
       for (let i = 0; i < 55; i++) {
