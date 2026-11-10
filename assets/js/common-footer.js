@@ -21,22 +21,15 @@
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
     ['Instagram Earning Calculator', '/instagram-earning-calculator/'],
     ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],
-    ['Blog Traffic to Income Converter', '/blog-traffic-income-converter/'],
-    ['Crypto / Bitcoin Profit & Tax Calculator', '/crypto-profit-tax-calculator/'],
-    ['Affiliate Commission Predictor', '/affiliate-commission-predictor/'],
-    ['Child Future & Education Planner', '/child-future-education-planner/'],
+    ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/'],
+    ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/'],
     ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/'],
     ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/'],
     ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/'],
-        ['Personal Loan EMI Calculator', '/personal-loan-emi-calculator/'],
-        ['Fixed Deposit Calculator', '/fd-calculator/'],
+            ['Fixed Deposit Calculator', '/fd-calculator/'],
                 ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
-    ['Wedding Budget & Expense Planner', '/wedding-budget-expense-planner/'],
-    ['AI Hindi Text-to-Speech', '/hindi-text-to-speech/'],
-        ['Gold & Silver Value Estimator', '/gold-silver-value-estimator/'],
-    ['Age & Govt Form Eligibility Calculator', '/age-govt-form-eligibility-calculator/'],
-    ['CPCT Typing Practice', '/cpct/']
+        ['CPCT Typing Practice', '/cpct/']
   ];
   const style = document.createElement('style');
   style.id = 'investcalc-common-footer-style';
