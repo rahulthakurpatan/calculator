@@ -31,18 +31,50 @@ main{padding-bottom:40px}.layout{display:grid;grid-template-columns:minmax(0,1.6
 @media(max-width:560px){.wrap{width:calc(100% - 24px)}.hero{padding-top:28px}.lead{font-size:14px}.panel{padding:14px}.controls{grid-template-columns:1fr 1fr}.testbar{grid-template-columns:repeat(2,1fr)}.side{grid-template-columns:1fr}.content-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:repeat(2,1fr)}#passage{font-size:16px}.actions .btn{flex:1}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
-body{background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#faf5ff 100%)}
-.hero{background:linear-gradient(120deg,#fff,#eef5ff 65%,#f8f1ff)}
-.glass-guide{margin:16px 0;padding:16px;border:1px solid rgba(255,255,255,.95);border-radius:15px;background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(225,238,255,.62));box-shadow:0 12px 32px rgba(47,76,125,.12);backdrop-filter:blur(16px)}
-.glass-guide h3{margin:0 0 5px;font-size:14px}.glass-guide p{margin:0;color:var(--muted);font-size:11px}
-.key-guide{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;margin-top:12px}
-.guide-key{min-height:42px;border:1px solid #d6e1f0;border-bottom:3px solid #b7c8df;border-radius:8px;background:linear-gradient(160deg,#fff,#eaf2fc);display:grid;place-items:center;font-size:12px;font-weight:850;color:#263d60;box-shadow:0 3px 8px #29456b12}
-.guide-key small{font-size:8px;color:#71819a}
-.custom-box{display:none;margin:12px 0;padding:13px;border:1px solid #dce5f1;border-radius:12px;background:#fbfdff}.custom-box.show{display:block}
-.custom-box label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#53647b}
-.custom-box textarea{width:100%;min-height:100px;padding:10px;border:1px solid #d8e1ec;border-radius:9px;font:14px/1.7 inherit}
-#passage.kruti{font-family:"Kruti Dev 010","Kruti Dev","DevLys 010",monospace;font-size:20px}
-@media(max-width:560px){.key-guide{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* CPCT focused practice workspace */
+:root{--olive:#77804b;--olive-dark:#4f5a2f;--olive-soft:#eef0df}
+body{background:linear-gradient(135deg,#f8f8f1 0%,#f0f2e6 48%,#f7f4ea 100%);padding-bottom:190px}
+.hero{background:linear-gradient(120deg,#fffef8 0%,#f0f2e5 68%,#f6f3e8 100%)}
+.layout{grid-template-columns:1fr}
+.side{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel{border-color:#e4e5d8}
+.practice-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:14px;align-items:stretch}
+.practice-pane{min-width:0;padding:13px;border:1px solid #e0e3d2;border-radius:13px;background:linear-gradient(145deg,#fffef9,#f4f5eb)}
+.practice-pane h3{font-size:13px;margin:0 0 9px;color:#4f5a2f}
+.passage-box{margin:0;background:#fffefb;border-color:#e2e4d8}
+#passage{max-height:290px;overflow-y:auto;padding:3px 5px 3px 1px;scrollbar-width:thin;scrollbar-color:#a4aa7b #eef0e5;white-space:pre-wrap}
+#passage::-webkit-scrollbar{width:8px}#passage::-webkit-scrollbar-thumb{background:#a4aa7b;border-radius:8px}
+#typingInput{min-height:290px;height:290px;resize:vertical;margin:0;background:#fffefb;border-color:#dfe2d3}
+#typingInput:focus{border-color:var(--olive);box-shadow:0 0 0 3px #77804b22}
+#passage .current{border-bottom:2px solid var(--olive);background:#f1f2df}
+#passage .correct{color:#587044;background:#edf3e7}
+#passage .wrong{background:#b94d43}
+.actions .btn{border-radius:10px}
+.btn{background:var(--olive-dark)}.btn.secondary{background:#e9ecd9;color:#4f5a2f}.btn.ghost{background:#f0f0e7;color:#51563d}
+.progress span{background:var(--olive)}
+.custom-box{display:none;margin:12px 0;padding:13px;border:1px solid #dce0cf;border-radius:12px;background:#fbfcf5}.custom-box.show{display:block}
+.custom-box label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#536047}
+.custom-box textarea{width:100%;min-height:100px;padding:10px;border:1px solid #d8dfca;border-radius:9px;font:14px/1.7 inherit}
+#passage.kruti,#typingInput.kruti{font-family:"Kruti Dev 010","Kruti Dev","DevLys 010",monospace;font-size:20px}
+.keyboard-dock{position:fixed;z-index:1000;left:0;right:0;bottom:0;padding:10px 16px max(12px,env(safe-area-inset-bottom));background:linear-gradient(135deg,rgba(255,255,250,.94),rgba(237,240,222,.92));border-top:1px solid rgba(126,135,81,.32);box-shadow:0 -12px 35px rgba(66,75,42,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.keyboard-inner{width:min(1160px,100%);margin:auto;display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:center}
+.next-key-card{border:1px solid rgba(119,128,75,.28);border-radius:13px;padding:9px 12px;background:rgba(255,255,255,.72);text-align:center}
+.next-key-card small{display:block;font-size:9px;font-weight:900;letter-spacing:.1em;color:#697044;text-transform:uppercase}
+#nextKeyValue{display:block;font-size:28px;line-height:1.2;font-weight:900;color:#4f5a2f;min-height:34px}
+#nextKeyHint{display:block;font-size:9px;color:#73795b;min-height:13px}
+.key-guide{display:grid;gap:4px;max-width:760px;margin:auto}
+.key-row{display:flex;justify-content:center;gap:4px}
+.guide-key{position:relative;isolation:isolate;flex:1;max-width:49px;min-width:0;height:31px;border:1px solid #cdd2b8;border-bottom:3px solid #aeb58d;border-radius:6px;background:linear-gradient(160deg,#fff,#eef0e2);display:grid;place-items:center;font-size:10px;font-weight:850;color:#424a2d;box-shadow:0 2px 5px rgba(59,67,35,.08);transition:transform .14s ease,background .14s ease}
+.guide-key.wide{max-width:100px;flex:2}.guide-key.space{max-width:260px;flex:5}
+.guide-key.active{border-color:transparent;background:linear-gradient(145deg,#fff,#f1f3df);color:#39451f;transform:translateY(-3px);box-shadow:0 0 0 2px rgba(119,128,75,.16),0 5px 14px rgba(89,102,47,.22)}
+.guide-key.active:before{content:"";position:absolute;inset:-2px;border-radius:8px;padding:2px;background:conic-gradient(from var(--stroke-angle,0deg),#c4cc7b,#69783c,#e2d99b,#7b874d,#c4cc7b);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:keyStroke 1.35s linear infinite;z-index:-1}
+@keyframes keyStroke{to{--stroke-angle:360deg}}
+@property --stroke-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+.keyboard-caption{text-align:center;font-size:9px;color:#6b7152;margin-top:4px}
+@media(max-width:850px){.side{grid-template-columns:1fr 1fr}.keyboard-inner{grid-template-columns:125px 1fr;gap:9px}.guide-key{height:28px;font-size:9px}}
+@media(max-width:560px){body{padding-bottom:188px}.side{grid-template-columns:1fr}.practice-workspace{grid-template-columns:1fr}.practice-pane{padding:10px}#passage{max-height:205px}#typingInput{height:155px;min-height:155px}.keyboard-dock{padding:8px 7px max(9px,env(safe-area-inset-bottom))}.keyboard-inner{grid-template-columns:76px 1fr;gap:7px}.next-key-card{padding:7px 3px}#nextKeyValue{font-size:23px}.key-guide{gap:3px}.key-row{gap:3px}.guide-key{height:25px;font-size:8px;border-radius:5px}.guide-key.wide{max-width:55px}.guide-key.space{max-width:130px}.keyboard-caption{font-size:8px}.controls{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.guide-key.active:before{animation:none!important}}
+
 </style>
 <script src="/assets/js/common-branding.js" defer></script>
 <script src="/assets/js/common-pushdotify.js" defer></script>
@@ -72,13 +104,11 @@ body{background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#faf5ff 100%)}
 <div class="stat"><small>Correct chars</small><strong id="correctChars">0</strong></div>
 </div>
 <div class="progress" aria-label="Test time elapsed"><span id="timeProgress"></span></div>
-<div class="custom-box" id="customBox"><label for="customText">Paste your own practice text</label><textarea id="customText" placeholder="Paste your own English, Hindi Unicode or Kruti Dev 010 text here..."></textarea><div class="actions"><button class="btn secondary" id="useCustomBtn" type="button">Use pasted text</button><button class="btn ghost" id="clearCustomBtn" type="button">Clear</button></div><p class="typing-help">Kruti Dev practice uses legacy 010 text. Install the matching Kruti Dev font to display Hindi glyphs correctly.</p></div><div class="passage-box">
-<div class="passage-head"><strong>TYPE THE PASSAGE BELOW</strong><span id="passageCount">Passage 1</span></div>
-<div id="passage" lang="en"></div>
+<div class="custom-box" id="customBox"><label for="customText">Paste your own practice text</label><textarea id="customText" placeholder="Paste your own English, Hindi Unicode or Kruti Dev 010 text here..."></textarea><div class="actions"><button class="btn secondary" id="useCustomBtn" type="button">Use pasted text</button><button class="btn ghost" id="clearCustomBtn" type="button">Clear</button></div><p class="typing-help">Kruti Dev practice uses legacy 010 text. Install the matching Kruti Dev font to display Hindi glyphs correctly.</p></div>
+<div class="practice-workspace">
+<div class="practice-pane"><h3>Practice passage <span id="passageCount" style="float:right;font-weight:500;color:#74795e">5 minute passage</span></h3><div class="passage-box"><div id="passage" lang="en"></div></div></div>
+<div class="practice-pane"><h3>Your typing area</h3><textarea id="typingInput" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Press Start test, then begin typing here…" disabled aria-describedby="typingHelp"></textarea><div class="typing-help" id="typingHelp">The passage and typing area are side by side. Paste custom text before starting; pasting is disabled during a timed test.</div></div>
 </div>
-<label class="field" for="typingInput" style="display:block;margin-top:14px"><span style="font-size:12px;font-weight:800;color:#53647b">Your typing area</span></label>
-<textarea id="typingInput" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Press Start test, then begin typing here…" disabled aria-describedby="typingHelp"></textarea>
-<div class="typing-help" id="typingHelp">Use Backspace to correct mistakes. Paste your own passage before starting; pasting is disabled during a timed test.</div><div class="glass-guide"><h3 id="guideTitle">English QWERTY key guide</h3><p id="guideNote">Visual key reminder for the selected practice mode.</p><div class="key-guide" id="keyGuide"></div></div>
 <div class="actions">
 <button class="btn" id="startBtn" type="button">Start test</button>
 <button class="btn secondary" id="finishBtn" type="button" disabled>Finish test</button>
@@ -127,7 +157,7 @@ body{background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#faf5ff 100%)}
 </section>
 <p class="disclaimer">This independent educational practice tool is not affiliated with or endorsed by MPSEDC or the CPCT examination authority. Always follow the latest official rule book, candidate instructions and admit-card details. No practice score guarantees an examination result.</p>
 </main>
-<div id="site-footer"></div>
+<div class="keyboard-dock" role="region" aria-label="Live keyboard guidance"><div class="keyboard-inner"><div class="next-key-card"><small id="nextKeyTitle">Next key</small><strong id="nextKeyValue">A</strong><span id="nextKeyHint">Ready to begin</span></div><div><div class="key-guide" id="keyGuide" aria-label="Keyboard key map"></div><div class="keyboard-caption" id="guideNote">Animated guide highlights the next expected key</div></div></div></div><div id="site-footer"></div>
 <script src="/assets/js/common-header.js" defer></script>
 <script src="/assets/js/common-footer.js" defer></script>
 <script>
@@ -181,20 +211,28 @@ function choosePassage(){
  $('passageCount').textContent=customPassage?'Custom passage · '+activePassage.trim().split(/\s+/).length+' words':duration()+' minute passage · '+words+' words';
  renderPassage();$('typingInput').value='';$('result').classList.remove('show');
 }
-function renderPassage(){const target=Array.from(norm(activePassage)),typed=Array.from(norm($('typingInput').value));let html='';for(let i=0;i<target.length;i++){let cls='';if(i<typed.length)cls=typed[i]===target[i]?'correct':'wrong';else if(i===typed.length)cls='current';html+='<span class="'+cls+'">'+(target[i]===' '?'&nbsp;':escapeHtml(target[i]))+'</span>';}if(typed.length>target.length)html+='<span class="wrong">'+typed.slice(target.length).map(escapeHtml).join('')+'</span>';$('passage').innerHTML=html;}
+function renderPassage(){const target=Array.from(norm(activePassage)),typed=Array.from(norm($('typingInput').value));let html='';for(let i=0;i<target.length;i++){let cls='';if(i<typed.length)cls=typed[i]===target[i]?'correct':'wrong';else if(i===typed.length)cls='current';html+='<span class="'+cls+'">'+(target[i]===' '?'&nbsp;':escapeHtml(target[i]))+'</span>';}if(typed.length>target.length)html+='<span class="wrong">'+typed.slice(target.length).map(escapeHtml).join('')+'</span>';$('passage').innerHTML=html;updateKeyboardGuide();const current=$('passage').querySelector('.current');if(current&&typed.length>0){const p=$('passage'),top=current.offsetTop-p.offsetTop;if(top>p.clientHeight-45||top<0)p.scrollTop=current.offsetTop-p.offsetTop-p.clientHeight/2;}}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function calc(){const typed=Array.from(norm($('typingInput').value)),target=Array.from(norm(activePassage));let correct=0,wrong=0;for(let i=0;i<typed.length;i++){if(i<target.length&&typed[i]===target[i])correct++;else wrong++;}const minutes=Math.max(elapsed/60,1/60);const gross=typed.length/5/minutes,net=correct/5/minutes,accuracy=typed.length?correct/typed.length*100:100;return {typed:typed.length,correct,wrong,net,gross,accuracy};}
 function updateStats(){const c=calc();$('netWpm').textContent=String(Math.round(c.net));$('accuracy').textContent=c.accuracy.toFixed(1)+'%';$('correctChars').textContent=String(c.correct);$('timeProgress').style.width=Math.min(100,elapsed/(duration()*60)*100)+'%';}
 
+const keyboardRows=['q w e r t y u i o p','a s d f g h j k l','z x c v b n m'];
+function nextExpected(){const typed=Array.from(norm($('typingInput').value));const target=Array.from(norm(activePassage));return target[typed.length]||'';}
+function physicalKeyFor(ch){if(!ch)return '';if(ch===' ')return 'space';const k=ch.toLowerCase();return /^[a-z0-9]$/.test(k)||[';',',','.','/','\\\\','-','=','[',']',"'"].includes(k)?k:'';}
 function updateKeyboardGuide(){
- let title='English QWERTY keyboard guide',note='Common QWERTY keys for English practice.',keys='Q W E R T Y U I O P A S D F G H J K L ; Z X C V B N M , . /'.split(' ');
- if(lang()==='hi'){title='Hindi Unicode · '+($('keyboard').value==='gail'?'Remington GAIL':'Inscript')+' guide';note='Actual character output depends on the selected Windows/Linux Hindi input method.';keys='ौ ै ा ी ू ब ह ग द ज ं े क ि ह ी र ा स य ्र ग ब अ इ द उ ए ण् ध्'.split(' ');}
- if(lang()==='kruti'){title='Kruti Dev 010 keyboard guide';note='Legacy ASCII key examples. Install Kruti Dev 010 font for Hindi glyph display.';keys='q w e r t y u i o p a s d f g h j k l ; z x c v b n m , . /'.split(' ');}
- $('guideTitle').textContent=title;$('guideNote').textContent=note;
- $('keyGuide').innerHTML=keys.map((k,i)=>'<div class="guide-key"><span>'+escapeHtml(k)+'</span><small>'+ (i<10?'TOP':i<20?'HOME':'BOTTOM')+'</small></div>').join('');
+ const mode=lang(),ch=nextExpected(),key=(mode==='hi'?'':physicalKeyFor(ch));
+ $('nextKeyTitle').textContent=mode==='hi'?'Next Hindi character':'Next key';
+ $('nextKeyValue').textContent=ch?(ch===' '?'Space':ch):'✓';
+ $('nextKeyHint').textContent=!ch?'Passage complete':mode==='hi'?'Use your selected Hindi input layout':'Press the highlighted key';
+ $('guideNote').textContent=mode==='hi'?'Hindi Unicode character preview. Physical key mapping is controlled by your selected OS layout.':mode==='kruti'?'Kruti Dev 010 ASCII key sequence · install the matching font for Devanagari display.':'Live QWERTY guide · the next required key is highlighted before you type.';
+ const rows=keyboardRows.map((row,ri)=>'<div class="key-row">'+row.split(' ').map(k=>'<div class="guide-key '+(key===k?'active':'')+'" data-key="'+k+'">'+k.toUpperCase()+'</div>').join('')+'</div>').join('');
+ const bottom='<div class="key-row"><div class="guide-key wide" data-key="shift">SHIFT</div><div class="guide-key" data-key="; ">,</div><div class="guide-key" data-key=",">,</div><div class="guide-key" data-key=".">.</div><div class="guide-key" data-key="/">/</div><div class="guide-key wide" data-key="backspace">⌫</div></div>';
+ const space='<div class="key-row"><div class="guide-key space '+(key==='space'?'active':'')+'" data-key="space">SPACE</div></div>';
+ $('keyGuide').innerHTML=rows+space;
+ if(mode!=='hi'&&key){const active=$('keyGuide').querySelector('[data-key="'+key+'"]');if(active)active.classList.add('active');}
 }
 function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'You can use Backspace to correct mistakes. Paste your own passage before starting; pasting is disabled during the timed test.';updateKeyboardGuide();choosePassage();resetTest(false);}
-function startTest(){if(running)return;completed=false;elapsed=0;startedAt=Date.now();endsAt=startedAt+duration()*60000;running=true;$('typingInput').disabled=false;$('typingInput').focus();$('startBtn').disabled=true;$('finishBtn').disabled=false;$('testStatus').textContent='RUNNING';$('result').classList.remove('show');tick();timerId=setInterval(tick,250);}
+function startTest(){if(running)return;completed=false;elapsed=0;startedAt=Date.now();endsAt=startedAt+duration()*60000;running=true;$('typingInput').disabled=false;$('typingInput').focus();$('startBtn').disabled=true;$('finishBtn').disabled=false;$('testStatus').textContent='RUNNING';$('result').classList.remove('show');renderPassage();tick();timerId=setInterval(tick,250);}
 function tick(){if(!running)return;const remaining=Math.max(0,Math.ceil((endsAt-Date.now())/1000));elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);$('timeLeft').textContent=fmtTime(remaining);updateStats();if(remaining<=0)finishTest();}
 function finishTest(){if(!running)return;elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);running=false;clearInterval(timerId);timerId=null;completed=true;$('typingInput').disabled=true;$('startBtn').disabled=false;$('finishBtn').disabled=true;$('testStatus').textContent='COMPLETED';$('timeLeft').textContent=fmtTime(duration()*60-elapsed);updateStats();showResult();}
 function showResult(){const c=calc();const r={date:new Date().toISOString(),mode:selectedMode(),duration:duration(),net:Number(c.net.toFixed(2)),gross:Number(c.gross.toFixed(2)),accuracy:Number(c.accuracy.toFixed(2)),correct:c.correct,errors:c.wrong,typed:c.typed,elapsed:Math.round(elapsed)};lastResult=r;$('rNet').textContent=r.net.toFixed(1);$('rGross').textContent=r.gross.toFixed(1);$('rAccuracy').textContent=r.accuracy.toFixed(1)+'%';$('rCorrect').textContent=String(r.correct);$('rErrors').textContent=String(r.errors);$('rTime').textContent=fmtTime(r.elapsed);$('resultTitle').textContent='Your practice result';$('result').classList.add('show');saveResult(r);$('result').scrollIntoView({behavior:'smooth',block:'nearest'});}
@@ -218,7 +256,7 @@ $('typingInput').addEventListener('paste',e=>{if(running){e.preventDefault();$('
 $('againBtn').addEventListener('click',()=>{choosePassage();resetTest(false);$('typingInput').focus();});
 $('printBtn').addEventListener('click',()=>window.print());
 $('clearHistoryBtn').addEventListener('click',()=>{if(confirm('Clear all CPCT practice history saved in this browser?')){localStorage.removeItem(STORAGE);renderHistory();}});
-$('keyboard').disabled=true;updateKeyboardGuide();choosePassage();resetTest(false);renderHistory();
+$('keyboard').disabled=true;choosePassage();resetTest(false);updateKeyboardGuide();renderHistory();
 })();
 </script>
 <script type="application/ld+json">
