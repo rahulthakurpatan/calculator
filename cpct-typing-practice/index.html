@@ -221,17 +221,52 @@ function physicalKeyFor(ch){
  if(shifted[ch])return {key:shifted[ch],shift:true};
  return {key:ch.toLowerCase(),shift:ch!==ch.toLowerCase()&&/[A-Z]/.test(ch)};
 }
+function hindiPhysicalKeyFor(ch){
+ const gail={
+ '।':['1',true],'ः':['3',true],'ऋ':['0',true],'ृ':['=',false],
+ 'ु':['q',false],'ू':['w',false],'ॅ':['w',true],'म':['e',false],'म्':['e',true],
+ 'त':['r',false],'त्':['r',true],'ज':['t',false],'ज्':['t',true],'ल':['y',false],'ल्':['y',true],
+ 'न':['u',false],'न्':['u',true],'प':['i',false],'प्':['i',true],'व':['o',false],'व्':['o',true],
+ 'च':['p',false],'च्':['p',true],'ख्':['[',false],'क्ष्':['[',true],',':[']',false],'द्व':[']',true],
+ '(':['\\',false],')':['\\',true],
+ 'ं':['a',false],'ा':['a',true],'े':['s',false],'ै':['s',true],'क':['d',false],'क्':['d',true],
+ 'ि':['f',false],'थ्':['f',true],'ह':['g',false],'ळ':['g',true],'ी':['h',false],'भ्':['h',true],
+ 'र':['j',false],'श्र':['j',true],'ज्ञ':['k',true],'स':['l',false],'स्':['l',true],
+ 'य':[';',false],'रू':[';',true],'श्':["'",false],'ष्':["'",true],
+ '्र':['z',false],'र्':['z',true],'ग':['x',false],'ग्':['x',true],'ब':['c',false],'ब्':['c',true],
+ 'अ':['v',false],'ट':['v',true],'इ':['b',false],'ठ':['b',true],'द':['n',false],'छ':['n',true],
+ 'उ':['m',false],'ड':['m',true],'ए':[',',false],'ढ':[',',true],'ण्':['.',false],'झ':['.',true],
+ 'ध्':['/',false],'घ्':['/',true]
+ };
+ const inscript={
+ 'ौ':['q',false],'औ':['q',true],'ै':['w',false],'ऐ':['w',true],'ा':['e',false],'आ':['e',true],
+ 'ी':['r',false],'ई':['r',true],'ू':['t',false],'ऊ':['t',true],'ब':['y',false],'भ':['y',true],
+ 'ह':['u',false],'ङ':['u',true],'ग':['i',false],'घ':['i',true],'द':['o',false],'ध':['o',true],
+ 'ज':['p',false],'झ':['p',true],'ड':['[',false],'ढ':['[',true],'़':[']',false],'ञ':[']',true],
+ 'ो':['a',false],'ओ':['a',true],'े':['s',false],'ए':['s',true],'्':['d',false],'अ':['d',true],
+ 'ि':['f',false],'इ':['f',true],'ु':['g',false],'उ':['g',true],'प':['h',false],'फ':['h',true],
+ 'र':['j',false],'ऱ':['j',true],'क':['k',false],'ख':['k',true],'त':['l',false],'थ':['l',true],
+ 'च':[';',false],'छ':[';',true],'ट':["'",false],'ठ':["'",true],
+ 'ऎ':['z',false],'ॆ':['z',true],'ँ':['x',false],'ं':['x',true],'ण':['c',false],'म':['c',true],
+ 'ऩ':['v',false],'न':['v',true],'ऴ':['b',false],'व':['b',true],'ळ':['n',false],'ल':['n',true],
+ 'श':['m',false],'स':['m',true],'ष':[',',false],'य़':['/',false],'य':['/',true]
+ };
+ const entry=($('keyboard').value==='gail'?gail:inscript)[ch];
+ return entry?{key:entry[0],shift:entry[1]}:null;
+}
 function updateKeyboardGuide(){
- const mode=lang(),ch=nextExpected(),mapping=mode==='hi'?{key:'',shift:false}:physicalKeyFor(ch),key=mapping.key;
- $('nextKeyTitle').textContent=mode==='hi'?'Next Hindi character':'Next key';
+ const mode=lang(),ch=nextExpected();
+ const mapping=mode==='hi'?hindiPhysicalKeyFor(ch):physicalKeyFor(ch);
+ const key=mapping?mapping.key:'';
+ $('nextKeyTitle').textContent=mode==='hi'?'Next Hindi key':'Next key';
  $('nextKeyValue').textContent=ch?(ch===' '?'SPACE':ch==='\n'?'ENTER':ch):'✓';
- $('nextKeyHint').textContent=!ch?'Passage complete':mode==='hi'?'Use selected Hindi layout':mapping.shift?'Hold SHIFT + '+key.toUpperCase():'Press the highlighted key';
- $('guideNote').textContent=mode==='hi'?'Hindi Unicode character preview. Physical key mapping depends on the active OS layout; no guessed key is highlighted.':mode==='kruti'?'Kruti Dev 010 legacy ASCII keystrokes · matching font required for Devanagari display.':'Live QWERTY guide · the next required physical key is highlighted before you type.';
+ $('nextKeyHint').textContent=!ch?'Passage complete':mode==='hi'?(mapping?(mapping.shift?'Hold SHIFT + '+key.toUpperCase():'Press '+key.toUpperCase()):'Character preview · no single-key match'):mapping&&mapping.shift?'Hold SHIFT + '+key.toUpperCase():'Press the highlighted key';
+ $('guideNote').textContent=mode==='hi'?'Hindi Unicode key guide · mapped for the selected '+($('keyboard').value==='gail'?'Remington GAIL':'Inscript')+' layout. Check that the same layout is active on your computer.':mode==='kruti'?'Kruti Dev 010 legacy ASCII keystrokes · matching font required for Devanagari display.':'Live QWERTY guide · the next required physical key is highlighted before you type.';
  const rows=keyboardRows.map(row=>'<div class="key-row">'+row.split(' ').map(k=>'<div class="guide-key '+(key===k?'active':'')+'" data-key="'+k+'">'+k.toUpperCase()+'</div>').join('')+'</div>').join('');
- const shift='<div class="key-row"><div class="guide-key wide '+(mapping.shift?'active':'')+'" data-key="shift">SHIFT</div><div class="guide-key" data-key="enter">ENTER</div><div class="guide-key wide" data-key="backspace">⌫</div></div>';
+ const shift='<div class="key-row"><div class="guide-key wide '+(mapping&&mapping.shift?'active':'')+'" data-key="shift">SHIFT</div><div class="guide-key" data-key="enter">ENTER</div><div class="guide-key wide" data-key="backspace">⌫</div></div>';
  const space='<div class="key-row"><div class="guide-key space '+(key==='space'?'active':'')+'" data-key="space">SPACE</div></div>';
  $('keyGuide').innerHTML=rows+shift+space;
- if(mode!=='hi'&&key){const active=$('keyGuide').querySelector('[data-key="'+key+'"]');if(active)active.classList.add('active');}
+ if(key){const active=$('keyGuide').querySelector('[data-key="'+key+'"]');if(active)active.classList.add('active');}
 }
 function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'Type the displayed passage and use Backspace to correct mistakes.';updateKeyboardGuide();choosePassage();resetTest(false);}
 function startTest(){if(running)return;completed=false;elapsed=0;startedAt=Date.now();endsAt=startedAt+duration()*60000;running=true;$('typingInput').disabled=false;$('typingInput').focus();$('startBtn').disabled=true;$('finishBtn').disabled=false;$('testStatus').textContent='RUNNING';$('result').classList.remove('show');renderPassage();tick();timerId=setInterval(tick,250);}
