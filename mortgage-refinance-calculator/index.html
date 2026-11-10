@@ -88,7 +88,7 @@
 <div class="section-label">5. Your expected holding period</div>
 <div class="grid">
 <div class="field"><label for="horizon">How long do you expect to keep this mortgage? (months)</label><input id="horizon" type="number" min="1" max="600" step="1" value="60"><div class="hint">For example, 5 years = 60 months. This is the main comparison horizon.</div></div>
-<div class="field"><label for="region-note">Your next step</label><select id="region-note"><option value="compare">Compare both mortgage options</option><option value="sell">I may sell or move during this period</option><option value="renew">I may refinance again before then</option></select><div class="hint">Use a realistic period based on your plans, not only the full loan term.</div></div>
+<div class="field"><label>Comparison guidance</label><div class="hint" style="padding:12px;border:1px solid #d7e0ed;border-radius:9px;background:#f7f9ff">Use the number of months until you expect to sell, move, renew or refinance again. A realistic holding period makes the break-even result more useful.</div></div>
 </div>
 <div class="actions"><button class="btn" type="submit">Calculate refinance savings</button><button class="btn btn-secondary" type="reset" id="reset">Reset inputs</button></div>
 <div class="error" id="error" role="alert"></div>
@@ -179,7 +179,22 @@ $('currency').addEventListener('change',()=>{if(latest)render(latest)});
 $('reset').addEventListener('click',()=>setTimeout(()=>{latest=null;$('results').classList.remove('show');$('error').classList.remove('show');$('currency').value='USD';$('country').value='US'},0));
 $('csv').addEventListener('click',()=>{if(!latest)return;const rows=[['Month','Current balance','New balance','Current payments','New payments','Net refinance benefit'],...latest.rows.map(x=>[x.month,x.oldBalance,x.newBalance,x.oldPaid,x.newPaid,x.netBenefit])];const csv=rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mortgage-refinance-comparison.csv';a.click();URL.revokeObjectURL(url)});
 $('print').addEventListener('click',()=>window.print());
-try{const region=(new Intl.NumberFormat().resolvedOptions().locale.match(/[-_]([A-Z]{2})$/i)||[])[1]?.toUpperCase();const map={US:'US',GB:'UK',CA:'CA',AU:'AU',IN:'OTHER'};if(map[region]){$('country').value=map[region];$('currency').value=currencyMap[map[region]]||'INR'}}catch(e){}
+try{
+ const locale=new Intl.NumberFormat().resolvedOptions().locale||'en-US';
+ const region=(locale.match(/[-_]([A-Z]{2})$/i)||[])[1]?.toUpperCase();
+ const map={US:['US','USD'],GB:['UK','GBP'],CA:['CA','CAD'],AU:['AU','AUD'],IN:['OTHER','INR'],NZ:['OTHER','NZD'],IE:['OTHER','EUR'],DE:['OTHER','EUR'],FR:['OTHER','EUR'],SG:['OTHER','SGD'],ZA:['OTHER','ZAR']};
+ if(map[region]){$('country').value=map[region][0];$('currency').value=map[region][1]}
+ if(typeof Intl.supportedValuesOf==='function'){
+   const known=new Set(Array.from($('currency').options).map(o=>o.value));
+   const names=new Intl.DisplayNames([locale,'en'],{type:'currency'});
+   Intl.supportedValuesOf('currency').forEach(code=>{
+     if(known.has(code))return;
+     let symbol=code;
+     try{symbol=new Intl.NumberFormat(locale,{style:'currency',currency:code}).formatToParts(1).find(p=>p.type==='currency')?.value||code}catch(e){}
+     const option=document.createElement('option');option.value=code;option.textContent=code+' — '+(names.of(code)||code)+' ('+symbol+')';$('currency').appendChild(option);
+   });
+ }
+}catch(e){}
 calculate();
 })();
 </script>
