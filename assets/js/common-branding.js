@@ -6,6 +6,23 @@
   if (window.__investcalcBrandingLoaded) return;
   window.__investcalcBrandingLoaded = true;
 
+  // Load Google AdSense globally. Reuse an existing page-level tag if present
+  // so pages that still contain the legacy snippet do not get a second loader.
+  const adsenseSrc = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933';
+  const existingAdsense = document.querySelectorAll('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
+  if (existingAdsense.length) {
+    // Keep one loader only if an older page has accidentally included duplicates.
+    existingAdsense.forEach((script, index) => {
+      if (index > 0) script.remove();
+    });
+  } else {
+    const adsenseScript = document.createElement('script');
+    adsenseScript.async = true;
+    adsenseScript.src = adsenseSrc;
+    adsenseScript.crossOrigin = 'anonymous';
+    document.head.appendChild(adsenseScript);
+  }
+
   const links = [
     { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
