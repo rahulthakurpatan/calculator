@@ -216,19 +216,26 @@ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':
 function calc(){const typed=Array.from(norm($('typingInput').value)),target=Array.from(norm(activePassage));let correct=0,wrong=0;for(let i=0;i<typed.length;i++){if(i<target.length&&typed[i]===target[i])correct++;else wrong++;}const minutes=Math.max(elapsed/60,1/60);const gross=typed.length/5/minutes,net=correct/5/minutes,accuracy=typed.length?correct/typed.length*100:100;return {typed:typed.length,correct,wrong,net,gross,accuracy};}
 function updateStats(){const c=calc();$('netWpm').textContent=String(Math.round(c.net));$('accuracy').textContent=c.accuracy.toFixed(1)+'%';$('correctChars').textContent=String(c.correct);$('timeProgress').style.width=Math.min(100,elapsed/(duration()*60)*100)+'%';}
 
-const keyboardRows=['q w e r t y u i o p','a s d f g h j k l','z x c v b n m'];
+const keyboardRows=['1 2 3 4 5 6 7 8 9 0 - =','q w e r t y u i o p [ ]',"a s d f g h j k l ; '",'z x c v b n m , . /'];
 function nextExpected(){const typed=Array.from(norm($('typingInput').value));const target=Array.from(norm(activePassage));return target[typed.length]||'';}
-function physicalKeyFor(ch){if(!ch)return '';if(ch===' ')return 'space';const k=ch.toLowerCase();return /^[a-z0-9]$/.test(k)||[';',',','.','/','\\\\','-','=','[',']',"'"].includes(k)?k:'';}
+function physicalKeyFor(ch){
+ if(!ch)return {key:'',shift:false};
+ if(ch===' ')return {key:'space',shift:false};
+ if(ch==='\n'||ch==='\r')return {key:'enter',shift:false};
+ const shifted={'!':'1','@':'2','#':'3','$':'4','%':'5','^':'6','&':'7','*':'8','(':'9',')':'0','_':'-','+':'=','{':'[','}':']',':':';','"':"'",'<':',','>':'.','?':'/'};
+ if(shifted[ch])return {key:shifted[ch],shift:true};
+ return {key:ch.toLowerCase(),shift:ch!==ch.toLowerCase()&&/[A-Z]/.test(ch)};
+}
 function updateKeyboardGuide(){
- const mode=lang(),ch=nextExpected(),key=(mode==='hi'?'':physicalKeyFor(ch));
+ const mode=lang(),ch=nextExpected(),mapping=mode==='hi'?{key:'',shift:false}:physicalKeyFor(ch),key=mapping.key;
  $('nextKeyTitle').textContent=mode==='hi'?'Next Hindi character':'Next key';
- $('nextKeyValue').textContent=ch?(ch===' '?'Space':ch):'✓';
- $('nextKeyHint').textContent=!ch?'Passage complete':mode==='hi'?'Use your selected Hindi input layout':'Press the highlighted key';
- $('guideNote').textContent=mode==='hi'?'Hindi Unicode character preview. Physical key mapping is controlled by your selected OS layout.':mode==='kruti'?'Kruti Dev 010 ASCII key sequence · install the matching font for Devanagari display.':'Live QWERTY guide · the next required key is highlighted before you type.';
- const rows=keyboardRows.map((row,ri)=>'<div class="key-row">'+row.split(' ').map(k=>'<div class="guide-key '+(key===k?'active':'')+'" data-key="'+k+'">'+k.toUpperCase()+'</div>').join('')+'</div>').join('');
- const bottom='<div class="key-row"><div class="guide-key wide" data-key="shift">SHIFT</div><div class="guide-key" data-key="; ">,</div><div class="guide-key" data-key=",">,</div><div class="guide-key" data-key=".">.</div><div class="guide-key" data-key="/">/</div><div class="guide-key wide" data-key="backspace">⌫</div></div>';
+ $('nextKeyValue').textContent=ch?(ch===' '?'SPACE':ch==='\n'?'ENTER':ch):'✓';
+ $('nextKeyHint').textContent=!ch?'Passage complete':mode==='hi'?'Use selected Hindi layout':mapping.shift?'Hold SHIFT + '+key.toUpperCase():'Press the highlighted key';
+ $('guideNote').textContent=mode==='hi'?'Hindi Unicode character preview. Physical key mapping depends on the active OS layout; no guessed key is highlighted.':mode==='kruti'?'Kruti Dev 010 legacy ASCII keystrokes · matching font required for Devanagari display.':'Live QWERTY guide · the next required physical key is highlighted before you type.';
+ const rows=keyboardRows.map(row=>'<div class="key-row">'+row.split(' ').map(k=>'<div class="guide-key '+(key===k?'active':'')+'" data-key="'+k+'">'+k.toUpperCase()+'</div>').join('')+'</div>').join('');
+ const shift='<div class="key-row"><div class="guide-key wide '+(mapping.shift?'active':'')+'" data-key="shift">SHIFT</div><div class="guide-key" data-key="enter">ENTER</div><div class="guide-key wide" data-key="backspace">⌫</div></div>';
  const space='<div class="key-row"><div class="guide-key space '+(key==='space'?'active':'')+'" data-key="space">SPACE</div></div>';
- $('keyGuide').innerHTML=rows+space;
+ $('keyGuide').innerHTML=rows+shift+space;
  if(mode!=='hi'&&key){const active=$('keyGuide').querySelector('[data-key="'+key+'"]');if(active)active.classList.add('active');}
 }
 function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'You can use Backspace to correct mistakes. Paste your own passage before starting; pasting is disabled during the timed test.';updateKeyboardGuide();choosePassage();resetTest(false);}
