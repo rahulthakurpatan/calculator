@@ -1,6 +1,6 @@
 /*
  * InvestCalc shared premium header.
- * Six-category navigation with responsive mega menu and mobile accordion.
+ * Seven-category navigation with responsive mega menu and mobile accordion.
  * Add <div id="site-header"></div> and load this file on each page.
  */
 (() => {
@@ -63,6 +63,15 @@
         ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
         ['CPCT Typing Practice', '/cpct-typing-practice/', 'Practise English and Hindi Unicode typing for CPCT']
       ]
+    },
+    {
+      label: 'About & Support',
+      tools: [
+        ['About', '/about/', 'Learn about this calculator website'],
+        ['Contact', '/contact/', 'Get in touch with us'],
+        ['Privacy Policy', '/privacy-policy/', 'Read how website data and privacy are handled'],
+        ['Terms', '/terms/', 'Review the website terms and conditions']
+      ]
     }
   ];
 
@@ -83,7 +92,7 @@
     #calculator-site-header .ich-home{color:#c3cedc;text-decoration:none;font-size:13px;font-weight:700}
     #calculator-site-header .ich-home:hover{color:#e8c987}
     #calculator-site-header .ich-nav{border-top:1px solid #29384d}
-    #calculator-site-header .ich-nav-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;align-items:stretch}
+    #calculator-site-header .ich-nav-list{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;align-items:stretch}
     #calculator-site-header .ich-nav-button{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:51px;padding:10px 5px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#d5dde8;font:700 clamp(10px,.95vw,13px)/1.25 Inter,system-ui,sans-serif;text-align:center;white-space:nowrap;cursor:pointer;transition:color .18s ease,background .18s ease,border-color .18s ease}
     #calculator-site-header .ich-nav-button:hover,#calculator-site-header .ich-nav-button[aria-expanded="true"]{color:#e8c987;background:#172438;border-bottom-color:#d6b36a}
     #calculator-site-header .ich-nav-button:focus-visible,#calculator-site-header a:focus-visible,#calculator-site-header .ich-mobile-toggle:focus-visible{outline:2px solid #e8c987;outline-offset:2px}
