@@ -32,7 +32,7 @@ function run(){
  $('results').hidden=false;$('error').hidden=true;
 }
 form.addEventListener('submit',e=>{e.preventDefault();run();});
-$('same').addEventListener('change',e=>{if(e.target.checked){$('runway-cash').value=$('savings').value;$('runway-expenses').value=$('expenses').value;}});
+$('same').addEventListener('change',e=>{if(e.target.checked){$('runway-cash').value=$('savings').value;$('runway-expenses').value=$('expenses').value;}});\n['savings','expenses'].forEach(id=>$(id).addEventListener('input',()=>{if($('same').checked){$('runway-cash').value=$('savings').value;$('runway-expenses').value=$('expenses').value;}}));
 $('currency').addEventListener('change',()=>{if(result)run();});
 $('reset').addEventListener('click',()=>{form.reset();$('results').hidden=true;$('error').hidden=true;});
 $('print').addEventListener('click',()=>window.print());
