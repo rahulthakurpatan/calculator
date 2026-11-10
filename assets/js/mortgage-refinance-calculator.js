@@ -71,8 +71,8 @@
     const newAtHorizon = simulate(newPrincipal, newPeriodicRate, newPayment, horizon);
     const oldBalance = oldAtHorizon.balance, newBalance = newAtHorizon.balance;
     const monthlySaving = oldPayment - newPayment;
-    const simpleBreakEven = monthlySaving > 0 ? Math.ceil(netCosts / monthlySaving) : null;
-    let economicBreakEven = null;
+    const simpleBreakEven = !financed && monthlySaving > 0 ? Math.ceil(netCosts / monthlySaving) : null;
+    let economicBreakEven = netCosts === 0 ? 0 : null;
     const comparisonRows = [];
     let cumulativeOld = 0, cumulativeNew = cashCosts;
     const maxMonths = Math.min(600, Math.max(horizon, currentMonths, newMonths));
