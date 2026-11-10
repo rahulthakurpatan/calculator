@@ -62,7 +62,7 @@ body{background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#faf5ff 100%)}
 <div class="controls">
 <div class="field"><label for="language">Typing language</label><select id="language"><option value="en">English</option><option value="hi">Hindi (Unicode)</option><option value="kruti">Kruti Dev 010</option></select></div>
 <div class="field"><label for="keyboard">Hindi keyboard layout</label><select id="keyboard"><option value="gail">Remington (GAIL)</option><option value="inscript">Inscript</option></select></div>
-<div class="field"><label for="duration">Test duration</label><select id="duration"><option value="1">1 minute</option><option value="2">2 minutes</option><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></div>
+<div class="field"><label for="category">Passage category</label><select id="category"><option value="general">General</option><option value="office">Office & Administration</option><option value="education">Education</option><option value="digital">Digital India & Technology</option><option value="environment">Environment</option><option value="society">Society & Daily Life</option></select></div><div class="field"><label for="duration">Test duration</label><select id="duration"><option value="1">1 minute</option><option value="2">2 minutes</option><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></div>
 </div>
 <div class="notice" id="layoutNotice"><strong>Hindi input setup:</strong> Select Hindi Unicode input on your computer and choose the same layout here. This page checks the text you type; it does not silently remap your physical keyboard. Use a desktop/laptop keyboard for realistic CPCT preparation.</div>
 <div class="testbar" aria-live="polite">
@@ -151,17 +151,38 @@ hi:[
 ]};
 let activePassage='',running=false,startedAt=0,endsAt=0,timerId=null,elapsed=0,completed=false,lastInput='',lastResult=null;
 const STORAGE='cpctTypingPracticeHistoryV1';
+let customPassage='';
 const lang=()=>$('language').value;
 const duration=()=>Number($('duration').value);
 const norm=s=>String(s).normalize('NFC');
 const fmtTime=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const selectedMode=()=>lang()==='en'?'English':$('keyboard').value==='gail'?'Hindi · Remington GAIL':'Hindi · Inscript';
-function choosePassage(){const list=passages[lang()];activePassage=list[Math.floor(Math.random()*list.length)];$('passage').lang=lang()==='hi'?'hi':'en';$('passageCount').textContent='Passage '+(list.indexOf(activePassage)+1)+' of '+list.length;renderPassage();$('typingInput').value='';$('result').classList.remove('show');}
+function choosePassage(){
+ const mode=lang()==='en'?'en':lang()==='kruti'?'kruti':'hi';
+ const bank=mode==='kruti'?['Hkkjr ,d fofo/k laLd`fr okyk ns'k gSA ;gka fofHkUu Hkk"kk,a vkSj ijEijk,a ikbZ tkrh gSaA fu;fer vH;kl ls Vad.k dh xfr vkSj 'kq)rk esa lq/kkj gksrk gSA','dk;kZy; esa Li"V vkSj lgh vfHkys[k j[kuk vko';d gSA fdlh uke] rkjh[k ;k la[;k esa NksVh lh xyrh ijs'kkuh iSnk dj ldrh gSA']:passages[mode];
+ const targetWords={1:100,2:200,5:500,10:1000,15:1500,30:3000}[duration()]||500;
+ let text='',words=0,idx=Math.floor(Math.random()*bank.length),n=0;
+ while(words<targetWords&&n<500){const p=bank[(idx+n)%bank.length];text+=(text?'\\n\\n':'')+p;words+=p.trim().split(/\\s+/).length;n++;}
+ activePassage=customPassage||text;
+ $('passage').classList.toggle('kruti',mode==='kruti');
+ $('typingInput').classList.toggle('kruti',mode==='kruti');
+ $('passage').lang=mode==='hi'?'hi':'en';
+ $('passageCount').textContent=customPassage?'Custom passage · '+activePassage.trim().split(/\\s+/).length+' words':duration()+' minute passage · '+words+' words';
+ renderPassage();$('typingInput').value='';$('result').classList.remove('show');
+}
 function renderPassage(){const target=Array.from(norm(activePassage)),typed=Array.from(norm($('typingInput').value));let html='';for(let i=0;i<target.length;i++){let cls='';if(i<typed.length)cls=typed[i]===target[i]?'correct':'wrong';else if(i===typed.length)cls='current';html+='<span class="'+cls+'">'+(target[i]===' '?'&nbsp;':escapeHtml(target[i]))+'</span>';}if(typed.length>target.length)html+='<span class="wrong">'+typed.slice(target.length).map(escapeHtml).join('')+'</span>';$('passage').innerHTML=html;}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function calc(){const typed=Array.from(norm($('typingInput').value)),target=Array.from(norm(activePassage));let correct=0,wrong=0;for(let i=0;i<typed.length;i++){if(i<target.length&&typed[i]===target[i])correct++;else wrong++;}const minutes=Math.max(elapsed/60,1/60);const gross=typed.length/5/minutes,net=correct/5/minutes,accuracy=typed.length?correct/typed.length*100:100;return {typed:typed.length,correct,wrong,net,gross,accuracy};}
 function updateStats(){const c=calc();$('netWpm').textContent=String(Math.round(c.net));$('accuracy').textContent=c.accuracy.toFixed(1)+'%';$('correctChars').textContent=String(c.correct);$('timeProgress').style.width=Math.min(100,elapsed/(duration()*60)*100)+'%';}
-function updateLanguage(){const isHindi=lang()==='hi';$('keyboard').disabled=!isHindi;$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=isHindi?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=isHindi?'Hindi Unicode में टाइप करें। अपने कंप्यूटर में वही Hindi input layout सक्रिय रखें जो ऊपर चुना है।':'You can use Backspace to correct mistakes. The test checks your final text against the passage. Avoid pasting text.';choosePassage();resetTest(false);}
+
+function updateKeyboardGuide(){
+ let title='English QWERTY keyboard guide',note='Common QWERTY keys for English practice.',keys='Q W E R T Y U I O P A S D F G H J K L ; Z X C V B N M , . /'.split(' ');
+ if(lang()==='hi'){title='Hindi Unicode · '+($('keyboard').value==='gail'?'Remington GAIL':'Inscript')+' guide';note='Actual character output depends on the selected Windows/Linux Hindi input method.';keys='ौ ै ा ी ू ब ह ग द ज ं े क ि ह ी र ा स य ्र ग ब अ इ द उ ए ण् ध्'.split(' ');}
+ if(lang()==='kruti'){title='Kruti Dev 010 keyboard guide';note='Legacy ASCII key examples. Install Kruti Dev 010 font for Hindi glyph display.';keys='q w e r t y u i o p a s d f g h j k l ; z x c v b n m , . /'.split(' ');}
+ $('guideTitle').textContent=title;$('guideNote').textContent=note;
+ $('keyGuide').innerHTML=keys.map((k,i)=>'<div class="guide-key"><span>'+escapeHtml(k)+'</span><small>'+ (i<10?'TOP':i<20?'HOME':'BOTTOM')+'</small></div>').join('');
+}
+function updateLanguage(){const isHindi=lang()==='hi'||lang()==='kruti';$('keyboard').disabled=lang()!=='hi';$('layoutNotice').style.display=isHindi?'block':'none';$('typingInput').lang=lang()==='hi'?'hi':'en';$('typingInput').placeholder=isHindi?'टेस्ट शुरू करें और यहाँ टाइप करना शुरू करें…':'Press Start test, then begin typing here…';$('typingHelp').textContent=lang()==='kruti'?'Kruti Dev 010 legacy text practice. Install the matching font and use a compatible Kruti Dev keyboard/input method.':'You can use Backspace to correct mistakes. Paste your own passage before starting; pasting is disabled during the timed test.';updateKeyboardGuide();choosePassage();resetTest(false);}
 function startTest(){if(running)return;completed=false;elapsed=0;startedAt=Date.now();endsAt=startedAt+duration()*60000;running=true;$('typingInput').disabled=false;$('typingInput').focus();$('startBtn').disabled=true;$('finishBtn').disabled=false;$('testStatus').textContent='RUNNING';$('result').classList.remove('show');tick();timerId=setInterval(tick,250);}
 function tick(){if(!running)return;const remaining=Math.max(0,Math.ceil((endsAt-Date.now())/1000));elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);$('timeLeft').textContent=fmtTime(remaining);updateStats();if(remaining<=0)finishTest();}
 function finishTest(){if(!running)return;elapsed=Math.min(duration()*60,(Date.now()-startedAt)/1000);running=false;clearInterval(timerId);timerId=null;completed=true;$('typingInput').disabled=true;$('startBtn').disabled=false;$('finishBtn').disabled=true;$('testStatus').textContent='COMPLETED';$('timeLeft').textContent=fmtTime(duration()*60-elapsed);updateStats();showResult();}
@@ -171,7 +192,11 @@ function getHistory(){try{return JSON.parse(localStorage.getItem(STORAGE)||'[]')
 function saveResult(r){const h=getHistory();h.unshift(r);try{localStorage.setItem(STORAGE,JSON.stringify(h.slice(0,30)));}catch(e){}renderHistory();}
 function renderHistory(){const h=getHistory();$('historyCount').textContent=String(h.length);$('bestWpm').textContent=h.length?Math.max(...h.map(x=>x.net)).toFixed(1):'0';$('historyRows').innerHTML=h.length?h.slice(0,10).map(x=>'<tr><td>'+new Date(x.date).toLocaleDateString()+'</td><td>'+escapeHtml(x.mode)+'</td><td>'+x.duration+' min</td><td>'+x.net.toFixed(1)+'</td><td>'+x.accuracy.toFixed(1)+'%</td></tr>').join(''):'<tr><td colspan="5">No tests completed yet.</td></tr>';}
 $('language').addEventListener('change',updateLanguage);
-$('keyboard').addEventListener('change',()=>{$('typingHelp').textContent='Make sure the matching Hindi Unicode input method is active on your computer before starting.';});
+$('keyboard').addEventListener('change',()=>{updateKeyboardGuide();$('typingHelp').textContent='Make sure the matching Hindi Unicode input method is active on your computer before starting.';});
+$('category').addEventListener('change',()=>{customPassage='';choosePassage();resetTest(false);});
+$('customToggleBtn').addEventListener('click',()=>$('customBox').classList.toggle('show'));
+$('useCustomBtn').addEventListener('click',()=>{const v=$('customText').value.trim();if(!v){alert('Please paste some text first.');return;}customPassage=v;choosePassage();resetTest(false);});
+$('clearCustomBtn').addEventListener('click',()=>{$('customText').value='';customPassage='';choosePassage();resetTest(false);});
 $('duration').addEventListener('change',()=>resetTest(false));
 $('startBtn').addEventListener('click',startTest);
 $('finishBtn').addEventListener('click',finishTest);
@@ -182,7 +207,7 @@ $('typingInput').addEventListener('paste',e=>{if(running){e.preventDefault();$('
 $('againBtn').addEventListener('click',()=>{choosePassage();resetTest(false);$('typingInput').focus();});
 $('printBtn').addEventListener('click',()=>window.print());
 $('clearHistoryBtn').addEventListener('click',()=>{if(confirm('Clear all CPCT practice history saved in this browser?')){localStorage.removeItem(STORAGE);renderHistory();}});
-$('keyboard').disabled=true;choosePassage();resetTest(false);renderHistory();
+$('keyboard').disabled=true;updateKeyboardGuide();choosePassage();resetTest(false);renderHistory();
 })();
 </script>
 <script type="application/ld+json">
