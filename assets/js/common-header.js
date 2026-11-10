@@ -12,6 +12,7 @@
       label: 'Invest & Mutual Funds',
       tools: [
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
+        ['SIP Calculator', '/sip-calculator/', 'Estimate monthly SIP returns, goals and step-up growth'],
         ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
         ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
