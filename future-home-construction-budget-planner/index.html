@@ -164,9 +164,9 @@
 <section class="section"><div class="wrap">
 <div class="content"><h2>How this future home construction budget planner works</h2>
 <p>This planner combines a future construction budget with a personal income and borrowing projection. It is designed for someone who wants to build a home after a few years and needs to understand how salary growth, monthly savings, land ownership and a home loan may fit together.</p>
-<h3>1. Estimate the future project cost</h3><p>Construction cost is estimated from built-up area multiplied by the current local cost per area unit and the selected finish factor. If you do not own a plot, the expected plot price is added. Professional/site costs and a contingency reserve are then included. The full budget is projected using compound construction-cost inflation.</p>
+<h3>1. Estimate the future project cost</h3><p>Construction cost is estimated from built-up area multiplied by the current local cost per area unit and the selected finish factor. If you do not own a plot, the expected plot price is added and projected using the same editable inflation assumption as construction. Professional/site costs and a contingency reserve are then included. The full budget is projected using compound construction-cost inflation.</p>
 <h3>2. Project salary and savings</h3><p>Expected monthly income is compounded using your annual increment assumption. Your existing home fund grows at the selected annual return assumption, while monthly savings are accumulated monthly. The savings return is only a scenario input; it is not guaranteed.</p>
-<h3>3. Estimate a loan and EMI</h3><p>The loan calculator uses the standard reducing-balance EMI formula. A planning affordability ceiling considers both your selected total EMI share of future income and the projected monthly surplus after household expenses. Actual lenders may use different income definitions, credit checks, loan-to-value limits, property valuation and documentation requirements.</p>
+<h3>3. Estimate a loan and EMI</h3><p>The loan calculator uses the standard reducing-balance EMI formula. A planning affordability ceiling considers both your selected total EMI share of future income and the projected monthly surplus after household expenses. Existing EMI payments are conservatively assumed to continue until the target construction year. Actual lenders may use different income definitions, credit checks, loan-to-value limits, property valuation and documentation requirements.</p>
 <h3>4. Calculate the income and saving gap</h3><p>The planner compares the expected future salary with the estimated income needed to carry the proposed EMI. It also calculates the monthly contribution required to build the personal-funds portion, based on the selected savings return assumption.</p>
 <div class="callout">Do not use your emergency fund as a house down payment by default. Keep a separate reserve for job loss, medical costs, construction overruns and delayed possession.</div>
 <h3>Formulas used</h3>
@@ -236,7 +236,7 @@ function read(){
  const maxEmi=Math.min(affordabilityByRatio,affordabilityBySurplus);
  const maxLoan=pvFromPayment(maxEmi,n('rateLoan'),n('tenure'));
  const gap=Math.max(0,project-savings);
- let desiredLoan=gap,preferredEmi=0;
+ let desiredLoan=Math.min(gap,maxLoan),preferredEmi=0;
  if($('loanChoice').value==='amount'&&n('loanInput')>0)desiredLoan=n('loanInput');
  if($('loanChoice').value==='emi'&&n('loanInput')>0){preferredEmi=n('loanInput');desiredLoan=pvFromPayment(preferredEmi,n('rateLoan'),n('tenure'))}
  const plannedLoan=Math.min(Math.max(0,desiredLoan),project);
@@ -262,8 +262,8 @@ function validate(x){
  return '';
 }
 function render(x){
- const targetBudget=x.project,affordableLoan=x.maxLoan,shortage=Math.max(0,targetBudget-x.savings-affordableLoan);
- const readiness=targetBudget===0?0:clamp((x.savings+Math.min(affordableLoan,x.gap))/targetBudget*100,0,100);
+ const targetBudget=x.project,affordableLoan=x.maxLoan,shortage=Math.max(x.fundingGap,Math.max(0,x.plannedLoan-affordableLoan));
+ const readiness=targetBudget===0?0:clamp((x.savings+Math.min(x.plannedLoan,affordableLoan))/targetBudget*100,0,100);
  $('summaryLine').textContent=$('country').selectedOptions[0].textContent+' · '+x.y+' years · '+x.area.toLocaleString()+' '+x.chosenUnit+' · '+$('quality').selectedOptions[0].textContent;
  $('readiness').textContent=readiness.toFixed(0)+'% funding readiness';
  $('readinessText').textContent=shortage<=0?'Your projected savings and indicative affordable loan cover the estimated target budget. Keep a contingency and confirm lender terms.':'Estimated funding gap after projected savings and indicative affordable borrowing: '+money(shortage)+'.';
