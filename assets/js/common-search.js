@@ -8,6 +8,8 @@
   window.__investcalcSearchLoaded = true;
 
   const items = [
+    { title:'Investment Portfolio & Net Worth Goal Planner', subtitle:'Project multiple investments, assets and liabilities to estimate when you may reach your target wealth', category:'Invest & Mutual Funds', href:'/investment-portfolio-planner/', keywords:'investment portfolio planner investment portfolio calculator portfolio growth calculator portfolio value calculator net worth projection calculator net worth calculator wealth calculator financial portfolio planner investment goal calculator target net worth date when will i reach my target net worth multiple investments stocks mutual funds etf fd bonds retirement account gold crypto property assets liabilities inflation adjusted wealth millionaire' },
+
     { title:'ROI Calculator', subtitle:'Calculate investment profit, loss and returns', category:'Invest & Mutual Funds', href:'/', keywords:'return on investment roi profit loss cagr' },
     { title:'Gratuity Calculator India', subtitle:'Estimate gratuity payable, service eligibility, wage adjustment and tax exemption', category:'Tax & Salary', href:'/gratuity-calculator/', keywords:'gratuity calculator gratuity calculator india gratuity after 5 years new labour code gratuity fixed term employee gratuity formula 15 26 gratuity tax exemption gratuity wage definition' },
     { title:'HRA Calculator India', subtitle:'Calculate house rent allowance exemption under old and new tax regimes', category:'Tax & Salary', href:'/hra-calculator/', keywords:'hra calculator hra exemption calculator house rent allowance calculator india hra old regime new regime rent paid salary 10 percent metro non metro 40 50 percent taxable hra' },
