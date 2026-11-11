@@ -83,3 +83,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 - `/swp-calculator/` — SWP Calculator
 
 - `/future-home-construction-budget-planner/` — Future Home Construction Budget Planner (salary, savings, future construction budget, loan and EMI)
+
+- `/future-car-budget-planner/` — Future Car Budget Planner (future car cost, salary and savings projection, down payment, loan affordability and EMI)
