@@ -100,7 +100,7 @@ function addHolding(kind,defaults={}){
  html+='<div class="field"><label>Asset / account type</label><select data-key="type">'+options.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select></div>';
  html+='<div class="field"><label>Holding name / description</label><input data-key="name" type="text" maxlength="70" placeholder="e.g. Index fund, home, bank FD"></div>';
  html+=field('Current market value / balance','value',defaults.value||0);
- if(isInv){html+=field('Expected annual return (%)','rate',defaults.rate??8,'any','-100')+field('Annual fees / expense ratio (%)','fee',defaults.fee??0,'any','0')+field('Monthly contribution','monthly',defaults.monthly||0)+field('Annual contribution increase (%)','stepup',defaults.stepup||0);}
+ if(isInv){html+='<div class="field"><label>Symbol / scheme / account reference (optional)</label><input data-key="reference" type="text" maxlength="50" placeholder="Ticker, fund or account type"></div><div class="field"><label>Units / quantity (optional)</label><input data-key="units" type="number" min="0" step="any" value="0"></div><div class="field"><label>Original invested amount / cost basis (optional)</label><input data-key="costBasis" type="number" min="0" step="any" value="0"></div>';html+=field('Expected annual return (%)','rate',defaults.rate??8,'any','-100')+field('Annual fees / expense ratio (%)','fee',defaults.fee??0,'any','0')+field('Monthly contribution','monthly',defaults.monthly||0)+field('Annual contribution increase (%)','stepup',defaults.stepup||0);}
  else if(isAsset){html+=field('Expected annual appreciation (%)','rate',defaults.rate??3,'any','-100');}
  else {html+=field('Annual interest rate (%)','rate',defaults.rate??0,'any','0')+field('Monthly payment','payment',defaults.payment||0);}
  html+='</div>';node.innerHTML=html;list.appendChild(node);
@@ -113,15 +113,15 @@ function validRows(rows,label){for(const r of rows){if(!Number.isFinite(r.value)
 function money(n){const c=currency.value;try{return new Intl.NumberFormat(undefined,{style:'currency',currency:c,maximumFractionDigits:0}).format(n);}catch(e){return c+' '+Math.round(n).toLocaleString();}}
 function dateText(d){return d.toLocaleDateString(undefined,{month:'long',year:'numeric'});}
 function simulate(inv,assets,debt,globalMonthly,globalStep,lump,lumpMonth,globalRate,inflation,horizon,shift){
- const start=new Date($('today').value+'T12:00:00');let rows=[],achieve=null,portfolio=inv.reduce((s,x)=>s+x.value,0),other=assets.reduce((s,x)=>s+x.value,0),liabs=debt.reduce((s,x)=>s+x.value,0);
- const currentPortfolio=portfolio,currentAssets=portfolio+other,currentNW=currentAssets-liabs;
+ const start=new Date($('today').value+'T12:00:00');let rows=[],portfolio=inv.reduce((s,x)=>s+x.value,0),other=assets.reduce((s,x)=>s+x.value,0),liabs=debt.reduce((s,x)=>s+x.value,0);
+ const currentPortfolio=portfolio,currentAssets=portfolio+other,currentNW=currentAssets-liabs;const initialMeasure=$('mode').value==='portfolio'?currentPortfolio:currentNW;const initialTarget=Number($('target').value);let achieve=initialMeasure>=initialTarget?{month:0,date:new Date(start.getFullYear(),start.getMonth(),1),measure:initialMeasure,target:initialTarget}:null;
  const annual=(r)=>Math.pow(1+(r+shift)/100,1/12)-1;
  let bucket=0,monthlyBudget=globalMonthly;
  for(let m=1;m<=horizon*12;m++){
+   if(m%12===1&&m>1)monthlyBudget*=1+globalStep/100;
    inv.forEach(x=>{const rate=annual(x.rate-x.fee);x._v=(x._v??x.value)*(1+rate)+x.monthly*Math.pow(1+x.stepup/100,Math.floor((m-1)/12));});
    if(m===lumpMonth)bucket+=lump;
    bucket=bucket*(1+annual(globalRate))+monthlyBudget;
-   if(m%12===1&&m>1)monthlyBudget*=1+globalStep/100;
    assets.forEach(x=>{x._v=(x._v??x.value)*(1+annual(x.rate));});
    debt.forEach(x=>{let rate=Math.pow(1+x.rate/100,1/12)-1;x._v=Math.max(0,(x._v??x.value)*(1+rate)-x.payment);});
    portfolio=inv.reduce((s,x)=>s+x._v,0)+bucket;other=assets.reduce((s,x)=>s+x._v,0);liabs=debt.reduce((s,x)=>s+x._v,0);
@@ -142,8 +142,8 @@ function run(){
  const low=simulate(inv.map(x=>({...x})),assets.map(x=>({...x})),debt.map(x=>({...x})),monthly,step,lump,lumpMonth,globalRate,infl,horizon,-2);
  const high=simulate(inv.map(x=>({...x})),assets.map(x=>({...x})),debt.map(x=>({...x})),monthly,step,lump,lumpMonth,globalRate,infl,horizon,2);
  const mode=$('mode').value,metric=mode==='portfolio'?base.currentPortfolio:base.currentNW,remaining=target-metric,age=Number($('age').value),fmtDate=a=>a?dateText(a.date):'Not reached in '+horizon+' years';
- const ach=base.achieve;$('achievement').textContent=ach?'Estimated target month: '+dateText(ach.date):'Target not reached within '+horizon+' years';
- $('achievementText').textContent=ach?'At the expected assumptions, the selected '+(mode==='portfolio'?'portfolio':'net worth')+' measure first crosses your target in month '+ach.month+'.'+(age?' Your estimated age then would be about '+(age+ach.month/12).toFixed(1)+'.':''):'Try a longer horizon, higher sustainable contributions or revised assumptions. A target date is not guaranteed.';
+ const ach=base.achieve;$('achievement').textContent=ach?(ach.month===0?'Target already reached today':'Estimated target month: '+dateText(ach.date)):'Target not reached within '+horizon+' years';
+ $('achievementText').textContent=ach?'At the expected assumptions, the selected '+(mode==='portfolio'?'portfolio':'net worth')+' measure '+(ach.month===0?'is already at or above the target.':'first crosses your target in month '+ach.month+'.')+(age?' Your estimated age then would be about '+(age+ach.month/12).toFixed(1)+'.':''):'Try a longer horizon, higher sustainable contributions or revised assumptions. A target date is not guaranteed.';
  $('resultEyeline').textContent=mode==='portfolio'?'Investment portfolio target':'Total net worth target';
  $('currentPortfolio').textContent=money(base.currentPortfolio);$('currentNetWorth').textContent=money(base.currentNW);$('targetShown').textContent=money(target);$('gapText').textContent=remaining>0?money(remaining)+' current gap':'Target already met today';$('futureWealth').textContent=money(mode==='portfolio'?base.portfolio:base.nw);$('futureWealthLabel').textContent='At '+horizon+' years · expected case';
  const cards=[['Conservative',low.achieve,low, '−2 percentage points'],['Expected',base.achieve,base,'Entered assumptions'],['Optimistic',high.achieve,high,'+2 percentage points']];
