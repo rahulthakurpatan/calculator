@@ -81,3 +81,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 - `/kundali-money-dhan-yog-calculator/` — Kundali Money & Dhan Yog Calculator
 - `/mutual-fund-vs-fd-comparison/` — Mutual Fund vs FD Calculator
 - `/swp-calculator/` — SWP Calculator
+
+- `/future-home-construction-budget-planner/` — Future Home Construction Budget Planner (salary, savings, future construction budget, loan and EMI)
