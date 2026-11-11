@@ -36,6 +36,7 @@
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
     ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/'],
     ['Future Car Budget Planner', '/future-car-budget-planner/'],
+    ['When Will I Become a Millionaire? Calculator', '/when-will-i-become-a-millionaire-calculator/'],
         ['CPCT Typing Practice', '/cpct/']
   ];
   const style = document.createElement('style');
