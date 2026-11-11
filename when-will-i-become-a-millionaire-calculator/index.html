@@ -179,7 +179,7 @@ function project(rate,limit,requiredMonthly){
  const final=yearValues[yearValues.length-1]||{year:0,net:portfolio+otherStart-debtStart,portfolio:portfolio,other:otherStart,debt:debtStart};
  return {found:found,final:final,yearValues:yearValues,annualNet:annualNet,inflation:inflation};
 }
-function yearLabel(years){const d=new Date();return String(d.getFullYear()+Math.ceil(years))}
+function yearLabel(years){const d=new Date();d.setMonth(d.getMonth()+Math.ceil(years*12));return String(d.getFullYear())}
 function duration(months){if(months===0)return 'Already reached';const y=Math.floor(months/12),m=months%12;return (y?y+' yr ':'')+(m?m+' mo':'')||'Less than a month'}
 function addRow(parent,label,value){const d=document.createElement('div');d.className='rline';const s=document.createElement('span');s.textContent=label;const b=document.createElement('b');b.textContent=value;d.append(s,b);parent.append(d)}
 function run(){
