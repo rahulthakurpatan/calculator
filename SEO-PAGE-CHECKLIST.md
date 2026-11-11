@@ -88,3 +88,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 - `/when-will-i-become-a-millionaire-calculator/` — Millionaire Calculator (current net worth, assets, liabilities, investment contributions, return scenarios and inflation-adjusted wealth)
 
 - `/future-property-value-calculator/` — Future Property Value Calculator (residential, commercial, land and other property categories; forward appreciation scenarios, inflation-adjusted value, selling deductions and estimated net proceeds)
+
+- `/investment-portfolio-planner/` — Investment Portfolio & Net Worth Goal Planner (multiple financial holdings, other assets, liabilities, contributions, scenario-based target date and inflation-adjusted projection)
