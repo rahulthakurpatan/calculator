@@ -142,6 +142,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const presets={IN:{currency:'INR',fx:83,locale:'en-IN'},US:{currency:'USD',fx:1,locale:'en-US'},GB:{currency:'GBP',fx:.79,locale:'en-GB'},CA:{currency:'CAD',fx:1.36,locale:'en-CA'},AU:{currency:'AUD',fx:1.52,locale:'en-AU'},AE:{currency:'AED',fx:3.67,locale:'en-AE'},NZ:{currency:'NZD',fx:1.65,locale:'en-NZ'},ZA:{currency:'ZAR',fx:18.5,locale:'en-ZA'},IE:{currency:'EUR',fx:.92,locale:'en-IE'},SG:{currency:'SGD',fx:1.35,locale:'en-SG'}};
+const fxByCurrency={INR:83,USD:1,GBP:.79,CAD:1.36,AUD:1.52,AED:3.67,NZD:1.65,ZAR:18.5,EUR:.92,SGD:1.35};
 let lastReport='';
 function num(id){return Number($(id).value)||0}
 function fmt(value){const currency=$('currency').value;try{return new Intl.NumberFormat(presets[$('country').value].locale,{style:'currency',currency:currency,maximumFractionDigits:0}).format(Number.isFinite(value)?value:0)}catch(e){return currency+' '+Math.round(value).toLocaleString()}}
@@ -216,7 +217,7 @@ function run(){
  let required=null;
  if(!goal&&num('horizon')>0){let lo=0,hi=Math.max(1,num('monthly')+num('income')+num('expenses')+num('debtPayments'));for(let i=0;i<55;i++){const mid=(lo+hi)/2;const r=project(num('returnRate'),num('horizon'),mid);if(r.found)hi=mid;else lo=mid;}if(project(num('returnRate'),num('horizon'),hi).found)required=hi;}
  else if(goal&&goal.month>0){let lo=0,hi=Math.max(1,num('monthly')+num('income')+num('expenses')+num('debtPayments'));const desired=Math.max(1,goal.month-60);for(let i=0;i<55;i++){const mid=(lo+hi)/2;const r=project(num('returnRate'),num('horizon'),mid);if(r.found&&r.found.month<=desired)hi=mid;else lo=mid;}if(project(num('returnRate'),num('horizon'),hi).found?.month<=desired)required=hi;}
- const ar=$('actionRows');ar.innerHTML='';addRow(ar,'Monthly income surplus before investing',fmt(available));addRow(ar,'Current contribution as % of income',investRatio.toFixed(1)+'%');if(required!==null)addRow(ar,goal?'Monthly contribution for a goal about 5 years earlier':'Estimated monthly contribution to reach target in '+num('horizon')+' years',fmt(required));else addRow(ar,'Contribution target','Not calculated for this scenario');
+ const ar=$('actionRows');ar.innerHTML='';addRow(ar,'Monthly income surplus before investing',fmt(available));addRow(ar,'Current contribution as % of income',investRatio.toFixed(1)+'%');const planningYears=goalYears===null?num('horizon'):goalYears;const projectedIncome=num('income')*Math.pow(1+num('incomeGrowth')/100,planningYears);const projectedOutgoings=(num('expenses')+num('debtPayments'))*Math.pow(1+num('inflation')/100,planningYears);addRow(ar,'Estimated monthly income at goal',fmt(projectedIncome));addRow(ar,'Estimated monthly expenses and debt payments',fmt(projectedOutgoings));addRow(ar,'Estimated monthly surplus at goal',fmt(projectedIncome-projectedOutgoings));if(required!==null)addRow(ar,goal?'Monthly contribution for a goal about 5 years earlier':'Estimated monthly contribution to reach target in '+num('horizon')+' years',fmt(required));else addRow(ar,'Contribution target','Not calculated for this scenario');
  const advice=$('adviceList');advice.innerHTML='';
  const messages=[];
  if(available<0)messages.push('Your entered living expenses and debt payments exceed take-home income. Review cash flow and expensive debt before increasing investments.');
@@ -244,7 +245,7 @@ function updateGoalMode(){
  document.querySelectorAll('.currency-label').forEach(x=>x.textContent=$('currency').value);
 }
 $('country').addEventListener('change',updateCurrency);
-$('currency').addEventListener('change',()=>{document.querySelectorAll('.currency-label').forEach(x=>x.textContent=$('currency').value);if(document.querySelector('input[name="goalMode"]:checked').value==='local')$('target').value=1000000});
+$('currency').addEventListener('change',()=>{$('fxRate').value=fxByCurrency[$('currency').value]||1;document.querySelectorAll('.currency-label').forEach(x=>x.textContent=$('currency').value);if(document.querySelector('input[name="goalMode"]:checked').value==='local')$('target').value=1000000});
 document.querySelectorAll('input[name="goalMode"]').forEach(x=>x.addEventListener('change',updateGoalMode));
 $('millionaireForm').addEventListener('submit',e=>{e.preventDefault();$('error').classList.remove('show');try{run()}catch(err){$('error').textContent=err.message||'Please check your inputs.';$('error').classList.add('show')}});
 $('resetBtn').addEventListener('click',()=>{ $('millionaireForm').reset();updateCurrency();$('results').classList.remove('show');$('error').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});});
