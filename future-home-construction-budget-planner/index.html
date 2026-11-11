@@ -262,21 +262,21 @@ function validate(x){
  return '';
 }
 function render(x){
- const targetBudget=x.project,affordableLoan=x.maxLoan,shortage=Math.max(x.fundingGap,Math.max(0,x.plannedLoan-affordableLoan));
+ const targetBudget=x.project,affordableLoan=x.maxLoan,affordabilityGap=Math.max(0,targetBudget-x.savings-affordableLoan),loanOverage=Math.max(0,x.plannedLoan-affordableLoan);
  const readiness=targetBudget===0?0:clamp((x.savings+Math.min(x.plannedLoan,affordableLoan))/targetBudget*100,0,100);
  $('summaryLine').textContent=$('country').selectedOptions[0].textContent+' · '+x.y+' years · '+x.area.toLocaleString()+' '+x.chosenUnit+' · '+$('quality').selectedOptions[0].textContent;
  $('readiness').textContent=readiness.toFixed(0)+'% funding readiness';
- $('readinessText').textContent=shortage<=0?'Your projected savings and indicative affordable loan cover the estimated target budget. Keep a contingency and confirm lender terms.':'Estimated funding gap after projected savings and indicative affordable borrowing: '+money(shortage)+'.';
+ $('readinessText').textContent=(affordabilityGap<=0?'Your projected savings and indicative affordable loan cover the estimated target budget. Keep a contingency and confirm lender terms.':'Estimated shortfall even after projected savings and the indicative affordable loan: '+money(affordabilityGap)+'.')+(loanOverage>0?' Your selected loan is above the estimated affordable limit by '+money(loanOverage)+'.':'');
  $('futureCost').textContent=money(targetBudget);$('futureCostSub').textContent='Includes '+($('plotStatus').value==='no'?'projected plot purchase':'owned plot excluded')+', project allowances and contingency';
  $('futureSavings').textContent=money(x.savings);$('loanNeeded').textContent=money(x.plannedLoan);$('loanStatus').textContent='Indicative affordable loan: '+money(affordableLoan);
  $('homeEmi').textContent=money(x.homeEmi);$('emiStatus').textContent=x.homeEmi<=x.maxEmi?'Within estimated EMI ceiling':'Above estimated EMI ceiling';
  $('futureSalary').textContent=money(x.futureSalary);$('requiredSalary').textContent=money(x.requiredSalary);$('incomeGap').textContent=money(x.incomeGap);$('requiredGrowth').textContent=x.requiredGrowth.toFixed(2)+'% p.a.';$('annualRaise').textContent=money(Math.max(0,(x.requiredSalary-x.salary)/x.y))+'/month per year';
  $('incomeAdvice').textContent=x.incomeGap>0?'Your expected income is below the estimated income target by '+money(x.incomeGap)+' per month in the construction year. The required growth rate is a mathematical target, not a salary forecast.':'Your projected income meets the estimated income target for the selected loan scenario.';
- $('currentMonthlySaving').textContent=money(x.monthly);$('recommendedSaving').textContent=money(x.reqMonthly);$('fundingGap').textContent=money(shortage);$('ownContribution').textContent=money(x.ownNeeded);
+ $('currentMonthlySaving').textContent=money(x.monthly);$('recommendedSaving').textContent=money(x.reqMonthly);$('fundingGap').textContent=money(x.fundingGap);$('ownContribution').textContent=money(x.ownNeeded);
  $('savingAdvice').textContent=x.reqMonthly>x.monthly?'To fund the planned personal contribution without increasing the loan, the monthly contribution would need to rise by about '+money(x.reqMonthly-x.monthly)+' from today, assuming the selected savings return.':'Your planned monthly saving is at or above the estimated contribution needed for the selected personal-funds target.';
  const rows=[['Comfortable (30% EMI share)',.30],['Balanced (35% EMI share)',.35],['Higher commitment (40% EMI share)',.40]];
  $('planGrid').innerHTML=rows.map(([label,r])=>{const pay=Math.min(Math.max(0,x.futureSalary*r-x.existing),Math.max(0,x.futureSalary-x.futureExpenses-x.existing-x.futureSalary*.05));const loan=pvFromPayment(pay,n('rateLoan'),n('tenure'));return '<div class="plan"><h3>'+label+'</h3><strong>'+money(loan)+'</strong><p>Indicative loan capacity · EMI ceiling '+money(pay)+'/month</p></div>'}).join('');
- const scenarios=[['Required / preferred loan',x.plannedLoan,'Selected plan'],['Estimated affordable loan',affordableLoan,'Based on selected affordability ratio'],['Funding gap after savings + affordable loan',shortage,'Additional funds needed']];
+ const scenarios=[['Required / preferred loan',x.plannedLoan,'Selected plan'],['Estimated affordable loan',affordableLoan,'Based on selected affordability ratio'],['Own-funds gap in selected plan',x.fundingGap,'Personal contribution still to accumulate'],['Shortfall after maximum affordable loan',affordabilityGap,'Project gap after projected savings and estimated loan capacity']];
  $('loanRows').innerHTML=scenarios.map(([label,amount,note])=>'<tr><td>'+label+'</td><td>'+money(amount)+'</td><td>'+money(emi(amount,n('rateLoan'),n('tenure')) )+'</td><td>'+money(Math.max(0,emi(amount,n('rateLoan'),n('tenure'))*n('tenure')*12-amount))+'</td><td>'+note+'</td></tr>').join('');
  const yearRows=[];for(let i=0;i<=x.y;i++){const salary=x.salary*Math.pow(1+x.increment,i),fund=futureSavings(x.currentSavings,x.monthly,x.returnRate,i),budget=(x.currentBuild+x.plot)*(1+x.extra)*(1+x.cont)*Math.pow(1+x.inflation,i);yearRows.push('<tr><td>Year '+i+'</td><td>'+money(salary)+'</td><td>'+money(fund)+'</td><td>'+money(budget)+'</td></tr>')}
  $('yearRows').innerHTML=yearRows.join('');
@@ -285,7 +285,9 @@ function render(x){
  $('budgetBars').innerHTML=parts.filter(p=>p[1]>0).map(p=>'<div class="bar-row"><span>'+p[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.max(1,p[1]/max*100)+'%"></div></div><b>'+money(p[1])+'</b></div>').join('');
  $('inflationNote').textContent='Current construction + plot estimate: '+money(x.currentBuild+x.plot)+'. Projected with '+(x.inflation*100).toFixed(1)+'% annual cost inflation for '+x.y+' years. This is an editable scenario assumption.';
  const actions=[];
- if(shortage>0)actions.push('Close the projected funding gap of '+money(shortage)+' by increasing monthly savings, extending the timeline, reducing the planned area / finish level, or reassessing the plot budget.');
+ if(x.fundingGap>0)actions.push('Your selected loan plan leaves a personal-funds gap of '+money(x.fundingGap)+'. Increase monthly savings, extend the timeline, reduce the planned area / finish level, or reassess the plot budget.');
+ if(affordabilityGap>0)actions.push('Even after using the estimated affordable loan capacity, the project is short by '+money(affordabilityGap)+'. Consider a later construction date, a smaller project or a higher down payment.');
+ if(loanOverage>0)actions.push('Your selected loan exceeds the estimated affordable borrowing limit by '+money(loanOverage)+'. Reduce the loan or improve the income / debt position before relying on this amount.');
  if(x.reqMonthly>x.monthly)actions.push('Target monthly home savings of about '+money(x.reqMonthly)+', compared with your current '+money(x.monthly)+'. Keep emergency savings separate.');
  if(x.incomeGap>0)actions.push('Work toward a construction-year monthly income target of '+money(x.requiredSalary)+'. Your current increment assumption projects '+money(x.futureSalary)+'.');
  if(x.plannedLoan>x.maxLoan)actions.push('The selected loan appears above the estimated affordable loan by '+money(x.plannedLoan-x.maxLoan)+'. Reduce the loan, increase the down payment, or revisit the timeline.');
