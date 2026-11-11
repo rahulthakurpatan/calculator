@@ -18,7 +18,8 @@
         ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
         ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
-        ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal']
+        ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal'],
+        ['When Will I Become a Millionaire? Calculator', '/when-will-i-become-a-millionaire-calculator/', 'Project your millionaire date, net worth, investments and inflation-adjusted wealth']
       ]
     },
     {
