@@ -275,7 +275,7 @@ function validate(x){
  if(x.expenses<0||x.existing<0||x.running<0||x.currentSavings<0||x.monthly<0||x.reserve<0||x.targetDown<0)return 'Expenses, savings, debt payments and down payment cannot be negative.';
  if(x.increment<0||x.increment>.5||x.expenseGrowth<0||x.expenseGrowth>.3||x.savingReturn<0||x.savingReturn>.2||x.savingStep<0||x.savingStep>.5)return 'Check the growth and savings return assumptions. They must be within the displayed ranges.';
  if(num('extraCosts')<0||num('extraCosts')>40||num('carInflation')<0||num('carInflation')>30||num('interestRate')<0||num('interestRate')>40)return 'Check purchase charges, car price increase and interest rate.';
- if(num('downMode')==='percent'&&num('downValue')>100)return 'Down payment percentage cannot exceed 100%.';
+ if(val('downMode')==='percent'&&num('downValue')>100)return 'Down payment percentage cannot exceed 100%.';
  if(num('loanYears')<1||num('loanYears')>10||num('emiShare')<10||num('emiShare')>60)return 'Check loan tenure and maximum EMI share.';
  if(x.mode==='loan'&&x.loanChoice!=='auto'&&x.preference<0)return 'Preferred EMI or loan amount cannot be negative.';
  return '';
