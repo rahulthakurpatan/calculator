@@ -77,6 +77,8 @@
 </div>
 <div class="subhead">2. DISPLAY AD INCOME</div>
 <div class="field"><label for="rpm">Page RPM (<span class="sym">₹</span> per 1,000 pageviews)</label><input id="rpm" type="number" min="0" step="any" value="0" inputmode="decimal"><div class="hint">Enter your actual ad-network Page RPM. If you are not monetised yet, leave it at zero and use scenarios only when you have a reasoned assumption.</div></div>
+<div class="error" id="error" role="alert"></div>
+<div class="actions"><button class="btn" type="submit">Calculate my blog income</button><button class="btn secondary" id="reset" type="button">Reset</button></div>
 <details class="advanced">
 <summary>Advanced income sources (affiliate, sponsorship, products and costs)</summary>
 <div class="advanced-body">
@@ -115,8 +117,7 @@
 <div class="subhead">6. YOUR MONTHLY PROFIT GOAL</div>
 <div class="field"><label for="growth-rate">Expected monthly pageview growth (%)</label><input id="growth-rate" type="number" min="-100" max="300" step="any" value="0" inputmode="decimal"><div class="hint">Used only for the 12-month planning projection below. Enter 0 if you do not want to assume growth.</div></div>
 <div class="field"><label for="goal">Target monthly profit (<span class="sym">₹</span>)</label><input id="goal" type="number" min="0" step="any" value="10000" inputmode="decimal"><div class="hint">The goal calculator estimates the pageviews needed after your entered non-ad income and expenses.</div></div>
-<div class="error" id="error" role="alert"></div>
-<div class="actions"><button class="btn" type="submit">Calculate my blog income</button><button class="btn secondary" id="reset" type="button">Reset</button></div>
+
 </form>
 <div class="results" id="results" aria-live="polite">
 <div class="result-main"><div class="result-label">Estimated monthly net profit</div><div class="big" id="net-profit">₹0</div><div class="result-sub" id="result-summary">Based on the assumptions entered above.</div></div>
