@@ -85,3 +85,4 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 - `/future-home-construction-budget-planner/` — Future Home Construction Budget Planner (salary, savings, future construction budget, loan and EMI)
 
 - `/future-car-budget-planner/` — Future Car Budget Planner (future car cost, salary and savings projection, down payment, loan affordability and EMI)
+- `/when-will-i-become-a-millionaire-calculator/` — Millionaire Calculator (current net worth, assets, liabilities, investment contributions, return scenarios and inflation-adjusted wealth)
