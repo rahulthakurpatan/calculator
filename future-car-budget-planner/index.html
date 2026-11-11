@@ -90,11 +90,11 @@ h1{font-size:clamp(35px,5vw,54px);line-height:1.08;letter-spacing:-1.8px;margin:
 </div></div>
 <div class="group"><h3 class="group-title"><span class="step">3</span> Your car savings plan</h3>
 <div class="form-grid">
-<div class="field"><label for="currentSavings">Current savings set aside for the car</label><input id="currentSavings" type="number" min="0" step="any" value="100000" inputmode="decimal"></div>
+<div class="field"><label for="currentSavings">Current total savings available (including emergency reserve)</label><input id="currentSavings" type="number" min="0" step="any" value="100000" inputmode="decimal"></div>
 <div class="field"><label for="monthlySaving">How much do you save for the car each month?</label><input id="monthlySaving" type="number" min="0" step="any" value="8000" inputmode="decimal"></div>
 <div class="field"><label for="savingReturn">Expected annual return on car savings (%)</label><input id="savingReturn" type="number" min="0" max="20" step="0.1" value="4"><div class="hint">Use 0 for cash savings. Returns are assumptions, not guaranteed.</div></div>
 <div class="field"><label for="savingStep">Increase monthly car savings each year (%)</label><input id="savingStep" type="number" min="0" max="50" step="0.1" value="0"></div>
-<div class="field"><label for="emergencyReserve">Emergency savings to keep untouched</label><input id="emergencyReserve" type="number" min="0" step="any" value="50000"><div class="hint">This amount is excluded from the money available for your car down payment.</div></div>
+<div class="field"><label for="emergencyReserve">Emergency savings to keep untouched</label><input id="emergencyReserve" type="number" min="0" step="any" value="50000"><div class="hint">Enter the part of your total savings you want to keep untouched; it will be deducted from the total savings above.</div></div>
 </div></div>
 <div class="group"><h3 class="group-title"><span class="step">4</span> Down payment and car loan</h3>
 <div class="form-grid">
