@@ -86,3 +86,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 
 - `/future-car-budget-planner/` — Future Car Budget Planner (future car cost, salary and savings projection, down payment, loan affordability and EMI)
 - `/when-will-i-become-a-millionaire-calculator/` — Millionaire Calculator (current net worth, assets, liabilities, investment contributions, return scenarios and inflation-adjusted wealth)
+
+- `/future-property-value-calculator/` — Future Property Value Calculator (residential, commercial, land and other property categories; forward appreciation scenarios, inflation-adjusted value, selling deductions and estimated net proceeds)
