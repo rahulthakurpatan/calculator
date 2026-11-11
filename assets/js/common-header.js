@@ -19,7 +19,8 @@
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
         ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
         ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal'],
-        ['When Will I Become a Millionaire? Calculator', '/when-will-i-become-a-millionaire-calculator/', 'Project your millionaire date, net worth, investments and inflation-adjusted wealth']
+        ['When Will I Become a Millionaire? Calculator', '/when-will-i-become-a-millionaire-calculator/', 'Project your millionaire date, net worth, investments and inflation-adjusted wealth'],
+        ['Investment Portfolio & Net Worth Planner', '/investment-portfolio-planner/', 'Project multiple investments, assets, liabilities and your target net worth date']
       ]
     },
     {
