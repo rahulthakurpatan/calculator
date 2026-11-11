@@ -76,7 +76,7 @@ h1{font-size:clamp(35px,5vw,54px);line-height:1.08;letter-spacing:-1.8px;margin:
 <div class="field"><label for="priceMode">How will you enter the car price?</label><select id="priceMode"><option value="future" selected>Expected price at purchase date</option><option value="current">Today's price (estimate future price)</option></select></div>
 <div class="field"><label for="carPrice" id="priceLabel">Expected future car price</label><input id="carPrice" type="number" min="1" step="any" value="1200000" inputmode="decimal"><div class="hint" id="priceHint">Enter the estimated total price when you plan to buy.</div></div>
 <div class="field" id="inflationWrap" hidden><label for="carInflation">Annual car price increase (%)</label><input id="carInflation" type="number" min="0" max="30" step="0.1" value="5"><div class="hint">Editable planning assumption, not a forecast.</div></div>
-<div class="field"><label for="purchaseYears">Buy the car after</label><div class="two"><input id="purchaseYears" type="number" min="0" max="30" step="1" value="3" inputmode="numeric"><select id="timeUnit" aria-label="Purchase timeline unit"><option value="years">Years</option><option value="months">Months</option></select></div><div class="hint">Choose 0 for a purchase planned within the next 12 months? Use months for a precise near-term date.</div></div>
+<div class="field"><label for="purchaseYears">Buy the car after</label><div class="two"><input id="purchaseYears" type="number" min="0" max="360" step="1" value="3" inputmode="numeric"><select id="timeUnit" aria-label="Purchase timeline unit"><option value="years">Years</option><option value="months">Months</option></select></div><div class="hint">Enter 0 if buying now; select months for a near-term target.</div></div>
 <div class="field"><label for="extraCosts">Taxes, registration and purchase fees (%)</label><input id="extraCosts" type="number" min="0" max="40" step="0.1" value="8"><div class="hint" id="costHint">Estimate any charges not already included in the car price. Set 0 if your price is on-road / drive-away.</div></div>
 </div></div>
 <div class="group"><h3 class="group-title"><span class="step">2</span> Current income and monthly commitments</h3>
@@ -222,6 +222,13 @@ function loanFromEmi(payment,annualRate,years){
  if(payment<=0)return 0;const n=Math.max(1,Math.round(years*12)),r=annualRate/1200;
  return r===0?payment*n:payment*(1-Math.pow(1+r,-n))/r;
 }
+function requiredMonthlyContribution(initial,target,annualReturn,annualStep,months){
+ if(target<=initial)return 0;
+ if(months<=0)return target-initial;
+ let low=0,high=target;
+ for(let i=0;i<60;i++){const mid=(low+high)/2;if(futureFund(initial,mid,annualReturn,annualStep,months)>=target)high=mid;else low=mid;}
+ return high;
+}
 function setPriceMode(){const current=val('priceMode')==='current';$('inflationWrap').hidden=!current;$('priceLabel').textContent=current?"Today's car price":"Expected future car price";$('priceHint').textContent=current?'The entered price will be increased using the annual car price assumption and purchase timeline.':'Enter the estimated total car price at the time you plan to buy.'}
 function setDownMode(){$('downLabel').textContent=val('downMode')==='percent'?'Target down payment (%)':'Target down payment amount'}
 function setLoanMode(){const m=val('loanModeSelect');$('loanPreferenceLabel').textContent=m==='emi'?'Preferred monthly EMI':m==='amount'?'Preferred loan amount':'Preferred EMI / loan amount';$('loanPreferenceHint').textContent=m==='emi'?'The planner converts this EMI into an indicative loan amount.':m==='amount'?'Enter the amount you would like to borrow.':'Leave at 0 to calculate the loan from your down payment and estimated affordability.'}
@@ -255,7 +262,7 @@ function getInputs(){
  const totalRepayment=monthlyEmi*Math.round(num('loanYears')*12),interest= Math.max(0,totalRepayment-loan);
  const balance=futureSalary-futureExpenses-futureExisting-running-monthlyEmi;
  const maxLoanGap=Math.max(0,loan-maxLoan);
- const neededMonthly=months>0?Math.max(0,(down-currentSavings)/months):Math.max(0,down-currentSavings);
+ const neededMonthly=requiredMonthlyContribution(currentSavings,down+reserve,savingReturn,savingStep,months);
  const savingIncrease=Math.max(0,neededMonthly-monthly);
  const requiredSalary=Math.max((monthlyEmi+futureExisting)/(num('emiShare')/100||.01),futureExpenses+futureExisting+running+monthlyEmi+futureSalary*.10);
  const status= fundingShortfall>1 || downGap>1 ? 'not' : (monthlyEmi>maxEmi+1 || balance<0 ? 'stretch' : (monthlyEmi>maxEmi*.8?'stretch':'good'));
@@ -301,7 +308,7 @@ function render(x){
  const lowerPrice=x.totalCost*.85,lowerLoan=Math.min(Math.max(0,lowerPrice-x.available),x.maxLoan),lowerEmi=emi(lowerLoan,num('interestRate'),num('loanYears'));
  const saferLoan=Math.min(Math.max(0,x.totalCost-Math.min(x.available,x.totalCost*.35)),x.maxLoan),saferEmi=emi(saferLoan,num('interestRate'),num('loanYears'));
  const laterMonths=x.months+12,laterSavings=futureFund(x.currentSavings,x.monthly,x.savingReturn,x.savingStep,laterMonths),laterSalary=x.salary*Math.pow(1+x.increment,x.years+1),laterCost=x.totalCost*(val('priceMode')==='current'?1+num('carInflation')/100:1),laterGap=Math.max(0,laterCost-laterSavings);
- $('scenarioGrid').innerHTML='<div class="scenario"><h4>Lower-cost car (15% less)</h4><strong>'+fmt(lowerEmi)+'/mo</strong><p>Estimated EMI with a lower car budget and affordable loan cap. Funding gap: '+fmt(Math.max(0,lowerPrice-x.available-lowerLoan))+'.</p></div><div class="scenario"><h4>Higher down payment (35%)</h4><strong>'+fmt(saferEmi)+'/mo</strong><p>Indicative EMI after using up to 35% of the total cost as down payment, subject to available savings.</p></div><div class="scenario"><h4>Wait one more year</h4><strong>'+fmt(laterSavings)+'</strong><p>Projected car savings after one extra year. Estimated purchase funding gap before loan: '+fmt(laterGap)+'.</p></div>';
+ $('scenarioGrid').innerHTML='<div class="scenario"><h4>Lower-cost car (15% less)</h4><strong>'+fmt(lowerEmi)+'/mo</strong><p>Estimated EMI with a lower car budget and affordable loan cap. Funding gap: '+fmt(Math.max(0,lowerPrice-x.available-lowerLoan))+'.</p></div><div class="scenario"><h4>Aim for a 35% down payment</h4><strong>'+fmt(saferEmi)+'/mo</strong><p>Indicative EMI after using up to 35% of the total cost as down payment, subject to available savings.</p></div><div class="scenario"><h4>Wait one more year</h4><strong>'+fmt(laterSavings)+'</strong><p>Projected car savings after one extra year. Estimated purchase funding gap before loan: '+fmt(laterGap)+'.</p></div>';
  const rows=[];for(let i=0;i<=Math.ceil(x.years);i++){const m=Math.min(x.months,i*12),yr=m/12,sal=x.salary*Math.pow(1+x.increment,yr),fund=futureFund(x.currentSavings,x.monthly,x.savingReturn,x.savingStep,m),cost=x.rawPrice*(val('priceMode')==='current'?Math.pow(1+num('carInflation')/100,yr):1)*(1+x.feesRate);rows.push('<tr><td>'+(m===0?'Today':'Year '+yr.toFixed(1))+'</td><td>'+fmt(sal)+'</td><td>'+fmt(fund)+'</td><td>'+fmt(cost)+'</td></tr>')}
  if(x.months%12!==0){rows.push('<tr><td>Purchase date ('+x.months+' months)</td><td>'+fmt(x.futureSalary)+'</td><td>'+fmt(x.savings)+'</td><td>'+fmt(x.totalCost)+'</td></tr>')}
  $('yearRows').innerHTML=rows.join('');
