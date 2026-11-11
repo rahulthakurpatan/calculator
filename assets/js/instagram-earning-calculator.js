@@ -77,8 +77,8 @@ function calculate(){
 function reset(){
   const defaults={
     followers:'10000',reelViews:'8000',postReach:'3000',storyReach:'1500',avgLikes:'500',avgComments:'35',brandCpm:'500',
-    reelDeals:'2',photoDeals:'0',carouselDeals:'1',storyDeals:'2',storyFrames:'3',usageRights:'20',exclusivity:'15',partnershipAds:'20',productionFee:'0',revisionFee:'0',
-    affiliateClicks:'500',affiliateConversion:'2',orderValue:'1500',commission:'8',giftsIncome:'0',subscribers:'0',subscriptionPrice:'0',subscriptionShare:'100',
+    reelDeals:'0',photoDeals:'0',carouselDeals:'0',storyDeals:'0',storyFrames:'3',usageRights:'0',exclusivity:'0',partnershipAds:'0',productionFee:'0',revisionFee:'0',
+    affiliateClicks:'0',affiliateConversion:'0',orderValue:'0',commission:'0',giftsIncome:'0',subscribers:'0',subscriptionPrice:'0',subscriptionShare:'100',
     productSales:'0',productProfit:'0',bonusIncome:'0',otherIncome:'0'
   };
   Object.entries(defaults).forEach(([id,value])=>$(id).value=value);
@@ -96,6 +96,7 @@ $('copyResults').addEventListener('click',()=>{
     navigator.clipboard.writeText(textOut).then(()=>{set('copyResults','Copied!');setTimeout(()=>set('copyResults','Copy income summary'),1800);}).catch(()=>window.prompt('Copy your summary:',textOut));
   }else window.prompt('Copy your summary:',textOut);
 });
+$('quickCalculateEarnings').addEventListener('click',()=>{calculate();$('results').scrollIntoView({behavior:'smooth',block:'start'});});
 $('calculateEarnings').addEventListener('click',()=>{calculate();$('results').scrollIntoView({behavior:'smooth',block:'start'});});
 $('printResults').addEventListener('click',()=>window.print());
 $('resetAll').addEventListener('click',reset);
