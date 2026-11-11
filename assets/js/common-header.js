@@ -69,6 +69,7 @@
         ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
         ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/', 'Plan future salary, savings, construction cost, home loan and EMI'],
         ['Future Car Budget Planner', '/future-car-budget-planner/', 'Plan future car savings, down payment, affordable loan and EMI'],
+        ['Future Property Value Calculator', '/future-property-value-calculator/', 'Estimate future property value, appreciation scenarios and net sale proceeds'],
         ['CPCT Typing Practice', '/cpct-typing-practice/', 'Practise English and Hindi Unicode typing for CPCT']
       ]
     },
