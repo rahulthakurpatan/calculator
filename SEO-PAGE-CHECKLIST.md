@@ -71,7 +71,7 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 The sitemap should contain only pages that exist and are intended for indexing. Update this inventory whenever pages are added, removed, or renamed.
 
 
-## Current public calculator inventory (2026-11-06)
+## Current public calculator inventory (2026-11-12)
 - `/` — ROI Calculator
 - `/sip-calculator/` — SIP Calculator
 - `/lump-sum-calculator/` — Lump Sum Calculator
