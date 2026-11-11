@@ -43,6 +43,7 @@
 <span class="eyebrow">Future home financial planner</span>
 <h1>Plan Your Future Home Construction Budget</h1>
 <p class="intro">Find out whether your current salary, yearly increment and savings can support your home-building goal. Project future construction cost, estimate a sensible loan and EMI, and see how much you may need to earn and save before construction begins.</p>
+<p class="hint">Country presets are editable planning starting points, not verified local price averages. Enter all money values in the selected currency; changing currency does not convert your inputs.</p>
 <div class="trust"><span>Salary growth projection</span><span>Plot + construction budget</span><span>Loan and EMI planning</span><span>Year-wise roadmap</span></div>
 <div class="notice"><strong>Planning estimate, not a loan offer.</strong><br>Construction rates, inflation, investment returns and lending rules vary by location and over time. Edit the assumptions to match local quotations and lender terms. The result does not guarantee loan eligibility or investment returns.</div>
 </div>
@@ -80,14 +81,14 @@
 <div class="field"><label for="returnRate">Expected annual savings return (%)</label><input id="returnRate" type="number" min="0" max="20" step=".1" value="6"><div class="hint">Use 0% for cash / no-growth savings. Returns are not guaranteed.</div></div>
 <div class="field"><label for="plotStatus">Do you already own the plot / land?</label><select id="plotStatus"><option value="yes" selected>Yes, plot is already owned</option><option value="no">No, I need to buy a plot</option></select></div>
 </div>
-<div class="field" id="plotCostWrap" hidden><label for="plotCost">Estimated plot purchase price today</label><input id="plotCost" type="number" min="0" step="any" value="1500000"><div class="hint">Enter the expected price in the selected display currency.</div></div>
+<div class="field" id="plotCostWrap" hidden><label for="plotCost">Estimated plot purchase price today</label><input id="plotCost" type="number" min="0" step="any" value="1500000"><div class="hint">Enter the expected price in the selected display currency. Currency changes do not perform foreign-exchange conversion.</div></div>
 <div class="subhead">4. Home size and construction budget</div>
 <div class="two">
 <div class="field"><label for="houseArea">Planned built-up area</label><input id="houseArea" type="number" min="100" step="any" value="1200"></div>
 <div class="field"><label for="quality">Construction finish</label><select id="quality"><option value="basic">Basic / economical</option><option value="standard" selected>Standard family home</option><option value="premium">Premium</option></select></div>
 </div>
 <div class="two">
-<div class="field"><label for="rate">Current construction cost per area unit</label><input id="rate" type="number" min="1" step="any" value="2200"><div class="hint" id="rateHint">Indicative editable starting assumption; replace with local contractor quotes.</div></div>
+<div class="field"><label for="rate">Current construction cost per area unit</label><input id="rate" type="number" min="1" step="any" value="2200"><div class="hint" id="rateHint">Illustrative starting input only, not a verified market average. Replace with a local written contractor quote.</div></div>
 <div class="field"><label for="inflation">Annual construction cost inflation (%)</label><input id="inflation" type="number" min="0" max="25" step=".1" value="6"></div>
 </div>
 <div class="two">
@@ -129,6 +130,7 @@
 <div class="metric"><span>Monthly income required for planned EMI</span><strong id="requiredSalary">—</strong></div>
 <div class="metric"><span>Additional monthly income needed</span><strong id="incomeGap">—</strong></div>
 <div class="metric"><span>Required annual income growth</span><strong id="requiredGrowth">—</strong></div>
+<div class="metric"><span>Average monthly salary rise needed per year</span><strong id="annualRaise">—</strong></div>
 </div>
 <p class="note" id="incomeAdvice"></p>
 </div>
@@ -268,7 +270,7 @@ function render(x){
  $('futureCost').textContent=money(targetBudget);$('futureCostSub').textContent='Includes '+($('plotStatus').value==='no'?'projected plot purchase':'owned plot excluded')+', project allowances and contingency';
  $('futureSavings').textContent=money(x.savings);$('loanNeeded').textContent=money(x.plannedLoan);$('loanStatus').textContent='Indicative affordable loan: '+money(affordableLoan);
  $('homeEmi').textContent=money(x.homeEmi);$('emiStatus').textContent=x.homeEmi<=x.maxEmi?'Within estimated EMI ceiling':'Above estimated EMI ceiling';
- $('futureSalary').textContent=money(x.futureSalary);$('requiredSalary').textContent=money(x.requiredSalary);$('incomeGap').textContent=money(x.incomeGap);$('requiredGrowth').textContent=x.requiredGrowth.toFixed(2)+'% p.a.';
+ $('futureSalary').textContent=money(x.futureSalary);$('requiredSalary').textContent=money(x.requiredSalary);$('incomeGap').textContent=money(x.incomeGap);$('requiredGrowth').textContent=x.requiredGrowth.toFixed(2)+'% p.a.';$('annualRaise').textContent=money(Math.max(0,(x.requiredSalary-x.salary)/x.y))+'/month per year';
  $('incomeAdvice').textContent=x.incomeGap>0?'Your expected income is below the estimated income target by '+money(x.incomeGap)+' per month in the construction year. The required growth rate is a mathematical target, not a salary forecast.':'Your projected income meets the estimated income target for the selected loan scenario.';
  $('currentMonthlySaving').textContent=money(x.monthly);$('recommendedSaving').textContent=money(x.reqMonthly);$('fundingGap').textContent=money(shortage);$('ownContribution').textContent=money(x.ownNeeded);
  $('savingAdvice').textContent=x.reqMonthly>x.monthly?'To fund the planned personal contribution without increasing the loan, the monthly contribution would need to rise by about '+money(x.reqMonthly-x.monthly)+' from today, assuming the selected savings return.':'Your planned monthly saving is at or above the estimated contribution needed for the selected personal-funds target.';
@@ -296,8 +298,8 @@ function calculate(){const x=read(),err=validate(x);if(err){$('error').textConte
 $('plannerForm').addEventListener('submit',e=>{e.preventDefault();if(calculate())$('results').scrollIntoView({behavior:'smooth',block:'start'})});
 $('plotStatus').addEventListener('change',()=>{$('plotCostWrap').hidden=$('plotStatus').value!=='no'});
 $('loanChoice').addEventListener('change',()=>{const v=$('loanChoice').value;$('loanInputLabel').textContent=v==='emi'?'Preferred monthly EMI':v==='amount'?'Preferred loan amount':'Preferred loan amount (optional)';$('loanInputHint').textContent=v==='emi'?'Enter the monthly EMI you are comfortable paying.':v==='amount'?'Enter the loan amount you would like to borrow.':'Leave at 0 to calculate the funding gap automatically.';$('loanInput').value=0});
-$('country').addEventListener('change',()=>{const p=profiles[$('country').value];$('currency').value=p.currency;$('areaUnit').value=p.unit;$('rate').value=p.rate;$('rateLoan').value=p.loan;$('rateHint').textContent='Editable planning benchmark for this market. Replace it with a local written quote.'});
-$('resetBtn').addEventListener('click',()=>setTimeout(()=>{$('plotCostWrap').hidden=true;$('loanChoice').value='gap';$('loanInputLabel').textContent='Preferred loan amount (optional)';$('loanInputHint').textContent='Leave at 0 to calculate the funding gap automatically.';$('country').value='IN';$('currency').value='INR';$('areaUnit').value='sqft';$('rate').value=2200;$('rateLoan').value=8.5;$('results').classList.remove('show');$('error').classList.remove('show');last=null},0));
+function convertAreaUnit(nextUnit){const oldUnit=$('areaUnit').value;if(oldUnit===nextUnit)return;const factor=10.7639;if(oldUnit==='sqft'){$('houseArea').value=(n('houseArea')/factor).toFixed(2);$('rate').value=(n('rate')*factor).toFixed(2)}else{$('houseArea').value=(n('houseArea')*factor).toFixed(2);$('rate').value=(n('rate')/factor).toFixed(2)}$('areaUnit').value=nextUnit}\n$('areaUnit').addEventListener('change',()=>{const next=$('areaUnit').value;const old=next==='sqft'?'sqm':'sqft';$('areaUnit').value=old;convertAreaUnit(next)});\n$('country').addEventListener('change',()=>{const p=profiles[$('country').value];convertAreaUnit(p.unit);$('currency').value=p.currency;$('rate').value=p.rate;$('rateLoan').value=p.loan;$('rateHint').textContent='Illustrative editable starting input for this market, not a verified average. Replace it with a local written quote.'});
+$('resetBtn').addEventListener('click',()=>setTimeout(()=>{$('plotCostWrap').hidden=true;$('loanChoice').value='gap';$('loanInputLabel').textContent='Preferred loan amount (optional)';$('loanInputHint').textContent='Leave at 0 to calculate the funding gap automatically.';$('country').value='IN';$('currency').value='INR';$('areaUnit').value='sqft';$('rate').value=2200;$('rateHint').textContent='Illustrative starting input only, not a verified market average. Replace with a local written contractor quote.';$('rateLoan').value=8.5;$('results').classList.remove('show');$('error').classList.remove('show');last=null},0));
 $('printReport').addEventListener('click',()=>window.print());
 $('copyReport').addEventListener('click',()=>{if(!last)return;const x=last;const report='Future Home Construction Plan\nCountry: '+$('country').selectedOptions[0].textContent+'\nTimeline: '+x.y+' years\nFuture project budget: '+money(x.project)+'\nProjected savings: '+money(x.savings)+'\nPlanned loan: '+money(x.plannedLoan)+'\nEstimated EMI: '+money(x.homeEmi)+'\nExpected monthly income: '+money(x.futureSalary)+'\nRequired monthly income: '+money(x.requiredSalary)+'\nRecommended monthly saving: '+money(x.reqMonthly)+'\nPlanning estimate only; verify all local costs and lender terms.';if(navigator.clipboard?.writeText)navigator.clipboard.writeText(report).then(()=>$('copyReport').textContent='Copied').catch(()=>window.prompt('Copy your report',report));else window.prompt('Copy your report',report)});
 })();
