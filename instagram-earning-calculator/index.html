@@ -64,9 +64,11 @@
 <div class="field"><label for="storyReach">Average reach per Story frame</label><input id="storyReach" type="number" min="0" step="1" value="1500" inputmode="numeric"></div>
 <div class="field"><label for="avgLikes">Average likes per recent post</label><input id="avgLikes" type="number" min="0" step="1" value="500" inputmode="numeric"></div>
 <div class="field"><label for="avgComments">Average comments per recent post</label><input id="avgComments" type="number" min="0" step="1" value="35" inputmode="numeric"></div>
-<div class="field"><label for="brandCpm">Brand CPM assumption (per 1,000 reach)</label><input id="brandCpm" type="number" min="0" step="any" value="500" inputmode="decimal"><small>Editable planning assumption, not an official Instagram rate or verified market average.</small></div>
+<div class="field"><label for="brandCpm">Brand CPM assumption (per 1,000 Reel views / reach)</label><input id="brandCpm" type="number" min="0" step="any" value="500" inputmode="decimal"><small>Use an amount you would quote per 1,000 views. Instagram has no universal fixed Reels payout rate.</small></div>
+<div class="field"><label for="reelDeals">Sponsored Reels you expect per month</label><input id="reelDeals" type="number" min="0" step="1" value="0" inputmode="numeric"></div>
 </div>
 <div class="callout">Follower-based engagement rate = (average likes + average comments) ÷ followers × 100. It is a simple comparison metric; it is not the same as reach-based engagement.</div>
+<div class="calculate-action" style="margin-top:14px"><button class="btn calculate-main" id="quickCalculateEarnings" type="button">Calculate My Instagram Earnings</button><p>Enter followers, typical Reel views and sponsored Reels per month for a quick estimate. Other income sources are optional below.</p></div>
 </section>
 </div></section>
 
@@ -74,7 +76,7 @@
 <div class="section-head"><h2>1. Brand collaborations and sponsored content</h2><p>Estimate your rate card for Reels, photo posts, carousels and Story sets. Add campaign rights only when a brand actually requests them.</p></div>
 <div class="surface">
 <div class="field-grid">
-<div class="field"><label for="reelDeals">Sponsored Reels per month</label><input id="reelDeals" type="number" min="0" step="1" value="2"></div>
+
 <div class="field"><label for="photoDeals">Sponsored photo posts per month</label><input id="photoDeals" type="number" min="0" step="1" value="0"></div>
 <div class="field"><label for="carouselDeals">Sponsored carousels per month</label><input id="carouselDeals" type="number" min="0" step="1" value="1"></div>
 <div class="field"><label for="storyDeals">Sponsored Story sets per month</label><input id="storyDeals" type="number" min="0" step="1" value="2"></div>
@@ -111,10 +113,7 @@
 <div class="field"><label for="otherIncome">Other monthly income</label><input id="otherIncome" type="number" min="0" step="any" value="0"></div>
 </article>
 </div>
-<div class="calculate-action">
-  <button class="btn calculate-main" id="calculateEarnings" type="button">Calculate My Instagram Earnings</button>
-  <p>Enter your details above, then calculate to view your monthly income estimate and rate card.</p>
-</div>
+<div class="calculate-action"><button class="btn calculate-main" id="calculateEarnings" type="button">Recalculate Full Income Estimate</button><p>Use this after adding affiliate, subscription, Gifts or product income below.</p></div>
 </div></section>
 
 <section class="section" id="results"><div class="wrap">
