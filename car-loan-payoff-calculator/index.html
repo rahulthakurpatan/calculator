@@ -30,7 +30,7 @@
 <div class="field"><label for="balance">Current loan balance</label><input id="balance" type="number" min="1" step="0.01" value="22000" required><div class="hint">Enter the outstanding principal, not the car's original purchase price.</div></div>
 <div class="field"><label for="apr">Annual interest rate (APR %)</label><input id="apr" type="number" min="0" max="100" step="0.01" value="7.5" required></div>
 <div class="field"><label for="payment">Regular monthly payment</label><input id="payment" type="number" min="0.01" step="0.01" value="450" required><div class="hint">Your normal scheduled payment before extra payments.</div></div>
-<div class="field"><label for="nextDate">Next payment date</label><input id="nextDate" type="date" required></div>
+<div class="field"><label for="asOfDate">Balance as of date</label><input id="asOfDate" type="date" required><div class="hint">The date your current balance is accurate as of.</div></div><div class="field"><label for="nextDate">Next payment date</label><input id="nextDate" type="date" required></div>
 <div class="field"><label for="method">Interest calculation method</label><select id="method"><option value="daily">Daily simple interest (actual days / 365)</option><option value="monthly">Monthly periodic interest (APR / 12)</option></select><div class="hint">Check your loan agreement or ask your lender which method applies.</div></div>
 <div class="field full"><label for="frequency">Payment schedule</label><select id="frequency"><option value="monthly">Monthly payment</option><option value="biweekly">Every 2 weeks (half of monthly payment each time)</option></select><div class="hint">Biweekly mode models 26 half-payments per year. Your lender must credit payments when received for the estimate to match your account.</div></div>
 </div></div>
@@ -91,7 +91,7 @@ const $=id=>document.getElementById(id);
 const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
 $('nextDate').value=today.toISOString().slice(0,10);
 $('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);
-let lastSchedule=[];
+let lastSchedule=[],lastBase=null,lastExtra=null;
 const currency=()=> $('currency').value;
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:currency(),maximumFractionDigits:2}).format(Number.isFinite(n)?n:0);
 const parseDate=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12)};
@@ -99,7 +99,7 @@ const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
 const addMonth=d=>{const x=new Date(d);const day=x.getDate();x.setDate(1);x.setMonth(x.getMonth()+1);const last=new Date(x.getFullYear(),x.getMonth()+1,0).getDate();x.setDate(Math.min(day,last));return x};
 const fmtDate=d=>new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric'}).format(d);
 const monthsBetween=(a,b)=>Math.max(0,Math.round((b-a)/(1000*60*60*24*30.4375)));
-function simulate({balance,apr,payment,extra,lump,lumpDate,start,method,frequency}){
+function simulate({balance,apr,payment,extra,lump,lumpDate,start,asOf,method,frequency}){
  let bal=balance,interestTotal=0,paidTotal=0,count=0,date=new Date(start),rows=[],points=[{date:new Date(start),balance:bal}],lumpApplied=false;
  const max=1200,periodicPay=frequency==='biweekly'?payment/2:payment,periodicExtra=frequency==='biweekly'?extra/2:extra;
  while(bal>0.005&&count<max){
@@ -139,24 +139,24 @@ function showResults(base,extra,fee){
  $('interestSaved').textContent=money(saved);$('timeSaved').textContent=months+' months';$('newDate').textContent=fmtDate(extra.payoff);$('netSaved').textContent=money(saved-fee);
  $('baseDate').textContent=fmtDate(base.payoff);$('baseInterest').textContent=money(base.interest);$('basePaid').textContent=money(base.paid);$('baseCount').textContent=base.count;
  $('extraDate').textContent=fmtDate(extra.payoff);$('extraInterest').textContent=money(extra.interest);$('extraPaid').textContent=money(extra.paid);$('extraCount').textContent=extra.count;
- $('methodNote').textContent='Model: '+($('method').value==='daily'?'daily simple interest using actual day gaps (first period approximated as 30 days)':'monthly periodic interest at APR ÷ 12')+'. '+($('frequency').value==='biweekly'?'Biweekly mode uses 26 half-monthly payments per year.':'Monthly payment dates are advanced by calendar month.')+' Lump sum is applied at the first modeled payment date on or after its entered date. The entered fee is deducted from estimated interest savings only; it is not added to the amortization schedule.';
+ $('methodNote').textContent='Model: '+($('method').value==='daily'?'daily simple interest using actual day gaps (first period approximated as 30 days)':'monthly periodic interest at APR ÷ 12')+'. '+($('frequency').value==='biweekly'?'Biweekly mode uses 26 half-monthly payments per year.':'Monthly payment dates are advanced by calendar month.')+' Lump sum is applied at the first modeled payment date on or after its entered date. The current balance is treated as accurate on the balance-as-of date. The daily-interest model accrues actual days from that date to the next payment date and between later payments. The entered fee is deducted from estimated interest savings only; it is not added to the amortization schedule.';
  $('scheduleBody').innerHTML=extra.rows.slice(0,18).map(r=>'<tr><td>'+fmtDate(r.date)+'</td><td>'+money(r.opening)+'</td><td>'+money(r.interest)+'</td><td>'+money(r.payment)+'</td><td>'+money(r.principal)+'</td><td>'+money(r.closing)+'</td></tr>').join('');
- lastSchedule=extra.rows;drawChart(base,extra);$('resultsSection').classList.add('show');$('resultsSection').scrollIntoView({behavior:'smooth',block:'start'});
+ lastSchedule=extra.rows;lastBase=base;lastExtra=extra;drawChart(base,extra);$('resultsSection').classList.add('show');$('resultsSection').scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('loanForm').addEventListener('submit',e=>{
  e.preventDefault();$('errorBox').classList.remove('show');
- const v={balance:Number($('balance').value),apr:Number($('apr').value),payment:Number($('payment').value),extra:Number($('extraMonthly').value)||0,lump:Number($('lumpSum').value)||0,lumpDate:$('lumpDate').value?parseDate($('lumpDate').value):null,start:parseDate($('nextDate').value),method:$('method').value,frequency:$('frequency').value};
+ const v={balance:Number($('balance').value),apr:Number($('apr').value),payment:Number($('payment').value),extra:Number($('extraMonthly').value)||0,lump:Number($('lumpSum').value)||0,lumpDate:$('lumpDate').value?parseDate($('lumpDate').value):null,start:parseDate($('nextDate').value),asOf:parseDate($('asOfDate').value),method:$('method').value,frequency:$('frequency').value};
  const fee=Number($('penalty').value)||0;
  if(!v.nextDate&&false){}
- if(!Number.isFinite(v.balance)||v.balance<=0||!Number.isFinite(v.apr)||v.apr<0||v.apr>100||!Number.isFinite(v.payment)||v.payment<=0||v.extra<0||v.lump<0||fee<0||!$('nextDate').value){$('errorBox').textContent='Please enter a positive loan balance and regular payment, a valid APR between 0% and 100%, and non-negative extra payments and fee.';$('errorBox').classList.add('show');return;}
+ if(!Number.isFinite(v.balance)||v.balance<=0||!Number.isFinite(v.apr)||v.apr<0||v.apr>100||!Number.isFinite(v.payment)||v.payment<=0||v.extra<0||v.lump<0||fee<0||!$('nextDate').value||!$('asOfDate').value||parseDate($('nextDate').value)<parseDate($('asOfDate').value)){$('errorBox').textContent='Please enter a positive loan balance and regular payment, a valid APR between 0% and 100%, and non-negative extra payments and fee.';$('errorBox').classList.add('show');return;}
  const base=simulate({...v,extra:0,lump:0,lumpDate:null}),extra=simulate(v);
  if(base.error||extra.error){$('errorBox').textContent=base.error||extra.error;$('errorBox').classList.add('show');return;}
  showResults(base,extra,fee);
 });
-$('resetBtn').addEventListener('click',()=>{ $('balance').value=22000;$('apr').value=7.5;$('payment').value=450;$('extraMonthly').value=100;$('lumpSum').value=1000;$('penalty').value=0;$('method').value='daily';$('frequency').value='monthly';$('currency').value='USD';$('nextDate').value=today.toISOString().slice(0,10);$('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);$('resultsSection').classList.remove('show');$('errorBox').classList.remove('show');});
+$('resetBtn').addEventListener('click',()=>{ $('balance').value=22000;$('apr').value=7.5;$('payment').value=450;$('extraMonthly').value=100;$('lumpSum').value=1000;$('penalty').value=0;$('method').value='daily';$('frequency').value='monthly';$('currency').value='USD';$('asOfDate').value=today.toISOString().slice(0,10);$('nextDate').value=today.toISOString().slice(0,10);$('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);$('resultsSection').classList.remove('show');$('errorBox').classList.remove('show');});
 $('csvBtn').addEventListener('click',()=>{if(!lastSchedule.length)return;const rows=[['Payment date','Opening balance','Interest','Payment','Principal paid','Closing balance'],...lastSchedule.map(r=>[fmtDate(r.date),r.opening.toFixed(2),r.interest.toFixed(2),r.payment.toFixed(2),r.principal.toFixed(2),r.closing.toFixed(2)])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='car-loan-payoff-schedule.csv';a.click();URL.revokeObjectURL(url);});
 $('printBtn').addEventListener('click',()=>window.print());$('editBtn').addEventListener('click',()=>$('loanForm').scrollIntoView({behavior:'smooth',block:'start'}));
-let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if($('resultsSection').classList.contains('show'))$('loanForm').requestSubmit();},150);});
+let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(lastBase&&lastExtra)drawChart(lastBase,lastExtra);},150);});
 })();
 </script>
 </body></html>
