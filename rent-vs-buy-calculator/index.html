@@ -157,8 +157,8 @@ function simulate(){
  for(let m=1;m<=months;m++){
    const yearIndex=Math.floor((m-1)/12);
    if(m>1&&((m-1)%12===0)){rent*=1+v('rentGrowth')/100;homeValue*=1+v('appreciation')/100;ownerCost*=1+v('ownerCostGrowth')/100;}
-   const interest=balance*(rate/1200),principal=Math.min(balance,Math.max(0,payment-interest));balance=Math.max(0,balance-principal);interestPaid+=interest;
-   const ownMonthly=payment+ownerCost, rentMonthly=rent+rentIns;
+   const mortgageDue=balance>0?payment:0;const interest=balance*(rate/1200),principal=Math.min(balance,Math.max(0,mortgageDue-interest));balance=Math.max(0,balance-principal);interestPaid+=interest;
+   const ownMonthly=mortgageDue+ownerCost, rentMonthly=rent+rentIns;
    rentPaid+=rentMonthly;
    // Both households get the same monthly housing cash budget; the lower-cost option invests the difference.
    const gap=ownMonthly-rentMonthly;
