@@ -69,7 +69,8 @@
         ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/', 'Estimate your auto loan payoff date and interest savings with extra payments'],
         ['Personal Loan Calculator', '/personal-loan-calculator/', 'Calculate monthly payments, interest, fees and compare loan offers'],
         ['Mortgage Affordability Calculator', '/mortgage-affordability-calculator/', 'Estimate your home price from income, debt, down payment and housing costs'],
-        ['Rent vs Buy Calculator', '/rent-vs-buy-calculator/', 'Compare renting with buying using home equity, rent growth and investment returns']
+        ['Rent vs Buy Calculator', '/rent-vs-buy-calculator/', 'Compare renting with buying using home equity, rent growth and investment returns'],
+        ['Break Even Calculator', '/break-even-calculator/', 'Calculate break-even units, revenue, contribution margin, target profit and margin of safety']
       ]
     },
     {
