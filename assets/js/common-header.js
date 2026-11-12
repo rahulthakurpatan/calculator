@@ -64,6 +64,8 @@
         ['Retirement Readiness & Income Planner', '/retirement-calculator/', 'Estimate your retirement corpus, savings gap, income and portfolio longevity'],
         ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/', 'Set an emergency savings target and estimate cash runway after income loss'],
         ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/', 'Plan payments across multiple cards and compare Snowball vs Avalanche'],
+        ['Credit Card Balance Transfer Calculator', '/credit-card-balance-transfer-calculator/', 'Compare balance transfer fees, promotional APR and payoff savings'],
+        ['Debt Consolidation Calculator', '/debt-consolidation-calculator/', 'Compare consolidating debts into one payment and estimate total costs'],
         ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/', 'Estimate your auto loan payoff date and interest savings with extra payments']
       ]
     },
