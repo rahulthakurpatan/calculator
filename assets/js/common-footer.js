@@ -32,6 +32,7 @@
     ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/'],
     ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/'],
     ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/'],
+    ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/'],
     ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
     ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/'],
