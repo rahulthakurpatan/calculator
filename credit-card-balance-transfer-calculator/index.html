@@ -40,8 +40,8 @@
 <div class="field full"><label>How will you pay the transfer fee?</label><div class="seg"><label><input type="radio" name="feeMode" value="add" checked> Add fee to transferred balance</label><label><input type="radio" name="feeMode" value="upfront"> Pay fee upfront (outside monthly budget)</label></div></div>
 </div></div>
 <div class="stepbox"><h3 class="step-title"><span class="stepno">3</span>Optional repayment assumptions</h3><div class="grid">
-<div class="field"><label for="annualFeeTiming">Annual fee treatment</label><select id="annualFeeTiming"><option value="each">Include annual fee each year until payoff</option><option value="first">Include one annual fee only</option></select></div>
-<div class="field"><label for="minimumPaymentMode">Minimum payment model</label><select id="minimumPaymentMode"><option value="interest">Interest + 1% of balance (estimate)</option><option value="none">No issuer minimum rule; use full budget</option></select><div class="hint">Actual minimum payment formulas vary by issuer. This is a planning estimate.</div></div>
+<div class="field"><label for="currentFeeAfterTransfer">Include current card annual fee after transfer?</label><select id="currentFeeAfterTransfer"><option value="yes">Yes — assume the current account stays open</option><option value="no">No — exclude future current-card annual fees</option></select><div class="hint">A balance transfer does not automatically close the old account. Choose based on your plan.</div></div><div class="field"><label for="annualFeeTiming">Annual fee treatment</label><select id="annualFeeTiming"><option value="each">Include annual fee each year until payoff</option><option value="first">Include one annual fee only</option></select></div>
+<div class="field"><label for="minimumPaymentMode">Minimum payment model</label><select id="minimumPaymentMode"><option value="interest">Interest + 1% of balance (estimate)</option><option value="none">Apply full budget to highest APR (ignore issuer minimums)</option></select><div class="hint">Actual minimum payment formulas vary by issuer. This is a planning estimate.</div></div>
 </div></div>
 <div class="disclaimer">Estimates use a monthly APR/12 approximation, apply monthly interest before payment, and assume no new purchases, cash advances, late fees, penalty APR changes or additional charges. The transfer is assumed to happen before the first modeled payment. A real issuer may use daily balances, different minimum-payment rules, transfer deadlines and credit-limit restrictions. Check the card agreement and offer terms.</div>
 <div class="btnrow"><button class="btn" type="submit">Compare my balance transfer</button><button class="btn secondary" type="button" id="reset">Reset calculator</button></div><div class="error" id="error" role="alert"></div>
@@ -127,11 +127,11 @@ function run(){
  const feeAdded=feeMode==='add'?fee:0,feeUpfront=feeMode==='upfront'?fee:0;
  const common={oldApr:num('currentApr'),promoApr:num('promoApr'),postApr:num('postApr'),promoMonths:num('promoMonths'),budget,annualFee:0,feeMode,feeUpfront:0,annualFeeTiming:$('annualFeeTiming').value,minMode:$('minimumPaymentMode').value,startDate:dateVal()};
  const stay=simulate({...common,oldBalance:balance,newBalance:0,annualFee:num('currentAnnualFee'),feeUpfront:0});
- const moved=simulate({...common,oldBalance:balance-transfer,newBalance:transfer+feeAdded,annualFee:num('newAnnualFee'),feeUpfront});
+ const moved=simulate({...common,oldBalance:balance-transfer,newBalance:transfer+feeAdded,annualFee:num('newAnnualFee')+($('currentFeeAfterTransfer').value==='yes'?num('currentAnnualFee'):0),feeUpfront});
  if(stay.error||moved.error){$('error').textContent=stay.error||moved.error;$('error').classList.add('show');return;}
  const stayCost=stay.interest+stay.annualFees,moveCost=moved.interest+moved.annualFees+fee;
  const saving=stayCost-moveCost;
- const breakEven=(()=>{let a=0,b=0;for(let i=0;i<Math.max(stay.rows.length,moved.rows.length);i++){const sr=stay.rows[i],mr=moved.rows[i];a+=sr?sr.interest:0;b+=mr?mr.interest:0;if(i===0){a+=num('currentAnnualFee');b+=num('newAnnualFee')+fee;}else if(i%12===0){if($('annualFeeTiming').value==='each'){a+=num('currentAnnualFee');b+=num('newAnnualFee');}}if(a-b>0.005)return i+1;}return null;})();
+ const breakEven=(()=>{let a=0,b=0;for(let i=0;i<Math.max(stay.rows.length,moved.rows.length);i++){const sr=stay.rows[i],mr=moved.rows[i];a+=sr?sr.interest:0;b+=mr?mr.interest:0;if(i===0){a+=num('currentAnnualFee');b+=num('newAnnualFee')+($('currentFeeAfterTransfer').value==='yes'?num('currentAnnualFee'):0)+fee;}else if(i%12===0){if($('annualFeeTiming').value==='each'){a+=num('currentAnnualFee');b+=num('newAnnualFee')+($('currentFeeAfterTransfer').value==='yes'?num('currentAnnualFee'):0);}}if(a-b>0.005)return i+1;}return null;})();
  const curAnnual=stay.annualFees, newAnnual=moved.annualFees;
  const currency=c;
  $('verdictLabel').textContent=saving>0.005?'Estimated lower-cost option':'Estimated comparison';
@@ -141,7 +141,7 @@ function run(){
  $('promoBalance').textContent=fmt(moved.promoBalance,c);$('breakEven').textContent=breakEven?'Month '+breakEven:'Not reached';
  const line=(label,value)=>'<div class="rline"><span>'+label+'</span><b>'+value+'</b></div>';
  $('stayDetails').innerHTML=line('Estimated interest',fmt(stay.interest,c))+line('Annual fees',fmt(curAnnual,c))+line('Total estimated cost',fmt(stayCost,c))+line('Debt-free date',dateFmt(stay.payoffDate))+line('Time to repay',stay.months+' months');
- $('transferDetails').innerHTML=line('Interest on both balances',fmt(moved.interest,c))+line('Transfer fee',fmt(fee,c))+line('New card annual fees',fmt(newAnnual,c))+line('Total estimated cost',fmt(moveCost,c))+line('Debt-free date',dateFmt(moved.payoffDate))+line('Time to repay',moved.months+' months');
+ $('transferDetails').innerHTML=line('Interest on both balances',fmt(moved.interest,c))+line('Transfer fee',fmt(fee,c))+line('Current + new annual fees',fmt(newAnnual,c))+line('Total estimated cost',fmt(moveCost,c))+line('Debt-free date',dateFmt(moved.payoffDate))+line('Time to repay',moved.months+' months');
  $('stayCard').classList.toggle('winner',saving<0);$('transferCard').classList.toggle('winner',saving>0);
  const max=Math.max(stay.rows.length,moved.rows.length);
  $('scheduleBody').innerHTML=Array.from({length:max},(_,i)=>{const a=stay.rows[i],b=moved.rows[i];return '<tr><td>'+(i+1)+'</td><td>'+ (a?fmt(a.interest,c):'—')+'</td><td>'+(a?fmt(a.totalBalance,c):'—')+'</td><td>'+(b?fmt(b.interest,c):'—')+'</td><td>'+(b?fmt(b.totalBalance,c):'—')+'</td><td>'+(b?fmt(b.payment,c):'—')+'</td></tr>';}).join('');
