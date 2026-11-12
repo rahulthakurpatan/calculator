@@ -171,9 +171,9 @@ function simulate(){
      const elapsed=m/12,homeNow=price*Math.pow(1+v('appreciation')/100,elapsed);
      const selling=homeNow*v('sellingPct')/100;
      const gain=Math.max(0,homeNow-price),saleTax=gain*v('homeTax')/100;
-     const equity=Math.max(0,homeNow-balance-selling-saleTax);
+     const equity=homeNow-balance-selling-saleTax;
      const buyTotal=equity+buyPortfolio;
-     const gains=Math.max(0,rentPortfolio-savings+rentMove)*v('investmentTax')/100;
+     const gains=Math.max(0,rentPortfolio-savings+rentMove+rentDeposit)*v('investmentTax')/100;
      const rentTotal=Math.max(0,rentPortfolio-gains)+rentDeposit;
      const rec={year:elapsed,home:homeNow,balance,buy:buyTotal,renterPortfolio:rentPortfolio,rent:rentTotal,diff:buyTotal-rentTotal,equity,buyPortfolio,saleCosts:selling+saleTax,investmentTax:gains};
      rows.push(rec);
