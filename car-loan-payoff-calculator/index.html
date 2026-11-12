@@ -90,7 +90,7 @@
 const $=id=>document.getElementById(id);
 const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
 $('asOfDate').value=today.toISOString().slice(0,10);
-$('nextDate').value=today.toISOString().slice(0,10);
+$('nextDate').value=new Date(today.getFullYear(),today.getMonth(),today.getDate()+30).toISOString().slice(0,10);
 $('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);
 let lastSchedule=[],lastBase=null,lastExtra=null;
 const currency=()=> $('currency').value;
@@ -153,7 +153,7 @@ $('loanForm').addEventListener('submit',e=>{
  if(base.error||extra.error){$('errorBox').textContent=base.error||extra.error;$('errorBox').classList.add('show');return;}
  showResults(base,extra,fee);
 });
-$('resetBtn').addEventListener('click',()=>{ $('balance').value=22000;$('apr').value=7.5;$('payment').value=450;$('extraMonthly').value=100;$('lumpSum').value=1000;$('penalty').value=0;$('method').value='daily';$('frequency').value='monthly';$('currency').value='USD';$('asOfDate').value=today.toISOString().slice(0,10);$('nextDate').value=today.toISOString().slice(0,10);$('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);$('resultsSection').classList.remove('show');$('errorBox').classList.remove('show');});
+$('resetBtn').addEventListener('click',()=>{ $('balance').value=22000;$('apr').value=7.5;$('payment').value=450;$('extraMonthly').value=100;$('lumpSum').value=1000;$('penalty').value=0;$('method').value='daily';$('frequency').value='monthly';$('currency').value='USD';$('asOfDate').value=today.toISOString().slice(0,10);$('nextDate').value=new Date(today.getFullYear(),today.getMonth(),today.getDate()+30).toISOString().slice(0,10);$('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);$('resultsSection').classList.remove('show');$('errorBox').classList.remove('show');});
 $('csvBtn').addEventListener('click',()=>{if(!lastSchedule.length)return;const rows=[['Payment date','Opening balance','Interest','Payment','Principal paid','Closing balance'],...lastSchedule.map(r=>[fmtDate(r.date),r.opening.toFixed(2),r.interest.toFixed(2),r.payment.toFixed(2),r.principal.toFixed(2),r.closing.toFixed(2)])];const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='car-loan-payoff-schedule.csv';a.click();URL.revokeObjectURL(url);});
 $('printBtn').addEventListener('click',()=>window.print());$('editBtn').addEventListener('click',()=>$('loanForm').scrollIntoView({behavior:'smooth',block:'start'}));
 let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(lastBase&&lastExtra)drawChart(lastBase,lastExtra);},150);});
