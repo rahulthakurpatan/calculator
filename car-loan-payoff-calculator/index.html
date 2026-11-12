@@ -89,6 +89,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+$('asOfDate').value=today.toISOString().slice(0,10);
 $('nextDate').value=today.toISOString().slice(0,10);
 $('lumpDate').value=new Date(today.getFullYear(),today.getMonth()+1,Math.min(today.getDate(),28)).toISOString().slice(0,10);
 let lastSchedule=[],lastBase=null,lastExtra=null;
@@ -147,7 +148,6 @@ $('loanForm').addEventListener('submit',e=>{
  e.preventDefault();$('errorBox').classList.remove('show');
  const v={balance:Number($('balance').value),apr:Number($('apr').value),payment:Number($('payment').value),extra:Number($('extraMonthly').value)||0,lump:Number($('lumpSum').value)||0,lumpDate:$('lumpDate').value?parseDate($('lumpDate').value):null,start:parseDate($('nextDate').value),asOf:parseDate($('asOfDate').value),method:$('method').value,frequency:$('frequency').value};
  const fee=Number($('penalty').value)||0;
- if(!v.nextDate&&false){}
  if(!Number.isFinite(v.balance)||v.balance<=0||!Number.isFinite(v.apr)||v.apr<0||v.apr>100||!Number.isFinite(v.payment)||v.payment<=0||v.extra<0||v.lump<0||fee<0||!$('nextDate').value||!$('asOfDate').value||parseDate($('nextDate').value)<parseDate($('asOfDate').value)){$('errorBox').textContent='Please enter a positive loan balance and regular payment, a valid APR between 0% and 100%, and non-negative extra payments and fee.';$('errorBox').classList.add('show');return;}
  const base=simulate({...v,extra:0,lump:0,lumpDate:null}),extra=simulate(v);
  if(base.error||extra.error){$('errorBox').textContent=base.error||extra.error;$('errorBox').classList.add('show');return;}
