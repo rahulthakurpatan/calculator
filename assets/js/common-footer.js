@@ -38,6 +38,7 @@
     ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/'],
     ['Personal Loan Calculator', '/personal-loan-calculator/'],
     ['Mortgage Affordability Calculator', '/mortgage-affordability-calculator/'],
+    ['Rent vs Buy Calculator', '/rent-vs-buy-calculator/'],
     ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
     ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/'],
