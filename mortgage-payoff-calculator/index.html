@@ -159,8 +159,8 @@ function readInputs(){return {
  balance:num('balance'),rate:num('rate'),term:num('term'),monthlyPayment:num('payment'),
  asOf:dateFrom($('as-of').value),nextPayment:dateFrom($('next-payment').value),
  frequency:$('frequency').value,paymentMode:$('payment-mode').value,
- extraMonthly:num('extra-monthly'),annualExtra:num('annual-extra'),annualMonth:Number($('annual-month').value),
- lumpSum:num('lump-sum'),lumpDate:dateFrom($('lump-date').value),fee:num('prepayment-fee'),targetDate:dateFrom($('target-date').value)
+ extraMonthly:num('extra-monthly')??0,annualExtra:num('annual-extra')??0,annualMonth:Number($('annual-month').value),
+ lumpSum:num('lump-sum')??0,lumpDate:dateFrom($('lump-date').value),fee:num('prepayment-fee')??0,targetDate:dateFrom($('target-date').value)
 };}
 function validate(a){
  if(!Number.isFinite(a.balance)||a.balance<=0)return 'Enter an outstanding mortgage balance greater than zero.';
@@ -179,7 +179,7 @@ function accrue(balance,from,to,a){
  while(daysBetween(cursor,to)>0){
   const monthStart=new Date(cursor.getFullYear(),cursor.getMonth(),1,12);
   const monthEnd=new Date(cursor.getFullYear(),cursor.getMonth()+1,1,12);
-  const end=daysBetween(monthEnd,to)>0?to:monthEnd;
+  const end=daysBetween(monthEnd,to)>=0?monthEnd:to;
   const days=daysBetween(cursor,end);
   if(a.method==='daily')interest+=balance*(a.rate/100/365)*days;
   else{
