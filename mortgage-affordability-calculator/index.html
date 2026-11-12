@@ -165,10 +165,10 @@ function monthlyCost(price,rate,d){
 }
 function solvePrice(monthlyBudget,rate,d){
  const usable=Math.max(0,d.savings-d.reserve),cashLimit=(d.down+d.closing)>0?usable/(d.down+d.closing):0;
- if(monthlyBudget<=0||cashLimit<=0)return {price:0,cashLimit};
- let low=0,high=Math.min(cashLimit,1e12);
+ if(monthlyBudget<=0||cashLimit<=0)return {price:0,cashLimit,incomePrice:0};
+ let low=0,high=1e12;
  for(let i=0;i<100;i++){const mid=(low+high)/2,c=monthlyCost(mid,rate,d);if(c.total<=monthlyBudget)low=mid;else high=mid;}
- return {price:low,cashLimit};
+ return {price:Math.min(low,cashLimit),cashLimit,incomePrice:low};
 }
 function scenario(d){
  const housingCap=d.gross*d.housingRatio, debtCap=d.gross*d.totalRatio-d.debt;
