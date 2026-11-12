@@ -93,3 +93,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 - `/credit-card-debt-payoff-calculator/` — Credit Card Debt Payoff Calculator (multiple cards, APR, minimum payments, Snowball/Avalanche comparison, interest estimate and monthly repayment schedule)
 
 - `/credit-card-balance-transfer-calculator/` — Credit Card Balance Transfer Calculator (compare keeping debt versus full or partial transfer, transfer fees, promotional APR, post-promo interest, break-even and payoff schedule)
+
+- `/debt-consolidation-calculator/` — Debt Consolidation Calculator (multiple selected debts, current payoff simulation, consolidation loan APR and term, origination and fixed fees, fee financing, same-budget repayment, extra/lump-sum payments, net savings, break-even and payoff schedule)
