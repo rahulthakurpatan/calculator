@@ -174,21 +174,10 @@ function validate(a){
  return '';
 }
 function accrue(balance,from,to,a){
- if(balance<=0||daysBetween(from,to)<=0)return 0;
- let cursor=new Date(from),interest=0;
- while(daysBetween(cursor,to)>0){
-  const monthStart=new Date(cursor.getFullYear(),cursor.getMonth(),1,12);
-  const monthEnd=new Date(cursor.getFullYear(),cursor.getMonth()+1,1,12);
-  const end=daysBetween(monthEnd,to)>=0?monthEnd:to;
-  const days=daysBetween(cursor,end);
-  if(a.method==='daily')interest+=balance*(a.rate/100/365)*days;
-  else{
-   const daysInMonth=daysBetween(monthStart,monthEnd);
-   interest+=balance*monthlyRate(a)*days/daysInMonth;
-  }
-  cursor=end;
- }
- return interest;
+ const days=daysBetween(from,to);
+ if(balance<=0||days<=0)return 0;
+ if(a.method==='daily')return balance*(a.rate/100/365)*days;
+ return balance*monthlyRate(a)*days/(365.25/12);
 }
 function scheduleDates(a){
  const dates=[],maxDate=addMonths(a.nextPayment,600);
@@ -217,7 +206,7 @@ function simulate(a,extraMonthlyOverride){
   if(ev.type==='lump'){
    const applied=Math.min(balance,a.lumpSum);
    balance=Math.max(0,balance-applied);totalPaid+=applied;
-   rows.push({type:'Lump sum',date:ev.date,opening,interest:0,regular:0,extra:applied,closing:balance});
+   rows.push({type:'Lump sum',date:ev.date,opening,interest:added,regular:0,extra:applied,closing:balance});
    if(balance<=0.005&&unpaidInterest<=0.005){payoff=ev.date;break;}
    continue;
   }
