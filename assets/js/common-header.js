@@ -67,7 +67,8 @@
         ['Credit Card Balance Transfer Calculator', '/credit-card-balance-transfer-calculator/', 'Compare balance transfer fees, promotional APR and payoff savings'],
         ['Debt Consolidation Calculator', '/debt-consolidation-calculator/', 'Compare consolidating debts into one payment and estimate total costs'],
         ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/', 'Estimate your auto loan payoff date and interest savings with extra payments'],
-        ['Personal Loan Calculator', '/personal-loan-calculator/', 'Calculate monthly payments, interest, fees and compare loan offers']
+        ['Personal Loan Calculator', '/personal-loan-calculator/', 'Calculate monthly payments, interest, fees and compare loan offers'],
+        ['Mortgage Affordability Calculator', '/mortgage-affordability-calculator/', 'Estimate your home price from income, debt, down payment and housing costs']
       ]
     },
     {
