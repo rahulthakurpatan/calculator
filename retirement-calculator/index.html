@@ -47,7 +47,7 @@
 <div class="field"><label for="age">Your current age</label><input id="age" type="number" min="18" max="100" value="35" required></div>
 <div class="field planning-only"><label for="retireAge">Desired retirement age</label><input id="retireAge" type="number" min="19" max="100" value="60" required></div>
 <div class="field"><label for="lifeAge">Plan until age</label><input id="lifeAge" type="number" min="40" max="120" value="90" required><div class="hint">Choose a planning horizon, not a prediction of lifespan.</div></div>
-<div class="field"><label for="household">Planning for</label><select id="household"><option value="individual">One person</option><option value="couple">Couple / household</option></select></div>
+<div class="field"><label for="household">Planning for</label><select id="household"><option value="individual">One person</option><option value="couple">Couple / household</option></select><div class="hint">For couples, enter combined household savings, contributions, spending and pension income.</div></div>
 </div>
 <div class="section-label">2. Current retirement savings</div>
 <div class="grid">
@@ -56,7 +56,7 @@
 <div class="field planning-only"><label for="employerSave">Employer contribution per month</label><input id="employerSave" type="number" min="0" step="any" value="150"><div class="hint">Include employer match or pension contributions you expect to receive.</div></div>
 <div class="field planning-only"><label for="stepUp">Annual contribution increase (%)</label><input id="stepUp" type="number" min="0" max="100" step=".1" value="3"></div>
 <div class="field retired-only" hidden><label for="withdrawal">Current monthly portfolio withdrawal</label><input id="withdrawal" type="number" min="0" step="any" value="1500"></div>
-<div class="field retired-only" hidden><label for="retiredAge">Age you retired</label><input id="retiredAge" type="number" min="18" max="100" value="65"></div>
+
 </div>
 <div class="section-label">Optional: Add other retirement assets</div>
 <p class="hint">Add accounts not already included in the current savings total. Only include assets you intend to use for retirement. Do not add the same balance twice.</p>
@@ -177,7 +177,7 @@ if(mode==='planning'){
 // Discount each retirement-year portfolio shortfall back to the retirement date.
 let pv=0;for(let a=retire;a<life;a++){const spend=startSpend*Math.pow(1+inflation,a-retire);let income=(a>=pensionStart?pension:0)+(a>=otherStart?other:0);otherEntries.forEach(x=>{if(a>=x.extra)income+=x.amount});pv+=Math.max(0,spend-income)/Math.pow(1+netDrawReturn,a-retire+1)}
 neededAtRetire=pv+legacy/Math.pow(1+netDrawReturn,Math.max(0,life-retire));shortfall=Math.max(0,neededAtRetire-corpus);readiness=neededAtRetire>0?Math.min(999,corpus/neededAtRetire*100):100;
-if(shortfall>0){let lo=0,hi=Math.max(1,baseMonthly+shortfall/Math.max(1,(retire-age)*12));for(let i=0;i<70;i++){const mid=(lo+hi)/2;const f=grow(current,mid,retire-age,pre,val('stepUp')/100);if(f>=neededAtRetire)hi=mid;else lo=mid}monthlyNeeded=Math.max(0,hi-(num('monthlySave')+num('employerSave')+num('monthlyExtra')+entries('asset-list').reduce((s,x)=>s+x.extra,0)))}
+if(shortfall>0){let lo=0,hi=Math.max(1,baseMonthly+shortfall/Math.max(1,(retire-age)*12));while(grow(current,hi,retire-age,pre,val('stepUp')/100)<neededAtRetire&&hi<1e15)hi*=2;for(let i=0;i<70;i++){const mid=(lo+hi)/2;const f=grow(current,mid,retire-age,pre,val('stepUp')/100);if(f>=neededAtRetire)hi=mid;else lo=mid}monthlyNeeded=Math.max(0,hi-(num('monthlySave')+num('employerSave')+num('monthlyExtra')+entries('asset-list').reduce((s,x)=>s+x.extra,0)))}
 baseDraw=drawdown(corpus,retire,life,startSpend,pension,pensionStart,other,otherStart,otherEntries,inflation,netDrawReturn,legacy)
 }
 const conservative=mode==='planning'?grow(current,num('monthlySave')+num('employerSave')+num('monthlyExtra'),retire-age,pre-.02,val('stepUp')/100):drawdown(corpus,startAge,life,startSpend,pension,pensionStart,other,otherStart,otherEntries,inflation,post-.02,legacy).ending;
