@@ -90,15 +90,14 @@ function simulate({oldBalance,newBalance,oldApr,promoApr,postApr,promoMonths,bud
   const iOld=old*rateOld, iNew=fresh*rateNew; old+=iOld;fresh+=iNew;interest+=iOld+iNew;
   if(annualFee>0 && (months===1 || (annualFeeTiming==='each' && (months-1)%12===0))){fees+=annualFee;feeCount++;if(months===1){} }
   let remainingBudget=budget;
-  const minOld=minMode==='interest'?Math.min(old,iOld+oldBalance*0.01):0;
-  const minNew=minMode==='interest'?Math.min(fresh,iNew+newBalance*0.01):0;
+  const minOld=minMode==='interest'?Math.min(old,iOld+old*0.01):0;
+  const minNew=minMode==='interest'?Math.min(fresh,iNew+fresh*0.01):0;
   const minTotal=minOld+minNew;
   if(budget+0.0001<minTotal) return {error:'Your monthly budget is below the estimated minimum payment for this month. Increase the budget or select the simpler payment model.'};
   let payOld=Math.min(old,minOld),payNew=Math.min(fresh,minNew);old-=payOld;fresh-=payNew;remainingBudget-=payOld+payNew;
   let targets=[{k:'old',bal:old,apr:oldApr},{k:'new',bal:fresh,apr:months<=promoMonths?promoApr:postApr}].sort((a,b)=>b.apr-a.apr);
   for(const t of targets){const p=Math.min(t.k==='old'?old:fresh,remainingBudget);if(t.k==='old')old-=p;else fresh-=p;remainingBudget-=p;}
-  const payment=payOld+payNew+(budget- (budget-remainingBudget-payOld-payNew)); // replaced below with actual
-  const actualPayment=Math.min(budget,before+iOld+iNew)+ (months===1 && feeMode==='upfront'?0:0);
+  const actualPayment=Math.max(0,before+iOld+iNew-old-fresh);
   paid+=actualPayment; totalCost=interest+fees;
   if(months===promoMonths)firstPromoSnapshot=fresh;
   rows.push({month:months,oldInterest:iOld+0,newInterest:iNew,oldBalance:old,newBalance:fresh,totalBalance:old+fresh,payment:actualPayment,interest:iOld+iNew,principal:Math.max(0,actualPayment-iOld-iNew)});
