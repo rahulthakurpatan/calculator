@@ -179,14 +179,14 @@ $('loanForm').addEventListener('submit',e=>{
  e.preventDefault();$('errorBox').classList.remove('show');
  const amount=num('amount'),apr=num('apr'),term=num('term')*($('termUnit').value==='years'?12:1),fee=feeTotal(amount,$('feeType').value,num('feeValue'),num('otherFees')),extra=num('extraMonthly'),lump=num('lumpSum'),lumpMonth=num('lumpMonth');
  const vals=[amount,apr,term,fee,extra,lump,lumpMonth,num('existingDebt')];
- if(vals.some(v=>!Number.isFinite(v))||amount<=0||amount>100000000||apr<0||apr>100||term<1||term>600||fee<0||extra<0||lump<0||lumpMonth<1||lumpMonth>600||num('existingDebt')<0||( $('income').value!==''&&(!Number.isFinite(num('income'))||num('income')<=0))){$('errorBox').textContent='Please enter a positive loan amount, a rate from 0% to 100%, a term from 1 to 600 months, and non-negative fees and extra payments.';$('errorBox').classList.add('show');return;}
+ if(vals.some(v=>!Number.isFinite(v))||amount<=0||amount>100000000||apr<0||apr>100||term<1||term>600||fee<0||num('feeValue')<0||num('otherFees')<0||extra<0||lump<0||lumpMonth<1||lumpMonth>600||num('existingDebt')<0||( $('income').value!==''&&(!Number.isFinite(num('income'))||num('income')<=0))){$('errorBox').textContent='Please enter a positive loan amount, a rate from 0% to 100%, a term from 1 to 600 months, and non-negative fees and extra payments.';$('errorBox').classList.add('show');return;}
  if(fee>amount*2||($('feeTreatment').value!=='financed'&&fee>=amount)){$('errorBox').textContent='Please check the fees. Fees deducted or paid separately must be lower than the requested loan amount.';$('errorBox').classList.add('show');return;}
  const result=buildOffer(amount,apr,term,fee,$('feeTreatment').value,extra,lump,lumpMonth);
  if(result.error){$('errorBox').textContent=result.error;$('errorBox').classList.add('show');return;}
  let offerB=null;
  if($('compareToggle').checked){
   const aprB=num('aprB'),termB=num('termB'),feeB=feeTotal(amount,$('feeBType').value,num('feeBValue'),num('otherFeesB'));
-  if(!Number.isFinite(aprB)||aprB<0||aprB>100||!Number.isInteger(termB)||termB<1||termB>600||feeB<0||feeB>amount*2||($('feeTreatmentB').value!=='financed'&&feeB>=amount)){$('errorBox').textContent='Please enter a valid Offer B rate, term and fees. Fees paid upfront must be lower than the loan amount.';$('errorBox').classList.add('show');return;}
+  if(!Number.isFinite(aprB)||aprB<0||aprB>100||!Number.isInteger(termB)||termB<1||termB>600||feeB<0||num('feeBValue')<0||num('otherFeesB')<0||feeB>amount*2||($('feeTreatmentB').value!=='financed'&&feeB>=amount)){$('errorBox').textContent='Please enter a valid Offer B rate, term and fees. Fees paid upfront must be lower than the loan amount.';$('errorBox').classList.add('show');return;}
   offerB=buildOffer(amount,aprB,termB,feeB,$('feeTreatmentB').value,0,0,1);
   if(offerB.error){$('errorBox').textContent=offerB.error;$('errorBox').classList.add('show');return;}
  }
