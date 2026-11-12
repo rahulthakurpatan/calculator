@@ -36,6 +36,7 @@
     ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/'],
     ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/'],
     ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/'],
+    ['Personal Loan Calculator', '/personal-loan-calculator/']
     ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
     ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/'],
