@@ -104,9 +104,9 @@ function simulate({balance,apr,payment,extra,lump,lumpDate,start,asOf,method,fre
  const max=1200,periodicPay=frequency==='biweekly'?payment/2:payment,periodicExtra=frequency==='biweekly'?extra/2:extra;
  while(bal>0.005&&count<max){
   const opening=bal;
-  let interest=method==='daily'?bal*(apr/100)/365*Math.max(1,Math.round((date-(count?rows[count-1].date:start))/(86400000))):bal*(apr/100)/12;
-  // The first daily-interest period is estimated as 30 days because the entered date is the next due date.
-  if(method==='daily'&&count===0)interest=bal*(apr/100)/365*30;
+  const priorDate=count?rows[count-1].date:asOf;
+  const elapsedDays=Math.max(0,Math.round((date-priorDate)/(86400000)));
+  let interest=method==='daily'?bal*(apr/100)/365*elapsedDays:bal*(apr/100)/12;
   bal+=interest;interestTotal+=interest;
   let lumpNow=0;
   if(!lumpApplied&&lump>0&&lumpDate&&date>=lumpDate){lumpNow=lump;lumpApplied=true;}
@@ -139,7 +139,7 @@ function showResults(base,extra,fee){
  $('interestSaved').textContent=money(saved);$('timeSaved').textContent=months+' months';$('newDate').textContent=fmtDate(extra.payoff);$('netSaved').textContent=money(saved-fee);
  $('baseDate').textContent=fmtDate(base.payoff);$('baseInterest').textContent=money(base.interest);$('basePaid').textContent=money(base.paid);$('baseCount').textContent=base.count;
  $('extraDate').textContent=fmtDate(extra.payoff);$('extraInterest').textContent=money(extra.interest);$('extraPaid').textContent=money(extra.paid);$('extraCount').textContent=extra.count;
- $('methodNote').textContent='Model: '+($('method').value==='daily'?'daily simple interest using actual day gaps (first period approximated as 30 days)':'monthly periodic interest at APR ÷ 12')+'. '+($('frequency').value==='biweekly'?'Biweekly mode uses 26 half-monthly payments per year.':'Monthly payment dates are advanced by calendar month.')+' Lump sum is applied at the first modeled payment date on or after its entered date. The current balance is treated as accurate on the balance-as-of date. The daily-interest model accrues actual days from that date to the next payment date and between later payments. The entered fee is deducted from estimated interest savings only; it is not added to the amortization schedule.';
+ $('methodNote').textContent='Model: '+($('method').value==='daily'?'daily simple interest using actual day gaps (actual days from the balance-as-of date)':'monthly periodic interest at APR ÷ 12')+'. '+($('frequency').value==='biweekly'?'Biweekly mode uses 26 half-monthly payments per year.':'Monthly payment dates are advanced by calendar month.')+' Lump sum is applied at the first modeled payment date on or after its entered date. The current balance is treated as accurate on the balance-as-of date. The daily-interest model accrues actual days from that date to the next payment date and between later payments. The entered fee is deducted from estimated interest savings only; it is not added to the amortization schedule.';
  $('scheduleBody').innerHTML=extra.rows.slice(0,18).map(r=>'<tr><td>'+fmtDate(r.date)+'</td><td>'+money(r.opening)+'</td><td>'+money(r.interest)+'</td><td>'+money(r.payment)+'</td><td>'+money(r.principal)+'</td><td>'+money(r.closing)+'</td></tr>').join('');
  lastSchedule=extra.rows;lastBase=base;lastExtra=extra;drawChart(base,extra);$('resultsSection').classList.add('show');$('resultsSection').scrollIntoView({behavior:'smooth',block:'start'});
 }
