@@ -82,7 +82,7 @@ const dateVal=()=> $('startDate').value ? new Date($('startDate').value+'T12:00:
 const addMonths=(date,n)=>{const d=new Date(date);const day=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+n);const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(day,last));return d;};
 const dateFmt=d=>d.toLocaleDateString(undefined,{year:'numeric',month:'short'});
 function simulate({oldBalance,newBalance,oldApr,promoApr,postApr,promoMonths,budget,annualFee,feeMode,feeUpfront,annualFeeTiming,minMode,startDate}){
- let old=oldBalance, fresh=newBalance, interest=0,fees=feeUpfront,paid=0,months=0,promoEndBalance=0,feeCount=0,rows=[],totalCost=0,breakEvenCost=0;
+ let old=oldBalance, fresh=newBalance, interest=0,fees=0,paid=0,months=0,promoEndBalance=0,feeCount=0,rows=[],totalCost=0,breakEvenCost=0;
  const maxMonths=1200; let firstPromoSnapshot=null;
  while((old+fresh)>0.005 && months<maxMonths){
   months++; const before=old+fresh;
@@ -130,7 +130,7 @@ function run(){
  const stay=simulate({...common,oldBalance:balance,newBalance:0,annualFee:num('currentAnnualFee'),feeUpfront:0});
  const moved=simulate({...common,oldBalance:balance-transfer,newBalance:transfer+feeAdded,annualFee:num('newAnnualFee'),feeUpfront});
  if(stay.error||moved.error){$('error').textContent=stay.error||moved.error;$('error').classList.add('show');return;}
- const stayCost=stay.interest+stay.fees,moveCost=moved.interest+moved.fees+feeUpfront;
+ const stayCost=stay.interest+stay.annualFees,moveCost=moved.interest+moved.annualFees+fee;
  const saving=stayCost-moveCost;
  const breakEven=(()=>{let a=0,b=0;for(let i=0;i<Math.max(stay.rows.length,moved.rows.length);i++){const sr=stay.rows[i],mr=moved.rows[i];a+=sr?sr.interest:0;b+=mr?mr.interest:0;if(i===0){a+=num('currentAnnualFee');b+=num('newAnnualFee')+fee;}else if(i%12===0){if($('annualFeeTiming').value==='each'){a+=num('currentAnnualFee');b+=num('newAnnualFee');}}if(a-b>0.005)return i+1;}return null;})();
  const curAnnual=stay.annualFees, newAnnual=moved.annualFees;
