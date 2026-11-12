@@ -151,7 +151,7 @@ function chart(rows,target){const svg=$('retirement-chart');if(!rows.length){svg
 function calculate(e){
 if(e)e.preventDefault();const country=$('country').value,currency=$('currency').value;lastCurrency=currency;
 const age=val('age'),life=val('lifeAge'),retire=mode==='planning'?val('retireAge'):age;
-const startAge=mode==='planning'?retire:Math.max(age,val('retiredAge'));
+const startAge=mode==='planning'?retire:age;
 const current=num('currentSavings')+entries('asset-list').reduce((s,x)=>s+x.amount,0);
 const pension=num('pensionIncome'),pensionStart=val('pensionStart'),other=num('otherIncome'),otherStart=val('otherStart');
 const otherEntries=entries('income-list').filter(x=>x.amount>0);
@@ -177,7 +177,7 @@ if(mode==='planning'){
 // Discount each retirement-year portfolio shortfall back to the retirement date.
 let pv=0;for(let a=retire;a<life;a++){const spend=startSpend*Math.pow(1+inflation,a-retire);let income=(a>=pensionStart?pension:0)+(a>=otherStart?other:0);otherEntries.forEach(x=>{if(a>=x.extra)income+=x.amount});pv+=Math.max(0,spend-income)/Math.pow(1+netDrawReturn,a-retire+1)}
 neededAtRetire=pv+legacy/Math.pow(1+netDrawReturn,Math.max(0,life-retire));shortfall=Math.max(0,neededAtRetire-corpus);readiness=neededAtRetire>0?Math.min(999,corpus/neededAtRetire*100):100;
-if(shortfall>0){let lo=0,hi=Math.max(1,baseMonthly+shortfall/Math.max(1,(retire-age)*12));for(let i=0;i<70;i++){const mid=(lo+hi)/2;const f=grow(current,mid,retire-age,pre,val('stepUp')/100);if(f>=neededAtRetire)hi=mid;else lo=mid}monthlyNeeded=hi}
+if(shortfall>0){let lo=0,hi=Math.max(1,baseMonthly+shortfall/Math.max(1,(retire-age)*12));for(let i=0;i<70;i++){const mid=(lo+hi)/2;const f=grow(current,mid,retire-age,pre,val('stepUp')/100);if(f>=neededAtRetire)hi=mid;else lo=mid}monthlyNeeded=Math.max(0,hi-(num('monthlySave')+num('employerSave')+num('monthlyExtra')+entries('asset-list').reduce((s,x)=>s+x.extra,0)))}
 baseDraw=drawdown(corpus,retire,life,startSpend,pension,pensionStart,other,otherStart,otherEntries,inflation,netDrawReturn,legacy)
 }
 const conservative=mode==='planning'?grow(current,num('monthlySave')+num('employerSave')+num('monthlyExtra'),retire-age,pre-.02,val('stepUp')/100):drawdown(corpus,startAge,life,startSpend,pension,pensionStart,other,otherStart,otherEntries,inflation,post-.02,legacy).ending;
