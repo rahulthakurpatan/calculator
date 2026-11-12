@@ -35,7 +35,7 @@
 <div class="field full"><label for="frequency">Payment schedule</label><select id="frequency"><option value="monthly">Monthly payment</option><option value="biweekly">Every 2 weeks (half of monthly payment each time)</option></select><div class="hint">Biweekly mode models 26 half-payments per year. Your lender must credit payments when received for the estimate to match your account.</div></div>
 </div></div>
 <div class="stepbox"><h3 class="step-title"><span class="stepno">2</span> Add extra payments</h3><div class="grid">
-<div class="field"><label for="extraMonthly">Extra payment each month</label><input id="extraMonthly" type="number" min="0" step="0.01" value="100"><div class="hint">Additional amount on top of the regular monthly payment.</div></div>
+<div class="field"><label for="extraMonthly">Extra payment per month</label><input id="extraMonthly" type="number" min="0" step="0.01" value="100"><div class="hint">Additional amount on top of the regular payment. In biweekly mode, this amount is split into 26 half-payments per year (13 monthly equivalents).</div></div>
 <div class="field"><label for="lumpSum">One-time lump-sum payment</label><input id="lumpSum" type="number" min="0" step="0.01" value="1000"></div>
 <div class="field"><label for="lumpDate">Date of lump-sum payment</label><input id="lumpDate" type="date"></div>
 <div class="field"><label for="penalty">Estimated prepayment fee / penalty</label><input id="penalty" type="number" min="0" step="0.01" value="0"><div class="hint">Enter a flat fee if your contract charges one. Leave at 0 if none applies.</div></div>
