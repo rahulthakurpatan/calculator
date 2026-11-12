@@ -60,6 +60,7 @@
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
         ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
         ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/', 'Compare refinance fees, monthly savings and break-even time'],
+        ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/', 'Estimate early payoff dates and interest savings from extra principal payments'],
         ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/', 'Set an emergency savings target and estimate cash runway after income loss'],
         ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/', 'Plan payments across multiple cards and compare Snowball vs Avalanche'],
         ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/', 'Estimate your auto loan payoff date and interest savings with extra payments']
