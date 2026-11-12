@@ -112,12 +112,12 @@ const fmtDate=d=>new Intl.DateTimeFormat('en-US',{month:'short',year:'numeric'})
 function addMonth(date){const d=new Date(date),day=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+1);d.setDate(Math.min(day,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()));return d;}
 function paymentFor(principal,apr,months){const r=apr/1200;if(r===0)return principal/months;const pow=Math.pow(1+r,months);return principal*r*pow/(pow-1);}
 function feeTotal(amount,type,value,other){return (type==='percent'?amount*value/100:value)+other;}
-function solveEffectiveAnnual(cashReceived,payment,count){
- if(cashReceived<=0||payment<=0||count<=0)return null;
- let lo=0,hi=5;
- const pv=rate=>{let sum=0;for(let i=1;i<=count;i++)sum+=payment/Math.pow(1+rate,i);return sum;};
- if(pv(hi)>cashReceived)return null;
- for(let i=0;i<100;i++){const mid=(lo+hi)/2;if(pv(mid)>cashReceived)lo=mid;else hi=mid;}
+function solveEffectiveAnnual(cashReceived,rows){
+ if(cashReceived<=0||!rows.length)return null;
+ let lo=-0.99,hi=5;
+ const pv=rate=>rows.reduce((sum,row)=>sum+row.total/Math.pow(1+rate,row.month),0);
+ if(pv(hi)>cashReceived||pv(lo)<cashReceived)return null;
+ for(let i=0;i<120;i++){const mid=(lo+hi)/2;if(pv(mid)>cashReceived)lo=mid;else hi=mid;}
  const monthly=(lo+hi)/2;return (Math.pow(1+monthly,12)-1)*100;
 }
 function simulate(principal,apr,months,extraMonthly,lumpSum,lumpMonth){
@@ -144,15 +144,15 @@ function buildOffer(principal,apr,months,fee,feeTreatment,extra,lump,lumpMonth){
  if(schedule.error||baseline.error)return {error:schedule.error||baseline.error};
  const net=feeTreatment==='financed'?principal:principal-fee;
  const upfront=feeTreatment==='financed'?0:fee;
- const effective=solveEffectiveAnnual(Math.max(0.01,net),schedule.regular,schedule.count);
+ const effective=solveEffectiveAnnual(net,schedule.rows);
  return {principal,fee,feeTreatment,financed,net,upfront,regular:schedule.regular,interest:schedule.interest,paid:schedule.paid,allIn:schedule.paid+upfront,count:schedule.count,rows:schedule.rows,points:schedule.points,payoff:schedule.count,effective,baselineInterest:baseline.interest,baselineCount:baseline.count,baselineRows:baseline.rows,baselinePoints:baseline.points,saved:Math.max(0,baseline.interest-schedule.interest),timeSaved:Math.max(0,baseline.count-schedule.count)};
 }
 function drawChart(base,extra){
  const canvas=$('balanceChart'),ctx=canvas.getContext('2d'),w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
- const max=Math.max(base.points[0].balance,1),len=Math.max(base.points.length,extra.points.length),pad={l:58,r:14,t:20,b:32},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+ const max=Math.max(base.points[0].balance,1),maxMonth=Math.max(base.points[base.points.length-1].month,extra.points[extra.points.length-1].month,1),pad={l:58,r:14,t:20,b:32},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
  ctx.font='10px system-ui';ctx.fillStyle='#718096';ctx.strokeStyle='#e7edf5';
  for(let i=0;i<=4;i++){const y=pad.t+ch*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.fillText(money(max*(1-i/4)),2,y+3);}
- function line(points,color){ctx.beginPath();points.forEach((p,i)=>{const x=pad.l+cw*i/(len-1||1),y=pad.t+ch*(1-p.balance/max);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();}
+ function line(points,color){ctx.beginPath();points.forEach((p,i)=>{const x=pad.l+cw*p.month/maxMonth,y=pad.t+ch*(1-p.balance/max);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();}
  line(base.points,'#91a0b5');line(extra.points,'#2864e8');ctx.fillStyle='#64748b';ctx.fillText('Payment month →',pad.l,h-8);ctx.fillStyle='#91a0b5';ctx.fillRect(w-185,8,10,3);ctx.fillText('Regular plan',w-170,13);ctx.fillStyle='#2864e8';ctx.fillRect(w-92,8,10,3);ctx.fillText('With extras',w-77,13);
 }
 function render(result,offerB){
@@ -173,19 +173,20 @@ function render(result,offerB){
  lastResult=result;
 }
 $('compareToggle').addEventListener('change',()=>{$('compareFields').hidden=!$('compareToggle').checked;});
+$('termUnit').addEventListener('change',()=>{$('term').max=$('termUnit').value==='years'?'50':'600';$('term').value=Math.min(Number($('term').value)||1,Number($('term').max));});
 $('country').addEventListener('change',()=>{const map={US:'USD',IN:'INR',GB:'GBP',CA:'CAD',AU:'AUD'};if(map[$('country').value])$('currency').value=map[$('country').value];});
 $('loanForm').addEventListener('submit',e=>{
  e.preventDefault();$('errorBox').classList.remove('show');
  const amount=num('amount'),apr=num('apr'),term=num('term')*($('termUnit').value==='years'?12:1),fee=feeTotal(amount,$('feeType').value,num('feeValue'),num('otherFees')),extra=num('extraMonthly'),lump=num('lumpSum'),lumpMonth=num('lumpMonth');
  const vals=[amount,apr,term,fee,extra,lump,lumpMonth,num('existingDebt')];
  if(vals.some(v=>!Number.isFinite(v))||amount<=0||amount>100000000||apr<0||apr>100||term<1||term>600||fee<0||extra<0||lump<0||lumpMonth<1||lumpMonth>600||num('existingDebt')<0||( $('income').value!==''&&(!Number.isFinite(num('income'))||num('income')<=0))){$('errorBox').textContent='Please enter a positive loan amount, a rate from 0% to 100%, a term from 1 to 600 months, and non-negative fees and extra payments.';$('errorBox').classList.add('show');return;}
- if(fee>amount*2){$('errorBox').textContent='The entered fees are unusually high compared with the loan amount. Please check the fee values.';$('errorBox').classList.add('show');return;}
+ if(fee>amount*2||($('feeTreatment').value!=='financed'&&fee>=amount)){$('errorBox').textContent='Please check the fees. Fees deducted or paid separately must be lower than the requested loan amount.';$('errorBox').classList.add('show');return;}
  const result=buildOffer(amount,apr,term,fee,$('feeTreatment').value,extra,lump,lumpMonth);
  if(result.error){$('errorBox').textContent=result.error;$('errorBox').classList.add('show');return;}
  let offerB=null;
  if($('compareToggle').checked){
   const aprB=num('aprB'),termB=num('termB'),feeB=feeTotal(amount,$('feeBType').value,num('feeBValue'),num('otherFeesB'));
-  if(!Number.isFinite(aprB)||aprB<0||aprB>100||!Number.isInteger(termB)||termB<1||termB>600||feeB<0){$('errorBox').textContent='Please enter valid Offer B rate, term and non-negative fees.';$('errorBox').classList.add('show');return;}
+  if(!Number.isFinite(aprB)||aprB<0||aprB>100||!Number.isInteger(termB)||termB<1||termB>600||feeB<0||feeB>amount*2||($('feeTreatmentB').value!=='financed'&&feeB>=amount)){$('errorBox').textContent='Please enter a valid Offer B rate, term and fees. Fees paid upfront must be lower than the loan amount.';$('errorBox').classList.add('show');return;}
   offerB=buildOffer(amount,aprB,termB,feeB,$('feeTreatmentB').value,0,0,1);
   if(offerB.error){$('errorBox').textContent=offerB.error;$('errorBox').classList.add('show');return;}
  }
