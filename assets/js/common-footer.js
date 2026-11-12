@@ -31,6 +31,7 @@
             ['Fixed Deposit Calculator', '/fd-calculator/'],
     ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/'],
     ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/'],
+    ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/'],
     ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/'],
     ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/'],
     ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/'],
