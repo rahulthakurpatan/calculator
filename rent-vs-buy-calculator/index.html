@@ -152,7 +152,7 @@ function simulate(){
  const rentInitial=v('rent'),rentIns=v('rentInsurance')/12+v('rentOther'),rentDeposit=v('deposit'),rentMove=v('renterMove');
  const invRate=Math.pow(1+v('investmentReturn')/100,1/12)-1,ownerGrowth=Math.pow(1+v('ownerCostGrowth')/100,1/12)-1;
  const rentGrowth=Math.pow(1+v('rentGrowth')/100,1/12)-1,appGrowth=Math.pow(1+v('appreciation')/100,1/12)-1;
- let balance=loan,buyPortfolio=Math.max(0,savings-cashNeed),rentPortfolio=Math.max(0,savings-rentMove),rentPaid=0,interestPaid=0,ownerOut0=payment+ownerFixed,renterOut0=rentInitial+rentIns;
+ let balance=loan,buyPortfolio=Math.max(0,savings-cashNeed),rentPortfolio=Math.max(0,savings-rentMove-rentDeposit),rentPaid=0,interestPaid=0,ownerOut0=payment+ownerFixed,renterOut0=rentInitial+rentIns;
  let rows=[],buyWealth=0,rentWealth=0,breakEven=null,homeValue=price,ownerCost=ownerFixed,rent=rentInitial;
  for(let m=1;m<=months;m++){
    const yearIndex=Math.floor((m-1)/12);
@@ -201,7 +201,7 @@ function render(x){
  $('buyNet').textContent=money(x.buyWealth);$('rentNet').textContent=money(x.rentWealth);$('difference').textContent=money(Math.abs(x.difference));$('differenceLabel').textContent=buyWins?'Buying is ahead':'Renting is ahead';
  $('breakEven').textContent=x.breakEven===null?'Not within period':'Year '+x.breakEven.toFixed(0);
  $('rHomeValue').textContent=money(x.homeValue);$('rBalance').textContent=money(x.balance);$('rSaleCosts').textContent=money(x.end.saleCosts);$('rEquity').textContent=money(x.end.equity);$('rBuyPortfolio').textContent=money(x.buyPortfolio);$('rBuyTotal').textContent=money(x.buyWealth);
- $('rRentPaid').textContent=money(x.rentPaid);$('rInitialInvested').textContent=money(Math.max(0,v('availableSavings')-x.rentMove));$('rRentPortfolio').textContent=money(x.rentPortfolio);$('rInvestmentTax').textContent=money(x.end.investmentTax);$('rDepositReturn').textContent=money(x.rentDeposit);$('rRentTotal').textContent=money(x.rentWealth);
+ $('rRentPaid').textContent=money(x.rentPaid);$('rInitialInvested').textContent=money(Math.max(0,v('availableSavings')-x.rentMove-x.rentDeposit));$('rRentPortfolio').textContent=money(x.rentPortfolio);$('rInvestmentTax').textContent=money(x.end.investmentTax);$('rDepositReturn').textContent=money(x.rentDeposit);$('rRentTotal').textContent=money(x.rentWealth);
  $('rMortgage').textContent=money(x.payment);$('rTaxInsurance').textContent=money(v('propertyTax')/12+v('homeInsurance')/12);$('rOwnerExtras').textContent=money(v('maintenance')+v('hoa')+v('ownerUtilities')+v('mortgageInsurance'));$('rOwnerMonthly').textContent=money(x.ownerOut0);$('rRentMonthly').textContent=money(x.renterOut0);$('rMonthlyGap').textContent=money(Math.abs(x.ownerOut0-x.renterOut0))+(x.ownerOut0>x.renterOut0?' more to own':' more to rent');
  $('rBuyReal').textContent=money(x.buyWealth/x.inflation);$('rRentReal').textContent=money(x.rentWealth/x.inflation);$('rPayment').textContent=money(x.payment);$('rInterest').textContent=money(x.interestPaid);$('rCashNeeded').textContent=money(x.cashNeed);$('rCashLeft').textContent=money(x.cashLeft);
  $('scheduleBody').innerHTML=x.rows.map(r=>'<tr><td>'+r.year.toFixed(0)+'</td><td>'+money(r.home)+'</td><td>'+money(r.balance)+'</td><td>'+money(r.buy)+'</td><td>'+money(r.renterPortfolio)+'</td><td>'+money(r.rent)+'</td><td>'+money(r.diff)+'</td></tr>').join('');
