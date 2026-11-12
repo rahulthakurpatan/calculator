@@ -175,7 +175,7 @@ function scenario(d){
  const lenderBudget=Math.max(0,Math.min(housingCap,debtCap));
  const personalBudget=d.net===null?null:Math.max(0,d.net-d.debt-d.living-d.savingsGoal);
  const lender=solvePrice(lenderBudget,d.rate,d),comfort=personalBudget===null?null:solvePrice(personalBudget,d.rate,d);
- const stressRate=d.rate+d.stress,stress=solvePrice(lenderBudget,stressRate,d);
+ const stressRate=$('country').value==='CA'?Math.max(d.rate+2,5.25):d.rate+d.stress,stress=solvePrice(lenderBudget,stressRate,d);
  return {housingCap,debtCap,lenderBudget,personalBudget,lender,comfort,stress,stressRate};
 }
 function amortization(loan,rate,months){
@@ -213,7 +213,7 @@ function render(d,s){
  $('rGross').textContent=money(d.gross);$('rDebt').textContent=money(d.debt);$('rHousingRatio').textContent=d.gross>0?(detailL.total/d.gross*100).toFixed(1)+'%':'—';$('rTotalRatio').textContent=d.gross>0?((detailL.total+d.debt)/d.gross*100).toFixed(1)+'%':'—';$('rPersonalBudget').textContent=s.personalBudget===null?'Not entered':money(s.personalBudget);
  $('rPrice').textContent=money(price);$('rLoan').textContent=money(detailL.loan);$('rDeposit').textContent=money(detailL.deposit);$('rClosing').textContent=money(detailL.closing);$('rCashClose').textContent=money(detailL.cash);$('rInterest').textContent=money(detailL.interest);
  drawChart(price,detailC?detailC.price:0,s.stress.price);
- $('stressNote').textContent='At '+s.stressRate.toFixed(2)+'% (your entered rate plus '+d.stress.toFixed(2)+' percentage points), estimated maximum home price is '+money(s.stress.price)+'. This is a sensitivity scenario, not a lender’s official qualifying-rate calculation.';
+ $('stressNote').textContent='At the stress-test rate of '+s.stressRate.toFixed(2)+'%, estimated maximum home price is '+money(s.stress.price)+'. This is a sensitivity scenario, not a lender’s official qualifying-rate calculation.';
  $('scheduleBody').innerHTML=detailL.amort.rows.map(r=>'<tr><td>'+r.month+'</td><td>'+money(r.opening)+'</td><td>'+money(r.payment)+'</td><td>'+money(r.principal)+'</td><td>'+money(r.interest)+'</td><td>'+money(r.closing)+'</td></tr>').join('');
  $('assumptionNote').textContent='Assumptions: fixed annual nominal interest rate divided by 12; monthly payments at month-end; property tax estimated as a percentage of home value; insurance and other entered costs treated as monthly equivalents. Closing costs are a percentage of purchase price. The estimate assumes the selected down-payment percentage and does not include every local tax, fee, lending rule or property-specific expense.';
  $('results').classList.add('show');$('resultsSection').scrollIntoView({behavior:'smooth',block:'start'});
