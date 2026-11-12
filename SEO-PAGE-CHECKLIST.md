@@ -39,7 +39,7 @@ Use this checklist whenever a new calculator, tool, or content page is created. 
 - Keep the root `/sw.js` service worker available and do not overwrite its existing notification/click-tracking handlers without checking the provider requirements.
 - Keep core page content and SEO metadata in the HTML, not dependent on JavaScript rendering.
 - Avoid duplicate analytics or tracking scripts.
-- Do not add AdSense code until the site is approved and the owner requests it.
+- Include exactly one AdSense loader in the page head when required by the current site publisher configuration; never duplicate the loader.
 - Keep CSS/JS efficient; avoid layout shifts and unnecessary third-party scripts.
 - Check keyboard navigation, focus states, contrast, and accessible error messages.
 - Check that page links, images, scripts, and calculator interactions work.
@@ -91,3 +91,5 @@ The sitemap should contain only pages that exist and are intended for indexing. 
 
 - `/investment-portfolio-planner/` — Investment Portfolio & Net Worth Goal Planner (multiple financial holdings, other assets, liabilities, contributions, scenario-based target date and inflation-adjusted projection)
 - `/credit-card-debt-payoff-calculator/` — Credit Card Debt Payoff Calculator (multiple cards, APR, minimum payments, Snowball/Avalanche comparison, interest estimate and monthly repayment schedule)
+
+- `/credit-card-balance-transfer-calculator/` — Credit Card Balance Transfer Calculator (compare keeping debt versus full or partial transfer, transfer fees, promotional APR, post-promo interest, break-even and payoff schedule)
