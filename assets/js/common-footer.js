@@ -27,6 +27,7 @@
     ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/'],
     ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/'],
     ['Crypto Tax & Capital Gains Calculator', '/crypto-capital-gains-tax-calculator/'],
+    ['Crypto Staking APY Calculator', '/crypto-staking-apy-calculator/'],
     ['SaaS LTV:CAC Calculator', '/saas-ltv-cac-calculator/'],
     ['Net Worth Calculator & Milestone Tracker', '/net-worth-calculator/'],
     ['Solar Panel Payback & Carbon Offset Calculator', '/solar-panel-payback-calculator/'],
