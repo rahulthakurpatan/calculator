@@ -446,7 +446,7 @@ function renderChart(vals){
 }
 function renderFactors(result){
  $('factorList').innerHTML=result.factors.map(f=>'<div class="factor"><div class="factor-top"><span>'+f.name+'</span><strong style="color:'+(f.adjustment>0?'#07966e':f.adjustment<0?'#c74755':'#64758b')+'">'+(f.adjustment>0?'+':'')+f.adjustment.toFixed(2)+'x</strong></div><p>'+f.reason+'</p></div>').join('')+
- '<div class="factor"><div class="factor-top"><span>Total factor adjustment</span><strong>'+(result.adjustment>0?'+':'')+result.adjustment.toFixed(2)+'x</strong></div><p>Combined adjustment after applying the model's ±1.35x cap.</p></div>';
+ '<div class="factor"><div class="factor-top"><span>Total factor adjustment</span><strong>'+(result.adjustment>0?'+':'')+result.adjustment.toFixed(2)+'x</strong></div><p>Combined adjustment after applying the model&apos;s ±1.35x cap.</p></div>';
  const mults=[Math.max(.25,result.multiples.median-1),Math.max(.25,result.multiples.median-.5),result.multiples.median, result.multiples.median+.5,result.multiples.median+1];
  $('sensitivityBody').innerHTML=mults.map((m,index)=>'<tr><td>'+(index===2?'Current median':(m<result.multiples.median?'Lower sensitivity':'Higher sensitivity'))+'</td><td>'+m.toFixed(2)+'x</td><td>'+money(result.input.arr*m)+'</td></tr>').join('');
 }
