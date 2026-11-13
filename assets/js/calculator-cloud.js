@@ -3,7 +3,7 @@
   'use strict';
   if (!['/', '/index.html'].includes(location.pathname) || document.getElementById('calculator-link-cloud')) return;
 
-  const media = matchMedia('(min-width:1580px) and (min-height:580px)');
+  const media = matchMedia('(min-width:1440px) and (min-height:580px)');
   const reduced = matchMedia('(prefers-reduced-motion:reduce)');
   const maxVisible = 9;
   const isTool = /(?:calculator|planner|estimator|tracker|comparison)\/$/i;
@@ -57,13 +57,13 @@
   const style=document.createElement('style');
   style.id='calculator-link-cloud-style';
   style.textContent=[
-    '#calculator-link-cloud{position:fixed;left:calc(50% + 554px);top:clamp(124px,17vh,168px);width:clamp(176px,calc(50vw - 584px),248px);height:min(545px,calc(100vh - 195px));z-index:8;pointer-events:none;isolation:isolate}',
+    '#calculator-link-cloud{position:fixed;left:calc(50% + 551px);top:clamp(124px,17vh,168px);width:clamp(125px,calc(50vw - 579px),248px);height:min(545px,calc(100vh - 195px));z-index:8;pointer-events:none;isolation:isolate}',
     '#calculator-link-cloud a{position:absolute;display:block;box-sizing:border-box;left:0;width:calc(100% - 16px);padding:3px 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;font:620 12px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.005em;opacity:.86;pointer-events:auto;color:#256b84;background:linear-gradient(105deg,#207b99 5%,#7954b4 34%,#087b73 61%,#365eae 90%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:calcCloudColor 17s ease-in-out infinite alternate;transition:opacity .25s ease,filter .2s ease;will-change:transform}',
     '#calculator-link-cloud a:hover,#calculator-link-cloud a:focus-visible{opacity:1;filter:saturate(1.5) brightness(.83);text-decoration:underline;text-decoration-color:#0e987e;text-underline-offset:4px;font-weight:750}',
     '#calculator-link-cloud a:focus-visible{outline:2px solid #2575bd;outline-offset:3px;border-radius:2px}',
     '#calculator-link-cloud a.clc-change{opacity:0}',
     '@keyframes calcCloudColor{from{background-position:0% 50%}to{background-position:100% 50%}}',
-    '@media(max-width:1579px),(max-height:579px){#calculator-link-cloud{display:none!important}}',
+    '@media(max-width:1439px),(max-height:579px){#calculator-link-cloud{display:none!important}}',
     '@media(prefers-reduced-motion:reduce){#calculator-link-cloud a{animation:none!important;transition:none!important;will-change:auto}}'
   ].join('\n');
 
@@ -130,7 +130,7 @@
     }
   }
   function rotate(){
-    if(!media.matches||document.visibilityState==='hidden'||hovered||nav.contains(document.activeElement)||tools.length<=slots.length) return;
+    if(!media.matches||document.visibilityState==='hidden'||hovered||reduced.matches||nav.contains(document.activeElement)||tools.length<=slots.length) return;
     const slot=slots[slotCursor++%slots.length];
     if(slot.frozen()) return;
     const next=nextTool(new Set(slots.map(s=>s.a.getAttribute('href'))));
