@@ -288,9 +288,9 @@ button,input,select{font:inherit}
   <div class="projection">
    <h3>Projected valuation at today's adjusted multiples</h3>
    <div class="projection-grid">
-    <div class="projection-card"><span>After 1 year</span><strong id="year1Value">$187,500</strong><small id="year1Arr">ARR $75,000</small></div>
-    <div class="projection-card"><span>After 2 years</span><strong id="year2Value">$234,375</strong><small id="year2Arr">ARR $93,750</small></div>
-    <div class="projection-card"><span>After 3 years</span><strong id="year3Value">$292,969</strong><small id="year3Arr">ARR $117,188</small></div>
+    <div class="projection-card"><span>After 1 year</span><strong id="year1Value">$187,500</strong><small id="year1Arr">ARR $75,000</small><small id="year1Range">Range —</small></div>
+    <div class="projection-card"><span>After 2 years</span><strong id="year2Value">$234,375</strong><small id="year2Arr">ARR $93,750</small><small id="year2Range">Range —</small></div>
+    <div class="projection-card"><span>After 3 years</span><strong id="year3Value">$292,969</strong><small id="year3Arr">ARR $117,188</small><small id="year3Range">Range —</small></div>
    </div>
   </div>
   <div class="action-row">
@@ -466,7 +466,7 @@ function calculate(){
   $('medianExplanation').textContent='Median estimate uses '+money(i.arr)+' ARR × '+multiples.median.toFixed(2)+'x adjusted revenue multiple.';
   $('arrValue').textContent=money(i.arr);$('grossProfit').textContent=money(i.arr*i.margin);$('medianMultMetric').textContent=multiples.median.toFixed(2)+'x';
   $('annualChurn').textContent=fmtPct(i.annualChurn);$('monthlyChurn').textContent=fmtPct(i.monthlyChurn)+' monthly equivalent';
-  projections.forEach(p=>{$('year'+p.year+'Value').textContent=money(p.median);$('year'+p.year+'Arr').textContent='ARR '+money(p.arr);});
+  projections.forEach(p=>{$('year'+p.year+'Value').textContent=money(p.median);$('year'+p.year+'Arr').textContent='ARR '+money(p.arr);$('year'+p.year+'Range').textContent='Range '+money(p.low)+' – '+money(p.high);});
   $('revenueLabel').textContent=$('revenueBasis').value==='MRR'?'Monthly recurring revenue':'Annual recurring revenue';
   $('marginNote').textContent=(i.margin*100).toFixed(1)+'% gross margin';
   $('churnHint').textContent='Equivalent monthly churn: '+fmtPct(i.monthlyChurn)+' · annualized churn: '+fmtPct(i.annualChurn)+'.';
