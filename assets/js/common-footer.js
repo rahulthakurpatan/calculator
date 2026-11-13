@@ -6,6 +6,7 @@
   const calculators = [
     ['ROI Calculator', '/'],
     ['SIP Calculator', '/sip-calculator/'],
+    ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/'],
     ['Compound Interest Calculator', '/compound-interest-calculator/'],
     ['Step-Up SIP Calculator', '/step-up-sip-calculator/'],
     ['Lump Sum Calculator', '/lump-sum-calculator/'],
