@@ -90,9 +90,9 @@
   const styles=document.createElement('style');
   styles.id='calculator-cloud-shared-style';
   styles.textContent=[
-    '#calculator-link-cloud,#calculator-related-cloud{position:fixed;top:clamp(98px,12vh,145px);width:clamp(125px,calc(50vw - 580px),248px);height:min(660px,calc(100vh - 174px));z-index:8;pointer-events:none;isolation:isolate}',
-    '#calculator-link-cloud{left:calc(50% + 552px)}',
-    '#calculator-related-cloud{right:calc(50% + 552px)}',
+    '#calculator-link-cloud,#calculator-related-cloud{position:fixed;top:clamp(98px,12vh,145px);width:clamp(80px,calc(50vw - var(--clc-offset,552px) - 12px),248px);height:min(660px,calc(100vh - 174px));z-index:8;pointer-events:none;isolation:isolate}',
+    '#calculator-link-cloud{left:calc(50% + var(--clc-offset,552px))}',
+    '#calculator-related-cloud{right:calc(50% + var(--clc-offset,552px))}',
     '#calculator-link-cloud a,#calculator-related-cloud a{position:absolute;box-sizing:border-box;display:block;left:0;width:calc(100% - 10px);padding:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;font:690 12.5px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.006em;color:#216bb2;opacity:.94;pointer-events:auto;background-image:linear-gradient(110deg,#1364ab 0%,#9a45c9 26%,#0b9b8e 53%,#5a59ce 77%,#078d9b 100%);background-size:320% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:calcCloudColor 13s ease-in-out infinite alternate;transition:opacity .27s ease,filter .22s ease;will-change:transform}',
     '#calculator-link-cloud a:nth-child(3n+2),#calculator-related-cloud a:nth-child(3n+2){background-image:linear-gradient(105deg,#0d9d86,#6b54c9,#167bc2,#aa4bc0,#0d9d86)}',
     '#calculator-link-cloud a:nth-child(3n),#calculator-related-cloud a:nth-child(3n){background-image:linear-gradient(105deg,#9b49bb,#0a81ac,#0d9c87,#5960d8,#9b49bb)}',
@@ -185,7 +185,22 @@
       },250);
     },3200);
   }
+  function fitSidebarsOutsideContent() {
+    const half=window.innerWidth/2;
+    let offset=552;
+    // Locate the widest centered content wrapper, not full-width hero/background sections.
+    const candidates=document.querySelectorAll('main .wrap, main .container, main .page-container, main .shell, main .content, main .layout, main .workspace');
+    for(const node of candidates){
+      const r=node.getBoundingClientRect();
+      if(r.width<400||r.width>window.innerWidth-100)continue;
+      const center=r.left+r.width/2;
+      if(Math.abs(center-half)>65)continue;
+      offset=Math.max(offset,Math.max(r.right-half,half-r.left)+12);
+    }
+    document.documentElement.style.setProperty('--clc-offset',Math.ceil(offset)+'px');
+  }
   async function init() {
+    fitSidebarsOutsideContent();
     const all=await discover();
     if(all.length<3) return;
     // Both clouds use the same original link registry and keep all content unobstructed.
