@@ -65,12 +65,12 @@ jobs:
                 getBoundingClientRect(){return {left:0,top:100,height:660,width:200};}
               };
             }
-            const document={readyState:'complete',visibilityState:'visible',activeElement:null,
+            const document={readyState:'complete',visibilityState:'visible',activeElement:null,documentElement:{style:{setProperty(){}}},
               getElementById(){return null;},createElement:node,querySelectorAll(){return [];},
               head:{appendChild(n){nodes.push(n);}},body:{appendChild(n){nodes.push(n);}},
               addEventListener(n,f){(events[n]??=[]).push(f);}
             };
-            const context={document,window:{__calculatorCloudCategories:cats,setInterval(fn){handles.push(fn);return handles.length;},setTimeout(fn){callbacks.push(fn);}},location:{pathname,origin:'https://returnoninvestmentcalculator.in'},console,
+            const context={document,window:{innerWidth:1920,__calculatorCloudCategories:cats,setInterval(fn){handles.push(fn);return handles.length;},setTimeout(fn){callbacks.push(fn);}},location:{pathname,origin:'https://returnoninvestmentcalculator.in'},console,
               matchMedia(q){return{matches:!q.includes('reduced-motion'),addEventListener(){}};},
               fetch:async()=>({ok:validSitemap,text:async()=>sitemap}),URL,Math,Number,String,Set,Map,Array,Object,
               DOMParser:class{parseFromString(){return {getElementsByTagName(tag){return tag==='parsererror'?[]:tag==='loc'?locs.map(textContent=>({textContent})):[];}};}},
