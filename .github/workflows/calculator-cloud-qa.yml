@@ -1,8 +1,9 @@
-name: Homepage Calculator Cloud QA
+name: Shared Calculator Cloud QA
 on:
   push:
     paths:
       - 'index.html'
+      - 'assets/js/common-header.js'
       - 'assets/js/calculator-cloud.js'
       - '.github/workflows/calculator-cloud-qa.yml'
   workflow_dispatch:
@@ -11,73 +12,82 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate homepage-only cloud and dynamic sitemap links
+      - name: Test dual sidebars, related links and global loading
         run: |
           node <<'NODE'
-          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
           const js=fs.readFileSync('assets/js/calculator-cloud.js','utf8');
+          const header=fs.readFileSync('assets/js/common-header.js','utf8');
           const home=fs.readFileSync('index.html','utf8');
           const sitemap=fs.readFileSync('sitemap.xml','utf8');
-          new vm.Script(js,{filename:'calculator-cloud.js'});
-          assert.equal((home.match(/src="\/assets\/js\/calculator-cloud\.js"/g)||[]).length,1);
+          new vm.Script(js);
+          new vm.Script(header);
+          assert.equal((header.match(/cloudScript\.src = '\/assets\/js\/calculator-cloud\.js'/g)||[]).length,1);
+          assert.equal((home.match(/src="\/assets\/js\/calculator-cloud\.js"/g)||[]).length,0,'No duplicate direct homepage loading');
           assert.equal((home.match(/adsbygoogle\.js/g)||[]).length,1);
-          assert.ok(!fs.readFileSync('sip-calculator/index.html','utf8').includes('calculator-cloud.js'),'Cloud only on homepage');
-          assert.ok(js.includes('min-width:1440px') && js.includes('prefers-reduced-motion:reduce'));
-          assert.ok(js.includes('linear-gradient('),'Subtle AI text gradient exists');
-          const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
-          assert.ok(locs.length>50,'Production sitemap has calculator URLs');
-          function makeEnv(pathname){
-            let interval=null;
-            const timeouts=[], appended=[], listeners={};
-            function element(tag){
-              const self={
-                tag,style:{},attributes:{},children:[],events:{},textContent:'',className:'',href:'',title:'',isConnected:true,
+          assert.ok(header.includes('window.__calculatorCloudCategories = categories.map'),'Shared navigation categories exposed');
+          assert.ok(js.includes('prefers-reduced-motion:reduce')&&js.includes('min-width:1440px'));
+          const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+          assert.ok(locs.length>60);
+          const cats=[
+            {label:'Invest & Mutual Funds',tools:[['ROI Calculator','/'],['SIP Calculator','/sip-calculator/'],['Dividend Reinvestment Calculator','/dividend-reinvestment-calculator/'],['Compound Interest','/compound-interest-calculator/'],['SWP','/swp-calculator/'],['Step Up SIP','/step-up-sip-calculator/']]},
+            {label:'Tax & Salary',tools:[['Income Tax','/income-tax-calculator/'],['Overtime Pay','/overtime-pay-calculator/'],['Digital Nomad Tax','/digital-nomad-tax-calculator/']]},
+            {label:'Savings & Loans',tools:[['Mortgage Payoff','/mortgage-payoff-calculator/'],['Loan Amortization','/loan-amortization-calculator/']]}
+          ];
+          function env(pathname,validSitemap=true){
+            const nodes=[],callbacks=[],handles=[],events={};
+            function node(tag){
+              return {tag,style:{},attributes:{},children:[],events:{},href:'',title:'',textContent:'',isConnected:true,dataset:{},
                 classList:{add(){},remove(){}},
                 setAttribute(k,v){this.attributes[k]=v;},
                 getAttribute(k){return k==='href'?this.href:this.attributes[k];},
                 addEventListener(k,cb){(this.events[k]??=[]).push(cb);},
-                appendChild(node){this.children.push(node);node.isConnected=true;},
-                contains(node){return this.children.includes(node);},
-                matches(){return false;},
-                getBoundingClientRect(){return {left:1340,top:150,width:210,height:500};}
-              };return self;
+                appendChild(n){this.children.push(n);n.isConnected=true;},
+                contains(n){return this.children.includes(n);},
+                getBoundingClientRect(){return {left:0,top:100,height:660,width:200};}
+              };
             }
-            const doc={
-              readyState:'complete',visibilityState:'visible',activeElement:null,
-              getElementById(){return null;},createElement:element,querySelectorAll(){return [];},
-              head:{appendChild(node){appended.push(node);}},
-              body:{appendChild(node){appended.push(node);}},
-              addEventListener(name,fn){(listeners[name]??=[]).push(fn);}
+            const document={readyState:'complete',visibilityState:'visible',activeElement:null,
+              getElementById(){return null;},createElement:node,querySelectorAll(){return [];},
+              head:{appendChild(n){nodes.push(n);}},body:{appendChild(n){nodes.push(n);}},
+              addEventListener(n,f){(events[n]??=[]).push(f);}
             };
-            const env={location:{pathname,origin:'https://returnoninvestmentcalculator.in'},URL,Math,Number,Array,Object,String,Set,Map,console,document:doc,
-              window:{setInterval(cb){interval=cb;return 1;}},setTimeout(cb){timeouts.push(cb);},
-              matchMedia(query){return {matches:!query.includes('reduced-motion'),addEventListener(){}};},
-              performance:{now(){return 1000;}},requestAnimationFrame(){return 1;},cancelAnimationFrame(){},
-              fetch:async()=>({ok:true,text:async()=>sitemap}),
-              DOMParser:class{parseFromString(){return {getElementsByTagName(t){if(t==='parsererror')return [];if(t==='loc')return locs.map(textContent=>({textContent}));return [];}};}}
-            };
-            return {env,appended,timeouts,getInterval:()=>interval};
+            const context={document,window:{__calculatorCloudCategories:cats,setInterval(fn){handles.push(fn);return handles.length;},setTimeout(fn){callbacks.push(fn);}},location:{pathname,origin:'https://returnoninvestmentcalculator.in'},console,
+              matchMedia(q){return{matches:!q.includes('reduced-motion'),addEventListener(){}};},
+              fetch:async()=>({ok:validSitemap,text:async()=>sitemap}),URL,Math,Number,String,Set,Map,Array,Object,
+              DOMParser:class{parseFromString(){return {getElementsByTagName(tag){return tag==='parsererror'?[]:tag==='loc'?locs.map(textContent=>({textContent})):[];}};}},
+              performance:{now(){return 0;}},requestAnimationFrame(){return 1;},cancelAnimationFrame(){}};
+            return{context,nodes,handles,callbacks};
           }
           (async()=>{
-            const onHome=makeEnv('/');
-            vm.runInNewContext(js,onHome.env,{timeout:1000});
+            for(const path of ['/', '/sip-calculator/', '/overtime-pay-calculator/', '/mortgage-payoff-calculator/']){
+              const e=env(path);
+              vm.runInNewContext(js,e.context,{timeout:2000});
+              await new Promise(resolve=>setImmediate(resolve));
+              const right=e.nodes.find(n=>n.attributes['aria-label']==='Explore calculators');
+              const left=e.nodes.find(n=>n.attributes['aria-label']==='Related calculators');
+              assert.ok(left && right, path+' dual sidebars exist');
+              assert.equal(right.children.length,15,'Right cloud has 15 rotating names');
+              assert.equal(left.children.length,12,'Left cloud has 12 related names');
+              assert.ok([...left.children,...right.children].every(a=>a.tag==='a'&&a.href.startsWith('/')&&a.textContent),'All links are semantic text anchors');
+              assert.equal(new Set(right.children.map(a=>a.href)).size,right.children.length);
+              assert.ok(!left.children.some(a=>a.href===path),'No current-page self link');
+              assert.ok(!right.children.some(a=>a.href===path),'No current-page self link in right cloud');
+              if(path==='/sip-calculator/'){
+                assert.ok(left.children.some(a=>a.href==='/compound-interest-calculator/'),'Investment category related');
+              }
+              if(path==='/overtime-pay-calculator/'){
+                assert.ok(left.children.some(a=>a.href==='/income-tax-calculator/'),'Salary category related');
+              }
+              const before=right.children.map(a=>a.href);
+              assert.equal(e.handles.length,1,'Single right-side rotation timer');
+              e.handles[0]();e.callbacks.forEach(fn=>fn());
+              assert.ok(right.children.some((a,i)=>a.href!==before[i]),'Right side rotates different calculators');
+            }
+            const e=env('/dividend-reinvestment-calculator/',false);
+            vm.runInNewContext(js,e.context,{timeout:2000});
             await new Promise(resolve=>setImmediate(resolve));
-            const cloud=onHome.appended.find(x=>x.tag==='nav');
-            assert.ok(cloud && cloud.attributes['aria-label'],'Accessible nav present on homepage');
-            assert.equal(cloud.children.length,15,'Fifteen floating name links displayed');
-            assert.equal(new Set(cloud.children.map(a=>a.href)).size,15,'No repeated visible calculators');
-            assert.ok(cloud.children.every(a=>a.tag==='a'&&a.href.startsWith('/')&&a.textContent.length>0),'Real clickable text links');
-            assert.equal(cloud.children.filter(x=>x.tag!=='a').length,0,'No cards or icons');
-            const before=cloud.children.map(a=>a.href);
-            const rotate=onHome.getInterval();
-            assert.equal(typeof rotate,'function');
-            rotate();
-            onHome.timeouts.forEach(fn=>fn());
-            assert.ok(cloud.children.some((a,i)=>a.href!==before[i]),'Sitemap-powered rotation replaces one tool');
-            const offHome=makeEnv('/sip-calculator/');
-            vm.runInNewContext(js,offHome.env,{timeout:1000});
-            await new Promise(resolve=>setImmediate(resolve));
-            assert.equal(offHome.appended.length,0,'Calculator pages remain untouched');
-            console.log('PASS: JS syntax, homepage-only load, sitemap discovery, 15 text links, no icons/cards, rotation, semantic links, motion accessibility, and AdSense count');
-          })().catch(err=>{console.error(err);process.exitCode=1;});
+            assert.ok(e.nodes.some(n=>n.attributes['aria-label']==='Related calculators'),'Shared categories work even if sitemap fetch fails');
+            console.log('PASS shared script syntax, global header loader, homepage, SIP, salary, mortgage, DRIP, related links, self-link exclusions, 15/12 names, rotating links, sitemap fallback');
+          })().catch(e=>{console.error(e);process.exitCode=1;});
           NODE
