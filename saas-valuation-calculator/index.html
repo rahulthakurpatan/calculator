@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f7ff">
+<title>Micro-SaaS Valuation Calculator – Estimate Business Worth</title>
+<meta name="description" content="Estimate your Micro-SaaS value using ARR, growth, churn and margins. Compare low, median and high revenue multiples with future projections.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/saas-valuation-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Micro-SaaS Valuation Calculator – Estimate Business Worth">
+<meta property="og:description" content="Estimate SaaS business value using recurring revenue, growth, churn, gross margin and business age. Explore valuation ranges and future scenarios.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/saas-valuation-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Micro-SaaS Valuation Calculator">
+<meta name="twitter:description" content="Estimate ARR-based SaaS valuation ranges and explore multiple sensitivity.">
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@graph":[
+  {
+   "@type":"WebApplication",
+   "@id":"https://returnoninvestmentcalculator.in/saas-valuation-calculator/#application",
+   "name":"Micro-SaaS Valuation & Multiple Calculator",
+   "url":"https://returnoninvestmentcalculator.in/saas-valuation-calculator/",
+   "applicationCategory":"BusinessApplication",
+   "operatingSystem":"Any",
+   "browserRequirements":"Requires JavaScript",
+   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+   "description":"A free browser-based planning calculator that estimates ARR-based Micro-SaaS valuation scenarios using recurring revenue, growth, churn, gross margin, business age and product type."
+  },
+  {
+   "@type":"FAQPage",
+   "@id":"https://returnoninvestmentcalculator.in/saas-valuation-calculator/#faq",
+   "mainEntity":[
+    {"@type":"Question","name":"How do you calculate a Micro-SaaS valuation?","acceptedAnswer":{"@type":"Answer","text":"An ARR-based estimate multiplies annual recurring revenue by an assumed revenue multiple. The multiple depends on growth, retention, gross margin, business history, product differentiation, profitability, owner involvement and buyer demand. Smaller bootstrapped SaaS businesses may instead be valued on seller discretionary earnings."}},
+    {"@type":"Question","name":"What is a typical SaaS revenue multiple?","acceptedAnswer":{"@type":"Answer","text":"There is no universal multiple. Public SaaS companies, private SaaS acquisitions and small owner-operated Micro-SaaS businesses are different comparison groups. Revenue multiples should be compared only when the valuation metric, company size, period and transaction type are similar."}},
+    {"@type":"Question","name":"How does churn affect SaaS valuation?","acceptedAnswer":{"@type":"Answer","text":"Higher customer or revenue churn makes recurring revenue less predictable and can reduce the multiple a buyer is willing to pay. Churn should be reviewed with retention cohorts, customer concentration, expansion revenue and customer acquisition costs."}},
+    {"@type":"Question","name":"Are AI wrapper businesses worth less?","acceptedAnswer":{"@type":"Answer","text":"Not automatically. A product that depends on a third-party model without proprietary workflows, data, distribution or customer retention may face greater platform and differentiation risk. A defensible AI product with strong retention can be evaluated differently."}},
+    {"@type":"Question","name":"Does this calculator give a formal business valuation?","acceptedAnswer":{"@type":"Answer","text":"No. It provides an illustrative ARR-multiple scenario based on user-entered assumptions. It does not review financial statements, profit, SDE, debt, cash, contracts, customer concentration, intellectual property, market comparables or deal terms. A broker or qualified valuation professional can provide a transaction-specific assessment."}}
+   ]
+  },
+  {
+   "@type":"BreadcrumbList",
+   "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},
+    {"@type":"ListItem","position":2,"name":"Micro-SaaS Valuation Calculator","item":"https://returnoninvestmentcalculator.in/saas-valuation-calculator/"}
+   ]
+  }
+ ]
+}
+</script>
+<style>
+:root{--bg:#f3f7fb;--surface:#fff;--ink:#142238;--muted:#64758b;--line:#dfe7f1;--navy:#101827;--navy2:#1b3049;--green:#07966e;--green-soft:#e8f8f1;--blue:#2864e8;--purple:#7956d8;--amber:#bd8421;--red:#c74755;--shadow:0 16px 40px rgba(24,45,76,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#edf4fb 0,#f7f9fc 470px,#fff 1100px);color:var(--ink);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#245bd2}
+button,input,select{font:inherit}
+.wrap{width:min(1190px,calc(100% - 36px));margin:auto}
+.hero{padding:46px 0 25px;background:radial-gradient(circle at 8% 5%,#d9e9ff 0,transparent 32%),radial-gradient(circle at 92% 0,#e7ddff 0,transparent 31%)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;border:1px solid #d9d0fa;background:#f1edff;color:#6041bb;padding:5px 11px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.hero h1{max-width:850px;font-size:clamp(32px,5vw,49px);line-height:1.09;letter-spacing:-1.7px;margin:14px 0 10px}
+.hero p{max-width:850px;margin:0;color:#5d6e84;font-size:16px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 17px;margin-top:16px;color:#52657d;font-size:12px;font-weight:750}
+.trust span:before{content:"✓";color:var(--green);font-weight:950;margin-right:6px}
+.calc-layout{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(390px,.98fr);gap:20px;align-items:start;padding:12px 0 30px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-width:0}
+.input-panel{padding:22px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.panel-head h2{font-size:19px;line-height:1.3;margin:0;letter-spacing:-.3px}
+.live-tag{font-size:10px;font-weight:900;letter-spacing:.07em;color:#087653;background:var(--green-soft);border:1px solid #c9ebdc;border-radius:30px;padding:5px 9px;white-space:nowrap}
+.group{padding:15px;border:1px solid #e4ebf3;border-radius:13px;margin:12px 0;background:linear-gradient(145deg,#fff,#fbfdff)}
+.group h3{font-size:13px;margin:0 0 12px;color:#33465e}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{min-width:0}
+.field label{display:block;font-size:11px;font-weight:800;color:#52657d;margin-bottom:5px}
+.field input,.field select{width:100%;height:43px;border:1px solid #d5dfeb;border-radius:9px;background:#fff;color:#142238;padding:0 10px;outline:none;min-width:0;font-size:14px}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2864e81b}
+.field input[type=range]{height:22px;padding:0;border:0;box-shadow:none;accent-color:var(--blue);background:transparent}
+.field input[type=range]:focus{box-shadow:none}
+.input-with-prefix{display:flex;align-items:center;border:1px solid #d5dfeb;border-radius:9px;background:#fff;overflow:hidden}
+.input-with-prefix:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px #2864e81b}
+.input-with-prefix span{padding:0 0 0 11px;color:#687b91;font-size:13px;font-weight:750}
+.input-with-prefix input{border:0!important;box-shadow:none!important}
+.hint{font-size:10px;color:#74849a;line-height:1.45;margin-top:5px}
+.rate-row{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:12px;align-items:center}
+.unit-switch{display:flex;gap:7px;padding:4px;border:1px solid #dfe7f1;background:#f1f5fa;border-radius:10px}
+.unit-switch button{flex:1;border:0;background:transparent;color:#64748b;padding:7px 9px;border-radius:7px;font-size:12px;font-weight:850;cursor:pointer}
+.unit-switch button.active{background:#fff;color:#142238;box-shadow:0 1px 5px #182d4c1a}
+.metric-note{font-size:10px;color:#77869a;margin-top:6px}
+.results-panel{position:sticky;top:18px;overflow:hidden}
+.results-top{background:linear-gradient(135deg,#101827,#243251);color:#fff;padding:21px 22px 18px}
+.results-top .panel-head{margin-bottom:13px}
+.results-top h2{color:#fff}
+.currency-label{font-size:10px;color:#b7c5d8;font-weight:800}
+.range-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.range-box{background:#ffffff12;border:1px solid #ffffff20;border-radius:11px;padding:11px 9px;min-width:0}
+.range-box span{display:block;font-size:10px;color:#c4d0e0;font-weight:800}
+.range-box strong{display:block;font-size:clamp(17px,2.4vw,23px);line-height:1.3;margin-top:5px;overflow-wrap:anywhere}
+.range-box small{display:block;font-size:10px;color:#aebed1;margin-top:3px}
+.range-box.low strong{color:#f2c66e}.range-box.mid strong{color:#7de0ba}.range-box.high strong{color:#a9c6ff}
+.median-caption{margin-top:13px;font-size:11px;color:#c0cede}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:14px 17px 5px}
+.metric{border:1px solid #e3eaf2;border-radius:11px;padding:11px;background:#fff;min-width:0}
+.metric span{display:block;color:#697b91;font-size:10px;font-weight:800;line-height:1.35}
+.metric strong{display:block;font-size:17px;line-height:1.35;margin-top:4px;overflow-wrap:anywhere}
+.metric small{display:block;color:#8391a4;font-size:9px;margin-top:2px}
+.green{color:var(--green)}.red{color:var(--red)}
+.chart-section{padding:13px 17px 8px}
+.chart-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:3px 0 8px}
+.chart-head strong{font-size:12px}
+.chart-head span{font-size:10px;color:#718197}
+.chart-wrap{position:relative;height:215px;width:100%;padding:5px}
+.action-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 17px 17px}
+.btn{border:0;border-radius:9px;min-height:39px;padding:8px 10px;font-size:11px;font-weight:850;cursor:pointer;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-secondary{background:#eaf1fb;color:#244e9a}
+.btn-quiet{background:#f0f3f7;color:#465970}
+.breakdown-panel{display:none;margin:0 0 28px;padding:20px}
+.breakdown-panel.show{display:block}
+.breakdown-panel h2{font-size:18px;margin:0 0 4px}
+.breakdown-panel>p{font-size:11px;color:#718197;margin:0 0 13px}
+.factor-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.factor{border:1px solid #e4ebf3;border-radius:10px;padding:11px}
+.factor-top{display:flex;justify-content:space-between;gap:8px;font-size:11px;font-weight:850}
+.factor strong{font-variant-numeric:tabular-nums}
+.factor p{font-size:10px;color:#718197;margin:5px 0 0;line-height:1.5}
+.sensitivity{overflow-x:auto;margin-top:15px;border:1px solid var(--line);border-radius:10px}
+.sensitivity table{width:100%;border-collapse:collapse;min-width:440px;font-size:11px}
+.sensitivity th,.sensitivity td{padding:9px 11px;text-align:right;border-bottom:1px solid #edf1f6}
+.sensitivity th:first-child,.sensitivity td:first-child{text-align:left}
+.sensitivity th{background:#f1f5fa;color:#52657d;font-size:10px}
+.projection{padding:0 17px 17px}
+.projection h3{font-size:12px;margin:3px 0 9px}
+.projection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.projection-card{border:1px solid #e3eaf2;border-radius:10px;padding:9px;min-width:0}
+.projection-card span{font-size:10px;color:#718197;font-weight:800}
+.projection-card strong{display:block;font-size:14px;margin-top:3px;overflow-wrap:anywhere}
+.projection-card small{font-size:9px;color:#8391a4}
+.article{padding:4px 0 45px}
+.article-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.34fr);gap:20px;align-items:start}
+.content-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:23px;box-shadow:0 8px 25px #18304b08}
+.content-card h2{font-size:22px;letter-spacing:-.5px;margin:0 0 10px}
+.content-card h3{font-size:16px;margin:23px 0 7px}
+.content-card p,.content-card li{font-size:13px;color:#53657c}
+.content-card p{margin:8px 0}
+.content-card ul{padding-left:20px}
+.formula{margin:13px 0;padding:14px;border:1px solid #dce9e4;background:#f1faf6;border-radius:10px;overflow-wrap:anywhere}
+.formula code{font:700 13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#087653}
+.callout{border-left:3px solid #d4a847;background:#fff9e9;padding:11px 13px;border-radius:0 9px 9px 0;font-size:11px;color:#66542d;margin:14px 0}
+.faq{border-top:1px solid #e8edf3;padding:13px 0}
+.faq:first-of-type{margin-top:8px}
+.faq h3{margin:0 0 5px;font-size:14px}
+.faq p{margin:0}
+.side-card{background:#101827;color:#d9e3ef;border-radius:15px;padding:20px}
+.side-card h2{color:#fff;font-size:17px;margin:0 0 9px}
+.side-card p,.side-card li{font-size:11px;color:#bdc9d8}
+.side-card ul{padding-left:17px}
+.disclaimer{font-size:10px;color:#77869a;text-align:center;padding:0 0 25px}
+@media(max-width:900px){.calc-layout{grid-template-columns:1fr}.results-panel{position:relative;top:auto}.article-grid{grid-template-columns:1fr}.side-card{order:-1}}
+@media(max-width:560px){.wrap{width:calc(100% - 26px)}.hero{padding:32px 0 19px}.hero h1{font-size:34px;letter-spacing:-1px}.hero p{font-size:14px}.calc-layout{padding-top:7px;gap:13px}.input-panel{padding:14px}.group{padding:12px}.fields{grid-template-columns:1fr 1fr;gap:9px}.field input,.field select{font-size:13px}.rate-row{grid-template-columns:minmax(0,1fr) 95px;gap:8px}.results-top{padding:17px}.range-grid{gap:6px}.range-box{padding:9px 7px}.range-box strong{font-size:17px}.metric-grid{padding:11px 11px 3px;gap:7px}.metric{padding:9px}.metric strong{font-size:15px}.chart-wrap{height:195px}.action-row{padding:8px 11px 13px}.projection{padding:0 11px 13px}.projection-card{padding:7px}.projection-card strong{font-size:12px}.factor-list{grid-template-columns:1fr}.content-card{padding:17px}.content-card h2{font-size:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero">
+ <div class="wrap">
+  <span class="eyebrow">SaaS exit planning tool</span>
+  <h1>Micro-SaaS Valuation &amp; Multiple Calculator</h1>
+  <p>Estimate an ARR-based business valuation range using recurring revenue, growth, churn, gross margin, operating history and product type. Explore how different revenue multiples change your estimated SaaS value.</p>
+  <div class="trust"><span>Instant browser calculations</span><span>No account required</span><span>Editable valuation assumptions</span><span>USD, EUR, GBP and INR</span></div>
+ </div>
+</section>
+<section class="wrap calc-layout" aria-label="Micro-SaaS valuation calculator">
+ <div class="panel input-panel">
+  <div class="panel-head"><h2>Business inputs</h2><span class="live-tag">LIVE ESTIMATE</span></div>
+  <div class="group">
+   <h3>1. Recurring revenue</h3>
+   <div class="fields">
+    <div class="field">
+     <label for="currency">Display currency</label>
+     <select id="currency"><option value="USD">$ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="INR">₹ INR</option></select>
+     <div class="hint">Changes display formatting only; no currency conversion.</div>
+    </div>
+    <div class="field">
+     <label for="revenueBasis">Revenue input type</label>
+     <select id="revenueBasis"><option value="MRR">Monthly recurring revenue (MRR)</option><option value="ARR">Annual recurring revenue (ARR)</option></select>
+    </div>
+    <div class="field">
+     <label for="revenue" id="revenueLabel">Monthly recurring revenue</label>
+     <div class="input-with-prefix"><span id="currencySymbol">$</span><input id="revenue" type="number" min="1" max="1000000000000" step="any" value="5000" inputmode="decimal"></div>
+    </div>
+    <div class="field">
+     <label for="grossMargin">Gross profit margin (%)</label>
+     <input id="grossMargin" type="number" min="0" max="100" step="0.1" value="80" inputmode="decimal">
+    </div>
+   </div>
+   <div class="field" style="margin-top:10px">
+    <div class="rate-row">
+     <div><label for="marginRange">Gross margin slider</label><input id="marginRange" type="range" min="0" max="100" step="1" value="80"></div>
+     <div class="metric-note" id="marginNote">80% gross margin</div>
+    </div>
+   </div>
+  </div>
+  <div class="group">
+   <h3>2. Growth and customer retention</h3>
+   <div class="field">
+    <div class="rate-row">
+     <div><label for="growthRange">Annual revenue growth (%)</label><input id="growthRange" type="range" min="-100" max="300" step="1" value="25"></div>
+     <div><label for="growth">Growth rate</label><input id="growth" type="number" min="-100" max="300" step="0.1" value="25" inputmode="decimal"></div>
+    </div>
+    <div class="hint">Use a trailing 12-month year-over-year growth rate, not a one-month spike.</div>
+   </div>
+   <div class="fields" style="margin-top:12px">
+    <div class="field">
+     <label for="churn">Customer churn rate (%)</label>
+     <input id="churn" type="number" min="0" max="100" step="0.1" value="3" inputmode="decimal">
+    </div>
+    <div class="field">
+     <label for="churnBasis">Churn period</label>
+     <select id="churnBasis"><option value="monthly">Monthly churn</option><option value="annual">Annual churn</option></select>
+    </div>
+   </div>
+   <div class="hint" id="churnHint">Monthly customer churn is converted to an annualized equivalent for context.</div>
+  </div>
+  <div class="group">
+   <h3>3. Business profile</h3>
+   <div class="fields">
+    <div class="field">
+     <label for="age">Business age (years)</label>
+     <input id="age" type="number" min="0" max="30" step="0.5" value="3" inputmode="decimal">
+     <div class="hint">Time since the product began operating commercially.</div>
+    </div>
+    <div class="field">
+     <label for="productType">Product type</label>
+     <select id="productType">
+      <option value="B2B">B2B SaaS</option>
+      <option value="B2C">B2C SaaS</option>
+      <option value="AI">AI wrapper / AI-enabled app</option>
+      <option value="MARKET">Marketplace software</option>
+     </select>
+    </div>
+   </div>
+  </div>
+  <div class="callout">This is an ARR-multiple scenario model. Many smaller bootstrapped SaaS acquisitions are assessed using seller discretionary earnings (SDE), owner workload and transferable profit. See the guide below before treating this as an exit price.</div>
+  <div class="fields" style="margin-top:12px">
+   <button class="btn btn-secondary" type="button" id="resetBtn">Reset defaults</button>
+   <button class="btn btn-primary" type="button" id="breakdownBtn" aria-expanded="false" aria-controls="breakdownPanel">Valuation breakdown</button>
+  </div>
+  <div id="inputError" role="alert" aria-live="polite" style="display:none;color:#a52c39;background:#fff0f1;border:1px solid #f5cbd0;border-radius:9px;padding:9px 11px;font-size:11px;margin-top:12px"></div>
+ </div>
+ <aside class="panel results-panel" aria-label="Estimated SaaS valuation results">
+  <div class="results-top">
+   <div class="panel-head"><h2>Estimated business value</h2><span class="live-tag">SCENARIO RANGE</span></div>
+   <div class="currency-label" id="rangeCaption">ARR-BASED ENTERPRISE VALUE · USD</div>
+   <div class="range-grid">
+    <div class="range-box low"><span>LOW</span><strong id="lowValue">$90,000</strong><small id="lowMultiple">1.5x ARR</small></div>
+    <div class="range-box mid"><span>MEDIAN</span><strong id="medianValue">$150,000</strong><small id="medianMultiple">2.5x ARR</small></div>
+    <div class="range-box high"><span>HIGH</span><strong id="highValue">$240,000</strong><small id="highMultiple">4.0x ARR</small></div>
+   </div>
+   <div class="median-caption" id="medianExplanation">Estimated median based on $60,000 ARR and a 2.5x adjusted multiple.</div>
+  </div>
+  <div class="metric-grid">
+   <div class="metric"><span>Annual recurring revenue</span><strong id="arrValue">$60,000</strong><small>Normalized from selected revenue input</small></div>
+   <div class="metric"><span>Annual gross profit</span><strong id="grossProfit">$48,000</strong><small>ARR × gross margin</small></div>
+   <div class="metric"><span>Adjusted median multiple</span><strong id="medianMultMetric">2.5x</strong><small>Illustrative model, not a live quote</small></div>
+   <div class="metric"><span>Annualized customer churn</span><strong id="annualChurn">30.6%</strong><small id="monthlyChurn">3.0% monthly</small></div>
+  </div>
+  <div class="chart-section">
+   <div class="chart-head"><strong>Valuation range &amp; multiple sensitivity</strong><span>ARR × multiple</span></div>
+   <div class="chart-wrap"><canvas id="valuationChart" role="img" aria-label="Bar chart showing low, median and high SaaS valuation scenarios"></canvas></div>
+  </div>
+  <div class="projection">
+   <h3>Projected valuation at today's adjusted multiples</h3>
+   <div class="projection-grid">
+    <div class="projection-card"><span>After 1 year</span><strong id="year1Value">$187,500</strong><small id="year1Arr">ARR $75,000</small></div>
+    <div class="projection-card"><span>After 2 years</span><strong id="year2Value">$234,375</strong><small id="year2Arr">ARR $93,750</small></div>
+    <div class="projection-card"><span>After 3 years</span><strong id="year3Value">$292,969</strong><small id="year3Arr">ARR $117,188</small></div>
+   </div>
+  </div>
+  <div class="action-row">
+   <button class="btn btn-primary" type="button" id="copyBtn">Copy valuation summary</button>
+   <button class="btn btn-quiet" type="button" id="resetBtn2">Reset calculator</button>
+  </div>
+ </aside>
+</section>
+<section class="wrap panel breakdown-panel" id="breakdownPanel" aria-labelledby="breakdownTitle">
+ <h2 id="breakdownTitle">Valuation breakdown &amp; factors</h2>
+ <p>The model starts with illustrative low, median and high ARR multiples, then applies the same transparent factor adjustments to each case. These adjustments are analytical assumptions, not broker-published weights.</p>
+ <div class="factor-list" id="factorList"></div>
+ <div class="sensitivity">
+  <table><thead><tr><th>Multiple scenario</th><th>Revenue multiple</th><th>Estimated enterprise value</th></tr></thead><tbody id="sensitivityBody"></tbody></table>
+ </div>
+ <p class="metric-note">Sensitivity holds ARR constant and changes only the selected multiple. Future projections instead hold today's adjusted multiples constant while ARR grows at the input growth rate.</p>
+</section>
+<section class="wrap article">
+ <div class="article-grid">
+  <article class="content-card">
+   <h2>How Micro-SaaS Valuations Work</h2>
+   <p>A Micro-SaaS is a focused software business, often operated by a small team or founder, that earns recurring subscription revenue. Buyers generally look at the quality and durability of that revenue—not just the headline MRR. They assess retention, growth, gross margin, customer concentration, acquisition channels, profitability, technical risk and how easily the business can transfer to a new owner.</p>
+   <p>An ARR-based valuation starts by annualizing recurring subscription revenue and multiplying it by a comparable revenue multiple. This approach is more relevant to SaaS businesses with predictable recurring revenue and credible growth. It should not be confused with a profit-based valuation of a small owner-operated business.</p>
+   <div class="formula"><code>ARR = MRR × 12</code><br><code>Enterprise value = ARR × Revenue multiple</code></div>
+   <h3>Revenue multiple vs SDE multiple</h3>
+   <p>Many smaller bootstrapped SaaS businesses are valued using Seller Discretionary Earnings (SDE), which adjusts earnings for a working owner's compensation and legitimate one-off or discretionary expenses. As a SaaS business grows, adds a team and reinvests heavily to scale, revenue multiples may become more relevant. The appropriate method depends on size, growth, owner involvement and the quality of financial records.</p>
+   <p>For example, <a href="https://quietlight.com/guide/build-value-and-sell-a-saas-business/" target="_blank" rel="noopener">Quiet Light's SaaS valuation guide</a> explains the distinction between SDE-based and revenue-based approaches. <a href="https://empireflippers.com/valuation-tool/" target="_blank" rel="noopener">Empire Flippers' valuation tool</a> describes a profit-based method for many online businesses. These are useful references, not interchangeable benchmarks for every SaaS company.</p>
+   <h2>Key Metrics That Influence SaaS Multiples</h2>
+   <h3>1. Revenue growth and its quality</h3>
+   <p>Consistent year-over-year growth can support a higher multiple because it suggests that future recurring revenue may expand. Buyers will still ask whether growth is repeatable, profitable and supported by stable customer cohorts. A short-lived promotion or a single large customer should not be treated as durable growth.</p>
+   <h3>2. Customer churn and retention</h3>
+   <p>High churn makes future subscription revenue less predictable. Buyers often review customer and revenue churn separately, along with net revenue retention, cohort retention, customer acquisition cost and customer lifetime value. This calculator accepts customer churn as a simplified risk indicator; it does not calculate revenue churn or net revenue retention.</p>
+   <div class="formula"><code>Annualized churn = 1 − (1 − Monthly churn)<sup>12</sup></code></div>
+   <h3>3. Gross profit margin</h3>
+   <p>Gross margin indicates how much recurring revenue remains after direct costs such as hosting, infrastructure, payment processing and direct support costs. Higher margins can make growth more valuable, while rising infrastructure or AI inference costs can reduce the quality of revenue. The correct treatment of cost of goods sold should be consistent across periods.</p>
+   <h3>4. Business age and product type</h3>
+   <p>A longer operating history can provide evidence of product-market fit, customer retention and stable acquisition channels. Product category also matters. B2B contracts can be predictable but may involve customer concentration; B2C products can have different retention patterns; AI-enabled products need a defensible reason for customers to stay; and marketplaces need durable liquidity on both sides.</p>
+   <h2>Pro Tips to Prepare a SaaS for Acquisition</h2>
+   <ul>
+    <li><strong>Reconcile your financial records.</strong> Keep monthly profit-and-loss statements, bank statements, payment processor reports, invoices and subscription revenue records consistent.</li>
+    <li><strong>Document SaaS metrics.</strong> Maintain MRR/ARR bridges, customer and revenue churn, cohort retention, expansion revenue, CAC and gross-margin reporting.</li>
+    <li><strong>Reduce founder dependency.</strong> Document support, deployment, billing, onboarding and incident-response processes. A buyer should understand how the product operates without relying on undocumented founder knowledge.</li>
+    <li><strong>Secure IP ownership.</strong> Confirm that contractor agreements, code contributions, domains, trademarks and software licenses can transfer to the buyer.</li>
+    <li><strong>Prepare technical due diligence.</strong> Document infrastructure, backups, security controls, third-party dependencies, API costs, uptime history and known technical debt.</li>
+    <li><strong>Explain customer concentration.</strong> Identify revenue dependence on large customers, platforms, affiliate partners, app marketplaces or a single acquisition channel.</li>
+    <li><strong>Build a realistic data room.</strong> Prepare contracts, tax records, financial reports, customer metrics, product documentation and a clear transition plan before approaching buyers.</li>
+   </ul>
+   <p>Broker guidance from <a href="https://quietlight.com/the-four-essential-steps-to-prepare-your-saas-business-for-a-successful-sale/" target="_blank" rel="noopener">Quiet Light's SaaS sale preparation guide</a> and <a href="https://empireflippers.com/sell-your-saas/" target="_blank" rel="noopener">Empire Flippers' SaaS selling guidance</a> can help founders understand the types of financial and operational evidence buyers may request. Each broker has its own screening and diligence process; there is no single universal acquisition standard.</p>
+   <div class="callout">The calculator's Low / Median / High multiples are illustrative model assumptions. They are not current broker quotes, transaction comps or verified market quartiles. A transaction-specific valuation requires comparable deals and detailed diligence.</div>
+   <h2>Frequently Asked Questions</h2>
+   <div class="faq"><h3>1. How do you calculate a Micro-SaaS valuation?</h3><p>An ARR-based estimate multiplies annual recurring revenue by a revenue multiple. The multiple depends on growth, churn, gross margin, scale, market conditions, product differentiation, profitability and transferability. Many smaller bootstrapped SaaS businesses are also assessed using SDE.</p></div>
+   <div class="faq"><h3>2. What is a typical SaaS revenue multiple?</h3><p>There is no single typical multiple for every SaaS business. Public SaaS companies, private acquisitions and small owner-operated Micro-SaaS businesses are different comparison groups. Always compare the same valuation metric, company size and transaction type.</p></div>
+   <div class="faq"><h3>3. How does churn affect SaaS valuation?</h3><p>Higher churn makes recurring revenue less predictable and can reduce a buyer's willingness to pay. Buyers also examine cohort retention, revenue churn, expansion revenue, customer concentration and acquisition costs.</p></div>
+   <div class="faq"><h3>4. Are AI wrapper businesses worth less?</h3><p>Not automatically. A thin product that depends on a third-party model without proprietary workflows, data or customer retention may face platform and differentiation risks. A defensible AI product with strong retention can be assessed differently.</p></div>
+   <div class="faq"><h3>5. Is this a formal valuation or a guaranteed sale price?</h3><p>No. It is an illustrative ARR-multiple scenario using the assumptions you enter. It does not review profit, SDE, debt, cash, contracts, customer concentration, intellectual property, comparable transactions or deal structure. Speak with a qualified advisor for a transaction-specific valuation.</p></div>
+  </article>
+  <aside class="side-card">
+   <h2>What this estimate does not include</h2>
+   <p>This model intentionally does not pretend to be a broker valuation. It excludes:</p>
+   <ul>
+    <li>Net profit, SDE, EBITDA and owner compensation</li>
+    <li>Cash, debt, working capital and equity value</li>
+    <li>Customer concentration and contract quality</li>
+    <li>Net revenue retention, CAC and LTV</li>
+    <li>Founder workload and transferability score</li>
+    <li>Market-specific comparable transactions</li>
+    <li>Deal structure, earnouts and buyer synergies</li>
+   </ul>
+   <p>Use the range for early planning and compare it with a profit-based analysis before making an acquisition or sale decision.</p>
+  </aside>
+ </div>
+</section>
+<p class="wrap disclaimer">For educational and informational purposes only. This tool is not a formal business appraisal, investment recommendation, broker quote, legal advice or tax advice. Actual transaction value depends on due diligence, comparable deals, profitability, buyer demand and deal terms.</p>
+</main>
+<div id="site-footer"></div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const defaults={currency:'USD',revenueBasis:'MRR',revenue:'5000',grossMargin:'80',growth:'25',churn:'3',churnBasis:'monthly',age:'3',productType:'B2B'};
+const symbols={USD:'$',EUR:'€',GBP:'£',INR:'₹'};
+const baseMultiples={low:1.5,median:2.5,high:4.0};
+let chart=null;
+const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+function num(id){const raw=$(id).value.trim();return raw===''?NaN:Number(raw);}
+function money(value){
+ const code=$('currency').value;
+ try{return new Intl.NumberFormat(code==='INR'?'en-IN':'en-US',{style:'currency',currency:code,maximumFractionDigits:0}).format(Number.isFinite(value)?value:0);}
+ catch(e){return (symbols[code]||'$')+(Number(value)||0).toFixed(0);}
+}
+function fmtPct(v){return (v*100).toFixed(1)+'%';}
+function showError(message){$('inputError').textContent=message;$('inputError').style.display='block';}
+function clearError(){$('inputError').textContent='';$('inputError').style.display='none';}
+function inputs(){
+ const revenue=num('revenue'),margin=num('grossMargin'),growth=num('growth'),churn=num('churn'),age=num('age');
+ if(!Number.isFinite(revenue)||revenue<=0||revenue>1e12)throw new Error('Enter recurring revenue greater than zero and no more than 1,000,000,000,000.');
+ if(!Number.isFinite(margin)||margin<0||margin>100)throw new Error('Gross profit margin must be between 0% and 100%.');
+ if(!Number.isFinite(growth)||growth< -100||growth>300)throw new Error('Annual growth must be between -100% and 300%.');
+ if(!Number.isFinite(churn)||churn<0||churn>100)throw new Error('Churn must be between 0% and 100%.');
+ if(!Number.isFinite(age)||age<0||age>30)throw new Error('Business age must be between 0 and 30 years.');
+ const monthlyRevenue=$('revenueBasis').value==='MRR'?revenue:revenue/12;
+ const arr=monthlyRevenue*12;
+ let monthlyChurn,annualChurn;
+ if($('churnBasis').value==='monthly'){monthlyChurn=churn/100;annualChurn=1-Math.pow(1-monthlyChurn,12);}
+ else{annualChurn=churn/100;monthlyChurn=1-Math.pow(1-annualChurn,1/12);}
+ return {revenue,arr,margin:margin/100,growth:growth/100,monthlyChurn,annualChurn,age,product:$('productType').value,currency:$('currency').value};
+}
+function score(i){
+ const factors=[];
+ let growthAdj;
+ if(i.growth<0)growthAdj=-0.65;
+ else if(i.growth<0.10)growthAdj=-0.30;
+ else if(i.growth<0.25)growthAdj=-0.10;
+ else if(i.growth<0.50)growthAdj=0.15;
+ else if(i.growth<1.00)growthAdj=0.35;
+ else growthAdj=0.45;
+ factors.push({name:'Annual revenue growth',adjustment:growthAdj,reason:i.growth<0?'Revenue contraction increases execution and retention risk.':i.growth<0.10?'Low growth provides limited evidence of expansion.':i.growth<0.25?'Moderate growth supports the baseline without a large premium.':i.growth<0.50?'Strong year-over-year growth supports a modest premium.':i.growth<1?'High growth supports a stronger premium, subject to retention quality.':'Very high growth receives a capped premium; buyers still need proof it is repeatable.'});
+ let churnAdj;
+ if(i.monthlyChurn>0.08)churnAdj=-0.65;
+ else if(i.monthlyChurn>0.05)churnAdj=-0.45;
+ else if(i.monthlyChurn>0.04)churnAdj=-0.25;
+ else if(i.monthlyChurn>0.025)churnAdj=-0.10;
+ else if(i.monthlyChurn>0.01)churnAdj=0.10;
+ else churnAdj=0.20;
+ factors.push({name:'Customer churn',adjustment:churnAdj,reason:i.monthlyChurn>0.08?'Very high monthly churn makes recurring revenue difficult to predict.':i.monthlyChurn>0.04?'Elevated monthly churn can weaken retention and buyer confidence.':i.monthlyChurn>0.025?'Moderate churn is a small valuation headwind.':i.monthlyChurn>0.01?'Relatively low monthly churn supports revenue durability.':'Very low reported churn supports a retention premium; verify cohorts and revenue churn.'});
+ let marginAdj;
+ if(i.margin<0.40)marginAdj=-0.45;
+ else if(i.margin<0.60)marginAdj=-0.25;
+ else if(i.margin<0.70)marginAdj=-0.10;
+ else if(i.margin<0.80)marginAdj=0.05;
+ else if(i.margin<0.90)marginAdj=0.15;
+ else marginAdj=0.20;
+ factors.push({name:'Gross profit margin',adjustment:marginAdj,reason:i.margin<0.4?'Low gross margin leaves less contribution to fund growth and operations.':i.margin<0.7?'Moderate gross margin may limit scalability or reflect high delivery costs.':i.margin<0.8?'Healthy margin provides modest support.':'Strong gross margin can support scalable recurring revenue, if costs are classified consistently.'});
+ let ageAdj;
+ if(i.age<1)ageAdj=-0.45;
+ else if(i.age<2)ageAdj=-0.25;
+ else if(i.age<3)ageAdj=-0.10;
+ else if(i.age<5)ageAdj=0.05;
+ else if(i.age<8)ageAdj=0.15;
+ else ageAdj=0.20;
+ factors.push({name:'Operating history',adjustment:ageAdj,reason:i.age<1?'Less than one year of operating history gives buyers limited evidence.':i.age<2?'A short track record adds execution and transfer risk.':i.age<3?'A developing track record earns a modest discount.':i.age<5?'Several years of operation support some confidence.':'A longer operating history can demonstrate resilience, provided recent performance remains healthy.'});
+ const productAdjustments={B2B:{value:0.15,reason:'B2B positioning can support contract value and predictable recurring relationships; customer concentration still matters.'},B2C:{value:-0.15,reason:'B2C products may face higher customer-volume and retention volatility; actual cohorts can change this assessment.'},AI:{value:-0.30,reason:'An AI wrapper may depend on third-party models and face differentiation, API-cost and platform risks. Defensible AI products can perform differently.'},MARKET:{value:0.05,reason:'A marketplace may benefit from network effects, but liquidity, take rate and two-sided retention are not measured here.'}};
+ const p=productAdjustments[i.product];
+ factors.push({name:'Product type',adjustment:p.value,reason:p.reason});
+ const total=factors.reduce((sum,f)=>sum+f.adjustment,0);
+ const capped=clamp(total,-1.35,1.35);
+ return {factors,total,capped,uncappedTotal:total};
+}
+function renderChart(vals){
+ if(!window.Chart)return;
+ const data={labels:['Low estimate','Median estimate','High estimate'],datasets:[{label:'Estimated enterprise value',data:[vals.low,vals.median,vals.high],backgroundColor:['#e8b85c','#07966e','#6b8fe8'],borderRadius:7,borderSkipped:false,maxBarThickness:38}]};
+ if(chart){chart.data=data;chart.options.plugins.tooltip.callbacks.label=ctx=>money(ctx.parsed.x);chart.update('none');return;}
+ chart=new Chart($('valuationChart'),{type:'bar',data,options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>money(ctx.parsed.x)}}},scales:{x:{beginAtZero:true,grid:{color:'#edf1f5'},ticks:{font:{size:9},color:'#77869a',callback:value=>money(value)}},y:{grid:{display:false},ticks:{font:{size:10},color:'#52657d'}}}}});
+}
+function renderFactors(result){
+ $('factorList').innerHTML=result.factors.map(f=>'<div class="factor"><div class="factor-top"><span>'+f.name+'</span><strong style="color:'+(f.adjustment>0?'#07966e':f.adjustment<0?'#c74755':'#64758b')+'">'+(f.adjustment>0?'+':'')+f.adjustment.toFixed(2)+'x</strong></div><p>'+f.reason+'</p></div>').join('')+
+ '<div class="factor"><div class="factor-top"><span>Total factor adjustment</span><strong>'+(result.adjustment>0?'+':'')+result.adjustment.toFixed(2)+'x</strong></div><p>Combined adjustment after applying the model's ±1.35x cap.</p></div>';
+ const mults=[Math.max(.25,result.multiples.median-1),Math.max(.25,result.multiples.median-.5),result.multiples.median, result.multiples.median+.5,result.multiples.median+1];
+ $('sensitivityBody').innerHTML=mults.map((m,index)=>'<tr><td>'+(index===2?'Current median':(m<result.multiples.median?'Lower sensitivity':'Higher sensitivity'))+'</td><td>'+m.toFixed(2)+'x</td><td>'+money(result.input.arr*m)+'</td></tr>').join('');
+}
+function calculate(){
+ try{
+  const i=inputs(),s=score(i),adj=s.capped;
+  const multiples={low:Math.max(.25,baseMultiples.low+adj),median:Math.max(.25,baseMultiples.median+adj),high:Math.max(.25,baseMultiples.high+adj)};
+  const values={low:i.arr*multiples.low,median:i.arr*multiples.median,high:i.arr*multiples.high};
+  const projections=[1,2,3].map(year=>{const arr=i.arr*Math.pow(1+i.growth,year);return {year,arr,low:arr*multiples.low,median:arr*multiples.median,high:arr*multiples.high};});
+  $('currencySymbol').textContent=symbols[i.currency];
+  $('rangeCaption').textContent='ARR-BASED ENTERPRISE VALUE · '+i.currency;
+  $('lowValue').textContent=money(values.low);$('medianValue').textContent=money(values.median);$('highValue').textContent=money(values.high);
+  $('lowMultiple').textContent=multiples.low.toFixed(2)+'x ARR';$('medianMultiple').textContent=multiples.median.toFixed(2)+'x ARR';$('highMultiple').textContent=multiples.high.toFixed(2)+'x ARR';
+  $('medianExplanation').textContent='Median estimate uses '+money(i.arr)+' ARR × '+multiples.median.toFixed(2)+'x adjusted revenue multiple.';
+  $('arrValue').textContent=money(i.arr);$('grossProfit').textContent=money(i.arr*i.margin);$('medianMultMetric').textContent=multiples.median.toFixed(2)+'x';
+  $('annualChurn').textContent=fmtPct(i.annualChurn);$('monthlyChurn').textContent=fmtPct(i.monthlyChurn)+' monthly equivalent';
+  projections.forEach(p=>{$('year'+p.year+'Value').textContent=money(p.median);$('year'+p.year+'Arr').textContent='ARR '+money(p.arr);});
+  $('revenueLabel').textContent=$('revenueBasis').value==='MRR'?'Monthly recurring revenue':'Annual recurring revenue';
+  $('marginNote').textContent=(i.margin*100).toFixed(1)+'% gross margin';
+  $('churnHint').textContent='Equivalent monthly churn: '+fmtPct(i.monthlyChurn)+' · annualized churn: '+fmtPct(i.annualChurn)+'.';
+  const result={input:i,factors:s.factors,adjustment:adj,uncappedAdjustment:s.uncappedTotal,multiples,values,projections};
+  window.saasValuationResult=result;
+  renderChart(values);renderFactors(result);clearError();
+ }catch(e){showError(e.message||'Please check your inputs.');}
+}
+function syncRange(from,to,min,max){const value=num(from);if(Number.isFinite(value))$(to).value=String(clamp(value,min,max));}
+function reset(){
+ Object.keys(defaults).forEach(id=>$(id).value=defaults[id]);
+ $('marginRange').value=defaults.grossMargin;$('growthRange').value=defaults.growth;
+ calculate();
+}
+function copySummary(){
+ const r=window.saasValuationResult;if(!r)return;
+ const i=r.input;
+ const lines=[
+ 'Micro-SaaS Valuation & Multiple Calculator',
+ 'Revenue input: '+( $('revenueBasis').value==='MRR'?'MRR':'ARR')+' '+money(i.revenue),
+ 'Annual recurring revenue: '+money(i.arr),
+ 'Gross margin: '+fmtPct(i.margin),
+ 'Annual growth: '+fmtPct(i.growth),
+ 'Monthly customer churn: '+fmtPct(i.monthlyChurn),
+ 'Annualized customer churn: '+fmtPct(i.annualChurn),
+ 'Business age: '+i.age+' years',
+ 'Product type: '+i.product,
+ 'Low estimate: '+money(r.values.low)+' ('+r.multiples.low.toFixed(2)+'x ARR)',
+ 'Median estimate: '+money(r.values.median)+' ('+r.multiples.median.toFixed(2)+'x ARR)',
+ 'High estimate: '+money(r.values.high)+' ('+r.multiples.high.toFixed(2)+'x ARR)',
+ '1-year median scenario: '+money(r.projections[0].median),
+ '2-year median scenario: '+money(r.projections[1].median),
+ '3-year median scenario: '+money(r.projections[2].median),
+ 'Model uses illustrative ARR-multiple assumptions, not market quotes or a formal valuation.'
+ ].join('\n');
+ const done=()=>{$('copyBtn').textContent='Copied!';setTimeout(()=>$('copyBtn').textContent='Copy valuation summary',1600);};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lines).then(done).catch(()=>fallbackCopy(lines));}
+ else fallbackCopy(lines);
+}
+function fallbackCopy(value){
+ const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();
+ try{document.execCommand('copy');$('copyBtn').textContent='Copied!';setTimeout(()=>$('copyBtn').textContent='Copy valuation summary',1600);}catch(e){$('copyBtn').textContent='Copy unavailable';}
+ area.remove();
+}
+$('revenueBasis').addEventListener('change',calculate);
+$('currency').addEventListener('change',calculate);
+['revenue','grossMargin','growth','churn','churnBasis','age','productType'].forEach(id=>$(id).addEventListener('input',()=>{
+ if(id==='grossMargin')syncRange('grossMargin','marginRange',0,100);
+ if(id==='growth')syncRange('growth','growthRange',-100,300);
+ calculate();
+}));
+$('marginRange').addEventListener('input',()=>{$('grossMargin').value=$('marginRange').value;calculate();});
+$('growthRange').addEventListener('input',()=>{$('growth').value=$('growthRange').value;calculate();});
+$('breakdownBtn').addEventListener('click',()=>{
+ const open=!$('breakdownPanel').classList.contains('show');$('breakdownPanel').classList.toggle('show',open);$('breakdownBtn').setAttribute('aria-expanded',String(open));$('breakdownBtn').textContent=open?'Hide valuation breakdown':'Valuation breakdown';
+ if(open)$('breakdownPanel').scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('resetBtn').addEventListener('click',reset);$('resetBtn2').addEventListener('click',reset);$('copyBtn').addEventListener('click',copySummary);
+reset();
+})();
+</script>
+</body>
+</html>
