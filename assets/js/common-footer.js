@@ -26,6 +26,7 @@
     ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/'],
     ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/'],
     ['Crypto Tax & Capital Gains Calculator', '/crypto-capital-gains-tax-calculator/'],
+    ['SaaS LTV:CAC Calculator', '/saas-ltv-cac-calculator/'],
     ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/'],
     ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/'],
     ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/'],
