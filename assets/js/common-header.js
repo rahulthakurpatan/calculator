@@ -103,6 +103,12 @@
     }
   ];
 
+  // Single category registry for the related-links cloud; reused across every calculator page.
+  window.__calculatorCloudCategories = categories.map(group => ({
+    label: group.label,
+    tools: group.tools.map(tool => [tool[0], tool[1]])
+  }));
+
   const style = document.createElement('style');
   style.id = 'investcalc-header-styles';
   style.textContent = `
@@ -194,6 +200,14 @@
   const mount = document.getElementById('site-header');
   if (mount) mount.replaceWith(header);
   else document.body.insertBefore(header, document.body.firstChild);
+
+  if (!document.querySelector('script[data-investcalc-cloud]')) {
+    const cloudScript = document.createElement('script');
+    cloudScript.src = '/assets/js/calculator-cloud.js';
+    cloudScript.defer = true;
+    cloudScript.dataset.investcalcCloud = 'true';
+    document.head.appendChild(cloudScript);
+  }
 
   if (!document.querySelector('script[data-investcalc-search]')) {
     const searchScript = document.createElement('script');
