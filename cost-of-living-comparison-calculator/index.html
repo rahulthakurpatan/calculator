@@ -150,18 +150,18 @@ const fields=['housing','utilities','connectivity','groceries','dining','transpo
 const labels={housing:'Rent / mortgage',utilities:'Utilities',connectivity:'Internet & mobile',groceries:'Groceries & household supplies',dining:'Dining & takeaway',transport:'Transport / public transit',vehicle:'Car payment, fuel & parking',health:'Healthcare & insurance',childcare:'Childcare & education',entertainment:'Entertainment & subscriptions',personal:'Personal care & clothing',other:'Other monthly expenses'};
 const moveFields=['flights','visa','shipping','temporary','deposit','agent','setup','insurance','otherMove'];
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,maximumFractionDigits:0}).format(Number.isFinite(n)?n:0);
-const num=id=>{const v=$(id).value.trim();return v===''?null:Number(v)};
+const num=id=>{const v=$(id).value.trim();return v===''?null:Number(v)};\nconst optionalNum=id=>{const v=num(id);return v===null?0:v};
 const expenses=city=>fields.reduce((s,k)=>s+Number(document.querySelector('[data-exp="'+k+'"][data-city="'+city+'"]').value||0),0);
 const fmtPct=n=>(n>=0?'+':'')+n.toFixed(1)+'%';
 let last=null;
 function calculate(e){if(e)e.preventDefault();
 const cityA=$('cityA').value.trim(),cityB=$('cityB').value.trim(),grossA=num('grossA'),grossB=num('grossB'),taxA=num('taxA'),taxB=num('taxB'),directA=num('netA'),directB=num('netB'),save=num('savings'),benefits=num('benefits');
-const inputs=[grossA,grossB,taxA,taxB,save,benefits,...moveFields.map(num),...Array.from(document.querySelectorAll('[data-exp]')).map(x=>Number(x.value))];
+const inputs=[grossA,grossB,taxA,taxB,save,optionalNum('benefits'),...moveFields.map(optionalNum),...Array.from(document.querySelectorAll('[data-exp]')).map(x=>Number(x.value))];
 const invalid=inputs.some(x=>x===null||!Number.isFinite(x)||x<0)||taxA>95||taxB>95||[...document.querySelectorAll('[data-exp]')].some(x=>x.value.trim()===''||Number(x.value)<0)||!cityA||!cityB||(directA!==null&&(!Number.isFinite(directA)||directA<0))||(directB!==null&&(!Number.isFinite(directB)||directB<0));
 if(invalid){$('error').textContent='Please enter valid non-negative amounts, both location names and tax rates from 0% to 95%.';results.classList.remove('show');return}
 const totalA=expenses('a'),totalB=expenses('b'),netA=directA===null?grossA*(1-taxA/100):directA,netB=directB===null?grossB*(1-taxB/100):directB;
-const disposableA=netA-totalA,disposableB=netB+benefits-totalB,requiredNet=totalB+save,requiredGross=requiredNet/Math.max(.0001,1-taxB/100),delta=totalB-totalA,deltaPct=totalA?delta/totalA*100:0;
-const moving=moveFields.reduce((s,id)=>s+num(id),0),months=Number($('months').value),monthlyAdvantage=disposableB-disposableA,impact=monthlyAdvantage*months-moving,recovery=monthlyAdvantage>0?moving/monthlyAdvantage:null,salaryChange=grossA>0?(requiredGross/grossA-1)*100:null;
+const disposableA=netA-totalA,disposableB=netB+optionalNum('benefits')-totalB,requiredNet=totalB+save,requiredGross=requiredNet/Math.max(.0001,1-taxB/100),delta=totalB-totalA,deltaPct=totalA?delta/totalA*100:0;
+const moving=moveFields.reduce((s,id)=>s+optionalNum(id),0),months=Number($('months').value),monthlyAdvantage=disposableB-disposableA,impact=monthlyAdvantage*months-moving,recovery=monthlyAdvantage>0?moving/monthlyAdvantage:null,salaryChange=grossA>0?(requiredGross/grossA-1)*100:null;
 const expenseDiff=fields.map(k=>({label:labels[k],a:Number(document.querySelector('[data-exp="'+k+'"][data-city="a"]').value),b:Number(document.querySelector('[data-exp="'+k+'"][data-city="b"]').value)}));
 $('cityA-head').textContent=cityA;$('cityB-head').textContent=cityB;$('cardA').textContent=cityA;$('cardB').textContent=cityB;
 $('requiredSalary').textContent=money(requiredGross)+'/month';$('salaryNote').textContent='Estimated gross destination pay to cover '+money(totalB)+' monthly expenses and '+money(save)+' monthly savings, using a '+taxB.toFixed(1)+'% effective deduction assumption.';
@@ -170,7 +170,7 @@ $('delta').className=delta>0?'negative':delta<0?'positive':'';$('deltaPct').text
 $('recovery').textContent=recovery===null?'Not recovered from monthly savings':recovery.toFixed(1)+' months';
 $('cardTotalA').textContent=money(totalA);$('cardTotalB').textContent=money(totalB);$('cardNetA').textContent=money(netA);$('cardNetB').textContent=money(netB+benefits);$('cardSaveA').textContent=money(disposableA);$('cardSaveB').textContent=money(disposableB);
 $('breakdown').innerHTML=expenseDiff.map(x=>'<tr><td>'+x.label+'</td><td>'+money(x.a)+'</td><td>'+money(x.b)+'</td><td>'+money(x.b-x.a)+'</td></tr>').join('')+'<tr><th>Total monthly expenses</th><th>'+money(totalA)+'</th><th>'+money(totalB)+'</th><th>'+money(delta)+'</th></tr>';
-last={cityA,cityB,currency:$('currency').value,household:$('household').value,lifestyle:$('lifestyle').value,totalA,totalB,netA,netB,benefits,disposableA,disposableB,requiredNet,requiredGross,save,moving,monthlyAdvantage,months,impact,recovery,expenseDiff,grossA,grossB,taxA,taxB};
+last={cityA,cityB,currency:$('currency').value,household:$('household').value,lifestyle:$('lifestyle').value,totalA,totalB,netA,netB,benefits:benefitValue,disposableA,disposableB,requiredNet,requiredGross,save,moving,monthlyAdvantage,months,impact,recovery,expenseDiff,grossA,grossB,taxA,taxB};
 $('error').textContent='';results.classList.add('show');
 }
 form.addEventListener('submit',calculate);
