@@ -80,7 +80,8 @@ tbody.addEventListener('input',e=>{const tr=e.target.closest('tr');if(!tr)return
 tbody.addEventListener('change',e=>{const tr=e.target.closest('tr');if(!tr)return;const r=rows.find(x=>x.id===tr.dataset.id);if(r&&e.target.dataset.k)r[e.target.dataset.k]=['qty','price','fee'].includes(e.target.dataset.k)?Number(e.target.value):e.target.value;});
 tbody.addEventListener('click',e=>{const id=e.target.dataset.remove;if(id){rows=rows.filter(r=>r.id!==id);renderRows();}});
 function money(n){const cur=$('currency').value;try{return new Intl.NumberFormat('en',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n);}catch{return cur+' '+n.toFixed(2);}}
-function days(a,b){return Math.floor((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/86400000);}\nfunction heldMoreThanYear(a,b){const d=new Date(a+'T00:00:00Z');d.setUTCFullYear(d.getUTCFullYear()+1);return Date.parse(b+'T00:00:00Z')>d.getTime();}
+function days(a,b){return Math.floor((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/86400000);}
+function heldMoreThanYear(a,b){const d=new Date(a+'T00:00:00Z');d.setUTCFullYear(d.getUTCFullYear()+1);return Date.parse(b+'T00:00:00Z')>d.getTime();}
 function round(n){return Math.round((n+Number.EPSILON)*100)/100;}
 function calculate(){
  const country=$('country').value, rate=Number($('taxRate').value)||0, tx=rows.map(r=>({...r,asset:String(r.asset).trim().toUpperCase()})).sort((a,b)=>a.date.localeCompare(b.date));
@@ -123,7 +124,9 @@ function calculate(){
     lotsByAsset.set(r.asset,q.filter(x=>x.qty>1e-9));
    }
    const gain=proceeds-cost, hold=weightedUnits?weightedDays/weightedUnits:0;
-   disposals.push({date:r.date,asset:r.asset,qty:r.qty,proceeds,cost,gain,hold,allocations});
+   let shortTermGain=0,longTermGain=0,discountedTaxable=0;
+   if(country==='US'||country==='AU'){allocations.forEach(a=>{const part=a.qty*(r.price-r.fee/r.qty-a.unitCost);const isLong=a.date!=='pooled'&&heldMoreThanYear(a.date,r.date);if(isLong)longTermGain+=part;else shortTermGain+=part;discountedTaxable+=country==='AU'&&isLong?part*.5:part;});}
+   disposals.push({date:r.date,asset:r.asset,qty:r.qty,proceeds,cost,gain,hold,allocations,shortTermGain,longTermGain,discountedTaxable});
   }
  }
  if(country==='IN'){
@@ -132,7 +135,7 @@ function calculate(){
  }else if(country==='CA'){
    disposals.forEach(d=>d.taxable=d.gain>0?d.gain*.5:d.gain);
  }else if(country==='AU'){
-   disposals.forEach(d=>d.taxable=d.gain>0&&d.hold>365?d.gain*.5:d.gain);
+   disposals.forEach(d=>d.taxable=d.discountedTaxable);
  }else disposals.forEach(d=>d.taxable=d.gain);
  const grossGain=disposals.reduce((s,d)=>s+d.gain,0), proceeds=disposals.reduce((s,d)=>s+d.proceeds,0), basis=disposals.reduce((s,d)=>s+d.cost,0);
  const taxable=country==='IN'?disposals.reduce((s,d)=>s+d.taxable,0):disposals.reduce((s,d)=>s+d.taxable,0);
