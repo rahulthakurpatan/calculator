@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101f38">
+<title>Digital Nomad Tax Calculator | 183-Day Residency</title>
+<meta name="description" content="Estimate remote-work tax scenarios, check country residency day rules, explore US FEIE and compare home vs destination tax assumptions. Updated for 2026.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Digital Nomad Tax Calculator | 183-Day Residency">
+<meta property="og:description" content="Check residency day-count rules for eight destinations and compare illustrative cross-border income tax scenarios with 2026 US FEIE guidance.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Digital Nomad Tax & Residency Calculator">
+<meta name="twitter:description" content="Compare tax scenarios for global remote work and understand residency day rules.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@graph":[
+{"@type":"WebApplication","@id":"https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/#app","name":"Digital Nomad Tax & Residency Calculator","url":"https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"JavaScript","description":"A browser-based residency screening and illustrative income-tax scenario tool for remote workers, including the 2026 US foreign earned income exclusion.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+{"@type":"FAQPage","@id":"https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/#faq","mainEntity":[
+{"@type":"Question","name":"Does staying under 183 days mean I owe no tax?","acceptedAnswer":{"@type":"Answer","text":"No. Tax residency can depend on a home, economic interests, family ties or a different day-count test. Working physically in a country can also produce locally sourced taxable income even without tax residency."}},
+{"@type":"Question","name":"Does a digital nomad visa make income tax-free?","acceptedAnswer":{"@type":"Answer","text":"No. Immigration permission, tax residency, payroll and source-of-income taxation are different rules. Check the specific visa terms, income source and applicable treaty."}},
+{"@type":"Question","name":"What is the US foreign earned income exclusion for 2026?","acceptedAnswer":{"@type":"Answer","text":"The maximum 2026 FEIE is 132900 US dollars for one qualifying individual, subject to foreign tax home, bona fide residence or 330-full-day physical presence requirements, eligible foreign earned income and possible proration. FEIE generally does not remove US self-employment tax."}},
+{"@type":"Question","name":"Is Dubai automatically tax-free for all digital nomads?","acceptedAnswer":{"@type":"Answer","text":"The UAE generally has no personal income tax on employment wages, but UAE tax residency is not the same as cancelling home-country obligations. Business and self-employment income can involve separate licensing or corporate tax considerations."}},
+{"@type":"Question","name":"Does this estimate include foreign tax credits or social security?","acceptedAnswer":{"@type":"Answer","text":"Only a manually entered illustrative credit is subtracted, capped by the model. It does not determine treaty credit eligibility or calculate social security, state, provincial, local, payroll or corporate taxes. Results are not personal tax advice."}}
+]},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Digital Nomad Tax Calculator","item":"https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/"}]}
+]}
+</script>
+<style>
+:root{--bg:#f2f6fa;--ink:#17253c;--muted:#687992;--navy:#112139;--navy2:#203752;--line:#dce5ed;--green:#0b936d;--greenbg:#e6f7f0;--amber:#b77814;--amberbg:#fff4df;--red:#b7374c;--redbg:#fff0f2;--blue:#3264d8;--shadow:0 14px 42px rgba(25,54,91,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#eaf3fc 0,#f7f9fc 540px,#fff 1150px);color:var(--ink);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#2259ce}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #4b88ef;outline-offset:2px}.wrap{width:min(1170px,calc(100% - 36px));margin:auto}.hero{padding:40px 0 24px;background:radial-gradient(circle at 10% 0,#dceafa,transparent 35%),radial-gradient(circle at 85% 0,#e2f4ec,transparent 37%)}.eyebrow{display:inline-block;font-weight:900;color:#126e5b;background:#e2f6ec;border:1px solid #c5e9da;border-radius:30px;padding:5px 12px;text-transform:uppercase;letter-spacing:.08em;font-size:10px}.hero h1{font-size:clamp(31px,5vw,49px);letter-spacing:-1.6px;line-height:1.12;margin:15px 0 11px;max-width:820px}.hero p{color:#54677e;max-width:850px;font-size:16px;margin:0}.trust{display:flex;gap:10px 19px;flex-wrap:wrap;margin-top:15px;color:#53677e;font-weight:750;font-size:12px}.trust span:before{content:"✓";color:var(--green);margin-right:6px}
+.workspace{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(360px,.97fr);gap:20px;align-items:start;margin-top:16px}.panel{border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);min-width:0}.input-panel{padding:22px}.head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.head h2{font-size:20px;line-height:1.3;margin:0}.tag{display:inline-flex;padding:5px 10px;border:1px solid #c8ebd9;background:var(--greenbg);color:#077451;border-radius:22px;font-size:10px;font-weight:900}.group{border:1px solid #e2eaf2;border-radius:13px;padding:15px;background:linear-gradient(145deg,#fff,#fafdff);margin:14px 0}.group h3{font-size:13px;margin:0 0 12px;color:#31465f}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;font-size:12px;font-weight:800;color:#485d77;margin-bottom:5px}.field input:not([type=range]),.field select{width:100%;height:43px;padding:0 10px;border:1px solid #d2deea;border-radius:9px;background:white;color:var(--ink);min-width:0}.field input[type=range]{width:100%;accent-color:var(--green);height:20px;margin:3px 0}.hint,.micro{color:#73849a;font-size:11px;line-height:1.55;margin:5px 0 0}.days-input{display:grid;grid-template-columns:1fr 79px;gap:12px;align-items:center}.moneyinput{display:flex;align-items:center;border:1px solid #d2deea;border-radius:9px;overflow:hidden}.moneyinput span{padding-left:12px;color:#637b95;font-weight:800}.moneyinput input{border:0!important}.moneyinput:focus-within{outline:3px solid #afcafa}.smallnote{margin:13px 0 0;padding:12px;border:1px solid #e6eaf2;border-radius:10px;background:#f7f9fc;color:#60738b;font-size:11px}
+details.advanced{border:1px solid #dbe5ed;border-radius:13px;background:#fff;margin-top:15px;overflow:hidden}details.advanced>summary{list-style:none;padding:15px 16px;font-size:13px;font-weight:900;color:#23476a;cursor:pointer;background:#f5f9fd}details.advanced>summary::-webkit-details-marker{display:none}details.advanced>summary:after{content:"＋";float:right;font-size:15px}details.advanced[open]>summary:after{content:"−"}details.advanced .inside{padding:14px}.switchline{display:flex;gap:9px;align-items:start;font-size:11px;font-weight:700;color:#51677e}.switchline input{margin-top:3px;accent-color:var(--green)}.alert{margin:13px 0 0;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.55}.alert.warn{background:var(--amberbg);border:1px solid #f0d9aa;color:#875815}.alert.info{background:#eff5ff;border:1px solid #dae6ff;color:#435d81}.alert.danger{background:var(--redbg);border:1px solid #efd3d9;color:#a42e45}
+.result-panel{position:sticky;top:18px;overflow:hidden}.result-top{background:linear-gradient(128deg,#101f36,#263e59);color:white;padding:20px 21px}.result-top .head{margin-bottom:7px}.result-top h2{font-size:19px}.result-top .tag{background:#ffffff17;color:#c8f4dd;border-color:#ffffff2c}.amount-kicker{font-size:11px;font-weight:800;letter-spacing:.045em;color:#bfd0e2}.bigamount{font-size:clamp(31px,4.5vw,41px);font-weight:900;line-height:1.24;letter-spacing:-1px;overflow-wrap:anywhere;margin-top:4px}.metricrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px}.darkmetric{background:#ffffff0c;border:1px solid #ffffff20;border-radius:11px;padding:12px;min-width:0}.darkmetric span{display:block;font-size:10px;color:#c1cede;font-weight:750}.darkmetric strong{font-size:18px;line-height:1.35;overflow-wrap:anywhere}.green{color:#4dd8a5}.negative{color:#ffb0bc}.statusArea{padding:15px 19px 5px}.statusRow{display:flex;align-items:center;justify-content:space-between;gap:10px}.statusRow strong{font-size:13px}.statusBadge{font-size:10px;font-weight:900;border-radius:50px;padding:5px 9px;background:var(--amberbg);color:#96631c;border:1px solid #f4deb9;text-align:right}.statusBadge.critical{background:var(--redbg);border-color:#efccd4;color:var(--red)}.statusBadge.ok{background:var(--greenbg);border-color:#c3ebdb;color:#097253}.meter{height:13px;border-radius:20px;background:#e7edf5;overflow:hidden;margin-top:13px;position:relative}.meterFill{height:100%;width:0;background:linear-gradient(90deg,#1cbe8e,#e9ba4d);transition:width .2s}.meterMark{position:absolute;top:0;bottom:0;width:3px;background:#27374e;left:50%}.meterlegend{display:flex;justify-content:space-between;color:#8390a0;font-size:10px;margin-top:5px}.statusDetail{color:#60738b;font-size:11px;line-height:1.55;margin:9px 0 0}.chartsection{padding:13px 18px 8px}.charttitle{font-size:12px;font-weight:900;margin:0}.chartbox{height:202px;position:relative;overflow:hidden;margin-top:7px}.chartfallback{font-size:12px;padding:14px;color:#586f8b}.lineitems{padding:10px 19px}.lineitem{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #e8edf3;padding:9px 0;font-size:12px;color:#66788e}.lineitem strong{color:#192943;text-align:right}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px 18px 18px}.btn{border:0;border-radius:10px;padding:11px 9px;font-size:12px;font-weight:900;min-height:42px}.btn.main{background:#0a936c;color:#fff}.btn.secondary{background:#eaf1fb;color:#2353a2}.btn:hover{filter:brightness(.97)}.breakdown{margin:20px 0;padding:19px}.breakdown summary{font-size:17px;font-weight:900;cursor:pointer}.breakgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}.break{padding:13px;border:1px solid #e1e8ef;border-radius:11px;background:#fcfdff}.break h3{font-size:12px;margin:0 0 5px}.break p{color:#667a91;font-size:11px;margin:6px 0}.break strong{font-size:21px}.guide{padding:10px 0 35px}.guide h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.5px;margin:30px 0 10px}.guide h3{font-size:17px;margin:21px 0 7px}.guide p,.guide li{color:#52647a;font-size:14px;line-height:1.85}.guide table{width:100%;border-collapse:collapse;font-size:12px;min-width:520px}.guide th,.guide td{text-align:left;border-bottom:1px solid #e2e8f0;padding:11px 12px;vertical-align:top}.guide th{background:#f1f6fc}.tablescroll{overflow:auto;border:1px solid #e3eaf2;border-radius:12px}.guide .faq details{padding:14px 16px;border:1px solid #e2eaf2;border-radius:11px;margin:9px 0;background:white}.guide .faq summary{font-weight:800;cursor:pointer}.guide .faq p{font-size:13px;margin:8px 0 0}.sources{font-size:12px;color:#60748d}.sources a{overflow-wrap:anywhere}.disclaimer{background:#fff7eb;border-left:4px solid #e1a342;padding:14px 18px;border-radius:7px;color:#785623!important}
+@media(max-width:980px){.workspace{grid-template-columns:1fr}.result-panel{position:static}.wrap{width:min(740px,calc(100% - 30px))}}@media(max-width:540px){.hero{padding:29px 0 18px}.hero h1{font-size:34px}.hero p{font-size:14px}.input-panel{padding:15px}.fields{grid-template-columns:1fr}.group{padding:12px}.breakgrid{grid-template-columns:1fr}.result-top{padding:17px}.bigamount{font-size:30px}.darkmetric strong{font-size:16px}.workspace{gap:14px}.guide p,.guide li{font-size:13px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap">
+<span class="eyebrow">2026 · Cross-border tax scenario planner</span>
+<h1>Digital Nomad Tax &amp; Residency Calculator (2026)</h1>
+<p>Explore eight remote-work destinations, screen important tax-residency day-count rules and compare transparent income-tax scenarios. See how the US foreign earned income exclusion may change your estimate when you qualify.</p>
+<div class="trust"><span>Instant, private browser calculations</span><span>Official residency sources</span><span>Editable tax assumptions</span></div>
+</div></section>
+<div class="wrap">
+<div class="workspace">
+<section class="panel input-panel" aria-label="Calculator inputs">
+<div class="head"><h2>Plan your remote-work year</h2><span class="tag">Live results</span></div>
+<form id="nomadForm" novalidate>
+<div class="group"><h3>01 · Income &amp; home tax system</h3>
+<div class="fields">
+<div class="field full"><label for="income">Annual gross remote-work income</label><div class="moneyinput"><span id="currencySymbol">$</span><input id="income" type="number" min="0" max="1000000000" step="100" value="80000" inputmode="decimal" required></div><p class="hint">One person's gross income before tax and deductible expenses.</p></div>
+<div class="field"><label for="currency">Display / input currency</label><select id="currency"><option value="USD"> $ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="INR">₹ INR</option></select></div>
+<div class="field"><label for="home">Citizenship / home tax system</label><select id="home"><option value="US">United States</option><option value="UK">United Kingdom</option><option value="CA">Canada</option><option value="DE">Germany</option><option value="AU">Australia</option><option value="IN">India</option><option value="OTHER">Other country</option></select></div>
+<div class="field"><label for="filing">Filing status</label><select id="filing"><option value="single">Single / individual</option><option value="married">Married / joint (US scenario)</option></select></div>
+<div class="field"><label for="homeStatus">Home-country tax residency</label><select id="homeStatus"><option value="retained">Assume retained</option><option value="ceased">Assume ceased (verify)</option><option value="uncertain">Uncertain — model retained</option></select></div>
+</div><p class="smallnote">Nationality usually does not determine tax residency. Choosing US models US citizenship / continuing US federal-tax exposure; other choices are home-tax-system scenarios. Married changes only the simplified US federal schedule.</p>
+</div>
+<div class="group"><h3>02 · Destination &amp; travel days</h3>
+<div class="fields">
+<div class="field full"><label for="destination">Primary remote-work destination</label><select id="destination"><option value="PT">Portugal</option><option value="ES">Spain</option><option value="AE">UAE / Dubai</option><option value="TH">Thailand</option><option value="ID">Bali / Indonesia</option><option value="EE">Estonia</option><option value="MX">Mexico</option><option value="GE">Georgia</option></select></div>
+<div class="field full"><label for="destDays">Days physically in destination</label><div class="days-input"><input id="destDaysRange" aria-label="Destination days slider" type="range" min="1" max="365" step="1" value="120"><input id="destDays" type="number" min="1" max="365" step="1" value="120" inputmode="numeric"></div></div>
+<div class="field full"><label for="homeDays">Days physically in home country</label><div class="days-input"><input id="homeDaysRange" aria-label="Home days slider" type="range" min="0" max="364" step="1" value="90"><input id="homeDays" type="number" min="0" max="364" step="1" value="90" inputmode="numeric"></div></div>
+</div><p id="daysRemaining" class="hint" aria-live="polite">155 days unallocated to other countries.</p>
+<p class="smallnote">Days are a simplified 365-day planning model, not a verified travel log. Rolling 12-month rules, split tax years, travel-day counting and pre-arrival periods may change residency outcomes.</p></div>
+<details class="advanced" id="advanced"><summary>Advanced assumptions &amp; US FEIE</summary><div class="inside">
+<div class="fields">
+<div class="field"><label for="homeRate">Assumed home effective tax rate (%)</label><input id="homeRate" type="number" value="25" min="0" max="100" step="0.1"><p class="hint" id="homeRateNote">Illustrative assumption, not a published tax rate.</p></div>
+<div class="field"><label for="destRate">Assumed destination effective tax rate (%)</label><input id="destRate" type="number" value="25" min="0" max="100" step="0.1"><p class="hint">Editable scenario, not an official country calculation.</p></div>
+<div class="field full"><label for="destinationTax">Include destination tax in scenario?</label><select id="destinationTax"><option value="auto">Automatic day-screening scenario</option><option value="yes">Yes — assume destination taxes income</option><option value="no">No — exclude destination tax assumption</option></select><p class="hint">Auto includes assumed destination income tax when its day-count threshold is met. It is not a ruling on source-based tax. Mexico requires explicit choice.</p></div>
+<div class="field"><label for="taxCredit">Assumed foreign tax credit / relief</label><input id="taxCredit" type="number" min="0" max="1000000000" step="100" value="0"><p class="hint">In selected currency; manually estimated. Capped by overlapping modeled taxes. Not an eligibility test.</p></div>
+<div class="field"><label for="fx">USD value of 1 selected currency unit</label><input id="fx" type="number" min="0.000001" max="1000000" step="any" value="1"><p class="hint">Editable illustration, not a live exchange quote. Used for US dollar brackets and FEIE.</p></div>
+<div class="field full"><label for="feieTest">US FEIE eligibility test (only if US)</label><select id="feieTest"><option value="none">Not confirmed / do not apply FEIE</option><option value="physical">Physical presence route — confirm 330 full foreign days</option><option value="bonaFide">Bona fide residence route — I confirm eligibility</option></select><p class="hint">Also requires a foreign tax home and otherwise qualifying foreign earned income. Selection is an assumption, not validation of eligibility.</p></div>
+<div class="field"><label for="foreignDays">Qualifying full foreign days (FEIE)</label><input id="foreignDays" type="number" min="0" max="365" value="0" step="1"><p class="hint">330 full days within a qualifying consecutive 12-month period for the physical-presence route.</p></div>
+<div class="field"><label for="foreignShare">Eligible foreign-earned share (%)</label><input id="foreignShare" type="number" min="0" max="100" value="100" step="1"><p class="hint">Foreign-source earned income as a share of entered gross income.</p></div>
+</div>
+<div id="feieMessage" class="alert info">US FEIE is disabled unless you confirm the relevant eligibility test.</div>
+</div></details>
+<div id="error" class="alert danger" role="alert" hidden></div>
+<div class="alert info">Rates outside the US federal model are user-editable hypothetical effective rates. This tool does not determine a legal tax bill, treaty result, visa status or whether a country's source-tax rules apply.</div>
+</form>
+</section>
+<aside class="panel result-panel" aria-label="Instant tax estimate">
+<div class="result-top"><div class="head"><h2>Your scenario result</h2><span class="tag">2026 estimate</span></div>
+<div class="amount-kicker">Illustrative combined income-tax exposure</div><div class="bigamount" id="totalTax">$0</div>
+<div class="metricrow">
+<div class="darkmetric"><span>Effective combined rate</span><strong id="effective">0%</strong></div>
+<div class="darkmetric"><span>Net take-home after modeled tax</span><strong id="net">$0</strong></div>
+<div class="darkmetric"><span>Difference vs home-only scenario</span><strong id="savings">$0</strong></div>
+<div class="darkmetric"><span>Home-only baseline tax</span><strong id="baseline">$0</strong></div>
+</div></div>
+<div class="statusArea"><div class="statusRow"><strong>Destination residency day screen</strong><span class="statusBadge" id="status">Review required</span></div>
+<div class="meter" role="progressbar" aria-label="Days towards destination residency threshold" aria-valuemin="0" aria-valuemax="365" aria-valuenow="120" id="meter"><div id="meterFill" class="meterFill"></div><div class="meterMark" id="meterMark"></div></div>
+<div class="meterlegend"><span id="meterStart">0 days</span><span id="meterTarget">183-day reference</span><span>365 days</span></div>
+<p class="statusDetail" id="statusDetail">Residency depends on local rules and ties, not just an annual day count.</p></div>
+<div class="chartsection"><p class="charttitle">Home-only vs remote-work tax scenario</p><div class="chartbox"><canvas id="taxChart" role="img" aria-label="Bar chart comparing home baseline tax with nomad scenario"></canvas><div class="chartfallback" id="chartFallback" hidden>Chart unavailable. The numerical results above remain available.</div></div></div>
+<div class="lineitems">
+<div class="lineitem"><span>Modeled home / US federal component</span><strong id="homeComponent">$0</strong></div>
+<div class="lineitem"><span>Modeled destination component</span><strong id="destComponent">$0</strong></div>
+<div class="lineitem"><span>Applied manual credit / relief</span><strong id="creditComponent">$0</strong></div>
+<div class="lineitem"><span>US FEIE modeled exclusion</span><strong id="feieComponent">$0</strong></div>
+</div>
+<div class="actions"><button class="btn secondary" type="button" id="reset">Reset defaults</button><button class="btn main" type="button" id="copy">Copy tax summary</button></div>
+</aside></div>
+<details class="panel breakdown" id="countryBreak"><summary>Country-by-country tax breakdown &amp; assumptions</summary>
+<div class="breakgrid"><div class="break"><h3 id="homeCountryLabel">Home jurisdiction</h3><strong id="breakHome">$0</strong><p id="breakHomeDetail"></p></div><div class="break"><h3 id="destCountryLabel">Destination jurisdiction</h3><strong id="breakDest">$0</strong><p id="breakDestDetail"></p></div></div>
+<p class="micro" id="breakSummary">Credits and residency assumptions are described here.</p><p class="micro" id="breakWarning"></p>
+</details>
+<article class="guide">
+<h2>How digital nomad taxes and the 183-day rule work</h2>
+<p>Working remotely for a company abroad does not automatically mean your work is tax-free where you physically perform it. There are several separate questions: where you are tax resident, where the work income is sourced, whether your employer must operate payroll in the destination, how tax treaties allocate taxing rights, and whether social security or business registration requirements apply. This calculator provides a day-count screen and editable scenarios so you can identify questions for a qualified cross-border tax professional.</p>
+<p>The phrase “183-day rule” is shorthand, not a worldwide exemption. Some jurisdictions treat 183 days as a sufficient condition for tax residency; others use 180 days, a home or economic-interests test, or a rolling 12-month window. Reaching a threshold is not necessarily the only way to become resident. Staying below it does not necessarily eliminate locally sourced income tax.</p>
+<h2>Understanding tax residency, tie-breaker rules and US FEIE</h2>
+<h3>1. Residency is not citizenship — with an important US exception</h3>
+<p>For many countries, retaining a permanent home, family ties or a centre of economic interests may keep you resident even when you work overseas. UK residents are assessed under a Statutory Residence Test that includes work and ties, Canada's CRA considers residential ties, India applies 182-day and alternative residence conditions, and Germany recognizes a maintained dwelling or habitual abode. US citizens generally remain subject to federal income tax rules on worldwide income, subject to exclusions and credits. A second country may simultaneously assert tax residency.</p>
+<h3>2. Double-tax treaties and foreign tax credits</h3>
+<p>If two countries regard you as resident, a bilateral treaty may contain permanent-home, centre-of-vital-interests, habitual-abode or nationality tie-breakers. That does not mean all work income becomes exempt from destination tax. Foreign tax credits and exemptions depend on tax character, sourcing, eligibility, caps and treaties. The tool only deducts relief that you explicitly enter, with an illustrative cap; it does not generate treaty claims automatically.</p>
+<h3>3. US Foreign Earned Income Exclusion (2026)</h3>
+<p>For tax year 2026 the maximum FEIE is <strong>$132,900 for one qualifying individual</strong>. Eligibility typically requires a foreign tax home and either bona fide residence abroad or the physical-presence test: at least 330 full days in foreign countries during a qualifying 12-month period. The full-year annual maximum may need proration for a partial qualifying period. The tool uses a simplified one-earner annual scenario and 2026 federal income-tax brackets. For remaining US taxable income, the exclusion stacking method preserves progressive bracket effects; subtracting excluded income and then taxing the balance at the lowest marginal bracket would understate tax.</p>
+<p>The FEIE does not ordinarily eliminate US self-employment tax, and credits for tax on income that is excluded cannot simply be claimed again. US state taxes, social security, net investment tax, additional deductions, alternative minimum tax and other credits are not modeled.</p>
+<h2>Top tax considerations for remote-work destinations</h2>
+<div class="tablescroll"><table><thead><tr><th>Destination</th><th>Day-count indicator</th><th>Important additional factor</th></tr></thead><tbody>
+<tr><td>Portugal</td><td>More than 183 days in relevant rolling period</td><td>Habitual home may trigger residence sooner; resident taxation generally covers worldwide income</td></tr>
+<tr><td>Spain</td><td>More than 183 days in calendar year</td><td>Economic interests and certain family presumptions; special inbound-worker regimes require separate eligibility analysis</td></tr>
+<tr><td>UAE / Dubai</td><td>183+ days, or conditional 90-day route</td><td>Primary residence, personal and financial interests, permit and other conditions matter; employment wages generally lack personal income tax</td></tr>
+<tr><td>Thailand</td><td>180+ days in calendar year</td><td>Foreign income remittance and Thai-source services require analysis</td></tr>
+<tr><td>Bali / Indonesia</td><td>More than 183 days in 12 months</td><td>Intention to reside or maintaining residence can matter earlier</td></tr>
+<tr><td>Estonia</td><td>183+ days in rolling 12 months</td><td>Permanent / primary home can independently create residence</td></tr>
+<tr><td>Mexico</td><td>No general 183-day shortcut</td><td>Mexican home or centre of vital interests is the relevant test</td></tr>
+<tr><td>Georgia</td><td>183+ days in qualifying rolling 12 months</td><td>Residence and source of services must be reviewed separately</td></tr>
+</tbody></table></div>
+<p>These are residency-screening indicators, not tax-rate promises or visa advice. Particularly in the UAE, the absence of ordinary personal wage income tax is not equivalent to freedom from foreign income tax, self-employed business obligations, or other home-country filing rules. The same caveat applies to Georgia, Portugal and all other destinations.</p>
+<h2>How this international income tax estimator calculates</h2>
+<p><strong>Home-only baseline</strong> is annual income multiplied by your home effective rate assumption, except the simplified US federal baseline uses official 2026 federal brackets and standard deduction. <strong>Nomad setup</strong> combines a modeled home component (if retained or if US citizenship is selected), a destination component if included by day screen or user override, and a manually assumed credit capped by overlapping modeled home and destination taxes. <strong>Tax savings</strong> is the home-only baseline minus the nomad scenario. Negative savings means the selected setup models more tax.</p>
+<p>All non-US jurisdiction rates are editable <strong>scenario assumptions</strong>, not government-calculated effective rates. This matters because progressive thresholds, local deductions, professional expenses, source allocations and withholding differ substantially across people and jurisdictions. Even a zero estimated destination income tax does not establish zero compliance obligations.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq" id="faq">
+<details><summary>Does staying under 183 days mean I owe no tax?</summary><p>No. Homes, economic and family ties and other residency tests may apply. Physically working in a country can also produce locally sourced taxable income before any resident threshold is met.</p></details>
+<details><summary>Does a digital nomad visa make income tax-free?</summary><p>No. A visa governs immigration permission, not necessarily income-tax residence, source taxation, employer obligations or social security. Review each independently.</p></details>
+<details><summary>What is the US foreign earned income exclusion for 2026?</summary><p>The full-year maximum is $132,900 for one eligible person. You normally need a foreign tax home and either bona fide residence or 330 qualifying full foreign days within a qualifying 12-month period. It does not generally remove US self-employment tax.</p></details>
+<details><summary>Is Dubai automatically tax-free for all digital nomads?</summary><p>No. Ordinary personal employment wages generally do not face UAE income tax, but home-country taxation can continue and business income may require a different analysis. UAE residence does not automatically end another country's tax residence.</p></details>
+<details><summary>Does this estimate include foreign tax credits or social security?</summary><p>Only a manually entered assumed credit is included, capped by the model. The calculator excludes social security, state and provincial taxes, local taxes, VAT, business or corporate taxes and detailed treaty rules.</p></details>
+</div>
+<h2>Official guidance and reference sources</h2>
+<p class="sources">Rules reviewed 13 November 2026. Refer to the source and relevant tax period before filing:
+<a href="https://www.irs.gov/instructions/i2555" rel="noopener noreferrer" target="_blank">IRS 2026 FEIE</a> ·
+<a href="https://www.irs.gov/individuals/international-taxpayers/foreign-earned-income-exclusion-physical-presence-test" target="_blank" rel="noopener noreferrer">IRS physical presence</a> ·
+<a href="https://www.gov.uk/government/publications/rdr3-statutory-residence-test-srt/guidance-note-for-statutory-residence-test-srt-rdr3" target="_blank" rel="noopener noreferrer">UK HMRC</a> ·
+<a href="https://www.canada.ca/en/revenue-agency/services/tax/international-non-residents/information-been-moved/determining-your-residency-status.html" target="_blank" rel="noopener noreferrer">Canada CRA</a> ·
+<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/non-resident" target="_blank" rel="noopener noreferrer">India income tax</a> ·
+<a href="https://info.portaldasfinancas.gov.pt/en/tax-information/getting-started-in-portugal/tax-residency/tax-residency-rules/Pages/default.aspx" target="_blank" rel="noopener noreferrer">Portugal AT</a> ·
+<a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/no-residentes/residencia-personas-fisicas-juridicas/persona-fisica-residente-espana.html" target="_blank" rel="noopener noreferrer">Spain AEAT</a> ·
+<a href="https://www.tax.gov.ae/en/services/issuance.of.tax.certificates.aspx" target="_blank" rel="noopener noreferrer">UAE FTA</a> ·
+<a href="https://www.rd.go.th/english/6045" target="_blank" rel="noopener noreferrer">Thailand Revenue Department</a> ·
+<a href="https://www.pajak.go.id/en/how-determine-whether-someones-status-included-spdn-or-spln-criteria-indonesia" target="_blank" rel="noopener noreferrer">Indonesia DGT</a> ·
+<a href="https://www.emta.ee/en/private-client/foreigner-non-resident/tax-residency/determining-residency" target="_blank" rel="noopener noreferrer">Estonia EMTA</a> ·
+<a href="https://matsne.gov.ge/en/document/view/1043717" target="_blank" rel="noopener noreferrer">Georgia Tax Code</a>.</p>
+<p class="disclaimer"><strong>Informational tax disclaimer.</strong> This calculator is for scenario planning and educational use only. It is not a tax return, legal opinion, residency certificate, financial recommendation or advice from a licensed cross-border tax professional. It does not determine treaty residency, work authorization, source of income, FEIE eligibility, social security, self-employment/corporate taxation, state or local taxes, detailed credit limits or current currency exchange rates. Tax laws change; consult qualified advisers in all relevant jurisdictions before relying on results.</p>
+</article>
+</div>
+</main>
+<div id="site-footer"></div>
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+var defaults={income:80000,currency:'USD',home:'US',filing:'single',homeStatus:'retained',destination:'PT',destDays:120,homeDays:90,homeRate:25,destRate:25,destinationTax:'auto',taxCredit:0,fx:1,feieTest:'none',foreignDays:0,foreignShare:100};
+var currencySettings={USD:{symbol:'$',usd:1},EUR:{symbol:'€',usd:1.10},GBP:{symbol:'£',usd:1.30},INR:{symbol:'₹',usd:0.0115}};
+var destinations={
+PT:{label:'Portugal',trigger:184,rate:25,dayText:'More than 183 days in a relevant 12-month period',notes:'A habitual home can make you resident before this day threshold. Residency generally entails worldwide-income taxation.'},
+ES:{label:'Spain',trigger:184,rate:26,dayText:'More than 183 days in the calendar year',notes:'Economic interests and certain family presumptions can create residency below the day threshold.'},
+AE:{label:'UAE / Dubai',trigger:183,rate:0,dayText:'183+ days; conditional alternative at 90 days',notes:'The 90-day alternative needs nationality/permit and other conditions. A primary home and centre of interests can qualify. Zero is a wage-income planning assumption only.'},
+TH:{label:'Thailand',trigger:180,rate:20,dayText:'180+ days in the calendar year',notes:'Thai-source income and foreign-source income remitted into Thailand require separate review.'},
+ID:{label:'Bali / Indonesia',trigger:184,rate:22,dayText:'More than 183 days in 12 months',notes:'Living in Indonesia or intending to reside can establish residency earlier.'},
+EE:{label:'Estonia',trigger:183,rate:22,dayText:'183+ days in 12 consecutive months',notes:'Permanent or primary residence may independently establish tax residency.'},
+MX:{label:'Mexico',trigger:null,rate:25,dayText:'No universal day-count trigger',notes:'Tax residency depends primarily on a Mexican home or centre of vital interests, not a generic 183-day formula.'},
+GE:{label:'Georgia',trigger:183,rate:20,dayText:'183+ days in a qualifying rolling 12-month period',notes:'Source of income and qualifying presence calculation still require country-specific review.'}
+};
+var homeLabels={US:'United States',UK:'United Kingdom',CA:'Canada',DE:'Germany',AU:'Australia',IN:'India',OTHER:'Other country'};
+var lastResult=null,chart=null,previousCurrency='USD';
+function num(id){var v=$(id).value.trim();if(v==='')return NaN;return Number(v);}
+function clamp(v,lo,hi){return Math.min(hi,Math.max(lo,v));}
+function money(v){if(!Number.isFinite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,maximumFractionDigits:0,minimumFractionDigits:0}).format(v);}
+function smallmoney(v){if(!Number.isFinite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,maximumFractionDigits:2}).format(v);}
+function setText(id,value){$(id).textContent=value;}
+function rateFor(home){return ({US:25,UK:25,CA:28,DE:30,AU:27,IN:20,OTHER:25})[home];}
+function taxProgressive(taxable,brackets){var tax=0,prev=0;for(var i=0;i<brackets.length;i++){var upper=brackets[i][0],rate=brackets[i][1];var band=Math.min(Math.max(taxable-prev,0),upper-prev);tax+=band*rate;prev=upper;if(taxable<=upper)break;}return Math.max(0,tax);}
+var us2026={
+single:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]],
+married:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]]
+};
+function federalTax(grossUSD,excludedUSD,filing){var deduction=filing==='married'?32200:16100;var taxable=Math.max(0,grossUSD-deduction-excludedUSD);return Math.max(0,taxProgressive(taxable+excludedUSD,us2026[filing])-taxProgressive(excludedUSD,us2026[filing]));}
+function countryDayStatus(destination,days){var d=destinations[destination];if(destination==='MX')return {type:'review',text:'Home & ties review needed',detail:d.notes};if(days>=d.trigger)return {type:'trigger',text:'Day-count threshold met',detail:d.dayText+'. '+d.notes};if(destination==='AE'&&days>=90)return {type:'review',text:'Conditional 90-day route',detail:'The 183-day route is not met. A conditional 90-day test may apply if additional requirements are satisfied. '+d.notes};return {type:'below',text:'Below day-count trigger',detail:'This is not confirmation of non-residency or exemption from destination-source income tax. '+d.notes};}
+function syncDay(which,raw){var dest=which==='dest'?$('destDays'):$('homeDays'),peer=which==='dest'?$('homeDays'):$('destDays');var min=which==='dest'?1:0;var v=clamp(Math.round(Number(raw)||0),min,365-(which==='home'?1:0));dest.value=v;var other=clamp(Math.round(Number(peer.value)||0),which==='dest'?0:1,365);if(other+v>365)peer.value=365-v;$('destDaysRange').value=$('destDays').value;$('homeDaysRange').value=$('homeDays').value;setText('daysRemaining',String(365-Number($('destDays').value)-Number($('homeDays').value))+' days remaining in other locations or unassigned.');calculate();}
+function validate(){var ids=['income','destDays','homeDays','homeRate','destRate','taxCredit','fx','foreignDays','foreignShare'];for(var i=0;i<ids.length;i++){var val=num(ids[i]);if(!Number.isFinite(val))return 'Please provide a valid number for every displayed amount and day count.';}if(num('income')<0||num('income')>1e9)return 'Annual income must be between 0 and 1,000,000,000.';if(num('destDays')<1||num('homeDays')<0||num('destDays')+num('homeDays')>365)return 'Destination plus home days must be 365 or fewer.';if(num('destDays')>365||num('homeDays')>365)return 'Days must fit within the 365-day model.';if(num('fx')<=0||num('fx')>1000000)return 'USD conversion must be greater than zero and at most 1,000,000.';if(num('taxCredit')<0||num('taxCredit')>1e9)return 'Assumed tax credit must be between zero and 1,000,000,000.';if(num('foreignDays')<0||num('foreignDays')>365||Math.floor(num('foreignDays'))!==num('foreignDays'))return 'Qualifying foreign days must be a whole number from 0 to 365.';for(var j=0;j<2;j++){var rate=num(j?'destRate':'homeRate');if(rate<0||rate>100)return 'Effective rates must be between 0% and 100%.';}if(num('foreignShare')<0||num('foreignShare')>100)return 'Foreign earned share must be 0% to 100%.';return '';}
+function updateMeter(days,code,status){var d=destinations[code],target=d.trigger;var meter=$('meter');$('meterFill').style.width=(days/365*100)+'%';$('meterMark').style.left=target?((target/365*100)+'%'):'50%';setText('meterTarget',target?(String(target)+'-day trigger'):'No universal 183-day rule');meter.setAttribute('aria-valuenow',String(days));var badge=$('status');badge.textContent=status.text;badge.className='statusBadge '+(status.type==='trigger'?'critical':status.type==='below'?'ok':'');setText('statusDetail',String(days)+' days selected. '+status.detail);}
+function updateChart(baseline,tax){var chartCanvas=$('taxChart');if(!window.Chart){$('chartFallback').hidden=false;chartCanvas.hidden=true;return;}chartCanvas.hidden=false;$('chartFallback').hidden=true;var dataset=[baseline,tax],config={type:'bar',data:{labels:['Home-only baseline','Nomad scenario'],datasets:[{label:'Estimated income tax',data:dataset,backgroundColor:['#647b9d','#0b936d'],borderRadius:9,maxBarThickness:64}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:240},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return money(ctx.parsed.y);}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{callback:function(v){return money(v);},font:{size:10}},grid:{color:'#edf1f6'}}}}};if(chart){chart.data.datasets[0].data=dataset;chart.update();}else{chart=new Chart(chartCanvas,config);}}
+function calculate(){
+var err=validate();$('error').hidden=!err;if(err){$('error').textContent=err;return;}
+var income=num('income'),home=$('home').value,code=$('destination').value,days=num('destDays'),status=countryDayStatus(code,days),d=destinations[code],fx=num('fx');
+var retained=$('homeStatus').value!=='ceased',destinationChoice=$('destinationTax').value;
+var includeDestination=destinationChoice==='yes'||(destinationChoice==='auto'&&d.trigger!==null&&days>=d.trigger);
+var baseline=0,homeTax=0,exclusionUSD=0,exclusion=0,feieApplied=false,feieComment='';
+if(home==='US'){
+var grossUSD=income*fx;baseline=federalTax(grossUSD,0,$('filing').value)/fx;
+var requested=$('feieTest').value,foreignDays=num('foreignDays'),share=num('foreignShare')/100;
+if(requested==='physical'&&foreignDays>=330){feieApplied=true;feieComment='Physical presence is self-attested. A foreign tax home, full foreign days, a qualifying 12-month period and eligible earned income must also be independently verified.';}
+else if(requested==='bonaFide'){feieApplied=true;feieComment='Bona fide residence is self-attested, not determined by this tool. The taxpayer must establish actual eligibility and a foreign tax home.';}
+else if(requested==='physical'){feieComment='FEIE not applied: fewer than 330 qualifying full foreign days were entered. The selected 365-day travel model may not represent the relevant qualifying 12-month period.';}
+else{feieComment='FEIE not applied. US citizens generally remain subject to US federal filing and worldwide income taxation even abroad.';}
+if(feieApplied){exclusionUSD=Math.min(grossUSD*share,132900);exclusion=exclusionUSD/fx;feieComment+=' This model assumes a full-year 2026 limit for one qualifying earner and does not calculate proration or business deductions.';}
+homeTax=federalTax(grossUSD,exclusionUSD,$('filing').value)/fx;
+}else{
+baseline=income*num('homeRate')/100;
+homeTax=retained?baseline:0;
+feieComment='US FEIE applies to eligible US taxpayers only. Other home-country residence, deductions and treaties need independent review.';
+}
+var destTax=includeDestination?income*num('destRate')/100:0;
+var credit=Math.min(num('taxCredit'),homeTax,destTax);
+var combined=Math.max(0,homeTax+destTax-credit),net=income-combined,savings=baseline-combined,effective=income>0?combined/income*100:0;
+var explanation=[];
+if(home==='US'){explanation.push('US federal income tax is modeled using 2026 brackets and standard deduction; no state, payroll or self-employment tax.');if($('homeStatus').value==='ceased')explanation.push('US federal citizenship-based tax remains included even when home-country residency is marked ceased.');}else{explanation.push('Home effective rate '+num('homeRate').toFixed(1)+'% is an illustrative input, not statutory income tax.');if(!retained)explanation.push('Home-country tax residency was assumed ceased; this does not prove departure or eliminate home-source income tax.');}
+if(destinationChoice==='auto'){explanation.push('Destination tax '+(includeDestination?'included':'not included')+' automatically based on the simplified day-count screen; nonresident source taxation is not estimated.');if(code==='MX')explanation.push('Mexico cannot be classified from days alone. Auto mode does not include Mexico income tax; choose Yes if you want to model destination taxation.');}
+if(destinationChoice==='yes')explanation.push('Destination tax was included at your request regardless of the day-count result.');
+if(destinationChoice==='no')explanation.push('Destination tax was excluded by your explicit scenario assumption, not because the tool determined exemption.');
+if($('homeStatus').value==='uncertain')explanation.push('Home status is uncertain, so the model assumes the home jurisdiction retains taxing rights.');
+if(credit>0)explanation.push('Manual credit capped at the smaller of the modeled home and destination components; actual treaty/credit eligibility may differ.');
+setText('totalTax',money(combined));setText('effective',effective.toFixed(2)+'%');setText('net',money(net));setText('savings',(savings>=0?'+':'−')+money(Math.abs(savings)));$('savings').className=savings>=0?'green':'negative';setText('baseline',money(baseline));
+setText('homeComponent',money(homeTax));setText('destComponent',money(destTax));setText('creditComponent','−'+money(credit));setText('feieComponent',money(exclusion));
+setText('homeCountryLabel',homeLabels[home]+' — modeled home tax');setText('destCountryLabel',d.label+' — modeled destination tax');
+setText('breakHome',money(homeTax));setText('breakDest',money(destTax));
+setText('breakHomeDetail',home==='US'?('2026 federal estimate. '+feieComment):('Assumed '+num('homeRate').toFixed(1)+'% effective rate. '+(retained?'Home residency retained in this scenario.':'Home residency assumed ceased.')));
+setText('breakDestDetail','Assumed '+num('destRate').toFixed(1)+'% effective rate; '+(includeDestination?'included':'not included')+' in modeled scenario. '+d.dayText+'.');
+setText('breakSummary','Baseline: '+money(baseline)+' · Credit: '+money(credit)+' · Combined: '+money(combined)+'. '+explanation.join(' '));
+setText('breakWarning','Not modeled: local/source taxes when non-resident, social security, self-employment, progressive foreign tax brackets, deductions, treaties, split years, foreign housing and FEIE proration.');
+setText('feieMessage',feieComment);$('feieMessage').className='alert '+(home==='US'&&!feieApplied&&$('feieTest').value!=='none'?'warn':'info');
+updateMeter(days,code,status);updateChart(baseline,combined);
+lastResult={income:income,home:homeLabels[home],dest:d.label,homeDays:num('homeDays'),destDays:days,status:status.text,baseline:baseline,homeTax:homeTax,destTax:destTax,credit:credit,combined:combined,effective:effective,net:net,savings:savings,exclusion:exclusion,explanation:explanation.join(' '),currency:$('currency').value};
+}
+function reset(){Object.keys(defaults).forEach(function(id){$(id).value=defaults[id];});$('destDaysRange').value=defaults.destDays;$('homeDaysRange').value=defaults.homeDays;previousCurrency='USD';$('currencySymbol').textContent='$';$('homeDaysRange').max=364;setText('homeRateNote','Illustrative assumption, not a published tax rate. US federal calculation overrides this rate.');$('advanced').open=false;setText('daysRemaining','155 days remaining in other locations or unassigned.');calculate();}
+['income','filing','homeStatus','homeRate','destRate','destinationTax','taxCredit','fx','feieTest','foreignDays','foreignShare'].forEach(function(id){$(id).addEventListener('input',calculate);});
+$('home').addEventListener('change',function(){if($('home').value!=='US'){$('homeRate').value=rateFor($('home').value);}setText('homeRateNote',$('home').value==='US'?'US federal model uses official 2026 brackets; this rate is ignored.':'Editable illustrative effective home rate (not official).');calculate();});
+$('destination').addEventListener('change',function(){$('destRate').value=destinations[$('destination').value].rate;calculate();});
+$('currency').addEventListener('change',function(){
+var curr=$('currency').value,oldRate=num('fx'),newRate=currencySettings[curr].usd;
+if(!Number.isFinite(oldRate)||oldRate<=0)oldRate=currencySettings[previousCurrency].usd;
+var convertedIncome=num('income')*oldRate/newRate,convertedCredit=num('taxCredit')*oldRate/newRate;
+$('income').value=Number.isFinite(convertedIncome)?Math.round(convertedIncome*100)/100:0;
+$('taxCredit').value=Number.isFinite(convertedCredit)?Math.round(convertedCredit*100)/100:0;
+$('fx').value=newRate;$('currencySymbol').textContent=currencySettings[curr].symbol;previousCurrency=curr;calculate();
+});
+['destDays','homeDays'].forEach(function(k){var p=k==='destDays'?'dest':'home';$(k).addEventListener('input',function(){if(this.value!=='')syncDay(p,this.value);});$(k).addEventListener('change',function(){syncDay(p,this.value);});$(k+'Range').addEventListener('input',function(){syncDay(p,this.value);});});
+$('reset').addEventListener('click',reset);
+$('copy').addEventListener('click',function(){if(!lastResult)return;var r=lastResult;var lines=['Digital Nomad Tax Scenario (2026)','Gross income: '+money(r.income),'Home system: '+r.home,'Destination: '+r.dest,'Days: '+r.destDays+' destination, '+r.homeDays+' home','Residency screening: '+r.status,'Home-only baseline: '+money(r.baseline),'Modeled home tax: '+money(r.homeTax),'Modeled destination tax: '+money(r.destTax),'Assumed credit: '+money(r.credit),'2026 FEIE modeled: '+money(r.exclusion),'Combined tax exposure: '+money(r.combined),'Effective rate: '+r.effective.toFixed(2)+'%','Net take-home: '+money(r.net),'Difference vs baseline: '+(r.savings>=0?'+':'-')+money(Math.abs(r.savings)),'Assumptions: '+r.explanation,'Educational scenario only, not tax advice. https://returnoninvestmentcalculator.in/digital-nomad-tax-calculator/'];var s=lines.join('\n');var b=$('copy');function success(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy tax summary';},1600);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(success,function(){fallback();});}else{fallback();}function fallback(){var t=document.createElement('textarea');t.value=s;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();try{if(document.execCommand('copy'))success();else b.textContent='Copy unavailable';}catch(e){b.textContent='Copy unavailable';}t.remove();}});
+setText('homeRateNote','US federal model uses official 2026 brackets; this rate is ignored.');
+setText('daysRemaining','155 days remaining in other locations or unassigned.');
+calculate();
+window.addEventListener('load',function(){if(!chart&&window.Chart&&lastResult)updateChart(lastResult.baseline,lastResult.combined);});
+})();
+</script>
+</body>
+</html>
