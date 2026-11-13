@@ -1,0 +1,60 @@
+name: Digital Nomad Calculator QA
+on:
+  push:
+    paths:
+      - 'digital-nomad-tax-calculator/index.html'
+      - '.github/workflows/digital-nomad-qa.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JSON-LD, JavaScript, and calculator scenarios
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs'), vm = require('node:vm'), assert = require('node:assert/strict');
+          const html = fs.readFileSync('digital-nomad-tax-calculator/index.html','utf8');
+          assert.equal((html.match(/adsbygoogle\.js/g)||[]).length,1,'One AdSense loader');
+          const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
+          assert.equal(schemas[0]['@graph'].find(x=>x['@type']==='FAQPage').mainEntity.length,5);
+          const lastScript = html.slice(html.lastIndexOf('<script>')+8,html.lastIndexOf('</script>'));
+          new vm.Script(lastScript,{filename:'calculator-inline.js'});
+          const ids=[...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]);
+          assert.equal(new Set(ids).size,ids.length,'No duplicate IDs');
+          const initial={income:'80000',currency:'USD',home:'US',filing:'single',homeStatus:'retained',destination:'PT',destDays:'120',homeDays:'90',homeRate:'25',destRate:'25',destinationTax:'auto',taxCredit:'0',fx:'1',feieTest:'none',foreignDays:'0',foreignShare:'100'};
+          const elems={};
+          for(const id of ids) elems[id]={value:initial[id]||'',textContent:'',style:{},hidden:false,attributes:{},handlers:{},addEventListener:function(name,fn){(this.handlers[name]??=[]).push(fn);},setAttribute:function(name,val){this.attributes[name]=val;}};
+          const fire=(id,event)=>{for(const fn of elems[id].handlers[event]||[])fn.call(elems[id]);};
+          const mockWindow={Chart:null,addEventListener(){}};
+          vm.runInNewContext(lastScript,{document:{getElementById:(id)=>elems[id]},window:mockWindow,navigator:{},Intl,Math,Number,Object,String,Array,Infinity,NaN,console,setTimeout},{timeout:1000});
+          assert.equal(elems.totalTax.textContent,'$8,770');
+          assert.equal(elems.status.textContent,'Below day-count trigger');
+          elems.destination.value='TH'; fire('destination','change');
+          elems.destDays.value='180';fire('destDays','input');
+          assert.equal(elems.destComponent.textContent,'$16,000');
+          assert.equal(elems.totalTax.textContent,'$24,770');
+          elems.homeDays.value='200';fire('homeDays','input');
+          assert.ok(Number(elems.destDays.value)+Number(elems.homeDays.value)<=365);
+          elems.destination.value='MX';fire('destination','change');
+          assert.equal(elems.status.textContent,'Home & ties review needed');
+          assert.equal(elems.destComponent.textContent,'$0');
+          elems.destinationTax.value='yes';fire('destinationTax','input');
+          assert.equal(elems.destComponent.textContent,'$20,000');
+          fire('reset','click');
+          elems.feieTest.value='physical';fire('feieTest','input');
+          elems.foreignDays.value='329';fire('foreignDays','input');
+          assert.equal(elems.feieComponent.textContent,'$0');
+          elems.foreignDays.value='330';fire('foreignDays','input');
+          assert.equal(elems.feieComponent.textContent,'$80,000');
+          assert.equal(elems.totalTax.textContent,'$0');
+          elems.income.value='garbage';fire('income','input');
+          assert.equal(elems.error.hidden,false);
+          fire('reset','click');
+          elems.currency.value='EUR';fire('currency','change');
+          assert.ok(Math.abs(Number(elems.income.value)-80000/1.1)<.02);
+          console.log('QA passed: syntax, schema, ad script, day thresholds, Mexico, FEIE, invalid inputs, day cap, currency switch.');
+          NODE
