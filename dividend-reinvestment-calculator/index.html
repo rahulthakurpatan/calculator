@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10243d">
+<title>Dividend Reinvestment Calculator | DRIP Growth</title>
+<meta name="description" content="Calculate dividend reinvestment growth, future portfolio value and passive income with DRIP, monthly contributions, dividend growth and detailed charts.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Dividend Reinvestment Calculator | DRIP Growth">
+<meta property="og:description" content="Project dividend growth, shares from DRIP, annual passive income and stock value. Compare reinvested dividends with cash payouts.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dividend Reinvestment & Stock Portfolio Calculator">
+<meta name="twitter:description" content="Estimate DRIP portfolio growth and annual dividend income with a detailed annual schedule.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@graph":[
+{"@type":"WebApplication","@id":"https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/#app","name":"Dividend Reinvestment & Stock Portfolio Growth Calculator","url":"https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","description":"A free browser-based dividend reinvestment projection tool estimating monthly share purchases, per-share dividend growth, stock appreciation, cash payouts, annual income and money-weighted returns.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+{"@type":"FAQPage","@id":"https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/#faq","mainEntity":[
+{"@type":"Question","name":"How does dividend reinvestment (DRIP) work?","acceptedAnswer":{"@type":"Answer","text":"Under a DRIP, dividends paid on existing shares are used to buy additional shares. Those shares may earn future dividends. Actual enrollment, reinvestment prices, timing, fractional shares and fees depend on the issuer or broker."}},
+{"@type":"Question","name":"What is the difference between dividend yield and dividend growth?","acceptedAnswer":{"@type":"Answer","text":"Dividend yield is annual dividends per share divided by current share price. Dividend growth is the change in dividend per share over time. Price appreciation changes the share price separately, so the future yield can rise or fall."}},
+{"@type":"Question","name":"Are dividends guaranteed, and does a high yield mean a high return?","acceptedAnswer":{"@type":"Answer","text":"No. Dividends can be cut or suspended, prices can fall, and high yields can result from declining share prices. Investors should assess total return and a company's financial capacity to maintain payments."}},
+{"@type":"Question","name":"How is annualized return calculated when I add monthly contributions?","acceptedAnswer":{"@type":"Answer","text":"The calculator uses an annualized money-weighted internal rate of return based on when new contributions occur and the estimated terminal total wealth. A conventional CAGR using total contributions as if invested on day one would be misleading."}},
+{"@type":"Question","name":"Are dividends taxed if I reinvest them?","acceptedAnswer":{"@type":"Answer","text":"Reinvestment alone does not always remove dividend taxes. Treatment depends on the type of distribution, account, investor and jurisdiction. This calculator excludes tax, trading fees, inflation, foreign exchange and dividend cuts beyond the growth rate entered."}}
+]},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Dividend Reinvestment Calculator","item":"https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/"}]}
+]}
+</script>
+<style>
+:root{--bg:#f1f6fb;--ink:#192a42;--muted:#62758d;--line:#dde7f0;--navy:#10243d;--navy2:#22415c;--green:#078964;--green2:#0cb881;--blue:#3569c7;--amber:#b37a24;--red:#b2414f;--shadow:0 14px 42px rgba(19,47,80,.075)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#ebf5fd 0,#f7fafd 540px,#fff 1170px);color:var(--ink);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#225cc4}button,input,select{font:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid #8bacf4;outline-offset:2px}
+.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+.hero{padding:43px 0 24px;background:radial-gradient(circle at 9% 0,#dce9ff 0,transparent 35%),radial-gradient(circle at 91% 0,#dbf2e5 0,transparent 35%)}
+.eyebrow{display:inline-flex;align-items:center;padding:6px 12px;border-radius:30px;border:1px solid #c4eadb;background:#e5f8ee;color:#0c7854;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.hero h1{font-size:clamp(32px,5.2vw,49px);letter-spacing:-1.75px;line-height:1.12;margin:15px 0 11px;max-width:890px}
+.hero p{font-size:16px;color:#536a84;max-width:870px;margin:0}
+.trust{display:flex;flex-wrap:wrap;gap:9px 18px;margin-top:17px;font-size:12px;font-weight:750;color:#60758b}
+.trust span:before{content:"✓";color:var(--green);font-weight:900;margin-right:6px}
+.layout{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(360px,.96fr);gap:18px;align-items:start;margin:16px 0 12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-width:0}
+.inputs{padding:21px}
+.head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:13px}
+.head h2{font-size:19px;line-height:1.28;margin:0}
+.pill{font-size:10px;color:#087851;background:#e7f8ef;border:1px solid #cae9dc;border-radius:30px;padding:5px 10px;font-weight:900;white-space:nowrap}
+.section{padding:15px;border-radius:13px;border:1px solid #e3ebf3;background:linear-gradient(145deg,#fff,#fbfdff);margin:13px 0}
+.section h3{font-size:13px;color:#36526e;margin:0 0 11px}
+.field{min-width:0}.field label{font-size:12px;color:#4f667f;font-weight:800;display:block;margin-bottom:5px}
+.field input:not([type=range]),.field select{height:43px;background:#fff;color:var(--ink);border:1px solid #d3dfeb;border-radius:9px;width:100%;padding:0 11px;outline:0;min-width:0}
+.field input:not([type=range]):focus,.field select:focus{border-color:#3971dd;box-shadow:0 0 0 3px #3f7ce02c}
+.field input[type=range]{accent-color:var(--green);height:22px;min-width:0;width:100%;cursor:pointer}
+.field .pair{display:grid;grid-template-columns:minmax(0,1fr) 133px;align-items:center;gap:10px}
+.inputMoney{display:flex;align-items:center;overflow:hidden;border:1px solid #d3dfeb;border-radius:9px}
+.inputMoney span{padding-left:9px;color:#667c92;font-size:12px;font-weight:800}
+.inputMoney input{border:0!important;box-shadow:none!important;padding-left:5px!important}
+.inputMoney:focus-within{border-color:#3971dd;box-shadow:0 0 0 3px #3f7ce02c}
+.field .fieldnote,.fine{font-size:11px;color:#74869b;margin:5px 0 0;line-height:1.5}
+.gridtwo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.full{grid-column:1/-1}
+.segment{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#f0f5fa;border:1px solid #dee7f0;border-radius:10px;padding:4px}
+.segment button{border:0;border-radius:7px;background:transparent;color:#657790;padding:9px 6px;font-size:12px;font-weight:850}
+.segment button.active{background:#fff;color:#075f48;box-shadow:0 1px 8px #223f571b}
+.segment button[aria-pressed=true]{cursor:default}
+.toggle{display:flex;gap:12px;align-items:center;border:1px solid #d8e7df;background:#f3fbf7;border-radius:12px;padding:13px;margin-top:12px}
+.toggle input{appearance:none;width:42px;height:24px;background:#b6c7d0;border-radius:20px;position:relative;margin:0;cursor:pointer;flex:none;transition:background .2s}
+.toggle input:checked{background:#0a9c71}
+.toggle input:after{content:"";position:absolute;left:3px;top:3px;background:white;border-radius:50%;width:18px;height:18px;transition:transform .2s;box-shadow:0 1px 3px #0002}
+.toggle input:checked:after{transform:translateX(18px)}
+.toggle label{font-size:12px;font-weight:850;cursor:pointer}
+.toggle small{display:block;color:#758b94;font-size:10px;font-weight:600;margin-top:2px}
+.explain{background:#f0f6fe;border:1px solid #d8e8fb;color:#536d8d;font-size:11px;border-radius:10px;padding:12px 13px;margin:12px 0 0;line-height:1.6}
+.warning{background:#fff4e5;border:1px solid #f0d9b0;color:#855917;font-size:11px;border-radius:10px;padding:12px 13px;margin-top:10px}
+.error{background:#fff0f1;border:1px solid #e9b8c1;color:#a13947;border-radius:10px;padding:11px 13px;font-size:12px;margin-top:10px}
+.results{position:sticky;top:17px;overflow:hidden}
+.topresults{padding:19px 21px 20px;background:linear-gradient(128deg,var(--navy),var(--navy2));color:white}
+.topresults h2{color:white}
+.topresults .pill{background:#ffffff18;color:#b2efd1;border-color:#ffffff30}
+.kicker{font-size:10px;color:#bccde1;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.big{font-size:clamp(29px,4.6vw,42px);font-weight:950;letter-spacing:-1.25px;line-height:1.26;overflow-wrap:anywhere;margin:6px 0 3px}
+.topcaption{color:#bacadd;font-size:11px}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.metric{border:1px solid #ffffff22;background:#ffffff0c;border-radius:11px;padding:11px 10px;min-width:0}
+.metric span{display:block;color:#bfcdde;font-size:10px;line-height:1.4;font-weight:750}
+.metric strong{display:block;font-size:17px;margin-top:4px;line-height:1.3;overflow-wrap:anywhere;font-weight:900}
+.metric strong.emerald{color:#75e3b8}
+.chartBlock{padding:13px 16px 7px}
+.chartHeader{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.chartHeader strong{font-size:12px}
+.chartSwitch{display:flex;gap:4px;padding:3px;background:#f0f4f8;border:1px solid #e3ebf2;border-radius:8px}
+.chartSwitch button{border:0;border-radius:6px;background:transparent;font-size:10px;color:#677d94;padding:5px 7px;font-weight:850}
+.chartSwitch button.active{background:#fff;box-shadow:0 1px 4px #0002;color:#183b60}
+.chartArea{position:relative;height:226px;width:100%}
+.chartArea canvas{width:100%!important;height:100%!important}
+.chartfallback{padding:20px;color:#65758a;font-size:12px}
+.summaryList{padding:8px 18px 4px}
+.line{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid #e7edf4;font-size:11px;color:#62768c}
+.line strong{font-weight:850;color:#1d3852;text-align:right;overflow-wrap:anywhere}
+.line strong.green{color:var(--green)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:11px 18px 19px}
+.btn{border:0;border-radius:9px;min-height:40px;padding:9px 9px;font-size:11px;font-weight:900}
+.btn.primary{background:#088968;color:white}.btn.secondary{background:#e9f1fc;color:#2458a5}.btn:hover{filter:brightness(.98)}
+.breakdown{padding:20px;margin:17px 0 0}
+.breakdown summary{font-size:17px;font-weight:900;cursor:pointer}
+.breakdown>p{font-size:11px;color:#728399;margin:4px 0 10px}
+.tablewrap{overflow-x:auto;border-radius:11px;border:1px solid #dfe8f1}
+table{border-collapse:collapse;width:100%;min-width:1050px;font-size:11px}
+thead th{background:#f2f6fb;color:#425b75;font-weight:900;white-space:normal}
+th,td{border-bottom:1px solid #e5edf4;padding:10px 11px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody tr:nth-child(even){background:#f9fbfe}
+.tablewrap td.up{color:#087957;font-weight:850}
+.disclose{margin-top:9px;color:#76889c;font-size:11px;line-height:1.55}
+.guide{padding:7px 0 35px}
+.guide h2{font-size:clamp(23px,3.3vw,31px);letter-spacing:-.65px;line-height:1.3;margin:30px 0 10px}
+.guide h3{font-size:18px;margin:20px 0 8px}
+.guide p,.guide li{color:#546980;font-size:14px;line-height:1.85}
+.guide ul{padding-left:21px}
+.guide .formula{background:#f0f7ff;border:1px solid #dbe8f7;border-radius:12px;padding:17px 19px;font-size:13px;line-height:2.1;color:#285174}
+.guide .faq details{background:white;border:1px solid #e0e9f2;border-radius:12px;padding:14px 16px;margin:10px 0}
+.guide .faq summary{font-size:13px;font-weight:900;cursor:pointer}
+.guide .faq p{font-size:13px;margin:8px 0 0}
+.guide .sources{font-size:12px;overflow-wrap:anywhere}
+.guide .disclaimer{border-left:4px solid #d8a144;background:#fff8e9;border-radius:7px;padding:15px 18px;color:#765a2b!important}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.results{position:static}.wrap{width:min(760px,calc(100% - 30px))}}
+@media(max-width:540px){.hero{padding:30px 0 17px}.hero h1{font-size:34px}.hero p{font-size:14px}.inputs{padding:15px}.section{padding:13px}.field .pair{grid-template-columns:minmax(0,1fr) 111px;gap:7px}.gridtwo{grid-template-columns:1fr}.topresults{padding:17px}.metric strong{font-size:15px}.chartHeader{align-items:start;flex-wrap:wrap}.big{font-size:32px}.breakdown{padding:14px}.guide p,.guide li{font-size:13px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap">
+<span class="eyebrow">Free investing tool · Monthly DRIP simulation</span>
+<h1>Dividend Reinvestment &amp; Stock Portfolio Growth Calculator</h1>
+<p>Explore your dividend snowball with growing payouts, regular contributions and stock-price appreciation. Compare automatic reinvestment (DRIP) with taking dividends as cash, using a detailed year-by-year schedule.</p>
+<div class="trust"><span>No registration</span><span>Four currencies</span><span>Dividend-per-share model</span><span>Cash vs DRIP comparison</span></div>
+</div></section>
+<div class="wrap">
+<div class="layout">
+<section class="panel inputs" aria-label="Dividend projection assumptions">
+<div class="head"><h2>Build your dividend scenario</h2><span class="pill">Instant forecast</span></div>
+<form id="dividendForm" novalidate>
+<div class="section"><h3>01 · Starting capital &amp; contributions</h3>
+<div class="field">
+<label for="initial">Initial amount invested</label>
+<div class="pair"><input type="range" id="initialRange" min="0" max="100000" step="100" value="10000" aria-label="Initial investment slider"><div class="inputMoney"><span class="symbol">$</span><input type="number" id="initial" min="0" max="10000000000" step="100" value="10000" inputmode="decimal"></div></div>
+</div>
+<div class="field" style="margin-top:15px">
+<label for="contribution">Additional recurring contribution</label>
+<div class="pair"><input type="range" id="contributionRange" min="0" max="5000" step="25" value="250" aria-label="Contribution slider"><div class="inputMoney"><span class="symbol">$</span><input type="number" id="contribution" min="0" max="100000000" step="25" value="250" inputmode="decimal"></div></div>
+<div class="fieldnote">Deposits are modeled at the start of each month or year.</div>
+</div>
+<div class="field" style="margin-top:12px">
+<label>Contribution frequency</label>
+<div class="segment" role="group" aria-label="Additional contribution frequency">
+<button type="button" id="monthlyBtn" class="active" aria-pressed="true">Monthly</button><button type="button" id="annualBtn" aria-pressed="false">Annually</button>
+</div></div>
+<div class="field" style="margin-top:12px"><label for="currency">Portfolio currency</label>
+<select id="currency"><option value="USD">USD — US Dollar ($)</option><option value="EUR">EUR — Euro (€)</option><option value="GBP">GBP — British Pound (£)</option><option value="INR">INR — Indian Rupee (₹)</option></select>
+<p class="fieldnote">Currency is a denomination switch, not a live foreign-exchange conversion.</p>
+</div>
+</div>
+<div class="section"><h3>02 · Dividend and price assumptions</h3>
+<div class="field"><label for="yieldRate">Current annual dividend yield (%)</label><div class="pair"><input id="yieldRateRange" type="range" min="0" max="30" step=".1" value="3.5" aria-label="Dividend yield slider"><input id="yieldRate" type="number" min="0" max="30" step=".1" value="3.5" inputmode="decimal"></div><p class="fieldnote">Yield = current annual dividend per share ÷ today's share price.</p></div>
+<div class="field" style="margin-top:14px"><label for="divGrowth">Expected annual dividend-per-share growth (%)</label><div class="pair"><input id="divGrowthRange" type="range" min="-30" max="30" step=".5" value="5" aria-label="Dividend growth slider"><input id="divGrowth" type="number" min="-30" max="30" step=".5" value="5" inputmode="decimal"></div><p class="fieldnote">Negative values simulate dividend cuts; positive values assume growth.</p></div>
+<div class="field" style="margin-top:14px"><label for="priceGrowth">Expected annual stock-price appreciation (%)</label><div class="pair"><input id="priceGrowthRange" type="range" min="-30" max="30" step=".5" value="6" aria-label="Price growth slider"><input id="priceGrowth" type="number" min="-30" max="30" step=".5" value="6" inputmode="decimal"></div><p class="fieldnote">Price-only appreciation, separate from dividend payments.</p></div>
+</div>
+<div class="section"><h3>03 · Years and dividend reinvestment</h3>
+<div class="field"><label for="years">Investment time horizon (years)</label><div class="pair"><input id="yearsRange" type="range" min="1" max="40" step="1" value="20" aria-label="Investment years slider"><input id="years" type="number" min="1" max="40" step="1" value="20" inputmode="numeric"></div></div>
+<div class="toggle"><input type="checkbox" id="drip" checked><div><label for="drip">Reinvest dividends automatically (DRIP)</label><small id="dripHelp">Dividends purchase additional shares rather than becoming cash payouts.</small></div></div>
+</div>
+<div id="inputError" class="error" role="alert" hidden></div>
+<div class="explain">We model fractional shares with a normalized starting share price of 100 currency units, monthly dividend distributions and no transaction fees or taxes. Dividend growth is applied to <strong>dividend per share</strong>, not to a permanently fixed dividend yield.</div>
+<div id="riskWarning" class="warning" hidden></div>
+</form>
+</section>
+<aside class="panel results" aria-label="Dividend portfolio results">
+<div class="topresults">
+<div class="head"><h2>Projected portfolio</h2><span class="pill" id="dripTag">DRIP on</span></div>
+<div class="kicker">Final stock market value · <span id="horizonLabel">20 years</span></div>
+<div class="big" id="stockValue">$0</div>
+<div class="topcaption" id="portfolioCaption">Invested shares valued at the modeled ending share price.</div>
+<div class="metrics">
+<div class="metric"><span>Total contributed capital</span><strong id="capital">$0</strong></div>
+<div class="metric"><span>Cumulative dividends earned</span><strong class="emerald" id="dividends">$0</strong></div>
+<div class="metric"><span>Ending annual dividend income</span><strong class="emerald" id="annualIncome">$0</strong></div>
+<div class="metric"><span>Annualized money-weighted return</span><strong id="annualized">—</strong></div>
+</div>
+</div>
+<div class="chartBlock">
+<div class="chartHeader"><strong>Growth and dividend snowball</strong><div class="chartSwitch" role="group" aria-label="Chart view"><button type="button" id="growthView" class="active" aria-pressed="true">Growth</button><button type="button" id="compareView" aria-pressed="false">DRIP vs cash</button></div></div>
+<div class="chartArea"><canvas id="portfolioChart" role="img" aria-label="Dividend portfolio projection chart"></canvas><div class="chartfallback" id="chartFallback" hidden>Chart.js is unavailable. Results and the annual dividend schedule remain readable below.</div></div>
+</div>
+<div class="summaryList">
+<div class="line"><span>Dividends reinvested</span><strong id="reinvested">$0</strong></div>
+<div class="line"><span>Cash dividends paid out / held</span><strong id="cashPaid">$0</strong></div>
+<div class="line"><span>Combined ending wealth (stock + retained cash)</span><strong id="totalWealth">$0</strong></div>
+<div class="line"><span>Modeled total profit vs contributions</span><strong id="netGain" class="green">$0</strong></div>
+<div class="line"><span>Forward monthly dividend run rate</span><strong id="monthlyIncome">$0</strong></div>
+<div class="line"><span>Ending forward dividend yield</span><strong id="endingYield">0%</strong></div>
+<div class="line"><span>Potential wealth difference: DRIP − cash held</span><strong id="dripDifference">$0</strong></div>
+</div>
+<div class="actions"><button type="button" id="reset" class="btn secondary">Reset defaults</button><button type="button" id="copy" class="btn primary">Copy portfolio summary</button></div>
+</aside>
+</div>
+<details class="panel breakdown" id="schedule">
+<summary>Year-by-Year Dividend Schedule &amp; DRIP Table</summary>
+<p>End-of-year estimates. Dividends shown are actual simulated payments during the year; the forward income estimate uses next year's annualized payout per share.</p>
+<div class="tablewrap"><table><thead><tr>
+<th scope="col">Year</th><th scope="col">Added this year</th><th scope="col">Capital contributed</th><th scope="col">Dividends paid this year</th><th scope="col">Cumulative dividends</th><th scope="col">Reinvested this year</th><th scope="col">Cash payouts cumulative</th><th scope="col">Ending shares*</th><th scope="col">Share price*</th><th scope="col">Stock market value</th><th scope="col">Total wealth</th><th scope="col">Forward annual dividend</th>
+</tr></thead><tbody id="scheduleRows"></tbody></table></div>
+<p class="disclose">*Shares and per-share prices are normalized illustrative units, not holdings or quotes of any specific stock. Share-price growth is modeled separately from dividend income. Stock market value already includes the value of shares acquired through DRIP: do not add cumulative reinvested dividends again.</p>
+</details>
+<article class="guide">
+<h2>How dividend reinvestment (DRIP) accelerates wealth</h2>
+<p>Dividend reinvestment means using a stock or fund's cash distributions to acquire additional shares rather than receiving the money as spendable cash. Those new shares may themselves qualify for future dividends, increasing the number of income-producing shares without additional external contributions. Brokers and issuers may offer formal dividend reinvestment plans (DRIPs), with specific purchase times, costs, fractional-share rules and eligibility conditions. The US Securities and Exchange Commission describes DRIPs as an option for using cash dividends to buy more of the same stock. <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/direct-investment-plans-buying-stock-directly" target="_blank" rel="noopener noreferrer">Investor.gov DRIP guidance</a>.</p>
+<p>Reinvestment is not a source of free value. The value distributed as a dividend comes out of a business or fund, and share prices often adjust around the ex-dividend date. The value in DRIP is the potential compounding of subsequent investment returns on dividend-funded shares, together with any new money you invest. Actual share prices can rise or fall, dividends can be reduced or stopped, and the entire projected growth path is hypothetical.</p>
+<h3>DRIP versus taking dividends as cash</h3>
+<p>With DRIP enabled, this model converts each month's modeled dividend into new fractional shares at the projected month-end share price. With DRIP disabled, the dividend is recorded as a cash payout and is <strong>not</strong> reinvested or compounded. The page displays both the stock market value and the combined economic wealth if those cash payouts are retained without earning interest. If you spend cash distributions, only the remaining stock value is still invested. The DRIP-versus-cash chart compares like-for-like ending wealth, including retained dividend cash in the payout scenario.</p>
+<h2>Understanding dividend yield versus dividend growth rate</h2>
+<p><strong>Dividend yield</strong> is the annual dividend per share divided by the current share price. For example, a $100 share paying $3.50 per year has a 3.5% dividend yield. <strong>Dividend growth</strong> is the assumed annual percentage change in the dividend paid per share; <strong>price appreciation</strong> is the separate modeled change in the share price. When dividend-per-share growth is faster than price appreciation, the forward yield can increase over time. When price growth is faster, the forward yield can decline even though the dollar dividend rises. A high quoted yield is not a guaranteed high return, as Fidelity's dividend-yield guidance also explains. <a href="https://www.fidelity.com/learning-center/trading-investing/dividend-yield" target="_blank" rel="noopener noreferrer">Dividend yield explained</a>.</p>
+<h3>The projection calculation in plain English</h3>
+<div class="formula">
+Starting shares = initial investment ÷ normalized starting share price (100)<br>
+Monthly share price = starting price × (1 + annual price growth)<sup>month / 12</sup><br>
+Annual dividend per share at month start = starting price × starting dividend yield × (1 + dividend growth)<sup>(month − 1) / 12</sup><br>
+Monthly dividend = shares held × annual dividend per share ÷ 12<br>
+New DRIP shares (if enabled) = dividend paid ÷ projected month-end price<br>
+Final stock value = shares held × ending share price
+</div>
+<p>The model purchases new contribution-funded shares at the beginning of each modeled month (or each new year for annual contributions), and adds dividend-funded fractional shares at month-end. A month's dividends apply to shares purchased by that month's contribution. The hypothetical price path represents price-only appreciation and treats dividend payouts separately; it does not simulate the market's specific ex-dividend-day price adjustment, tax lots, split dates, trading fees or corporate actions. Real dividend frequencies may be quarterly, semi-annual or annual instead of monthly.</p>
+<h2>Calculating total returns with recurring contributions</h2>
+<p>With a single initial investment and no later deposits, a simple end-value CAGR can summarize the annualized growth of combined stock and retained dividend cash. With monthly or annual contributions, however, treating every contributed dollar as if it were invested at the start gives the wrong performance figure. This calculator uses a <strong>monthly cash-flow internal rate of return (IRR)</strong>, converts that rate to an annual equivalent and treats the ending stock plus retained payout cash as the terminal value. This measures the modeled investor experience, including contribution timing. It is a money-weighted rate, not a time-weighted comparison benchmark. The CFA Institute's GIPS performance methodology distinguishes these return approaches. <a href="https://www.gipsstandards.org/standards/gips-standards-for-firms/gips-standards-handbook-for-firms/" target="_blank" rel="noopener noreferrer">GIPS return methodology</a>.</p>
+<h2>Pro tips for building sustainable passive dividend income</h2>
+<ul>
+<li><strong>Review dividend coverage.</strong> Cash flow, earnings quality, leverage and payout policy matter more than a headline yield alone.</li>
+<li><strong>Stress-test dividend cuts.</strong> Try a negative dividend growth rate, such as −5% or −10%, rather than assuming every company raises payouts indefinitely.</li>
+<li><strong>Track total return.</strong> Market value can decline while dividends keep arriving; income alone does not measure overall investment success.</li>
+<li><strong>Understand taxes and DRIP costs.</strong> Reinvested dividends may still be taxable depending on the account and country; broker plans can have fees or restrictions.</li>
+<li><strong>Diversify intelligently.</strong> A concentrated high-yield portfolio may expose an investor to company, sector, currency and dividend-policy risks.</li>
+</ul>
+<p>The estimate for ending annual dividend income is a <strong>forward run rate</strong> using the ending share count and projected dividend per share over the next 12 months. It is not a promise or necessarily the dividends that were received in the final simulated year. Starting or future dividends can be reduced or stopped.</p>
+<h2>Frequently asked questions</h2>
+<div class="faq" id="faq">
+<details><summary>How does dividend reinvestment (DRIP) work?</summary><p>When dividends are paid, a DRIP uses them to purchase additional shares. Those shares can then generate further dividends. Brokers may have purchase rules, trading fees and fractional-share restrictions; this tool assumes automatic monthly purchases without fees.</p></details>
+<details><summary>What is the difference between dividend yield and dividend growth?</summary><p>Yield relates the current annual dividend per share to the current stock price. Dividend growth is the change in the payout per share over time. The price may change independently, causing the future yield to be different.</p></details>
+<details><summary>Are dividends guaranteed, and does a high yield mean high returns?</summary><p>No. Companies can reduce or suspend payouts and share prices may fall. A temporarily high yield may reflect a falling stock price, so assess total return and financial sustainability.</p></details>
+<details><summary>How is annualized return calculated when I contribute monthly?</summary><p>The tool calculates a money-weighted internal rate of return using month-by-month contributions and ending total wealth. Dividing final wealth by all deposits and calling the result CAGR would incorrectly ignore when the deposits occurred.</p></details>
+<details><summary>Are dividends taxed if I reinvest them?</summary><p>They can be, depending on the account, type of distribution and country. Reinvestment itself does not make a distribution tax-free. The model excludes tax, trading costs, inflation, foreign exchange and unplanned dividend cuts.</p></details>
+</div>
+<h2>Official sources and methodology limitations</h2>
+<p class="sources">Educational sources checked 13 November 2026: <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/direct-investment-plans-buying-stock-directly" target="_blank" rel="noopener noreferrer">SEC: Direct Investment &amp; DRIP</a> · <a href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/fund-distributions-investor-bulletin" target="_blank" rel="noopener noreferrer">SEC: Fund distributions, reinvestment &amp; risks</a> · <a href="https://www.fidelity.com/learning-center/trading-investing/dividend-yield" target="_blank" rel="noopener noreferrer">Fidelity: Dividend yield</a> · <a href="https://www.gipsstandards.org/standards/gips-standards-for-firms/gips-standards-handbook-for-firms/" target="_blank" rel="noopener noreferrer">CFA Institute: Return measurement</a> · <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/ex-dividend-dates-when-are-you-entitled-stock-and" target="_blank" rel="noopener noreferrer">Investor.gov: Ex-dividend dates</a>.</p>
+<p class="disclaimer"><strong>Investment disclaimer.</strong> This dividend calculator provides hypothetical educational projections, not investment advice, a real stock portfolio quote, guaranteed dividends, tax advice or a recommendation to buy a particular security. No inflation, foreign-exchange movement, withholding taxes, capital gains taxes, brokerage charges, corporate actions, delistings, trading limits or discretionary dividend cuts are modeled. The example assumes fractional shares and smooth monthly price and dividend growth. Past performance and current dividend yields do not guarantee future returns. Consult qualified investment and tax professionals when needed.</p>
+</article>
+</div>
+</main>
+<div id="site-footer"></div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const ids=['initial','contribution','yieldRate','divGrowth','priceGrowth','years'];
+const rules={initial:{min:0,max:10000000000,sliderMax:100000,step:100},contribution:{min:0,max:100000000,sliderMax:5000,step:25},yieldRate:{min:0,max:30,sliderMax:30,step:.1},divGrowth:{min:-30,max:30,sliderMax:30,step:.5},priceGrowth:{min:-30,max:30,sliderMax:30,step:.5},years:{min:1,max:40,sliderMax:40,step:1}};
+const defaults={initial:10000,contribution:250,yieldRate:3.5,divGrowth:5,priceGrowth:6,years:20,currency:'USD',drip:true,frequency:'monthly'};
+const currencies={USD:{symbol:'$',initialMax:100000,contributionMax:5000},EUR:{symbol:'€',initialMax:100000,contributionMax:5000},GBP:{symbol:'£',initialMax:100000,contributionMax:5000},INR:{symbol:'₹',initialMax:10000000,contributionMax:500000}};
+let frequency='monthly',chartMode='growth',chart=null,last=null,changedCurrency='USD';
+function getNumber(id){const s=String($(id).value).trim();return s===''?NaN:Number(s);}
+function put(id,s){$(id).textContent=s;}
+function finite(v){return Number.isFinite(v);}
+function currency(v,precision=0){if(!finite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,minimumFractionDigits:precision,maximumFractionDigits:precision}).format(v);}
+function percent(v){return finite(v)?(v*100).toFixed(2)+'%':'N/A';}
+function sharesFmt(v){return finite(v)?new Intl.NumberFormat('en-US',{maximumFractionDigits:4}).format(v):'—';}
+function clamp(n,a,b){return Math.min(b,Math.max(a,n));}
+function valid(){for(const id of ids){const n=getNumber(id),r=rules[id];if(!finite(n))return 'Please enter a valid number for every financial input.';if(n<r.min||n>r.max)return (id==='initial'?'Initial investment':id==='contribution'?'Contribution':id==='yieldRate'?'Dividend yield':id==='divGrowth'?'Dividend growth':id==='priceGrowth'?'Price appreciation':'Years')+' must be between '+r.min+' and '+r.max+'.';}if(!Number.isInteger(getNumber('years')))return 'Years must be a whole number from 1 to 40.';if(getNumber('initial')===0&&getNumber('contribution')===0)return 'Enter a starting investment or recurring contribution greater than zero.';return '';}
+function params(){return {initial:getNumber('initial'),contribution:getNumber('contribution'),yield:getNumber('yieldRate')/100,divGrowth:getNumber('divGrowth')/100,priceGrowth:getNumber('priceGrowth')/100,years:getNumber('years'),frequency:frequency};}
+function annualizedIRR(flows){const n=flows.length-1;let negative=false,positive=false;for(const f of flows){if(f<0)negative=true;if(f>0)positive=true;}if(!negative||!positive)return null;const npv=r=>{let sum=0;for(let i=0;i<=n;i++)sum+=flows[i]/Math.pow(1+r,i);return sum;};let lo=-.95,hi=.1;while(npv(hi)>0&&hi<100)hi=hi*2+0.1;if(npv(lo)<0||npv(hi)>0)return null;for(let i=0;i<100;i++){const mid=(lo+hi)/2;if(npv(mid)>0)lo=mid;else hi=mid;}const rate=Math.pow(1+(lo+hi)/2,12)-1;return finite(rate)?rate:null;}
+function simulate(p,drip){
+const months=p.years*12,flows=Array(months+1).fill(0);flows[0]=-p.initial;
+let price=100,shares=p.initial/price,capital=p.initial,cumulativeDividends=0,reinvested=0,cash=0;
+let yearDiv=0,yearAdd=0,yearReinvested=0,records=[{year:0,added:0,capital:capital,yearDividends:0,cumulativeDividends:0,reinvestedYear:0,cash:0,shares:shares,price:price,stockValue:p.initial,wealth:p.initial,forward:shares*100*p.yield}];
+for(let m=1;m<=months;m++){
+ const monthStart=m-1;
+ const contribution=p.frequency==='monthly'?p.contribution:(monthStart%12===0?p.contribution:0);
+ if(contribution>0){shares+=contribution/price;capital+=contribution;yearAdd+=contribution;flows[monthStart]-=contribution;}
+ price=100*Math.pow(1+p.priceGrowth,m/12);
+ const dividendPerShare=100*p.yield*Math.pow(1+p.divGrowth,monthStart/12)/12;
+ const paid=shares*dividendPerShare;
+ cumulativeDividends+=paid;yearDiv+=paid;
+ if(drip){shares+=paid/price;reinvested+=paid;yearReinvested+=paid;}else{cash+=paid;}
+ if(m%12===0){const forward=shares*100*p.yield*Math.pow(1+p.divGrowth,m/12);
+ const stockValue=shares*price;records.push({year:m/12,added:yearAdd,capital:capital,yearDividends:yearDiv,cumulativeDividends:cumulativeDividends,reinvestedYear:yearReinvested,cash:cash,shares:shares,price:price,stockValue:stockValue,wealth:stockValue+cash,forward:forward});
+ yearDiv=0;yearAdd=0;yearReinvested=0;
+ }
+}
+const stockValue=shares*price,wealth=stockValue+cash,forward=shares*100*p.yield*Math.pow(1+p.divGrowth,p.years);
+flows[months]+=wealth;
+return {records:records,stockValue:stockValue,wealth:wealth,capital:capital,cumulativeDividends:cumulativeDividends,reinvested:reinvested,cash:cash,shares:shares,price:price,forward:forward,endYield:price>0?100*p.yield*Math.pow(1+p.divGrowth,p.years)/price:0,irr:annualizedIRR(flows),cagr:p.contribution===0&&p.initial>0?Math.pow(wealth/p.initial,1/p.years)-1:null};
+}
+function resultsOK(x){return [x.stockValue,x.wealth,x.capital,x.cumulativeDividends,x.reinvested,x.cash,x.forward,x.endYield].every(finite)&&x.stockValue>=0&&x.wealth>=0&&x.records.every(r=>[r.capital,r.wealth,r.forward,r.cumulativeDividends].every(finite))&&x.wealth<1e24;}
+function chooseFrequency(value){frequency=value;const monthly=value==='monthly';$('monthlyBtn').classList.toggle('active',monthly);$('annualBtn').classList.toggle('active',!monthly);$('monthlyBtn').setAttribute('aria-pressed',String(monthly));$('annualBtn').setAttribute('aria-pressed',String(!monthly));calculate();}
+function chartDatasets(selected,reinvest,cash){
+const base={fill:false,borderWidth:2.2,pointRadius:0,pointHoverRadius:4,tension:.19};
+if(chartMode==='compare')return [
+ {...base,label:'With DRIP (stock value)',data:reinvest.records.map(r=>r.wealth),borderColor:'#0a9c71',backgroundColor:'#0a9c7120'},
+ {...base,label:'Without DRIP (stock + retained cash)',data:cash.records.map(r=>r.wealth),borderColor:'#4d79b7',backgroundColor:'#4d79b720'},
+ {...base,label:'Contributed capital',data:selected.records.map(r=>r.capital),borderColor:'#a1abba',borderDash:[5,4]}
+];
+return [
+ {...base,label:'Stock portfolio value',data:selected.records.map(r=>r.stockValue),borderColor:'#0a9c71',backgroundColor:'#0a9c711f',fill:true},
+ {...base,label:'Total wealth incl. retained cash',data:selected.records.map(r=>r.wealth),borderColor:'#346bbb',borderDash:[4,3]},
+ {...base,label:'Contributed capital',data:selected.records.map(r=>r.capital),borderColor:'#929dae',borderDash:[5,4]},
+ {...base,label:'Cumulative dividends earned (not additive)',data:selected.records.map(r=>r.cumulativeDividends),borderColor:'#c79435',borderDash:[2,5]}
+];
+}
+function paintChart(selected,reinvest,cash){
+if(!window.Chart){$('chartFallback').hidden=false;$('portfolioChart').hidden=true;return;}
+$('chartFallback').hidden=true;$('portfolioChart').hidden=false;
+const data={labels:selected.records.map(r=>'Year '+r.year),datasets:chartDatasets(selected,reinvest,cash)};
+if(chart){chart.data=data;chart.update();return;}
+chart=new window.Chart($('portfolioChart'),{type:'line',data:data,options:{responsive:true,maintainAspectRatio:false,animation:{duration:200},interaction:{intersect:false,mode:'index'},plugins:{legend:{position:'bottom',labels:{boxWidth:11,font:{size:10},padding:9}},tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+': '+currency(ctx.parsed.y);}}}},scales:{x:{ticks:{maxTicksLimit:6,font:{size:10}},grid:{display:false}},y:{beginAtZero:true,ticks:{maxTicksLimit:5,font:{size:10},callback:function(x){return currency(x);}},grid:{color:'#edf2f6'}}}}});
+}
+function paintTable(data){const body=$('scheduleRows');body.replaceChildren();
+for(const r of data.records){const tr=document.createElement('tr');const vals=[r.year,r.added,r.capital,r.yearDividends,r.cumulativeDividends,r.reinvestedYear,r.cash,r.shares,r.price,r.stockValue,r.wealth,r.forward];
+vals.forEach((v,i)=>{const cell=document.createElement(i===0?'th':'td');if(i===0)cell.setAttribute('scope','row');cell.textContent=i===0?String(v):i===7?sharesFmt(v):i===8?currency(v,2):currency(v);if(i===11)cell.className='up';tr.appendChild(cell);});body.appendChild(tr);}
+}
+function syncSlider(id){const r=rules[id],slide=$(id+'Range'),v=getNumber(id);if(!finite(v))return;const next=clamp(v,r.min,r.max);const def= id==='initial'?currencies[$('currency').value].initialMax:id==='contribution'?currencies[$('currency').value].contributionMax:r.sliderMax;
+let max=def;if(next>def){max=Math.min(r.max,Math.max(def,Math.ceil(next/Math.max(1,def))*def));}
+slide.max=String(max);slide.value=String(next);
+}
+function calculate(){
+const problem=valid();$('inputError').hidden=!problem;if(problem){put('inputError',problem);return;}
+for(const id of ids)syncSlider(id);
+const p=params(),drip=$('drip').checked,withDrip=simulate(p,true),noDrip=simulate(p,false),current=drip?withDrip:noDrip;
+if(!resultsOK(current)||!resultsOK(withDrip)||!resultsOK(noDrip)){$('inputError').hidden=false;put('inputError','This scenario produces extremely large projected values. Reduce growth assumptions or contributions.');return;}
+const difference=withDrip.wealth-noDrip.wealth;
+put('stockValue',currency(current.stockValue));put('horizonLabel',p.years+' year'+(p.years===1?'':'s'));put('capital',currency(current.capital));put('dividends',currency(current.cumulativeDividends));put('annualIncome',currency(current.forward));
+put('annualized',percent(current.irr));put('reinvested',currency(current.reinvested));put('cashPaid',currency(current.cash));put('totalWealth',currency(current.wealth));
+put('netGain',(current.wealth>=current.capital?'+':'−')+currency(Math.abs(current.wealth-current.capital)));$('netGain').className=current.wealth>=current.capital?'green':'';
+put('monthlyIncome',currency(current.forward/12));put('endingYield',percent(current.endYield));put('dripDifference',(difference>=0?'+':'−')+currency(Math.abs(difference)));
+put('dripTag',drip?'DRIP enabled':'Cash payout');put('portfolioCaption',drip?'All dividends buy additional fractional shares; portfolio value includes those shares.':'Stock market value only; accumulated cash payouts are shown separately below.');
+put('dripHelp',drip?'Dividends purchase additional shares rather than becoming cash payouts.':'Dividends are recorded as separate cash payouts and held without interest.');
+let warning=[];
+if(current.endYield>.15)warning.push('The projected ending dividend yield is above 15%, which can indicate an unrealistic long-term payout assumption.');
+if(p.yield>.10)warning.push('A starting yield above 10% may reflect elevated dividend-cut or share-price risk.');
+if(p.divGrowth>p.priceGrowth+0.08)warning.push('Dividend-per-share growth considerably exceeds price growth; the forecast yield may increase sharply over time.');
+if(p.divGrowth<0)warning.push('Negative dividend growth models a gradually falling payout, not an abrupt suspension.');
+if(p.priceGrowth<0)warning.push('Negative price appreciation models falling stock prices; capital losses may exceed dividend income.');
+$('riskWarning').hidden=warning.length===0;put('riskWarning',warning.join(' '));
+paintChart(current,withDrip,noDrip);paintTable(current);
+last={p:p,current:current,withDrip:withDrip,noDrip:noDrip,drip:drip};
+}
+function view(mode){chartMode=mode;const g=mode==='growth';$('growthView').classList.toggle('active',g);$('compareView').classList.toggle('active',!g);$('growthView').setAttribute('aria-pressed',String(g));$('compareView').setAttribute('aria-pressed',String(!g));if(last)paintChart(last.current,last.withDrip,last.noDrip);}
+function reset(){for(const id of ids)$(id).value=String(defaults[id]);$('currency').value=defaults.currency;$('drip').checked=true;document.querySelectorAll('.symbol').forEach(el=>el.textContent='$');changedCurrency='USD';frequency='monthly';$('monthlyBtn').classList.add('active');$('annualBtn').classList.remove('active');$('monthlyBtn').setAttribute('aria-pressed','true');$('annualBtn').setAttribute('aria-pressed','false');chartMode='growth';$('growthView').classList.add('active');$('compareView').classList.remove('active');$('growthView').setAttribute('aria-pressed','true');$('compareView').setAttribute('aria-pressed','false');calculate();}
+for(const id of ids){
+$(id).addEventListener('input',function(){calculate();});
+$(id).addEventListener('change',function(){const v=getNumber(id),r=rules[id];if(finite(v)){let n=clamp(v,r.min,r.max);if(id==='years')n=Math.round(n);this.value=String(n);}calculate();});
+$(id+'Range').addEventListener('input',function(){$(id).value=String(this.value);calculate();});
+}
+$('monthlyBtn').addEventListener('click',function(){chooseFrequency('monthly');});
+$('annualBtn').addEventListener('click',function(){chooseFrequency('annual');});
+$('drip').addEventListener('change',calculate);
+$('currency').addEventListener('change',function(){changedCurrency=this.value;document.querySelectorAll('.symbol').forEach(el=>el.textContent=currencies[changedCurrency].symbol);calculate();});
+$('growthView').addEventListener('click',function(){view('growth');});
+$('compareView').addEventListener('click',function(){view('compare');});
+$('reset').addEventListener('click',reset);
+$('dividendForm').addEventListener('submit',function(e){e.preventDefault();});
+$('copy').addEventListener('click',function(){
+if(!last)return;
+const c=last.current,p=last.p;const lines=['Dividend Reinvestment & Stock Portfolio Projection','Currency: '+$('currency').value,'Initial investment: '+currency(p.initial),'Additional '+p.frequency+' contribution: '+currency(p.contribution),'Starting yield: '+percent(p.yield),'Dividend growth per share: '+percent(p.divGrowth),'Price appreciation (ex dividends): '+percent(p.priceGrowth),'Years: '+p.years,'Dividend reinvestment: '+(last.drip?'Enabled':'Disabled'),'Ending stock portfolio value: '+currency(c.stockValue),'Total contributed capital: '+currency(c.capital),'Cumulative dividends earned: '+currency(c.cumulativeDividends),'Dividends reinvested: '+currency(c.reinvested),'Cash dividends held separately: '+currency(c.cash),'Combined ending wealth incl retained dividend cash: '+currency(c.wealth),'Ending forward annual dividend income: '+currency(c.forward),'Annualized money-weighted return: '+percent(c.irr),'DRIP vs payout wealth difference: '+currency(last.withDrip.wealth-last.noDrip.wealth),'Illustrative fractional-share model. No taxes, fees, inflation or live prices. Not investment advice.','https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/'];
+const payload=lines.join('\n'),button=$('copy');
+function success(){put('copy','Copied ✓');setTimeout(function(){put('copy','Copy portfolio summary');},1600);}
+function fallback(){const node=document.createElement('textarea');node.value=payload;node.style.position='fixed';node.style.left='-9999px';document.body.appendChild(node);node.select();try{if(document.execCommand('copy'))success();else put('copy','Copy unavailable');}catch(err){put('copy','Copy unavailable');}node.remove();}
+if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(payload).then(success,fallback);else fallback();
+});
+calculate();document.addEventListener('DOMContentLoaded',function(){if(window.Chart&&last)paintChart(last.current,last.withDrip,last.noDrip);});
+})();
+</script>
+</body>
+</html>
