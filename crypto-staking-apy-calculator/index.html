@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Crypto Staking APY Calculator | Compound Rewards</title>
+<meta name="description" content="Calculate crypto staking rewards, compound APY, token growth and future value. Compare APR, compounding frequency and staking periods.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Crypto Staking APY Calculator | Compound Rewards">
+<meta property="og:description" content="Estimate crypto staking rewards, effective APY, compounding growth and token-price scenarios with an interactive calculator.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crypto Staking APY Calculator">
+<meta name="twitter:description" content="Estimate staking rewards, compound growth and token-price scenarios.">
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "@id":"https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/#application",
+      "name":"Crypto Staking APY Calculator",
+      "url":"https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/",
+      "applicationCategory":"FinanceApplication",
+      "operatingSystem":"Any",
+      "browserRequirements":"Requires JavaScript",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "description":"A free browser-based calculator for estimating crypto staking rewards, APR and APY compounding, token-price scenarios and projected portfolio value."
+    },
+    {
+      "@type":"FAQPage",
+      "@id":"https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/#faq",
+      "mainEntity":[
+        {"@type":"Question","name":"What is the difference between staking APR and APY?","acceptedAnswer":{"@type":"Answer","text":"APR is a nominal annual rate before compounding. APY is the effective annual yield after compounding. If rewards are restaked, the effective APY can be higher than the quoted APR. A quoted APY already includes compounding and should not be compounded a second time."}},
+        {"@type":"Question","name":"How does compounding frequency affect staking rewards?","acceptedAnswer":{"@type":"Answer","text":"When a quoted rate is APR, more frequent reward restaking generally increases the effective annual yield because each reward can begin earning future rewards sooner. In APY mode, the quoted APY already includes the annual compounding effect, so changing the interval does not increase that effective annual rate."}},
+        {"@type":"Question","name":"Are crypto staking rewards guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. Actual rewards can change with network conditions, validator performance, protocol parameters, fees and service-provider terms. Some networks and services also have lock-up periods, unbonding delays or slashing risks."}},
+        {"@type":"Question","name":"Can I use this calculator for USDT and USDC?","acceptedAnswer":{"@type":"Answer","text":"Yes, but USDT and USDC are stablecoins and generally earn yield through lending or other DeFi strategies rather than native proof-of-stake staking. Smart-contract, counterparty and depeg risks may apply."}},
+        {"@type":"Question","name":"Does this calculator use live crypto prices or staking rates?","acceptedAnswer":{"@type":"Answer","text":"No. You enter the starting token price, annual rate and token-price scenario. The calculator does not fetch live market prices, network rewards, exchange rates, fees or tax rates. Results are estimates based on your assumptions."}}
+      ]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},
+        {"@type":"ListItem","position":2,"name":"Crypto Staking APY Calculator","item":"https://returnoninvestmentcalculator.in/crypto-staking-apy-calculator/"}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#f3f7fb;--surface:#fff;--ink:#142238;--muted:#63748b;--line:#dfe7f1;--navy:#101827;--navy2:#17263b;--green:#07966e;--green-soft:#e8f8f1;--blue:#2864e8;--red:#c74755;--shadow:0 16px 40px rgba(24,45,76,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#edf4fb 0,#f7f9fc 460px,#fff 1000px);color:var(--ink);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#245bd2}
+button,input,select{font:inherit}
+.wrap{width:min(1190px,calc(100% - 36px));margin:auto}
+.hero{padding:46px 0 26px;background:radial-gradient(circle at 8% 5%,#d9e9ff 0,transparent 32%),radial-gradient(circle at 92% 0,#d8f5e9 0,transparent 31%)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;border:1px solid #cce9dc;background:#e8f8f1;color:#087653;padding:5px 11px;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.hero h1{max-width:850px;font-size:clamp(32px,5vw,49px);line-height:1.09;letter-spacing:-1.7px;margin:14px 0 10px}
+.hero p{max-width:820px;margin:0;color:#5d6e84;font-size:16px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 17px;margin-top:16px;color:#52657d;font-size:12px;font-weight:750}
+.trust span:before{content:"✓";color:var(--green);font-weight:950;margin-right:6px}
+.calc-layout{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);gap:20px;align-items:start;padding:12px 0 35px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-width:0}
+.input-panel{padding:22px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.panel-head h2{font-size:19px;line-height:1.3;margin:0;letter-spacing:-.3px}
+.live-tag{font-size:10px;font-weight:900;letter-spacing:.07em;color:#087653;background:var(--green-soft);border:1px solid #c9ebdc;border-radius:30px;padding:5px 9px;white-space:nowrap}
+.group{padding:15px;border:1px solid #e4ebf3;border-radius:13px;margin:12px 0;background:linear-gradient(145deg,#fff,#fbfdff)}
+.group h3{font-size:13px;margin:0 0 12px;color:#33465e}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{min-width:0}
+.field label{display:block;font-size:11px;font-weight:800;color:#52657d;margin-bottom:5px}
+.field input,.field select{width:100%;height:43px;border:1px solid #d5dfeb;border-radius:9px;background:#fff;color:#142238;padding:0 10px;outline:none;min-width:0;font-size:14px}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2864e81b}
+.field input[type=range]{height:22px;padding:0;border:0;box-shadow:none;accent-color:var(--green);background:transparent}
+.field input[type=range]:focus{box-shadow:none}
+.input-with-prefix{display:flex;align-items:center;border:1px solid #d5dfeb;border-radius:9px;background:#fff;overflow:hidden}
+.input-with-prefix:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px #2864e81b}
+.input-with-prefix span{padding:0 0 0 11px;color:#687b91;font-size:13px;font-weight:750}
+.input-with-prefix input{border:0!important;box-shadow:none!important}
+.hint{font-size:10px;color:#74849a;line-height:1.45;margin-top:5px}
+.rate-row{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:12px;align-items:center}
+.switch-row{display:flex;gap:7px;padding:4px;border:1px solid #dfe7f1;background:#f1f5fa;border-radius:10px}
+.switch-row button{flex:1;border:0;background:transparent;color:#64748b;padding:7px 9px;border-radius:7px;font-size:12px;font-weight:850;cursor:pointer}
+.switch-row button.active{background:#fff;color:#142238;box-shadow:0 1px 5px #182d4c1a}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 0;font-size:12px;font-weight:750;color:#41546c}
+.toggle{position:relative;width:43px;height:24px;flex:none}
+.toggle input{position:absolute;opacity:0;width:1px;height:1px}
+.toggle span{position:absolute;inset:0;border-radius:30px;background:#cbd5e1;cursor:pointer;transition:.2s}
+.toggle span:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px #0002}
+.toggle input:checked+span{background:var(--green)}
+.toggle input:checked+span:before{transform:translateX(19px)}
+.toggle input:focus-visible+span{outline:3px solid #2864e833}
+.price-fields{display:none;margin-top:10px}
+.price-fields.show{display:block}
+.results-panel{position:sticky;top:18px;overflow:hidden}
+.results-top{background:linear-gradient(135deg,#101827,#1b3049);color:#fff;padding:21px 22px 18px}
+.results-top .panel-head{margin-bottom:13px}
+.results-top h2{color:#fff}
+.currency-label{font-size:10px;color:#b7c5d8;font-weight:800}
+.big-value{font-size:clamp(29px,4vw,39px);font-weight:900;letter-spacing:-1.2px;line-height:1.2;overflow-wrap:anywhere}
+.sub-value{font-size:11px;color:#b9c7d9;margin-top:5px}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:14px 17px 5px}
+.metric{border:1px solid #e3eaf2;border-radius:11px;padding:11px;background:#fff;min-width:0}
+.metric span{display:block;color:#697b91;font-size:10px;font-weight:800;line-height:1.35}
+.metric strong{display:block;font-size:17px;line-height:1.35;margin-top:4px;overflow-wrap:anywhere}
+.metric small{display:block;color:#8391a4;font-size:9px;margin-top:2px}
+.green{color:var(--green)}.red{color:var(--red)}
+.breakdown{padding:12px 17px 17px}
+.breakdown-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:3px 0 8px}
+.breakdown-head strong{font-size:12px}
+.breakdown-head span{font-size:10px;color:#718197}
+.chart-wrap{position:relative;height:245px;width:100%;padding:5px 10px 4px}
+.chart-note{padding:0 18px 12px;color:#78879b;font-size:10px}
+.action-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 17px 17px}
+.btn{border:0;border-radius:9px;min-height:39px;padding:8px 9px;font-size:11px;font-weight:850;cursor:pointer;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-secondary{background:#eaf1fb;color:#244e9a}
+.btn-quiet{background:#f0f3f7;color:#465970}
+.table-panel{display:none;margin:0 0 35px;padding:19px}
+.table-panel.show{display:block}
+.table-panel h2{font-size:18px;margin:0 0 4px}
+.table-panel p{font-size:11px;color:#718197;margin:0 0 13px}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:650px;font-size:11px}
+th,td{padding:10px 11px;text-align:right;border-bottom:1px solid #edf1f6;white-space:nowrap}
+th{background:#f1f5fa;color:#52657d;font-size:10px}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:0}
+.article{padding:5px 0 45px}
+.article-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.34fr);gap:20px;align-items:start}
+.content-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:23px;box-shadow:0 8px 25px #18304b08}
+.content-card h2{font-size:22px;letter-spacing:-.5px;margin:0 0 10px}
+.content-card h3{font-size:16px;margin:23px 0 7px}
+.content-card p,.content-card li{font-size:13px;color:#53657c}
+.content-card p{margin:8px 0}
+.content-card ul{padding-left:20px}
+.formula{margin:13px 0;padding:14px;border:1px solid #dce9e4;background:#f1faf6;border-radius:10px;overflow-wrap:anywhere}
+.formula code{font:700 13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#087653}
+.callout{border-left:3px solid #d4a847;background:#fff9e9;padding:11px 13px;border-radius:0 9px 9px 0;font-size:11px;color:#66542d;margin:14px 0}
+.faq{border-top:1px solid #e8edf3;padding:13px 0}
+.faq:first-of-type{margin-top:8px}
+.faq h3{margin:0 0 5px;font-size:14px}
+.faq p{margin:0}
+.side-card{background:#101827;color:#d9e3ef;border-radius:15px;padding:20px}
+.side-card h2{color:#fff;font-size:17px;margin:0 0 9px}
+.side-card p,.side-card li{font-size:11px;color:#bdc9d8}
+.side-card ul{padding-left:17px}
+.disclaimer{font-size:10px;color:#77869a;text-align:center;padding:0 0 25px}
+.footer-spacer{height:5px}
+@media(max-width:900px){.calc-layout{grid-template-columns:1fr}.results-panel{position:relative;top:auto}.article-grid{grid-template-columns:1fr}.side-card{order:-1}}
+@media(max-width:560px){.wrap{width:calc(100% - 26px)}.hero{padding:32px 0 19px}.hero h1{font-size:34px;letter-spacing:-1px}.hero p{font-size:14px}.calc-layout{padding-top:7px;gap:13px}.input-panel{padding:14px}.group{padding:12px}.fields{grid-template-columns:1fr 1fr;gap:9px}.field input,.field select{font-size:13px}.rate-row{grid-template-columns:minmax(0,1fr) 95px;gap:8px}.results-top{padding:18px}.metric-grid{padding:11px 11px 3px;gap:7px}.metric{padding:9px}.metric strong{font-size:15px}.chart-wrap{height:220px;padding:4px}.action-row{padding:0 11px 13px;gap:6px}.btn{font-size:10px;padding:7px 5px}.breakdown{padding:9px 11px 13px}.content-card{padding:17px}.content-card h2{font-size:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Crypto yield planning tool</span>
+    <h1>Crypto Staking &amp; DeFi Yield Compounder Calculator</h1>
+    <p>Estimate how your crypto balance could grow through staking rewards and compounding. Compare APR with APY, test reward-restaking intervals and model a separate token-price scenario.</p>
+    <div class="trust"><span>Instant browser calculations</span><span>No wallet connection</span><span>Editable assumptions</span><span>USD, EUR, GBP and INR</span></div>
+  </div>
+</section>
+<section class="wrap calc-layout" aria-label="Crypto staking calculator">
+  <div class="panel input-panel">
+    <div class="panel-head"><h2>Staking assumptions</h2><span class="live-tag">LIVE CALCULATION</span></div>
+    <div class="group">
+      <h3>1. Investment and asset</h3>
+      <div class="fields">
+        <div class="field">
+          <label for="currency">Display currency</label>
+          <select id="currency"><option value="USD"> $ USD</option><option value="EUR">€ EUR</option><option value="GBP">£ GBP</option><option value="INR">₹ INR</option></select>
+          <div class="hint">All entered money values use this currency. No FX conversion is performed.</div>
+        </div>
+        <div class="field">
+          <label for="asset">Staking asset / yield token</label>
+          <select id="asset"><option value="ETH">Ethereum (ETH)</option><option value="SOL">Solana (SOL)</option><option value="ADA">Cardano (ADA)</option><option value="DOT">Polkadot (DOT)</option><option value="USDT">Tether (USDT) — stablecoin yield</option><option value="USDC">USD Coin (USDC) — stablecoin yield</option></select>
+        </div>
+        <div class="field">
+          <label for="principal">Initial investment</label>
+          <div class="input-with-prefix"><span id="currency-symbol">$</span><input id="principal" type="number" min="0.01" max="1000000000000" step="any" value="1000" inputmode="decimal"></div>
+        </div>
+        <div class="field">
+          <label for="tokenPrice">Starting token price</label>
+          <div class="input-with-prefix"><span id="price-symbol">$</span><input id="tokenPrice" type="number" min="0.00000001" max="1000000000000" step="any" value="3000" inputmode="decimal"></div>
+          <div class="hint">Illustrative ETH sample price, not a live quote. Replace it with your own price.</div>
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <h3>2. Reward rate and compounding</h3>
+      <div class="field">
+        <label>Rate is quoted as</label>
+        <div class="switch-row" role="group" aria-label="Rate type">
+          <button type="button" class="active" id="aprMode" aria-pressed="true">APR</button>
+          <button type="button" id="apyMode" aria-pressed="false">APY</button>
+        </div>
+      </div>
+      <div class="field" style="margin-top:13px">
+        <div class="rate-row">
+          <div><label for="rateRange">Annual staking rate</label><input id="rateRange" type="range" min="0" max="100" step="0.1" value="5"></div>
+          <div><label for="rate">Rate (%)</label><input id="rate" type="number" min="0" max="100" step="0.01" value="5" inputmode="decimal"></div>
+        </div>
+        <div class="hint" id="rateHint">APR is a nominal annual rate. Rewards are restaked at the selected interval.</div>
+      </div>
+      <div class="fields" style="margin-top:12px">
+        <div class="field">
+          <label for="frequency">Reward restaking frequency</label>
+          <select id="frequency"><option value="365">Daily</option><option value="52">Weekly</option><option value="12" selected>Monthly</option><option value="1">Annually</option></select>
+        </div>
+        <div class="field">
+          <label for="duration">Staking duration</label>
+          <div style="display:grid;grid-template-columns:1fr 105px;gap:6px"><input id="duration" type="number" min="1" max="600" step="1" value="12" inputmode="numeric"><select id="durationUnit" aria-label="Duration unit"><option value="months">Months</option><option value="years">Years</option></select></div>
+        </div>
+      </div>
+    </div>
+    <div class="group">
+      <h3>3. Token-price scenario (optional)</h3>
+      <div class="toggle-row"><span>Include annual token-price change in portfolio value</span><label class="toggle"><input id="priceToggle" type="checkbox" aria-label="Include token price change"><span></span></label></div>
+      <div class="price-fields" id="priceFields">
+        <div class="field">
+          <label for="priceGrowth">Assumed annual token-price change (%)</label>
+          <input id="priceGrowth" type="number" min="-100" max="500" step="0.1" value="10" inputmode="decimal">
+          <div class="hint">Scenario only. A negative value models a falling token price. This is not a forecast.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fields" style="margin-top:12px">
+      <button class="btn btn-secondary" type="button" id="resetBtn">Reset defaults</button>
+      <button class="btn btn-quiet" type="button" id="scheduleBtn" aria-expanded="false" aria-controls="schedulePanel">View yearly schedule</button>
+    </div>
+    <div id="inputError" role="alert" aria-live="polite" style="display:none;color:#a52c39;background:#fff0f1;border:1px solid #f5cbd0;border-radius:9px;padding:9px 11px;font-size:11px;margin-top:12px"></div>
+  </div>
+  <aside class="panel results-panel" aria-label="Projected staking results">
+    <div class="results-top">
+      <div class="panel-head"><h2>Projected portfolio value</h2><span class="live-tag">ESTIMATE</span></div>
+      <div class="currency-label" id="finalLabel">AFTER 12 MONTHS · USD</div>
+      <div class="big-value" id="finalValue">$1,050.00</div>
+      <div class="sub-value" id="tokenBalance">1.000000 ETH starting balance → 1.016667 ETH projected</div>
+    </div>
+    <div class="metric-grid">
+      <div class="metric"><span>Staking rewards earned</span><strong class="green" id="rewardValue">$50.00</strong><small id="rewardTokens">0.016667 ETH</small></div>
+      <div class="metric"><span>Effective staking APY</span><strong id="effectiveApy">5.12%</strong><small>Excludes token-price change</small></div>
+      <div class="metric"><span>Projected token price</span><strong id="futurePrice">$3,000.00</strong><small id="priceChangeLabel">No price change applied</small></div>
+      <div class="metric"><span>Price impact on holdings</span><strong id="priceImpact">$0.00</strong><small>Compared with today's token price</small></div>
+      <div class="metric"><span>Simple-interest value</span><strong id="simpleValue">$1,050.00</strong><small>Same equivalent nominal APR</small></div>
+      <div class="metric"><span>Extra from compounding</span><strong id="compoundExtra" class="green">$0.00</strong><small>Compound minus simple</small></div>
+    </div>
+    <div class="breakdown">
+      <div class="breakdown-head"><strong>Simple vs compound growth</strong><span id="chartCaption">Portfolio value over time</span></div>
+      <div class="chart-wrap"><canvas id="growthChart" role="img" aria-label="Line chart comparing simple interest and compound staking portfolio value over time"></canvas></div>
+    </div>
+    <div class="chart-note">Illustrative projection based on the inputs above. Actual protocol rewards and token prices can change.</div>
+    <div class="action-row">
+      <button class="btn btn-primary" type="button" id="copyBtn">Copy results</button>
+      <button class="btn btn-secondary" type="button" id="csvBtn">Export CSV</button>
+      <button class="btn btn-quiet" type="button" id="resetBtn2">Reset</button>
+    </div>
+  </aside>
+</section>
+<section class="wrap panel table-panel" id="schedulePanel" aria-labelledby="scheduleTitle">
+  <h2 id="scheduleTitle">Year-by-year staking schedule</h2>
+  <p>Values are shown at each year boundary and at the final partial year, if applicable. Token price movement is applied only when the optional scenario is enabled.</p>
+  <div class="table-scroll"><table><thead><tr><th>Period</th><th>Token balance</th><th>Rewards earned</th><th>Token price</th><th>Portfolio value</th><th>Simple value</th></tr></thead><tbody id="scheduleBody"></tbody></table></div>
+</section>
+<section class="wrap article">
+  <div class="article-grid">
+    <article class="content-card">
+      <h2>What Is Crypto Staking &amp; APY Compounding?</h2>
+      <p>Crypto staking generally means committing or delegating tokens to help a proof-of-stake blockchain operate. Depending on the network and staking method, participants may receive additional tokens as rewards. The reward rate is not a guaranteed bank interest rate: it can change with network economics, validator performance, protocol rules, commissions and other conditions.</p>
+      <p>DeFi yield is a broader term. It can include lending, liquidity provision and other smart-contract strategies. These activities are not identical to native network staking and can carry different risks. In particular, USDT and USDC are stablecoins; yield on them usually comes from a DeFi or service-provider strategy rather than native proof-of-stake validation.</p>
+      <h3>APR vs APY: why the difference matters</h3>
+      <p>APR is a nominal annual rate before compounding. APY expresses the effective annual yield after compounding. If a 5% APR is restaked monthly, the effective annual yield is slightly above 5%. If a platform already quotes 5% APY, that figure already includes the annual compounding effect. Applying another APY conversion on top of it would overstate the return.</p>
+      <div class="formula"><code>Effective APY = (1 + APR ÷ n)<sup>n</sup> − 1</code><br><small>Here, n is the number of reward-restaking periods in one year.</small></div>
+      <h2>How Staking Rewards Are Calculated</h2>
+      <p>This calculator first converts your starting investment into token units using the starting token price. It then models rewards using your selected rate type, restaking frequency and duration. The calculation assumes the entered rate remains constant for the full period and every reward is successfully restaked at the selected interval.</p>
+      <div class="formula"><code>Compound token balance = Initial tokens × (1 + periodic rate)<sup>number of periods</sup></code></div>
+      <p>For an APR quote, periodic rate equals APR divided by the number of compounding periods per year. For an APY quote, the periodic rate is derived from the effective APY so that the annual yield is not counted twice. The simple-interest comparison uses the equivalent nominal APR, which makes the two growth paths comparable.</p>
+      <h3>Token price growth is a separate assumption</h3>
+      <p>Staking can increase the number of tokens you hold while the market price of each token falls. To illustrate that difference, the optional price scenario compounds your assumed annual token-price change separately from staking rewards. The projected portfolio value is the final token balance multiplied by the projected token price. A positive staking balance does not guarantee a positive return in your chosen currency.</p>
+      <div class="formula"><code>Projected portfolio value = Final token balance × Projected token price</code></div>
+      <h2>Pro Tips to Consider Staking Yields More Safely</h2>
+      <ul>
+        <li><strong>Understand the source of yield.</strong> Check whether the rate comes from native protocol rewards, lending interest, liquidity incentives or a temporary token reward.</li>
+        <li><strong>Check validator and provider terms.</strong> Review commission, uptime, custody arrangements, lock-up periods, withdrawal queues and unbonding delays.</li>
+        <li><strong>Review smart-contract and counterparty risk.</strong> DeFi deposits can be exposed to code vulnerabilities, admin controls, exploits and service-provider failure.</li>
+        <li><strong>Do not compare APY alone.</strong> Consider token volatility, inflation, fees, slashing, liquidity and whether the displayed rate is variable or promotional.</li>
+        <li><strong>Keep records for tax reporting.</strong> Tax treatment of rewards differs by country and can depend on when rewards are received, controlled or disposed of.</li>
+        <li><strong>Never share wallet secrets.</strong> A calculator should not ask for a seed phrase, private key or wallet password. This tool does not connect to wallets.</li>
+      </ul>
+      <div class="callout">Important: This calculator is a mathematical scenario tool, not a validator estimator or a DeFi protocol risk model. It does not predict network rewards or verify whether a staking service is safe.</div>
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq"><h3>1. What is the difference between staking APR and APY?</h3><p>APR is a nominal annual rate before compounding. APY is the effective annual yield after compounding. The calculator lets you select which type of rate you are entering so it does not compound an APY a second time.</p></div>
+      <div class="faq"><h3>2. Does daily compounding always produce higher rewards?</h3><p>For the same nominal APR, more frequent restaking generally produces a slightly higher effective APY. If the rate is already quoted as APY, the APY already includes compounding and changing the modeled interval does not increase the annual effective rate.</p></div>
+      <div class="faq"><h3>3. Are staking rewards guaranteed?</h3><p>No. Actual rewards can change with protocol parameters, validator performance, network activity, commissions and provider terms. Some networks also have slashing risk, lock-up periods or unbonding delays.</p></div>
+      <div class="faq"><h3>4. Can I calculate USDT or USDC yield?</h3><p>Yes. Select USDT or USDC and enter the yield rate offered by the strategy you are evaluating. These are stablecoins, so the yield generally comes from lending or another DeFi/service arrangement, not native proof-of-stake staking. Depeg, smart-contract and counterparty risks may apply.</p></div>
+      <div class="faq"><h3>5. Does this tool use live prices, live APY or calculate tax?</h3><p>No. Enter your own starting token price and reward-rate assumption. The calculator does not fetch live market data, apply foreign-exchange conversion, include protocol fees or estimate taxes. Actual tax rules vary by country.</p></div>
+    </article>
+    <aside class="side-card">
+      <h2>Know what the estimate excludes</h2>
+      <p>The model is intentionally transparent. It does not include:</p>
+      <ul>
+        <li>Variable future staking rates or validator commission changes</li>
+        <li>Gas, transaction, withdrawal or platform fees</li>
+        <li>Slashing, failed validators or lost rewards</li>
+        <li>Lock-up and unbonding delays</li>
+        <li>Smart-contract, custody, lending or depeg losses</li>
+        <li>Taxes, inflation of token supply or fiat exchange-rate movement</li>
+      </ul>
+      <p>Use the output as a scenario, not a promise or recommendation to stake.</p>
+    </aside>
+  </div>
+</section>
+<p class="wrap disclaimer">For educational and informational purposes only. Crypto assets and DeFi strategies are high risk and may result in partial or total loss. Results depend entirely on user-entered assumptions and are not financial, tax, legal or investment advice.</p>
+</main>
+<div id="site-footer"></div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const defaults={currency:'USD',asset:'ETH',principal:'1000',tokenPrice:'3000',rate:'5',rateType:'APR',frequency:'12',duration:'12',durationUnit:'months',priceToggle:false,priceGrowth:'10'};
+let rateType='APR';
+let chart=null;
+const symbols={USD:'$',EUR:'€',GBP:'£',INR:'₹'};
+const assetPrices={ETH:'3000',SOL:'150',ADA:'0.5',DOT:'5',USDT:'1',USDC:'1'};
+const frequencies={365:'Daily',52:'Weekly',12:'Monthly',1:'Annually'};
+function number(id){const raw=$(id).value.trim();if(raw==='')return NaN;return Number(raw);}
+function currency(value){
+ const code=$('currency').value;
+ const digits=code==='INR'?2:2;
+ try{return new Intl.NumberFormat(code==='INR'?'en-IN':'en-US',{style:'currency',currency:code,minimumFractionDigits:digits,maximumFractionDigits:digits}).format(Number.isFinite(value)?value:0);}
+ catch(e){return symbols[code]+(Number(value)||0).toFixed(2);}
+}
+function token(value){return new Intl.NumberFormat('en-US',{maximumFractionDigits:8,minimumFractionDigits:0}).format(value)+' '+$('asset').value;}
+function percent(value){return Number.isFinite(value)?(value*100).toFixed(2)+'%':'—';}
+function showError(message){$('inputError').textContent=message;$('inputError').style.display='block';}
+function clearError(){$('inputError').textContent='';$('inputError').style.display='none';}
+function setRateType(type){
+ rateType=type;
+ $('aprMode').classList.toggle('active',type==='APR');$('apyMode').classList.toggle('active',type==='APY');
+ $('aprMode').setAttribute('aria-pressed',String(type==='APR'));$('apyMode').setAttribute('aria-pressed',String(type==='APY'));
+ $('rateHint').textContent=type==='APR'?'APR is a nominal annual rate. Rewards are restaked at the selected interval.':'APY already includes annual compounding. The selected interval is used to model periodic reward credits without compounding APY twice.';
+ calculate();
+}
+function readInputs(){
+ const principal=number('principal'),price=number('tokenPrice'),rate=number('rate'),duration=number('duration'),growth=$('priceToggle').checked?number('priceGrowth'):0;
+ const n=Number($('frequency').value),years=duration*($('durationUnit').value==='months'?1/12:1);
+ if(!Number.isFinite(principal)||principal<=0||principal>1e12)throw new Error('Enter an initial investment greater than zero and no more than 1,000,000,000,000.');
+ if(!Number.isFinite(price)||price<=0||price>1e12)throw new Error('Enter a starting token price greater than zero.');
+ if(!Number.isFinite(rate)||rate<0||rate>100)throw new Error('Enter an annual APR or APY between 0% and 100%.');
+ if(!Number.isFinite(duration)||duration<1||duration>600)throw new Error('Enter a duration from 1 to 600. Choose months or years.');
+ if(!Number.isFinite(n)||n<=0)throw new Error('Choose a valid reward-restaking frequency.');
+ if($('priceToggle').checked&&(!Number.isFinite(growth)||growth< -100||growth>500))throw new Error('Enter an annual token-price change from -100% to 500%.');
+ if(!Number.isFinite(years)||years<=0||years>600)throw new Error('The selected duration is outside the supported range.');
+ return {principal,price,rate:rate/100,years,n,growth:growth/100,initialTokens:principal/price,currency:$('currency').value,asset:$('asset').value};
+}
+function modelAt(input,t){
+ const {initialTokens,rate,n}=input;
+ let periodicRate,apy,nominalApr;
+ if(rateType==='APR'){
+  nominalApr=rate;periodicRate=rate/n;apy=Math.pow(1+periodicRate,n)-1;
+ }else{
+  apy=rate;periodicRate=Math.pow(1+rate,1/n)-1;nominalApr=n*periodicRate;
+ }
+ const periods=n*t;
+ const factor=Math.pow(1+periodicRate,periods);
+ const compoundTokens=initialTokens*factor;
+ const simpleTokens=initialTokens*(1+nominalApr*t);
+ const projectedPrice=input.price*Math.pow(1+input.growth,t);
+ return {compoundTokens,simpleTokens,apy,nominalApr,projectedPrice,periods};
+}
+function buildSchedule(input){
+ const times=[0];
+ for(let y=1;y<input.years;y+=1)times.push(y);
+ if(Math.abs(times[times.length-1]-input.years)>1e-8)times.push(input.years);
+ if(times.length===1)times.push(input.years);
+ return times.map(t=>{
+  const m=modelAt(input,t);
+  return {t,compoundTokens:m.compoundTokens,rewards:m.compoundTokens-input.initialTokens,price:m.projectedPrice,value:m.compoundTokens*m.projectedPrice,simpleValue:m.simpleTokens*m.projectedPrice};
+ });
+}
+function updateChart(rows){
+ if(!window.Chart)return;
+ const labels=rows.map(row=>row.t===0?'Start':(Number.isInteger(row.t)?'Year '+row.t:'Year '+row.t.toFixed(2)));
+ const compound=rows.map(row=>row.value);
+ const simple=rows.map(row=>row.simpleValue);
+ const data={labels:labels,datasets:[
+  {label:'Compound staking',data:compound,borderColor:'#07966e',backgroundColor:'rgba(7,150,110,.13)',fill:true,tension:.28,borderWidth:2.5,pointRadius:2,pointHoverRadius:5},
+  {label:'Simple interest',data:simple,borderColor:'#71839a',backgroundColor:'rgba(113,131,154,.04)',fill:false,tension:.22,borderWidth:2,borderDash:[5,4],pointRadius:2,pointHoverRadius:5}
+ ]};
+ if(chart){chart.data=data;chart.options.plugins.tooltip.callbacks.label=context=>context.dataset.label+': '+currency(context.parsed.y);chart.update('none');return;}
+ chart=new Chart($('growthChart'),{type:'line',data:data,options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:7,font:{size:10}}},tooltip:{callbacks:{label:context=>context.dataset.label+': '+currency(context.parsed.y)}}},scales:{x:{grid:{display:false},ticks:{font:{size:9},color:'#77869a'}},y:{beginAtZero:false,grid:{color:'#edf1f5'},ticks:{font:{size:9},color:'#77869a',callback:value=>currency(value)}}}}});
+}
+function renderSchedule(rows){
+ $('scheduleBody').innerHTML=rows.map(row=>'<tr><td>'+(row.t===0?'Start':(Number.isInteger(row.t)?'Year '+row.t:'Final · '+row.t.toFixed(2)+' years'))+'</td><td>'+token(row.compoundTokens)+'</td><td>'+token(row.rewards)+'</td><td>'+currency(row.price)+'</td><td>'+currency(row.value)+'</td><td>'+currency(row.simpleValue)+'</td></tr>').join('');
+}
+function calculate(){
+ try{
+  const input=readInputs(),end=modelAt(input,input.years),rows=buildSchedule(input);
+  const rewards=end.compoundTokens-input.initialTokens;
+  const stakingRewardValue=rewards*input.price;
+  const priceImpact=end.compoundTokens*(end.projectedPrice-input.price);
+  const finalValue=end.compoundTokens*end.projectedPrice;
+  const simpleValue=end.simpleTokens*end.projectedPrice;
+  const extra=finalValue-simpleValue;
+  $('currency-symbol').textContent=symbols[input.currency];$('price-symbol').textContent=symbols[input.currency];
+  $('finalLabel').textContent='AFTER '+(input.years*12%1===0?String(input.years*12)+' MONTHS':input.years.toFixed(2)+' YEARS')+' · '+input.currency;
+  $('finalValue').textContent=currency(finalValue);
+  $('tokenBalance').textContent=token(input.initialTokens)+' starting balance → '+token(end.compoundTokens)+' projected';
+  $('rewardValue').textContent=currency(stakingRewardValue);
+  $('rewardTokens').textContent=token(rewards)+' earned · valued at starting token price';
+  $('effectiveApy').textContent=percent(end.apy);
+  $('futurePrice').textContent=currency(end.projectedPrice);
+  $('priceChangeLabel').textContent=$('priceToggle').checked?(input.growth*100).toFixed(2)+'% annual scenario':'No price change applied';
+  $('priceImpact').textContent=(priceImpact<0?'−':'')+currency(Math.abs(priceImpact));
+  $('priceImpact').className=priceImpact<0?'red':'green';
+  $('simpleValue').textContent=currency(simpleValue);
+  $('compoundExtra').textContent=(extra<0?'−':'')+currency(Math.abs(extra));
+  $('compoundExtra').className=extra<0?'red':'green';
+  $('chartCaption').textContent=frequencies[input.n]+' restaking · '+(rateType==='APR'?'APR':'APY')+' mode';
+  renderSchedule(rows);updateChart(rows);clearError();
+  window.stakingResult={input:input,rateType:rateType,end:end,rows:rows,finalValue:finalValue,rewards:rewards,rewardValue:stakingRewardValue,priceImpact:priceImpact,simpleValue:simpleValue,extra:extra};
+ }catch(error){showError(error.message||'Please check your inputs.');}
+}
+function reset(){
+ $('currency').value=defaults.currency;$('asset').value=defaults.asset;$('principal').value=defaults.principal;$('tokenPrice').value=defaults.tokenPrice;$('rate').value=defaults.rate;$('rateRange').value=defaults.rate;$('frequency').value=defaults.frequency;$('duration').value=defaults.duration;$('durationUnit').value=defaults.durationUnit;$('priceToggle').checked=defaults.priceToggle;$('priceGrowth').value=defaults.priceGrowth;$('priceFields').classList.remove('show');setRateType('APR');calculate();
+}
+function copyResults(){
+ const r=window.stakingResult;if(!r)return;
+ const textOut=[
+  'Crypto Staking APY Calculator',
+  'Asset: '+r.input.asset,
+  'Initial investment: '+currency(r.input.principal),
+  'Starting token price: '+currency(r.input.price),
+  'Rate type: '+r.rateType+' · '+(r.input.rate*100).toFixed(2)+'%',
+  'Duration: '+r.input.years+' years',
+  'Restaking: '+frequencies[r.input.n],
+  'Final token balance: '+token(r.end.compoundTokens),
+  'Staking rewards: '+token(r.rewards)+' ('+currency(r.rewardValue)+' at starting token price)',
+  'Effective APY: '+percent(r.end.apy),
+  'Projected token price: '+currency(r.end.projectedPrice),
+  'Projected portfolio value: '+currency(r.finalValue),
+  'Simple-interest comparison: '+currency(r.simpleValue),
+  'Difference from simple interest: '+currency(r.extra),
+  'Assumptions are illustrative; actual rewards and token prices can change.'
+ ].join('\n');
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(textOut).then(()=>{$('copyBtn').textContent='Copied!';setTimeout(()=>$('copyBtn').textContent='Copy results',1600);}).catch(()=>fallbackCopy(textOut));}
+ else fallbackCopy(textOut);
+}
+function fallbackCopy(textOut){
+ const area=document.createElement('textarea');area.value=textOut;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();
+ try{document.execCommand('copy');$('copyBtn').textContent='Copied!';setTimeout(()=>$('copyBtn').textContent='Copy results',1600);}catch(e){$('copyBtn').textContent='Copy unavailable';}
+ area.remove();
+}
+function exportCsv(){
+ const r=window.stakingResult;if(!r)return;
+ const rows=[['Period (years)','Token balance','Rewards earned','Projected token price','Compound portfolio value','Simple portfolio value']];
+ r.rows.forEach(row=>rows.push([row.t,row.compoundTokens,row.rewards,row.price,row.value,row.simpleValue]));
+ const csv=rows.map(row=>row.map(value=>'"'+String(value).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='crypto-staking-projection.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+$('aprMode').addEventListener('click',()=>setRateType('APR'));
+$('apyMode').addEventListener('click',()=>setRateType('APY'));
+$('rateRange').addEventListener('input',()=>{$('rate').value=$('rateRange').value;calculate();});
+$('rate').addEventListener('input',()=>{$('rateRange').value=Math.max(0,Math.min(100,Number($('rate').value)||0));calculate();});
+['currency','asset','principal','tokenPrice','frequency','duration','durationUnit','priceGrowth'].forEach(id=>$(id).addEventListener('input',calculate));
+$('priceToggle').addEventListener('change',()=>{$('priceFields').classList.toggle('show',$('priceToggle').checked);calculate();});
+$('asset').addEventListener('change',()=>{$('tokenPrice').value=assetPrices[$('asset').value];calculate();});
+$('resetBtn').addEventListener('click',reset);$('resetBtn2').addEventListener('click',reset);
+$('scheduleBtn').addEventListener('click',()=>{
+ const open=!$('schedulePanel').classList.contains('show');$('schedulePanel').classList.toggle('show',open);$('scheduleBtn').setAttribute('aria-expanded',String(open));$('scheduleBtn').textContent=open?'Hide yearly schedule':'View yearly schedule';
+ if(open)$('schedulePanel').scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('copyBtn').addEventListener('click',copyResults);$('csvBtn').addEventListener('click',exportCsv);
+reset();
+})();
+</script>
+</body>
+</html>
