@@ -44,6 +44,7 @@
         ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/', 'Set an hourly rate from income goals'],
         ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/', 'Estimate blog earnings from traffic'],
         ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/', 'Project the future value of manually entered crypto holdings'],
+        ['Crypto Staking APY Calculator', '/crypto-staking-apy-calculator/', 'Estimate staking rewards, APR vs APY compounding and token-price scenarios'],
       ]
     },
     {
