@@ -22,7 +22,7 @@
 
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
     ['Instagram Earning Calculator', '/instagram-earning-calculator/'],
-    ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],
+    ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],\n    ['Freelance Project Quote Calculator', '/freelance-project-quote-calculator/'],
     ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/'],
     ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/'],
     ['Crypto Tax & Capital Gains Calculator', '/crypto-capital-gains-tax-calculator/'],
