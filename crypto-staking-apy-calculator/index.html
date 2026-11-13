@@ -202,7 +202,7 @@ tbody tr:last-child td{border-bottom:0}
         <div class="field">
           <label for="tokenPrice">Starting token price</label>
           <div class="input-with-prefix"><span id="price-symbol">$</span><input id="tokenPrice" type="number" min="0.00000001" max="1000000000000" step="any" value="3000" inputmode="decimal"></div>
-          <div class="hint">Illustrative ETH sample price, not a live quote. Replace it with your own price.</div>
+          <div class="hint">Illustrative sample price for the selected asset, not a live quote. Replace it with your own price.</div>
         </div>
       </div>
     </div>
@@ -423,7 +423,7 @@ function calculate(){
   const simpleValue=end.simpleTokens*end.projectedPrice;
   const extra=finalValue-simpleValue;
   $('currency-symbol').textContent=symbols[input.currency];$('price-symbol').textContent=symbols[input.currency];
-  $('finalLabel').textContent='AFTER '+(input.years*12%1===0?String(input.years*12)+' MONTHS':input.years.toFixed(2)+' YEARS')+' · '+input.currency;
+  $('finalLabel').textContent='AFTER '+$('duration').value+' '+$('durationUnit').value.toUpperCase()+' · '+input.currency;
   $('finalValue').textContent=currency(finalValue);
   $('tokenBalance').textContent=token(input.initialTokens)+' starting balance → '+token(end.compoundTokens)+' projected';
   $('rewardValue').textContent=currency(stakingRewardValue);
