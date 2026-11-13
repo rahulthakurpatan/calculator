@@ -171,7 +171,7 @@ const calculate=v=>{
  return {netCost,firstGen,firstSelf,firstExport,firstValue,firstNet,simple,payback,totalGen,totalCo2,totalBenefits,totalCosts,lifetime:cumulative,roi:netCost>0?cumulative/netCost*100:NaN,npv,rows,firstCo2:(firstSelf*v.grid+firstExport*v.exportGrid)/1000};
 };
 const chart=rows=>{
- const width=700,height=210,pad=34,vals=[...rows.map(r=>r.cumulative),0],min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;
+ const width=700,height=210,pad=34,vals=[...rows.map(r=>r.cumulative),0,-latest.netCost],min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;
  const x=i=>pad+(i/Math.max(1,rows.length))* (width-pad*2),y=n=>height-pad-((n-min)/range)*(height-pad*2);
  const pts=rows.map((r,i)=>x(i+1)+','+y(r.cumulative)).join(' ');
  const zero=y(0);
