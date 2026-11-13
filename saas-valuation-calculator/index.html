@@ -235,6 +235,7 @@ button,input,select{font:inherit}
      <select id="churnBasis"><option value="monthly">Monthly churn</option><option value="annual">Annual churn</option></select>
     </div>
    </div>
+   <div class="field" style="margin-top:10px"><div class="rate-row"><div><label for="churnRange">Customer churn slider (%)</label><input id="churnRange" type="range" min="0" max="100" step="0.1" value="3"></div><div class="metric-note" id="churnRangeNote">3.0% entered churn</div></div></div>
    <div class="hint" id="churnHint">Monthly customer churn is converted to an annualized equivalent for context.</div>
   </div>
   <div class="group">
@@ -317,6 +318,8 @@ button,input,select{font:inherit}
    <h3>Revenue multiple vs SDE multiple</h3>
    <p>Many smaller bootstrapped SaaS businesses are valued using Seller Discretionary Earnings (SDE), which adjusts earnings for a working owner's compensation and legitimate one-off or discretionary expenses. As a SaaS business grows, adds a team and reinvests heavily to scale, revenue multiples may become more relevant. The appropriate method depends on size, growth, owner involvement and the quality of financial records.</p>
    <p>For example, <a href="https://quietlight.com/guide/build-value-and-sell-a-saas-business/" target="_blank" rel="noopener">Quiet Light's SaaS valuation guide</a> explains the distinction between SDE-based and revenue-based approaches. <a href="https://empireflippers.com/valuation-tool/" target="_blank" rel="noopener">Empire Flippers' valuation tool</a> describes a profit-based method for many online businesses. These are useful references, not interchangeable benchmarks for every SaaS company.</p>
+   <h3>Why market benchmarks need context</h3>
+   <p>Market data illustrates why one multiple cannot fit every SaaS business. The <a href="https://softwareequity.com/research/quarterly-saas-report" target="_blank" rel="noopener">Software Equity Group Q3 2026 report</a> reported a 4.1x median enterprise-value-to-trailing-revenue multiple for its public SaaS index. By contrast, <a href="https://www.bizbuysell.com/learning-center/valuation-benchmarks/software-apps-saas/" target="_blank" rel="noopener">BizBuySell's reported software, app and SaaS business sales</a> showed a 1.51x median sale-price-to-revenue multiple for sold businesses across 2021–2025. These datasets differ in company size, transaction type and composition; neither is a direct Micro-SaaS ARR multiple benchmark. That is why this tool labels its own scenario multiples as illustrative assumptions.</p>
    <h2>Key Metrics That Influence SaaS Multiples</h2>
    <h3>1. Revenue growth and its quality</h3>
    <p>Consistent year-over-year growth can support a higher multiple because it suggests that future recurring revenue may expand. Buyers will still ask whether growth is repeatable, profitable and supported by stable customer cohorts. A short-lived promotion or a single large customer should not be treated as durable growth.</p>
@@ -475,7 +478,7 @@ function calculate(){
 function syncRange(from,to,min,max){const value=num(from);if(Number.isFinite(value))$(to).value=String(clamp(value,min,max));}
 function reset(){
  Object.keys(defaults).forEach(id=>$(id).value=defaults[id]);
- $('marginRange').value=defaults.grossMargin;$('growthRange').value=defaults.growth;
+ $('marginRange').value=defaults.grossMargin;$('growthRange').value=defaults.growth;$('churnRange').value=defaults.churn;$('churnRangeNote').textContent=Number(defaults.churn).toFixed(1)+'% entered churn';
  calculate();
 }
 function copySummary(){
@@ -513,10 +516,12 @@ $('currency').addEventListener('change',calculate);
 ['revenue','grossMargin','growth','churn','churnBasis','age','productType'].forEach(id=>$(id).addEventListener('input',()=>{
  if(id==='grossMargin')syncRange('grossMargin','marginRange',0,100);
  if(id==='growth')syncRange('growth','growthRange',-100,300);
+ if(id==='churn'){syncRange('churn','churnRange',0,100);$('churnRangeNote').textContent=Number.isFinite(num('churn'))?num('churn').toFixed(1)+'% entered churn':'—';}
  calculate();
 }));
 $('marginRange').addEventListener('input',()=>{$('grossMargin').value=$('marginRange').value;calculate();});
 $('growthRange').addEventListener('input',()=>{$('growth').value=$('growthRange').value;calculate();});
+$('churnRange').addEventListener('input',()=>{$('churn').value=$('churnRange').value;$('churnRangeNote').textContent=Number($('churn').value).toFixed(1)+'% entered churn';calculate();});
 $('breakdownBtn').addEventListener('click',()=>{
  const open=!$('breakdownPanel').classList.contains('show');$('breakdownPanel').classList.toggle('show',open);$('breakdownBtn').setAttribute('aria-expanded',String(open));$('breakdownBtn').textContent=open?'Hide valuation breakdown':'Valuation breakdown';
  if(open)$('breakdownPanel').scrollIntoView({behavior:'smooth',block:'start'});
