@@ -32,6 +32,7 @@
         ['Company / Corporate Tax Calculator', '/company-corporate-tax-calculator/', 'Estimate company income tax, surcharge and MAT'],
         ['Gratuity Calculator', '/gratuity-calculator/', 'Estimate gratuity under current labour-code rules'],
         ['HRA Calculator', '/hra-calculator/', 'Calculate HRA exemption under old and new tax regimes'],
+        ['Digital Nomad Tax Calculator', '/digital-nomad-tax-calculator/', 'Screen international residency day rules and compare cross-border tax scenarios'],
 
       ]
     },
