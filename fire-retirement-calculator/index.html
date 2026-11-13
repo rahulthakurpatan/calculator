@@ -165,7 +165,7 @@ function calculate(e){
  $('extra-monthly').textContent=gap>0?money(extra):'No extra needed';
  const scenarios=[3,3.5,4].map(rate=>({rate,target:annualNeed*Math.pow(1+inflation,yearsToTarget)/(rate/100)}));
  $('swr-cards').innerHTML=scenarios.map(x=>'<div class="compare-card"><h3>'+x.rate.toFixed(1)+'% withdrawal</h3><strong>'+money(x.target)+'</strong><p>Estimated target at age '+targetAge+'</p></div>').join('');
- rows=projection.filter((x,i)=>i===0||i===projection.length-1||i%5===0||(fireAge!==null&&x.age===fireAge)||x.age===targetAge);
+ rows=projection;
  $('projection-rows').innerHTML=rows.map(x=>'<tr><td>'+x.age+'</td><td>'+money(x.portfolio)+'</td><td>'+money(x.target)+'</td><td>'+pct(x.progress)+'</td></tr>').join('');
  chart(projection.filter((x,i)=>i%Math.max(1,Math.ceil(projection.length/25))===0||i===projection.length-1));
  $('results').classList.add('show');
