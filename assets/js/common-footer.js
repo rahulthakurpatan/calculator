@@ -37,6 +37,7 @@
     ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/'],
     ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/'],
     ['Student Loan Payoff & Refinance Calculator', '/student-loan-payoff-calculator/'],
+    ['RSU & Stock Options Tax Calculator', '/rsu-vesting-tax-calculator/'],
     ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/'],
     ['Retirement Readiness & Income Planner', '/retirement-calculator/'],
     ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/'],
