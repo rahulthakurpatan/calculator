@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#11243b">
+<title>Overtime Pay Calculator – Time and a Half Pay</title>
+<meta name="description" content="Calculate time-and-a-half or double-time overtime pay, gross paycheck, blended hourly wage and annual earnings. Free hourly pay calculator.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/overtime-pay-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Overtime Pay Calculator – Time and a Half Pay">
+<meta property="og:description" content="Instantly estimate weekly overtime pay, double-time earnings, gross paychecks and annual income in USD, EUR, GBP or INR.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/overtime-pay-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Overtime & Time-and-a-Half Pay Calculator">
+<meta name="twitter:description" content="Calculate weekly overtime, pay periods and effective blended hourly pay.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2057359438981933" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@graph":[
+  {"@type":"WebApplication","@id":"https://returnoninvestmentcalculator.in/overtime-pay-calculator/#app","name":"Overtime Pay & Time-and-a-Half Calculator","url":"https://returnoninvestmentcalculator.in/overtime-pay-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","description":"Free weekly hourly wage and overtime calculator with time-and-a-half, double-time, gross paycheck and annual earnings projections.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},
+  {"@type":"FAQPage","@id":"https://returnoninvestmentcalculator.in/overtime-pay-calculator/#faq","mainEntity":[
+   {"@type":"Question","name":"How do I calculate time-and-a-half overtime pay?","acceptedAnswer":{"@type":"Answer","text":"Multiply eligible overtime hours by your regular hourly rate times 1.5. Add the result to regular-hours pay. For example, at $25 per hour, 48 hours and a 40-hour threshold, regular pay is $1,000, overtime pay is $300 and weekly gross pay is $1,300."}},
+   {"@type":"Question","name":"Is overtime always paid after 40 hours?","acceptedAnswer":{"@type":"Answer","text":"Under the US federal FLSA, covered nonexempt workers generally receive at least 1.5 times the regular rate for hours worked over 40 in a fixed workweek. State, industry, union or international rules may differ, including daily overtime and exemptions."}},
+   {"@type":"Question","name":"What is the difference between overtime pay and overtime premium?","acceptedAnswer":{"@type":"Answer","text":"Overtime pay is the entire payment for overtime hours, including regular wages and the extra premium. For 8 hours at $25 with a 1.5 multiplier, total overtime pay is $300, of which $100 is the additional half-time premium."}},
+   {"@type":"Question","name":"How is a blended hourly rate calculated?","acceptedAnswer":{"@type":"Answer","text":"Divide total gross earnings for the week by total hours actually worked. If there are no hours, the blended rate is not applicable rather than zero or an infinite amount."}},
+   {"@type":"Question","name":"Does this calculator calculate taxes or my exact paycheck?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates gross earnings from one hourly pay rate and a weekly overtime threshold. It excludes income taxes, benefit deductions, bonuses, commissions, state daily overtime, varied weekly schedules and individual employee exemptions. Semi-monthly and monthly amounts are annualized averages."}}
+  ]},
+  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Overtime Pay Calculator","item":"https://returnoninvestmentcalculator.in/overtime-pay-calculator/"}]}
+ ]
+}
+</script>
+<style>
+:root{--bg:#f3f7fc;--navy:#132338;--navy2:#213b59;--ink:#172942;--muted:#65768c;--line:#dce6ef;--emerald:#068965;--mint:#e4f8ef;--blue:#3067de;--amber:#a56c12;--amberbg:#fff5e4;--shadow:0 15px 42px rgba(28,55,83,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#edf5fe 0,#f5f9fd 530px,#fff 1150px);color:var(--ink);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#225dcc}button,input,select{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #87b1ff;outline-offset:2px}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.hero{padding:44px 0 25px;background:radial-gradient(circle at 10% 0,#dbe9fd 0,transparent 40%),radial-gradient(circle at 90% 0,#def4e8 0,transparent 40%)}
+.kicker{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid #c4e9d6;background:#e8f8ef;color:#087653;border-radius:30px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:clamp(33px,5.2vw,51px);line-height:1.12;letter-spacing:-1.8px;margin:15px 0 11px;max-width:880px}
+.hero p{font-size:16px;color:#55677d;max-width:850px;margin:0}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:17px;color:#607388;font-weight:750;font-size:12px}
+.trust span:before{content:"✓";margin-right:6px;color:var(--emerald);font-weight:950}
+.workspace{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(355px,.97fr);gap:19px;align-items:start;padding:15px 0 10px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-width:0}
+.inputpanel{padding:22px}
+.head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+.head h2{font-size:19px;margin:0;letter-spacing:-.3px}
+.tag{display:inline-block;border-radius:30px;padding:5px 10px;font-size:10px;font-weight:900;background:#e6f7ee;color:#077851;border:1px solid #c8eada;white-space:nowrap}
+.group{padding:16px;border:1px solid #e3eaf2;border-radius:13px;background:linear-gradient(142deg,#fff,#fbfdff);margin-top:13px}
+.group h3{font-size:13px;color:#38506c;margin:0 0 11px;font-weight:850}
+.field{min-width:0}
+.field label{display:block;color:#4d627c;font-weight:800;font-size:12px;margin-bottom:6px}
+.field input:not([type=range]),.field select{display:block;width:100%;height:43px;background:#fff;border:1px solid #d3dfeb;border-radius:9px;color:var(--ink);padding:0 10px;outline:none;min-width:0}
+.field input:focus,.field select:focus{border-color:#4a80e2;box-shadow:0 0 0 3px #a4c0f04d}
+.range-row{display:grid;grid-template-columns:minmax(0,1fr) 115px;gap:14px;align-items:center}
+.range-row input[type=range]{width:100%;height:25px;accent-color:var(--emerald);cursor:pointer}
+.amountbox{display:flex;border:1px solid #d3dfeb;border-radius:9px;align-items:center;height:43px;min-width:0}
+.amountbox span{font-weight:800;font-size:12px;color:#61758c;padding-left:10px}
+.amountbox input{border:0!important;box-shadow:none!important;padding-left:5px!important}
+.amountbox:focus-within{box-shadow:0 0 0 3px #a4c0f04d;border-color:#4a80e2}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hint{color:#7a8a9d;font-size:11px;margin:5px 0 0;line-height:1.5}
+.preset{display:flex;justify-content:space-between;align-items:center;margin-top:9px;color:#70849b;font-size:11px}
+.preset span:last-child{font-weight:900;color:#087955}
+.multiswitch{display:grid;grid-template-columns:1fr 1fr;gap:7px;background:#f0f5f9;border:1px solid #dde7f0;border-radius:11px;padding:5px}
+.multiswitch button{border:0;background:transparent;padding:10px 8px;border-radius:8px;font-size:12px;font-weight:900;color:#596e84}
+.multiswitch button.active{color:#0e674e;background:#fff;box-shadow:0 2px 8px #22364b1b}
+.multiswitch small{display:block;font-size:10px;font-weight:600;color:#738399}
+.note{border:1px solid #dce8f8;border-radius:11px;padding:12px 14px;background:#f2f7ff;color:#536d8d;font-size:11px;line-height:1.65;margin-top:14px}
+.warn{border:1px solid #f0d8ad;background:var(--amberbg);color:#8a5a17}
+.error{border:1px solid #ebbbc5;background:#fff0f2;color:#9e3546;border-radius:10px;padding:11px 12px;font-size:12px;margin-top:12px}
+.resultpanel{position:sticky;top:16px;overflow:hidden}
+.resulttop{padding:21px 22px;background:linear-gradient(132deg,var(--navy),var(--navy2));color:#fff}
+.resulttop h2{font-size:18px;color:#fff}
+.resulttop .tag{background:#ffffff19;color:#a9f1d0;border:1px solid #ffffff28}
+.eyebrow{font-size:11px;letter-spacing:.045em;color:#bdcfe1;font-weight:800;margin-top:8px}
+.moneybig{font-size:clamp(32px,4.4vw,43px);letter-spacing:-1.1px;line-height:1.28;font-weight:900;overflow-wrap:anywhere;margin:4px 0 1px}
+.subheadline{font-size:11px;color:#bdccdf}
+.summarygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.summarybox{border-radius:11px;border:1px solid #ffffff20;background:#ffffff0d;padding:12px 10px;min-width:0}
+.summarybox span{display:block;color:#c3d0df;font-size:10px;font-weight:750;line-height:1.4}
+.summarybox strong{display:block;font-size:18px;font-weight:850;line-height:1.3;margin-top:5px;overflow-wrap:anywhere}
+.summarybox strong.mint{color:#73e0b5}
+.belowhead{padding:15px 19px 0;display:flex;justify-content:space-between;gap:12px}
+.belowhead strong{font-size:12px;color:#324b68}
+.belowhead span{font-size:11px;color:#667c91;text-align:right}
+.chartframe{height:195px;position:relative;margin:5px 14px 4px}
+.chartframe canvas{max-width:100%;max-height:100%}
+.chartfallback{padding:16px;text-align:center;color:#61778e;font-size:12px}
+.fallbackbar{height:18px;background:#e7eef5;border-radius:15px;overflow:hidden;display:flex;margin:8px 0}
+.fallbackbar .reg{background:#4a7199;display:block}
+.fallbackbar .ot{background:#08a475;display:block}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:13px;color:#607489;font-size:11px;padding:2px 12px}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+.details{padding:12px 19px 4px}
+.detailrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #e7edf4;color:#60748b;font-size:12px}
+.detailrow strong{color:#1d344e;white-space:nowrap}
+.detailrow strong.green{color:var(--emerald)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:13px 19px 20px}
+.btn{border:0;border-radius:9px;padding:11px 8px;min-height:41px;font-size:12px;font-weight:850}
+.btn.secondary{background:#eaf1fb;color:#27559b}
+.btn.primary{background:var(--emerald);color:white}
+.btn:hover{filter:brightness(.97)}
+.periodtable{padding:18px;margin-top:17px}
+.periodtable summary{font-size:17px;font-weight:900;cursor:pointer}
+.periodtable p{margin:5px 0 10px;color:var(--muted);font-size:12px}
+.tableoverflow{overflow:auto;border:1px solid #e3eaf2;border-radius:11px;margin-top:14px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:12px}
+th,td{padding:10px 12px;border-bottom:1px solid #e6edf3;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#f2f6fb;color:#47617b;font-weight:900}
+tbody th{font-weight:850}
+tbody tr[data-period].selected{background:#eaf8f2}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.smallcopy{font-size:11px;line-height:1.7;color:#78869a}
+.guide{padding:10px 0 38px;max-width:1060px}
+.guide h2{font-size:clamp(23px,3.3vw,30px);margin:31px 0 9px;letter-spacing:-.7px;line-height:1.3}
+.guide h3{font-size:18px;margin:23px 0 8px}
+.guide p,.guide li{color:#56687e;font-size:14px;line-height:1.85}
+.guide ul{padding-left:22px}
+.guide .formula{background:#f0f7ff;border:1px solid #dceafa;border-radius:13px;padding:17px 19px;color:#1a3e65;font-size:14px;line-height:2}
+.guide details{padding:14px 15px;background:#fff;border:1px solid #e0e9f0;border-radius:12px;margin:9px 0}
+.guide details summary{font-weight:850;color:#243b55;cursor:pointer}
+.guide details p{font-size:13px;margin:8px 0 0}
+.guide .source{font-size:12px;word-break:break-word}
+.guide .disclaimer{background:#fff7e7;border-left:4px solid #e7a847;border-radius:6px;padding:13px 17px;color:#825a24!important}
+@media(max-width:940px){.workspace{grid-template-columns:minmax(0,1fr)}.resultpanel{position:static}.wrap{width:min(740px,calc(100% - 30px))}}
+@media(max-width:540px){.hero{padding:29px 0 20px}.hero h1{font-size:34px}.hero p{font-size:14px}.inputpanel{padding:15px}.group{padding:13px}.range-row{grid-template-columns:minmax(0,1fr) 104px;gap:8px}.two{grid-template-columns:1fr}.resulttop{padding:19px 17px}.summarybox strong{font-size:16px}.moneybig{font-size:33px}.periodtable{padding:14px}.guide p,.guide li{font-size:13px}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="hero"><div class="wrap"><span class="kicker">Free hourly earnings tool · International currencies</span>
+<h1>Overtime Pay &amp; Time-and-a-Half Calculator</h1>
+<p>See your gross paycheck in seconds. Calculate regular hours, time-and-a-half or double-time overtime, blended hourly pay and projected income across weekly, bi-weekly, semi-monthly and monthly payroll schedules.</p>
+<div class="trust"><span>No sign-up required</span><span>Instant results</span><span>Transparent pay formulas</span><span>Gross pay, before deductions</span></div>
+</div></section>
+<div class="wrap">
+<div class="workspace">
+<section class="panel inputpanel" aria-label="Overtime calculator inputs">
+<div class="head"><h2>Calculate your overtime</h2><span class="tag">Live calculation</span></div>
+<form id="payForm" novalidate>
+<div class="group"><h3>01 · Hourly wage</h3>
+<div class="field">
+<label for="wage">Regular hourly pay rate</label>
+<div class="range-row"><input type="range" id="wageRange" min="0" max="200" step="0.25" value="25" aria-label="Hourly wage slider">
+<div class="amountbox"><span id="currencySymbol">$</span><input type="number" id="wage" min="0" max="1000000" step="0.25" value="25" inputmode="decimal" required></div></div>
+<div class="preset"><span id="wageRangeLabel">Slider 0–200 per hour</span><span id="wageLive">$25.00/hr</span></div>
+</div>
+<div class="field" style="margin-top:14px"><label for="currency">Pay currency</label>
+<select id="currency"><option value="USD">USD — US Dollar ($)</option><option value="EUR">EUR — Euro (€)</option><option value="GBP">GBP — British Pound (£)</option><option value="INR">INR — Indian Rupee (₹)</option></select>
+<p class="hint">Currency selection changes the unit, not the numeric value. No live foreign-exchange conversion is performed.</p>
+</div>
+</div>
+<div class="group"><h3>02 · Weekly hours</h3>
+<div class="field"><label for="standardHours">Standard hours before overtime per workweek</label><input id="standardHours" type="number" min="0" max="80" step="0.25" value="40" inputmode="decimal"><p class="hint">Default 40 for the general US federal FLSA weekly standard. Set your agreed threshold where applicable.</p></div>
+<div class="field" style="margin-top:15px"><label for="workedHours">Total hours actually worked this week</label>
+<div class="range-row"><input id="workedRange" type="range" min="0" max="80" step="0.25" value="48" aria-label="Total weekly hours slider"><input id="workedHours" type="number" min="0" max="80" step="0.25" value="48" inputmode="decimal"></div>
+<div class="preset"><span>0 hours</span><span id="hoursLive">48 regular + overtime hours</span><span>80 hours</span></div>
+</div>
+</div>
+<div class="group"><h3>03 · Overtime multiplier</h3>
+<div class="multiswitch" role="group" aria-label="Overtime pay multiplier">
+<button id="multi15" class="active" type="button" aria-pressed="true" data-multiple="1.5">1.5× Time-and-a-half<small>Federal US baseline</small></button>
+<button id="multi20" type="button" aria-pressed="false" data-multiple="2">2× Double-time<small>Contract or special rules</small></button>
+</div>
+<p class="hint" style="margin-top:10px">Double time is not automatically required by the federal FLSA. Daily and seventh-day rules may apply in some states and are not modeled here.</p>
+</div>
+<div class="group"><h3>04 · Paycheck frequency</h3>
+<div class="field"><label for="frequency">How often are you paid?</label>
+<select id="frequency"><option value="weekly">Weekly (52 payments / year)</option><option value="biweekly">Bi-weekly (26 payments / year)</option><option value="semimonthly">Semi-monthly (24 payments / year)</option><option value="monthly">Monthly (12 payments / year)</option></select>
+<p class="hint">Assumes the entered weekly hours repeat for 52 workweeks. Semi-monthly and monthly are average projections, not exact payroll calculations.</p></div>
+</div>
+<div id="validationError" class="error" role="alert" hidden></div>
+<div id="payNotice" class="note">For US FLSA covered, nonexempt employees, a 40-hour weekly threshold and at least 1.5× regular rate generally apply. Actual eligibility depends on employment and jurisdiction.</div>
+<div class="note warn"><strong>Before-tax earnings only.</strong> This calculator does not calculate income-tax withholding, net take-home pay, state daily overtime, bonuses, multiple wage rates or employee-exemption eligibility.</div>
+</form>
+</section>
+<aside class="panel resultpanel" aria-label="Paycheck estimate" aria-live="polite">
+<div class="resulttop"><div class="head"><h2>Paycheck summary</h2><span class="tag">Gross earnings</span></div>
+<div id="periodTitle" class="eyebrow">ESTIMATED WEEKLY GROSS PAYCHECK</div>
+<div id="grossPay" class="moneybig">$1,300.00</div>
+<div id="periodDescription" class="subheadline">Estimated from your repeated weekly work schedule.</div>
+<div class="summarygrid">
+<div class="summarybox"><span>Regular pay</span><strong id="regularPay">$1,000.00</strong></div>
+<div class="summarybox"><span>Overtime pay (entire OT wages)</span><strong class="mint" id="overtimePay">$300.00</strong></div>
+<div class="summarybox"><span>Blended rate per hour worked</span><strong id="blendedRate">$27.08</strong></div>
+<div class="summarybox"><span>Annual projected gross income</span><strong id="annualPay">$67,600.00</strong></div>
+</div></div>
+<div class="belowhead"><strong>Paycheck composition</strong><span id="chartPercentage">23.1% overtime pay</span></div>
+<div class="chartframe"><canvas id="payChart" role="img" aria-label="Doughnut chart comparing regular wages and total overtime wages"></canvas>
+<div id="chartFallback" class="chartfallback" hidden><div class="fallbackbar"><span class="reg" id="regBar"></span><span class="ot" id="otBar"></span></div>Regular wages and overtime wages shown as percentages.</div></div>
+<div class="legend"><span><b style="background:#50779e"></b>Regular pay</span><span><b style="background:#07a677"></b>Overtime pay</span></div>
+<div class="details">
+<div class="detailrow"><span>Weekly regular hours</span><strong id="regularHours">40 h</strong></div>
+<div class="detailrow"><span>Weekly overtime hours</span><strong id="overtimeHours">8 h</strong></div>
+<div class="detailrow"><span>Applied overtime hourly rate</span><strong id="overtimeRate">$37.50</strong></div>
+<div class="detailrow"><span>Extra overtime premium (selected pay period)</span><strong class="green" id="premiumPay">$100.00</strong></div>
+<div class="detailrow"><span>Weekly gross reference</span><strong id="weeklyPay">$1,300.00</strong></div>
+</div>
+<div class="actions"><button type="button" id="reset" class="btn secondary">Reset defaults</button><button type="button" id="copy" class="btn primary">Copy salary breakdown</button></div>
+</aside>
+</div>
+<details class="panel periodtable" id="periodBreakdown">
+<summary>Pay Period &amp; Hourly Breakdown Table</summary>
+<p>Compare four payment schedules and an annual total using the same weekly hours and hourly rate.</p>
+<div class="tableoverflow"><table><thead><tr><th scope="col">Pay period</th><th scope="col">Hours</th><th scope="col">OT hours</th><th scope="col">Regular pay</th><th scope="col">Overtime pay</th><th scope="col">OT premium*</th><th scope="col">Gross pay</th></tr></thead><tbody id="periodRows"></tbody></table></div>
+<p class="smallcopy">*Overtime premium is the incremental amount above straight-time wages for overtime hours. The overtime-pay column already includes straight-time wages for those hours. This is not a tax-deductibility calculation. Figures are projected before tax and deductions; rounding occurs for display.</p>
+</details>
+<article class="guide">
+<h2>How overtime and time-and-a-half pay work (FLSA standards)</h2>
+<p>Overtime is additional pay for eligible hours beyond the applicable standard. For many <strong>covered, nonexempt US employees</strong>, the Fair Labor Standards Act (FLSA) generally requires at least one-and-a-half times the employee's regular rate for hours <strong>actually worked over 40</strong> in a fixed workweek. A workweek is seven consecutive 24-hour periods and does not need to match a calendar week. Averaging hours across two workweeks is not allowed to avoid overtime. Paid leave or holiday hours that were not actually worked usually do not count toward the federal 40-hour overtime threshold. <a href="https://www.dol.gov/agencies/whd/overtime/" target="_blank" rel="noopener noreferrer">US Department of Labor overtime guidance</a>.</p>
+<p>This calculator is designed for a <strong>single hourly pay rate</strong> with a weekly overtime threshold. Your employment contract, state or provincial rules, industry-specific provisions, union agreements or collective bargaining arrangements can differ. In California, for example, overtime may apply to hours beyond eight in a single day and double time beyond twelve, subject to exceptions. A weekly-total-only calculator cannot determine California's daily entitlements. <a href="https://www.dir.ca.gov/dlse/FAQ_Overtime.htm" target="_blank" rel="noopener noreferrer">California overtime guide</a>.</p>
+<h3>Time-and-a-half versus double-time</h3>
+<p>At 1.5×, an hourly rate of $20 pays $30 for each overtime hour. At 2×, it pays $40. Double time is not a general federal FLSA requirement. UK workers, for example, have no automatic legal right to overtime premium rates; the contractual terms and minimum-wage protections must be checked. <a href="https://www.acas.org.uk/pay-for-working-extra-hours" target="_blank" rel="noopener noreferrer">Acas overtime guidance</a>.</p>
+<h3>Overtime pay formula with an example</h3>
+<div class="formula">
+Regular hours = min(total weekly worked hours, weekly threshold)<br>
+Overtime hours = max(0, total weekly worked hours − weekly threshold)<br>
+Regular pay = regular hours × hourly wage<br>
+Overtime pay = overtime hours × hourly wage × overtime multiplier<br>
+Gross pay = regular pay + overtime pay
+</div>
+<p>Example: suppose you earn $25 per hour, work 48 hours in a week and qualify for 1.5× overtime after 40 hours. The regular component is 40 × $25 = $1,000. Overtime pay is 8 × $25 × 1.5 = $300. Gross pay is $1,300. Of the $300 for overtime hours, $200 is normal wages and $100 is the incremental half-time premium. The payroll treatment of bonuses, commissions or shift differentials can require adjustments to the regular rate under the FLSA. <a href="https://www.dol.gov/agencies/whd/fact-sheets/56a-regular-rate" target="_blank" rel="noopener noreferrer">DOL regular-rate guidance</a>.</p>
+<h2>How to calculate your blended hourly rate</h2>
+<p>A blended hourly rate shows the average gross earnings earned for every hour actually worked, including the overtime uplift. Divide total gross pay for the week by total worked hours. Using the example above, $1,300 ÷ 48 = <strong>$27.08 per hour</strong>, rounded to two decimal places. It is different from your contractual base rate of $25 and different from your overtime-specific rate of $37.50. If there are zero hours worked, the blended rate is not applicable.</p>
+<p>The annual projected gross amount multiplies one repeated weekly gross figure by 52. A bi-weekly projection uses two matching weeks; a semi-monthly estimate uses annual wages divided by 24; a monthly projection divides annual wages by 12. Actual paychecks depend on the number of workweeks and worked hours in each payroll period. For legal overtime purposes, calculate individual workweeks first — do not average hours across several weeks.</p>
+<h2>Pro tips for tracking overtime and understanding earnings</h2>
+<ul>
+<li><strong>Keep a daily work log.</strong> Record start times, end times, unpaid breaks and actual hours worked. Daily records matter where daily overtime rules apply.</li>
+<li><strong>Confirm the workweek.</strong> Ask your employer when the fixed seven-day workweek begins and whether your position is classified as overtime-eligible.</li>
+<li><strong>Check the regular rate.</strong> Some nondiscretionary bonuses and commissions must be included in the FLSA regular-rate calculation, not simply ignored.</li>
+<li><strong>Separate gross wages from take-home pay.</strong> Income taxes, social security, benefits and other deductions affect the amount deposited into your account.</li>
+<li><strong>Make realistic projections.</strong> Annual estimates assume the same weekly hours all year. Account for reduced shifts, holidays, unpaid time away and seasonal variation when budgeting.</li>
+</ul>
+<h3>Does the 2026 US overtime deduction mean overtime is tax-free?</h3>
+<p>No. Under the current US rules, some individuals may qualify for a federal income-tax deduction for eligible overtime premium amounts required under FLSA section 7, subject to limits and eligibility. Overtime wages are not automatically excluded from gross income, and tax withholding and employment taxes can still apply. This gross-pay calculator does not estimate eligibility, deductible amounts or net tax savings. See the <a href="https://www.irs.gov/newsroom/irs-updates-faqs-on-qualified-overtime-deduction" target="_blank" rel="noopener noreferrer">August 2026 IRS update</a> and current tax guidance before filing.</p>
+<h2>Frequently asked questions</h2>
+<div id="faq">
+<details><summary>How do I calculate time-and-a-half overtime pay?</summary><p>Multiply eligible overtime hours by your hourly wage and 1.5, then add pay for regular hours. At $25 an hour and 48 hours worked with a 40-hour threshold, overtime pay is $300 and weekly gross pay is $1,300.</p></details>
+<details><summary>Is overtime always paid after 40 hours?</summary><p>No. US federal FLSA generally uses 40 hours per workweek for covered, nonexempt workers. State and sector requirements, exemptions, collective agreements and international law may differ. California can require overtime based on daily hours.</p></details>
+<details><summary>What is the difference between overtime pay and overtime premium?</summary><p>Overtime pay means the total wages for overtime hours at the selected multiplier. Overtime premium is only the extra amount over straight-time wages. With eight hours at $25 and 1.5×, overtime pay is $300 and the extra premium is $100.</p></details>
+<details><summary>How is a blended hourly rate calculated?</summary><p>Divide total gross pay by actual hours worked. At $1,300 over 48 hours, the blended rate is about $27.08. With no worked hours, the blended rate is not applicable.</p></details>
+<details><summary>Does this tool calculate taxes or my exact paycheck?</summary><p>No. It estimates gross earnings for a single hourly rate and a weekly overtime threshold. It does not calculate withholding, benefits, union premiums, daily overtime, bonuses, exemptions or exact semi-monthly calendars.</p></details>
+</div>
+<h2>Official sources and calculation scope</h2>
+<p class="source">Guidance reviewed 13 November 2026: <a href="https://www.dol.gov/agencies/whd/overtime/" target="_blank" rel="noopener noreferrer">US DOL overtime</a> · <a href="https://www.dol.gov/agencies/whd/fact-sheets/56a-regular-rate" target="_blank" rel="noopener noreferrer">DOL regular rate</a> · <a href="https://www.dir.ca.gov/dlse/FAQ_Overtime.htm" target="_blank" rel="noopener noreferrer">California DIR</a> · <a href="https://www.acas.org.uk/pay-for-working-extra-hours" target="_blank" rel="noopener noreferrer">UK Acas</a> · <a href="https://www.irs.gov/newsroom/irs-updates-faqs-on-qualified-overtime-deduction" target="_blank" rel="noopener noreferrer">IRS overtime deduction update</a>.</p>
+<p class="disclaimer"><strong>Informational disclaimer.</strong> This free tool is for gross-wage planning only, not an official payroll statement, individualized legal opinion or guarantee of labor-law compliance. It does not determine whether a person is nonexempt or legally entitled to overtime; it omits salary employees, varying rates, tips, commissions, bonus adjustments, state daily overtime, shift differentials, taxes, payroll deductions and complex payroll calendars. Check the applicable rules and actual timesheet with a qualified payroll or employment-law adviser.</p>
+</article>
+</div>
+</main>
+<div id="site-footer"></div>
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+var frequencies={weekly:{label:'Weekly',periods:52,factor:1},biweekly:{label:'Bi-weekly',periods:26,factor:2},semimonthly:{label:'Semi-monthly',periods:24,factor:52/24},monthly:{label:'Monthly',periods:12,factor:52/12},annual:{label:'Annually',periods:1,factor:52}};
+var currCfg={USD:{symbol:'$',max:200,step:.25},EUR:{symbol:'€',max:200,step:.25},GBP:{symbol:'£',max:200,step:.25},INR:{symbol:'₹',max:5000,step:10}};
+var defaults={wage:25,workedHours:48,standardHours:40,currency:'USD',frequency:'weekly'};
+var multiplier=1.5,chart=null,last=null;
+function text(id,val){$(id).textContent=val;}
+function number(id){var s=String($(id).value).trim();return s===''?NaN:Number(s);}
+function validNumber(n){return Number.isFinite(n);}
+function fmt(v,places){if(!validNumber(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,minimumFractionDigits:places===undefined?2:places,maximumFractionDigits:places===undefined?2:places}).format(v);}
+function hours(v){return new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(v)+' h';}
+function cap(v,min,max){return Math.max(min,Math.min(max,v));}
+function updateSlider(id,n){var el=$(id);if(n>Number(el.max))el.max=String(Math.min(1000000,Math.max(n,Math.ceil(n/10)*10)));el.value=String(n);}
+function calculation(wage,worked,standard,multi){var regHours=Math.min(worked,standard),otHours=Math.max(0,worked-standard),regular=regHours*wage,ot=otHours*wage*multi,gross=regular+ot,premium=otHours*wage*(multi-1),blended=worked>0?gross/worked:null;return {wage:wage,worked:worked,standard:standard,multi:multi,regHours:regHours,otHours:otHours,regular:regular,ot:ot,gross:gross,premium:premium,blended:blended,otRate:wage*multi,annual:gross*52};}
+function errorMessage(){var wage=number('wage'),worked=number('workedHours'),standard=number('standardHours');if(!validNumber(wage)||!validNumber(worked)||!validNumber(standard))return 'Enter valid numeric values for hourly wage and weekly hours.';if(wage<0||wage>1000000)return 'Hourly wage must be between 0 and 1,000,000.';if(worked<0||worked>80)return 'Weekly hours worked must be between 0 and 80.';if(standard<0||standard>80)return 'Standard weekly hours must be between 0 and 80.';if(wage>0&&worked*wage*2*52>1e11)return 'Amounts are too large for this paycheck projection.';return '';}
+function renderChart(result,factor){var regular=result.regular*factor,ot=result.ot*factor,total=regular+ot,share=total>0?ot/total:0;text('chartPercentage',(share*100).toFixed(1)+'% overtime pay');$('regBar').style.width=(100-share*100)+'%';$('otBar').style.width=(share*100)+'%';if(!window.Chart){$('chartFallback').hidden=false;$('payChart').hidden=true;return;}
+$('chartFallback').hidden=true;$('payChart').hidden=false;
+if(chart){chart.data.datasets[0].data=[regular,ot];chart.update();return;}
+chart=new window.Chart($('payChart'),{type:'doughnut',data:{labels:['Regular wages','Overtime wages'],datasets:[{data:[regular,ot],backgroundColor:['#50779e','#07a677'],borderWidth:0,hoverOffset:5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',animation:{duration:180},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return ctx.label+': '+fmt(ctx.parsed);}}}}}});
+}
+function buildTable(r){var tbody=$('periodRows');tbody.replaceChildren();var current=$('frequency').value;Object.keys(frequencies).forEach(function(key){var f=frequencies[key],n=f.factor,tr=document.createElement('tr');tr.setAttribute('data-period',key);if(current===key)tr.className='selected';var cells=[f.label,hours(r.worked*n),hours(r.otHours*n),fmt(r.regular*n),fmt(r.ot*n),fmt(r.premium*n),fmt(r.gross*n)];cells.forEach(function(t,i){var c=document.createElement(i===0?'th':'td');if(i===0)c.setAttribute('scope','row');c.textContent=t;tr.appendChild(c);});tbody.appendChild(tr);});}
+function compute(){
+var issue=errorMessage(),el=$('validationError');el.hidden=!issue;if(issue){el.textContent=issue;return;}
+var w=number('wage'),worked=number('workedHours'),standard=number('standardHours'),r=calculation(w,worked,standard,multiplier);
+var frequency=$('frequency').value,period=frequencies[frequency],n=period.factor;
+text('periodTitle','ESTIMATED '+period.label.toUpperCase()+' GROSS PAYCHECK');
+text('grossPay',fmt(r.gross*n));text('regularPay',fmt(r.regular*n));text('overtimePay',fmt(r.ot*n));text('blendedRate',r.blended===null?'N/A':fmt(r.blended));text('annualPay',fmt(r.annual));
+text('regularHours',hours(r.regHours));text('overtimeHours',hours(r.otHours));text('overtimeRate',fmt(r.otRate));text('premiumPay',fmt(r.premium*n));text('weeklyPay',fmt(r.gross));text('wageLive',fmt(w)+'/hr');text('hoursLive',hours(worked)+' worked');
+text('periodDescription',frequency==='weekly'?'Based on this workweek; before tax and deductions.':frequency==='biweekly'?'Projection for two identical workweeks.':('Average '+period.label.toLowerCase()+' projection (52 repeated weeks ÷ '+period.periods+' pay periods).'));
+var note='This is a single-rate gross-pay scenario. US FLSA generally requires at least 1.5× after 40 actual work hours per workweek for covered, nonexempt employees. ';
+if(standard!==40)note+='You selected a custom '+hours(standard)+' threshold, which is not the default federal 40-hour threshold. ';
+if(multiplier===2)note+='Double time is not a general federal FLSA requirement; use it when your applicable rule or contract provides it. ';
+if(worked<=standard)note+='No overtime hours fall above your selected weekly threshold. ';
+if(w===0&&worked>0)note+='A zero wage is not a determination of minimum-wage compliance. ';
+if(frequency==='monthly'||frequency==='semimonthly')note+='The pay period shown is an annualized average, not exact period-specific hours. ';
+note+='Daily overtime, bonuses, commissions and deductions are not included.';
+text('payNotice',note);
+updateSlider('wageRange',w);$('workedRange').value=String(worked);text('wageRangeLabel','Slider 0–'+number('wageRange').toLocaleString('en-US')+' per hour');$('wageRangeLabel').textContent='Slider 0–'+Number($('wageRange').max).toLocaleString('en-US')+' per hour';
+renderChart(r,n);buildTable(r);last={r:r,period:period,freqKey:frequency,n:n};
+}
+function sync(source,target,lo,hi){var value=String($(source).value).trim();if(value===''){compute();return;}var parsed=Number(value);if(!Number.isFinite(parsed)){compute();return;}var n=cap(parsed,lo,hi);$(source).value=String(n);$(target).value=String(n);compute();}
+function reset(){Object.keys(defaults).forEach(function(id){$(id).value=String(defaults[id]);});multiplier=1.5;updateToggle();$('wageRange').min='0';$('wageRange').max='200';$('wageRange').step='.25';$('wageRange').value='25';$('workedRange').value='48';text('currencySymbol','$');compute();}
+function updateToggle(){['multi15','multi20'].forEach(function(id){var on=(id==='multi15'&&multiplier===1.5)||(id==='multi20'&&multiplier===2);$(id).classList.toggle('active',on);$(id).setAttribute('aria-pressed',on?'true':'false');});}
+['multi15','multi20'].forEach(function(id){$(id).addEventListener('click',function(){multiplier=Number(this.getAttribute('data-multiple'));updateToggle();compute();});});
+$('wage').addEventListener('input',function(){if(this.value!==''){$('wageRange').value=String(Math.min(number('wage'),Number($('wageRange').max)));}compute();});
+$('wage').addEventListener('change',function(){var n=number('wage');if(Number.isFinite(n))this.value=String(cap(n,0,1000000));compute();});
+$('wageRange').addEventListener('input',function(){sync('wageRange','wage',0,1000000);});
+$('workedHours').addEventListener('input',function(){if(this.value!=='')$('workedRange').value=String(cap(Number(this.value),0,80));compute();});
+$('workedHours').addEventListener('change',function(){var n=number('workedHours');if(Number.isFinite(n))this.value=String(cap(n,0,80));$('workedRange').value=this.value;compute();});
+$('workedRange').addEventListener('input',function(){sync('workedRange','workedHours',0,80);});
+$('standardHours').addEventListener('input',compute);
+$('standardHours').addEventListener('change',function(){var n=number('standardHours');if(Number.isFinite(n))this.value=String(cap(n,0,80));compute();});
+$('frequency').addEventListener('change',compute);
+$('currency').addEventListener('change',function(){var cfg=currCfg[this.value];$('currencySymbol').textContent=cfg.symbol;$('wageRange').max=String(cfg.max);$('wageRange').step=String(cfg.step);compute();});
+$('reset').addEventListener('click',reset);
+$('payForm').addEventListener('submit',function(e){e.preventDefault();});
+$('copy').addEventListener('click',function(){
+if(!last)return;var r=last.r,p=last.period,n=last.n,lines=['Overtime & Time-and-a-Half Pay Estimate','Currency: '+$('currency').value,'Hourly wage: '+fmt(r.wage),'Hours worked weekly: '+r.worked,'Overtime threshold weekly: '+r.standard,'Overtime multiplier: '+r.multi+'x','Weekly regular hours: '+r.regHours,'Weekly overtime hours: '+r.otHours,'Weekly regular pay: '+fmt(r.regular),'Weekly overtime pay: '+fmt(r.ot),'Weekly gross pay: '+fmt(r.gross),'Selected pay frequency: '+p.label,'Selected pay period regular wages: '+fmt(r.regular*n),'Selected pay period overtime wages: '+fmt(r.ot*n),'Selected pay period overtime premium: '+fmt(r.premium*n),'Selected pay period total gross: '+fmt(r.gross*n),'Effective blended hourly rate: '+(r.blended===null?'N/A':fmt(r.blended)),'Projected annual gross: '+fmt(r.annual),'Assumes identical weekly schedule over 52 weeks; pre-tax. Not legal payroll advice.','https://returnoninvestmentcalculator.in/overtime-pay-calculator/'];
+var value=lines.join('\n'),button=$('copy');
+function done(){button.textContent='Copied ✓';setTimeout(function(){button.textContent='Copy salary breakdown';},1700);}
+function fallback(){var area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.left='-9999px';document.body.appendChild(area);area.select();try{if(document.execCommand('copy'))done();else button.textContent='Copy unavailable';}catch(e){button.textContent='Copy unavailable';}area.remove();}
+if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(value).then(done,fallback);else fallback();
+});
+compute();
+document.addEventListener('DOMContentLoaded',function(){if(window.Chart&&last)renderChart(last.r,last.n);});
+})();
+</script>
+</body>
+</html>
