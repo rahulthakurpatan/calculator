@@ -5,7 +5,7 @@
 
   const media = matchMedia('(min-width:1440px) and (min-height:580px)');
   const reduced = matchMedia('(prefers-reduced-motion:reduce)');
-  const maxVisible = 9;
+  const maxVisible = 15;
   const isTool = /(?:calculator|planner|estimator|tracker|comparison)\/$/i;
   const acronyms = new Set(['sip','swp','roi','gst','tds','hra','fd','fire','rsu','cac','ltv','apy','saas','drip','emi','ai']);
   const aliases = {
@@ -57,9 +57,11 @@
   const style=document.createElement('style');
   style.id='calculator-link-cloud-style';
   style.textContent=[
-    '#calculator-link-cloud{position:fixed;left:calc(50% + 551px);top:clamp(124px,17vh,168px);width:clamp(125px,calc(50vw - 579px),248px);height:min(545px,calc(100vh - 195px));z-index:8;pointer-events:none;isolation:isolate}',
-    '#calculator-link-cloud a{position:absolute;display:block;box-sizing:border-box;left:0;width:calc(100% - 16px);padding:3px 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;font:620 12px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.005em;opacity:.86;pointer-events:auto;color:#256b84;background:linear-gradient(105deg,#207b99 5%,#7954b4 34%,#087b73 61%,#365eae 90%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:calcCloudColor 17s ease-in-out infinite alternate;transition:opacity .25s ease,filter .2s ease;will-change:transform}',
-    '#calculator-link-cloud a:hover,#calculator-link-cloud a:focus-visible{opacity:1;filter:saturate(1.5) brightness(.83);text-decoration:underline;text-decoration-color:#0e987e;text-underline-offset:4px;font-weight:750}',
+    '#calculator-link-cloud{position:fixed;left:calc(50% + 551px);top:clamp(96px,12vh,145px);width:clamp(125px,calc(50vw - 579px),248px);height:min(650px,calc(100vh - 175px));z-index:8;pointer-events:none;isolation:isolate}',
+    '#calculator-link-cloud a{position:absolute;display:block;box-sizing:border-box;left:0;width:calc(100% - 16px);padding:3px 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-decoration:none;font:690 12.5px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.006em;opacity:.94;pointer-events:auto;color:#256b84;background:linear-gradient(110deg,#1364ab 0%,#9a45c9 26%,#0b9b8e 53%,#5a59ce 77%,#078d9b 100%);background-size:320% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:calcCloudColor 13s ease-in-out infinite alternate;transition:opacity .27s ease,filter .22s ease;will-change:transform}',
+    '#calculator-link-cloud a:nth-child(3n+2){background-image:linear-gradient(105deg,#0d9d86,#6b54c9,#167bc2,#aa4bc0,#0d9d86)}',
+    '#calculator-link-cloud a:nth-child(3n){background-image:linear-gradient(105deg,#9b49bb,#0a81ac,#0d9c87,#5960d8,#9b49bb)}',
+    '#calculator-link-cloud a:hover,#calculator-link-cloud a:focus-visible{opacity:1;filter:saturate(1.65) brightness(.86);text-decoration:underline;text-decoration-color:#0e987e;text-underline-offset:4px;font-weight:780}',
     '#calculator-link-cloud a:focus-visible{outline:2px solid #2575bd;outline-offset:3px;border-radius:2px}',
     '#calculator-link-cloud a.clc-change{opacity:0}',
     '@keyframes calcCloudColor{from{background-position:0% 50%}to{background-position:100% 50%}}',
@@ -90,9 +92,9 @@
     a.title=item.name;
     a.textContent=item.name;
     a.style.top=(((i+.45)/count)*100).toFixed(3)+'%';
-    const start=[3,14,5,23,8,18,5,21,10][i%9];
+    const start=[3,17,7,25,4,19,9,24,4,17,7,23,5,20,11][i%15];
     a.style.left=start+'px';
-    a.style.animationDelay=(-i*2.6)+'s';
+    a.style.animationDelay=(-i*1.75)+'s';
     let frozen=false;
     a.addEventListener('pointerenter',()=>{frozen=true;hovered=true;});
     a.addEventListener('pointerleave',()=>{frozen=false;hovered=nav.matches(':hover');});
@@ -107,7 +109,7 @@
     const t=(now-origin)/1000,rect=nav.getBoundingClientRect(),step=rect.height/slots.length;
     slots.forEach(s=>{
       if(s.frozen()) return;
-      let dx=Math.sin(t*.42+s.phase)*6.5,dy=Math.cos(t*.34+s.phase*.8)*3;
+      let dx=Math.sin(t*.36+s.phase)*5.5,dy=Math.cos(t*.31+s.phase*.8)*2.7;
       if(pointer){
         const px=pointer.x-rect.left,py=pointer.y-rect.top;
         const vx=s.x+64-px,vy=(s.i+.45)*step+12-py,dist=Math.hypot(vx,vy);
@@ -164,7 +166,7 @@
     document.addEventListener('visibilitychange',refreshAnimation);
     media.addEventListener('change',refreshAnimation);
     reduced.addEventListener('change',refreshAnimation);
-    window.setInterval(rotate,4400);
+    window.setInterval(rotate,3200);
     refreshAnimation();
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true});
