@@ -282,7 +282,7 @@ function getNumber(id){const s=String($(id).value).trim();return s===''?NaN:Numb
 function put(id,s){$(id).textContent=s;}
 function finite(v){return Number.isFinite(v);}
 function currency(v,precision=0){if(!finite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,minimumFractionDigits:precision,maximumFractionDigits:precision}).format(v);}
-function percent(v){return finite(v)?(v*100).toFixed(2)+'%':'N/A';}
+function percent(v){return finite(v)?((Math.abs(v)<0.00000005?0:v)*100).toFixed(2)+'%':'N/A';}
 function sharesFmt(v){return finite(v)?new Intl.NumberFormat('en-US',{maximumFractionDigits:4}).format(v):'—';}
 function clamp(n,a,b){return Math.min(b,Math.max(a,n));}
 function valid(){for(const id of ids){const n=getNumber(id),r=rules[id];if(!finite(n))return 'Please enter a valid number for every financial input.';if(n<r.min||n>r.max)return (id==='initial'?'Initial investment':id==='contribution'?'Contribution':id==='yieldRate'?'Dividend yield':id==='divGrowth'?'Dividend growth':id==='priceGrowth'?'Price appreciation':'Years')+' must be between '+r.min+' and '+r.max+'.';}if(!Number.isInteger(getNumber('years')))return 'Years must be a whole number from 1 to 40.';if(getNumber('initial')===0&&getNumber('contribution')===0)return 'Enter a starting investment or recurring contribution greater than zero.';return '';}
