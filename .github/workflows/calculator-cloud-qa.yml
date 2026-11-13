@@ -12,6 +12,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Audit shared cloud loader across all site HTML pages
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const pages=[];
+          function walk(dir){
+            for(const f of fs.readdirSync(dir,{withFileTypes:true})){
+              if(['.git','node_modules'].includes(f.name))continue;
+              const file=path.join(dir,f.name);
+              if(f.isDirectory())walk(file);
+              else if(file.endsWith('.html'))pages.push(file);
+            }
+          }
+          walk('.');
+          const missing=pages.filter(file=>!fs.readFileSync(file,'utf8').includes('/assets/js/common-header.js'));
+          console.log('HTML_PAGES='+pages.length);
+          console.log('MISSING_SHARED_HEADER='+JSON.stringify(missing));
+          NODE
       - name: Test dual sidebars, related links and global loading
         run: |
           node <<'NODE'
