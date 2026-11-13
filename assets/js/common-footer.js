@@ -19,6 +19,7 @@
     ['Gratuity Calculator', '/gratuity-calculator/'],
     ['HRA Calculator', '/hra-calculator/'],
     ['Digital Nomad Tax Calculator', '/digital-nomad-tax-calculator/'],
+    ['Overtime Pay Calculator', '/overtime-pay-calculator/'],
     ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/'],
 
     ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/'],
