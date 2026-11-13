@@ -29,7 +29,7 @@
 <div class="field"><label for="currency">Reporting currency</label><select id="currency"><option value="USD">USD – US Dollar</option><option value="GBP">GBP – Pound Sterling</option><option value="CAD">CAD – Canadian Dollar</option><option value="AUD">AUD – Australian Dollar</option><option value="INR">INR – Indian Rupee</option><option value="EUR">EUR – Euro</option></select></div>
 <div class="field" id="rate-wrap"><label for="taxRate">Estimated marginal tax rate (%)</label><input id="taxRate" type="number" min="0" max="60" step=".1" value="0"><div class="hint">Enter a rate from your own tax situation. Zero means no rate-based estimate.</div></div>
 <div class="field" id="india-wrap" hidden><label for="tds">Eligible TDS already deducted (optional)</label><input id="tds" type="number" min="0" step="any" value="0"><div class="hint">Enter TDS amount in reporting currency; do not treat it as an extra tax rate.</div></div>
-<div class="field"><label for="method">Cost-basis profile</label><select id="method"><option value="default">Country default (recommended)</option><option value="fifo">FIFO – only where applicable</option></select><div class="hint">LIFO is not offered as a universal tax method.</div></div>
+
 </div>
 <div class="notice" id="country-note">United States: FIFO is a default only when adequate specific identification is not made. This simplified tool uses FIFO and does not implement broker-specific lot identification requirements.</div>
 <div class="section-label">Transaction ledger</div>
@@ -111,7 +111,7 @@ function calculate(){
    else if(country==='CA'){const p=pool(r.asset);p.qty+=b.qty;p.cost+=b.qty*b.unitCost;}
    else lots(r.asset).push({qty:b.qty,cost:b.unitCost,date:b.date});
   }else{
-   const proceeds=r.qty*r.price-r.fee;let need=r.qty,cost=0,weightedDays=0,weightedUnits=0,allocations=[];
+   const proceeds=country==='IN'?r.qty*r.price:r.qty*r.price-r.fee;let need=r.qty,cost=0,weightedDays=0,weightedUnits=0,allocations=[];
    if(country==='GB'){
     const matches=ukMatches.get(r)||[];for(const m of matches){const take=m.qty;cost+=take*m.buy.unitCost;weightedDays+=take*days(m.buy.date,r.date);weightedUnits+=take;allocations.push({qty:take,unitCost:m.buy.unitCost,date:m.buy.date,method:'Same-day / 30-day match'});}
     need-=matches.reduce((s,m)=>s+m.qty,0);
@@ -146,7 +146,7 @@ function calculate(){
  $('result-note').textContent=configs[country].note+' '+(country==='IN'?'Estimated tax: 30% plus 4% cess; TDS credit entered: '+money(tds)+'. Balance estimate: '+money(netTax)+'.':country==='CA'?'Tax estimate applies your entered rate to the assumed 50% inclusion amount.':country==='AU'?'Tax estimate applies your entered rate to the calculated taxable gain after potential discount.':'Tax estimate applies your entered rate to positive aggregate taxable gain only; actual tax may differ materially.');
  $('error').classList.remove('show');$('results').classList.add('show');
 }
-$('country').addEventListener('change',()=>{const c=$('country').value;$('currency').value=configs[c].currency;$('country-note').textContent=configs[c].note;$('india-wrap').hidden=c!=='IN';$('rate-wrap').hidden=c==='IN';$('method').value='default';});
+$('country').addEventListener('change',()=>{const c=$('country').value;$('currency').value=configs[c].currency;$('country-note').textContent=configs[c].note;$('india-wrap').hidden=c!=='IN';$('rate-wrap').hidden=c==='IN';});
 $('add-buy').addEventListener('click',()=>addRow('BUY'));$('add-sell').addEventListener('click',()=>addRow('SELL'));$('add-transfer').addEventListener('click',()=>addRow('TRANSFER'));
 $('calculate').addEventListener('click',()=>{try{calculate();}catch(e){$('error').textContent=e.message||'Unable to calculate. Check your transaction history.';$('error').classList.add('show');$('results').classList.remove('show');}});
 $('reset').addEventListener('click',()=>{rows=[];$('country').value='US';$('country').dispatchEvent(new Event('change'));$('taxRate').value='0';$('tds').value='0';$('taxYear').value='2026';addRow('BUY',{date:'2025-01-10',asset:'BTC',qty:1,price:30000,fee:10,note:'Exchange A'});addRow('BUY',{date:'2025-08-15',asset:'BTC',qty:.5,price:40000,fee:8,note:'Exchange A'});addRow('SELL',{date:'2026-06-20',asset:'BTC',qty:.75,price:55000,fee:12,note:'Exchange A'});$('results').classList.remove('show');$('error').classList.remove('show');});
