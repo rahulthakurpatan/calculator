@@ -1,0 +1,91 @@
+name: Dividend Reinvestment Calculator QA
+on:
+  push:
+    paths:
+      - 'dividend-reinvestment-calculator/index.html'
+      - '.github/workflows/dividend-reinvestment-qa.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate dividend math, schema and interactive controls
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const html=fs.readFileSync('dividend-reinvestment-calculator/index.html','utf8');
+          const title=html.match(/<title>(.*?)<\/title>/)[1],desc=html.match(/<meta name="description" content="([^"]+)"/)[1];
+          assert.ok(title.length<60 && desc.length<155,'SEO title and description limits');
+          assert.ok(html.includes('<link rel="canonical" href="https://returnoninvestmentcalculator.in/dividend-reinvestment-calculator/">'));
+          assert.equal((html.match(/adsbygoogle\.js/g)||[]).length,1);
+          const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+          assert.ok(graph.some(x=>x['@type']==='WebApplication'));
+          assert.equal(graph.find(x=>x['@type']==='FAQPage').mainEntity.length,5);
+          assert.equal((html.match(/<details><summary>/g)||[]).length,5);
+          const script=html.slice(html.lastIndexOf('<script>')+8,html.lastIndexOf('</script>'));
+          new vm.Script(script,{filename:'dividend-reinvestment.js'});
+          const ids=[...html.matchAll(/id="([^"]+)"/g)].map(x=>x[1]);
+          assert.equal(new Set(ids).size,ids.length,'Unique element IDs');
+          const $=Object.create(null),listeners=Object.create(null);
+          function mk(name='div'){return {tagName:name,value:'',textContent:'',hidden:false,checked:false,style:{},children:[],attributes:{},events:{},classList:{add(){},remove(){},toggle(){}},setAttribute(k,v){this.attributes[k]=v;},appendChild(n){this.children.push(n);},replaceChildren(){this.children=[];},addEventListener(k,fn){(this.events[k]??=[]).push(fn);},select(){},remove(){}};}
+          for(const id of ids){$[id]=mk();if(id.endsWith('Range')){$[id].max=id==='initialRange'?'100000':id==='contributionRange'?'5000':id==='yearsRange'?'40':'30';}}
+          const defaults={initial:'10000',contribution:'250',yieldRate:'3.5',divGrowth:'5',priceGrowth:'6',years:'20',currency:'USD'};
+          Object.entries(defaults).forEach(([k,v])=>{$[k].value=v;});
+          $.drip.checked=true;
+          $.currency.value='USD';
+          const doc={getElementById:id=>{assert.ok($[id],id+' missing');return $[id];},createElement:mk,querySelectorAll:selector=>selector==='.symbol'?[mk(),mk()]:[],addEventListener:(name,fn)=>{(listeners[name]??=[]).push(fn);}};
+          const env={document:doc,window:{Chart:null,isSecureContext:false},navigator:{},Math,Number,Array,Object,String,Intl,console,setTimeout};
+          vm.runInNewContext(script,env,{timeout:10000});
+          const event=(id,name)=>{for(const fn of $[id].events[name]??[])fn.call($[id],{preventDefault(){}});};
+          const set=(id,v,name='input')=>{$[id].value=String(v);event(id,name);};
+          assert.equal($.scheduleRows.children.length,21,'20 annual rows + year zero');
+          assert.equal($.inputError.hidden,true,'Default inputs accepted');
+          assert.equal($.cashPaid.textContent,'$0','DRIP pays no retained cash');
+          const defaultStock=Number($.stockValue.textContent.replace(/[^0-9.-]/g,''));
+          assert.ok(defaultStock>10000,'Initial DRIP projection grows with positive inputs');
+          const defaultTotal=$.totalWealth.textContent;
+          assert.equal(defaultTotal,$.stockValue.textContent,'DRIP stock includes dividends; no double count');
+          $.drip.checked=false;event('drip','change');
+          const cash=Number($.cashPaid.textContent.replace(/[^0-9.-]/g,''));
+          const stock=Number($.stockValue.textContent.replace(/[^0-9.-]/g,''));
+          const total=Number($.totalWealth.textContent.replace(/[^0-9.-]/g,''));
+          assert.ok(cash>0,'Dividends accumulate outside share portfolio');
+          assert.ok(Math.abs(stock+cash-total)<2,'No DRIP total wealth = stock + cash');
+          set('contribution',0);set('initial',10000);set('yieldRate',0);set('divGrowth',0);set('priceGrowth',0);set('years',1);
+          assert.equal($.totalWealth.textContent,'$10,000');
+          assert.equal($.dividends.textContent,'$0');
+          assert.equal($.annualized.textContent,'0.00%');
+          set('priceGrowth',10);
+          assert.equal($.stockValue.textContent,'$11,000');
+          assert.equal($.annualized.textContent,'10.00%','No contribution annual IRR = CAGR');
+          event('reset','click');
+          set('initial',12000);set('contribution',0);set('yieldRate',12);set('divGrowth',0);set('priceGrowth',0);set('years',1);
+          const dripWealth=Number($.totalWealth.textContent.replace(/[^0-9.-]/g,''));
+          assert.ok(dripWealth>13500&&dripWealth<13530,'Monthly dividend share purchases compound');
+          assert.ok(Math.abs(Number($.dividends.textContent.replace(/[^0-9.-]/g,''))-(dripWealth-12000))<2,'DRIP value and cum dividends reconcile when no price growth');
+          $.drip.checked=false;event('drip','change');
+          assert.equal($.stockValue.textContent,'$12,000');
+          assert.equal($.cashPaid.textContent,'$1,440');
+          assert.equal($.totalWealth.textContent,'$13,440');
+          assert.equal($.annualIncome.textContent,'$1,440');
+          event('reset','click');
+          set('initial',0);set('contribution',100);set('yieldRate',0);set('priceGrowth',0);set('years',1);
+          assert.equal($.totalWealth.textContent,'$1,200','Monthly contributions across 12 months');
+          assert.equal($.capital.textContent,'$1,200');
+          assert.equal($.annualized.textContent,'0.00%');
+          event('annualBtn','click');
+          assert.equal($.totalWealth.textContent,'$100','Annual contribution at first year start');
+          set('initial',-1);assert.equal($.inputError.hidden,false,'Negative amount rejected');
+          set('initial',0);assert.equal($.inputError.hidden,true);
+          set('priceGrowth',-10);assert.equal($.inputError.hidden,true,'Negative return allowed');
+          set('currency','INR','change');assert.equal($.initial.value,'0','Currency switch does not convert inputs');
+          assert.ok($.totalWealth.textContent.includes('₹'),'INR money formatting');
+          event('compareView','click');
+          event('growthView','click');
+          set('yearsRange',3);assert.equal($.years.value,'3','Slider and number box are synced');
+          event('reset','click');
+          assert.equal($.stockValue.textContent,defaultTotal);
+          assert.equal($.inputError.hidden,true);
+          console.log('PASS SEO, schema, syntax, unique IDs, 20-year simulation, DRIP, cash, zero yield, zero return, CAGR/IRR, dividend compounding, annual contributions, negative validation, sliders, currency and reset');
+          NODE
