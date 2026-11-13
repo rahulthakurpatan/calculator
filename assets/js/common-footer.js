@@ -39,6 +39,7 @@
     ['Student Loan Payoff & Refinance Calculator', '/student-loan-payoff-calculator/'],
     ['RSU & Stock Options Tax Calculator', '/rsu-vesting-tax-calculator/'],
     ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/'],
+    ['Cost of Living Comparison Calculator', '/cost-of-living-comparison-calculator/'],
     ['Retirement Readiness & Income Planner', '/retirement-calculator/'],
     ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/'],
     ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/'],
