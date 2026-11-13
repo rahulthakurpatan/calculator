@@ -64,8 +64,8 @@ jobs:
             await new Promise(resolve=>setImmediate(resolve));
             const cloud=onHome.appended.find(x=>x.tag==='nav');
             assert.ok(cloud && cloud.attributes['aria-label'],'Accessible nav present on homepage');
-            assert.equal(cloud.children.length,9,'Only nine floating name links displayed');
-            assert.equal(new Set(cloud.children.map(a=>a.href)).size,9,'No repeated visible calculators');
+            assert.equal(cloud.children.length,15,'Fifteen floating name links displayed');
+            assert.equal(new Set(cloud.children.map(a=>a.href)).size,15,'No repeated visible calculators');
             assert.ok(cloud.children.every(a=>a.tag==='a'&&a.href.startsWith('/')&&a.textContent.length>0),'Real clickable text links');
             assert.equal(cloud.children.filter(x=>x.tag!=='a').length,0,'No cards or icons');
             const before=cloud.children.map(a=>a.href);
@@ -78,6 +78,6 @@ jobs:
             vm.runInNewContext(js,offHome.env,{timeout:1000});
             await new Promise(resolve=>setImmediate(resolve));
             assert.equal(offHome.appended.length,0,'Calculator pages remain untouched');
-            console.log('PASS: JS syntax, homepage-only load, sitemap discovery, 9 text links, no icons/cards, rotation, semantic links, motion accessibility, and AdSense count');
+            console.log('PASS: JS syntax, homepage-only load, sitemap discovery, 15 text links, no icons/cards, rotation, semantic links, motion accessibility, and AdSense count');
           })().catch(err=>{console.error(err);process.exitCode=1;});
           NODE
