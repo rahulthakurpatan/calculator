@@ -63,6 +63,7 @@
         ['Student Loan Payoff & Refinance Calculator', '/student-loan-payoff-calculator/', 'Compare current student loan payments, extra principal payments and refinance savings'],
         ['RSU & Stock Options Tax Calculator', '/rsu-vesting-tax-calculator/', 'Estimate RSU vesting tax, sell-to-cover shares, ISO AMT and NSO exercise tax'],
         ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/', 'Estimate early payoff dates and interest savings from extra principal payments'],
+        ['Cost of Living Comparison Calculator', '/cost-of-living-comparison-calculator/', 'Compare city budgets, required salary and relocation costs'],
         ['Retirement Readiness & Income Planner', '/retirement-calculator/', 'Estimate your retirement corpus, savings gap, income and portfolio longevity'],
         ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/', 'Set an emergency savings target and estimate cash runway after income loss'],
         ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/', 'Plan payments across multiple cards and compare Snowball vs Avalanche'],
