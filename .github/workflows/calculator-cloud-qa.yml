@@ -22,7 +22,7 @@ jobs:
           assert.equal((home.match(/src="\/assets\/js\/calculator-cloud\.js"/g)||[]).length,1);
           assert.equal((home.match(/adsbygoogle\.js/g)||[]).length,1);
           assert.ok(!fs.readFileSync('sip-calculator/index.html','utf8').includes('calculator-cloud.js'),'Cloud only on homepage');
-          assert.ok(js.includes('min-width:1580px') && js.includes('prefers-reduced-motion:reduce'));
+          assert.ok(js.includes('min-width:1440px') && js.includes('prefers-reduced-motion:reduce'));
           assert.ok(js.includes('linear-gradient('),'Subtle AI text gradient exists');
           const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
           assert.ok(locs.length>50,'Production sitemap has calculator URLs');
