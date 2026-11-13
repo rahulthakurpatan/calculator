@@ -193,7 +193,7 @@ GE:{label:'Georgia',trigger:183,rate:20,dayText:'183+ days in a qualifying rolli
 };
 var homeLabels={US:'United States',UK:'United Kingdom',CA:'Canada',DE:'Germany',AU:'Australia',IN:'India',OTHER:'Other country'};
 var lastResult=null,chart=null,previousCurrency='USD';
-function num(id){var v=$(id).value.trim();if(v==='')return NaN;return Number(v);}
+function num(id){var v=String($(id).value).trim();if(v==='')return NaN;return Number(v);}
 function clamp(v,lo,hi){return Math.min(hi,Math.max(lo,v));}
 function money(v){if(!Number.isFinite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,maximumFractionDigits:0,minimumFractionDigits:0}).format(v);}
 function smallmoney(v){if(!Number.isFinite(v))return '—';return new Intl.NumberFormat('en-US',{style:'currency',currency:$('currency').value,maximumFractionDigits:2}).format(v);}
