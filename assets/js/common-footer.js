@@ -29,6 +29,7 @@
     ['Crypto Tax & Capital Gains Calculator', '/crypto-capital-gains-tax-calculator/'],
     ['Crypto Staking APY Calculator', '/crypto-staking-apy-calculator/'],
     ['SaaS LTV:CAC Calculator', '/saas-ltv-cac-calculator/'],
+    ['Micro-SaaS Valuation Calculator', '/saas-valuation-calculator/'],
     ['Net Worth Calculator & Milestone Tracker', '/net-worth-calculator/'],
     ['Solar Panel Payback & Carbon Offset Calculator', '/solar-panel-payback-calculator/'],
     ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/'],
