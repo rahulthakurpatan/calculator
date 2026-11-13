@@ -25,6 +25,7 @@
     ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/'],
     ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/'],
     ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/'],
+    ['Crypto Tax & Capital Gains Calculator', '/crypto-capital-gains-tax-calculator/'],
     ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/'],
     ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/'],
     ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/'],
@@ -39,7 +40,7 @@
     ['Personal Loan Calculator', '/personal-loan-calculator/'],
     ['Mortgage Affordability Calculator', '/mortgage-affordability-calculator/'],
     ['Rent vs Buy Calculator', '/rent-vs-buy-calculator/'],
-    ['Break Even Calculator', '/break-even-calculator/']
+    ['Break Even Calculator', '/break-even-calculator/'],
     ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/'],
     ['House Construction Cost Estimator', '/house-construction-cost-estimator/'],
     ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/'],
