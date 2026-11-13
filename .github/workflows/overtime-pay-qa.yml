@@ -1,0 +1,96 @@
+name: Overtime Pay Calculator QA
+on:
+  push:
+    paths:
+      - 'overtime-pay-calculator/index.html'
+      - '.github/workflows/overtime-pay-qa.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify HTML, schema, formulas and interactive events
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+          const html=fs.readFileSync('overtime-pay-calculator/index.html','utf8');
+          const title=html.match(/<title>(.*?)<\/title>/)[1],meta=html.match(/<meta name="description" content="([^"]+)"/)[1];
+          assert.ok(title.length<60 && meta.length<155);
+          assert.ok(html.includes('<link rel="canonical" href="https://returnoninvestmentcalculator.in/overtime-pay-calculator/">'));
+          assert.equal((html.match(/adsbygoogle\.js/g)||[]).length,1);
+          const schemas=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
+          assert.ok(schemas[0]['@graph'].some(x=>x['@type']==='WebApplication'));
+          const questions=schemas[0]['@graph'].find(x=>x['@type']==='FAQPage').mainEntity;
+          assert.equal(questions.length,5);
+          assert.equal((html.match(/<details><summary>/g)||[]).length,5);
+          const source=html.slice(html.lastIndexOf('<script>')+8,html.lastIndexOf('</script>'));
+          new vm.Script(source,{filename:'overtime-calculator.js'});
+          const ids=[...html.matchAll(/id="([^"]+)"/g)].map(x=>x[1]);
+          assert.equal(ids.length,new Set(ids).size);
+          const init={wage:'25',wageRange:'25',workedHours:'48',workedRange:'48',standardHours:'40',currency:'USD',frequency:'weekly'};
+          const elems={};
+          const element=(name)=>({
+            nodeName:name,value:'',max:'80',textContent:'',hidden:false,style:{},className:'',children:[],attributes:{},events:{},
+            classList:{toggle(){}},setAttribute:function(k,v){this.attributes[k]=v;},getAttribute:function(k){return this.attributes[k];},
+            appendChild:function(c){this.children.push(c);},replaceChildren:function(){this.children=[];},
+            addEventListener:function(evt,fn){(this.events[evt]??=[]).push(fn);},select(){}
+          });
+          for(const id of ids){elems[id]=element('div');elems[id].value=init[id]??'';}
+          elems.wageRange.max='200';
+          elems.multi15.attributes['data-multiple']='1.5';
+          elems.multi20.attributes['data-multiple']='2';
+          const doc={getElementById:(id)=>{assert.ok(elems[id],id+' exists');return elems[id];},createElement:element,addEventListener(){}};
+          const sandbox={document:doc,window:{Chart:null,isSecureContext:false},navigator:{},Intl,Math,Number,Array,Object,String,console,setTimeout};
+          vm.runInNewContext(source,sandbox,{timeout:2500});
+          const event=(id,type)=>{for(const f of elems[id].events[type]||[])f.call(elems[id],{preventDefault(){}});};
+          const set=(id,value,type='input')=>{elems[id].value=String(value);event(id,type);};
+          assert.equal(elems.grossPay.textContent,'$1,300.00');
+          assert.equal(elems.regularPay.textContent,'$1,000.00');
+          assert.equal(elems.overtimePay.textContent,'$300.00');
+          assert.equal(elems.premiumPay.textContent,'$100.00');
+          assert.equal(elems.blendedRate.textContent,'$27.08');
+          assert.equal(elems.annualPay.textContent,'$67,600.00');
+          assert.equal(elems.periodRows.children.length,5);
+          set('workedHours',40);
+          assert.equal(elems.overtimePay.textContent,'$0.00');
+          assert.equal(elems.grossPay.textContent,'$1,000.00');
+          set('workedHours',0);
+          assert.equal(elems.grossPay.textContent,'$0.00');
+          assert.equal(elems.blendedRate.textContent,'N/A');
+          set('workedHours',48);
+          event('multi20','click');
+          assert.equal(elems.grossPay.textContent,'$1,400.00');
+          assert.equal(elems.overtimePay.textContent,'$400.00');
+          assert.equal(elems.premiumPay.textContent,'$200.00');
+          event('multi15','click');
+          set('standardHours',35);
+          assert.equal(elems.regularPay.textContent,'$875.00');
+          assert.equal(elems.overtimePay.textContent,'$487.50');
+          assert.equal(elems.grossPay.textContent,'$1,362.50');
+          set('standardHours',40);
+          set('frequency','biweekly','change');
+          assert.equal(elems.grossPay.textContent,'$2,600.00');
+          set('frequency','semimonthly','change');
+          assert.equal(elems.grossPay.textContent,'$2,816.67');
+          set('frequency','monthly','change');
+          assert.equal(elems.grossPay.textContent,'$5,633.33');
+          set('currency','INR','change');
+          assert.equal(elems.grossPay.textContent,'₹5,633.33');
+          assert.equal(elems.wage.value,'25','Currency is a denomination switch, not FX');
+          set('frequency','weekly','change');
+          set('wage',-1);
+          assert.equal(elems.validationError.hidden,false);
+          set('wage',25);
+          assert.equal(elems.validationError.hidden,true);
+          set('workedRange',60);
+          assert.equal(elems.workedHours.value,'60');
+          set('wageRange',30);
+          assert.equal(elems.wage.value,'30');
+          set('workedHours',81);
+          assert.equal(elems.validationError.hidden,false);
+          event('reset','click');
+          assert.equal(elems.grossPay.textContent,'$1,300.00');
+          assert.equal(elems.validationError.hidden,true);
+          console.log('PASS: SEO metadata/schema, syntax, default math, no OT, zero hours, double-time, custom threshold, pay periods, currency, invalid inputs, sliders, reset');
+          NODE
