@@ -1,0 +1,112 @@
+name: Dividend Yield on Cost Calculator QA
+on:
+  push:
+    paths:
+      - 'dividend-yield-on-cost-calculator/**'
+      - 'assets/js/common-header.js'
+      - 'assets/js/common-footer.js'
+      - 'assets/js/common-search.js'
+      - 'sitemap.xml'
+      - '.github/workflows/dividend-yield-on-cost-qa.yml'
+  pull_request:
+    paths:
+      - 'dividend-yield-on-cost-calculator/**'
+      - 'assets/js/common-header.js'
+      - 'assets/js/common-footer.js'
+      - 'assets/js/common-search.js'
+      - 'sitemap.xml'
+      - '.github/workflows/dividend-yield-on-cost-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate SEO, formula outputs, input constraints, fallback and nav
+        run: |
+          node <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          const html=fs.readFileSync('dividend-yield-on-cost-calculator/index.html','utf8');
+          const head=html.match(/<head[^>]*>([\s\S]*?)<\/head>/i)?.[1]||'';
+          const slug='dividend-yield-on-cost-calculator';
+          const url='https://returnoninvestmentcalculator.in/'+slug+'/';
+          assert.equal((head.match(/adsbygoogle\.js/g)||[]).length,1,'AdSense in head exactly once');
+          assert.equal((html.match(/adsbygoogle\.js/g)||[]).length,1,'no duplicate AdSense');
+          assert.ok(head.includes('ca-pub-2057359438981933'));
+          assert.ok(head.includes('rel="canonical" href="'+url+'"'));
+          for(const src of ['common-header.js','common-footer.js','common-pushdotify.js','common-branding.js']){
+            assert.ok(head.includes('/assets/js/'+src),'missing '+src);
+          }
+          const schemas=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+          assert.ok(schemas.length>0,'schema missing');
+          schemas.forEach(x=>JSON.parse(x[1]));
+          const sitemap=fs.readFileSync('sitemap.xml','utf8');
+          assert.equal(sitemap.split('<loc>'+url+'</loc>').length-1,1,'sitemap exact URL once');
+          for(const file of ['assets/js/common-header.js','assets/js/common-footer.js','assets/js/common-search.js']){
+            const js=fs.readFileSync(file,'utf8');
+            assert.ok(js.includes('/'+slug+'/'),file+' missing new link');
+            new vm.Script(js,{filename:file});
+          }
+          assert.ok(!html.includes('$943.98'),'incorrect example');
+          assert.ok(html.includes('$944.23'),'correct example');
+          assert.ok(html.includes('checkValidity()'),'numeric form input validation');
+          assert.ok(html.includes("typeof window.Chart !== 'function'"),'missing chart fallback');
+          const script=html.slice(html.lastIndexOf('<script>')+8,html.lastIndexOf('</script>'));
+          new vm.Script(script,{filename:'yoc-inline.js'});
+          const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+          assert.equal(new Set(ids).size,ids.length,'unique DOM IDs');
+          const elements=new Map(),listeners={};
+          for(const id of ids){
+            const inputTag=html.match(new RegExp('<input\\b[^>]*\\bid="'+id+'"[^>]*>','i'))?.[0]||'';
+            const attr=name=>(inputTag.match(new RegExp('\\b'+name+'="([^"]*)"'))||[])[1];
+            const v=attr('value')||'';
+            elements.set(id,{id,value:v,hidden:false,textContent:'',innerHTML:'',children:[],events:{},
+              checkValidity(){const x=Number(this.value);return this.value.trim()!==''&&Number.isFinite(x)&&
+                (attr('min')===undefined||x>=Number(attr('min')))&&
+                (attr('max')===undefined||x<=Number(attr('max')))&&
+                (attr('step')!=='1'||Number.isInteger(x));},
+              addEventListener(name,fn){(this.events[name]??=[]).push(fn);},
+              appendChild(child){this.children.push(child);},
+              getContext(){return {};}
+            });
+          }
+          const doc={getElementById:id=>elements.get(id),
+            querySelector:selector=>({textContent:selector}),
+            createElement:tag=>({tagName:tag,innerHTML:''}),
+            addEventListener:(name,fn)=>{(listeners[name]??=[]).push(fn);}};
+          const ctx={document:doc,window:{Chart:undefined},Math,Number,Intl,Array,Object,String,console};
+          vm.runInNewContext(script,ctx,{timeout:2000});
+          for(const fn of listeners.DOMContentLoaded||[])fn();
+          const get=id=>elements.get(id),val=id=>get(id).textContent;
+          const fire=(id,name='input')=>{for(const cb of get(id).events[name]||[])cb({preventDefault(){}});};
+          assert.equal(val('res-current-yoc'),'6.00%');
+          assert.equal(val('res-market-yield'),'2.50%');
+          assert.equal(val('res-total-cost'),'$5,000.00');
+          assert.equal(val('res-market-value'),'$12,000.00');
+          assert.equal(val('res-projected-yoc'),'10.75%');
+          assert.equal(get('schedule-tbody').children.length,11,'default 10yr + year0');
+          assert.equal(get('chart-fallback').hidden,false,'no-chart fallback');
+          const changes={shares:'200',costBasis:'40',currentPrice:'100',currentDividend:'2.4',dividendGrowthRate:'7',projectionYears:'10'};
+          for(const [id,value] of Object.entries(changes)){get(id).value=value;fire(id);}
+          assert.equal(val('res-current-yoc'),'6.00%');
+          assert.equal(val('res-projected-yoc'),'11.80%');
+          assert.ok(get('schedule-tbody').children.at(-1).innerHTML.includes('$944.23'),'10yr dividend case');
+          const old=val('res-projected-yoc');
+          get('projectionYears').value='999';fire('projectionYears');
+          assert.equal(val('res-projected-yoc'),old,'invalid form must not recalculate');
+          assert.equal(get('input-error').hidden,false,'error feedback must show');
+          get('shares').value='-1';fire('shares');
+          assert.equal(get('input-error').hidden,false,'negative shares should fail');
+          fire('reset-btn','click');
+          assert.equal(val('res-current-yoc'),'6.00%');
+          assert.equal(get('input-error').hidden,true,'reset clears error');
+          assert.equal(get('schedule-tbody').children.length,11,'reset default 10yr');
+          console.log('PASS: SEO + sitemap + 3 navigation + JS syntax + math + invalid-input + Chart.js fallback');
+          NODE
