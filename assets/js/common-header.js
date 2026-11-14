@@ -14,6 +14,7 @@
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
         ['SIP Calculator', '/sip-calculator/', 'Estimate monthly SIP returns, goals and step-up growth'],
         ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/', 'Project dividend growth, DRIP shares and passive income'],
+        ['Dividend Yield on Cost Calculator', '/dividend-yield-on-cost-calculator/', 'Calculate dividends as a percentage of your original share cost'],
         ['Compound Interest Calculator', '/compound-interest-calculator/', 'Estimate the future corpus of a one-time investment'],
         ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
         ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],

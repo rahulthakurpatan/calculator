@@ -7,6 +7,7 @@
     ['ROI Calculator', '/'],
     ['SIP Calculator', '/sip-calculator/'],
     ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/'],
+    ['Dividend Yield on Cost Calculator', '/dividend-yield-on-cost-calculator/'],
     ['Compound Interest Calculator', '/compound-interest-calculator/'],
     ['Step-Up SIP Calculator', '/step-up-sip-calculator/'],
     ['Lump Sum Calculator', '/lump-sum-calculator/'],
