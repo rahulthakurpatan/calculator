@@ -9,7 +9,7 @@ function compute(v){
  const l=limits[v.year];if(!l)throw Error('Choose a supported tax year.');
  const keys=['age','eligibleMonths','employer','existing','planned','federal','state','deductible','oop'];
  keys.forEach(k=>{if(!Number.isFinite(v[k])||v[k]<0)throw Error('Invalid '+k+'.')});
- if(v.age>120||v.eligibleMonths>12||v.federal>60||v.state>30)throw Error('Age, months or tax rate out of range.');
+ if(v.age>120||!Number.isInteger(v.age)||!Number.isInteger(v.eligibleMonths)||v.eligibleMonths>12||v.federal>60||v.state>30)throw Error('Age, months or tax rate out of range.');
  if(!['self','family'].includes(v.coverage)||!['yes','no'].includes(v.medicare)||!['yes','no'].includes(v.payroll))throw Error('Invalid selection.');
  const base=l[v.coverage],catchup=v.age>=55?1000:0;
  const statutory=base+catchup;
