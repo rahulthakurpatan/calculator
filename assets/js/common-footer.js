@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['SaaS Rule of 40 & Burn Multiple Calculator', '/saas-rule-of-40-calculator/'],
     ['Mortgage PMI Removal & Savings Calculator', '/mortgage-pmi-removal-calculator/'],
     ['401(k) Employer Match & Vesting Calculator', '/401k-employer-match-vesting-calculator/'],
     ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/'],
