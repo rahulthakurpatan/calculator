@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1769e0">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>PMI Removal Calculator – 80% LTV Date &amp; Savings</title>
+<meta name="description" content="Calculate when you can request PMI removal at 80% LTV, see the original 78% scheduled termination milestone, and estimate savings from extra mortgage payments.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/mortgage-pmi-removal-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="InvestCalc">
+<meta property="og:title" content="Mortgage PMI Removal &amp; Savings Calculator – 80% and 78% Rules">
+<meta property="og:description" content="Compare original-schedule and extra-payment PMI timelines, savings and mortgage-interest impact, with live LTV charts.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/mortgage-pmi-removal-calculator/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Mortgage PMI Removal and Savings Calculator","url":"https://returnoninvestmentcalculator.in/mortgage-pmi-removal-calculator/","description":"Estimate 80 percent original-value borrower-requested PMI cancellation, scheduled 78 percent automatic termination and potential extra principal savings."},{"@type":"SoftwareApplication","name":"PMI Removal & Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://returnoninvestmentcalculator.in/mortgage-pmi-removal-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Mortgage PMI Removal Calculator","item":"https://returnoninvestmentcalculator.in/mortgage-pmi-removal-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When can I request PMI removal at 80 percent loan-to-value?","acceptedAnswer":{"@type":"Answer","text":"For eligible conventional borrower-paid PMI, you can request cancellation in writing when the mortgage reaches 80 percent of its original property value based on actual principal payments or its scheduled balance. You must also meet payment history, being current, property-value and lien requirements."}},{"@type":"Question","name":"Does paying extra principal move the automatic 78 percent PMI termination date earlier?","acceptedAnswer":{"@type":"Answer","text":"Generally no for a fixed-rate conventional mortgage under the Homeowners Protection Act. Automatic 78 percent termination is determined by the original amortization schedule, irrespective of your actual balance. Extra payments can help you request cancellation earlier at the 80 percent threshold."}},{"@type":"Question","name":"Is original property value the purchase price or appraisal?","acceptedAnswer":{"@type":"Answer","text":"For a standard home purchase, original value generally means the lower of the contract purchase price and appraisal at loan origination. For refinancing it has a different definition. This calculator models purchase loans, not refinanced or modified loans."}},{"@type":"Question","name":"Can I remove FHA mortgage insurance with this calculator?","acceptedAnswer":{"@type":"Answer","text":"No. FHA mortgage insurance premium and VA loan rules differ from conventional private mortgage insurance. This calculator is for standard eligible fixed-rate conventional borrower-paid PMI."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
+<script defer src="/assets/js/common-branding.js"></script>
+<script defer src="/assets/js/common-pushdotify.js"></script>
+<style>
+:root{--ink:#172a47;--muted:#60748b;--blue:#1769e0;--purple:#7d5bd3;--green:#078f80;--line:#e0e8f4;--bg:#f5f8fe;--shadow:0 17px 44px #2a487b10}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--blue)}a:hover{text-decoration:none}input,select,button{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8fbeff;outline-offset:2px}
+.wrap{width:min(1240px,calc(100% - 34px));margin:auto}
+.hero{padding:45px 0 34px;background:radial-gradient(circle at 88% 4%,#e5e3ff 0,transparent 34%),radial-gradient(circle at 7% 12%,#dff5f0 0,transparent 33%),linear-gradient(#fff,#f5f8fe);border-bottom:1px solid #e5edf5}
+.crumb{font-size:12px;font-weight:650;color:#6c7e98}.crumb a{text-decoration:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #cfe3ff;background:#eff6ff;color:#2a569e;border-radius:60px;padding:6px 12px;font-weight:850;font-size:11px;letter-spacing:.055em;margin:18px 0 0}
+.dot{height:8px;width:8px;background:#0fa68d;border-radius:50%;box-shadow:0 0 0 4px #c8f6e8}
+h1{font-size:clamp(32px,4.5vw,50px);line-height:1.13;letter-spacing:-1.7px;margin:13px 0 12px;max-width:920px}
+.intro{font-size:17px;color:#5e728b;max-width:840px;margin:0}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin:19px 0 0}.trust span{font-size:12px;padding:6px 12px;border-radius:60px;border:1px solid #dce7f5;color:#58738e;background:#fff}
+main{padding:27px 0 66px}.calculator{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:start;gap:19px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:24px;min-width:0}
+.panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px}.panel h2{margin:0;font-size:20px;letter-spacing:-.45px;line-height:1.28}
+.tag{white-space:nowrap;color:#087d68;background:#eaf9f3;font-size:11px;font-weight:900;border-radius:50px;padding:5px 10px}
+.desc{font-size:13px;color:var(--muted);margin:8px 0 20px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{min-width:0;display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}
+.field label{font-size:12px;color:#4c607a;font-weight:760}.field input,.field select{width:100%;height:46px;border:1px solid #d7e0ed;border-radius:11px;background:#fcfdff;color:#1e304b;padding:0 11px;font-size:15px}
+.field input:focus,.field select:focus{border-color:#5995ef;background:#fff}.field small{font-size:11px;color:#7c899f;line-height:1.45}
+.section{grid-column:1/-1;border-top:1px solid #e8eef6;margin:7px 0 0;padding-top:13px;letter-spacing:.085em;text-transform:uppercase;color:#7586a0;font-size:11px;font-weight:900}
+.section.first{border:0;margin:0;padding:0}
+.inline-help{grid-column:1/-1;background:#f0f6ff;color:#3f5d86;padding:12px;border-radius:11px;font-size:12px}
+.inline-help.warn{background:#fff7eb;color:#88601e}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.btn{border:0;border-radius:11px;font-size:13px;font-weight:850;padding:11px 15px}
+.btn.primary{color:white;background:#1769e0;box-shadow:0 8px 18px #1769e02b}.btn.secondary{color:#2a527a;background:#eef3fb}.btn:hover{filter:brightness(.97)}
+.error{min-height:1.4em;color:#b33a52;font-size:13px;font-weight:760;margin:11px 0 0}
+.privacy{color:#7a899e;font-size:12px;margin:9px 0 0}
+.results{background:linear-gradient(135deg,#fff 72%,#f3f7ff)}
+.banner{color:#fff;border-radius:16px;padding:18px 20px;margin:17px 0 13px;background:linear-gradient(115deg,#1e4ead,#7354cd)}
+.banner.improved{background:linear-gradient(115deg,#0b7a80,#3268ae)}.banner.baseline{background:linear-gradient(115deg,#596a8c,#8060ba)}
+.banner .kicker{font-size:11px;letter-spacing:.075em;text-transform:uppercase;font-weight:850;opacity:.88}
+.banner strong{display:block;font-size:18px;margin:4px 0}.banner p{font-size:12px;opacity:.93;line-height:1.5;margin:0}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{min-width:0;background:#fff;border:1px solid #e5ebf4;border-radius:14px;padding:13px}
+.metric.blue{background:#eff6ff;border-color:#cfe3ff}.metric.purple{background:#f8f3ff;border-color:#e5dcff}
+.metric .label{font-size:11px;color:#62738a;font-weight:750}
+.metric strong{display:block;margin:4px 0 0;color:#203751;font-size:clamp(18px,2.1vw,24px);line-height:1.3;font-variant-numeric:tabular-nums;letter-spacing:-.55px;overflow-wrap:anywhere}
+.metric.blue strong{color:#1469cc}.metric.purple strong{color:#7455c6}
+.title-small{font-size:14px;font-weight:850;margin:21px 0 8px}
+.breakdown{display:grid;gap:6px}.breakdown div{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px solid #e8edf5;padding-bottom:5px;font-size:12px}
+.breakdown span{color:#62748d}.breakdown strong{text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.chart{border:1px solid #e3ebf5;border-radius:14px;padding:7px 5px;background:#fff;overflow:hidden}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:#677992;margin:7px 0 0}
+.legend i{display:inline-block;width:12px;height:4px;border-radius:4px;margin-right:5px;vertical-align:middle}
+.note{border:1px solid #d8e6f8;background:#f0f6ff;color:#3d5e85;padding:12px;border-radius:12px;font-size:12px;margin:12px 0}
+.note.warn{border-color:#efddb6;background:#fff8eb;color:#865f21}
+.prose{max-width:990px;margin:38px auto 0;font-size:15px;color:#465872}
+.prose h2{color:#1d3151;font-size:25px;letter-spacing:-.45px;line-height:1.32;margin:30px 0 9px}
+.prose h3{color:#203453;font-size:17px;margin:20px 0 8px}.prose p,.prose li{line-height:1.85}.prose ul{padding-left:21px}
+.prose .box{background:#fff;border:1px solid #dfe7f3;border-radius:17px;padding:23px;margin:22px 0}
+.formula{display:block;font:13px/1.87 ui-monospace,Consolas,monospace;color:#25517f;background:#eff5fd;border-radius:11px;padding:14px;white-space:pre-wrap;overflow-x:auto}
+.table-scroll{overflow-x:auto}table{width:100%;min-width:570px;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #e4eaf4;padding:10px}th{background:#eff5fb;color:#355b80}
+@media(min-width:940px){.results{position:sticky;top:17px}}
+@media(max-width:900px){.calculator{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:30px 0 25px}.intro{font-size:15px}.panel{padding:16px;border-radius:15px}.fields{gap:10px}.field input,.field select{height:44px;font-size:14px;padding:0 9px}.metric strong{font-size:19px}.banner{padding:16px}}
+@media print{#site-header,#site-footer,.actions,.crumb,.trust{display:none!important}.wrap{width:100%}body,.hero{background:#fff}.hero{padding:8px 0}.calculator{display:block}.panel{box-shadow:none;margin-bottom:13px}.results{position:static}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/mortgage-payoff-calculator/">Mortgage tools</a> / PMI Removal</nav>
+<span class="eyebrow"><span class="dot"></span> U.S. CONVENTIONAL MORTGAGE PMI ANALYSIS</span>
+<h1>PMI Removal <span style="color:#1769e0">Date &amp; Savings</span> Calculator</h1>
+<p class="intro">Estimate when you can request PMI cancellation at 80% original-value LTV, see the scheduled 78% automatic-termination milestone, and model savings from extra principal payments. Your timeline and graphs update instantly.</p>
+<div class="trust"><span>✦ 80% request vs 78% automatic</span><span>✦ Real-time LTV graphs</span><span>✦ Extra payment scenarios</span><span>✦ Transparent HPA rules</span></div>
+</div></header>
+<main class="wrap">
+<div class="calculator">
+<section class="panel" aria-labelledby="inputHeading">
+<div class="panel-header"><h2 id="inputHeading">Your mortgage inputs</h2><span class="tag">01 · Configure</span></div>
+<p class="desc">For a <strong>standard fixed-rate, unmodified U.S. conventional purchase mortgage with borrower-paid PMI</strong>. Enter your servicer's information. Do not apply these rules to FHA MIP, VA loans, lender-paid PMI or modified loans.</p>
+<form id="pmi-form" novalidate><div class="fields">
+<div class="section first">01 / Original home and loan</div>
+<div class="field"><label for="purchase">Original home purchase price ($)</label><input id="purchase" data-label="Original purchase price" type="number" min="1" max="10000000000" step="any" value="400000" required></div>
+<div class="field"><label for="appraisal">Origination appraisal ($)</label><input id="appraisal" data-label="Original appraisal" type="number" min="1" max="10000000000" step="any" value="410000" required><small>For a purchase loan, the lower of price and appraisal is generally used for HPA's original value.</small></div>
+<div class="field"><label for="principal">Original mortgage amount ($)</label><input id="principal" data-label="Original mortgage principal" type="number" min="1" max="10000000000" step="any" value="360000" required></div>
+<div class="field"><label for="rate">Original fixed annual mortgage interest (%)</label><input id="rate" data-label="Mortgage interest rate" type="number" min="0" max="30" step="any" value="6.5" required></div>
+<div class="field"><label for="term">Original mortgage term (years)</label><select id="term" data-label="Original loan term"><option value="10">10 years</option><option value="15">15 years</option><option value="20">20 years</option><option value="25">25 years</option><option value="30" selected>30 years</option><option value="35">35 years</option><option value="40">40 years</option></select></div>
+<div class="field"><label for="firstPayment">First scheduled payment month</label><input id="firstPayment" data-label="First payment month" type="month" value="2022-01" required><small>Use first contractual P&amp;I payment, not closing month.</small></div>
+<div class="section">02 / Current loan and PMI</div>
+<div class="field"><label for="asOf">Calculation as-of month</label><input id="asOf" data-label="As-of month" type="month" value="2026-11" required><small>Future projections begin at the start of this month.</small></div>
+<div class="field"><label for="currentBalance">Actual principal balance ($, optional)</label><input id="currentBalance" data-label="Current balance" type="number" min="0" max="10000000000" step="any" placeholder="Auto-estimate from original schedule"><small>Leave empty for scheduled estimate. Enter actual statement balance to include previous extra payments.</small></div>
+<div class="field"><label for="pmi">Current monthly PMI premium ($)</label><input id="pmi" data-label="Monthly PMI" type="number" min="0" max="1000000" step="any" value="165" required></div>
+<div class="field"><label for="delay">Assumed processing buffer (months)</label><input id="delay" data-label="Request approval buffer" type="number" min="0" max="12" step="1" value="1" required><small>Illustrative lag before a successful 80% request ends PMI; not a mandated approval period.</small></div>
+<div class="section">03 / Extra principal strategy</div>
+<div class="field"><label for="extra">Additional monthly principal payment ($)</label><input id="extra" data-label="Extra monthly principal" type="number" min="0" max="10000000" step="any" value="250" required></div>
+<div class="field"><label for="lump">One-time extra principal now ($)</label><input id="lump" data-label="One-time lump sum" type="number" min="0" max="10000000000" step="any" value="5000" required><small>Assumes an immediate principal reduction before next scheduled payment.</small></div>
+<div class="section">04 / Optional: current-value appraisal pathway</div>
+<div class="field full"><label for="investor">Investor-policy scenario</label><select id="investor"><option value="none" selected>Not assessing current-value eligibility</option><option value="fannie1">Fannie Mae – one-unit primary residence or second home</option></select><small>Not the same as standard Homeowners Protection Act 80%/78% rules. Confirm investor ownership and eligibility with your servicer.</small></div>
+<div class="field"><label for="currentValue">New appraised property value ($, optional)</label><input id="currentValue" data-label="Current property value" type="number" min="1" max="10000000000" step="any" placeholder="e.g. 525000"><small>Do not use an unsupported online estimate as proof of value.</small></div>
+<div class="field"><label for="appraisalCost">Potential appraisal expense ($)</label><input id="appraisalCost" data-label="Appraisal cost" type="number" min="0" max="10000000" step="any" value="450" required></div>
+<div class="inline-help warn">PMI cancellation is <strong>not automatic at 80%</strong>. Written request and eligibility are required. The scheduled 78% automatic date is based on the original amortization schedule, not extra principal payments. Current-value investor guidelines are conditional.</div>
+</div>
+<div class="actions">
+<button class="btn primary" type="button" id="copy">Copy summary</button>
+<button class="btn secondary" type="button" id="download">Export CSV</button>
+<button class="btn secondary" type="button" id="reset">Reset</button>
+<button class="btn secondary" type="button" id="print">Print report</button>
+</div>
+<p id="error" class="error" role="status" aria-live="polite"></p>
+<p class="privacy">🔒 All mortgage math runs in your browser. Your home details are not sent to a calculator service.</p>
+</form>
+</section>
+<section class="panel results" aria-labelledby="resultHeading">
+<div class="panel-header"><h2 id="resultHeading">Live PMI savings dashboard</h2><span class="tag">02 · Results</span></div>
+<div id="banner" class="banner" aria-live="polite">
+<span class="kicker">PMI removal opportunity</span><strong id="bannerHead">Calculating…</strong><p id="bannerDesc">Enter your loan details to estimate timelines.</p></div>
+<div class="metrics">
+<div class="metric blue"><div class="label">PMI cost potentially avoided</div><strong id="pmiSaved">—</strong></div>
+<div class="metric purple"><div class="label">Months of modeled PMI acceleration</div><strong id="monthsSaved">—</strong></div>
+<div class="metric"><div class="label">Est. PMI end without extra payments</div><strong id="baselineEnd">—</strong></div>
+<div class="metric"><div class="label">Est. PMI end with extra payments</div><strong id="plannedEnd">—</strong></div>
+<div class="metric"><div class="label">Estimated mortgage interest saved</div><strong id="interestSaved">—</strong></div>
+<div class="metric"><div class="label">Combined interest + PMI savings*</div><strong id="combinedSaved">—</strong></div>
+</div>
+<h3 class="title-small">Legal milestones: original loan schedule</h3>
+<div class="breakdown">
+<div><span>80% request milestone with extra payments†</span><strong id="requestDate">—</strong></div>
+<div><span>Scheduled 78% automatic-termination payment month</span><strong id="autoDate">—</strong></div>
+<div><span>Final midpoint termination month</span><strong id="midpointDate">—</strong></div>
+<div><span>Potential 80% request month, regular</span><strong id="regular80">—</strong></div>
+<div><span>Potential 80% request month, extra</span><strong id="extra80">—</strong></div>
+<div><span>Modeled PMI-ending condition, regular</span><strong id="baselineReason">—</strong></div>
+<div><span>Modeled PMI-ending condition, extra</span><strong id="plannedReason">—</strong></div>
+</div>
+<h3 class="title-small">Mortgage balances and premiums</h3>
+<div class="breakdown">
+<div><span>Original home value for PMI test</span><strong id="valueOrig">—</strong></div>
+<div><span>Original mortgage LTV</span><strong id="origLtv">—</strong></div>
+<div><span>Original monthly principal &amp; interest</span><strong id="scheduledPmt">—</strong></div>
+<div><span>Principal at as-of month</span><strong id="currentBalanceOut">—</strong></div>
+<div><span>Principal after today's lump sum</span><strong id="balanceNow">—</strong></div>
+<div><span>Current LTV on original value</span><strong id="currentLtv">—</strong></div>
+<div><span>Post-lump-sum LTV on original value</span><strong id="plannedLtv">—</strong></div>
+<div><span>Estimated future PMI: regular plan</span><strong id="regularPmi">—</strong></div>
+<div><span>Estimated future PMI: extra-payment plan</span><strong id="extraPmi">—</strong></div>
+</div>
+<h3 class="title-small">Original-value LTV over time</h3>
+<div class="chart"><svg id="ltv-chart" viewBox="0 0 640 267" role="img" aria-labelledby="ltv-chart-title ltv-chart-desc"><title id="ltv-chart-title">Original value LTV graph</title><desc id="ltv-chart-desc">Balance percentage lines with and without extra payments.</desc></svg></div>
+<div class="legend"><span><i style="background:#1769e0"></i>Regular payments</span><span><i style="background:#855ed8"></i>Extra payments</span><span><i style="background:#d8b978"></i>78% / 80% thresholds</span></div>
+<h3 class="title-small">Cumulative future PMI comparison</h3>
+<div class="chart"><svg id="pmi-chart" viewBox="0 0 640 218" role="img" aria-labelledby="pmi-chart-title pmi-chart-desc"><title id="pmi-chart-title">Total projected PMI graph</title><desc id="pmi-chart-desc">Compare future PMI bills for each principal strategy.</desc></svg></div>
+<div class="legend"><span><i style="background:#1769e0"></i>Regular-plan PMI</span><span><i style="background:#855ed8"></i>Extra-principal PMI</span></div>
+<h3 class="title-small">Optional: Fannie Mae current-value pathway</h3>
+<div class="breakdown">
+<div><span>Current home-value LTV</span><strong id="valueLtv">—</strong></div>
+<div><span>Applicable investor LTV threshold</span><strong id="valueThreshold">—</strong></div>
+<div><span>Possible net PMI savings after appraisal cost‡</span><strong id="valueSavings">—</strong></div>
+</div>
+<p class="note" id="valueStatus">Enter details to evaluate optional appraisal scenario.</p>
+<p class="note warn" id="notice" aria-live="polite">Review lender rules and current payment status before requesting PMI cancellation.</p>
+<p class="note">* Savings exclude extra principal cash outlay, investment opportunity cost, taxes and mortgage modification fees. † An 80% request requires written borrower action, satisfactory payment history and other servicer conditions; displayed dates are planning estimates, not approvals. ‡ Investor-path savings assume an immediate accepted request after the input processing buffer; actual eligibility and valuations require confirmation.</p>
+</section>
+</div>
+<article class="prose">
+<h2>When can you remove private mortgage insurance (PMI)?</h2>
+<p>Private mortgage insurance (PMI) typically protects the lender on a conventional mortgage when a borrower puts down less than 20%. PMI often appears as a separate charge in the monthly mortgage bill. If you are current on payments and meet the legal requirements, you may be able to stop paying it without refinancing. This calculator models <strong>fixed-rate, unmodified U.S. conventional home-purchase loans with borrower-paid PMI</strong> and distinguishes the two commonly confused thresholds.</p>
+<div class="box">
+<h2>80% vs 78% LTV: the critical distinction</h2>
+<p><strong>At 80% of the original property value:</strong> The Homeowners Protection Act (HPA) generally permits a borrower to <em>request</em> cancellation. That may occur when the scheduled original balance reaches 80% or earlier if actual principal payments reduce the balance to 80%. The borrower normally needs to submit a written request, have a good payment history, be current, and satisfy applicable requirements involving property value and subordinate liens.</p>
+<p><strong>At 78% of the original property value:</strong> Standard automatic termination is tied to the original amortization schedule for a fixed-rate mortgage, <em>not</em> the accelerated balance after extra payments. The borrower must be current; if delinquent on the scheduled date, PMI generally terminates after payments are brought current.</p>
+<p><strong>At the contractual midpoint:</strong> If PMI has not ended earlier, the HPA has a final-termination backstop at the first day of the month following the loan's amortization midpoint for a current borrower. A standard 30-year amortization reaches that point around year 15. Special high-risk loans and certain loan programs may have other conditions.</p>
+<p>Primary authorities: <a href="https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/" rel="noopener noreferrer">CFPB – When can I remove PMI?</a>; <a href="https://uscode.house.gov/us/usc/t12/s4902/" rel="noopener noreferrer">12 U.S.C. § 4902 – Termination of PMI</a>; <a href="https://www.fdic.gov/consumer-compliance-examination-manual/v-5-homeowners-protection-act" rel="noopener noreferrer">FDIC HPA compliance guidance</a>.</p>
+</div>
+<h2>How the PMI removal calculator works</h2>
+<p>First, it computes a fixed-rate amortization schedule from the original mortgage principal, rate and term. The legal threshold value for a standard purchase loan is generally the <strong>lower of the purchase price and appraisal at origination</strong>. The original schedule determines scheduled 80% and 78% milestones independently from what the borrower actually owes now. If you supply your current unpaid principal balance, the calculator uses it for both future scenarios; if blank, it uses the balance estimated from the original schedule at your as-of month.</p>
+<p>Then it simulates two future mortgage tracks: your normal contractual principal-and-interest payment and the same payment with an additional monthly amount plus an immediate lump sum. Both tracks calculate interest on the outstanding balance. The first eligible 80% request milestone is the earlier of the original schedule crossing or the actual projected balance crossing. PMI-cost projections assume that cancellation requests are submitted and approved after the processing buffer you enter. They are <strong>conditional scenarios</strong>, not lender-approved dates.</p>
+<span class="formula">HPA original property value = min(original purchase price, origination appraisal)
+Original 80% request threshold = Original property value × 0.80
+Original scheduled 78% termination threshold = Original property value × 0.78
+Fixed monthly principal and interest = P × r ÷ [1 − (1+r)^(−n)]
+Future monthly interest = Remaining principal × r
+Future remaining balance = Previous balance + interest − regular P&amp;I − extra principal
+First possible 80% request = earlier of original-schedule 80% and actual-balance 80%
+Scheduled automatic 78% termination = original-schedule milestone only
+Estimated PMI savings = regular-plan future PMI − extra-plan future PMI
+Mortgage interest savings = remaining interest without extras − remaining interest with extras</span>
+<p>Here P is the original loan principal, r is the monthly interest rate, and n is the original number of monthly payments. Remaining interest savings use the same contractual P&amp;I amount in both projections, with no loan recast. If you refinance, modify your mortgage, have an adjustable rate or pay PMI up front rather than monthly, these formulas may be inapplicable.</p>
+<h2>Worked example: $400,000 home with a 30-year mortgage</h2>
+<p>Suppose a home cost $400,000 and appraised at $410,000 when purchased. The original mortgage was $360,000 at 6.5% fixed for 30 years, with its first payment in January 2022. As of November 2026, the scheduled principal balance is about <strong>$337,892</strong>. An owner paying <strong>$165 monthly PMI</strong> wants to compare keeping scheduled payments with adding $250 per month and applying $5,000 to principal immediately.</p>
+<p>Using one month of assumed PMI-request processing after meeting the 80% threshold, the baseline future PMI estimate is about <strong>$6,270</strong>; the extra-payment estimate is about <strong>$3,135</strong>. The illustrative PMI difference is <strong>$3,135</strong>. Mortgage interest savings appear separately. Neither the 78% statutory scheduled milestone nor the loan-term midpoint is moved by these extra payments.</p>
+<h2>Does a lump-sum payment cancel PMI immediately?</h2>
+<p>Only if the resulting loan balance, or an eligible scheduled threshold, satisfies the applicable requirements—and the servicer accepts the cancellation request. Simply seeing 80% on a calculator is not the same as having PMI removed from a billing statement. Check good payment history, whether there are second liens, property-value evidence and the loan investor's policy.</p>
+<h2>Can a higher current appraisal let you remove PMI sooner?</h2>
+<p>Sometimes, through <strong>separate investor servicing rules</strong>. For eligible Fannie Mae loans secured by a one-unit principal residence or second home, current-value borrower-requested cancellation generally requires at least two years' seasoning and a maximum 75% LTV between two and five years; after more than five years, the threshold generally becomes 80%. Qualifying value-increasing improvements may allow an exception to the usual two-year seasoning rule. Other occupancy types and investors have different thresholds. This tool models the ordinary one-unit Fannie Mae threshold only, without the improvement exception.</p>
+<p>Fannie Mae's servicer may require an inspection-based valuation and must assess the borrower's payment record, eligibility and investor conditions. A Zillow-style online estimate is not automatically an accepted appraisal. The optional current-value pathway is kept separate from the statutory 80%/78% calculations, and the estimated savings net of an appraisal fee are conditional—not guaranteed. <a href="https://servicing-guide.fanniemae.com/svc/b-8.1-04/termination-conventional-mortgage-insurance" rel="noopener noreferrer">Fannie Mae Servicing Guide B-8.1-04</a>.</p>
+<h2>How to request PMI cancellation</h2>
+<ul>
+<li>Confirm whether the loan is conventional with borrower-paid PMI and whether the current loan has been refinanced or modified.</li>
+<li>Request the loan's original amortization schedule, written PMI cancellation policy and investor name from your mortgage servicer.</li>
+<li>Check the 80% original-value threshold or your servicer's permitted current-value investor pathway.</li>
+<li>Submit a written request, maintain a good payment history, ensure the loan is current and provide required valuation/lien documents.</li>
+<li>Check the written approval, effective date and subsequent mortgage statement to confirm PMI has actually stopped.</li>
+</ul>
+<h2>Common mistakes when projecting PMI savings</h2>
+<p>The largest mistake is assuming <strong>extra principal payments accelerate the statutory automatic 78% date</strong> on a fixed-rate loan. They can help borrowers <em>request</em> cancellation sooner at 80%, but the original schedule governs standard automatic termination. Another mistake is calculating 80% of the home's estimated current market price instead of its original-value definition. A current-value request is a distinct investor-policy route.</p>
+<p>A third mistake is treating mortgage-interest savings and PMI savings as cash profit without accounting for the additional principal that must be paid. Prepaying principal can save interest but also uses money that cannot be invested or kept liquid. The combined savings displayed here are gross financing-cost reductions, <em>not</em> investment return or total household benefit.</p>
+<h2>PMI vs FHA MIP vs VA funding fees</h2>
+<p>PMI refers to conventional private mortgage insurance. FHA mortgage insurance premium (MIP) has different cancellation and loan-term rules; VA guaranteed mortgages do not have monthly conventional PMI, although funding fees can apply. Lender-paid mortgage insurance also differs. This calculator should not be used to decide when FHA MIP will terminate or to estimate refunds on prepaid insurance.</p>
+<h2>Frequently asked questions</h2>
+<h3>Can I remove PMI at exactly 80% LTV?</h3>
+<p>For an eligible conventional mortgage, you may request cancellation when the 80% original-value condition is met, but you also need to meet the servicer's good-payment-history, current-payment, value and subordinate-lien requirements. A written request is typically required.</p>
+<h3>Does 78% LTV mean PMI ends without a request?</h3>
+<p>Normally, yes, on the scheduled date for the original amortization schedule if you are current. If you are delinquent, termination may be delayed until the account is current. An early payment that brings your actual balance to 78% does not necessarily change the original scheduled date.</p>
+<h3>What if the original appraisal is higher than the purchase price?</h3>
+<p>For a standard purchase, the lesser of the two is generally the original value under the HPA. Refinanced mortgages can use a different original-value definition, so this purchase-loan tool excludes them.</p>
+<h3>Does the mortgage servicer have to cancel PMI exactly one month after my request?</h3>
+<p>No. The processing buffer in this calculator is an illustrative assumption, not a legal promise of a fixed approval period. Actual timelines depend on fulfilling request, documentation and eligibility requirements.</p>
+<h3>Does this tool know my actual monthly payment or PMI cancellation status?</h3>
+<p>No. It derives original contractual P&amp;I from your inputs and estimates balances and future premiums. It does not access your loan account, verify insurance status or retrieve mortgage records.</p>
+<h3>Should I make extra payments or invest the money instead?</h3>
+<p>That depends on your mortgage rate, risk tolerance, tax rules, liquidity needs, PMI eligibility and available investment alternatives. This calculator estimates potential mortgage financing-cost savings, not a complete investment-versus-prepayment decision.</p>
+<h2>Research references and more calculators</h2>
+<p>Official sources: <a href="https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/" rel="noopener noreferrer">CFPB on PMI cancellation</a>; <a href="https://www.fdic.gov/consumer-compliance-examination-manual/v-5-homeowners-protection-act" rel="noopener noreferrer">FDIC Homeowners Protection Act guidance</a>; <a href="https://uscode.house.gov/us/usc/t12/s4902/" rel="noopener noreferrer">Federal statute 12 USC 4902</a>; <a href="https://servicing-guide.fanniemae.com/svc/b-8.1-04/termination-conventional-mortgage-insurance" rel="noopener noreferrer">Fannie Mae current-value termination guidance</a>.</p>
+<p>Explore related tools: <a href="/mortgage-payoff-calculator/">Mortgage Payoff and Extra Payments Calculator</a>, <a href="/mortgage-refinance-calculator/">Mortgage Refinance Calculator</a>, <a href="/mortgage-points-break-even-calculator/">Mortgage Points Break-Even Calculator</a>, <a href="/loan-prepayment-vs-investment-calculator/">Loan Prepayment vs Investing Calculator</a> and <a href="/rental-property-roi-calculator/">Rental Property ROI Calculator</a>.</p>
+<p><strong>Important disclaimer:</strong> This tool provides illustrative educational mortgage calculations—not underwriting, legal, tax, appraisal, PMI policy certification or a promise of termination. The HPA includes exclusions for certain high-risk and other transactions. Always use the mortgage servicer's written PMI disclosure, current loan documents and official policy to determine whether or when coverage will end.</p>
+</article>
+</main>
+<div id="site-footer"></div>
+<script defer src="/assets/js/common-header.js"></script>
+<script defer src="/assets/js/common-footer.js"></script>
+<script defer src="/assets/js/calculator-cloud.js"></script>
+<script defer src="/assets/js/mortgage-pmi-removal.js"></script>
+</body></html>

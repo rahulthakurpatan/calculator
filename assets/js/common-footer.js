@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['Mortgage PMI Removal & Savings Calculator', '/mortgage-pmi-removal-calculator/'],
     ['401(k) Employer Match & Vesting Calculator', '/401k-employer-match-vesting-calculator/'],
     ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/'],
     ['Gold Jewellery Resale & Break-Even Calculator', '/gold-jewellery-resale-break-even-calculator/'],
