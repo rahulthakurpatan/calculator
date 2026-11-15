@@ -11,6 +11,7 @@
     {
       label: 'Invest & Mutual Funds',
       tools: [
+        ['CAGR & Annualized Return Calculator', '/cagr-calculator/', 'Annualized CAGR, inflation-adjusted return and benchmark growth'],
         ['HSA Contribution & Tax Savings Calculator (2026–27)', '/hsa-contribution-tax-savings-calculator/', 'IRS 2026 and 2027 HSA limits, eligible contribution room and estimated tax savings'],
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
         ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/', 'Calculate asset allocation drift and rebalancing trades'],
