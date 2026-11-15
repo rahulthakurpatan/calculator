@@ -4,6 +4,10 @@
 (() => {
   'use strict';
   const calculators = [
+    ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/'],
+    ['Credit Card Rewards Break-Even Calculator', '/credit-card-rewards-break-even-calculator/'],
+    ['E-commerce Unit Economics Calculator', '/ecommerce-unit-economics-calculator/'],
+    ['CD Ladder Calculator', '/cd-ladder-calculator/'],
     ['ROI Calculator', '/'],
     ['SIP Calculator', '/sip-calculator/'],
     ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/'],
