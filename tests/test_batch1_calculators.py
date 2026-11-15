@@ -25,7 +25,7 @@ for slug in CASES:
     assert html.count("common-branding.js") == 1
     assert html.count("common-pushdotify.js") == 1
     assert f'rel="canonical" href="{url}"' in html
-    schema = re.search(r'<script type="application/ld\\+json">(.*?)</script>', html, re.S)
+    schema = re.search(r'<script type="application/ld[+]json">(.*?)</script>', html, re.S)
     assert schema and json.loads(schema.group(1))
     for p in ("assets/js/common-header.js", "assets/js/common-footer.js", "assets/js/common-search.js"):
         assert slug in (ROOT / p).read_text(encoding="utf-8")
