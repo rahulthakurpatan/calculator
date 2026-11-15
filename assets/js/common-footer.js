@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['Mortgage Points Break-Even Calculator', '/mortgage-points-break-even-calculator/'],
     ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/'],
     ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/'],
     ['Credit Card Rewards Break-Even Calculator', '/credit-card-rewards-break-even-calculator/'],
