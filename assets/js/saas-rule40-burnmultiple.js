@@ -51,7 +51,7 @@ function calculate(v){
   const nextNet=arr-v.startARR;
   return {delta,nextGrowth,arr,rule:nextGrowth+margin,burnMultiple:burn>0&&nextNet>0?burn/nextNet:null};
  });
- return {netNewARR,growth,fcf,margin,rule,burn,multiple,monthlyBurn,runway,
+ return {netNewARR,growth,fcf,margin,rule,burn,positiveCash,multiple,monthlyBurn,runway,
   targetFCF,fcfImprovement,neededGrowth,neededEndARR,burnCapacityAtTarget,netNewForOneX,
   valuationNotProvided,ruleTag,burnStatus,projections};
 }
