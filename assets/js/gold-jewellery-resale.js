@@ -124,11 +124,8 @@
     const svg=$('cost-chart');svg.replaceChildren();
     svg.append(sv('title',{id:'cost-title'},'Jewellery purchase bill breakdown'));
     svg.append(sv('desc',{id:'cost-desc'},'Metal, making charges, wastage, stones, extras and GST as proportions of the modeled purchase bill.'));
-    const total=Math.max(.01,r.modeledBill),segs=[
-      ['Metal',r.purchaseMetal,'#2a71e8'],['Making',r.making,'#8d6ade'],
-      ['Wastage',r.wastage,'#d09b42'],['Stones',r.taxable-r.purchaseMetal-r.making-r.wastage-(r.taxable-r.purchaseMetal-r.making-r.wastage-r.taxable+0),'#23a6a2']
-    ];
-    // Explicit segmentation avoids counting the original invoice override as a bill component.
+    const total=Math.max(.01,r.modeledBill);
+    // The original invoice override is never treated as another modeled bill component.
     const rows=[['Metal',r.purchaseMetal,'#2a71e8'],['Making',r.making,'#9272e6'],['Wastage',r.wastage,'#dfaa4c'],
       ['Stones & other',r.taxable-r.purchaseMetal-r.making-r.wastage,'#22a59b'],['GST',r.tax,'#de7594']];
     let pos=18;for(const [label,val,color] of rows){
