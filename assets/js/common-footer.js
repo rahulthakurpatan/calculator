@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['Rental Property ROI Calculator', '/rental-property-roi-calculator/'],
     ['Mortgage Points Break-Even Calculator', '/mortgage-points-break-even-calculator/'],
     ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/'],
     ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/'],
