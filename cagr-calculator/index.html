@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAGR Calculator – Annualized Return, Real Growth & Chart</title>
+<meta name="description" content="Calculate compound annual growth rate (CAGR), annualized returns, inflation-adjusted growth, benchmark comparisons and future scenarios with a free live CAGR calculator.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/cagr-calculator/"><meta name="robots" content="index,follow"><meta name="theme-color" content="#176ce5">
+<meta property="og:type" content="website"><meta property="og:title" content="CAGR & Annualized Return Calculator"><meta property="og:description" content="Free international CAGR calculator with inflation-adjusted returns and benchmark charts."><meta property="og:url" content="https://returnoninvestmentcalculator.in/cagr-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"CAGR and Annualized Return Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/cagr-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebPage","name":"CAGR Calculator – Annualized Return and Real Growth","url":"https://returnoninvestmentcalculator.in/cagr-calculator/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"CAGR Calculator","item":"https://returnoninvestmentcalculator.in/cagr-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is CAGR calculated?","acceptedAnswer":{"@type":"Answer","text":"CAGR = (ending value / beginning value)^(1 / years) - 1, expressed as a percentage."}},{"@type":"Question","name":"Is CAGR the same as annual return?","acceptedAnswer":{"@type":"Answer","text":"CAGR is a smoothed annualized rate between two values, not the actual return earned in each calendar year."}},{"@type":"Question","name":"When should I use XIRR instead of CAGR?","acceptedAnswer":{"@type":"Answer","text":"When money is added or withdrawn during the investment period, XIRR accounts for the dates and amounts of those intermediate cash flows."}}]}]}</script>
+<script src="/assets/js/common-header.js" defer></script><script src="/assets/js/common-footer.js" defer></script><script src="/assets/js/common-branding.js" defer></script>
+<style>
+:root{--ink:#21354d;--muted:#6d8096;--border:#dce5f0;--blue:#176ce5;--bg:#f5f8fd}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:#176ce5}.wrap{width:min(1240px,calc(100% - 32px));margin:auto}.hero{background:radial-gradient(circle at 80% 20%,#e7e7ff,transparent 40%),linear-gradient(#fff,#f5f8fd);padding:42px 0 30px;border-bottom:1px solid var(--border)}
+.crumb{font-size:12px;color:#6d8096}.eyebrow{display:inline-block;background:#e9f4ff;color:#2464a8;border:1px solid #d2e6fb;border-radius:20px;font-size:11px;font-weight:850;letter-spacing:.08em;padding:6px 12px;margin-top:19px}
+h1{font-size:clamp(31px,4.4vw,49px);line-height:1.14;letter-spacing:-1.5px;margin:12px 0}h1 em{font-style:normal;color:var(--blue)}
+.hero p{max-width:800px;color:#617892;font-size:17px;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.chips span{font-size:12px;color:#55718f;border:1px solid #dbe7f4;background:white;border-radius:25px;padding:5px 12px}
+main{padding:24px 0 64px}.calc{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:20px;align-items:start}
+.panel{background:#fff;border:1px solid var(--border);border-radius:20px;padding:23px;box-shadow:0 16px 40px #183b760b;min-width:0}.panel h2{font-size:20px;letter-spacing:-.4px;margin:0}
+.sub{font-size:13px;color:var(--muted);margin:7px 0 19px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{font-size:12px;font-weight:750;color:#526982}.field input,.field select{width:100%;height:46px;border:1px solid #d4dfed;border-radius:11px;background:#fbfdff;padding:0 12px;color:#253f5a;font:inherit}
+.field small{font-size:11px;color:#7c8ba0}.wide,.section{grid-column:1/-1}.section{border-top:1px solid #e6edf5;padding-top:11px;margin-top:9px;text-transform:uppercase;font-size:11px;font-weight:850;letter-spacing:.1em;color:#7788a0}.section.first{border:0;margin:0;padding:0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.actions button{border:0;border-radius:10px;padding:10px 13px;background:#edf3fc;color:#345c89;font:700 13px system-ui;cursor:pointer}.actions button:first-child{background:#176ce5;color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9ac5ff;outline-offset:2px}
+.error{min-height:1.4em;font-size:12px;color:#b7374b;font-weight:750}.privacy{font-size:11px;color:#7b8b9e}
+.result{background:linear-gradient(135deg,#fff,#f7f9ff)}.status{background:linear-gradient(120deg,#1d5cba,#7957cc);border-radius:15px;padding:17px;color:#fff;font-size:12px;font-weight:750;margin:17px 0}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.metric{border:1px solid #e0e9f5;background:#fff;border-radius:13px;padding:13px;min-width:0}
+.metric:first-child{background:#edf6ff;border-color:#cde5ff}.metric:nth-child(2){background:#f5f1ff;border-color:#e7defe}
+.metric span{display:block;font-size:11px;color:#61748c;font-weight:700}.metric strong{display:block;font-size:clamp(18px,2vw,23px);margin-top:5px;overflow-wrap:anywhere;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.detail{margin-top:18px}.detail h3{font-size:14px}.detail div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #e7edf5;font-size:12px}.detail span{color:#718199}.detail strong{text-align:right}
+.graph{background:#fff;border:1px solid #e1e9f4;border-radius:13px;padding:8px;margin-top:10px}.graph svg{display:block;width:100%;height:auto}
+.legend{font-size:11px;color:#718199;margin:9px 0}.legend b{color:#176ce5}.legend i{font-style:normal;color:#19a18a;font-weight:850}
+.note{background:#eff6ff;border-radius:12px;padding:12px;font-size:12px;color:#45678a;margin-top:13px}
+.prose{max-width:960px;margin:39px auto 0;color:#4b6078}.prose h2{font-size:25px;letter-spacing:-.5px;color:#233c59;margin:26px 0 8px}.prose h3{font-size:17px;color:#2c496a;margin:18px 0 7px}.prose p,.prose li{line-height:1.85}
+.formula{display:block;background:#eaf3ff;color:#31577e;border-radius:12px;padding:16px;font:13px/1.9 ui-monospace,Consolas,monospace;white-space:pre-wrap}.info{background:#fff;border:1px solid #e1e9f4;border-radius:16px;padding:22px;margin:23px 0}
+@media(min-width:920px){.result{position:sticky;top:16px}}@media(max-width:910px){.calc{grid-template-columns:1fr}.result{position:static}}
+@media(max-width:550px){.wrap{width:calc(100% - 24px)}.panel{padding:16px}.hero{padding:28px 0}.hero p{font-size:15px}.fields{gap:10px}.field input,.field select{padding:0 8px;font-size:14px}}
+@media print{#site-header,#site-footer,.actions,.crumb{display:none!important}.wrap{width:100%}body{background:#fff}.calc{display:block}.panel{box-shadow:none;margin:0 0 12px}.result{position:static}}
+</style></head><body><div id="site-header"></div>
+<header class="hero"><div class="wrap"><nav class="crumb"><a href="/">Home</a> / <a href="/investment-portfolio-planner/">Investing</a> / CAGR</nav><span class="eyebrow">INVESTMENT PERFORMANCE • LIVE ANALYSIS</span>
+<h1><em>CAGR Calculator</em> – Compound Annual Growth Rate</h1>
+<p>Calculate the annualized growth rate between two values, compare inflation-adjusted returns and benchmarks, and explore hypothetical future outcomes—without a spreadsheet.</p>
+<div class="chips"><span>Annualized return</span><span>Real CAGR</span><span>Benchmark chart</span><span>8+ currencies</span><span>CSV export</span></div></div></header>
+<main class="wrap"><div class="calc"><section class="panel"><h2>Growth inputs</h2><p class="sub">Use beginning and ending values of a single investment, business revenue stream or asset, without intervening deposits or withdrawals.</p>
+<form id="cagrForm" novalidate><div class="fields">
+<div class="field wide"><label for="currency">Reporting currency</label><select id="currency"><option value="USD">USD – US Dollar</option><option value="GBP">GBP – British Pound</option><option value="EUR">EUR – Euro</option><option value="INR">INR – Indian Rupee</option><option value="CAD">CAD – Canadian Dollar</option><option value="AUD">AUD – Australian Dollar</option><option value="JPY">JPY – Japanese Yen</option><option value="SGD">SGD – Singapore Dollar</option><option value="AED">AED – UAE Dirham</option></select></div>
+<div class="section first">01 / Historical performance</div>
+<div class="field"><label for="start">Beginning value</label><input id="start" type="number" min=".01" step="any" value="10000" required></div>
+<div class="field"><label for="end">Ending value</label><input id="end" type="number" min="0" step="any" value="25000" required></div>
+<div class="field wide"><label for="years">Holding period (years)</label><input id="years" type="number" min=".001" max="100" step="any" value="5" required><small>Fractions are allowed, such as 1.5 for 18 months. Count elapsed years, not calendar labels.</small></div>
+<div class="section">02 / Purchasing power and benchmark</div>
+<div class="field"><label for="inflation">Average annual inflation (%)</label><input id="inflation" type="number" min="-99.99" max="100" step="any" value="3" required></div>
+<div class="field"><label for="benchmark">Benchmark annual growth (%)</label><input id="benchmark" type="number" min="-99.99" max="100" step="any" value="8" required><small>Enter a relevant comparator rate for your market.</small></div>
+<div class="section">03 / Hypothetical continuation</div>
+<div class="field"><label for="future">Additional years</label><input id="future" type="number" min="0" max="100" step="any" value="5" required></div>
+<div class="field"><label for="goal">Future target value</label><input id="goal" type="number" min=".01" step="any" value="50000" required></div>
+</div><div class="actions"><button id="copy" type="button">Copy summary</button><button id="csv" type="button">Download CSV</button><button id="reset" type="button">Reset</button><button id="print" type="button">Print</button></div>
+<p class="error" id="error" aria-live="polite"></p><p class="privacy">All calculations run locally in your browser; no account or data upload required.</p></form></section>
+<section class="panel result"><h2>Annualized growth insights</h2><div class="status" id="status">Calculating…</div>
+<div class="metrics">
+<div class="metric"><span>Compound annual growth rate</span><strong id="cagr">—</strong></div>
+<div class="metric"><span>Real CAGR (after inflation)</span><strong id="real">—</strong></div>
+<div class="metric"><span>Total return</span><strong id="total">—</strong></div>
+<div class="metric"><span>Absolute gain / loss</span><strong id="profit">—</strong></div>
+<div class="metric"><span>Benchmark ending value</span><strong id="benchmarkEnd">—</strong></div>
+<div class="metric"><span>Hypothetical future value</span><strong id="projected">—</strong></div>
+</div>
+<div class="detail"><h3>Calculation breakdown</h3>
+<div><span>Starting amount</span><strong id="starting">—</strong></div>
+<div><span>Ending amount</span><strong id="ending">—</strong></div>
+<div><span>Total growth multiple</span><strong id="growthMultiple">—</strong></div>
+<div><span>Time to double at historical CAGR</span><strong id="doubling">—</strong></div>
+<div><span>Annual rate needed to reach target</span><strong id="targetRate">—</strong></div>
+</div>
+<div class="detail"><h3>Smoothed growth vs benchmark</h3></div>
+<div class="graph"><svg id="growthChart" viewBox="0 0 650 260" role="img" aria-labelledby="chartTitle chartDesc"><title id="chartTitle">Smoothed growth compared with benchmark</title><desc id="chartDesc">Historical CAGR path versus a user-supplied benchmark.</desc></svg></div>
+<p class="legend"><b>Blue</b> = historical CAGR path · <i>Green</i> = benchmark scenario. Horizontal axis: elapsed years. Vertical axis: value in selected currency.</p>
+<p class="note" id="context">CAGR is a smoothed endpoint rate, not a record of actual annual returns.</p></section></div>
+<article class="prose"><h2>What is CAGR (compound annual growth rate)?</h2>
+<p>CAGR is the constant annual percentage rate that would transform a starting value into an ending value over a chosen number of years. It is useful for comparing investment growth, company sales, business earnings and asset values over different time horizons. The key limitation is that CAGR smooths volatility; a positive CAGR does not mean every intervening year was profitable.</p>
+<div class="info"><h2>Formula and methodology</h2><code class="formula">CAGR (%) = ((Ending value / Beginning value)^(1 / Years) − 1) × 100
+Total return (%) = ((Ending value / Beginning value) − 1) × 100
+Real CAGR = (1 + nominal CAGR) / (1 + annual inflation) − 1
+Benchmark ending value = Beginning value × (1 + benchmark rate)^Years
+Hypothetical future value = Ending value × (1 + historical CAGR)^Additional years</code>
+<p>Beginning value must be positive; ending value may be zero, in which case CAGR is −100%. Period must be greater than zero. Inflation-adjusted CAGR uses the geometric Fisher relationship, not a simple subtraction of inflation. Values must use the same currency and valuation basis.</p></div>
+<h2>Worked example: $10,000 grows to $25,000 over five years</h2>
+<p>Suppose an investor starts with $10,000 and finishes with $25,000 after exactly five years, without adding or withdrawing money. Total growth is 150%, but that is not the annual return. CAGR = (25,000 / 10,000)^(1 / 5) − 1 = approximately <strong>20.11% per year</strong>. With 3% average annual inflation, the purchasing-power-adjusted CAGR is approximately <strong>16.61%</strong>. The inflation rate is a user-entered assumption, not a live national data feed.</p>
+<h2>Why compare CAGR with a benchmark?</h2>
+<p>Comparing CAGR with an appropriate benchmark helps contextualize growth. A five-year 8% annual benchmark would grow $10,000 to about $14,693. The blue chart draws a smooth annualized path from the observed endpoints, while the green line illustrates the assumed benchmark. Neither line reconstructs actual monthly or yearly performance. Investment risk, volatility and drawdowns require separate analysis.</p>
+<h2>When should you use XIRR instead of CAGR?</h2>
+<p>If you make monthly SIP contributions, withdraw money, receive irregular distributions or add capital during the period, CAGR can be misleading because it treats the beginning and ending values as the only cash-flow endpoints. Use an <a href="/xirr-calculator/">XIRR calculator</a> for dated cash flows. The <a href="/investment-portfolio-planner/">Investment Portfolio Planner</a>, <a href="/compound-interest-calculator/">Compound Interest Calculator</a> and <a href="/lump-sum-calculator/">Lumpsum Calculator</a> cover other planning needs.</p>
+<h2>How to interpret a negative CAGR</h2><p>Negative CAGR indicates that the ending value is lower than the beginning value. For example, $10,000 declining to $8,100 over two years produces a CAGR of −10% per year. It is not valid to divide the total percentage loss by two; compounding changes the result. If the ending value is zero, the entire original value was lost and CAGR is −100%.</p>
+<h2>Limitations of annualized returns</h2>
+<ul><li>CAGR is a mathematical summary, not a prediction of future returns.</li><li>It ignores the sequence of gains and losses between the endpoints.</li><li>Taxes, dividends, reinvestment, transaction fees and currency movements must be reflected in the input values if relevant.</li><li>Forward scenarios reuse the historical rate only to illustrate compounding, not to estimate an expected return.</li><li>Benchmark rates and inflation are manually entered and should be relevant to the same market and period.</li></ul>
+<h2>Frequently asked questions</h2><h3>Is CAGR the same as an average annual return?</h3><p>No. CAGR is a geometric compounded rate that matches the two endpoints. An arithmetic average of yearly returns may be very different, especially when performance is volatile.</p>
+<h3>Can CAGR be negative?</h3><p>Yes. A decline in value produces a negative compounded annual growth rate. Zero ending value corresponds to −100% CAGR.</p>
+<h3>Does CAGR work for businesses and property?</h3><p>Yes, for comparable positive beginning and nonnegative ending values over a defined interval. For business revenue, ensure both figures use consistent accounting definitions. For property, remember to account separately for rents, repairs, taxes and financing if comparing investment returns.</p>
+<h3>Does this calculator work internationally?</h3><p>Yes. It supports nine reporting currencies and applies the same dimensionless growth formula to international assets. It does not convert currencies or assume local tax treatment.</p>
+<h2>References and editorial approach</h2>
+<p>The standard formula is described by <a href="https://www.usbank.com/investing/financial-perspectives/investing-insights/why-compounding-matters.html" rel="noopener noreferrer">U.S. Bank</a>, <a href="https://support.zerodha.com/category/mutual-funds/understanding-mutual-funds/about-mutual-funds/articles/what-does-cagr-mean" rel="noopener noreferrer">Zerodha's investor education</a>, and <a href="https://www.cookcountyil.gov/sites/g/files/ywwepo161/files/service/revenue_forecasting_methodologies.pdf" rel="noopener noreferrer">Cook County revenue forecasting methodology</a>. Competing calculators include <a href="https://calculatecagr.com/" rel="noopener noreferrer">CalculateCAGR</a> and <a href="https://calculator.org.in/finance/cagr-calculator" rel="noopener noreferrer">Calculator.org.in</a>. No unsupported search-volume or CPC estimates are presented.</p>
+<p><strong>Educational information only:</strong> This is not personalized financial advice. Historical performance does not guarantee future results.</p>
+</article></main><div id="site-footer"></div><script src="/assets/js/cagr-annualized.js" defer></script></body></html>
