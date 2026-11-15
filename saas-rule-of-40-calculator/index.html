@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#1769e0">
+<title>SaaS Rule of 40 & Burn Multiple Calculator | Free Tool</title>
+<meta name="description" content="Free SaaS Rule of 40 and Burn Multiple calculator. Compare ARR growth, FCF margin, cash efficiency, runway, target gaps and sensitivity graphs with live results.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="InvestCalc">
+<meta property="og:title" content="SaaS Rule of 40 & Burn Multiple Calculator">
+<meta property="og:description" content="Analyze SaaS ARR growth, FCF margin, capital efficiency and cash runway in a live two-column dashboard.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"SaaS Rule of 40 and Burn Multiple Calculator","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","description":"Compare annual recurring revenue growth, free cash flow margin and cash burn efficiency in a browser calculator."},{"@type":"SoftwareApplication","name":"SaaS Rule of 40 and Burn Multiple Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"SaaS Rule of 40 Calculator","item":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is SaaS Rule of 40 calculated?","acceptedAnswer":{"@type":"Answer","text":"Add annual ARR growth rate, measured as (ending ARR - beginning ARR) / beginning ARR, to free cash flow margin, measured as (cash from operations - capital expenditures) / annual recognized revenue."}},{"@type":"Question","name":"How do you calculate SaaS burn multiple?","acceptedAnswer":{"@type":"Answer","text":"Net cash burn divided by net new ARR generated over the same period. If free cash flow is positive or net new ARR is zero or negative, the usual positive burn multiple is not meaningful."}},{"@type":"Question","name":"Does a SaaS Rule of 40 score above 40 mean the company is profitable?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. Strong growth can offset a negative free cash flow margin. Review revenue growth, profitability, retention, capital requirements and cash runway separately."}},{"@type":"Question","name":"Are Rule of 40 and burn multiple the same metric?","acceptedAnswer":{"@type":"Answer","text":"No. Rule of 40 adds growth and FCF margin percentages; burn multiple measures the dollars of cash consumed per dollar of net new annual recurring revenue."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
+<script src="/assets/js/common-branding.js" defer></script><script src="/assets/js/common-pushdotify.js" defer></script>
+<style>
+:root{--ink:#1b2d47;--muted:#63758e;--line:#dfe7f2;--bg:#f5f8fc;--blue:#1769e0;--shadow:0 17px 44px #163a7e0d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--blue)}a:hover{text-decoration:none}input,select,button{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a1c7ff;outline-offset:2px}
+.wrap{width:min(1240px,calc(100% - 36px));margin:auto}
+.hero{padding:46px 0 32px;background:radial-gradient(circle at 83% 12%,#e5e6ff 0,transparent 38%),radial-gradient(circle at 8% 14%,#dff5f0 0,transparent 30%),linear-gradient(#fff,#f5f8fc);border-bottom:1px solid #e3eaf3}
+.crumb{font-size:12px;font-weight:750;color:#637994}.crumb a{text-decoration:none}
+.tag-top{display:inline-block;border:1px solid #cee3ff;background:#edf6ff;color:#275b9f;padding:6px 12px;border-radius:30px;font-size:11px;font-weight:850;letter-spacing:.07em;margin-top:20px}
+h1{font-size:clamp(32px,4.4vw,51px);line-height:1.13;letter-spacing:-1.8px;max-width:950px;margin:13px 0 12px}
+.intro{font-size:17px;max-width:820px;color:#5d738e;margin:0}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chips span{border:1px solid #dce7f2;color:#5c7390;background:#fff;border-radius:40px;padding:6px 12px;font-size:12px}
+main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:20px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:20px;background:#fff;padding:24px;box-shadow:var(--shadow);min-width:0}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.panel h2{margin:0;font-size:20px;letter-spacing:-.4px;line-height:1.3}.pill{color:#0d806a;background:#e9f8f3;border-radius:40px;font-weight:850;font-size:11px;padding:5px 10px}
+.desc{font-size:13px;color:var(--muted);margin:8px 0 18px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{min-width:0;display:flex;flex-direction:column;gap:5px}.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:760;color:#4f637d}
+.field input,.field select{height:46px;width:100%;border-radius:11px;border:1px solid #d5dfed;background:#fbfdff;color:#26384d;padding:0 11px}
+.field input:focus,.field select:focus{background:#fff;border-color:#518eec}
+.field small{font-size:11px;line-height:1.5;color:#7c8ba0}
+.section{grid-column:1/-1;border-top:1px solid #e9eef6;padding-top:11px;margin-top:8px;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#74869f;font-weight:900}
+.section.first{margin:0;padding:0;border:0}.helper{grid-column:1/-1;background:#eff6ff;border-radius:11px;padding:11px;font-size:12px;color:#405d83}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:21px 0 0}.btn{border:0;border-radius:11px;padding:11px 15px;font-size:13px;font-weight:850}
+.primary{background:#1769e0;color:#fff}.secondary{background:#eaf2fc;color:#2d537b}.btn:hover{filter:brightness(.97)}
+.error{font-size:12px;font-weight:750;color:#b53455;min-height:1.4em;margin:11px 0 0}
+.privacy{font-size:12px;color:#7e8a9f;margin:9px 0 0}
+.results{background:linear-gradient(135deg,#fff 70%,#f3f7ff)}
+.status{border-radius:17px;padding:18px 20px;margin:17px 0 14px;background:linear-gradient(115deg,#2355ac,#7759cd);color:#fff}
+.status.good{background:linear-gradient(115deg,#107d7e,#2d63ae)}.status.warn{background:linear-gradient(115deg,#b05266,#7355c0)}
+.status span{font-size:11px;letter-spacing:.08em;font-weight:850;text-transform:uppercase;opacity:.86}
+.status strong{font-size:18px;display:block;margin:5px 0}.status p{font-size:12px;line-height:1.6;margin:0;opacity:.93}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{border:1px solid #e2eaf4;background:#fff;border-radius:13px;padding:13px;min-width:0}
+.metric.blue{background:#f0f7ff;border-color:#d1e7ff}.metric.purple{background:#f6f2ff;border-color:#e5dfff}
+.metric .label{font-size:11px;color:#5f7390;font-weight:750}
+.metric strong{display:block;font-size:clamp(18px,2vw,23px);letter-spacing:-.5px;margin:5px 0 0;line-height:1.32;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.metric.blue strong{color:#1b69cc}.metric.purple strong{color:#7558c8}
+.section-title{font-size:14px;font-weight:850;margin:21px 0 8px}.breakdown{display:grid;gap:7px}
+.breakdown div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #e6ecf5;padding-bottom:5px;font-size:12px}
+.breakdown span{color:#647590}.breakdown strong{text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.graph{border:1px solid #e3ebf5;border-radius:14px;padding:8px 6px;background:#fff;overflow:hidden}
+.graph svg{display:block;width:100%;height:auto}.graph-note{font-size:11px;color:#7b8ba1;margin:7px 0}
+.note{font-size:12px;background:#f1f7ff;border:1px solid #d9e7fc;color:#406282;border-radius:12px;padding:12px;margin:12px 0}
+.prose{max-width:990px;margin:38px auto 0;color:#455772}
+.prose h2{font-size:25px;letter-spacing:-.5px;color:#1c3255;margin:29px 0 9px}.prose h3{font-size:17px;color:#203756;margin:21px 0 8px}
+.prose p,.prose li{line-height:1.84}.prose ul{padding-left:21px}
+.prose .box{background:#fff;border:1px solid #e0e8f3;border-radius:17px;padding:23px;margin:22px 0}
+.formula{font:13px/1.85 ui-monospace,Consolas,monospace;background:#eff5fc;border-radius:11px;padding:14px;color:#28557e;white-space:pre-wrap;display:block;overflow-x:auto}
+@media(min-width:920px){.results{position:sticky;top:16px}}
+@media(max-width:910px){.calculator{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:30px 0 25px}.intro{font-size:15px}.panel{padding:16px;border-radius:16px}.fields{gap:10px}.field input,.field select{height:44px;font-size:14px;padding:0 9px}.metric strong{font-size:19px}}
+@media print{#site-header,#site-footer,.actions,.crumb,.chips{display:none!important}.wrap{width:100%}body,.hero{background:#fff}.calculator{display:block}.panel{box-shadow:none;margin-bottom:14px}.results{position:static}}
+</style></head>
+<body><div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/saas-ltv-cac-calculator/">SaaS metrics</a> / Rule of 40</nav>
+<div class="tag-top">SAAS CAPITAL EFFICIENCY • LIVE DASHBOARD</div>
+<h1>SaaS <span style="color:#1769e0">Rule of 40</span> &amp; Burn Multiple Calculator</h1>
+<p class="intro">Understand whether ARR growth and free cash flow are balanced. Calculate your Rule of 40, net cash burn, burn multiple and runway—in one real-time investor metrics dashboard.</p>
+<div class="chips"><span>✦ Annual ARR growth + FCF margin</span><span>✦ Burn multiple</span><span>✦ Cash runway</span><span>✦ Live sensitivity charts</span></div>
+</div></header>
+<main class="wrap"><div class="calculator">
+<section class="panel" aria-labelledby="inputsTitle">
+<div class="panel-head"><h2 id="inputsTitle">Company performance inputs</h2><span class="pill">01 · Inputs</span></div>
+<p class="desc">All ARR and cash figures must cover the <strong>same trailing 12-month period</strong>. Select a currency for display; do not mix different currencies in one scenario.</p>
+<form id="rule-form" novalidate><div class="fields">
+<div class="field full"><label for="currency">Company reporting currency</label><select id="currency"><option value="USD">USD — US Dollar</option><option value="GBP">GBP — British Pound</option><option value="EUR">EUR — Euro</option><option value="INR">INR — Indian Rupee</option><option value="CAD">CAD — Canadian Dollar</option><option value="AUD">AUD — Australian Dollar</option></select></div>
+<div class="section first">01 / Annual recurring revenue (ARR)</div>
+<div class="field"><label for="startARR">Beginning ARR (12 months ago)</label><input id="startARR" data-label="Beginning ARR" type="number" min="1" max="100000000000" step="any" value="1200000" required></div>
+<div class="field"><label for="endARR">Ending ARR (today)</label><input id="endARR" data-label="Ending ARR" type="number" min="0" max="100000000000" step="any" value="1800000" required></div>
+<div class="field full"><label for="revenue">Revenue recognized over the 12 months</label><input id="revenue" data-label="Annual recognized revenue" type="number" min="1" max="100000000000" step="any" value="1450000" required><small>Use earned revenue from this year's P&amp;L, not end-of-period ARR. This is the denominator for FCF margin.</small></div>
+<div class="section">02 / Free cash flow and burn</div>
+<div class="field"><label for="operating">Annual cash from operating activities</label><input id="operating" data-label="Cash from operating activities" type="number" min="-100000000000" max="100000000000" step="any" value="-150000" required><small>Enter negative values when operating cash outflows exceed inflows.</small></div>
+<div class="field"><label for="capex">Capital expenditures over 12 months</label><input id="capex" data-label="Capital expenditures" type="number" min="0" max="100000000000" step="any" value="90000" required></div>
+<div class="field"><label for="cash">Available cash balance today</label><input id="cash" data-label="Cash available" type="number" min="0" max="100000000000" step="any" value="950000" required><small>Exclude undrawn credit lines unless you deliberately model them as liquid resources.</small></div>
+<div class="section">03 / Target and sensitivity</div>
+<div class="field"><label for="growthTarget">Target Rule of 40 score (%)</label><input id="growthTarget" data-label="Target rule score" type="number" min="0" max="100" step="any" value="40" required></div>
+<div class="field"><label for="sensitivity">ARR growth sensitivity (± points)</label><input id="sensitivity" data-label="ARR growth sensitivity" type="number" min="0" max="100" step="any" value="20" required><small>Stress-test the annual growth rate while holding FCF margin constant.</small></div>
+<div class="helper">The standard method uses <strong>ARR growth + free cash flow margin</strong>. We display positive net cash burn only if free cash flow is negative. When net new ARR is zero/negative or the company is cash-generating, a normal positive burn multiple does not apply.</div>
+</div>
+<div class="actions"><button class="btn primary" type="button" id="copy">Copy summary</button><button class="btn secondary" type="button" id="download">Download CSV</button><button class="btn secondary" type="button" id="reset">Reset</button><button class="btn secondary" type="button" id="print">Print</button></div>
+<p id="error" class="error" role="status" aria-live="polite"></p><p class="privacy">🔒 Calculations run only in your browser. No SaaS business metrics are uploaded.</p>
+</form></section>
+<section class="panel results" aria-labelledby="resultTitle">
+<div class="panel-head"><h2 id="resultTitle">Live operating insights</h2><span class="pill">02 · Results</span></div>
+<div id="status" class="status" aria-live="polite"><span>Rule-of-40 target assessment</span><strong id="statusHead">Calculating…</strong><p id="statusNote">See how revenue growth balances cash profitability.</p></div>
+<div class="metrics">
+<div class="metric blue"><div class="label">SaaS Rule of 40 score</div><strong id="rule">—</strong></div>
+<div class="metric purple"><div class="label">Burn multiple</div><strong id="multiple">—</strong></div>
+<div class="metric"><div class="label">Annual ARR growth</div><strong id="growth">—</strong></div>
+<div class="metric"><div class="label">Free cash flow margin</div><strong id="margin">—</strong></div>
+<div class="metric"><div class="label">Annual net cash burn</div><strong id="burn">—</strong></div>
+<div class="metric"><div class="label">Simple cash runway</div><strong id="runway">—</strong></div>
+</div>
+<h3 class="section-title">Growth and funding details</h3>
+<div class="breakdown">
+<div><span>End-of-year ARR</span><strong id="ending">—</strong></div>
+<div><span>Net new annual recurring revenue</span><strong id="netnew">—</strong></div>
+<div><span>Operating cash flow</span><strong id="operatingOut">—</strong></div>
+<div><span>Free cash flow after capex</span><strong id="fcf">—</strong></div>
+<div><span>Net cash burn</span><strong id="netBurn">—</strong></div>
+<div><span>Cash reserve</span><strong id="cashAvailable">—</strong></div>
+<div><span>Rule of 40 assessment</span><strong id="ruleStatus">—</strong></div>
+<div><span>Burn efficiency assessment</span><strong id="burnStatus">—</strong></div>
+</div>
+<h3 class="section-title">Path to your target</h3>
+<div class="breakdown">
+<div><span>Selected Rule of 40 target</span><strong id="target">—</strong></div>
+<div><span>FCF needed to reach target (given growth)</span><strong id="fcfTarget">—</strong></div>
+<div><span>Required improvement in annual FCF</span><strong id="targetGap">—</strong></div>
+<div><span>Ending ARR needed if margin unchanged</span><strong id="arrToTarget">—</strong></div>
+</div>
+<h3 class="section-title">Rule of 40 components</h3>
+<div class="graph"><svg id="rule-chart" viewBox="0 0 640 225" role="img" aria-labelledby="rule-title rule-desc"><title id="rule-title">Rule of 40 breakdown</title><desc id="rule-desc">ARR growth, FCF margin, total score and target.</desc></svg></div>
+<h3 class="section-title">Growth sensitivity analysis</h3>
+<div class="graph"><svg id="efficiency-chart" viewBox="0 0 640 224" role="img" aria-labelledby="eff-title eff-desc"><title id="eff-title">Rule of 40 score sensitivity</title><desc id="eff-desc">Hypothetical annual ARR growth versus Rule of 40 score.</desc></svg></div>
+<p class="graph-note">Blue trend: modeled rule score at alternative ARR growth. Green dashed line: your target. No prices or returns are forecast.</p>
+<p class="note" id="formulaNote">Rule of 40 and burn multiple must use aligned periods.</p>
+</section></div>
+<article class="prose">
+<h2>What is the SaaS Rule of 40?</h2>
+<p>The Rule of 40 is a shorthand for the balance between a subscription company's growth and profitability. Under the SaaS Metrics Standards Board's recommended definition, add the company's <strong>annual recurring revenue (ARR) growth percentage</strong> to its <strong>free cash flow (FCF) margin percentage</strong>. A combined score of 40% is the conventional reference, not an industry law or a predictor of company value. Different investors sometimes substitute EBITDA or operating margins; this calculator deliberately uses FCF and states its definition.</p>
+<div class="box"><h2>Rule of 40 and Burn Multiple formulas</h2>
+<div class="formula">ARR growth (%) = (Ending ARR − Beginning ARR) / Beginning ARR × 100
+Free Cash Flow = Operating cash flow − Capital expenditures
+FCF margin (%) = Free cash flow / Recognized annual revenue × 100
+Rule of 40 = ARR growth (%) + FCF margin (%)
+Net new ARR = Ending ARR − Beginning ARR
+Annual net cash burn = max(0, −Free Cash Flow)
+Burn Multiple = Positive annual net cash burn / Positive net new ARR
+Simple cash runway (months) = Available cash / (Annual cash burn / 12)</div>
+<p>All changes and cash flows must cover the <strong>same 12-month observation period</strong>. ARR is a snapshot of expected annualized recurring revenue at a specific date; it is not the same as revenue recognized through the past twelve months. Financing raised or borrowed should not be counted as operating revenue or recurring business growth.</p>
+<p>A burn multiple is not meaningful if net-new ARR is zero or negative, or if the company is producing cash rather than burning it. In these scenarios the calculator displays <strong>N/A</strong> or "No burn" rather than inventing a zero or negative multiple.</p></div>
+<h2>Worked example: SaaS with 50% ARR growth</h2>
+<p>Consider a company moving from $1.2 million beginning ARR to $1.8 million ending ARR over twelve months. ARR growth is <strong>50%</strong>. Its recognized annual revenue is $1.45 million, while operating cash flow is negative $150,000 and capital expenditures are $90,000. Therefore FCF is <strong>−$240,000</strong>, giving FCF margin around <strong>−16.6%</strong>. The Rule of 40 score is about <strong>33.4%</strong>—below the usual 40% reference.</p>
+<p>With $600,000 of net new ARR and $240,000 of annual cash burn, the burn multiple is <strong>0.40×</strong>. A $950,000 cash reserve implies a simple annualized runway near <strong>47.5 months</strong> at the historical burn rate. This cash runway is not a robust liquidity forecast: salaries, capital expenditures, churn, seasonal collections and financing needs may change considerably.</p>
+<h2>Why calculate Rule of 40 and Burn Multiple together?</h2>
+<p>The Rule of 40 rewards aggregate growth and margin performance. Burn Multiple answers a narrower question: how many dollars of net cash the company consumed for each dollar of net-new ARR. Both are worth examining because a founder can grow quickly while using cash inefficiently—or grow more slowly but with unusually low burn. Neither metric should replace cohort retention, net revenue retention, customer concentration or gross margin analysis.</p>
+<h2>What is a good SaaS burn multiple?</h2>
+<p>There is no universal threshold for every stage of a company. David Sacks popularized a benchmark in which lower burn multiples indicate more capital-efficient ARR expansion. A result below 1× means less than one dollar of net cash burn per dollar of net ARR added; higher results suggest more funding needed for growth. Early-stage businesses and fast-growing mature SaaS firms can have very different economics. Avoid interpreting generic cutoff bands as lending or valuation advice.</p>
+<h2>How the Rule of 40 sensitivity chart works</h2>
+<p>Change the ARR growth sensitivity input to model up to five potential growth scenarios around your current observed ARR growth. In each scenario, the tool holds <strong>FCF margin constant</strong> and recomputes the Rule of 40. It does not assume that faster growth is free or that cash expenses would remain unchanged; the chart is intentionally an isolated sensitivity test.</p>
+<h2>Common mistakes in SaaS capital-efficiency analysis</h2>
+<ul>
+<li><strong>Comparing ARR to cash revenues:</strong> The FCF margin uses annual recognized revenue, but ARR growth uses comparable ARR snapshots 12 months apart.</li>
+<li><strong>Burn-period mismatch:</strong> Dividing one quarter of cash burn by twelve months of ARR growth produces a misleading burn multiple. This calculator uses a consistent annual interval.</li>
+<li><strong>Ignoring churn:</strong> Net new ARR must reflect expansion and lost subscriptions, not gross new sales alone.</li>
+<li><strong>Overstating runway:</strong> A simple cash balance divided by trailing monthly burn is not a cash-flow forecast.</li>
+<li><strong>Assuming strong Rule of 40 means profitability:</strong> High growth can outweigh a negative cash margin.</li>
+<li><strong>Confusing cash with EBITDA:</strong> FCF includes operating cash and capital expenditures. EBITDA may diverge substantially.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can Rule of 40 be above 40 if the SaaS business is losing money?</h3>
+<p>Yes. A company growing ARR at 70% with a negative 20% FCF margin scores 50%; it can be cash-negative but still beat the conventional Rule of 40 benchmark.</p>
+<h3>What if SaaS ARR has declined?</h3>
+<p>The ARR growth percentage becomes negative. If the company also burns cash, burn multiple is not a useful ratio because net new ARR is nonpositive. The dashboard correctly marks it not applicable.</p>
+<h3>Is burn multiple the same as burn rate?</h3>
+<p>No. Burn rate describes cash consumed over time; burn multiple compares cash consumed with net ARR growth over the same period.</p>
+<h3>Can I use this calculator in the UK, Canada or India?</h3>
+<p>Yes. Select a single consistent reporting currency. The ratios are dimensionless, so the same accounting definitions apply. This tool does not perform foreign-exchange conversion, enforce accounting standards or calculate local corporate taxes.</p>
+<h3>Is the Rule of 40 a reliable valuation formula?</h3>
+<p>No. It is a performance heuristic, not a valuation multiple or a prediction of company worth. See our separate SaaS valuation calculator for scenario-based estimates.</p>
+<h2>Methodology and primary sources</h2>
+<p>The <a href="https://www.saasmetricsboard.com/rule-of-40" rel="noopener noreferrer">SaaS Metrics Standards Board's Rule of 40 metric standard</a> recommends annual ARR growth plus free-cash-flow margin, where FCF is operating cash less capital expenditures. For the definition and capital-efficiency interpretation of Burn Multiple, see <a href="https://www.wallstreetprep.com/knowledge/burn-multiple/" rel="noopener noreferrer">Wall Street Prep's methodology</a> and <a href="https://web.proxy.chartmogul.com/saas-metrics/burn-multiple/" rel="noopener noreferrer">ChartMogul's 2026 analysis</a>. Competitor examples include <a href="https://baremetrics.com/burn-multiple-calculator" rel="noopener noreferrer">Baremetrics' Burn Multiple tool</a>. These are references, not endorsements of our calculator.</p>
+<p>Related calculators: <a href="/saas-ltv-cac-calculator/">SaaS LTV &amp; CAC</a>, <a href="/saas-valuation-calculator/">SaaS Valuation</a>, <a href="/business-profit-loss-tracker/">Business P&amp;L Tracker</a>, <a href="/ecommerce-unit-economics-calculator/">E-commerce Unit Economics</a> and <a href="/break-even-calculator/">Business Break-Even</a>.</p>
+<p><strong>Educational use:</strong> Inputs are user-provided and not independently verified. Actual accounting methods, working capital, tax rules and liquidity may materially change the results. No guaranteed investment performance, financing decision or enterprise valuation is implied.</p>
+</article></main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script><script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/calculator-cloud.js" defer></script><script src="/assets/js/saas-rule40-burnmultiple.js" defer></script>
+</body></html>
