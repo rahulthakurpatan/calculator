@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/'],
     ['Gold Jewellery Resale & Break-Even Calculator', '/gold-jewellery-resale-break-even-calculator/'],
     ['Short-Term Rental Occupancy Break-Even Calculator', '/airbnb-occupancy-break-even-calculator/'],
     ['Inventory Reorder Point & Safety Stock Calculator', '/inventory-reorder-point-calculator/'],
