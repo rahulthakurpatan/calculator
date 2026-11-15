@@ -11,6 +11,7 @@
     {
       label: 'Invest & Mutual Funds',
       tools: [
+        ['HSA Contribution & Tax Savings Calculator (2026–27)', '/hsa-contribution-tax-savings-calculator/', 'IRS 2026 and 2027 HSA limits, eligible contribution room and estimated tax savings'],
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
         ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/', 'Calculate asset allocation drift and rebalancing trades'],
         ['XIRR Calculator', '/xirr-calculator/', 'Annualized return for dated investment cash flows'],
