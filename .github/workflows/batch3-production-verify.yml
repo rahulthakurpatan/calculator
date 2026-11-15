@@ -1,0 +1,36 @@
+name: Batch3 production live verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/batch3-production-verify.yml'
+permissions:
+  contents: read
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check production page and sitemap with retry
+        run: |
+          python - <<'PY'
+          import urllib.request,time
+          root='https://returnoninvestmentcalculator.in'
+          slugs=['car-lease-vs-buy-calculator','xirr-calculator','bond-yield-to-maturity-calculator']
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'InvestCalc-batch3-verifier/1'}),timeout=12) as r:
+                  return r.status,r.read().decode('utf-8','replace')
+          for slug in slugs:
+              url=root+'/'+slug+'/'
+              ok=False
+              for attempt in range(10):
+                  try:
+                      status,html=get(url)
+                      _,sitemap=get(root+'/sitemap.xml')
+                      if status==200 and url in html and url in sitemap and html.count('adsbygoogle.js')==1 and '<link rel="canonical"' in html:
+                          ok=True;break
+                  except Exception as e:pass
+                  time.sleep(12)
+              print(slug, 'LIVE VERIFIED' if ok else 'NOT VERIFIED')
+              if not ok:raise SystemExit('Live verification incomplete: '+slug)
+          PY
