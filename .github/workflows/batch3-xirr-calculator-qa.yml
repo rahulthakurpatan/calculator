@@ -5,6 +5,9 @@ on:
       - 'xirr-calculator/**'
       - 'tests/batch3-xirr-calculator.cjs'
       - 'sitemap.xml'
+  push:
+    branches:
+      - 'feature/batch3-xirr-20261115'
   workflow_dispatch:
 permissions:
   contents: read
