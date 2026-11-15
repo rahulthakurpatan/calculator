@@ -46,6 +46,7 @@
     {
       label: 'Business & Creator',
       tools: [
+        ['SaaS Rule of 40 & Burn Multiple Calculator', '/saas-rule-of-40-calculator/', 'Measure ARR growth, free cash flow, cash burn efficiency and runway'],
         ['Inventory Reorder Point & Safety Stock Calculator', '/inventory-reorder-point-calculator/', 'Calculate safety stock, reorder thresholds and supplier-delivery risks'],
         ['Invoice Factoring Cost Calculator', '/invoice-factoring-cost-calculator/', 'Compare advance, reserve release, fee periods and annualized factoring cost'],
         ['E-commerce Unit Economics Calculator', '/ecommerce-unit-economics-calculator/', 'Calculate contribution margin, break-even ROAS and monthly ecommerce profit'],
