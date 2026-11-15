@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1769e0">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Invoice Factoring Cost Calculator – Fees, Cash Advance & Annualized Rate | InvestCalc</title>
+<meta name="description" content="Calculate invoice factoring fees, upfront cash, reserve release, simple annualized financing cost and bank line-of-credit comparisons. Live chart and free CSV export.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Invoice Factoring Cost Calculator – Cash Advance, Fees & Annualized Cost">
+<meta property="og:description" content="Know how much cash you receive today, what the factor keeps, and how payment delays affect the cost.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Invoice Factoring Cost Calculator","url":"https://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/","description":"Interactive calculator for estimating invoice factoring costs, cash advances, reserve release, and simple annualized cost."},{"@type":"SoftwareApplication","name":"Invoice Factoring Cost Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Any","url":"https://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Invoice Factoring Cost Calculator","item":"https://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate the true cost of invoice factoring?","acceptedAnswer":{"@type":"Answer","text":"Multiply the quoted fee by its applicable amount and billing periods, then add disclosed fixed charges. Divide total fees by the cash advanced and annualize by 365 divided by days outstanding for an illustrative simple rate."}},{"@type":"Question","name":"Is simple annualized factoring cost a regulated APR?","acceptedAnswer":{"@type":"Answer","text":"No. This tool estimates a simple annualized comparison rate. Regulated annual percentage rate disclosures may require different timing and finance-charge conventions."}},{"@type":"Question","name":"What happens to the factoring reserve?","acceptedAnswer":{"@type":"Answer","text":"After the invoice is paid, the factor normally releases the held reserve minus applicable fees, subject to the factoring agreement."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<style>
+:root{--ink:#182743;--muted:#607087;--line:#e0e8f4;--blue:#1769e0;--navy:#193c85;--sky:#eef5ff;--teal:#009f89;--violet:#7156d8;--bg:#f5f8fe;--shadow:0 18px 50px #19396810}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#1769e0}a:hover{text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #91bfff;outline-offset:2px}
+.wrap{width:min(1210px,calc(100% - 36px));margin:auto}
+.hero{padding:48px 0 34px;background:radial-gradient(circle at 85% 5%,#e6e5ff 0,transparent 34%),radial-gradient(circle at 5% 8%,#e1f6f5 0,transparent 27%),linear-gradient(#fff,#f5f8fe);border-bottom:1px solid #e8edf6}
+.crumb{font-size:12px;font-weight:650;color:var(--muted)}.crumb a{text-decoration:none}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid #cbe0ff;background:#f1f7ff;border-radius:50px;color:#2454a1;font-size:12px;font-weight:800;letter-spacing:.035em}
+.spark{width:8px;height:8px;display:inline-block;border-radius:50%;background:#22b9a3;box-shadow:0 0 0 4px #c7f8ef}
+h1{font-size:clamp(32px,4vw,50px);letter-spacing:-1.8px;line-height:1.14;margin:15px 0 12px;max-width:920px}
+.subtitle{font-size:17px;max-width:790px;color:var(--muted);margin:0}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.chip{font-size:12px;color:#466580;background:#fff;border:1px solid #d9e5f3;border-radius:40px;padding:6px 12px}
+main{padding-top:25px;padding-bottom:65px}
+.calculator{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:start;gap:20px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:21px;padding:25px;box-shadow:var(--shadow);min-width:0}
+.panel-header{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:4px}.panel h2{font-size:20px;line-height:1.3;margin:0;letter-spacing:-.45px}
+.mini-tag{padding:4px 10px;border-radius:40px;background:#effaf5;color:#057b63;font-size:11px;font-weight:800;white-space:nowrap}
+.desc{font-size:13px;color:var(--muted);margin:7px 0 19px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:750;color:#435670}.field small{font-size:11px;color:#718095;line-height:1.35}
+.field input,.field select{width:100%;height:46px;border:1px solid #d6e0ec;border-radius:11px;background:#fbfdff;padding:0 12px;color:#1b2c47}
+.field input:focus,.field select:focus{border-color:#448df2;background:#fff}
+.separator{grid-column:1/-1;border-top:1px solid #edf0f6;margin:4px 0 0}
+.section-label{grid-column:1/-1;font-size:11px;text-transform:uppercase;letter-spacing:.10em;color:#6c7d97;font-weight:900;margin-top:5px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.btn{border:0;border-radius:12px;padding:11px 15px;font-size:13px;font-weight:800}
+.btn.primary{background:#1769e0;color:#fff;box-shadow:0 7px 20px #1769e033}
+.btn.secondary{background:#ecf2fb;color:#23486f}.btn:hover{filter:brightness(.97)}
+.validation{font-size:13px;font-weight:700;color:#aa273b;margin:9px 0 0;min-height:1.3em}
+.privacy{font-size:12px;color:#61788b;margin:10px 0 0}
+.results{background:linear-gradient(140deg,#fff 72%,#f2f7ff)}.result-top{background:linear-gradient(125deg,#1b4cad,#6551cc);color:#fff;border-radius:17px;padding:20px 22px;margin:16px 0}
+.result-top .caption{color:#e2eaff;font-size:12px;letter-spacing:.025em;font-weight:750}
+.result-top strong{display:block;font-size:clamp(30px,3vw,40px);line-height:1.18;letter-spacing:-1px;margin:4px 0 7px;font-variant-numeric:tabular-nums}
+.result-top p{margin:0;color:#e3eaff;font-size:12px}
+.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{background:#fff;border:1px solid #e5ebf6;padding:15px;border-radius:14px;min-width:0}
+.metric .label{color:#5a6b81;font-weight:700;font-size:11px}.metric strong{display:block;color:#192d4c;font-size:21px;letter-spacing:-.45px;margin-top:3px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.metric.accent{border-color:#bde9da;background:#f4fcf9}.metric.accent strong{color:#027f68}
+.breakdown{display:grid;gap:8px;margin:19px 0 14px}.breakdown .line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid #e9edf6;padding:4px 0;font-size:13px}.breakdown .line span:first-child{color:#5c6d83}.breakdown strong{font-variant-numeric:tabular-nums}
+.mini-head{margin:22px 0 6px;font-size:14px;font-weight:850}.chart-wrap{border:1px solid #e7ecf5;border-radius:13px;padding:8px 4px 0;background:#fff;overflow:hidden}.chart-wrap svg{display:block;width:100%;height:auto}
+.legend{display:flex;align-items:center;flex-wrap:wrap;gap:16px;font-size:11px;color:#66768e;margin:5px 0 0}
+.legend i{display:inline-block;border-radius:5px;width:12px;height:4px;margin-right:5px;vertical-align:middle}
+.notice{padding:12px 14px;border-radius:12px;border:1px solid #dbe8ff;background:#f2f7ff;color:#34547e;font-size:12px;margin:15px 0 0}
+.notice.warning{background:#fff7ed;border-color:#fed7aa;color:#9a5015}
+.prose{max-width:980px;margin:34px auto 0;color:#364963;font-size:15px}.prose h2{font-size:25px;color:#1c2d4d;letter-spacing:-.5px;margin:27px 0 8px}.prose h3{font-size:17px;color:#1c2d4d;margin:22px 0 7px}.prose p,.prose li{line-height:1.82}.prose ul{padding-left:20px}.info-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:25px}
+.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;display:block;background:#f0f5fc;padding:14px;border-radius:10px;overflow-x:auto;font-size:13px;color:#1e4778}
+@media(min-width:940px){.results{position:sticky;top:18px}}
+@media(max-width:850px){.calculator{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:560px){.wrap{width:min(100% - 24px,1210px)}.hero{padding:30px 0 26px}.panel{padding:17px;border-radius:16px}.form-grid{gap:10px}.field input,.field select{height:44px;padding:0 9px;font-size:14px}.metric strong{font-size:17px}.result-top{padding:17px}.btn{padding:10px 12px}.subtitle{font-size:15px}}
+@media print{#site-header,#site-footer,.actions,.chips,.crumb{display:none!important}body{background:#fff}.hero{padding:12px 0}.panel{box-shadow:none}.calculator{display:block}.calculator>section{margin-bottom:15px}.results{position:static}.wrap{width:100%}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/business-profit-loss-tracker/">Business calculators</a> / Invoice factoring</nav>
+<p class="eyebrow"><span class="spark" aria-hidden="true"></span> INSTANT B2B FINANCE ANALYSIS</p>
+<h1>Invoice Factoring <span style="color:#1769e0">Cost &amp; Cash Flow</span> Calculator</h1>
+<p class="subtitle">See the true cost of selling an unpaid invoice. Compare factoring fees, upfront cash, reserve release, and alternative borrowing—all as you type.</p>
+<div class="chips"><span class="chip">✦ Live results</span><span class="chip">✦ Payment-delay chart</span><span class="chip">✦ 6 currencies</span><span class="chip">✦ Runs privately in your browser</span></div>
+</div></header>
+<main class="wrap">
+<div class="calculator">
+<section class="panel" aria-labelledby="input-title">
+<div class="panel-header"><h2 id="input-title">Your factoring offer</h2><span class="mini-tag">Step 1 · Enter terms</span></div>
+<p class="desc">Use actual terms from your provider's offer. Results update automatically.</p>
+<form id="factoring-form" novalidate>
+<div class="form-grid">
+<div class="field"><label for="currency">Currency</label><select id="currency"><option value="USD">USD — US Dollar</option><option value="GBP">GBP — British Pound</option><option value="EUR">EUR — Euro</option><option value="INR">INR — Indian Rupee</option><option value="CAD">CAD — Canadian Dollar</option><option value="AUD">AUD — Australian Dollar</option></select></div>
+<div class="field"><label for="invoice">Invoice face value</label><input id="invoice" type="number" inputmode="decimal" value="50000" min=".01" max="1000000000000" step="any" required></div>
+<div class="field"><label for="advancePct">Advance rate (%)</label><input id="advancePct" type="number" inputmode="decimal" value="85" min=".01" max="100" step="any" required><small>Cash you get upfront</small></div>
+<div class="field"><label for="days">Expected days to payment</label><input id="days" type="number" inputmode="numeric" value="45" min="1" max="365" step="1" required><small>Estimate actual payment delay</small></div>
+<div class="separator"></div><div class="section-label">Factoring fee structure</div>
+<div class="field"><label for="feePct">Quoted factoring fee (%)</label><input id="feePct" type="number" inputmode="decimal" value="2.5" min="0" max="100" step="any" required></div>
+<div class="field"><label for="feeBase">Fee charged on</label><select id="feeBase"><option value="invoice">Full invoice face value</option><option value="advance">Cash advanced</option></select></div>
+<div class="field full"><label for="feeMode">Fee billing method</label><select id="feeMode"><option value="flat">One-time flat fee</option><option value="prorated">Prorated per 30 days</option><option value="started" selected>Each started 30-day period</option><option value="weekly">Each started 7-day period</option></select><small>For 45 days, started 30-day billing counts as 2 periods.</small></div>
+<div class="field"><label for="otherFees">Other fixed fees</label><input id="otherFees" type="number" inputmode="decimal" value="150" min="0" max="1000000000000" step="any" required></div>
+<div class="field"><label for="bankAPR">Alternative credit line rate (% p.a.)</label><input id="bankAPR" type="number" inputmode="decimal" value="16" min="0" max="500" step="any" required><small>Assumes equivalent cash borrowed</small></div>
+</div>
+<div class="actions"><button type="button" class="btn primary" id="copy">Copy summary</button><button type="button" class="btn secondary" id="csv">Export CSV</button><button type="button" class="btn secondary" id="reset">Reset</button><button type="button" class="btn secondary" id="print">Print</button></div>
+<p class="validation" id="error" role="status" aria-live="polite"></p>
+<p class="privacy">🔒 Your numbers are calculated locally. They are not submitted to a server.</p>
+</form>
+</section>
+<section class="panel results" aria-labelledby="result-title">
+<div class="panel-header"><h2 id="result-title">Your live cost analysis</h2><span class="mini-tag">Step 2 · Results</span></div>
+<div class="result-top"><div class="caption">Simple annualized financing cost <span aria-label="not a regulated APR">(not regulatory APR)</span></div><strong id="annualized">—</strong><p>Annualizes total fees over cash advanced and days until customer payment.</p></div>
+<div class="metric-grid">
+<div class="metric accent"><div class="label">Cash advanced today</div><strong id="advanced">—</strong></div>
+<div class="metric"><div class="label">Total factoring fees</div><strong id="fees">—</strong></div>
+<div class="metric"><div class="label">Reserve settlement later</div><strong id="release">—</strong></div>
+<div class="metric"><div class="label">Total net proceeds</div><strong id="net">—</strong></div>
+</div>
+<div class="breakdown" aria-live="polite">
+<div class="line"><span>Initial reserve held</span><strong id="reserve">—</strong></div>
+<div class="line"><span>Quoted fee amount</span><strong id="baseFee">—</strong></div>
+<div class="line"><span>Additional fixed charges</span><strong id="fixedFee">—</strong></div>
+<div class="line"><span>Fees as % of invoice</span><strong id="faceRate">—</strong></div>
+<div class="line"><span>Illustrative credit-line cost</span><strong id="bankFee">—</strong></div>
+<div class="line"><span>Factoring cost vs credit-line cost</span><strong id="diff">—</strong></div>
+</div>
+<h3 class="mini-head">Payment delay cost comparison</h3>
+<div class="chart-wrap"><svg id="chart" viewBox="0 0 640 250" role="img" aria-labelledby="chartTitle chartDesc"><title id="chartTitle">Factoring versus credit line by payment days</title><desc id="chartDesc">Two lines compare total fees by number of days outstanding, based on your entered offer.</desc></svg></div>
+<div class="legend"><span><i style="background:#1769e0"></i>Factoring fees</span><span><i style="background:#05a990"></i>Credit line interest</span><span>Illustrative scenarios, not future rates</span></div>
+<div class="notice" id="feedback">Change any input on the left to compare your options instantly.</div>
+</section>
+</div>
+<article class="prose">
+<h2>How invoice factoring works</h2>
+<p>Invoice factoring is a way for businesses to receive money sooner from unpaid customer invoices. A factoring provider typically advances a percentage of the invoice immediately. The rest is held in reserve until the customer pays, at which point the provider releases the remaining balance less agreed fees. Factoring may be recourse (the business bears some customer non-payment risk) or non-recourse under specified contract terms.</p>
+<p>Example: A business has a $50,000 invoice. A factor offers an 85% advance, a 2.5% fee for each started 30-day period, and a $150 processing charge. If the customer pays in 45 days, two fee periods are charged, so the provider's fee is $2,500 plus $150 in other charges. The business receives $42,500 upfront, with $4,850 released after payment. Total proceeds are $47,350, before other possible contract costs.</p>
+<div class="info-box">
+<h2>Transparent formulas and methodology</h2>
+<p>For the inputs in this calculator, the simplified cash flow is:</p>
+<span class="formula">Advance = Invoice × Advance rate<br>Billing periods = 1 (flat), days / 30 (prorated), ceil(days / 30), or ceil(days / 7)<br>Factoring fee = Fee base × Quoted rate × Billing periods<br>Total fees = Factoring fee + Other fees<br>Reserve settlement = Invoice − Advance − Total fees<br>Total net proceeds = Invoice − Total fees<br>Simple annualized cost = Total fees / Advance × 365 / Days × 100</span>
+<p>The annualized cost uses <strong>the amount you can use immediately</strong> (the advance), not the full face value. This makes it useful as an illustrative comparison, but it is <strong>not a legally disclosed APR</strong>. Some jurisdictions prescribe an actuarial APR method and other financing disclosure conventions.</p>
+</div>
+<h2>What does the graph show?</h2>
+<p>The blue line represents total factoring fees at different customer payment delays, using the billing method entered above. For example, with fees charged per started 30-day period, the fee jumps as soon as the payment delay crosses each new period. The green line represents an illustrative line-of-credit interest charge on an amount equal to the factoring advance for the same days. It assumes simple interest and excludes bank origination fees, maintenance fees, collateral, and eligibility requirements.</p>
+<h2>Three questions before signing a factoring agreement</h2>
+<ul>
+<li><strong>Is the quoted percentage charged once or repeatedly?</strong> A 2% fee per started 30-day period may double after day 30, even if your customer pays on day 31.</li>
+<li><strong>What happens if the reserve is smaller than the fees?</strong> Some agreements may require additional settlement payments, offsets, or minimum charges. A negative reserve settlement in this calculator is a warning that the advance and fees cannot both be funded by the invoice itself.</li>
+<li><strong>Who bears default and dispute risk?</strong> Recourse provisions, collections practices, lockboxes, minimum volume requirements, and termination charges can matter more than the headline fee.</li>
+</ul>
+<h2>Invoice factoring vs a business line of credit</h2>
+<p>Both can accelerate working capital, but they work differently. Factoring generally involves selling an account receivable, while a line of credit involves borrowing against creditworthiness and sometimes collateral. This calculator compares <em>illustrative dollar financing costs for the same advance and duration</em>. It does not compare approval odds, tax treatment, accounting classification, collections administration, credit risk, or access to either product. A lower modeled interest cost does not necessarily make a bank product available to your business.</p>
+<h2>Frequently asked questions</h2>
+<h3>How do I calculate factoring fees on a $50,000 invoice?</h3>
+<p>Multiply the amount to which your provider applies the fee by the quoted rate and the number of fee periods. Then add wire, processing, or administrative charges. For a 2.5% charge on the whole invoice billed twice, the factoring fee alone is $2,500.</p>
+<h3>Is a 3% factoring fee the same as 3% APR?</h3>
+<p>No. A 3% fee may apply to the full invoice for just 30 days while the cash advanced is less than the face value. The simple annualized cost can therefore be much higher than 3%. Different regulation-specific APR conventions may apply to actual disclosures.</p>
+<h3>What is a reserve in invoice factoring?</h3>
+<p>A reserve is the portion of the invoice not advanced immediately. The factor commonly releases it after customer collection less its fee and any other amounts owed under the agreement.</p>
+<h3>Can factoring cost less than a line of credit?</h3>
+<p>It can under some quotes and collection periods. Use the comparison as a starting point, then check the provider's agreement, expected collection times and any separate expenses. Neither option is guaranteed to be available.</p>
+<h2>Assumptions, limitations and sources</h2>
+<p>This is a free educational estimate and not accounting, lending, legal or individualized financial advice. The calculations assume the invoice is paid in full on the selected day, all listed fixed fees are taken from the reserve, and no further fees or customer defaults occur. It excludes taxes, recourse claims, early termination, collection delays beyond your entered period, undisclosed contractual minimums and compounding. Enter the actual rates and fee structures in your offer.</p>
+<p>Research references: <a href="https://dfpi.ca.gov/rules-enforcement/laws-and-regulations/california-financing-law-regulations-opinions-releases/" rel="noopener noreferrer">California DFPI commercial financing disclosure regulations</a>; <a href="https://www.paidnice.com/calculators/invoice-factoring-calculator" rel="noopener noreferrer">Paidnice factoring cost model</a>; <a href="https://tools.tnaado.ca/calculators/business/invoice-factoring-cost-calculator/" rel="noopener noreferrer">TNAADO factoring fee method</a>. Reference links are for methodology, not endorsements.</p>
+<p><strong>Related tools:</strong> <a href="/business-profit-loss-tracker/">Business Profit &amp; Loss Tracker</a>, <a href="/ecommerce-unit-economics-calculator/">E-commerce Unit Economics</a>, <a href="/saas-ltv-cac-calculator/">SaaS LTV:CAC Calculator</a> and <a href="/break-even-calculator/">Break-Even Calculator</a>.</p>
+</article>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/calculator-cloud.js" defer></script>
+<script>
+(function(){
+'use strict';
+var defaults={currency:'USD',invoice:'50000',advancePct:'85',days:'45',feePct:'2.5',feeBase:'invoice',feeMode:'started',otherFees:'150',bankAPR:'16'};
+var fields=Object.keys(defaults),last=null;
+var byId=function(id){return document.getElementById(id)};
+function inputData(){
+  var o={};fields.forEach(function(k){var e=byId(k);if(e.type==='number'){if(e.value.trim()==='')throw Error('Please enter a value for '+k+'.');var n=Number(e.value);if(!Number.isFinite(n)||n<Number(e.min)||n>Number(e.max))throw Error('Please correct '+k+' (allowed range: '+e.min+' to '+e.max+').');o[k]=n;}else{o[k]=e.value;}});
+  if(!Number.isInteger(o.days))throw Error('Payment days must be a whole number.');
+  return o;
+}
+function feePeriods(days,mode){if(mode==='flat')return 1;if(mode==='prorated')return days/30;if(mode==='started')return Math.ceil(days/30);if(mode==='weekly')return Math.ceil(days/7);throw Error('Unsupported fee method.');}
+function calculate(v,d){
+  var days=d===undefined?v.days:d;
+  var advance=v.invoice*v.advancePct/100;
+  var reserve=v.invoice-advance;
+  var base=v.feeBase==='advance'?advance:v.invoice;
+  var baseFee=base*v.feePct/100*feePeriods(days,v.feeMode);
+  var totalFees=baseFee+v.otherFees;
+  var bankFee=advance*v.bankAPR/100*days/365;
+  var release=reserve-totalFees;
+  return {days:days,advance:advance,reserve:reserve,baseFee:baseFee,totalFees:totalFees,bankFee:bankFee,release:release,net:v.invoice-totalFees,annualized:totalFees/advance*365/days*100,faceRate:totalFees/v.invoice*100,diff:totalFees-bankFee};
+}
+window.InvoiceFactoringMath={feePeriods:feePeriods,calculate:calculate};
+function currency(v,n){return new Intl.NumberFormat('en-US',{style:'currency',currency:v.currency,maximumFractionDigits:2}).format(n);}
+function percent(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:2,minimumFractionDigits:2}).format(n)+'%';}
+function showText(id,s){byId(id).textContent=s;}
+function make(tag,attributes,textValue){var n=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attributes||{}).forEach(function(k){n.setAttribute(k,String(attributes[k]));});if(textValue!==undefined)n.textContent=textValue;return n;}
+function chart(v){
+ var svg=byId('chart');while(svg.firstChild)svg.removeChild(svg.firstChild);
+ svg.appendChild(make('title',{id:'chartTitle'},'Factoring fee versus credit-line interest by payment delay'));
+ svg.appendChild(make('desc',{id:'chartDesc'},'Line chart of modeled costs at different payment delays in '+v.currency));
+ var maxDays=Math.min(365,Math.max(120,Math.ceil(v.days*1.35/15)*15)),days=[1];
+ for(var d=15;d<=maxDays;d+=15)days.push(d);
+ if(days.indexOf(v.days)<0)days.push(v.days);if(days.indexOf(maxDays)<0)days.push(maxDays);
+ days.sort(function(a,b){return a-b});
+ var data=days.map(function(day){return calculate(v,day)});
+ var peak=Math.max(1,...data.map(function(o){return Math.max(o.totalFees,o.bankFee)}))*1.12;
+ var left=80,right=625,top=18,bottom=210,w=right-left,h=bottom-top;
+ var x=function(day){return left+(day-1)/(maxDays-1)*w;},y=function(value){return bottom-value/peak*h;};
+ for(var i=0;i<=4;i++){var value=peak*i/4,yp=y(value);svg.appendChild(make('line',{x1:left,x2:right,y1:yp,y2:yp,stroke:'#e7edf5','stroke-width':1}));svg.appendChild(make('text',{x:left-10,y:yp+4,'text-anchor':'end',fill:'#708299','font-size':11},new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:1}).format(value)));}
+ [1,Math.round(maxDays/4),Math.round(maxDays/2),Math.round(maxDays*3/4),maxDays].forEach(function(day){svg.appendChild(make('text',{x:x(day),y:232,'text-anchor':'middle',fill:'#708299','font-size':11},String(day)));});
+ svg.appendChild(make('text',{x:(left+right)/2,y:249,'text-anchor':'middle',fill:'#6c7a90','font-size':11},'Days until customer payment'));
+ function plot(key,color){var path=data.map(function(o,i){return (i?'L':'M')+x(o.days).toFixed(2)+','+y(o[key]).toFixed(2)}).join(' ');svg.appendChild(make('path',{d:path,stroke:color,'stroke-width':3,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'}));var selected=calculate(v);svg.appendChild(make('circle',{cx:x(v.days),cy:y(selected[key]),r:5,fill:color,stroke:'#fff','stroke-width':2}));}
+ plot('totalFees','#1769e0');plot('bankFee','#05a990');
+ svg.appendChild(make('line',{x1:x(v.days),x2:x(v.days),y1:top,y2:bottom,stroke:'#9daac0','stroke-dasharray':'4 4','stroke-width':1}));
+}
+function output(v,o){
+ showText('annualized',percent(o.annualized));showText('advanced',currency(v,o.advance));showText('fees',currency(v,o.totalFees));showText('release',currency(v,o.release));showText('net',currency(v,o.net));showText('reserve',currency(v,o.reserve));showText('baseFee',currency(v,o.baseFee));showText('fixedFee',currency(v,v.otherFees));showText('faceRate',percent(o.faceRate));showText('bankFee',currency(v,o.bankFee));showText('diff',(o.diff>0?'+':'')+currency(v,o.diff));
+ var note=byId('feedback');note.classList.remove('warning');
+ if(o.release<0){note.classList.add('warning');note.textContent='Warning: fees exceed the held reserve. Your factoring agreement may require an additional settlement payment or offset. Review the offer carefully.';}
+ else if(o.diff>0){note.textContent='At '+v.days+' days, modeled factoring fees exceed the illustrative credit-line interest by '+currency(v,o.diff)+'. This comparison excludes other bank costs and availability requirements.';}
+ else if(o.diff<0){note.textContent='At '+v.days+' days, modeled factoring fees are '+currency(v,-o.diff)+' below the illustrative credit-line interest. Check the full terms and eligibility for both options.';}
+ else note.textContent='At this payment period, the modeled factoring and credit-line costs are equal. Other terms may change the decision.';
+ chart(v);
+}
+function render(){try{var v=inputData(),o=calculate(v);if(!Object.values(o).every(function(x){return Number.isFinite(x)}))throw Error('Inputs lead to an out-of-range result.');showText('error','');last={v:v,o:o};output(v,o);}catch(e){last=null;showText('error',e.message);}}
+function summary(){if(!last)return '';var v=last.v,o=last.o;return 'Invoice factoring cost estimate\nInvoice: '+currency(v,v.invoice)+'\nAdvance rate: '+percent(v.advancePct)+'\nDays until paid: '+v.days+'\nCash now: '+currency(v,o.advance)+'\nTotal fees: '+currency(v,o.totalFees)+'\nReserve settlement: '+currency(v,o.release)+'\nTotal proceeds: '+currency(v,o.net)+'\nSimple annualized cost (not regulated APR): '+percent(o.annualized)+'\nCredit-line interest comparison: '+currency(v,o.bankFee)+'\nAssumptions: invoice paid in full; fees deducted from reserve. Educational estimates only.\nhttps://returnoninvestmentcalculator.in/invoice-factoring-cost-calculator/';}
+byId('factoring-form').addEventListener('input',render);byId('factoring-form').addEventListener('change',render);
+byId('factoring-form').addEventListener('submit',function(e){e.preventDefault();render()});
+byId('reset').addEventListener('click',function(){fields.forEach(function(k){byId(k).value=defaults[k]});render();});
+byId('copy').addEventListener('click',function(){if(!last)return;var s=summary();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){showText('error','Summary copied.');}).catch(function(){showText('error','Browser blocked clipboard access.');});}else{showText('error','Clipboard not available on this browser.');}});
+byId('csv').addEventListener('click',function(){if(!last)return;var v=last.v,o=last.o;var rows=[['Metric','Value'],['Currency',v.currency],['Invoice value',v.invoice],['Advance rate %',v.advancePct],['Payment days',v.days],['Fee percent',v.feePct],['Fee base',v.feeBase],['Fee billing',v.feeMode],['Other fixed fees',v.otherFees],['Cash advanced',o.advance],['Reserve held',o.reserve],['Base factoring fee',o.baseFee],['Total fees',o.totalFees],['Reserve release',o.release],['Net proceeds',o.net],['Simple annualized cost % (not regulatory APR)',o.annualized],['Illustrative credit-line rate %',v.bankAPR],['Illustrative credit-line cost',o.bankFee]];var csv=rows.map(function(r){return r.map(function(s){return '"'+String(s).replace(/"/g,'""')+'"';}).join(',');}).join('\r\n');var u=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));var a=document.createElement('a');a.href=u;a.download='invoice-factoring-cost-estimate.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000);});
+byId('print').addEventListener('click',function(){window.print()});
+render();
+})();
+</script>
+</body></html>

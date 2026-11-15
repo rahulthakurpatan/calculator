@@ -45,6 +45,7 @@
     {
       label: 'Business & Creator',
       tools: [
+        ['Invoice Factoring Cost Calculator', '/invoice-factoring-cost-calculator/', 'Compare advance, reserve release, fee periods and annualized factoring cost'],
         ['E-commerce Unit Economics Calculator', '/ecommerce-unit-economics-calculator/', 'Calculate contribution margin, break-even ROAS and monthly ecommerce profit'],
         ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/', 'Track revenue, expenses and net profit'],
         ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
