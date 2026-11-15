@@ -1,0 +1,80 @@
+name: Autonomous Calculator PR Gate
+
+on:
+  pull_request:
+    paths:
+      - '**/index.html'
+      - 'sitemap.xml'
+      - 'assets/js/common-header.js'
+      - 'assets/js/common-footer.js'
+      - 'assets/js/common-search.js'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-autonomous-change:
+    if: startsWith(github.head_ref, 'autopilot/v2-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify five-file integration contract and prevent unrelated edits
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os, re, subprocess, tempfile
+          import xml.etree.ElementTree as ET
+
+          branch = os.environ["HEAD_REF"]
+          assert branch.startswith("autopilot/v2-"), "Not an autonomous calculator branch"
+          slug = branch.removeprefix("autopilot/v2-").rsplit("-", 1)[0]
+          assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug), "Unsafe slug"
+          expected = {
+              slug + "/index.html",
+              "sitemap.xml",
+              "assets/js/common-header.js",
+              "assets/js/common-footer.js",
+              "assets/js/common-search.js",
+          }
+          changed = set(subprocess.check_output([
+              "git", "diff", "--name-only", os.environ["BASE_SHA"], "HEAD"
+          ], text=True).splitlines())
+          assert changed == expected, "Unapproved or missing changes: " + repr(changed ^ expected)
+
+          html = Path(slug, "index.html").read_text(encoding="utf-8")
+          target = "https://returnoninvestmentcalculator.in/" + slug + "/"
+          head = re.search(r"<head\b[^>]*>(.*?)</head>", html, re.I | re.S)
+          assert head, "No HTML head"
+          assert head.group(1).count("adsbygoogle.js") == 1
+          assert html.count("adsbygoogle.js") == 1
+          assert "ca-pub-2057359438981933" in head.group(1)
+          assert len(re.findall(r"<h1\b", html, re.I)) == 1
+          assert '<link rel="canonical" href="' + target + '"' in head.group(1) or (
+              re.search(r'<link\b[^>]*rel=["\x27]canonical["\x27][^>]*href=["\x27]' +
+                        re.escape(target) + r'["\x27]', head.group(1), re.I))
+          assert 'id="agent-calculator-form"' in html or "id='agent-calculator-form'" in html
+          assert "window.agentCalculate" in html
+          for script in ["common-header.js", "common-footer.js", "common-pushdotify.js", "common-branding.js"]:
+              assert "/assets/js/" + script in head.group(1)
+          assert "GTM-5JP6QNKJ" in head.group(1)
+          urlset = ET.fromstring(Path("sitemap.xml").read_text(encoding="utf-8"))
+          ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+          urls = [e.text for e in urlset.findall(".//" + ns + "loc")]
+          assert urls.count(target) == 1, "Sitemap URL missing or duplicated"
+          link = "/" + slug + "/"
+          for file in sorted(expected - {slug + "/index.html", "sitemap.xml"}):
+              source = Path(file).read_text(encoding="utf-8")
+              assert source.count(link) == 1, file + " missing/duplicate link"
+              subprocess.run(["node", "--check", file], check=True)
+          print("PASS: exact five-file change, canonical, sitemap, raw AdSense, shared integrations")
+          PY
