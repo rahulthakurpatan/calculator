@@ -69,6 +69,7 @@
         ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/', 'Compare FX rate markup, sending fees and recipient payouts across two quotes'],
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
         ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
+        ['Mortgage Points Break-Even Calculator', '/mortgage-points-break-even-calculator/', 'Compare discount points and lender credits'],
         ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/', 'Compare refinance fees, monthly savings and break-even time'],
         ['Student Loan Payoff & Refinance Calculator', '/student-loan-payoff-calculator/', 'Compare current student loan payments, extra principal payments and refinance savings'],
         ['RSU & Stock Options Tax Calculator', '/rsu-vesting-tax-calculator/', 'Estimate RSU vesting tax, sell-to-cover shares, ISO AMT and NSO exercise tax'],
