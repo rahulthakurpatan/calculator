@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['Gold Jewellery Resale & Break-Even Calculator', '/gold-jewellery-resale-break-even-calculator/'],
     ['Short-Term Rental Occupancy Break-Even Calculator', '/airbnb-occupancy-break-even-calculator/'],
     ['Inventory Reorder Point & Safety Stock Calculator', '/inventory-reorder-point-calculator/'],
     ['Invoice Factoring Cost Calculator', '/invoice-factoring-cost-calculator/'],

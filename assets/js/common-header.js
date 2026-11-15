@@ -21,6 +21,7 @@
         ['Compound Interest Calculator', '/compound-interest-calculator/', 'Estimate the future corpus of a one-time investment'],
         ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
         ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
+        ['Gold Jewellery Resale & Break-Even Calculator', '/gold-jewellery-resale-break-even-calculator/', 'Compare jewellery GST, making costs, buyback deductions and break-even gold price'],
         ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
         ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
         ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal'],
