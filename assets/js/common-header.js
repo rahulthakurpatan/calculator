@@ -96,6 +96,7 @@
     {
       label: 'Property & Tools',
       tools: [
+        ['Short-Term Rental Occupancy Break-Even Calculator', '/airbnb-occupancy-break-even-calculator/', 'Calculate Airbnb-style booked nights, occupancy threshold and seasonal operating profit'],
         ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/', 'Estimate solar savings and payback period'],
         ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
         ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/', 'Plan future salary, savings, construction cost, home loan and EMI'],
