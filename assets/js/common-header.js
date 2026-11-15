@@ -42,6 +42,7 @@
     {
       label: 'Business & Creator',
       tools: [
+        ['E-commerce Unit Economics Calculator', '/ecommerce-unit-economics-calculator/', 'Calculate contribution margin, break-even ROAS and monthly ecommerce profit'],
         ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/', 'Track revenue, expenses and net profit'],
         ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
         ['Instagram Earning Calculator', '/instagram-earning-calculator/', 'Estimate creator income from brand deals and other sources'],
@@ -63,6 +64,9 @@
     {
       label: 'Savings & Loans',
       tools: [
+        ['CD Ladder Calculator', '/cd-ladder-calculator/', 'Build five certificate of deposit maturities and estimate ladder interest'],
+        ['Credit Card Rewards Break-Even Calculator', '/credit-card-rewards-break-even-calculator/', 'Estimate cashback, card annual fee waiver and rewards break-even spending'],
+        ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/', 'Compare FX rate markup, sending fees and recipient payouts across two quotes'],
         ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
         ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
         ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/', 'Compare refinance fees, monthly savings and break-even time'],
