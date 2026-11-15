@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['CAGR & Annualized Return Calculator', '/cagr-calculator/'],
     ['VAT Inclusive & Exclusive Calculator', '/vat-inclusive-exclusive-calculator/'],
     ['US Sales Tax Add & Reverse Calculator', '/us-sales-tax-calculator/'],
     ['Margin vs Markup & Profit Calculator', '/margin-vs-markup-calculator/'],
