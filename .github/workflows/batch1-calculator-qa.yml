@@ -1,0 +1,32 @@
+name: Batch 1 Calculator Browser QA
+on:
+  push:
+    branches:
+      - feature/2026-11-15-batch1-four-calculators
+  pull_request:
+    paths:
+      - 'international-money-transfer-fee-calculator/**'
+      - 'credit-card-rewards-break-even-calculator/**'
+      - 'ecommerce-unit-economics-calculator/**'
+      - 'cd-ladder-calculator/**'
+      - 'assets/js/common-header.js'
+      - 'assets/js/common-search.js'
+      - 'assets/js/common-footer.js'
+      - 'sitemap.xml'
+permissions:
+  contents: read
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Static, numeric and mobile browser checks
+        run: python tests/test_batch1_calculators.py
