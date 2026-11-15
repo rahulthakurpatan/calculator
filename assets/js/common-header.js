@@ -12,6 +12,7 @@
       label: 'Invest & Mutual Funds',
       tools: [
         ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
+        ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/', 'Calculate asset allocation drift and rebalancing trades'],
         ['SIP Calculator', '/sip-calculator/', 'Estimate monthly SIP returns, goals and step-up growth'],
         ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/', 'Project dividend growth, DRIP shares and passive income'],
         ['Dividend Yield on Cost Calculator', '/dividend-yield-on-cost-calculator/', 'Calculate dividends as a percentage of your original share cost'],

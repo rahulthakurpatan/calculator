@@ -8,6 +8,7 @@
   window.__investcalcSearchLoaded = true;
 
   const items = [
+    { title:'Portfolio Rebalancing Calculator', subtitle:'Calculate buy and sell trades or invest new money only to rebalance assets', category:'Invest & Mutual Funds', href:'/portfolio-rebalancing-calculator/', keywords:'portfolio rebalancing calculator asset allocation drift buy sell cash only' },
     { title:'International Money Transfer Fee Calculator', subtitle:'Compare FX rate markup, sending fees and recipient payouts across two quotes', category:'Savings & Loans', href:'/international-money-transfer-fee-calculator/', keywords:'international money transfer fee calculator compare fx rate markup, sending fees and recipient payouts across two quotes' },
     { title:'Credit Card Rewards Break-Even Calculator', subtitle:'Estimate cashback, card annual fee waiver and rewards break-even spending', category:'Savings & Loans', href:'/credit-card-rewards-break-even-calculator/', keywords:'credit card rewards break-even calculator estimate cashback, card annual fee waiver and rewards break-even spending' },
     { title:'E-commerce Unit Economics Calculator', subtitle:'Calculate contribution margin, break-even ROAS and monthly ecommerce profit', category:'Business & Creator', href:'/ecommerce-unit-economics-calculator/', keywords:'e-commerce unit economics calculator calculate contribution margin, break-even roas and monthly ecommerce profit' },
