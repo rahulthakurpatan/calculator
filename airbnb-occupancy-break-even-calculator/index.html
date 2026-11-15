@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1769e0">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Airbnb Occupancy Break-Even Calculator | STR Profit & Booked Nights</title>
+<meta name="description" content="Free short-term rental occupancy break-even calculator. Find booked nights to cover costs, minimum nightly rate, cleaning and platform fees, and seasonal profit with live graphs.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/airbnb-occupancy-break-even-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Short-Term Rental Occupancy Break-Even Calculator – Nights, Fees & Profit">
+<meta property="og:description" content="Calculate profitable occupancy, booked nights, nightly price targets and seasonal income with customizable host fees.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/airbnb-occupancy-break-even-calculator/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Short-Term Rental Occupancy Break-Even Calculator","url":"https://returnoninvestmentcalculator.in/airbnb-occupancy-break-even-calculator/","description":"Estimate short-term rental occupancy thresholds, booked nights, nightly rate and seasonal operating profit."},{"@type":"SoftwareApplication","name":"Short-Term Rental Occupancy Break-Even Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/airbnb-occupancy-break-even-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Short-Term Rental Occupancy Break-Even Calculator","item":"https://returnoninvestmentcalculator.in/airbnb-occupancy-break-even-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What occupancy do I need to break even on an Airbnb-style rental?","acceptedAnswer":{"@type":"Answer","text":"Divide monthly fixed costs by the net contribution per occupied night, then divide that result by the number of rentable nights. Include host platform fees, average cleaning turnover, supplies and other variable costs."}},{"@type":"Question","name":"Are Airbnb host service fees always 15.5 percent?","acceptedAnswer":{"@type":"Answer","text":"No. Airbnb's 2026 single-fee model typically charges hosts 15.5 percent, but exceptions and split-fee transition arrangements may apply. Enter the fee shown in your own platform payout statement."}},{"@type":"Question","name":"Do cleaning fees affect rental break-even occupancy?","acceptedAnswer":{"@type":"Answer","text":"Yes. Include cleaning fees charged to guests as revenue, as well as the cost of cleaning and restocking each stay. Costs per stay are spread across the average stay length."}},{"@type":"Question","name":"Does the calculator estimate property investment ROI?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates operating cash flow and occupancy thresholds. Purchase appreciation, asset values, depreciation, equity and full tax treatment are outside this tool."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
+<script src="/assets/js/common-branding.js" defer></script><script src="/assets/js/common-pushdotify.js" defer></script>
+<style>
+:root{--ink:#162743;--muted:#60718b;--blue:#1769e0;--teal:#04a287;--violet:#7554cf;--line:#dfe8f3;--bg:#f5f8fc;--shadow:0 12px 35px rgba(23,66,118,.065)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--blue)}a:hover{text-decoration:none}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #8cbdff;outline-offset:2px}
+.wrap{width:min(1210px,calc(100% - 36px));margin:auto}
+.hero{padding:43px 0 31px;background:radial-gradient(circle at 89% 7%,#e8e7ff 0,transparent 33%),radial-gradient(circle at 4% 18%,#dff8f2 0,transparent 31%),linear-gradient(#fff,#f5f8fc);border-bottom:1px solid #e5edf6}
+.breadcrumb{font-size:12px;color:#667791;font-weight:650}.breadcrumb a{text-decoration:none}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:#eef7ff;color:#245da6;border:1px solid #d8e8ff;border-radius:50px;padding:7px 12px;font-weight:850;font-size:11px;letter-spacing:.06em;margin:19px 0 0}
+.glow{height:8px;width:8px;border-radius:50%;background:#13ae91;box-shadow:0 0 0 4px #c8f7e8}
+h1{font-size:clamp(31px,4.5vw,51px);letter-spacing:-1.7px;line-height:1.14;max-width:890px;margin:13px 0 12px}
+.hero .intro{max-width:830px;color:#60738c;font-size:17px;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.chips span{font-size:12px;padding:6px 12px;background:#fff;border:1px solid #dfeaf6;color:#536983;border-radius:50px}
+main{padding:25px 0 60px}.calc-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:start;gap:20px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);min-width:0}
+.panel-head{display:flex;gap:10px;align-items:center;justify-content:space-between}.panel h2{font-size:20px;letter-spacing:-.45px;line-height:1.3;margin:0}
+.tag{border-radius:40px;font-size:11px;font-weight:850;background:#eaf9f4;color:#0a806a;padding:5px 10px;white-space:nowrap}
+.desc{color:var(--muted);font-size:13px;margin:7px 0 18px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:750;color:#50637d}
+.field input,.field select{display:block;width:100%;height:46px;border:1px solid #d7e1f0;border-radius:10px;padding:0 11px;background:#fbfdff;color:#203650}
+.field input:focus,.field select:focus{border-color:#4c94f4;background:white}
+.field small{font-size:11px;color:#7989a0;line-height:1.45}
+.kicker{grid-column:1/-1;color:#7587a2;font-size:11px;text-transform:uppercase;letter-spacing:.11em;font-weight:850;padding-top:7px;border-top:1px solid #e9eef7;margin-top:7px}
+.kicker.first{border-top:0;margin-top:0;padding-top:0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.btn{border:0;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:800}
+.btn.primary{background:#1769e0;color:#fff}.btn.secondary{background:#eaf2fd;color:#28547d}.btn:hover{filter:brightness(.98)}
+.error{color:#ae3049;min-height:1.4em;font-weight:750;font-size:12px;margin:9px 0}
+.privacy{font-size:12px;color:#7c8a9c;margin:9px 0 0}
+.result-panel{background:linear-gradient(135deg,#fff 70%,#f3f8ff)}
+.status{background:linear-gradient(120deg,#294cab,#6654ca);color:#fff;border-radius:15px;padding:18px 20px;margin:17px 0}
+.status.positive{background:linear-gradient(120deg,#097a78,#2859ad)}
+.status.negative{background:linear-gradient(120deg,#b5465b,#7951ae)}
+.status span{display:block;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.status strong{display:block;font-size:17px;margin:5px 0}.status p{font-size:12px;line-height:1.5;opacity:.94;margin:0}
+.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{background:#fff;border:1px solid #e5ebf5;border-radius:13px;padding:14px;min-width:0}
+.metric.primary{background:#f0f7ff;border-color:#cfe5ff}.metric.secondary{background:#f6f3ff;border-color:#e5dfff}
+.metric .label{font-weight:750;font-size:11px;color:#62738a}
+.metric strong{display:block;font-size:clamp(17px,2.3vw,23px);letter-spacing:-.5px;font-variant-numeric:tabular-nums;line-height:1.35;margin:4px 0;overflow-wrap:anywhere}
+.metric.primary strong{color:#1e68c7}.metric.secondary strong{color:#7658cd}
+.breakdown{display:grid;gap:6px;margin:18px 0}.breakdown div{border-bottom:1px solid #ebeff7;display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:4px 0;font-size:12px}
+.breakdown span{color:#64748d}.breakdown strong{font-variant-numeric:tabular-nums;overflow-wrap:anywhere;text-align:right}
+.chart-title{font-size:14px;margin:19px 0 6px}.graph{border:1px solid #e5ecf6;border-radius:14px;padding:8px 6px;background:#fff;overflow:hidden}.graph svg{width:100%;height:auto;display:block}
+.graph-note{font-size:11px;color:#7c8ca1;margin:6px 0}
+.info{background:#f1f7ff;border:1px solid #d9e9ff;color:#3b5b82;border-radius:11px;padding:12px 13px;font-size:12px;margin:13px 0 0}
+.prose{max-width:990px;margin:39px auto 0;color:#3f526c;font-size:15px}
+.prose h2{font-size:24px;color:#1c3050;letter-spacing:-.5px;margin:29px 0 10px}.prose h3{font-size:17px;color:#1c3050;margin:22px 0 8px}
+.prose p,.prose li{line-height:1.84}.prose ul{padding-left:21px}
+.prose .box{border:1px solid #e0e8f2;border-radius:18px;background:#fff;padding:24px;margin:22px 0}
+.formula{font:13px/1.9 ui-monospace,Consolas,monospace;background:#f0f5fb;border-radius:10px;padding:13px;white-space:pre-wrap;display:block;color:#245180;overflow-x:auto}
+@media(min-width:920px){.result-panel{position:sticky;top:16px}}
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr}.result-panel{position:static}}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:30px 0 26px}.hero .intro{font-size:15px}.panel{padding:17px;border-radius:16px}.fields{gap:10px}.field input,.field select{padding:0 9px;font-size:14px}.metric strong{font-size:19px}.status{padding:16px}}
+@media print{#site-header,#site-footer,.actions,.breadcrumb,.chips{display:none!important}body,.hero{background:#fff}.wrap{width:100%}.calc-grid{display:block}.panel{box-shadow:none;margin-bottom:14px}.result-panel{position:static}.hero{padding:8px 0}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/rental-property-roi-calculator/">Real estate tools</a> / Short-term rental break-even</nav>
+<span class="eyebrow"><span class="glow"></span> LIVE SHORT-TERM RENTAL ANALYSIS</span>
+<h1>Short-Term Rental <span style="color:#1769e0">Occupancy Break-Even</span> Calculator</h1>
+<p class="intro">Discover exactly how many nights your vacation rental must be booked to cover operating costs. Compare fees, cleaning turnover, required nightly rates and off-season vs peak-season profitability.</p>
+<div class="chips"><span>✦ Instant live calculation</span><span>✦ Editable host fees</span><span>✦ Break-even occupancy chart</span><span>✦ Seasonal operating forecast</span></div>
+</div></header>
+<main class="wrap">
+<div class="calc-grid">
+<section class="panel" aria-labelledby="inputs-title">
+<div class="panel-head"><h2 id="inputs-title">Your rental assumptions</h2><span class="tag">01 · Inputs</span></div>
+<p class="desc">Use your real listing, costs and expected bookings. This tool models one short-term rental unit, not property appreciation.</p>
+<form id="rental-form" novalidate><div class="fields">
+<div class="field"><label for="currency">Currency</label><select id="currency" data-label="Currency"><option value="USD">USD — US Dollar</option><option value="GBP">GBP — British Pound</option><option value="EUR">EUR — Euro</option><option value="INR">INR — Indian Rupee</option><option value="CAD">CAD — Canadian Dollar</option><option value="AUD">AUD — Australian Dollar</option></select></div>
+<div class="field"><label for="nights">Rentable nights each month</label><input id="nights" data-label="Rentable nights" type="number" min="1" max="31" step="1" value="28" required><small>Exclude blocked owner-use nights.</small></div>
+<div class="kicker first">Booking assumptions</div>
+<div class="field"><label for="adr">Nightly guest price</label><input id="adr" data-label="Nightly price" type="number" min="0" max="100000000" step="any" value="180" required></div>
+<div class="field"><label for="occupancy">Expected occupancy (%)</label><input id="occupancy" data-label="Occupancy percentage" type="number" min="0" max="100" step="any" value="70" required></div>
+<div class="field"><label for="stay">Average nights per stay</label><input id="stay" data-label="Average stay length" type="number" min="0.1" max="31" step="any" value="3" required></div>
+<div class="field"><label for="guestCleaning">Cleaning fee charged per stay</label><input id="guestCleaning" data-label="Cleaning fee charged" type="number" min="0" max="10000000" step="any" value="50" required></div>
+<div class="kicker">Turnover and platform costs</div>
+<div class="field"><label for="cleaner">Cleaner cost per stay</label><input id="cleaner" data-label="Cleaning cost" type="number" min="0" max="10000000" step="any" value="70" required></div>
+<div class="field"><label for="supplies">Laundry/supplies cost per stay</label><input id="supplies" data-label="Supplies per stay" type="number" min="0" max="10000000" step="any" value="12" required></div>
+<div class="field"><label for="nightVariable">Variable cost per booked night</label><input id="nightVariable" data-label="Variable nightly cost" type="number" min="0" max="10000000" step="any" value="12" required><small>Extra utilities or consumables per guest-night.</small></div>
+<div class="field"><label for="platform">Host platform fee (%)</label><input id="platform" data-label="Host platform fee" type="number" min="0" max="95" step="any" value="15.5" required><small>Check your actual payout statement.</small></div>
+<div class="field full"><label for="management">Property manager fee (%)</label><input id="management" data-label="Management fee" type="number" min="0" max="95" step="any" value="0" required><small>Both percentage fees are modeled on nightly revenue plus the guest-paid cleaning fee. Adjust your actual contract.</small></div>
+<div class="kicker">Fixed monthly expenses</div>
+<div class="field"><label for="rent">Monthly rent / mortgage payment</label><input id="rent" data-label="Mortgage or rent" type="number" min="0" max="100000000" step="any" value="1300" required></div>
+<div class="field"><label for="utilities">Fixed utilities / internet</label><input id="utilities" data-label="Fixed utilities" type="number" min="0" max="100000000" step="any" value="220" required></div>
+<div class="field"><label for="insurance">Insurance / property taxes / HOA</label><input id="insurance" data-label="Insurance and taxes" type="number" min="0" max="100000000" step="any" value="180" required></div>
+<div class="field"><label for="overhead">Other fixed monthly costs</label><input id="overhead" data-label="Other fixed costs" type="number" min="0" max="100000000" step="any" value="100" required></div>
+<div class="kicker">Seasonality (12 months total)</div>
+<div class="field"><label for="offMonths">Off-season months</label><input id="offMonths" data-label="Off-season months" type="number" min="0" max="12" step="1" value="4" required></div>
+<div class="field"><label for="offOccupancy">Off-season occupancy (%)</label><input id="offOccupancy" data-label="Off-season occupancy" type="number" min="0" max="100" step="any" value="40" required></div>
+<div class="field"><label for="offPrice">Off-season rate (% of base)</label><input id="offPrice" data-label="Off-season rate multiplier" type="number" min="1" max="400" step="any" value="80" required></div>
+<div class="field"><label for="peakMonths">Peak-season months</label><input id="peakMonths" data-label="Peak-season months" type="number" min="0" max="12" step="1" value="3" required></div>
+<div class="field"><label for="peakOccupancy">Peak-season occupancy (%)</label><input id="peakOccupancy" data-label="Peak-season occupancy" type="number" min="0" max="100" step="any" value="90" required></div>
+<div class="field"><label for="peakPrice">Peak-season rate (% of base)</label><input id="peakPrice" data-label="Peak-season rate multiplier" type="number" min="1" max="400" step="any" value="120" required></div>
+</div>
+<div class="actions">
+<button type="button" class="btn primary" id="copy">Copy summary</button>
+<button type="button" class="btn secondary" id="csv">Download CSV</button>
+<button type="button" class="btn secondary" id="reset">Reset</button>
+<button type="button" class="btn secondary" id="print">Print report</button>
+</div>
+<p id="error" class="error" role="status" aria-live="polite"></p>
+<p class="privacy">🔒 Numbers are calculated in your browser. No account connection or external rental data is required.</p>
+</form>
+</section>
+<section class="panel result-panel" aria-labelledby="results-title">
+<div class="panel-head"><h2 id="results-title">Live revenue dashboard</h2><span class="tag">02 · Results</span></div>
+<div class="status" id="status" aria-live="polite"><span>Operating cash flow status</span><strong id="statusHeading">—</strong><p id="statusSummary">Evaluating your rental assumptions…</p></div>
+<div class="metric-grid">
+<div class="metric primary"><div class="label">Required break-even occupancy</div><strong id="percent">—</strong></div>
+<div class="metric secondary"><div class="label">Break-even booked nights</div><strong id="nightsReq">—</strong></div>
+<div class="metric"><div class="label">Monthly operating profit / loss</div><strong id="monthly">—</strong></div>
+<div class="metric"><div class="label">Minimum nightly rate at target occupancy</div><strong id="nightlyBreak">—</strong></div>
+</div>
+<div class="breakdown" aria-live="polite">
+<div><span>Rentable nights per month</span><strong id="available">—</strong></div>
+<div><span>Estimated number of stays</span><strong id="bookingCount">—</strong></div>
+<div><span>Net contribution per booked night</span><strong id="netPerNight">—</strong></div>
+<div><span>Monthly guest booking revenue</span><strong id="gross">—</strong></div>
+<div><span>Monthly platform + manager fees</span><strong id="fees">—</strong></div>
+<div><span>Monthly cleaning + variable costs</span><strong id="variable">—</strong></div>
+<div><span>Monthly fixed expenses</span><strong id="fixed">—</strong></div>
+<div><span>Seasonally adjusted annual revenue</span><strong id="annualGross">—</strong></div>
+<div><span>Seasonally adjusted annual operating profit</span><strong id="annualProfit">—</strong></div>
+<div><span>Annual occupied rental nights</span><strong id="annualNights">—</strong></div>
+<div><span>Normal-priced months</span><strong id="normalMonths">—</strong></div>
+</div>
+<h3 class="chart-title">Profit vs. occupancy chart</h3>
+<div class="graph"><svg id="profit-chart" viewBox="0 0 640 263" role="img" aria-labelledby="profitChartTitle profitChartDesc"><title id="profitChartTitle">Rental profit by occupancy</title><desc id="profitChartDesc">Change the assumptions to view monthly profit at different occupancy levels.</desc></svg></div>
+<p class="graph-note">Blue: monthly operating profit · Purple: modeled break-even occupancy · Dot: your forecast</p>
+<h3 class="chart-title">Seasonal profit per month</h3>
+<div class="graph"><svg id="season-chart" viewBox="0 0 640 176" role="img" aria-labelledby="seasonChartTitle seasonChartDesc"><title id="seasonChartTitle">Monthly profit in three seasons</title><desc id="seasonChartDesc">Monthly operating profit for off, normal and peak seasons.</desc></svg></div>
+<p id="feedback" class="info">Calculations are estimates, not a prediction of bookings.</p>
+</section>
+</div>
+<article class="prose">
+<h2>How many booked nights does a short-term rental need to break even?</h2>
+<p>Running an Airbnb-style vacation rental is more complicated than multiplying the nightly price by 30 days. Owners pay platform commission, booking-specific cleaning costs, supplies and occupancy-independent fixed bills. This short-term rental break-even calculator estimates <strong>the occupancy threshold that covers monthly cash operating costs</strong>. It also shows when your rent or mortgage and other overhead make break-even impossible at the selected nightly rate.</p>
+<p>Compare your expected occupancy with your required occupancy and vary nightly prices, turnover costs or host fees on the left. The chart shows which combinations turn monthly operating profit positive. The annual forecast models three distinct seasons rather than assuming a constant rate for every month.</p>
+<div class="box">
+<h2>Calculation formulas and assumptions</h2>
+<span class="formula">Booked nights = Available nights × Occupancy % / 100
+Expected stays = Booked nights ÷ Average length of stay
+Gross revenue / booked night = Nightly rate + Guest-paid cleaning fee ÷ Stay length
+Platform + management fees / booked night = Gross revenue / night × Combined fee rate
+Other variable costs / booked night = Nightly costs + (Cleaner + supplies) ÷ Stay length
+Contribution / booked night = Gross / night − % fees / night − variable costs / night
+Fixed costs / month = Rent or mortgage + fixed utilities + insurance/tax/HOA + other overhead
+Monthly operating cash flow = Booked nights × Contribution / night − Fixed costs
+Break-even occupied nights = Fixed monthly costs ÷ Positive contribution / night
+Break-even occupancy % = Break-even occupied nights ÷ Available nights × 100</span>
+<p>We round the displayed whole-night break-even figure up to the next integer night; the exact break-even percentage uses fractional expected nights. This approximation treats average stays and occupancy as statistical expectations. Actual bookings and nights are whole numbers and may straddle month boundaries.</p>
+<p>Percentage fees are applied to the nightly rate <strong>and</strong> guest-paid cleaning fee. Some property managers use a different fee base, so review your specific agreement. Cleaning costs are assumed to occur once per average stay, not every night. Costs incurred only when guests stay are modeled per booked night.</p>
+<h3>When is break-even impossible?</h3>
+<p>If the contribution per booked night is zero or negative, adding bookings cannot cover fixed overhead. If the required occupied nights exceed available nights, even 100% occupancy will not break even at the selected rate. In both cases, lowering fixed costs, changing cleaning turnaround costs or raising the rate is necessary before the scenario can cover expenses.</p>
+</div>
+<h2>Worked example: one vacation rental</h2>
+<p>Imagine a property available for 28 nights per month, charging $180 per night and a $50 guest cleaning fee. Average stay is three nights, a cleaner charges $70 per stay, restocking costs $12 per stay, variable nightly costs are $12, and host platform fees are 15.5%. With $1,800 of fixed monthly expenses, the expected contribution is approximately <strong>$126.85 per booked night</strong>. Break-even requires about <strong>14.2 occupied nights, or 50.7% occupancy</strong>; at least 15 whole nights must be booked to cover fixed costs. Your actual nightly prices, local regulation and costs may vary significantly.</p>
+<h2>Why platform fees matter in 2026</h2>
+<p>Airbnb announced and expanded migration toward a host-only single-fee structure during 2026. Its October 2026 resource guidance describes a typical <strong>15.5% host service fee</strong>, while its help centre explains exceptions and remaining transition arrangements. The percentage you actually pay can differ by account, country or booking. For that reason <strong>15.5% is a starting example, not a universal rule</strong>—change the default to the commission stated in your own earnings report. An Airbnb fee is not included automatically for direct bookings or another platform.</p>
+<h2>Understanding ADR, occupancy and cleaning revenue</h2>
+<p>Average daily rate (ADR) and occupancy are two different measures. ADR relates to revenue for booked nights, while occupancy is booked nights divided by nights available for rent. AirDNA's revenue methodology includes nightly charges and cleaning fees and treats occupancy using available nights. In this calculator the input called <em>nightly guest price</em> intentionally excludes the separate cleaning fee to avoid counting cleaning revenue twice.</p>
+<h2>How seasonality changes annual results</h2>
+<p>Set an off-season occupancy and nightly-rate multiplier, and a peak-season occupancy and rate multiplier. The remaining months automatically become normal months and use your base occupancy and nightly price. Example: four off-season months at 40% occupancy and 80% of base rate, five normal months at 70%, and three peak months at 90% occupancy and 120% of base rate. The annual forecast sums cash flow from all twelve months. This assumes the same number of available nights and fixed costs each month; for a calendar-accurate model, seasonal availability must be tracked separately.</p>
+<h2>Common costs hosts forget</h2>
+<ul>
+<li>Mortgage or rent, HOA, insurance, property tax, utility minimums, Wi-Fi and software subscriptions</li>
+<li>Cleaner payments, washing and linen replacements, toiletries, consumables and repairs after stays</li>
+<li>Platform commission on booking totals, credit-card processing fees and manager commissions where applicable</li>
+<li>Annual permits, local lodging taxes, tourism levies, income tax, VAT/GST and additional municipal regulations</li>
+<li>Furniture replacement, capital improvements, long-term vacancy, failed collections, refunds and guest-caused damage</li>
+</ul>
+<p>This model does not explicitly calculate lodging-tax remittance, VAT/GST, occupancy-related insurance, mortgage amortization schedules, depreciation or capital investments. Enter costs you can reasonably allocate to monthly fixed or per-booking categories. Treat mortgage payments as cash outflow, not as profit-accounting expense; your cash profit here is not an NOI or return-on-equity measure.</p>
+<h2>Frequently asked questions</h2>
+<h3>What occupancy rate do I need to break even on Airbnb?</h3>
+<p>It depends on your fixed monthly bills, nightly price, average stay, cleaning cost and platform fees. Divide fixed monthly costs by contribution per occupied night to find required occupied nights, then divide by rentable nights to calculate required occupancy. A market-wide average occupancy cannot answer this property-specific question.</p>
+<h3>Is a 15.5% Airbnb fee charged on cleaning fees?</h3>
+<p>Airbnb's 2026 resource guidance states its single host fee generally applies to nightly prices plus optional host charges such as cleaning and pet fees. Other contracts or tax treatments may work differently. This model applies your entered fee to nightly rates plus cleaning fees.</p>
+<h3>Does 60% occupancy always mean a rental is profitable?</h3>
+<p>No. A rental with high mortgage costs or frequent short stays can lose money even at 60% occupancy. A paid-off property or longer bookings may require substantially lower occupancy to cover operating costs.</p>
+<h3>Can I use this for direct bookings or Booking.com?</h3>
+<p>Yes. Change the platform fee percentage and costs to reflect that channel. Do not assume a generic fee for every marketplace.</p>
+<h3>What if my cleaning fee is higher than the actual cleaner charge?</h3>
+<p>The difference contributes to revenue after any host and manager commissions. But cleaning revenue should not be compared with cleaning costs without also considering booking turnover frequency.</p>
+<h3>Why might the break-even occupancy exceed 100%?</h3>
+<p>It indicates that with the current rate, per-stay expenses, fees and fixed monthly overhead, even selling every available night does not cover the monthly cash outflow. The dashboard shows this as an infeasible break-even scenario rather than claiming the rental can achieve above 100% occupancy.</p>
+<h2>Research sources and related calculators</h2>
+<p>Methodology references: <a href="https://www.airbnb.co.in/resources/hosting-homes/a/how-much-does-airbnb-charge-hosts-288" rel="noopener noreferrer">Airbnb host service fees, October 2026</a>; <a href="https://www.airbnb.co.in/help/article/1857" rel="noopener noreferrer">Airbnb help centre – split and single fees</a>; <a href="https://help.airdna.co/en/articles/8374548-how-does-airdna-calculate-revenue" rel="noopener noreferrer">AirDNA revenue and occupancy definitions</a>. Refer to these sources and your own provider statement for current terms.</p>
+<p>For property valuation and investment metrics, use our <a href="/rental-property-roi-calculator/">Rental Property ROI Calculator</a>. Other helpful tools include <a href="/rent-vs-buy-calculator/">Rent vs Buy</a>, <a href="/mortgage-payoff-calculator/">Mortgage Payoff</a> and <a href="/break-even-calculator/">Break-Even Calculator</a>.</p>
+<p><strong>Educational estimates only.</strong> The tool does not predict demand, enforce local rental rules or provide tax, investment or legal advice. Verify your contract, current fees, licensing requirements and all material expenses before making decisions.</p>
+</article></main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/calculator-cloud.js" defer></script>
+<script src="/assets/js/short-term-rental-break-even.js" defer></script>
+</body></html>
