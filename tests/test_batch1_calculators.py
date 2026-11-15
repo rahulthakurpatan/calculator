@@ -53,7 +53,7 @@ try:
                 assert found is not None and abs(found - expected) < 0.02, (slug, label, found, expected)
                 assert not errors, (slug, errors)
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 2"), slug + " horizontal overflow"
-                page.locator("input").first.fill("-999")
+                page.locator("#calculator input").first.fill("-999")
                 page.locator("#calculator").dispatch_event("submit")
                 assert page.locator("#error").inner_text(), slug + " invalid input not rejected"
                 page.close()
