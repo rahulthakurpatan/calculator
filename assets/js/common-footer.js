@@ -4,6 +4,7 @@
 (() => {
   'use strict';
   const calculators = [
+    ['VAT Inclusive & Exclusive Calculator', '/vat-inclusive-exclusive-calculator/'],
     ['US Sales Tax Add & Reverse Calculator', '/us-sales-tax-calculator/'],
     ['Margin vs Markup & Profit Calculator', '/margin-vs-markup-calculator/'],
     ['HSA Contribution & Tax Savings Calculator (2026–27)', '/hsa-contribution-tax-savings-calculator/'],
