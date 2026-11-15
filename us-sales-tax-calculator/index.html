@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow">
+<title>US Sales Tax Calculator 2026 | Add or Reverse Tax</title>
+<meta name="description" content="Free US sales tax calculator: add or reverse state and local sales tax, calculate receipt totals, discounts, shipping tax and quantity with instant charts.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/us-sales-tax-calculator/">
+<meta property="og:title" content="US Sales Tax Calculator — Add & Reverse Tax"><meta property="og:type" content="website"><meta property="og:url" content="https://returnoninvestmentcalculator.in/us-sales-tax-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"US Sales Tax Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/us-sales-tax-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"US Sales Tax Calculator","item":"https://returnoninvestmentcalculator.in/us-sales-tax-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I reverse sales tax from a total?","acceptedAnswer":{"@type":"Answer","text":"Divide a tax-inclusive price by one plus the combined sales tax rate expressed as a decimal. The included tax is the difference between gross and net."}},{"@type":"Question","name":"Are state sales tax rates the same as local rates?","acceptedAnswer":{"@type":"Answer","text":"No. Counties, cities and districts may add local rates, and product exemptions can change the applicable tax. Enter the verified combined rate for your transaction."}},{"@type":"Question","name":"Does the calculator know the sales tax for my address?","acceptedAnswer":{"@type":"Answer","text":"No. It calculates using user-entered state and local rates. Confirm rates, sourcing, taxable shipping and exemptions with your state revenue department."}}]}]}</script>
+<style>
+:root{--blue:#1769e0;--ink:#243752;--muted:#617590;--line:#dce5f1}*{box-sizing:border-box}
+body{margin:0;font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#f5f8fc}a{color:var(--blue)}.wrap{max-width:1220px;width:calc(100% - 32px);margin:auto}
+.hero{background:linear-gradient(125deg,#eaf3ff,#fff 65%,#f2edff);padding:43px 0;border-bottom:1px solid var(--line)}.crumb{font-size:12px;color:var(--muted)}.crumb a{text-decoration:none}
+.eyebrow{font-size:12px;font-weight:850;letter-spacing:.12em;color:#286ab9;text-transform:uppercase;margin-top:20px}
+h1{font-size:clamp(30px,4.2vw,48px);letter-spacing:-1.5px;line-height:1.15;margin:9px 0 14px}.lead{font-size:17px;max-width:860px;color:var(--muted);margin:0}
+.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.chips span{border:1px solid #dbe6f5;background:white;border-radius:50px;padding:6px 11px;font-size:12px;color:#4d6887}
+.layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:20px;align-items:start;margin:26px 0 36px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 15px 35px #28476b0b;min-width:0}
+.panel h2{font-size:21px;margin:0 0 6px}.sub{font-size:13px;color:var(--muted);margin:0 0 18px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field label{font-size:12px;font-weight:750}
+.field input,.field select{width:100%;height:46px;border:1px solid #cfdcec;border-radius:10px;background:#fbfdff;color:#243752;padding:0 11px;font:inherit}
+.field input:focus,.field select:focus,button:focus-visible{outline:3px solid #b2d0ff;outline-offset:2px}
+.field small{font-size:11px;color:#73849a}.full{grid-column:1/-1}
+.section{grid-column:1/-1;color:#6d819b;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid #e9eef7;padding-top:11px;margin-top:6px}
+.note{background:#eef6ff;border:1px solid #d6e8ff;padding:13px;border-radius:11px;font-size:12px;color:#416183;margin:12px 0}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}button{border:0;border-radius:10px;padding:11px 14px;background:#e9f2ff;color:#205b9c;font-weight:800;cursor:pointer}
+button:first-child{background:#1769e0;color:white}.error{min-height:1.4em;color:#b53656;font-size:12px;font-weight:750}
+.results{background:linear-gradient(140deg,#fff 68%,#f5f7ff)}
+.heroResult{border-radius:16px;background:linear-gradient(110deg,#1769e0,#7657c8);color:#fff;padding:21px;margin:14px 0 17px}
+.heroResult span{font-size:12px;opacity:.86}.heroResult strong{font-size:clamp(28px,3vw,38px);display:block;line-height:1.3;margin:5px 0}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.metric{border:1px solid #e2eaf4;border-radius:12px;background:white;padding:13px;min-width:0}.metric span{font-size:11px;color:#637894;font-weight:750}.metric strong{display:block;font-size:21px;line-height:1.3;margin-top:5px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.breakdown{display:grid;gap:7px;margin:15px 0}.breakdown div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #e9eef6;padding-bottom:6px;font-size:12px}.breakdown span{color:#60738e}.breakdown strong{text-align:right}
+.chartWrap{border:1px solid #e0e8f3;background:#fff;border-radius:13px;padding:10px 5px;overflow:hidden}.chartWrap svg{display:block;width:100%;height:auto}
+.prose{max-width:1010px;margin:25px auto 65px;color:#40546d}.prose h2{font-size:25px;color:#1e3656;line-height:1.3;margin:30px 0 9px}.prose h3{font-size:18px;color:#203b60;margin:20px 0 6px}.prose p,.prose li{line-height:1.85}
+.prose .box{border:1px solid #e0e8f3;background:#fff;border-radius:16px;padding:20px;margin:20px 0}.formula{font:13px/1.8 ui-monospace,Consolas,monospace;background:#f0f5fd;border-radius:10px;padding:14px;white-space:pre-wrap}
+@media(min-width:950px){.results{position:sticky;top:15px}}@media(max-width:950px){.layout{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:28px 0}.panel{padding:15px}.fields{gap:10px}.field input,.field select{height:43px;font-size:14px}.metric strong{font-size:18px}}
+@media print{#site-header,#site-footer,.actions,.chips,.crumb{display:none!important}.layout{display:block}.panel{box-shadow:none;margin-bottom:15px}.results{position:static}body{background:white}}
+</style></head><body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap"><nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/income-tax-calculator/">Tax tools</a> / US Sales Tax</nav>
+<div class="eyebrow">US TAX &amp; CHECKOUT TOOLS · 2026</div>
+<h1>US Sales Tax <span style="color:#1769e0">Calculator</span> — Add or Reverse Tax</h1>
+<p class="lead">Add state and local sales tax to a price, or reverse tax from a receipt. Model discounts, quantities, taxable shipping, rounding and rate sensitivity in real time.</p>
+<div class="chips"><span>State + local rates</span><span>Reverse tax included</span><span>Invoice &amp; receipt breakdown</span><span>Live sensitivity graph</span></div>
+</div></header>
+<main class="wrap"><div class="layout">
+<section class="panel" aria-labelledby="inputTitle"><h2 id="inputTitle">Receipt and tax inputs</h2><p class="sub">Enter your verified state and local tax percentages. This calculator does not guess tax by ZIP code or determine whether an item is taxable.</p>
+<form id="tax-form" novalidate><div class="fields">
+<div class="field full"><label for="mode">Calculation direction</label><select id="mode"><option value="add">Add sales tax to a pre-tax unit price</option><option value="reverse">Reverse sales tax from a tax-inclusive unit price</option></select></div>
+<div class="field"><label for="amount">Price per unit (USD)</label><input id="amount" type="number" min="0" max="1000000000" step="any" value="100" required></div>
+<div class="field"><label for="quantity">Number of units</label><input id="quantity" type="number" min="1" max="1000000" step="1" value="1" required></div>
+<div class="field"><label for="discount">Pre-tax discount (%)</label><input id="discount" type="number" min="0" max="100" step="any" value="0" required></div>
+<div class="field"><label for="shipping">Shipping charge (USD)</label><input id="shipping" type="number" min="0" max="1000000000" step="any" value="0" required></div>
+<div class="section">Tax jurisdiction and rate</div>
+<div class="field"><label for="stateRate">State tax rate (%)</label><input id="stateRate" type="number" min="0" max="30" step="any" value="6" required></div>
+<div class="field"><label for="localRate">Local/district tax rate (%)</label><input id="localRate" type="number" min="0" max="30" step="any" value="2.25" required></div>
+<div class="field"><label for="shippingTaxable">Is shipping taxable?</label><select id="shippingTaxable"><option value="no">No — shipping exempt</option><option value="yes">Yes — shipping taxable</option></select></div>
+<div class="field"><label for="rounding">Tax rounding method</label><select id="rounding"><option value="line">Round tax on entire taxable line</option><option value="unit">Round each unit's tax separately</option></select></div>
+<div class="field full"><label for="variance">Sensitivity: combined rate ± percentage points</label><input id="variance" type="number" min="0.1" max="10" step="any" value="3" required></div>
+</div>
+<p class="note" id="modeHelp">Input is a pre-tax unit price. Discount is applied before sales tax.</p>
+<p class="note">Use the rate for the actual sale, item and destination. State base rates may not include county/city/district taxes. Discounts, shipping taxability and rounding can be regulated differently by jurisdiction.</p>
+<div class="actions"><button type="button" id="copy">Copy results</button><button type="button" id="csv">Download CSV</button><button type="button" id="reset">Reset</button><button type="button" id="print">Print</button></div>
+<p id="error" class="error" role="status" aria-live="polite"></p>
+<p class="sub">🔒 All calculations happen locally in your browser. No financial information is uploaded.</p>
+</form></section>
+<section class="panel results" aria-labelledby="resultsTitle"><h2 id="resultsTitle">Live sales tax breakdown</h2><p class="sub">Totals update as you change inputs.</p>
+<div class="heroResult"><span>Final total including sales tax</span><strong id="gross">—</strong><span>Illustrative USD checkout total</span></div>
+<div class="metrics">
+<div class="metric"><span>Price before tax incl. shipping</span><strong id="net">—</strong></div>
+<div class="metric"><span>Sales tax due</span><strong id="tax">—</strong></div>
+<div class="metric"><span>State tax component (allocated)</span><strong id="stateTax">—</strong></div>
+<div class="metric"><span>Local tax component (allocated)</span><strong id="localTax">—</strong></div>
+<div class="metric"><span>Combined nominal rate</span><strong id="rate">—</strong></div>
+<div class="metric"><span>Effective tax as % of net total</span><strong id="effective">—</strong></div>
+</div>
+<h3>Calculation details</h3>
+<div class="breakdown">
+<div><span>Recovered pre-tax price per unit</span><strong id="unitBefore">—</strong></div>
+<div><span>Discounted pre-tax price per unit</span><strong id="unitAfter">—</strong></div>
+<div><span>Discount savings on items</span><strong id="discountSaved">—</strong></div>
+<div><span>Subtotal (items only)</span><strong id="subtotal">—</strong></div>
+<div><span>Taxable amount</span><strong id="taxable">—</strong></div>
+</div>
+<p id="roundHelp" class="sub">Tax is calculated on the aggregated taxable amount.</p>
+<h3>Sales tax sensitivity by rate</h3><div class="chartWrap"><svg id="chart" viewBox="0 0 640 302" role="img" aria-labelledby="sales-chart-title sales-chart-desc"><title id="sales-chart-title">Sales tax rate sensitivity</title><desc id="sales-chart-desc">Comparison of estimated sales tax at seven rates.</desc></svg></div>
+<p class="sub">Bars show estimated tax at alternative combined rates, holding the recovered pre-tax item price and other inputs constant. Blue bar is the current combined rate.</p>
+</section></div>
+<article class="prose">
+<h2>US sales tax calculator for receipts, checkout and invoices</h2>
+<p>Sales tax is commonly added to a taxable purchase at checkout in the United States. A shopper, small business, reseller or bookkeeper may need to calculate the tax to charge on a pre-tax price—or extract the tax portion from a receipt that already includes it. This free tool handles both operations, plus optional quantity, pre-tax discount, shipping, and two rounding conventions. It works in US dollars and accepts state and local rates separately.</p>
+<div class="box"><h2>Sales tax formulas</h2><div class="formula">Combined rate = (State rate + Local/district rate) / 100
+Forward sales tax = Taxable base × Combined rate
+Tax-inclusive total = Pre-tax total + Sales tax
+Reverse pre-tax price = Tax-inclusive price / (1 + Combined rate)
+Reverse included tax = Tax-inclusive price − Reverse pre-tax price</div>
+<p>When reversing a receipt, do not simply subtract 8.25% of the gross amount. The percentage applies to the pre-tax base, not the tax-inclusive price. A discount is applied after recovering the pre-tax unit price, so a nonzero discount changes the modeled transaction rather than reproducing the original receipt exactly.</p></div>
+<h2>Worked example: reverse an 8.25% sales tax</h2>
+<p>A $108.25 tax-inclusive item at an 8.25% combined rate contains a $100.00 pre-tax price and $8.25 of sales tax. To recover the pre-tax price, divide $108.25 by 1.0825. If you instead calculate 8.25% of $108.25, you would overstate the tax portion. For a forward example, a $125.00 taxable item at 8.25% has $10.31 of tax after illustrative cent rounding and a $135.31 final total.</p>
+<h2>How do state and local sales tax rates work?</h2>
+<p>The state tax rate is only one part of the rate in many US jurisdictions. County, city, transit or special district rates may apply. The Tax Foundation's 2026 <a href="https://taxfoundation.org/wp-content/uploads/2026/05/TaxFoundation_FactsFigures26-5-28.pdf" rel="noopener noreferrer">Facts &amp; Figures state and local tax table</a> provides statewide rates and population-weighted average local rates as of January 1, 2026. A population-weighted average is not an address-specific checkout rate, and rates may change after the report's effective date.</p>
+<p>For example, California's statewide base rate in the cited January 2026 table is 7.25%, but district taxes can raise the applicable combined rate. Five states do not impose a general statewide sales tax—Alaska, Delaware, Montana, New Hampshire and Oregon—although certain local or specialized taxes can still apply. This calculator does not maintain a jurisdictional tax-rate database. Obtain the actual rate from the relevant state department of revenue or a current receipt.</p>
+<h2>When should shipping be taxable?</h2>
+<p>Shipping and delivery charges are treated differently across states and circumstances. Select taxable shipping only when the shipping charge is part of the taxable base for the specific transaction. The tool adds shipping to the pre-tax total in either case, but applies sales tax to it only when you select “Yes.” It does not model multiple taxability categories within the same invoice.</p>
+<h2>Unit rounding versus line rounding</h2>
+<p>Tax calculations can differ by cents when each unit is rounded independently rather than calculating tax on the entire extended line. For instance, if an item generates a fractional-cent tax and is sold in quantity, rounding each unit first can differ from rounding once on the aggregate. Select the convention appropriate for your POS or invoicing system. The calculator uses illustrative half-up-style cent rounding for nonnegative tax amounts, not a claim of legal compliance with every state's tax-rounding rules.</p>
+<h2>Tax-sensitive purchase planning</h2>
+<p>The rate-sensitivity chart shows seven hypothetical combined tax rates. It is useful for understanding how a tax change could affect the total purchase cost while holding item price, discount, quantity and shipping fixed. It does not predict future tax rates or establish tax liability.</p>
+<h2>Limitations and important cautions</h2>
+<ul><li><strong>Taxability:</strong> Groceries, medicines, services, digital goods, clothing and other categories can have special exemptions or rates.</li><li><strong>Sourcing:</strong> The destination, origin, buyer and seller nexus may affect which tax is owed.</li><li><strong>Discount treatment:</strong> Manufacturer coupons and seller discounts can have different tax consequences; this tool assumes a straightforward pre-tax seller discount.</li><li><strong>Shipping:</strong> Verify whether shipping is included in the taxable base.</li><li><strong>Split display:</strong> The state and local tax components shown are a proportional allocation of the final rounded total. Actual invoice allocation may differ by cents.</li><li><strong>Not filing software:</strong> This tool does not file returns, check resale certificates, or decide registration and remittance obligations.</li></ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I remove sales tax from a total?</h3><p>Choose “Reverse sales tax,” enter the tax-inclusive per-unit price and the applicable combined state plus local rate. The tool divides by one plus the rate, then shows the estimated net and tax amounts.</p>
+<h3>What if my state has no statewide sales tax?</h3><p>Enter 0% for state tax and the verified local rate, if any. Some jurisdictions impose local taxes despite having no general statewide sales tax.</p>
+<h3>Is the local tax rate always a fixed percentage?</h3><p>No. Different city, county, district, item and delivery rules can apply. The model assumes a single entered ad valorem rate on the entire taxable base.</p>
+<h3>Does this calculate VAT or GST?</h3><p>It uses percentage-tax arithmetic, but it is specifically designed for US sales tax receipts. VAT/GST invoice credit, tax-inclusive pricing rules and filing requirements are outside its scope. Use our <a href="/gst-calculator/">GST calculator</a> for a different tax context.</p>
+<h2>Sources, competitors and methodology</h2>
+<p>Primary rate context: <a href="https://taxfoundation.org/wp-content/uploads/2026/05/TaxFoundation_FactsFigures26-5-28.pdf" rel="noopener noreferrer">Tax Foundation Facts &amp; Figures 2026</a> (January 1, 2026 rates). Examples of existing calculator experiences include <a href="https://calcuris.com/us/sales-tax-calculator/" rel="noopener noreferrer">Calcuris</a> and <a href="https://semku.com/sales-tax-calculator/en" rel="noopener noreferrer">Semku</a>. Their existence demonstrates competing search intent, not verified search volume or endorsement. The model is deterministic: the entered rates are converted to decimals, the appropriate taxable base is formed, tax is rounded to cents, and results are displayed immediately.</p>
+<p>Related tools: <a href="/margin-vs-markup-calculator/">Margin vs Markup</a>, <a href="/gst-calculator/">GST Calculator</a>, <a href="/ecommerce-unit-economics-calculator/">E-commerce Unit Economics</a>, <a href="/business-profit-loss-tracker/">Business Profit &amp; Loss</a>.</p>
+<p><strong>Disclaimer:</strong> For educational estimates only. Verify local rates, exemptions, rounding and sourcing with an official revenue authority or tax professional before charging customers or filing returns.</p>
+</article></main><div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script><script src="/assets/js/common-footer.js" defer></script><script src="/assets/js/calculator-cloud.js" defer></script><script src="/assets/js/us-sales-tax.js" defer></script>
+</body></html>
