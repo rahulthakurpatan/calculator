@@ -71,6 +71,7 @@
     {
       label: 'Savings & Loans',
       tools: [
+        ['EV vs Gas Total Cost Calculator', '/ev-vs-gas-cost-calculator/', 'Compare electric and gasoline ownership costs and resale'],
         ['Mortgage PMI Removal & Savings Calculator', '/mortgage-pmi-removal-calculator/', 'Estimate 80% PMI requests, scheduled 78% cancellation and extra payment savings'],
         ['401(k) Employer Match & Vesting Calculator', '/401k-employer-match-vesting-calculator/', 'Calculate 2026–27 employer matching, missing match dollars and vested balance if changing jobs'],
         ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/', 'Compare fixed home-equity payments and HELOC draw, reset rates and repayment shock'],
