@@ -33,6 +33,7 @@
     {
       label: 'Tax & Salary',
       tools: [
+        ['US Sales Tax Add & Reverse Calculator', '/us-sales-tax-calculator/', 'Add or remove state and local sales tax, including discounts and taxable shipping'],
         ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
         ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
         ['GST Calculator', '/gst-calculator/', 'Calculate GST-inclusive and exclusive amounts'],
