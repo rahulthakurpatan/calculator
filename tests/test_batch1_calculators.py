@@ -54,7 +54,7 @@ try:
                 assert not errors, (slug, errors)
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 2"), slug + " horizontal overflow"
                 page.locator("input").first.fill("-999")
-                page.locator('button[type="submit"]').click()
+                page.locator("#calculator").dispatch_event("submit")
                 assert page.locator("#error").inner_text(), slug + " invalid input not rejected"
                 page.close()
         browser.close()
