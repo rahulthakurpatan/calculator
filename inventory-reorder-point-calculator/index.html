@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1769e0">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Reorder Point & Safety Stock Calculator | Inventory Planning</title>
+<meta name="description" content="Free inventory reorder point and safety stock calculator. Model demand and supplier lead-time variability, service level, stock position, reorder quantity and live charts.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/inventory-reorder-point-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inventory Reorder Point & Safety Stock Calculator">
+<meta property="og:description" content="Calculate when to reorder, how much safety stock to carry and how many units to replenish—with a live two-column dashboard.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/inventory-reorder-point-calculator/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Inventory Reorder Point and Safety Stock Calculator","url":"https://returnoninvestmentcalculator.in/inventory-reorder-point-calculator/","description":"Calculate inventory reorder points, safety stock and suggested replenishment quantities from demand and lead-time variation."},{"@type":"SoftwareApplication","name":"Inventory Reorder Point and Safety Stock Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","url":"https://returnoninvestmentcalculator.in/inventory-reorder-point-calculator/","description":"Free browser-based inventory reorder and safety stock planning calculator.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Inventory Reorder Point Calculator","item":"https://returnoninvestmentcalculator.in/inventory-reorder-point-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate an inventory reorder point?","acceptedAnswer":{"@type":"Answer","text":"Reorder point equals expected demand over supplier lead time plus safety stock. When demand and lead time vary independently, safety stock can be approximated with a service-level Z-score multiplied by the square root of lead time times daily demand variance plus mean daily demand squared times lead-time variance."}},{"@type":"Question","name":"What is the difference between safety stock and reorder point?","acceptedAnswer":{"@type":"Answer","text":"Safety stock is the buffer kept for uncertainty. The reorder point also includes expected sales during the wait for replenishment."}},{"@type":"Question","name":"Should I compare the reorder point with on-hand inventory?","acceptedAnswer":{"@type":"Answer","text":"In a continuous-review system, compare the reorder point with inventory position: on-hand plus on-order minus backorders and committed stock, provided that incoming order timing has been checked."}},{"@type":"Question","name":"Is 95 percent cycle service level the same as 95 percent fill rate?","acceptedAnswer":{"@type":"Answer","text":"No. Cycle service level measures the chance of avoiding a stockout in a replenishment cycle, whereas fill rate measures the percentage of units supplied directly from stock."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<style>
+:root{--ink:#172741;--secondary:#596b84;--blue:#1769e0;--violet:#7357d9;--teal:#008e7e;--bg:#f5f8fc;--line:#dfe8f3;--shadow:0 15px 40px #1c3f6710}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#1769e0}a:hover{text-decoration:none}button,select,input,textarea{font:inherit}
+button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #9cc2ff;outline-offset:2px}
+.wrap{width:min(1220px,calc(100% - 34px));margin:auto}
+.hero{padding:43px 0 30px;background:radial-gradient(circle at 89% 2%,#ece3ff 0,transparent 38%),radial-gradient(circle at 8% 10%,#ddf6f3 0,transparent 28%),linear-gradient(#fff,#f5f8fc);border-bottom:1px solid #e5ecf5}
+.crumb{font-size:12px;color:#63758d;font-weight:700}.crumb a{text-decoration:none}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#2856a0;background:#eef5ff;border:1px solid #cce0ff;border-radius:40px;padding:6px 12px;font-size:11px;font-weight:850;letter-spacing:.06em;margin:18px 0 0}
+.glow{height:8px;width:8px;display:inline-block;background:#16a98d;border-radius:50%;box-shadow:0 0 0 4px #cef8ed}
+h1{font-size:clamp(33px,4.4vw,50px);letter-spacing:-1.8px;line-height:1.15;margin:14px 0 12px;max-width:950px}
+.hero p.lead{color:var(--secondary);font-size:17px;max-width:835px;margin:0}
+.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.trust span{font-size:12px;background:white;border:1px solid #dfe9f6;border-radius:50px;padding:5px 11px;color:#516783}
+main{padding:26px 0 70px}.calculator{display:grid;grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);gap:20px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);min-width:0}
+.panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px}.panel h2{font-size:20px;line-height:1.3;letter-spacing:-.4px;margin:0}
+.tag{font-size:11px;font-weight:850;color:#057b66;background:#eaf9f3;border-radius:40px;padding:5px 10px;white-space:nowrap}
+.desc{font-size:13px;color:var(--secondary);margin:8px 0 20px}
+.section-label{grid-column:1/-1;letter-spacing:.1em;text-transform:uppercase;color:#71819a;font-weight:850;font-size:11px;margin-top:8px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:750;color:#4b5d76}
+.field input,.field select,.field textarea{border:1px solid #d7e0ee;border-radius:11px;padding:10px 11px;min-height:45px;width:100%;background:#fbfdff;color:#23354f}
+.field input,.field select{height:45px}.field textarea{min-height:85px;resize:vertical;line-height:1.4}
+.field input:focus,.field select:focus,.field textarea:focus{background:#fff;border-color:#448df2}
+.field small{font-size:11px;line-height:1.45;color:#76869b}.separator{grid-column:1/-1;border:0;border-top:1px solid #e9edf5;width:100%;margin:4px 0}
+.helper{font-size:12px;padding:11px;background:#f1f6ff;border-radius:10px;color:#435e84;margin:0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:21px}.btn{border:0;border-radius:11px;font-size:13px;font-weight:800;padding:10px 14px}
+.primary{background:#1769e0;color:white;box-shadow:0 7px 18px #1769e033}.secondary-btn{background:#edf3fc;color:#28517d}.btn:hover{filter:brightness(.98)}
+#error{color:#ac3146;font-size:13px;font-weight:750;min-height:1.4em;margin:10px 0 0}.privacy{color:#728096;font-size:12px;margin:10px 0 0}
+.results{background:linear-gradient(125deg,#fff 65%,#f4f7ff)}
+.status-box{background:linear-gradient(110deg,#1949a7,#654fca);color:white;border-radius:16px;padding:19px 20px;margin:17px 0 13px}
+.status-box.is-urgent{background:linear-gradient(110deg,#bd3c51,#8d458a)}.status-box.is-safe{background:linear-gradient(110deg,#136c71,#2454b3)}
+.status-box span{display:block;letter-spacing:.08em;font-size:11px;text-transform:uppercase;font-weight:850;opacity:.86}
+.status-box strong{display:block;font-size:19px;letter-spacing:-.2px;margin:4px 0}.status-box p{font-size:12px;line-height:1.55;opacity:.94;margin:0}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{border:1px solid #e4ebf5;background:#fff;border-radius:13px;padding:13px;min-width:0}
+.metric.highlight{background:#eef8ff;border-color:#cde8ff}.metric.violet{background:#f6f2ff;border-color:#e4dcff}
+.metric .label{font-size:11px;color:#586b86;font-weight:750}
+.metric strong{display:block;font-size:clamp(18px,2vw,24px);font-weight:850;line-height:1.3;letter-spacing:-.6px;margin-top:5px;color:#1d3454;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.metric.highlight strong{color:#0b64c5}.metric.violet strong{color:#7656c9}
+.breakdown{margin:17px 0 14px;display:grid;gap:8px}.breakdown div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid #e9edf4;padding-bottom:6px;font-size:12px}
+.breakdown span{color:#61728c}.breakdown strong{font-size:13px;font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.chart-title{margin:19px 0 7px;font-size:14px;font-weight:850}.chart-frame{padding:8px;background:#fff;border:1px solid #e4eaf5;border-radius:14px;overflow:hidden}
+.chart-frame svg{display:block;width:100%;height:auto}.chart-desc{font-size:11px;color:#7a889a;margin:7px 0 0}
+.note{margin:13px 0 0;border-radius:12px;border:1px solid #d8e8fd;background:#f0f7ff;padding:12px 14px;color:#38577c;font-size:12px}
+.note.neutral{background:#f7f9fd;color:#63738c;border-color:#e6ebf4}
+.prose{max-width:1000px;margin:38px auto 0;color:#405168}.prose h2{font-size:25px;color:#1e314f;letter-spacing:-.5px;margin:32px 0 8px}.prose h3{font-size:17px;color:#1e314f;margin:21px 0 7px}
+.prose p,.prose li{line-height:1.82}.prose ul{padding-left:21px}.prose .box{background:#fff;border:1px solid #dfe8f3;padding:23px;border-radius:17px;margin-top:22px}
+.formula{display:block;font:13px/1.9 ui-monospace,Consolas,monospace;background:#eff4fc;color:#234f83;border-radius:11px;padding:14px;overflow-x:auto;white-space:pre-wrap}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px}th,td{text-align:left;border-bottom:1px solid #e2e9f2;padding:9px 10px}th{background:#f2f6fe;color:#34587f}
+@media(min-width:900px){.results{position:sticky;top:18px}}
+@media(max-width:890px){.calculator{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:580px){.wrap{width:calc(100% - 24px)}.hero{padding:28px 0 24px}.hero p.lead{font-size:15px}.panel{padding:16px;border-radius:15px}.form-grid{gap:10px}.field input,.field select{height:44px;padding:9px;font-size:14px}.metric strong{font-size:19px}.status-box{padding:16px}.btn{padding:10px}}
+@media print{#site-header,#site-footer,.actions,.crumb,.trust{display:none!important}body,.hero{background:#fff}main{padding:7px}.calculator{display:block}.panel{box-shadow:none;margin-bottom:14px}.results{position:static}.wrap{width:100%}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/business-profit-loss-tracker/">Business tools</a> / Inventory reorder point</nav>
+<div class="eyebrow"><span class="glow"></span> SMART INVENTORY PLANNING • FREE TOOL</div>
+<h1>Inventory Reorder Point &amp; <span style="color:#1769e0">Safety Stock</span> Calculator</h1>
+<p class="lead">Know when to replenish and how much buffer inventory to hold. Model daily demand, supplier delays, and service levels with live forecasts and an actionable reorder recommendation.</p>
+<div class="trust"><span>✦ Instant live results</span><span>✦ Demand + lead-time variability</span><span>✦ Free CSV report</span><span>✦ 100% browser-based calculations</span></div>
+</div></header>
+<main class="wrap">
+<div class="calculator">
+<section class="panel" aria-labelledby="inputs-title">
+<div class="panel-header"><h2 id="inputs-title">Inventory planning inputs</h2><span class="tag">01 · Configure</span></div>
+<p class="desc">Enter the figures for <strong>one SKU</strong>. Use average daily sales including zero-sale days and supplier lead times measured in the same calendar days.</p>
+<form id="inventory-form" novalidate>
+<div class="form-grid">
+<div class="field"><label for="currency">Inventory valuation currency</label><select id="currency"><option value="USD">USD – US Dollar</option><option value="EUR">EUR – Euro</option><option value="GBP">GBP – British Pound</option><option value="INR">INR – Indian Rupee</option><option value="CAD">CAD – Canadian Dollar</option><option value="AUD">AUD – Australian Dollar</option></select></div>
+<div class="field"><label for="service">Target cycle service level</label><select id="service"><option value="90">90% – Standard</option><option value="95" selected>95% – Balanced</option><option value="97.5">97.5% – Higher</option><option value="98">98% – Higher</option><option value="99">99% – High priority</option><option value="99.5">99.5% – Critical</option></select></div>
+<div class="section-label">01 / Demand forecast</div>
+<div class="field"><label for="mean">Average daily demand (units)</label><input id="mean" data-label="average daily demand" type="number" inputmode="decimal" min="0" max="10000000" step="any" value="35" required><small>Use units sold or used per calendar day.</small></div>
+<div class="field"><label for="sd">Daily demand std. deviation</label><input id="sd" data-label="daily demand standard deviation" type="number" inputmode="decimal" min="0" max="10000000" step="any" value="12" required><small>Typical daily variability in units.</small></div>
+<div class="field full"><label for="history">Optional: paste recent daily sales (replaces the two demand inputs)</label><textarea id="history" placeholder="Example: 30, 42, 34, 39, 36, 50, 25 ..."></textarea><small>2–3,660 nonnegative daily quantities separated by commas, spaces or new lines. Include zero-sales days. We calculate mean and sample standard deviation automatically.</small></div>
+<div class="separator"></div><div class="section-label">02 / Supplier lead time</div>
+<div class="field"><label for="lead">Average lead time (days)</label><input id="lead" data-label="average lead time" type="number" inputmode="decimal" min="1" max="730" step="any" value="9" required></div>
+<div class="field"><label for="leadSd">Lead-time standard deviation (days)</label><input id="leadSd" data-label="lead-time variation" type="number" inputmode="decimal" min="0" max="365" step="any" value="2" required><small>Enter 0 if supplier delivery time is fixed.</small></div>
+<div class="separator"></div><div class="section-label">03 / Current stock position</div>
+<div class="field"><label for="onHand">Physical stock on hand (units)</label><input id="onHand" data-label="stock on hand" type="number" inputmode="numeric" min="0" max="1000000000" step="1" value="360" required></div>
+<div class="field"><label for="onOrder">Units already on order</label><input id="onOrder" data-label="stock on order" type="number" inputmode="numeric" min="0" max="1000000000" step="1" value="60" required></div>
+<div class="field"><label for="backorders">Unfulfilled backorders</label><input id="backorders" data-label="backorders" type="number" inputmode="numeric" min="0" max="1000000000" step="1" value="15" required></div>
+<div class="field"><label for="committed">Stock committed to existing orders</label><input id="committed" data-label="committed stock" type="number" inputmode="numeric" min="0" max="1000000000" step="1" value="0" required></div>
+<div class="separator"></div><div class="section-label">04 / Suggested purchase quantity</div>
+<div class="field"><label for="coverage">Extra target cover (days)</label><input id="coverage" data-label="target coverage" type="number" inputmode="decimal" min="0" max="365" step="any" value="14" required><small>Extra target stock on top of the reorder point.</small></div>
+<div class="field"><label for="pack">Supplier pack multiple (units)</label><input id="pack" data-label="supplier pack size" type="number" inputmode="numeric" min="1" max="10000000" step="1" value="12" required><small>Suggested order rounds up to full packs.</small></div>
+<div class="field full"><label for="unitCost">Cost per inventory unit</label><input id="unitCost" data-label="unit cost" type="number" inputmode="decimal" min="0" max="100000000" step="any" value="18" required></div>
+</div>
+<div class="actions"><button type="button" id="load-sample" class="btn primary">Try historical sales</button><button type="button" id="copy" class="btn secondary-btn">Copy summary</button><button type="button" id="export" class="btn secondary-btn">Export CSV</button><button type="button" id="reset" class="btn secondary-btn">Reset</button><button type="button" id="print" class="btn secondary-btn">Print</button></div>
+<p id="error" role="status" aria-live="polite"></p>
+<p class="privacy">🔒 Calculations are performed in your browser. No uploaded spreadsheets, account connections, or paid APIs are required.</p>
+</form>
+</section>
+<section class="panel results" aria-labelledby="results-title">
+<div class="panel-header"><h2 id="results-title">Live inventory insights</h2><span class="tag">02 · Results</span></div>
+<div id="status-box" class="status-box" aria-live="polite"><span>Replenishment signal</span><strong id="status-head">—</strong><p id="status-desc">Checking your scenario…</p></div>
+<div class="metrics">
+<div class="metric highlight"><div class="label">Recommended reorder point</div><strong id="rop">—</strong></div>
+<div class="metric violet"><div class="label">Safety stock buffer</div><strong id="safety">—</strong></div>
+<div class="metric"><div class="label">Suggested order quantity</div><strong id="order">—</strong></div>
+<div class="metric"><div class="label">Current inventory position</div><strong id="position">—</strong></div>
+</div>
+<div class="breakdown">
+<div><span>Average lead-time demand</span><strong id="expected">—</strong></div>
+<div><span>Lead-time demand standard deviation</span><strong id="lt-sigma">—</strong></div>
+<div><span>Order-up-to target position</span><strong id="target">—</strong></div>
+<div><span>Net on-hand days of cover</span><strong id="cover">—</strong></div>
+<div><span>Inventory value in safety buffer</span><strong id="buffer-value">—</strong></div>
+<div><span>Time until reorder threshold*</span><strong id="days-until">—</strong></div>
+</div>
+<p id="history-note" class="note neutral">—</p>
+<h3 class="chart-title">Current stock vs reorder threshold</h3>
+<div class="chart-frame"><svg id="stock-chart" viewBox="0 0 630 185" role="img" aria-labelledby="stock-chart-title stock-chart-desc"><title id="stock-chart-title">Inventory position relative to reorder point</title><desc id="stock-chart-desc">Expected demand and safety stock components.</desc></svg></div>
+<h3 class="chart-title">Service-level sensitivity graph</h3>
+<div class="chart-frame"><svg id="service-chart" viewBox="0 0 640 261" role="img" aria-labelledby="service-chart-title service-chart-desc"><title id="service-chart-title">Service levels and reorder points</title><desc id="service-chart-desc">Compare reorder points for six service targets.</desc></svg></div>
+<p class="chart-desc">The charts illustrate a simplified normal-distribution model, not a guarantee against stockouts.</p>
+<p id="feedback" class="note" aria-live="polite">Change any input to see an updated recommendation.</p>
+</section>
+</div>
+<article class="prose">
+<h2>How to calculate the inventory reorder point</h2>
+<p>The <strong>reorder point (ROP)</strong> is the inventory position at which your business should place a replenishment order. It is not the quantity to buy. For example, a store selling an average of 35 units per day with a nine-day supplier lead time expects to need 315 units while it waits for delivery. Carrying only those 315 units could create stockouts if customers buy more than usual or the supplier is delayed. Safety stock adds a statistical buffer to that baseline.</p>
+<p>This free reorder point calculator includes <strong>both demand variability and supplier lead-time variability</strong>. You can paste recent daily sales and let the tool calculate their mean and sample standard deviation, or enter forecast numbers directly. The right panel updates automatically, without a form submission.</p>
+<div class="box">
+<h2>Reorder point and safety stock formulas</h2>
+<p>We use a continuous-review, independent-demand, normal lead-time-demand approximation. The statistical model is consistent with the combined variability methodology described by the Association for Supply Chain Management (ASCM).</p>
+<div class="formula">Mean lead-time demand = d × L
+Lead-time demand SD = √(L × σd² + d² × σL²)
+Safety stock = ceil(Z × lead-time demand SD)
+Reorder point = ceil(d × L + Z × lead-time demand SD)
+Inventory position = On hand + On order − Backorders − Committed
+Reorder if inventory position ≤ reorder point</div>
+<p>Where <strong>d</strong> is average daily demand, <strong>L</strong> is average supplier lead time in calendar days, <strong>σd</strong> is the standard deviation of daily demand, <strong>σL</strong> is the standard deviation of lead time, and <strong>Z</strong> is the one-sided normal Z-score for the selected <em>cycle service level</em>. The model assumes independent demand variation between days and independent supplier lead-time variability. It may be unsuitable for highly seasonal, intermittent, promotional, correlated or non-normal demand.</p>
+<p>We round safety stock and the reorder threshold upward to whole units, since a business cannot stock fractional units of a discrete product. This protects against underestimating the threshold through conventional rounding.</p>
+<h3>Service level vs safety stock table</h3>
+<div class="table-wrap"><table><thead><tr><th>Cycle service target</th><th>Approx. Z-score</th><th>Inventory buffer tendency</th></tr></thead><tbody>
+<tr><td>90%</td><td>1.282</td><td>Lower</td></tr>
+<tr><td>95%</td><td>1.645</td><td>Balanced</td></tr>
+<tr><td>97.5%</td><td>1.960</td><td>Higher</td></tr>
+<tr><td>98%</td><td>2.054</td><td>Higher</td></tr>
+<tr><td>99%</td><td>2.326</td><td>Very high</td></tr>
+<tr><td>99.5%</td><td>2.576</td><td>Highest of the listed options</td></tr>
+</tbody></table></div>
+</div>
+<h2>How to decide when to reorder inventory</h2>
+<p>Do not compare the reorder point to physical stock alone if outstanding supplier orders or unfulfilled customer requests exist. Instead, use <strong>inventory position</strong>: stock on hand + on order − backorders − committed units. The tool flags “Reorder now” when that position is at or below the reorder threshold. Be sure that “on order” units can arrive in time; this simplified calculator does not track a shipment-by-shipment arrival calendar.</p>
+<p>The suggested purchase quantity is a <strong>planning heuristic</strong>, not an economic order quantity (EOQ) optimum. When reorder is triggered, the tool aims for a target inventory position equal to the reorder point plus average demand over an extra coverage period. It then rounds up to the supplier pack multiple, with a minimum of one pack on a trigger. Adjust the extra coverage days to reflect your review cadence, storage capacity, order minimums, and supplier economics. For precise EOQ optimization, include ordering and annual carrying costs in a separate purchasing model.</p>
+<h2>Worked example: small online store</h2>
+<p>Suppose your shop sells 35 items on an average day, with daily demand SD of 12 units. Your supplier takes nine days on average, with a two-day lead-time SD. At a 95% cycle service target, expected lead-time demand is <strong>315 units</strong>. Combined variation produces a lead-time demand SD of about 78.7 units. Safety stock is rounded up to <strong>130 units</strong>, producing a reorder point of <strong>445 units</strong>.</p>
+<p>If you have 360 units on hand, 60 already ordered, and 15 backordered, your inventory position is <strong>405 units</strong>. Since that is below the 445-unit threshold, the calculator recommends reordering. With 14 extra target coverage days and a 12-unit pack multiple, the suggested order is <strong>540 units</strong> (target position 935 minus current 405, rounded up in packs). These are illustrative decisions, not recommendations for any particular warehouse.</p>
+<h2>Use historical sales to improve your estimate</h2>
+<p>Paste a time-ordered series of daily sales as numbers separated by commas or line breaks. The calculator will estimate average demand using the arithmetic mean and daily variability using the <strong>sample standard deviation (n−1 denominator)</strong>. If you enter historical sales, these measurements override the manual demand inputs, but your original manual values remain available if you clear the history box. Include zero-sale days rather than only busy days, and check for stockouts that censored real demand.</p>
+<h2>Limitations of the inventory model</h2>
+<ul>
+<li><strong>Cycle service level is not fill rate.</strong> A 95% cycle service goal refers to avoiding stockouts in roughly 95% of replenishment cycles under the model, not fulfilling exactly 95% of demanded units.</li>
+<li><strong>Normal variability is an approximation.</strong> Very slow-moving items, spikes, seasonal effects, changing trends and correlated supplier delays need a more detailed model.</li>
+<li><strong>Time units matter.</strong> Daily demand and lead times both use calendar days here. Convert working days and weekly data consistently before entering.</li>
+<li><strong>Stock arrival timing matters.</strong> Inventory position assumes incoming orders are relevant to the replenishment policy, but the tool cannot know individual shipments’ arrival dates.</li>
+<li><strong>Order size is not EOQ.</strong> It is a rounded order-up-to estimate. Supplier minimum order amounts, shelf life, cash limits, warehouse capacity and discounts may change the appropriate order size.</li>
+<li><strong>*Days-until-threshold is only a straight-line projection.</strong> It assumes average demand continues and no inventory receipts change the position.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What is the difference between a reorder point and safety stock?</h3>
+<p>A reorder point includes average demand while waiting for delivery plus the extra buffer. Safety stock is only that buffer, designed to reduce the chance of running out during uncertain demand or lead times.</p>
+<h3>What if my supplier always delivers on the same day?</h3>
+<p>Set lead-time SD to zero. The model becomes safety stock = Z × daily demand SD × √(lead time). If daily demand SD is also zero, the calculated statistical safety stock becomes zero.</p>
+<h3>What is a good reorder point for an e-commerce store?</h3>
+<p>There is no one-size-fits-all number. Demand rate, demand variation, delivery reliability, current commitments, service goals and product-specific costs determine the result. Review the threshold after major changes in demand or supply.</p>
+<h3>Do I reorder when stock on hand reaches the threshold?</h3>
+<p>Use inventory position rather than stock on hand alone in a continuous-review model. Include pending purchase orders and deduct outstanding backorders and committed units, while verifying the expected receipt dates.</p>
+<h3>Why does increasing service level increase reorder point?</h3>
+<p>The Z-score rises as you request higher stock availability. A larger statistical buffer is needed to protect more replenishment cycles against unusually high demand or late deliveries.</p>
+<h3>Can I use this tool for multiple SKUs?</h3>
+<p>Run it separately for each SKU. A distinct service target and demand history for each product is usually more useful than assuming a single threshold across a store. The CSV export saves the current scenario.</p>
+<h2>References and related tools</h2>
+<p>Methodology sources: <a href="https://www.ascm.org/ascm-insights/safety-stock-a-contingency-plan-to-keep-supply-chains-flying-high/" rel="noopener noreferrer">ASCM – Safety stock and demand uncertainty</a> and <a href="https://www.zoho.com/us/inventory/reorder-point-calculator/" rel="noopener noreferrer">Zoho Inventory – Reorder point overview</a>. These references explain common inventory formulas; they do not endorse this calculator or certify its outputs.</p>
+<p>More business planning tools: <a href="/invoice-factoring-cost-calculator/">Invoice Factoring Cost</a>, <a href="/ecommerce-unit-economics-calculator/">E-commerce Unit Economics</a>, <a href="/business-profit-loss-tracker/">Business P&amp;L Tracker</a>, <a href="/break-even-calculator/">Break-Even Calculator</a>. <a href="/">Explore every calculator</a>.</p>
+</article>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/calculator-cloud.js" defer></script>
+<script src="/assets/js/inventory-reorder-point.js" defer></script>
+</body></html>
