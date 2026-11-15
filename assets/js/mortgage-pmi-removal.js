@@ -214,7 +214,7 @@
    if(!Number.isFinite(r.savingsInterest)||!Number.isFinite(r.savingsPMI))throw Error('Numerical overflow; check values.');
    last={v,r};put('error','');
    put('requestDate',dateMonth(r.firstSerial+Math.max(r.elapsed,r.planM.requestFirst))+'*');
-   put('autoDate',dateMonth(r.firstSerial+Math.max(r.elapsed,r.scheduled78)));
+   put('autoDate',dateMonth(r.firstSerial+Math.max(0,r.scheduled78-1)));
    put('midpointDate',dateMonth(r.firstSerial+r.midpoint));
    put('regularPmi',cash(r.baseM.pmiCost));put('extraPmi',cash(r.planM.pmiCost));
    put('pmiSaved',cash(r.savingsPMI));put('monthsSaved',fmt(r.accelerated)+' months');
