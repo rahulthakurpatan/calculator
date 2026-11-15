@@ -4,6 +4,9 @@ on:
     paths:
       - 'xirr-calculator/**'
       - '.github/workflows/batch3-xirr-calculator-browser.yml'
+  push:
+    branches:
+      - 'feature/batch3-xirr-20261115'
   workflow_dispatch:
 permissions:
   contents: read
