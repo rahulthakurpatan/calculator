@@ -47,6 +47,7 @@
     {
       label: 'Business & Creator',
       tools: [
+        ['Margin vs Markup & Profit Calculator', '/margin-vs-markup-calculator/', 'Calculate margin, markup, pricing, discounts and gross profit'],
         ['SaaS Rule of 40 & Burn Multiple Calculator', '/saas-rule-of-40-calculator/', 'Measure ARR growth, free cash flow, cash burn efficiency and runway'],
         ['Inventory Reorder Point & Safety Stock Calculator', '/inventory-reorder-point-calculator/', 'Calculate safety stock, reorder thresholds and supplier-delivery risks'],
         ['Invoice Factoring Cost Calculator', '/invoice-factoring-cost-calculator/', 'Compare advance, reserve release, fee periods and annualized factoring cost'],
