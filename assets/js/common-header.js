@@ -70,6 +70,7 @@
     {
       label: 'Savings & Loans',
       tools: [
+        ['Mortgage PMI Removal & Savings Calculator', '/mortgage-pmi-removal-calculator/', 'Estimate 80% PMI requests, scheduled 78% cancellation and extra payment savings'],
         ['401(k) Employer Match & Vesting Calculator', '/401k-employer-match-vesting-calculator/', 'Calculate 2026–27 employer matching, missing match dollars and vested balance if changing jobs'],
         ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/', 'Compare fixed home-equity payments and HELOC draw, reset rates and repayment shock'],
         ['CD Ladder Calculator', '/cd-ladder-calculator/', 'Build five certificate of deposit maturities and estimate ladder interest'],
