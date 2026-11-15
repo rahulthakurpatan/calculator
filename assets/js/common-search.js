@@ -8,6 +8,7 @@
   window.__investcalcSearchLoaded = true;
 
   const items = [
+    { title:'XIRR Calculator', subtitle:'Annualized return for irregular dated cash flows', category:'Invest & Mutual Funds', href:'/xirr-calculator/', keywords:'xirr xnpv irr irregular cash flows sip investments' },
     { title:'Rental Property ROI Calculator', subtitle:'Calculate cap rate, rental cash flow, NOI, DSCR and cash-on-cash return', category:'Property & Housing', href:'/rental-property-roi-calculator/', keywords:'rental property roi cash flow cap rate noi cash on cash return dscr' },
     { title:'Mortgage Points Break-Even Calculator', subtitle:'Compare discount points and lender credits by payment savings and balance', category:'Savings & Loans', href:'/mortgage-points-break-even-calculator/', keywords:'mortgage discount points lender credits break even rate buydown' },
     { title:'Portfolio Rebalancing Calculator', subtitle:'Calculate buy and sell trades or invest new money only to rebalance assets', category:'Invest & Mutual Funds', href:'/portfolio-rebalancing-calculator/', keywords:'portfolio rebalancing calculator asset allocation drift buy sell cash only' },
