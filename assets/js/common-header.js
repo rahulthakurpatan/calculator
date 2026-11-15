@@ -33,6 +33,7 @@
     {
       label: 'Tax & Salary',
       tools: [
+        ['International VAT Inclusive & Exclusive Calculator', '/vat-inclusive-exclusive-calculator/', 'Add or remove VAT, model invoices and input VAT with country reference rates'],
         ['US Sales Tax Add & Reverse Calculator', '/us-sales-tax-calculator/', 'Add or remove state and local sales tax, including discounts and taxable shipping'],
         ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
         ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
