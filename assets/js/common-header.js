@@ -70,6 +70,7 @@
     {
       label: 'Savings & Loans',
       tools: [
+        ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/', 'Compare fixed home-equity payments and HELOC draw, reset rates and repayment shock'],
         ['CD Ladder Calculator', '/cd-ladder-calculator/', 'Build five certificate of deposit maturities and estimate ladder interest'],
         ['Credit Card Rewards Break-Even Calculator', '/credit-card-rewards-break-even-calculator/', 'Estimate cashback, card annual fee waiver and rewards break-even spending'],
         ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/', 'Compare FX rate markup, sending fees and recipient payouts across two quotes'],

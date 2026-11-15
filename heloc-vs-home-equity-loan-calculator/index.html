@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1769e0">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>HELOC vs Home Equity Loan Calculator | Payments &amp; Costs</title>
+<meta name="description" content="Compare HELOC and home equity loan payments, interest, fees and balances. Model interest-only draw periods, repayment shock, variable-rate scenarios and borrowing capacity.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/heloc-vs-home-equity-loan-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="InvestCalc">
+<meta property="og:title" content="HELOC vs Home Equity Loan Calculator – Payments, Fees &amp; Rate Risk">
+<meta property="og:description" content="Compare interest-only HELOC draw periods against a fixed home equity loan, with monthly balances, fees and rate-stress graphs.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/heloc-vs-home-equity-loan-calculator/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"HELOC vs Home Equity Loan Calculator","url":"https://returnoninvestmentcalculator.in/heloc-vs-home-equity-loan-calculator/","description":"Compare fixed home equity loan payments with HELOC interest-only draw and principal repayment phases."},{"@type":"SoftwareApplication","name":"HELOC vs Home Equity Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/heloc-vs-home-equity-loan-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"HELOC vs Home Equity Loan Calculator","item":"https://returnoninvestmentcalculator.in/heloc-vs-home-equity-loan-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between a HELOC and a home equity loan?","acceptedAnswer":{"@type":"Answer","text":"A home equity loan generally provides a lump sum with a predictable fixed-rate payment, while a HELOC is a revolving credit line with a draw period and usually a variable interest rate."}},{"@type":"Question","name":"Why can HELOC payments jump after the draw period?","acceptedAnswer":{"@type":"Answer","text":"Some HELOCs require only interest payments while drawing funds. When the repayment period begins, both principal and interest are due, sometimes at a changed variable rate."}},{"@type":"Question","name":"Does this calculator show an official HELOC APR?","acceptedAnswer":{"@type":"Answer","text":"No. It models contractual interest assumptions and specified fees. Regulatory APR and loan disclosures may include different components and timing conventions."}},{"@type":"Question","name":"Are these loans secured by my home?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both may use the property as collateral, which can create a risk of foreclosure if payments are not made."}}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
+<script src="/assets/js/common-branding.js" defer></script>
+<script src="/assets/js/common-pushdotify.js" defer></script>
+<style>
+:root{--text:#182941;--muted:#62758d;--bg:#f5f8fd;--line:#dfe7f3;--blue:#1769e0;--violet:#8160d5;--teal:#048b81;--shadow:0 15px 35px #21487410}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--blue)}a:hover{text-decoration:none}
+input,select,button{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #93beff;outline-offset:2px}
+.wrap{width:min(1240px,calc(100% - 36px));margin:0 auto}
+.hero{padding:46px 0 33px;background:radial-gradient(circle at 85% 10%,#e8e7ff 0,transparent 35%),radial-gradient(circle at 8% 24%,#ddf5f8 0,transparent 28%),linear-gradient(#fff,#f5f8fd);border-bottom:1px solid #e8edf6}
+.breadcrumb{font-size:12px;color:#70819b;font-weight:700}.breadcrumb a{text-decoration:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;border:1px solid #d9e7ff;color:#315bb1;border-radius:50px;padding:6px 12px;font-size:11px;font-weight:850;letter-spacing:.055em;margin:19px 0 1px}.eyebrow i{background:#08ab95;width:8px;height:8px;border-radius:50%;box-shadow:0 0 0 4px #d2f6ec}
+h1{font-size:clamp(32px,4.4vw,51px);line-height:1.14;letter-spacing:-1.8px;max-width:890px;margin:12px 0 10px}
+.intro{font-size:17px;color:var(--muted);max-width:830px;margin:0}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:19px 0 0}.chips span{border:1px solid #dfe7f1;background:#fff;color:#5c708a;font-size:12px;border-radius:50px;padding:6px 12px}
+main{padding:28px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:start;gap:20px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);padding:24px;min-width:0}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.panel h2{margin:0;font-size:20px;line-height:1.3;letter-spacing:-.45px}.pill{font-size:11px;font-weight:800;color:#087b67;background:#eafaf4;padding:5px 10px;border-radius:35px;white-space:nowrap}
+.desc{font-size:13px;color:var(--muted);margin:7px 0 17px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:750;color:#485e79}.field input,.field select{height:45px;border:1px solid #d7e0ef;border-radius:10px;padding:0 11px;color:#1d304c;background:#fbfdff;width:100%;font-size:15px}
+.field input:focus,.field select:focus{background:#fff;border-color:#448cf0}
+.field small{font-size:11px;color:#8190a5;line-height:1.5}.section{grid-column:1/-1;text-transform:uppercase;letter-spacing:.09em;font-size:11px;color:#7789a0;font-weight:900;margin-top:8px;padding-top:12px;border-top:1px solid #e9eef6}
+.section.first{margin:0;padding:0;border:0}.helper{grid-column:1/-1;background:#f0f6ff;color:#44648b;border-radius:11px;padding:11px;font-size:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:21px}
+.btn{border:0;border-radius:11px;font-size:13px;font-weight:800;padding:11px 14px}
+.btn.primary{background:#1769e0;color:#fff;box-shadow:0 7px 16px #1769e035}
+.btn.secondary{background:#edf3fc;color:#2a527f}.btn:hover{filter:brightness(.97)}
+.error{color:#b2364e;min-height:1.3em;font-size:13px;font-weight:750;margin:10px 0}
+.privacy{font-size:12px;color:#70829a;margin:8px 0 0}
+.results{background:linear-gradient(140deg,#fff 70%,#f2f7ff)}
+.verdict{border-radius:16px;background:linear-gradient(115deg,#2558b9,#6d55cf);color:white;padding:17px 20px;margin:16px 0}
+.verdict.loan{background:linear-gradient(115deg,#087f8b,#3762bc)}.verdict.line{background:linear-gradient(115deg,#6b54c1,#3f7cb8)}
+.verdict span{display:block;text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:800;opacity:.87}
+.verdict strong{display:block;font-size:18px;letter-spacing:-.2px;margin:5px 0}.verdict p{font-size:12px;line-height:1.55;margin:0;opacity:.92}
+.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{min-width:0;border:1px solid #e2e9f6;background:white;border-radius:13px;padding:14px}
+.metric.blue{background:#f1f7ff;border-color:#d1e5ff}.metric.violet{background:#f6f2ff;border-color:#e4dcfd}
+.metric .label{color:#5e7089;font-size:11px;font-weight:750}
+.metric strong{display:block;color:#18314f;font-size:clamp(18px,2vw,23px);letter-spacing:-.5px;line-height:1.3;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.metric.blue strong{color:#1b67c2}.metric.violet strong{color:#7959cb}
+.group-title{font-size:14px;letter-spacing:-.1px;margin:20px 0 8px;font-weight:850}
+.breakdown{display:grid;gap:6px}.breakdown div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid #e9edf6;padding-bottom:5px;font-size:12px}
+.breakdown span{color:#62768e}.breakdown strong{font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.chart-frame{border:1px solid #e4eaf5;border-radius:14px;padding:8px;background:#fff;overflow:hidden}.chart-frame svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:13px;flex-wrap:wrap;font-size:11px;color:#667a96;margin:6px 0 0}.legend i{display:inline-block;width:12px;height:4px;border-radius:3px;margin-right:4px;vertical-align:middle}
+.note{border-radius:12px;border:1px solid #d7e6fc;background:#f1f7ff;color:#3d5e84;padding:12px 13px;font-size:12px;margin:12px 0 0}
+.note.warn{background:#fff7ea;border-color:#f1dfb8;color:#876225}
+.prose{margin:38px auto 0;max-width:980px;color:#465875;font-size:15px}
+.prose h2{font-size:25px;line-height:1.35;color:#1c3050;letter-spacing:-.45px;margin:29px 0 9px}
+.prose h3{font-size:17px;color:#203456;margin:21px 0 8px}
+.prose p,.prose li{line-height:1.85}.prose ul{padding-left:21px}
+.prose .box{background:#fff;border:1px solid #e0e8f2;border-radius:18px;padding:24px;margin:22px 0}
+.formula{background:#f0f5fc;border-radius:11px;color:#204e7c;display:block;font:13px/1.9 ui-monospace,Consolas,monospace;white-space:pre-wrap;padding:15px;overflow-x:auto}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:570px}th,td{padding:10px;text-align:left;border-bottom:1px solid #e5ebf4}th{background:#f2f6fd;color:#365b84}
+@media(min-width:920px){.results{position:sticky;top:16px}}
+@media(max-width:900px){.calculator{grid-template-columns:1fr}.results{position:static}}
+@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:29px 0 24px}.intro{font-size:15px}.panel{padding:16px;border-radius:16px}.fields{gap:10px}.field input{height:43px;padding:0 9px;font-size:14px}.metric strong{font-size:19px}.verdict{padding:16px}}
+@media print{#site-header,#site-footer,.actions,.chips,.breadcrumb{display:none!important}body,.hero{background:#fff}.hero{padding:10px 0}.wrap{width:100%}.calculator{display:block}.panel{box-shadow:none;margin-bottom:14px}.results{position:static}main{padding:8px 0}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="hero"><div class="wrap">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/mortgage-refinance-calculator/">Mortgage and loans</a> / HELOC vs home equity loan</nav>
+<div class="eyebrow"><i aria-hidden="true"></i> U.S. HOME EQUITY FINANCING COMPARISON</div>
+<h1>HELOC vs <span style="color:#1769e0">Home Equity Loan</span> Calculator</h1>
+<p class="intro">Compare predictable fixed monthly payments with a HELOC's interest-only draw period, repayment jump, variable-rate risk and lifetime financing costs. Explore detailed balances and rate-stress charts as you type.</p>
+<div class="chips"><span>✦ Live payments</span><span>✦ Rate-shock scenarios</span><span>✦ Monthly loan schedule CSV</span><span>✦ No lender API required</span></div>
+</div></header>
+<main class="wrap">
+<div class="calculator">
+<section class="panel" aria-labelledby="inputHeading">
+<div class="panel-head"><h2 id="inputHeading">Compare your borrowing options</h2><span class="pill">01 · Inputs</span></div>
+<p class="desc">All values are in U.S. dollars. Compare the <strong>same lump-sum amount borrowed today</strong>, with no additional HELOC draws. Actual offers may differ.</p>
+<form id="compare-form" novalidate><div class="fields">
+<div class="section first">01 / Home value and borrowing capacity</div>
+<div class="field"><label for="homeValue">Current estimated home value ($)</label><input id="homeValue" data-label="Home value" type="number" min="1" max="10000000000" step="any" value="450000" required></div>
+<div class="field"><label for="mortgage">Existing mortgage balance ($)</label><input id="mortgage" data-label="Current mortgage balance" type="number" min="0" max="10000000000" step="any" value="250000" required></div>
+<div class="field"><label for="maxCltv">Illustrative maximum combined LTV (%)</label><input id="maxCltv" data-label="Maximum CLTV" type="number" min="1" max="100" step="any" value="85" required></div>
+<div class="field"><label for="amount">Additional amount to borrow ($)</label><input id="amount" data-label="Borrow amount" type="number" min="1" max="1000000000" step="any" value="75000" required></div>
+<div class="section">02 / Fixed home equity loan</div>
+<div class="field"><label for="fixedRate">Fixed annual interest rate (%)</label><input id="fixedRate" data-label="Fixed rate" type="number" min="0" max="40" step="any" value="8" required></div>
+<div class="field"><label for="fixedYears">Fixed loan term (years)</label><input id="fixedYears" data-label="Fixed term years" type="number" min="1" max="30" step="1" value="15" required></div>
+<div class="field full"><label for="fixedFees">Fixed loan closing and origination fees ($)</label><input id="fixedFees" data-label="Fixed loan fees" type="number" min="0" max="100000000" step="any" value="1700" required><small>Modeled as paid upfront, not financed into principal.</small></div>
+<div class="section">03 / HELOC draw period</div>
+<div class="field"><label for="drawRate">Assumed draw-period interest rate (%)</label><input id="drawRate" data-label="Draw interest rate" type="number" min="0" max="40" step="any" value="8.75" required><small>Assumed constant during draw for this scenario; real variable rates may change monthly.</small></div>
+<div class="field"><label for="drawYears">Draw period (years)</label><input id="drawYears" data-label="HELOC draw years" type="number" min="1" max="20" step="1" value="10" required></div>
+<div class="field"><label for="extraDraw">Extra monthly principal paid during draw ($)</label><input id="extraDraw" data-label="Extra monthly draw payment" type="number" min="0" max="10000000" step="any" value="0" required><small>Default 0 gives interest-only payments. Extra principal reduces the balance.</small></div>
+<div class="field"><label for="helocFees">HELOC opening/closing costs ($)</label><input id="helocFees" data-label="HELOC opening fees" type="number" min="0" max="100000000" step="any" value="650" required></div>
+<div class="field full"><label for="annualFee">HELOC annual account fee ($)</label><input id="annualFee" data-label="HELOC annual fee" type="number" min="0" max="1000000" step="any" value="75" required><small>Modeled once every 12 months while the HELOC has an outstanding balance. Contractual fees may continue after payoff if the line remains open.</small></div>
+<div class="section">04 / HELOC repayment and comparison horizon</div>
+<div class="field"><label for="repayRate">Assumed rate when repayment begins (%)</label><input id="repayRate" data-label="Repayment interest rate" type="number" min="0" max="40" step="any" value="10.25" required><small>Held constant during repayment; use the chart for alternative reset-rate scenarios.</small></div>
+<div class="field"><label for="repayYears">Repayment period (years)</label><input id="repayYears" data-label="HELOC repayment years" type="number" min="1" max="30" step="1" value="15" required></div>
+<div class="field full"><label for="horizon">Same-horizon finance-cost comparison (years)</label><input id="horizon" data-label="Comparison horizon" type="number" min="1" max="40" step="1" value="10" required><small>Compare interest + specified fees accrued by the same future date, plus each remaining principal balance. Assumes you repay remaining balance at the horizon if you exit then; early-closure penalties not included.</small></div>
+<div class="helper">A HELOC normally permits multiple draws up to a credit limit. This version intentionally starts with the same amount as the loan and models <strong>no further draws</strong>, so initial funding is comparable. It is not a credit eligibility decision.</div>
+</div>
+<div class="actions"><button type="button" id="copy" class="btn primary">Copy summary</button><button type="button" id="csv" class="btn secondary">Monthly schedule CSV</button><button type="button" id="reset" class="btn secondary">Reset</button><button type="button" id="print" class="btn secondary">Print</button></div>
+<p id="error" class="error" role="status" aria-live="polite"></p>
+<p class="privacy">🔒 Runs locally in your browser. No account login, credit check or personal data upload.</p>
+</form>
+</section>
+<section class="panel results" aria-labelledby="resultsHeading">
+<div class="panel-head"><h2 id="resultsHeading">Live home equity comparison</h2><span class="pill">02 · Results</span></div>
+<div class="verdict" id="verdict" aria-live="polite">
+<span>Same-horizon financing-cost insight</span>
+<strong id="verdictTitle">Calculating…</strong>
+<p id="verdictNote">Comparing interest and fees at your selected horizon.</p>
+</div>
+<div class="metric-grid">
+<div class="metric blue"><div class="label">Fixed loan monthly principal & interest</div><strong id="loanPay">—</strong></div>
+<div class="metric violet"><div class="label">HELOC initial draw monthly payment</div><strong id="drawPay">—</strong></div>
+<div class="metric"><div class="label">HELOC repayment monthly payment</div><strong id="repayPay">—</strong></div>
+<div class="metric"><div class="label">HELOC payment change after draw</div><strong id="shock">—</strong></div>
+</div>
+<h3 class="group-title">Home equity & borrowing limits</h3>
+<div class="breakdown">
+<div><span>Home equity before new borrowing</span><strong id="equity">—</strong></div>
+<div><span>Estimated available amount under CLTV</span><strong id="capacity">—</strong></div>
+<div><span>Combined LTV after borrowing</span><strong id="cltv">—</strong></div>
+</div>
+<p class="note" id="eligibility">Eligibility based on illustrative CLTV only, not lender approval.</p>
+<h3 class="group-title">Full repayment-period costs</h3>
+<div class="breakdown">
+<div><span>Fixed loan total interest</span><strong id="loanInterest">—</strong></div>
+<div><span>HELOC total interest</span><strong id="helocInterest">—</strong></div>
+<div><span>Fixed loan upfront fees</span><strong id="loanFees">—</strong></div>
+<div><span>HELOC fees over time</span><strong id="helocFeeTotal">—</strong></div>
+<div><span>Fixed loan lifetime interest + fees</span><strong id="loanFinance">—</strong></div>
+<div><span>HELOC lifetime interest + fees</span><strong id="helocFinance">—</strong></div>
+<div><span>Fixed loan payoff time</span><strong id="loanYears">—</strong></div>
+<div><span>HELOC modeled payoff time</span><strong id="helocYears">—</strong></div>
+<div><span>HELOC principal at end of draw</span><strong id="helocDrawBalance">—</strong></div>
+</div>
+<h3 class="group-title" id="horizonLabel">10-year same-horizon comparison</h3>
+<div class="breakdown">
+<div><span>Fixed loan interest + fees by horizon</span><strong id="loanAtH">—</strong></div>
+<div><span>HELOC interest + fees by horizon</span><strong id="helocAtH">—</strong></div>
+<div><span>Fixed loan principal still owed</span><strong id="loanDebtH">—</strong></div>
+<div><span>HELOC principal still owed</span><strong id="helocDebtH">—</strong></div>
+</div>
+<p class="note" id="savings">HELOC payment changes are based on the rates you enter; they are not a market prediction.</p>
+<h3 class="group-title">Remaining loan balance over time</h3>
+<div class="chart-frame"><svg id="balance-graph" viewBox="0 0 640 248" role="img" aria-labelledby="balance-title balance-desc"><title id="balance-title">Loan balance comparison chart</title><desc id="balance-desc">Fixed home equity loan and HELOC principal balances over time.</desc></svg></div>
+<div class="legend"><span><i style="background:#166de2"></i>Fixed home equity loan</span><span><i style="background:#8862da"></i>HELOC</span><span><i style="background:#e3ac50"></i>HELOC draw ends</span></div>
+<h3 class="group-title">HELOC repayment-rate stress test</h3>
+<div class="chart-frame"><svg id="stress-graph" viewBox="0 0 680 205" role="img" aria-labelledby="stress-title stress-desc"><title id="stress-title">HELOC rate reset scenarios</title><desc id="stress-desc">Repayment monthly cost after variable interest rate changes.</desc></svg></div>
+<p class="note">The rate-stress graph varies only the HELOC <strong>repayment-phase rate</strong> (−2, unchanged, +2 and +4 percentage points). It does not simulate monthly index resets, rate caps, payment floors or additional HELOC draws.</p>
+</section>
+</div>
+<article class="prose">
+<h2>HELOC vs home equity loan: which costs less?</h2>
+<p>Both a home equity line of credit (HELOC) and a home equity loan allow a homeowner to borrow against equity in a property. They are not interchangeable. A conventional fixed-rate <strong>home equity loan</strong> offers a lump sum and amortizing principal-and-interest payments. A <strong>HELOC</strong> is usually a revolving line, and many lenders allow interest-only payments during the draw period before principal repayment begins. The Consumer Financial Protection Bureau (CFPB) warns that HELOC payments can increase substantially after the draw period, and interest rates usually vary. Both types may be secured by your home, creating foreclosure risk. <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-home-equity-loan-and-a-home-equity-line-of-credit-heloc-en-247/" rel="noopener noreferrer">CFPB: what is the difference?</a></p>
+<p>Use this calculator to compare the same initial amount of money under two specified offers. It estimates monthly payments, interest, disclosed fees, outstanding balances and the effect of a HELOC rate reset. Enter actual lender quotations wherever possible; no real-time interest rate is fetched.</p>
+<div class="box">
+<h2>How the calculator works</h2>
+<div class="formula">Estimated available home-equity borrowing = max(0, property value × CLTV cap − existing mortgage)
+Combined LTV = (existing mortgage + new borrowing) / property value × 100
+Monthly interest rate = annual rate / 12 / 100
+Fixed loan payment = principal × monthly rate / (1 − (1 + monthly rate)^(−months))
+HELOC draw interest per month = outstanding principal × draw rate / 12 / 100
+HELOC draw payment = draw-period interest + optional voluntary principal
+HELOC repayment payment = amortizing payment of remaining draw-end principal
+Monthly financing cost = interest paid + stated applicable account fees
+Total financing cost = total interest + upfront fees + modeled annual fees</div>
+<p>For zero interest, the amortizing loan payment is principal divided by the number of months. The fixed loan's payment remains constant except for rounding of the last installment. The HELOC's draw-period rate is held constant for the simulation; its repayment rate may be higher or lower. We use monthly interest on the outstanding balance rather than an actual-day accrual method, which may differ from a lender's statement.</p>
+<p>Annual HELOC account fees are modeled at the start of each year that an outstanding balance remains. They are separate from the monthly principal-and-interest figures. Some real HELOC contracts keep the credit line open and charge fees after the loan balance is cleared; this scenario stops those charges after modeled payoff. Upfront loan and HELOC closing fees are assumed paid in cash, not added to loan principal.</p>
+</div>
+<h2>How the interest-only draw period creates payment shock</h2>
+<p>During a typical interest-only HELOC draw period, the required payment may cover only the interest accrued that month. Paying interest alone does not reduce the principal. When the draw period ends, the outstanding debt must begin amortizing over the repayment term. An increase in the variable rate can make the new payment even larger. The Federal Reserve has specifically highlighted this end-of-draw payment-shock risk. <a href="https://www.federalreserve.gov/frrs/guidance/interagency-guidance-on-home-equity-lines-of-credit-nearing-their-end-of-draw-periods.htm" rel="noopener noreferrer">Federal Reserve guidance</a>.</p>
+<p>You can model voluntary principal payments during the draw phase. Every extra dollar paid toward principal reduces the balance exposed to future interest and the amount entering the repayment period. This calculator does not model repeated borrowing, minimum draw rules, interest capitalization, balloons or repayment-rate adjustments after the repayment period starts.</p>
+<h2>Why comparing lifetime interest alone can mislead</h2>
+<p>Consider a 15-year fixed home equity loan and a HELOC with a 10-year draw period plus 15 years of repayment. The fixed loan ends after 15 years, but the HELOC may stay outstanding for 25 years. The HELOC can show lower draw-period payments and substantially more lifetime interest simply because principal is held longer. Conversely, the costs of shorter and longer loans cannot be judged on total interest alone without looking at payment timing and remaining principal.</p>
+<p>The right dashboard therefore shows <strong>interest + stated fees accrued by the same selected future year</strong>, plus each option's principal still owed. If you planned to sell or refinance at that time, the remaining principal would have to be repaid; early termination fees, rate movements and future home value are not modeled. A difference in finance cost is not a full individualized recommendation: taxes, liquidity, cash-flow flexibility, risk tolerance and prepayment conditions can change the decision.</p>
+<h2>Worked example: $75,000 home equity borrowing</h2>
+<p>Assume a homeowner has a home worth $450,000 and owes $250,000 on an existing mortgage. With an illustrative 85% combined loan-to-value (CLTV) limit, the additional collateral-based capacity is $132,500. Borrowing $75,000 would create a combined LTV of about 72.2%.</p>
+<p>Compare a fixed loan at 8% over 15 years with a HELOC at 8.75% in a 10-year interest-only draw and an assumed 10.25% during a 15-year repayment period. The fixed loan amortizes principal from the first month, while the HELOC remains at $75,000 through the interest-only draw if no extra principal payments are made. Both may have closing costs, and the HELOC can charge annual fees. These are <strong>illustrative interest rates, not current market quotes</strong>; change them to those offered by your lender and inspect the live dashboard.</p>
+<h2>How much home equity can I borrow?</h2>
+<p>Your current equity is the home value minus existing mortgage balance. Lenders often evaluate a combined loan-to-value ratio rather than simply allowing you to borrow the entire equity amount. The limit varies by lender, property, credit profile, income and other criteria. The CLTV estimate on this page is a planning screen only; it is not underwriting, a credit offer or an approval prediction.</p>
+<h2>HELOC vs loan feature comparison</h2>
+<div class="box tablewrap"><table><thead><tr><th>Consideration</th><th>Home equity loan</th><th>HELOC</th></tr></thead><tbody>
+<tr><td>Access to cash</td><td>Typically lump sum</td><td>Line with draws during borrowing period</td></tr>
+<tr><td>Interest structure</td><td>Often fixed</td><td>Usually variable</td></tr>
+<tr><td>Draw stage</td><td>Not applicable</td><td>Often interest-only or limited principal</td></tr>
+<tr><td>Repayment</td><td>Principal and interest from start</td><td>May rise sharply after draw</td></tr>
+<tr><td>Fees</td><td>Potential origination and closing fees</td><td>Potential opening, annual, draw and closure fees</td></tr>
+<tr><td>Home collateral risk</td><td>Yes</td><td>Yes</td></tr>
+</tbody></table></div>
+<h2>Costs and disclosures that the model excludes</h2>
+<ul>
+<li>Variable-rate index movements within the draw or repayment period, interest-rate floors, caps and lender-specific recalculation dates.</li>
+<li>Further HELOC borrowing, lock-in conversions, balloon-payment plans, redraws, inactivity fees, early-closure penalties and mandatory minimum balances.</li>
+<li>Cash-out mortgage refinance alternatives, first-mortgage payments, escrow, insurance, property appreciation and lender underwriting.</li>
+<li>Mortgage interest tax deductions, which depend on the use of funds and applicable IRS law; this tool does not determine deductibility.</li>
+<li>Daily accrual, changing payment due dates, promotional teaser rates, financed fees and lender-specific APR disclosure conventions.</li>
+</ul>
+<p>Federal consumer resources note that <strong>HELOC APR disclosures can differ from closed-end loan APR disclosures</strong>: the HELOC APR may exclude certain costs included with home equity loan APR, so directly comparing APR figures without reviewing fees can be misleading. <a href="https://consumer.ftc.gov/articles/home-equity-loans-and-home-equity-lines-credit" rel="noopener noreferrer">Federal Trade Commission: home equity loans and credit lines</a>.</p>
+<h2>Frequently asked questions</h2>
+<h3>Is a HELOC cheaper than a home equity loan?</h3>
+<p>Not necessarily. HELOCs can start with lower interest-only payments but may accumulate greater total interest if principal is outstanding for longer. The variable rate and any annual or early-closure fees also matter. Compare actual offers over a common horizon.</p>
+<h3>What happens when a HELOC draw period ends?</h3>
+<p>Typically, additional draws stop and the outstanding amount must be repaid over a specified period with principal-and-interest payments. Some contracts may demand a large balloon payment instead, which this calculator does not simulate. Review your HELOC agreement.</p>
+<h3>Can I make extra HELOC principal payments during the draw period?</h3>
+<p>Some lenders allow extra principal reduction during the draw stage. This tool models an additional fixed principal amount every month, up to the balance remaining. It does not model reborrowing the principal later.</p>
+<h3>Why are my draw-period and repayment-period payments so different?</h3>
+<p>During an interest-only draw phase the principal remains unpaid. Repayment must amortize that balance within its remaining term, and the interest rate may change. This is known as payment shock.</p>
+<h3>Are home equity loans and HELOCs dangerous?</h3>
+<p>Both are secured by your home. If you fail to make agreed payments, the lender may foreclose. Evaluate whether you can handle higher variable-rate payments before borrowing.</p>
+<h3>Does this calculator include live HELOC rates or eligibility checks?</h3>
+<p>No. Rates, values, lending limits, term lengths and fees are assumptions you enter manually. The calculator is educational and does not request credit reports or contact a lender.</p>
+<h2>Official references and related tools</h2>
+<p>Research sources: <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-a-home-equity-line-of-credit-heloc-en-107/" rel="noopener noreferrer">CFPB: How a HELOC works</a>, <a href="https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-home-equity-loan-and-a-home-equity-line-of-credit-heloc-en-247/" rel="noopener noreferrer">CFPB: HELOC vs home equity loan</a>, <a href="https://consumer.ftc.gov/articles/home-equity-loans-and-home-equity-lines-credit" rel="noopener noreferrer">FTC: Home equity financing</a> and <a href="https://www.federalreserve.gov/frrs/guidance/interagency-guidance-on-home-equity-lines-of-credit-nearing-their-end-of-draw-periods.htm" rel="noopener noreferrer">Federal Reserve: end-of-draw risk</a>.</p>
+<p>Related calculators: <a href="/mortgage-refinance-calculator/">Mortgage Refinance Calculator</a>, <a href="/mortgage-payoff-calculator/">Mortgage Payoff Calculator</a>, <a href="/mortgage-affordability-calculator/">Mortgage Affordability Calculator</a>, <a href="/loan-amortization-calculator/">Loan Amortization Calculator</a> and <a href="/mortgage-points-break-even-calculator/">Mortgage Points Break-Even Calculator</a>.</p>
+<p><strong>Important:</strong> This tool gives estimated payments and financing costs—not a loan offer, guaranteed APR, financial recommendation, underwriting decision, or legal/tax advice. Review full lender disclosures and consult a qualified professional before putting your home at risk.</p>
+</article>
+</main>
+<div id="site-footer"></div>
+<script src="/assets/js/common-header.js" defer></script>
+<script src="/assets/js/common-footer.js" defer></script>
+<script src="/assets/js/calculator-cloud.js" defer></script>
+<script src="/assets/js/heloc-home-equity-compare.js" defer></script>
+</body>
+</html>
