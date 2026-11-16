@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#16253c"><meta name="robots" content="index,follow,max-image-preview:large">
+<title>Amazon FBA Profit Calculator – Fees, Margin & ROI</title><meta name="description" content="Calculate Amazon FBA profit, referral and fulfillment fees, storage, PPC costs, net margin, ROI and monthly earnings with a free seller calculator."><link rel="canonical" href="https://returnoninvestmentcalculator.in/amazon-fba-profit-calculator/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Return on Investment Calculator"><meta property="og:title" content="Amazon FBA Profit Calculator – Fees, Margin & ROI"><meta property="og:description" content="Calculate Amazon FBA profit, referral and fulfillment fees, storage, PPC costs, net margin, ROI and monthly earnings with a free seller calculator."><meta property="og:url" content="https://returnoninvestmentcalculator.in/amazon-fba-profit-calculator/"><meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Amazon FBA Profit & Fees Calculator","url":"https://returnoninvestmentcalculator.in/amazon-fba-profit-calculator/","description":"Calculate Amazon FBA profit, referral and fulfillment fees, storage, PPC costs, net margin, ROI and monthly earnings with a free seller calculator."},{"@type":"WebApplication","name":"Amazon FBA Profit & Fees Calculator","url":"https://returnoninvestmentcalculator.in/amazon-fba-profit-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free seller-entered Amazon FBA profitability and break-even scenario calculator."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Amazon FBA Profit Calculator","item":"https://returnoninvestmentcalculator.in/amazon-fba-profit-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate Amazon FBA profit per unit?","acceptedAnswer":{"@type":"Answer","text":"Start with the selling price excluding any included sales tax or VAT, then subtract your landed product cost, referral and fulfillment fees, storage, advertising, expected returns and allocated monthly overhead."}},{"@type":"Question","name":"Does Amazon FBA charge both referral and fulfillment fees?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Referral fees relate to selling through Amazon, while FBA fulfillment fees cover picking, packing and shipping through Amazon's logistics network. Actual rates vary by marketplace, category, size and weight."}},{"@type":"Question","name":"What is a good Amazon FBA profit margin?","acceptedAnswer":{"@type":"Answer","text":"There is no universal good margin. Compare net profit after every relevant cost, working capital requirements, return risk, competition, advertising spend and your desired investment return."}},{"@type":"Question","name":"How is Amazon FBA ROI different from profit margin?","acceptedAnswer":{"@type":"Answer","text":"Profit margin divides net profit by net sales revenue. Inventory ROI divides net profit by the landed product acquisition cost, so the percentages answer different questions."}},{"@type":"Question","name":"Are the Amazon fees in this calculator official estimates?","acceptedAnswer":{"@type":"Answer","text":"No. You enter the applicable referral rate and fulfillment, storage and other fees yourself. Check current Seller Central or Amazon's official Revenue Calculator for your product and marketplace."}}]}]}</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+<script src="/assets/js/common-branding.js" defer></script><script src="/assets/js/common-pushdotify.js" defer></script><script src="/assets/js/common-header.js" defer></script><script src="/assets/js/common-footer.js" defer></script>
+<style>
+:root{--ink:#16253c;--muted:#61748b;--blue:#2361dc;--green:#087c60;--red:#bc4b4b;--gold:#ce9954;--line:#dce6f1;--bg:#f3f7fd;--shadow:0 12px 40px rgba(34,56,89,.075)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#eaf1ff 0,#f5f8fd 520px,#fff 1700px);color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#235fb5}
+main{max-width:1260px;margin:auto;padding:32px 18px 62px}
+.kicker{display:inline-block;padding:6px 12px;background:#e2edff;color:#2057b3;font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;border-radius:30px}h1{font-size:clamp(31px,4.5vw,49px);line-height:1.15;letter-spacing:-1.5px;margin:12px 0 9px}h2{font-size:clamp(20px,2.6vw,26px);line-height:1.25;margin:0 0 12px}h3{font-size:16px;margin:0 0 9px}.lead{font-size:16px;color:var(--muted);max-width:970px;margin:0 0 12px}.trust{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;font-weight:750;color:#526782}.trust span:before{content:"✓ ";color:var(--green)}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:20px;align-items:start;margin-top:24px}.panel,.guide{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);min-width:0}.results{position:sticky;top:14px}.helper{color:var(--muted);font-size:12px}.topselect{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 12px}.topselect label{font-weight:750;font-size:13px}select,input[type=number]{min-width:0;width:100%;padding:10px 11px;border:1px solid #cbd7e5;border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:14px}select{max-width:250px}input[type=checkbox]{width:17px;height:17px;accent-color:var(--blue)}input:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #92beff;outline-offset:2px}
+.group{border:1px solid var(--line);background:#fcfdff;border-radius:12px;margin:11px 0}.group>summary{cursor:pointer;padding:13px 14px;font-weight:830}.group>summary::marker{color:var(--blue)}.fields{padding:0 14px 15px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:block;min-width:0}.field>span{display:block;font-size:12px;color:#3b536f;font-weight:740;margin-bottom:5px}.field small{display:block;color:var(--muted);font-size:10.5px;min-height:14px;margin-top:5px}.field .range{width:100%;accent-color:var(--blue);margin:9px 0 0}.checkfield{display:flex;align-items:flex-start;gap:8px;font-size:12px;font-weight:730;grid-column:1/-1}.checkfield span{font-size:12px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}button{border:0;border-radius:9px;padding:11px 13px;font:800 12px system-ui;cursor:pointer;background:var(--blue);color:#fff}.secondary{background:#e7efff;color:#215bb3}.mint{background:#e3f5ef;color:#067358}button:hover{filter:brightness(.95)}.error{display:none;padding:10px 12px;background:#fff1f0;border:1px solid #f0bbb4;color:#a53635;border-radius:9px;font-size:12px;font-weight:770}.error.show{display:block}.status{min-height:20px;color:var(--green);font-size:12px}
+.hero{border-radius:15px;padding:18px 20px;background:linear-gradient(130deg,#e4f7ee,#f5fcf9);border:1px solid #bce7d2}.hero.loss{background:#fff4ed;border-color:#f5cdbb}.hero small{display:block;font-size:12px;color:#4d6b61;font-weight:780}.hero strong{display:block;color:var(--green);font-size:clamp(32px,3.7vw,44px);line-height:1.15;overflow-wrap:anywhere;margin:4px 0}.hero.loss strong{color:var(--red)}.hero p{font-size:12px;color:#506d65;margin:0}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.metric{padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;min-width:0}.metric small{display:block;font-size:11px;font-weight:720;color:var(--muted)}.metric strong{display:block;font-size:clamp(17px,2vw,21px);overflow-wrap:anywhere}.positive{color:var(--green)}.negative{color:var(--red)}.warning{border-left:4px solid var(--gold);background:#fff9ee;padding:11px 13px;color:#6d552a;font-size:12px;margin:11px 0;border-radius:6px}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:12px}.chartcard{border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}.chartcard h3{font-size:13px}.chartarea{position:relative;height:240px;max-width:100%}.chartarea canvas{max-width:100%;max-height:100%}.chartnote{font-size:11px;color:var(--muted)}.chartfallback{display:none;font-size:12px;color:#945d28}
+.details{margin-top:13px}.details summary{cursor:pointer;font-weight:800}.table-wrap{overflow-x:auto;margin-top:8px}.breakdown{border-collapse:collapse;width:100%;font-size:12px}.breakdown td{padding:8px 6px;border-bottom:1px solid var(--line)}.breakdown td:last-child{text-align:right}.breakdown tr.total td{font-weight:800}
+.guide{margin-top:23px;padding:26px}.guide h2{margin:25px 0 10px}.guide h2:first-child{margin-top:0}.guide p,.guide li{max-width:1040px;color:#445a71}.guide li{margin:6px 0}.guide code{font-size:13px}.faq{padding:12px 0;border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;font-weight:800}.faq p{margin:9px 0}.fineprint{font-size:11px!important;color:var(--muted)!important}
+@media(max-width:870px){.workspace{grid-template-columns:1fr}.results{position:static}}@media(max-width:540px){main{padding:20px 12px 43px}.fields,.charts{grid-template-columns:1fr}.panel,.guide{padding:15px}.metrics{gap:7px}.metric{padding:10px}.metric strong{font-size:17px}.actions button{flex:1}.topselect{align-items:flex-start;flex-direction:column}}
+@media print{body{background:#fff}.workspace{display:block}.workspace>.panel:first-child,#site-header,#site-footer,.actions,.charts{display:none!important}.results{position:static}.panel,.guide{box-shadow:none;border:0;page-break-inside:avoid}.guide{padding:8px}main{padding:0}}
+</style>
+</head>
+<body><div id="site-header"></div><main>
+<header><span class="kicker">Amazon seller profitability • FBA unit economics</span><h1>Amazon FBA Profit & Fees Calculator</h1>
+<p class="lead">Estimate your real Amazon FBA unit profit after manufacturing, inbound shipping, referral fees, fulfilment, storage, PPC ads, returns and overhead. Compare break-even and target-margin selling prices in real time.</p>
+<div class="trust"><span>Free and no signup</span><span>Works in your browser</span><span>Manual, editable seller fees</span><span>Instant reports</span></div></header>
+<div class="workspace">
+<section class="panel" aria-labelledby="inputs-title"><h2 id="inputs-title">Your product economics</h2><p class="helper">Enter fee amounts from your marketplace or Seller Central fee preview. Currency selection changes formatting only—no exchange-rate conversion or automatic marketplace fee lookup.</p>
+<div class="topselect"><label for="currency">Marketplace / display currency</label><select id="currency"><option value="USD">🇺🇸 USA — USD ($)</option><option value="EUR">🇪🇺 Europe — EUR (€)</option><option value="GBP">🇬🇧 UK — GBP (£)</option><option value="INR">🇮🇳 India — INR (₹)</option></select></div>
+<details open class="group"><summary>1. Selling price & volume</summary><div class="fields">
+<label class="field" for="price"><span>Item selling price</span><input id="price" type="number" inputmode="decimal" value="30" min="0.01" max="10000000000" step="any"><input type="range" class="range" data-range-for="price" data-initial-max="150" min="1" max="150" step="0.5" value="30" aria-label="Item selling price slider"><small>Item price before any separately collected tax.</small></label>
+<label class="field" for="units"><span>Estimated monthly units sold</span><input id="units" type="number" inputmode="numeric" value="200" min="1" max="10000000000" step="1"><input type="range" class="range" data-range-for="units" data-initial-max="1000" min="1" max="1000" step="1" value="200" aria-label="Estimated monthly units sold slider"><small>Whole units sold each month.</small></label>
+<label class="checkfield"><input id="taxIncluded" type="checkbox"><span>Price entered includes VAT / GST (deduct before calculating revenue)</span></label>
+<label class="field" for="vat"><span>VAT / GST included in price (%)</span><input id="vat" type="number" inputmode="decimal" value="0" min="0" max="100" step="any"><small>Only used when tax-inclusive checkbox is selected.</small></label>
+</div></details>
+<details open class="group"><summary>2. Manufacturing & landed costs per unit</summary><div class="fields">
+<label class="field" for="manufacturing"><span>Manufacturing / product cost</span><input id="manufacturing" type="number" inputmode="decimal" value="8" min="0" max="10000000000" step="any"><small>Supplier or wholesale cost per unit.</small></label>
+<label class="field" for="inbound"><span>Shipping to Amazon warehouse</span><input id="inbound" type="number" inputmode="decimal" value="1.2" min="0" max="10000000000" step="any"><small>Inbound freight allocated per sold unit.</small></label>
+<label class="field" for="packaging"><span>Packaging and prep</span><input id="packaging" type="number" inputmode="decimal" value="0" min="0" max="10000000000" step="any"><small>Barcode labels, bundling and inspection.</small></label>
+<label class="field" for="duties"><span>Customs / import duty</span><input id="duties" type="number" inputmode="decimal" value="0" min="0" max="10000000000" step="any"><small>Nonrecoverable landed import costs.</small></label>
+</div></details>
+<details open class="group"><summary>3. Amazon selling & fulfilment fees</summary><div class="fields">
+<label class="field" for="referral"><span>Referral fee (%)</span><input id="referral" type="number" inputmode="decimal" value="15" min="0" max="100" step="any"><input type="range" class="range" data-range-for="referral" data-initial-max="45" min="0" max="45" step="0.5" value="15" aria-label="Referral fee (%) slider"><small>Illustrative 15% starting value; category rates vary.</small></label>
+<label class="field" for="referralMin"><span>Minimum referral fee per unit</span><input id="referralMin" type="number" inputmode="decimal" value="0" min="0" max="10000000000" step="any"><small>Set to 0 if not applicable; some categories have minimums.</small></label>
+<label class="field" for="fulfillment"><span>FBA fulfilment / pick & pack fee</span><input id="fulfillment" type="number" inputmode="decimal" value="4.2" min="0" max="10000000000" step="any"><input type="range" class="range" data-range-for="fulfillment" data-initial-max="20" min="0" max="20" step="0.1" value="4.2" aria-label="FBA fulfilment / pick & pack fee slider"><small>Enter your product size/weight-tier quote.</small></label>
+<label class="field" for="fuel"><span>Extra fulfilment surcharge (%)</span><input id="fuel" type="number" inputmode="decimal" value="0" min="0" max="100" step="any"><small>0 if already included; 3.5% example where applicable.</small></label>
+<label class="field" for="storage"><span>Allocated storage fee per unit</span><input id="storage" type="number" inputmode="decimal" value="0.35" min="0" max="10000000000" step="any"><small>Monthly storage allocated across sold units.</small></label>
+<label class="field" for="closing"><span>Category closing fee per unit</span><input id="closing" type="number" inputmode="decimal" value="0" min="0" max="10000000000" step="any"><small>If charged in your marketplace/category.</small></label>
+<label class="field" for="placement"><span>Inbound placement fee per unit</span><input id="placement" type="number" inputmode="decimal" value="0" min="0" max="10000000000" step="any"><small>If charged for inbound placement.</small></label>
+<label class="field" for="otherFees"><span>Other Amazon fees per unit</span><input id="otherFees" type="number" inputmode="decimal" value="0.3" min="0" max="10000000000" step="any"><small>Optional miscellaneous service fees.</small></label>
+</div></details>
+<details open class="group"><summary>4. Advertising, returns & business goals</summary><div class="fields">
+<label class="field" for="acos"><span>Advertising cost of sale, ACoS (%)</span><input id="acos" type="number" inputmode="decimal" value="10" min="0" max="100" step="any"><input type="range" class="range" data-range-for="acos" data-initial-max="60" min="0" max="60" step="0.5" value="10" aria-label="Advertising cost of sale, ACoS (%) slider"><small>Assumes ad spend as a percentage of net unit revenue.</small></label>
+<label class="field" for="returns"><span>Expected return-loss allowance per sale</span><input id="returns" type="number" inputmode="decimal" value="0.75" min="0" max="10000000000" step="any"><small>One aggregate nonrecoverable return cost; do not double-count refunds.</small></label>
+<label class="field" for="overhead"><span>Monthly subscriptions and overhead</span><input id="overhead" type="number" inputmode="decimal" value="40" min="0" max="10000000000" step="any"><small>Allocated across entered monthly unit sales.</small></label>
+<label class="field" for="target"><span>Target net profit margin (%)</span><input id="target" type="number" inputmode="decimal" value="25" min="0" max="100" step="any"><small>Used to solve target-margin selling price.</small></label>
+</div></details>
+<div class="actions"><button type="button" id="reset" class="secondary">Reset defaults</button><button type="button" id="sample">Load sample product</button><button type="button" id="copy" class="mint">Copy profit summary</button><button type="button" id="download" class="secondary">Export CSV</button><button type="button" id="print" class="secondary">Print report</button></div><p id="status" class="status" role="status"></p>
+</section>
+<section class="panel results" aria-label="Live FBA profitability results" aria-live="polite"><h2>Live profit scorecard</h2><div id="error" class="error" role="alert"></div>
+<div id="hero" class="hero"><small>Estimated net profit per sold unit</small><strong id="heroValue">—</strong><p id="heroText">Calculated after product costs, FBA fees, PPC and overhead</p></div>
+<div class="metrics">
+<div class="metric"><small>Net profit margin</small><strong id="margin">—</strong></div>
+<div class="metric"><small>Inventory ROI</small><strong id="roi">—</strong></div>
+<div class="metric"><small>Amazon fees per unit</small><strong id="amazonFees">—</strong></div>
+<div class="metric"><small>Projected monthly net profit</small><strong id="monthlyProfit">—</strong></div>
+<div class="metric"><small>Landed inventory cost per unit</small><strong id="landed">—</strong></div>
+<div class="metric"><small>Break-even selling price</small><strong id="breakeven">—</strong></div>
+<div class="metric"><small>Target-margin selling price</small><strong id="targetPrice">—</strong></div>
+<div class="metric"><small>Monthly net product revenue</small><strong id="monthlyRevenue">—</strong></div>
+</div>
+<div class="warning" id="warning">Actual Amazon fees depend on product attributes and marketplace.</div>
+<div class="charts">
+<div class="chartcard"><h3>Per-unit costs & retained profit</h3><div class="chartarea"><canvas id="costChart" role="img" aria-label="Doughnut chart showing costs and retained profit"></canvas></div></div>
+<div class="chartcard"><h3>Estimated monthly revenue vs costs</h3><div class="chartarea"><canvas id="monthlyChart" role="img" aria-label="Bar chart showing revenue, total cost and profit"></canvas></div></div></div>
+<p class="chartnote" id="chartNote">Cost components of each sold product.</p><p class="chartfallback" id="chartFallback" role="status">Charts unavailable. The profit calculator continues to work.</p>
+<details class="details"><summary>Complete Unit Cost & Fee Breakdown Table</summary><div class="table-wrap"><table class="breakdown"><tbody id="tableRows"></tbody></table></div></details>
+<p class="fineprint">Educational estimates before income tax. Tax input only removes included VAT/GST from selling revenue; it does not model input-tax recoverability, VAT on fees, or country-specific return filing.</p>
+</section>
+</div>
+<article class="guide">
+<h2>How Amazon FBA fees work</h2>
+<p>Fulfilment by Amazon (FBA) lets sellers send inventory to Amazon fulfilment centres, where Amazon can store, pick, pack and ship orders. FBA unit economics have more than one fee: a <strong>referral fee</strong> on eligible sales, a <strong>fulfilment charge</strong> depending on product attributes, and <strong>storage charges</strong> based on inventory volume and time. Depending on your marketplace, additional fees may include inbound placement, closing charges, returns, aged inventory or low-inventory surcharges. Amazon's <a href="https://sell.amazon.com/pricing/estimate">official Revenue Calculator</a> can help sellers obtain a product-specific fee estimate.</p>
+<p>Many product categories have different referral rates, minimums or tiered calculations. In this tool the referral fee is modeled as the higher of your entered percentage of net sales and your entered minimum fee. It is an intentionally simplified manual-fee scenario, <strong>not an official Amazon rate lookup</strong>. Verify the current fee in your marketplace's Seller Central before changing pricing.</p>
+<h2>How to calculate Amazon FBA net profit, margin and ROI</h2>
+<p><strong>Landed cost</strong> = product manufacturing + freight to Amazon + prep and packaging + import duties. <strong>Amazon fees</strong> = referral + fulfilment + optional surcharge + storage + closing + inbound placement + other fees. <strong>Ads</strong> = net sales revenue × entered ACoS. <strong>Monthly overhead per unit</strong> = recurring overhead ÷ monthly units.</p>
+<p><strong>Net profit per unit</strong> = net product revenue − landed cost − Amazon fees − PPC cost − expected return loss − allocated overhead. <strong>Net profit margin</strong> = net profit ÷ net product revenue × 100. <strong>Inventory ROI</strong> = net profit ÷ landed cost × 100. <strong>Monthly net profit</strong> = unit net profit × projected monthly units.</p>
+<p>Inventory ROI and margin measure different things: inventory ROI uses only landed inventory capital as the denominator, while all seller expenses are already subtracted from the profit numerator. If landed cost is zero, ROI is undefined and the calculator displays N/A rather than an infinite figure.</p>
+<h2>Break-even and target-margin pricing</h2>
+<p>Break-even price is the lowest modeled selling price at which estimated unit profit reaches zero. A target-margin price makes unit profit at least the chosen percentage of net revenue. The calculator numerically solves both thresholds, accounting for the selected referral fee minimum and tax-inclusive selling prices. It returns “Not feasible” when percentage-based charges leave too little revenue for the requested margin.</p>
+<h2>Worked example — private-label product</h2><p>Consider a $30 item with $8 manufacturing cost, $1.20 inbound shipping, 15% referral fee, $4.20 fulfilment, $0.35 storage, 10% ACoS, a $0.75 returns allowance, $0.30 other Amazon fees, and $40/month overhead on 200 units. Under those manually entered assumptions, the total unit cost is $22.50, profit is $7.50, margin is 25%, inventory ROI is about 81.52%, and projected monthly profit is $1,500. These values do not represent an official Amazon fee quote.</p>
+<h2>Pro tips to reduce FBA fees and improve profitability</h2>
+<ul><li><strong>Confirm size and weight tiers:</strong> packaging size changes can affect the FBA fulfilment fee. Check current Seller Central dimensions.</li><li><strong>Compare seasons:</strong> Amazon may adjust fulfilment and storage rates by selling season. Do not assume annual rates remain fixed.</li><li><strong>Keep inbound and storage realistic:</strong> account for inventory held before sales, placement charges and aged inventory fees.</li><li><strong>Measure advertising efficiency:</strong> ACoS directly affects contribution margin. Include advertising even when a product appears profitable before PPC.</li><li><strong>Track returns and taxes:</strong> estimate nonrecoverable return costs once. VAT/GST and recoverable input taxes require seller-specific accounting.</li></ul>
+<p>In 2026, Amazon's US <a href="https://sellercentral.amazon.com/help/hub/reference/external/GPDC3KPYAGDTVDJP">FBA fulfilment guidance</a> identifies a fuel/logistics surcharge and holiday-peak fee period. The optional surcharge field should be set to zero if your entered fulfilment fee already includes that charge. Amazon India has a separate <a href="https://sellercentral.amazon.in/gp/help/external/G200336920?locale=en-IN">fee schedule</a>, and EU/UK rules differ again. Seller rates are not fetched automatically by this page.</p>
+<h2>Frequently asked questions</h2><details class="faq"><summary>How do I calculate Amazon FBA profit per unit?</summary><p>Start with the selling price excluding any included sales tax or VAT, then subtract your landed product cost, referral and fulfillment fees, storage, advertising, expected returns and allocated monthly overhead.</p></details>
+<details class="faq"><summary>Does Amazon FBA charge both referral and fulfillment fees?</summary><p>Usually yes. Referral fees relate to selling through Amazon, while FBA fulfillment fees cover picking, packing and shipping through Amazon's logistics network. Actual rates vary by marketplace, category, size and weight.</p></details>
+<details class="faq"><summary>What is a good Amazon FBA profit margin?</summary><p>There is no universal good margin. Compare net profit after every relevant cost, working capital requirements, return risk, competition, advertising spend and your desired investment return.</p></details>
+<details class="faq"><summary>How is Amazon FBA ROI different from profit margin?</summary><p>Profit margin divides net profit by net sales revenue. Inventory ROI divides net profit by the landed product acquisition cost, so the percentages answer different questions.</p></details>
+<details class="faq"><summary>Are the Amazon fees in this calculator official estimates?</summary><p>No. You enter the applicable referral rate and fulfillment, storage and other fees yourself. Check current Seller Central or Amazon's official Revenue Calculator for your product and marketplace.</p></details>
+<h2>Related business calculators</h2><p><a href="/ecommerce-unit-economics-calculator/">E-commerce Unit Economics Calculator</a> · <a href="/margin-vs-markup-calculator/">Margin vs Markup Calculator</a> · <a href="/business-profit-loss-tracker/">Business Profit & Loss Tracker</a> · <a href="/inventory-reorder-point-calculator/">Inventory Reorder & Safety Stock Calculator</a></p>
+<p class="fineprint"><strong>Disclosure:</strong> This independent educational tool is not affiliated with or endorsed by Amazon. Amazon and Fulfilment by Amazon are trademarks of their respective owner. The formulas model seller-entered assumptions, not live Amazon catalog or fee data. Check official Seller Central for real fees and consult a professional for tax accounting.</p>
+</article>
+</main><div id="site-footer"></div><script>
+(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const keys=['price','units','manufacturing','inbound','packaging','duties','referral','referralMin','fulfillment','fuel','storage','closing','placement','otherFees','acos','returns','overhead','target','vat'];
+const defaults={price:30,units:200,manufacturing:8,inbound:1.2,packaging:0,duties:0,referral:15,referralMin:0,fulfillment:4.2,fuel:0,storage:0.35,closing:0,placement:0,otherFees:0.30,acos:10,returns:0.75,overhead:40,target:25,vat:0};
+const example={price:39.99,units:450,manufacturing:12.5,inbound:1.8,packaging:0.4,duties:0.55,referral:15,referralMin:0,fulfillment:5.5,fuel:0,storage:0.45,closing:0,placement:0.35,otherFees:0.25,acos:15,returns:1.1,overhead:120,target:20,vat:0};
+const symbols={USD:'en-US',EUR:'de-DE',GBP:'en-GB',INR:'en-IN'};
+let doughnut=null,bar=null,latest=null;
+function money(x){return new Intl.NumberFormat(symbols[$('currency').value],{style:'currency',currency:$('currency').value,minimumFractionDigits:2,maximumFractionDigits:2}).format(x)}
+function pct(x){return Number.isFinite(x)?x.toFixed(2)+'%':'N/A'}
+function format(x){return Number.isFinite(x)?money(x):'Not feasible'}
+function validate(){
+ const v={};
+ for(const key of keys){const e=$(key),n=Number(e.value),s=e.value.trim();
+  if(!s||!Number.isFinite(n)||n<0||n>1e10){return{error:'Enter a valid nonnegative number for '+key+'.'}}
+  v[key]=n;
+ }
+ if(v.price<=0||!Number.isInteger(v.units)||v.units<1||v.units>100000000){return{error:'Selling price must be positive, and monthly units must be a whole number of 1 or more.'}}
+ for(const k of ['referral','fuel','acos','target','vat'])if(v[k]>100){return{error:'All percentage rates must be between 0 and 100.'}}
+ if(v.referral+v.acos>=100&&v.manufacturing+v.inbound+v.packaging+v.duties+v.fulfillment+v.storage+v.closing+v.placement+v.otherFees+v.returns+v.overhead>0){return{error:'Referral and advertising percentages total 100% or more; no positive break-even price is feasible. Reduce the rates.'}}
+ v.includedTax=$('taxIncluded').checked;return{v};
+}
+function unitAt(gross,v){
+ const revenue=v.includedTax?gross/(1+v.vat/100):gross;
+ const salesTax=gross-revenue;
+ const landed=v.manufacturing+v.inbound+v.packaging+v.duties;
+ const referral=Math.max(revenue*v.referral/100,v.referralMin);
+ const fuel=v.fulfillment*v.fuel/100;
+ const amazon=referral+v.fulfillment+fuel+v.storage+v.closing+v.placement+v.otherFees;
+ const advertising=revenue*v.acos/100;
+ const overheadUnit=v.overhead/v.units;
+ const costs=landed+amazon+advertising+v.returns+overheadUnit;
+ const profit=revenue-costs;
+ return{gross,revenue,salesTax,landed,referral,fuel,amazon,advertising,overheadUnit,costs,profit,margin:revenue>0?profit/revenue*100:null,roi:landed>0?profit/landed*100:null};
+}
+function solvePrice(v,targetMargin){
+ const threshold=targetMargin/100;
+ const fn=price=>{const d=unitAt(price,v);return d.profit-d.revenue*threshold};
+ if(fn(0)>=0 && (1-v.referral/100-v.acos/100-threshold)>0)return 0;
+ if(1-v.referral/100-v.acos/100-threshold<=0)return null;
+ let hi=Math.max(1,v.price,unitAt(0,v).costs*2),tries=0;
+ while(fn(hi)<0&&hi<1e10&&tries++<80)hi*=2;
+ if(fn(hi)<0||!Number.isFinite(fn(hi)))return null;
+ let lo=0;
+ for(let i=0;i<85;i++){const mid=(lo+hi)/2;if(fn(mid)>=0)hi=mid;else lo=mid}
+ return hi;
+}
+function calculate(){
+ const data=validate();if(data.error)return data;
+ const v=data.v,d=unitAt(v.price,v);
+ const totalFees=d.amazon;
+ const breakEven=solvePrice(v,0);
+ const targetPrice=solvePrice(v,v.target);
+ return{v,d,totalFees,breakEven,targetPrice,monthlyProfit:d.profit*v.units,monthlyRevenue:d.revenue*v.units,monthlyFees:d.amazon*v.units};
+}
+function clear(){
+ latest=null;
+ for(const id of ['heroValue','margin','roi','amazonFees','monthlyProfit','landed','breakeven','targetPrice','monthlyRevenue'])$(id).textContent='—';
+ $('tableRows').innerHTML='';$('warning').textContent='Correct the inputs to restore the calculations.';
+ if(doughnut){doughnut.destroy();doughnut=null}if(bar){bar.destroy();bar=null}
+}
+function charts(m){
+ const note=$('chartNote'),fallback=$('chartFallback');
+ if(typeof Chart==='undefined'){fallback.style.display='block';note.textContent='Charts use Chart.js; numerical estimates continue working if the chart library cannot load.';return}
+ fallback.style.display='none';
+ const d=m.d;
+ const labels=['Landed product cost','Amazon fees','Advertising','Returns allowance','Monthly overhead allocation','Retained profit'];
+ const data=[d.landed,d.amazon,d.advertising,m.v.returns,d.overheadUnit,Math.max(0,d.profit)];
+ if(d.profit<0)note.textContent='This product has a loss. The cost doughnut exceeds net sales revenue; see the scorecard for the negative result.';
+ else note.textContent='Allocation of net sale revenue to costs and retained unit profit. Tax-exclusive when VAT/GST input is enabled.';
+ if(!doughnut){
+  doughnut=new Chart($('costChart'),{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:['#4d77a8','#7389b6','#df9f5d','#c87f83','#a6aabd','#078d6b'],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom',labels:{boxWidth:11,font:{size:10}}},tooltip:{callbacks:{label:c=>c.label+': '+money(c.parsed)}}}}});
+ }else{doughnut.data.datasets[0].data=data;doughnut.update('none')}
+ const barData=[m.monthlyRevenue,m.d.costs*m.v.units,m.monthlyProfit];
+ if(!bar){
+  bar=new Chart($('monthlyChart'),{type:'bar',data:{labels:['Revenue','Costs','Net profit'],datasets:[{data:barData,label:'Monthly estimate',backgroundColor:['#2a6dd9','#df9f5d','#0b906e']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>money(c.parsed.y)}}},scales:{y:{beginAtZero:true,ticks:{callback:v=>new Intl.NumberFormat('en',{notation:'compact'}).format(v)}}}}});
+ }else{bar.data.datasets[0].data=barData;bar.data.datasets[0].backgroundColor=['#2a6dd9','#df9f5d',m.monthlyProfit<0?'#bf4c50':'#0b906e'];bar.update('none')}
+}
+function row(label,value,total){
+ const tr=document.createElement('tr');if(total)tr.className='total';
+ const a=document.createElement('td'),b=document.createElement('td');
+ a.textContent=label;b.textContent=value;tr.append(a,b);return tr
+}
+function render(){
+ const m=calculate();
+ if(m.error){$('error').textContent=m.error;$('error').classList.add('show');clear();return}
+ $('error').classList.remove('show');latest=m;
+ const d=m.d;
+ $('heroValue').textContent=money(d.profit);$('hero').classList.toggle('loss',d.profit<0);
+ $('heroText').textContent='Net selling revenue per unit: '+money(d.revenue)+' · Before income tax';
+ const vals={margin:pct(d.margin),roi:d.roi===null?'N/A – no landed cost':pct(d.roi),amazonFees:money(m.totalFees),monthlyProfit:money(m.monthlyProfit),landed:money(d.landed),breakeven:format(m.breakEven),targetPrice:format(m.targetPrice),monthlyRevenue:money(m.monthlyRevenue)};
+ for(const [id,value]of Object.entries(vals))$(id).textContent=value;
+ $('monthlyProfit').className=m.monthlyProfit>=0?'positive':'negative';
+ $('warning').textContent=(d.profit<0?'This product loses money under the current assumptions. ':'')+
+ (m.breakEven===null?'A break-even selling price could not be found with the entered percentage fees. ':'')+
+ (m.v.includedTax?'Tax-inclusive selling price has been converted to net revenue using the entered tax rate. ':'')+
+ 'Referral, fulfilment, storage and other fees are manually entered estimates. Marketplace, category, weight, season and tax settings can change the actual charges.';
+ const breakdown=[
+ ['Gross selling price',d.gross],['Output VAT/GST excluded',-d.salesTax],['Net sales revenue',d.revenue],
+ ['Manufacturing cost',-m.v.manufacturing],['Inbound shipping',-m.v.inbound],['Packaging and prep',-m.v.packaging],['Import duty / customs',-m.v.duties],
+ ['Referral fee',-d.referral],['FBA fulfilment / pick & pack fee',-m.v.fulfillment],['Optional fuel/logistics surcharge',-d.fuel],
+ ['Storage fee per unit',-m.v.storage],['Closing fee',-m.v.closing],['Inbound placement fee',-m.v.placement],['Other Amazon fees',-m.v.otherFees],
+ ['PPC advertising',-d.advertising],['Expected returns allowance',-m.v.returns],['Allocated monthly overhead',-d.overheadUnit],['Net profit per unit',d.profit]
+ ];
+ const tbody=$('tableRows');tbody.replaceChildren(...breakdown.map(([k,v],i)=>row(k,money(v),i===17)));
+ charts(m);
+}
+function syncRange(id){
+ const slider=document.querySelector('[data-range-for="'+id+'"]');if(!slider)return;
+ const value=Number($(id).value);if(Number.isFinite(value)&&value>=0){
+  const initial=Number(slider.dataset.initialMax);slider.max=String(Math.max(initial,Math.ceil(value*1.25)||initial));slider.value=String(value);
+ }
+}
+for(const id of keys)$(id).addEventListener('input',()=>{syncRange(id);render()});
+document.querySelectorAll('[data-range-for]').forEach(slider=>slider.addEventListener('input',()=>{$(slider.dataset.rangeFor).value=slider.value;render()}));
+$('currency').addEventListener('change',render);$('taxIncluded').addEventListener('change',render);
+function usePreset(preset,currency){
+ for(const [id,value]of Object.entries(preset))$(id).value=value;
+ $('currency').value=currency;$('taxIncluded').checked=false;
+ keys.forEach(syncRange);$('status').textContent='';render();
+}
+$('reset').addEventListener('click',()=>usePreset(defaults,'USD'));
+$('sample').addEventListener('click',()=>{usePreset(example,'USD');$('status').textContent='Alternative private-label sample loaded.'});
+function report(m){const d=m.d;return [
+ 'Amazon FBA Profit & Fees Calculator','Currency: '+$('currency').value,'Selling price: '+money(m.v.price),'Units per month: '+m.v.units,
+ 'Landed cost per unit: '+money(d.landed),'Amazon fees per unit: '+money(d.amazon),
+ 'Advertising per unit: '+money(d.advertising),'Returns per unit: '+money(m.v.returns),'Overhead per unit: '+money(d.overheadUnit),
+ 'Net profit per unit: '+money(d.profit),'Profit margin: '+pct(d.margin),'Inventory ROI: '+(d.roi===null?'N/A':pct(d.roi)),
+ 'Monthly profit: '+money(m.monthlyProfit),'Break-even selling price: '+format(m.breakEven),
+ 'Target margin price: '+format(m.targetPrice),'Manual Amazon seller-fee assumptions; not an Amazon quote.'
+ ].join('\n')}
+$('copy').addEventListener('click',async()=>{if(!latest)return;try{await navigator.clipboard.writeText(report(latest));$('status').textContent='Profit analysis copied.'}catch(e){$('status').textContent='Clipboard unavailable; use Print report.'}});
+$('print').addEventListener('click',()=>window.print());
+$('download').addEventListener('click',()=>{if(!latest)return;const m=latest,rows=[['Metric','Value'],['Selling price',m.v.price],['Net sales revenue',m.d.revenue],['Landed cost',m.d.landed],['Amazon fees',m.d.amazon],['Advertising',m.d.advertising],['Returns allowance',m.v.returns],['Overhead per unit',m.d.overheadUnit],['Net profit per unit',m.d.profit],['Profit margin percent',m.d.margin],['Inventory ROI percent',m.d.roi===null?'N/A':m.d.roi],['Monthly units',m.v.units],['Projected monthly profit',m.monthlyProfit],['Break-even price',m.breakEven===null?'Not feasible':m.breakEven]];
+ const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='amazon-fba-profit-analysis.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('status').textContent='Cost breakdown exported.'});
+window.__fbaTest={calculate,unitAt,solvePrice,validate};
+window.addEventListener('load',()=>{if(latest)charts(latest)});
+usePreset(defaults,'USD');
+})();
+</script></body></html>
