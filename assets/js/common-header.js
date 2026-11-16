@@ -246,6 +246,7 @@
     {
       "label": "Creators & Crypto",
       "tools": [
+        ["Crypto Tax-Loss Harvesting Calculator", "/crypto-tax-loss-harvesting-calculator/", "Estimate current-year capital loss harvesting benefits, tax costs and country rules"],
         [
           "YouTube AdSense Revenue Calculator",
           "/youtube-adsense-revenue-calculator/",
