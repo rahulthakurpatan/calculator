@@ -70,7 +70,7 @@ function otherTax(st,lt,v){
    const taxable=shortPositive+longPositive*(1-v.discount/100);
    return{tax:taxable*v.shortRate/100,carry:loss,taxable,deduct:0};
  }
- return{tax:Math.max(0,st+lt)*0.30,carry:0,taxable:Math.max(0,st+lt),deduct:0};
+ const positiveOnly=Math.max(0,st)+Math.max(0,lt);return{tax:positiveOnly*0.30,carry:0,taxable:positiveOnly,deduct:0};
 }
 function calculate(){
  const data=modelInputs();if(data.error)return data;
