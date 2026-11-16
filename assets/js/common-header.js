@@ -1,6 +1,6 @@
 /*
  * InvestCalc shared premium header.
- * Seven-category navigation with responsive mega menu and mobile accordion.
+ * Balanced category navigation with responsive mega menu and mobile accordion.
  * Add <div id="site-header"></div> and load this file on each page.
  */
 (() => {
@@ -9,121 +9,498 @@
 
   const categories = [
     {
-      label: 'Invest & Mutual Funds',
-      tools: [
-        ['CAGR & Annualized Return Calculator', '/cagr-calculator/', 'Annualized CAGR, inflation-adjusted return and benchmark growth'],
-        ['HSA Contribution & Tax Savings Calculator (2026–27)', '/hsa-contribution-tax-savings-calculator/', 'IRS 2026 and 2027 HSA limits, eligible contribution room and estimated tax savings'],
-        ['ROI Calculator', '/', 'Calculate investment profit, loss and ROI'],
-        ['Portfolio Rebalancing Calculator', '/portfolio-rebalancing-calculator/', 'Calculate asset allocation drift and rebalancing trades'],
-        ['XIRR Calculator', '/xirr-calculator/', 'Annualized return for dated investment cash flows'],
-        ['Bond Yield to Maturity Calculator', '/bond-yield-to-maturity-calculator/', 'Bond YTM, price and duration'],
-        ['SIP Calculator', '/sip-calculator/', 'Estimate monthly SIP returns, goals and step-up growth'],
-        ['Dividend Reinvestment Calculator', '/dividend-reinvestment-calculator/', 'Project dividend growth, DRIP shares and passive income'],
-        ['Dividend Yield on Cost Calculator', '/dividend-yield-on-cost-calculator/', 'Calculate dividends as a percentage of your original share cost'],
-        ['Compound Interest Calculator', '/compound-interest-calculator/', 'Estimate the future corpus of a one-time investment'],
-        ['Step-Up SIP Calculator', '/step-up-sip-calculator/', 'Increase your SIP contribution every year'],
-        ['Lump Sum Calculator', '/lump-sum-calculator/', 'Estimate returns from a one-time investment'],
-        ['Gold Jewellery Resale & Break-Even Calculator', '/gold-jewellery-resale-break-even-calculator/', 'Compare jewellery GST, making costs, buyback deductions and break-even gold price'],
-        ['Mutual Fund vs FD Comparison', '/mutual-fund-vs-fd-comparison/', 'Compare estimated mutual fund and FD returns'],
-        ['SWP Calculator', '/swp-calculator/', 'Estimate regular withdrawals from your corpus'],
-        ['Goal-Based Investment Planner', '/goal-based-investment-planner/', 'Plan investments to reach a financial goal'],
-        ['When Will I Become a Millionaire? Calculator', '/when-will-i-become-a-millionaire-calculator/', 'Project your millionaire date, net worth, investments and inflation-adjusted wealth'],
-        ['Investment Portfolio & Net Worth Planner', '/investment-portfolio-planner/', 'Project multiple investments, assets, liabilities and your target net worth date']
+      "label": "Investing & Returns",
+      "tools": [
+        [
+          "CAGR & Annualized Return Calculator",
+          "/cagr-calculator/",
+          "Annualized CAGR, inflation-adjusted return and benchmark growth"
+        ],
+        [
+          "ROI Calculator",
+          "/",
+          "Calculate investment profit, loss and ROI"
+        ],
+        [
+          "Portfolio Rebalancing Calculator",
+          "/portfolio-rebalancing-calculator/",
+          "Calculate asset allocation drift and rebalancing trades"
+        ],
+        [
+          "XIRR Calculator",
+          "/xirr-calculator/",
+          "Annualized return for dated investment cash flows"
+        ],
+        [
+          "Bond Yield to Maturity Calculator",
+          "/bond-yield-to-maturity-calculator/",
+          "Bond YTM, price and duration"
+        ],
+        [
+          "Dividend Reinvestment Calculator",
+          "/dividend-reinvestment-calculator/",
+          "Project dividend growth, DRIP shares and passive income"
+        ],
+        [
+          "Dividend Yield on Cost Calculator",
+          "/dividend-yield-on-cost-calculator/",
+          "Calculate dividends as a percentage of your original share cost"
+        ],
+        [
+          "Compound Interest Calculator",
+          "/compound-interest-calculator/",
+          "Estimate the future corpus of a one-time investment"
+        ],
+        [
+          "Lump Sum Calculator",
+          "/lump-sum-calculator/",
+          "Estimate returns from a one-time investment"
+        ]
       ]
     },
     {
-      label: 'Tax & Salary',
-      tools: [
-        ['International VAT Inclusive & Exclusive Calculator', '/vat-inclusive-exclusive-calculator/', 'Add or remove VAT, model invoices and input VAT with country reference rates'],
-        ['US Sales Tax Add & Reverse Calculator', '/us-sales-tax-calculator/', 'Add or remove state and local sales tax, including discounts and taxable shipping'],
-        ['Income Tax Calculator', '/income-tax-calculator/', 'Compare old and new income tax regimes'],
-        ['All-in-One TDS Calculator', '/tds-calculator/', 'Estimate tax deducted at source'],
-        ['GST Calculator', '/gst-calculator/', 'Calculate GST-inclusive and exclusive amounts'],
-        ['Company / Corporate Tax Calculator', '/company-corporate-tax-calculator/', 'Estimate company income tax, surcharge and MAT'],
-        ['Gratuity Calculator', '/gratuity-calculator/', 'Estimate gratuity under current labour-code rules'],
-        ['HRA Calculator', '/hra-calculator/', 'Calculate HRA exemption under old and new tax regimes'],
-        ['Digital Nomad Tax Calculator', '/digital-nomad-tax-calculator/', 'Screen international residency day rules and compare cross-border tax scenarios'],
-        ['Overtime Pay Calculator', '/overtime-pay-calculator/', 'Calculate time-and-a-half, double-time and hourly gross paycheck projections'],
-
+      "label": "Mutual Funds & Wealth",
+      "tools": [
+        [
+          "SIP Calculator",
+          "/sip-calculator/",
+          "Estimate monthly SIP returns, goals and step-up growth"
+        ],
+        [
+          "Step-Up SIP Calculator",
+          "/step-up-sip-calculator/",
+          "Increase your SIP contribution every year"
+        ],
+        [
+          "Mutual Fund vs FD Comparison",
+          "/mutual-fund-vs-fd-comparison/",
+          "Compare estimated mutual fund and FD returns"
+        ],
+        [
+          "SWP Calculator",
+          "/swp-calculator/",
+          "Estimate regular withdrawals from your corpus"
+        ],
+        [
+          "Goal-Based Investment Planner",
+          "/goal-based-investment-planner/",
+          "Plan investments to reach a financial goal"
+        ],
+        [
+          "When Will I Become a Millionaire? Calculator",
+          "/when-will-i-become-a-millionaire-calculator/",
+          "Project your millionaire date, net worth, investments and inflation-adjusted wealth"
+        ],
+        [
+          "Investment Portfolio & Net Worth Planner",
+          "/investment-portfolio-planner/",
+          "Project multiple investments, assets, liabilities and your target net worth date"
+        ],
+        [
+          "Daughter Marriage Saving Planner",
+          "/daughter-marriage-saving-planner/",
+          "Estimate savings for a future wedding goal"
+        ],
+        [
+          "Net Worth Calculator & Milestone Tracker",
+          "/net-worth-calculator/",
+          "Open this calculator"
+        ]
       ]
     },
     {
-      label: 'Business & Creator',
-      tools: [
-        ['Margin vs Markup & Profit Calculator', '/margin-vs-markup-calculator/', 'Calculate margin, markup, pricing, discounts and gross profit'],
-        ['SaaS Rule of 40 & Burn Multiple Calculator', '/saas-rule-of-40-calculator/', 'Measure ARR growth, free cash flow, cash burn efficiency and runway'],
-        ['Inventory Reorder Point & Safety Stock Calculator', '/inventory-reorder-point-calculator/', 'Calculate safety stock, reorder thresholds and supplier-delivery risks'],
-        ['Invoice Factoring Cost Calculator', '/invoice-factoring-cost-calculator/', 'Compare advance, reserve release, fee periods and annualized factoring cost'],
-        ['E-commerce Unit Economics Calculator', '/ecommerce-unit-economics-calculator/', 'Calculate contribution margin, break-even ROAS and monthly ecommerce profit'],
-        ['Business Profit & Loss Tracker', '/business-profit-loss-tracker/', 'Track revenue, expenses and net profit'],
-        ['YouTube AdSense Revenue Calculator', '/youtube-adsense-revenue-calculator/', 'Estimate YouTube ad revenue from views'],
-        ['Instagram Earning Calculator', '/instagram-earning-calculator/', 'Estimate creator income from brand deals and other sources'],
-        ['Freelance Hourly Rate Calculator', '/freelance-hourly-rate-calculator/', 'Set an hourly rate from income goals'],
-        ['Blog Traffic to Income Calculator', '/blog-traffic-to-income-calculator/', 'Estimate blog earnings from traffic'],
-        ['Crypto Portfolio Growth Calculator', '/crypto-profit-tax-calculator/', 'Project the future value of manually entered crypto holdings'],
-        ['Crypto Staking APY Calculator', '/crypto-staking-apy-calculator/', 'Estimate staking rewards, APR vs APY compounding and token-price scenarios'],
-        ['Micro-SaaS Valuation Calculator', '/saas-valuation-calculator/', 'Estimate SaaS business value using ARR, growth, churn and gross margin'],
+      "label": "Taxes & Payroll",
+      "tools": [
+        [
+          "HSA Contribution & Tax Savings Calculator (2026–27)",
+          "/hsa-contribution-tax-savings-calculator/",
+          "IRS 2026 and 2027 HSA limits, eligible contribution room and estimated tax savings"
+        ],
+        [
+          "International VAT Inclusive & Exclusive Calculator",
+          "/vat-inclusive-exclusive-calculator/",
+          "Add or remove VAT, model invoices and input VAT with country reference rates"
+        ],
+        [
+          "US Sales Tax Add & Reverse Calculator",
+          "/us-sales-tax-calculator/",
+          "Add or remove state and local sales tax, including discounts and taxable shipping"
+        ],
+        [
+          "Income Tax Calculator",
+          "/income-tax-calculator/",
+          "Compare old and new income tax regimes"
+        ],
+        [
+          "All-in-One TDS Calculator",
+          "/tds-calculator/",
+          "Estimate tax deducted at source"
+        ],
+        [
+          "GST Calculator",
+          "/gst-calculator/",
+          "Calculate GST-inclusive and exclusive amounts"
+        ],
+        [
+          "Company / Corporate Tax Calculator",
+          "/company-corporate-tax-calculator/",
+          "Estimate company income tax, surcharge and MAT"
+        ],
+        [
+          "Gratuity Calculator",
+          "/gratuity-calculator/",
+          "Estimate gratuity under current labour-code rules"
+        ],
+        [
+          "HRA Calculator",
+          "/hra-calculator/",
+          "Calculate HRA exemption under old and new tax regimes"
+        ],
+        [
+          "Digital Nomad Tax Calculator",
+          "/digital-nomad-tax-calculator/",
+          "Screen international residency day rules and compare cross-border tax scenarios"
+        ],
+        [
+          "Overtime Pay Calculator",
+          "/overtime-pay-calculator/",
+          "Calculate time-and-a-half, double-time and hourly gross paycheck projections"
+        ],
+        [
+          "RSU & Stock Options Tax Calculator",
+          "/rsu-vesting-tax-calculator/",
+          "Estimate RSU vesting tax, sell-to-cover shares, ISO AMT and NSO exercise tax"
+        ]
       ]
     },
     {
-      label: 'Family & Goals',
-      tools: [
-        ['Daughter Marriage Saving Planner', '/daughter-marriage-saving-planner/', 'Estimate savings for a future wedding goal'],
-        ['Sukanya Samriddhi Yojana Calculator', '/sukanya-samriddhi-yojana-calculator/', 'Estimate SSY contributions and maturity'],
-        ['Kundali Money & Dhan Yog Calculator', '/kundali-money-dhan-yog-calculator/', 'Explore a traditional astrology-based reading'],
+      "label": "Business & SaaS",
+      "tools": [
+        [
+          "Gold Jewellery Resale & Break-Even Calculator",
+          "/gold-jewellery-resale-break-even-calculator/",
+          "Compare jewellery GST, making costs, buyback deductions and break-even gold price"
+        ],
+        [
+          "Margin vs Markup & Profit Calculator",
+          "/margin-vs-markup-calculator/",
+          "Calculate margin, markup, pricing, discounts and gross profit"
+        ],
+        [
+          "SaaS Rule of 40 & Burn Multiple Calculator",
+          "/saas-rule-of-40-calculator/",
+          "Measure ARR growth, free cash flow, cash burn efficiency and runway"
+        ],
+        [
+          "Inventory Reorder Point & Safety Stock Calculator",
+          "/inventory-reorder-point-calculator/",
+          "Calculate safety stock, reorder thresholds and supplier-delivery risks"
+        ],
+        [
+          "Invoice Factoring Cost Calculator",
+          "/invoice-factoring-cost-calculator/",
+          "Compare advance, reserve release, fee periods and annualized factoring cost"
+        ],
+        [
+          "E-commerce Unit Economics Calculator",
+          "/ecommerce-unit-economics-calculator/",
+          "Calculate contribution margin, break-even ROAS and monthly ecommerce profit"
+        ],
+        [
+          "Business Profit & Loss Tracker",
+          "/business-profit-loss-tracker/",
+          "Track revenue, expenses and net profit"
+        ],
+        [
+          "Micro-SaaS Valuation Calculator",
+          "/saas-valuation-calculator/",
+          "Estimate SaaS business value using ARR, growth, churn and gross margin"
+        ],
+        [
+          "Credit Card Rewards Break-Even Calculator",
+          "/credit-card-rewards-break-even-calculator/",
+          "Estimate cashback, card annual fee waiver and rewards break-even spending"
+        ],
+        [
+          "Mortgage Points Break-Even Calculator",
+          "/mortgage-points-break-even-calculator/",
+          "Compare discount points and lender credits"
+        ],
+        [
+          "Break Even Calculator",
+          "/break-even-calculator/",
+          "Calculate break-even units, revenue, contribution margin, target profit and margin of safety"
+        ],
+        [
+          "Short-Term Rental Occupancy Break-Even Calculator",
+          "/airbnb-occupancy-break-even-calculator/",
+          "Calculate Airbnb-style booked nights, occupancy threshold and seasonal operating profit"
+        ],
+        [
+          "SaaS LTV:CAC Calculator",
+          "/saas-ltv-cac-calculator/",
+          "Open this calculator"
+        ]
       ]
     },
     {
-      label: 'Savings & Loans',
-      tools: [
-        ['EV vs Gas Total Cost Calculator', '/ev-vs-gas-cost-calculator/', 'Compare electric and gasoline ownership costs and resale'],
-        ['Mortgage PMI Removal & Savings Calculator', '/mortgage-pmi-removal-calculator/', 'Estimate 80% PMI requests, scheduled 78% cancellation and extra payment savings'],
-        ['401(k) Employer Match & Vesting Calculator', '/401k-employer-match-vesting-calculator/', 'Calculate 2026–27 employer matching, missing match dollars and vested balance if changing jobs'],
-        ['HELOC vs Home Equity Loan Calculator', '/heloc-vs-home-equity-loan-calculator/', 'Compare fixed home-equity payments and HELOC draw, reset rates and repayment shock'],
-        ['CD Ladder Calculator', '/cd-ladder-calculator/', 'Build five certificate of deposit maturities and estimate ladder interest'],
-        ['Credit Card Rewards Break-Even Calculator', '/credit-card-rewards-break-even-calculator/', 'Estimate cashback, card annual fee waiver and rewards break-even spending'],
-        ['International Money Transfer Fee Calculator', '/international-money-transfer-fee-calculator/', 'Compare FX rate markup, sending fees and recipient payouts across two quotes'],
-        ['Fixed Deposit Calculator', '/fd-calculator/', 'Estimate FD interest and maturity value'],
-        ['Loan Prepayment vs Investment Calculator', '/loan-prepayment-vs-investment-calculator/', 'Compare paying down debt with investing extra cash'],
-        ['Mortgage Points Break-Even Calculator', '/mortgage-points-break-even-calculator/', 'Compare discount points and lender credits'],
-        ['Mortgage Refinance & Balance Transfer Calculator', '/mortgage-refinance-calculator/', 'Compare refinance fees, monthly savings and break-even time'],
-        ['Student Loan Payoff & Refinance Calculator', '/student-loan-payoff-calculator/', 'Compare current student loan payments, extra principal payments and refinance savings'],
-        ['RSU & Stock Options Tax Calculator', '/rsu-vesting-tax-calculator/', 'Estimate RSU vesting tax, sell-to-cover shares, ISO AMT and NSO exercise tax'],
-        ['Mortgage Payoff Calculator', '/mortgage-payoff-calculator/', 'Estimate early payoff dates and interest savings from extra principal payments'],
-        ['Cost of Living Comparison Calculator', '/cost-of-living-comparison-calculator/', 'Compare city budgets, required salary and relocation costs'],
-        ['Retirement Readiness & Income Planner', '/retirement-calculator/', 'Estimate your retirement corpus, savings gap, income and portfolio longevity'],
-        ['Emergency Fund & Financial Runway Calculator', '/emergency-fund-calculator/', 'Set an emergency savings target and estimate cash runway after income loss'],
-        ['Credit Card Debt Payoff Calculator', '/credit-card-debt-payoff-calculator/', 'Plan payments across multiple cards and compare Snowball vs Avalanche'],
-        ['Credit Card Balance Transfer Calculator', '/credit-card-balance-transfer-calculator/', 'Compare balance transfer fees, promotional APR and payoff savings'],
-        ['Debt Consolidation Calculator', '/debt-consolidation-calculator/', 'Compare consolidating debts into one payment and estimate total costs'],
-        ['Car Lease vs Buy Calculator', '/car-lease-vs-buy-calculator/', 'Compare leasing against buying and financing'],
-        ['Car Loan Payoff Calculator', '/car-loan-payoff-calculator/', 'Estimate your auto loan payoff date and interest savings with extra payments'],
-        ['Personal Loan Calculator', '/personal-loan-calculator/', 'Calculate monthly payments, interest, fees and compare loan offers'],
-        ['Mortgage Affordability Calculator', '/mortgage-affordability-calculator/', 'Estimate your home price from income, debt, down payment and housing costs'],
-        ['Rent vs Buy Calculator', '/rent-vs-buy-calculator/', 'Compare renting with buying using home equity, rent growth and investment returns'],
-        ['Break Even Calculator', '/break-even-calculator/', 'Calculate break-even units, revenue, contribution margin, target profit and margin of safety']
+      "label": "Creators & Crypto",
+      "tools": [
+        [
+          "YouTube AdSense Revenue Calculator",
+          "/youtube-adsense-revenue-calculator/",
+          "Estimate YouTube ad revenue from views"
+        ],
+        [
+          "Instagram Earning Calculator",
+          "/instagram-earning-calculator/",
+          "Estimate creator income from brand deals and other sources"
+        ],
+        [
+          "Freelance Hourly Rate Calculator",
+          "/freelance-hourly-rate-calculator/",
+          "Set an hourly rate from income goals"
+        ],
+        [
+          "Blog Traffic to Income Calculator",
+          "/blog-traffic-to-income-calculator/",
+          "Estimate blog earnings from traffic"
+        ],
+        [
+          "Crypto Portfolio Growth Calculator",
+          "/crypto-profit-tax-calculator/",
+          "Project the future value of manually entered crypto holdings"
+        ],
+        [
+          "Crypto Staking APY Calculator",
+          "/crypto-staking-apy-calculator/",
+          "Estimate staking rewards, APR vs APY compounding and token-price scenarios"
+        ],
+        [
+          "Freelance Project Quote Calculator",
+          "/freelance-project-quote-calculator/",
+          "Open this calculator"
+        ],
+        [
+          "Crypto Tax & Capital Gains Calculator",
+          "/crypto-capital-gains-tax-calculator/",
+          "Open this calculator"
+        ]
       ]
     },
     {
-      label: 'Property & Tools',
-      tools: [
-        ['Short-Term Rental Occupancy Break-Even Calculator', '/airbnb-occupancy-break-even-calculator/', 'Calculate Airbnb-style booked nights, occupancy threshold and seasonal operating profit'],
-        ['Solar Rooftop ROI Calculator', '/solar-rooftop-roi-calculator/', 'Estimate solar savings and payback period'],
-        ['House Construction Cost Estimator', '/house-construction-cost-estimator/', 'Estimate a home construction budget'],
-        ['Future Home Construction Budget Planner', '/future-home-construction-budget-planner/', 'Plan future salary, savings, construction cost, home loan and EMI'],
-        ['Future Car Budget Planner', '/future-car-budget-planner/', 'Plan future car savings, down payment, affordable loan and EMI'],
-        ['Rental Property ROI Calculator', '/rental-property-roi-calculator/', 'Estimate rental cash flow and cash-on-cash return'],
-        ['Future Property Value Calculator', '/future-property-value-calculator/', 'Estimate future property value, appreciation scenarios and net sale proceeds'],
-        ['CPCT Typing Practice', '/cpct-typing-practice/', 'Practise English and Hindi Unicode typing for CPCT']
+      "label": "Mortgages & Housing",
+      "tools": [
+        [
+          "Mortgage PMI Removal & Savings Calculator",
+          "/mortgage-pmi-removal-calculator/",
+          "Estimate 80% PMI requests, scheduled 78% cancellation and extra payment savings"
+        ],
+        [
+          "HELOC vs Home Equity Loan Calculator",
+          "/heloc-vs-home-equity-loan-calculator/",
+          "Compare fixed home-equity payments and HELOC draw, reset rates and repayment shock"
+        ],
+        [
+          "Mortgage Refinance & Balance Transfer Calculator",
+          "/mortgage-refinance-calculator/",
+          "Compare refinance fees, monthly savings and break-even time"
+        ],
+        [
+          "Mortgage Payoff Calculator",
+          "/mortgage-payoff-calculator/",
+          "Estimate early payoff dates and interest savings from extra principal payments"
+        ],
+        [
+          "Mortgage Affordability Calculator",
+          "/mortgage-affordability-calculator/",
+          "Estimate your home price from income, debt, down payment and housing costs"
+        ],
+        [
+          "Rent vs Buy Calculator",
+          "/rent-vs-buy-calculator/",
+          "Compare renting with buying using home equity, rent growth and investment returns"
+        ]
       ]
     },
     {
-      label: 'About & Support',
-      tools: [
-        ['About', '/about/', 'Learn about this calculator website'],
-        ['Contact', '/contact/', 'Get in touch with us'],
-        ['Privacy Policy', '/privacy-policy/', 'Read how website data and privacy are handled'],
-        ['Terms', '/terms/', 'Review the website terms and conditions']
+      "label": "Loans & Credit",
+      "tools": [
+        [
+          "Loan Prepayment vs Investment Calculator",
+          "/loan-prepayment-vs-investment-calculator/",
+          "Compare paying down debt with investing extra cash"
+        ],
+        [
+          "Student Loan Payoff & Refinance Calculator",
+          "/student-loan-payoff-calculator/",
+          "Compare current student loan payments, extra principal payments and refinance savings"
+        ],
+        [
+          "Credit Card Debt Payoff Calculator",
+          "/credit-card-debt-payoff-calculator/",
+          "Plan payments across multiple cards and compare Snowball vs Avalanche"
+        ],
+        [
+          "Credit Card Balance Transfer Calculator",
+          "/credit-card-balance-transfer-calculator/",
+          "Compare balance transfer fees, promotional APR and payoff savings"
+        ],
+        [
+          "Debt Consolidation Calculator",
+          "/debt-consolidation-calculator/",
+          "Compare consolidating debts into one payment and estimate total costs"
+        ],
+        [
+          "Car Loan Payoff Calculator",
+          "/car-loan-payoff-calculator/",
+          "Estimate your auto loan payoff date and interest savings with extra payments"
+        ],
+        [
+          "Personal Loan Calculator",
+          "/personal-loan-calculator/",
+          "Calculate monthly payments, interest, fees and compare loan offers"
+        ]
+      ]
+    },
+    {
+      "label": "Savings & Retirement",
+      "tools": [
+        [
+          "Sukanya Samriddhi Yojana Calculator",
+          "/sukanya-samriddhi-yojana-calculator/",
+          "Estimate SSY contributions and maturity"
+        ],
+        [
+          "401(k) Employer Match & Vesting Calculator",
+          "/401k-employer-match-vesting-calculator/",
+          "Calculate 2026–27 employer matching, missing match dollars and vested balance if changing jobs"
+        ],
+        [
+          "CD Ladder Calculator",
+          "/cd-ladder-calculator/",
+          "Build five certificate of deposit maturities and estimate ladder interest"
+        ],
+        [
+          "Fixed Deposit Calculator",
+          "/fd-calculator/",
+          "Estimate FD interest and maturity value"
+        ],
+        [
+          "Retirement Readiness & Income Planner",
+          "/retirement-calculator/",
+          "Estimate your retirement corpus, savings gap, income and portfolio longevity"
+        ],
+        [
+          "Emergency Fund & Financial Runway Calculator",
+          "/emergency-fund-calculator/",
+          "Set an emergency savings target and estimate cash runway after income loss"
+        ]
+      ]
+    },
+    {
+      "label": "Property & Vehicles",
+      "tools": [
+        [
+          "EV vs Gas Total Cost Calculator",
+          "/ev-vs-gas-cost-calculator/",
+          "Compare electric and gasoline ownership costs and resale"
+        ],
+        [
+          "Car Lease vs Buy Calculator",
+          "/car-lease-vs-buy-calculator/",
+          "Compare leasing against buying and financing"
+        ],
+        [
+          "Solar Rooftop ROI Calculator",
+          "/solar-rooftop-roi-calculator/",
+          "Estimate solar savings and payback period"
+        ],
+        [
+          "House Construction Cost Estimator",
+          "/house-construction-cost-estimator/",
+          "Estimate a home construction budget"
+        ],
+        [
+          "Future Home Construction Budget Planner",
+          "/future-home-construction-budget-planner/",
+          "Plan future salary, savings, construction cost, home loan and EMI"
+        ],
+        [
+          "Future Car Budget Planner",
+          "/future-car-budget-planner/",
+          "Plan future car savings, down payment, affordable loan and EMI"
+        ],
+        [
+          "Rental Property ROI Calculator",
+          "/rental-property-roi-calculator/",
+          "Estimate rental cash flow and cash-on-cash return"
+        ],
+        [
+          "Future Property Value Calculator",
+          "/future-property-value-calculator/",
+          "Estimate future property value, appreciation scenarios and net sale proceeds"
+        ],
+        [
+          "Solar Panel Payback & Carbon Offset Calculator",
+          "/solar-panel-payback-calculator/",
+          "Open this calculator"
+        ]
+      ]
+    },
+    {
+      "label": "Planning & Utilities",
+      "tools": [
+        [
+          "Kundali Money & Dhan Yog Calculator",
+          "/kundali-money-dhan-yog-calculator/",
+          "Explore a traditional astrology-based reading"
+        ],
+        [
+          "International Money Transfer Fee Calculator",
+          "/international-money-transfer-fee-calculator/",
+          "Compare FX rate markup, sending fees and recipient payouts across two quotes"
+        ],
+        [
+          "Cost of Living Comparison Calculator",
+          "/cost-of-living-comparison-calculator/",
+          "Compare city budgets, required salary and relocation costs"
+        ],
+        [
+          "CPCT Typing Practice",
+          "/cpct-typing-practice/",
+          "Practise English and Hindi Unicode typing for CPCT"
+        ],
+        [
+          "CPCT Typing Practice",
+          "/cpct/",
+          "Open this calculator"
+        ]
+      ]
+    },
+    {
+      "label": "About & Support",
+      "tools": [
+        [
+          "About",
+          "/about/",
+          "Learn about this calculator website"
+        ],
+        [
+          "Contact",
+          "/contact/",
+          "Get in touch with us"
+        ],
+        [
+          "Privacy Policy",
+          "/privacy-policy/",
+          "Read how website data and privacy are handled"
+        ],
+        [
+          "Terms",
+          "/terms/",
+          "Review the website terms and conditions"
+        ]
       ]
     }
   ];
@@ -151,8 +528,8 @@
     #calculator-site-header .ich-home{color:#c3cedc;text-decoration:none;font-size:13px;font-weight:700}
     #calculator-site-header .ich-home:hover{color:#e8c987}
     #calculator-site-header .ich-nav{border-top:1px solid #29384d}
-    #calculator-site-header .ich-nav-list{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;align-items:stretch}
-    #calculator-site-header .ich-nav-button{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:51px;padding:10px 5px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#d5dde8;font:700 clamp(10px,.95vw,13px)/1.25 Inter,system-ui,sans-serif;text-align:center;white-space:nowrap;cursor:pointer;transition:color .18s ease,background .18s ease,border-color .18s ease}
+    #calculator-site-header .ich-nav-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;align-items:stretch}
+    #calculator-site-header .ich-nav-button{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:51px;padding:10px 5px;border:0;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:#d5dde8;font:700 clamp(10px,.95vw,13px)/1.25 Inter,system-ui,sans-serif;text-align:center;white-space:normal;cursor:pointer;transition:color .18s ease,background .18s ease,border-color .18s ease}
     #calculator-site-header .ich-nav-button:hover,#calculator-site-header .ich-nav-button[aria-expanded="true"]{color:#e8c987;background:#172438;border-bottom-color:#d6b36a}
     #calculator-site-header .ich-nav-button:focus-visible,#calculator-site-header a:focus-visible,#calculator-site-header .ich-mobile-toggle:focus-visible{outline:2px solid #e8c987;outline-offset:2px}
     #calculator-site-header .ich-chevron{width:10px;height:10px;margin-left:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);flex:none;transition:transform .18s ease}
