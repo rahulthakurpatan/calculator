@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#11253f">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<title>Mortgage Recast Calculator – Payment & Interest Savings</title>
+<meta name="description" content="Free mortgage recast calculator. Compare a lump-sum recast with principal-only prepayment, new monthly payments, lifetime interest savings and payoff dates.">
+<link rel="canonical" href="https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Return on Investment Calculator">
+<meta property="og:title" content="Mortgage Recast Calculator – Payment & Interest Savings">
+<meta property="og:description" content="Free mortgage recast calculator. Compare a lump-sum recast with principal-only prepayment, new monthly payments, lifetime interest savings and payoff dates.">
+<meta property="og:url" content="https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/#webpage","name":"Mortgage Recast Calculator","url":"https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/","description":"Free mortgage recast calculator. Compare a lump-sum recast with principal-only prepayment, new monthly payments, lifetime interest savings and payoff dates."},{"@type":"WebApplication","name":"Mortgage Recast Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/","description":"Estimate mortgage payment reduction, remaining interest and alternative payoff outcomes after a lump-sum principal reduction.","offers":{"@type":"Offer","price":0,"priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"Mortgage Recast Calculator","item":"https://returnoninvestmentcalculator.in/mortgage-recasting-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is mortgage recasting?","acceptedAnswer":{"@type":"Answer","text":"A mortgage recast re-amortizes the remaining principal balance after a qualifying lump-sum payment. The interest rate and remaining term stay the same, but the required principal-and-interest payment generally decreases."}},{"@type":"Question","name":"Is mortgage recasting better than making an extra principal payment?","acceptedAnswer":{"@type":"Answer","text":"Recasting reduces the required payment and can improve monthly cash flow. Applying the same lump sum without recasting and continuing the original payment generally pays the loan off sooner and saves more interest."}},{"@type":"Question","name":"Does a mortgage recast change my interest rate or loan term?","acceptedAnswer":{"@type":"Answer","text":"Typically no. It keeps the existing loan and interest rate, with the remaining scheduled maturity, unlike refinancing into a new loan."}},{"@type":"Question","name":"Can I recast an FHA, VA or USDA loan?","acceptedAnswer":{"@type":"Answer","text":"These programs generally do not permit standard mortgage recasting. Eligibility and minimum payment amounts depend on loan type, investor, servicer and contract; confirm directly with your lender."}},{"@type":"Question","name":"What fees and minimum payments are required for a mortgage recast?","acceptedAnswer":{"@type":"Answer","text":"Requirements vary across mortgage servicers. Enter your lender's actual recast fee and minimum lump sum; this calculator estimates scenarios but cannot determine loan eligibility."}}]}]}</script>
+<script defer src="/assets/js/common-branding.js"></script>
+<script defer src="/assets/js/common-pushdotify.js"></script>
+<script defer src="/assets/js/common-header.js"></script>
+<script defer src="/assets/js/common-footer.js"></script>
+<style>
+:root{--ink:#162943;--muted:#64758a;--blue:#2364db;--teal:#047d68;--pale:#edf7f5;--coral:#c45742;--line:#dce5ef;--surface:#fff;--bg:#f3f7fc;--shadow:0 14px 45px rgba(29,54,86,.075)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(180deg,#ecf4ff,#f5f8fd 540px,#fff 1300px)}
+main{max-width:1260px;margin:0 auto;padding:29px 18px 65px}
+a{color:#185dbe}
+.kicker{display:inline-flex;gap:6px;align-items:center;background:#e4edff;color:#2458ba;border-radius:50px;padding:6px 12px;font-size:11px;letter-spacing:.075em;font-weight:850;text-transform:uppercase}
+h1{font-size:clamp(30px,4.6vw,49px);line-height:1.15;letter-spacing:-1.3px;margin:13px 0 10px}
+h2{font-size:clamp(21px,2vw,27px);line-height:1.25;margin:0 0 12px}
+h3{font-size:17px;margin:22px 0 7px}
+.lead{font-size:16px;color:var(--muted);max-width:800px;margin:0 0 20px}
+.trust{display:flex;gap:12px;flex-wrap:wrap;color:#3f5a75;font-size:12px;font-weight:650;margin:13px 0}
+.trust span:before{content:"✓ ";color:var(--teal);font-weight:900}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;align-items:start;margin-top:22px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px;min-width:0}
+.right{position:sticky;top:13px}
+.panel-intro{color:var(--muted);font-size:13px;margin:0 0 12px}
+.currency-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}
+select{border:1px solid #cad6e5;border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);font:700 13px system-ui}
+details.inputs-group{background:#fcfdff;border:1px solid var(--line);border-radius:12px;margin:11px 0;overflow:hidden}
+details.inputs-group>summary{display:flex;align-items:center;gap:10px;cursor:pointer;padding:14px;font-weight:850;list-style:none}
+details.inputs-group>summary::-webkit-details-marker{display:none}
+details.inputs-group>summary:after{content:"⌄";margin-left:auto;font-size:19px;line-height:1;color:var(--blue)}
+details.inputs-group[open]>summary:after{transform:rotate(180deg)}
+.step{background:#e6f0ff;color:#2357bd;border-radius:8px;width:27px;height:27px;display:grid;place-items:center;font-size:12px}
+.fields{padding:5px 14px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:block;min-width:0}
+.label-text{display:block;font-size:12px;font-weight:760;color:#354b64}
+.entry{display:flex;flex-direction:column;gap:5px;margin-top:5px}
+.entry input[type=number]{width:100%;min-width:0;border:1px solid #cbd7e6;border-radius:9px;padding:10px 11px;font:700 15px system-ui;color:var(--ink);background:#fff}
+.entry input[type=number]:focus-visible,select:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #7eb8ff;outline-offset:2px}
+.entry .range{width:100%;accent-color:var(--blue)}
+.helper{display:block;font-size:10.5px;min-height:14px;color:var(--muted);line-height:1.4;margin-top:5px}
+.full{grid-column:1/-1}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+button{cursor:pointer}
+.btn{border:0;border-radius:9px;padding:11px 13px;font:800 12px system-ui;background:var(--blue);color:#fff;transition:filter .15s}
+.btn:hover{filter:brightness(.93)}
+.btn.secondary{background:#e9f1ff;color:#1a5ab9}
+.btn.light{background:#ebf7f3;color:#08745d}
+.error{display:none;border:1px solid #efbfba;background:#fff3f1;color:#a3332a;padding:11px;border-radius:10px;font-size:13px;font-weight:700;margin:12px 0}
+.error.show{display:block}
+.hero{padding:17px 18px;border-radius:14px;background:linear-gradient(135deg,#e5f6f0,#f1fbf8);border:1px solid #b7e4d2}
+.hero small{color:#4e6c61;font-size:12px;font-weight:750;display:block}
+.hero strong{display:block;font-size:clamp(32px,4vw,43px);line-height:1.12;color:#08775b;margin:5px 0}
+.hero p{font-size:12px;color:#446759;margin:0}
+.hero.negative{background:#fff5eb;border-color:#f4d2aa}
+.hero.negative strong{color:#a6551e}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}
+.metric{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}
+.metric small{display:block;color:var(--muted);font-size:11px;font-weight:720;line-height:1.4}
+.metric strong{display:block;font-size:clamp(17px,2.2vw,21px);letter-spacing:-.4px;overflow-wrap:anywhere}
+.metric .green{color:var(--teal)}.metric .red{color:var(--coral)}
+.micro{font-size:11px;color:var(--muted);margin:10px 0 0}
+.badge{display:inline-block;padding:4px 9px;background:#dff6ec;color:#057653;border-radius:20px;font-weight:850;font-size:11px}
+.callout{padding:11px 13px;border-left:4px solid #d9963b;background:#fff9ef;color:#795322;font-size:12px;border-radius:5px;margin:11px 0}
+.compare{width:100%;border-collapse:collapse;font-size:12px}
+.compare td,.compare th{padding:9px 7px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.compare th:first-child,.compare td:first-child{text-align:left}
+.table-scroll{overflow-x:auto}
+.charts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:15px}
+.chart{border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}
+.chart h3{font-size:13px;margin:0 0 6px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:10px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.report{background:#fff;border:1px solid var(--line);border-radius:15px;padding:24px;margin-top:22px}
+.report p,.report li{color:#445a70;max-width:1000px}
+.report h2{margin:26px 0 10px}
+.report h2:first-child{margin-top:0}
+.report li{margin:6px 0}
+.report code{font-size:13px;overflow-wrap:anywhere}
+.faq{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer}
+.faq p{margin:10px 0}
+#message{min-height:19px;font-size:12px;color:var(--teal);margin:7px 0 0}
+.schedule{margin-top:10px}
+.schedule summary{font-weight:800;cursor:pointer}
+@media(max-width:880px){.workspace{grid-template-columns:1fr}.right{position:static}}
+@media(max-width:560px){main{padding:20px 12px 45px}.fields{grid-template-columns:1fr}.panel,.report{padding:15px}.hero strong{font-size:31px}.metrics{gap:7px}.metric{padding:9px}.metric strong{font-size:17px}.actions .btn{flex:1}.trust{gap:7px}}
+@media print{body{background:white}.workspace{display:block}.panel{box-shadow:none;page-break-inside:avoid}.workspace>.panel:first-child{display:none}.right{position:static}.actions,.chart{display:none!important}.report{border:0;padding:0}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<section class="intro">
+<span class="kicker">Mortgage planning · USA-focused</span>
+<h1>Mortgage Recast Calculator</h1>
+<p class="lead">See how a lump-sum principal payment could lower your required mortgage payment—without replacing your existing interest rate or extending the remaining loan term. Compare three payoff strategies instantly.</p>
+<div class="trust"><span>No signup</span><span>Works on mobile</span><span>Private on-device calculations</span><span>Three-scenario comparison</span></div>
+</section>
+<div class="workspace">
+<section class="panel" aria-labelledby="inputs-title">
+<h2 id="inputs-title">Your mortgage details</h2><p class="panel-intro">Enter your current loan details. The calculator assumes a fixed-rate, fully amortizing mortgage with monthly payments.</p>
+<div class="currency-row"><label for="currency"><strong>Display currency</strong></label><select id="currency"><option value="USD">🇺🇸 USD ($)</option><option value="EUR">🇪🇺 EUR (€)</option><option value="GBP">🇬🇧 GBP (£)</option><option value="INR">🇮🇳 INR (₹)</option></select></div>
+<details class="inputs-group" open><summary><span class="step">01</span> Current mortgage</summary>
+<div class="fields">
+<label class="field" for="balance"><span class="label-text">Outstanding mortgage principal</span><span class="entry"><input id="balance" type="number" value="300000" min="0" max="1000000000000" step="100" inputmode="decimal" aria-describedby="balance-help"></span><span class="helper" id="balance-help">Current unpaid principal (excluding escrow).</span></label>
+<label class="field" for="rate"><span class="label-text">Current fixed interest rate (%)</span><span class="entry"><input id="rate" type="number" value="6.5" min="0" max="30" step="0.05" inputmode="decimal" aria-describedby="rate-help"><input class="range" data-sync="rate" type="range" min="0" max="30" step="0.05" value="6.5" aria-label="Current fixed interest rate (%) slider"></span><span class="helper" id="rate-help">Annual nominal rate; unchanged by recast.</span></label>
+<label class="field" for="years"><span class="label-text">Whole years remaining</span><span class="entry"><input id="years" type="number" value="25" min="0" max="50" step="1" inputmode="decimal" aria-describedby="years-help"></span><span class="helper" id="years-help">Remaining term, not original loan term.</span></label>
+<label class="field" for="months"><span class="label-text">Extra months remaining</span><span class="entry"><input id="months" type="number" value="0" min="0" max="11" step="1" inputmode="decimal" aria-describedby="months-help"></span><span class="helper" id="months-help">0–11 months in addition to whole years.</span></label>
+<label class="field" for="escrow"><span class="label-text">Monthly escrow / taxes / insurance</span><span class="entry"><input id="escrow" type="number" value="425" min="0" max="1000000000000" step="5" inputmode="decimal" aria-describedby="escrow-help"></span><span class="helper" id="escrow-help">Added to payments for illustration; not reduced by recasting.</span></label>
+</div></details>
+<details class="inputs-group" open><summary><span class="step">02</span> Lump sum & recast</summary>
+<div class="fields">
+<label class="field" for="lump"><span class="label-text">One-time principal payment</span><span class="entry"><input id="lump" type="number" value="20000" min="0" max="1000000000000" step="500" inputmode="decimal" aria-describedby="lump-help"></span><span class="helper" id="lump-help">Credited toward principal at the selected month.</span></label>
+<label class="field" for="fee"><span class="label-text">Lender recast processing fee</span><span class="entry"><input id="fee" type="number" value="250" min="0" max="1000000000000" step="25" inputmode="decimal" aria-describedby="fee-help"></span><span class="helper" id="fee-help">Out-of-pocket fee; not rolled into principal.</span></label>
+<label class="field" for="delay"><span class="label-text">Months until lump sum is applied</span><span class="entry"><input id="delay" type="number" value="0" min="0" max="599" step="1" inputmode="decimal" aria-describedby="delay-help"></span><span class="helper" id="delay-help">0 = now. No recast/change before this month.</span></label>
+<label class="field" for="minimum"><span class="label-text">Lender minimum lump-sum requirement</span><span class="entry"><input id="minimum" type="number" value="5000" min="0" max="1000000000000" step="500" inputmode="decimal" aria-describedby="minimum-help"></span><span class="helper" id="minimum-help">Editable eligibility assumption; not a universal rule.</span></label>
+</div></details>
+<div class="actions">
+<button class="btn" id="sample" type="button">Load sample deal</button>
+<button class="btn secondary" id="reset" type="button">Reset defaults</button>
+<button class="btn light" id="copy" type="button">Copy summary</button>
+<button class="btn secondary" id="download" type="button">Download CSV</button>
+<button class="btn secondary" id="print" type="button">Print report</button>
+</div>
+<p id="message" role="status"></p>
+</section>
+<section class="panel right" aria-labelledby="results-title">
+<h2 id="results-title">Live recast savings</h2>
+<div id="error" class="error" role="alert"></div>
+<div id="hero" class="hero"><small>Estimated required monthly P&I after recast</small><strong id="newPay">—</strong><p>Original payment: <b id="oldPay">—</b> · Change begins after lump-sum application.</p></div>
+<div class="metrics">
+<div class="metric"><small>Monthly P&I reduction</small><strong id="reduction" class="green">—</strong></div>
+<div class="metric"><small>Recast interest saved</small><strong id="saved">—</strong></div>
+<div class="metric"><small>Fee-adjusted interest savings</small><strong id="netSaved">—</strong></div>
+<div class="metric"><small>New principal balance at recast</small><strong id="newBalance">—</strong></div>
+<div class="metric"><small>Recast payment incl. escrow</small><strong id="withEscrow">—</strong></div>
+<div class="metric"><small>Lump-only early payoff</small><strong id="early">—</strong></div>
+</div>
+<div id="warning" class="callout"></div>
+<h3>Compare all three strategies</h3>
+<div class="table-scroll"><table class="compare"><thead><tr><th scope="col">Measure</th><th scope="col">No lump</th><th scope="col">Recast</th><th scope="col">Lump only</th></tr></thead><tbody id="comparison"></tbody></table></div>
+<div class="charts">
+<div class="chart"><h3>Remaining mortgage balance by year</h3><div id="balanceChart"></div><div class="legend"><span><i class="dot" style="background:#335d9f"></i>Baseline</span><span><i class="dot" style="background:#0b9273"></i>Recast</span><span><i class="dot" style="background:#db9860"></i>Lump only</span></div></div>
+<div class="chart"><h3>Lifetime interest costs</h3><div id="interestChart"></div></div>
+</div>
+<details class="schedule"><summary>Year-by-year amortization breakdown</summary><div class="table-scroll"><table class="compare"><thead><tr><th>Year</th><th>Baseline balance</th><th>Recast balance</th><th>Lump-only balance</th></tr></thead><tbody id="schedule"></tbody></table></div></details>
+<p class="micro">Payment estimates exclude changing mortgage insurance, escrow and any lender-specific daily interest adjustments. Existing interest rate and scheduled maturity remain unchanged in the recast model.</p>
+</section>
+</div>
+<article class="report">
+<h2>What is mortgage recasting?</h2>
+<p>A <strong>mortgage recast</strong>, also called re-amortization, is a lender-approved recalculation of the required monthly principal-and-interest payment after you pay down a substantial part of your existing mortgage balance. Unlike refinancing, the loan and its interest rate generally remain in place, and the original remaining maturity is preserved. Recasting is especially relevant to homeowners who want lower required monthly payments after receiving a bonus, selling another property or making a planned lump-sum principal payment.</p>
+<h2>How to calculate a mortgage recast</h2>
+<p>Start with your <strong>current remaining mortgage balance</strong>, fixed annual interest rate and number of payments remaining. After accounting for any regular payments before your lump sum, subtract that amount from the remaining principal and calculate a new monthly payment over the months still left on the loan.</p>
+<p>For remaining principal <em>P</em>, monthly rate <em>r</em> and remaining payment count <em>n</em>, the standard monthly principal-and-interest payment is <code>M = P × r / (1 − (1+r)<sup>−n</sup>)</code>. After a recast, replace <em>P</em> with the outstanding balance net of the lump sum and use the term remaining on the recast date. If interest is 0%, use <code>M = P / n</code>.</p>
+<p><strong>Interest savings</strong> are the sum of the future baseline mortgage interest charges minus the sum of future charges under the selected scenario. The recast fee is subtracted separately for fee-adjusted savings; the lump-sum itself is a principal payment, not an interest expense. An optional escrow amount is shown in total monthly bills but does not alter principal-and-interest amortization.</p>
+<h2>Mortgage recast vs. extra principal without recasting</h2>
+<p>Both alternatives reduce outstanding principal by the same lump sum. A recast lowers the <strong>required</strong> payment and usually retains the original remaining loan term. If you pay the same lump sum but continue paying the original monthly P&I, you typically repay the debt earlier and save more interest, at the cost of not reducing the monthly required payment. This calculator keeps the lump-sum timing identical for a fair comparison.</p>
+<h2>Mortgage recast vs. refinance</h2>
+<p>Refinancing creates a new loan and may change the interest rate, term and closing costs. Recasting uses your existing eligible mortgage, generally preserves its rate and term and involves servicer-specific fees. A recast can make sense when your existing interest rate is attractive and payment relief matters more than faster payoff; it is not a substitute for reviewing the lender's eligibility requirements.</p>
+<h2>Real-world assumptions and pitfalls</h2>
+<ul><li><strong>Eligibility:</strong> many conventional loans may be eligible, while FHA, VA and USDA mortgages generally do not support standard recasting. Verify your specific note, investor and servicer rules.</li><li><strong>Fee and minimum principal:</strong> servicers can impose a minimum lump sum, servicing history requirements, waiting periods or processing fee. Inputs here are assumptions only.</li><li><strong>Cash reserves:</strong> using available savings to pay down mortgage principal may reduce emergency liquidity. Compare payment relief with your other financial needs.</li><li><strong>PMI and escrow:</strong> a principal reduction does not automatically remove mortgage insurance or lower property taxes or insurance; those depend on separate rules.</li><li><strong>Rate and term:</strong> this model assumes a fixed-rate mortgage with monthly accrual and payments; adjustable-rate, interest-only, biweekly or unusual loans can differ.</li></ul>
+<h2>Example: $20,000 mortgage recast</h2><p>Suppose you owe $300,000 at a fixed 6.5% annual interest rate with 25 years remaining. A $20,000 immediate lump sum can reduce the required monthly principal-and-interest payment after recasting while maintaining the same remaining term. Compare that with applying the $20,000 to principal and keeping your original payment: the latter strategy normally produces an earlier payoff date and greater lifetime interest savings. Change the inputs above to see your own scenario.</p>
+<h2>Mortgage recast calculator FAQ</h2>
+<details class="faq"><summary>What is mortgage recasting?</summary><p>A mortgage recast re-amortizes the remaining principal balance after a qualifying lump-sum payment. The interest rate and remaining term stay the same, but the required principal-and-interest payment generally decreases.</p></details>
+<details class="faq"><summary>Is mortgage recasting better than making an extra principal payment?</summary><p>Recasting reduces the required payment and can improve monthly cash flow. Applying the same lump sum without recasting and continuing the original payment generally pays the loan off sooner and saves more interest.</p></details>
+<details class="faq"><summary>Does a mortgage recast change my interest rate or loan term?</summary><p>Typically no. It keeps the existing loan and interest rate, with the remaining scheduled maturity, unlike refinancing into a new loan.</p></details>
+<details class="faq"><summary>Can I recast an FHA, VA or USDA loan?</summary><p>These programs generally do not permit standard mortgage recasting. Eligibility and minimum payment amounts depend on loan type, investor, servicer and contract; confirm directly with your lender.</p></details>
+<details class="faq"><summary>What fees and minimum payments are required for a mortgage recast?</summary><p>Requirements vary across mortgage servicers. Enter your lender's actual recast fee and minimum lump sum; this calculator estimates scenarios but cannot determine loan eligibility.</p></details>
+<h2>Related mortgage calculators</h2>
+<p>Explore the <a href="/mortgage-payoff-calculator/">Mortgage Payoff Calculator</a>, <a href="/mortgage-refinance-calculator/">Mortgage Refinance Calculator</a>, <a href="/mortgage-pmi-removal-calculator/">PMI Removal Calculator</a>, <a href="/loan-prepayment-vs-investment-calculator/">Loan Prepayment vs Investment Calculator</a> and <a href="/mortgage-affordability-calculator/">Mortgage Affordability Calculator</a>.</p>
+<p class="micro"><strong>Disclaimer:</strong> This independent calculator is educational, not a loan offer, lender eligibility determination or personal financial advice. Figures are illustrative fixed-rate estimates, not official servicer statements. Changing currency changes formatting only; it does not convert values using exchange rates.</p>
+</article>
+</main><div id="site-footer"></div>
+<script>
+(()=>{
+'use strict';
+const ids=["balance","rate","years","months","escrow","lump","fee","delay","minimum"];
+const defaults={balance:300000,rate:6.5,years:25,months:0,escrow:425,lump:20000,fee:250,delay:0,minimum:5000};
+const el=id=>document.getElementById(id);
+const money=x=>new Intl.NumberFormat("en-US",{style:"currency",currency:el("currency").value,maximumFractionDigits:2,minimumFractionDigits:2}).format(x);
+const compact=x=>new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}).format(x);
+const payment=(balance,rate,months)=>{
+ if(balance<=0)return 0;
+ if(months<=0)return NaN;
+ if(rate===0)return balance/months;
+ const log=Math.log1p(rate);
+ return balance*rate/(-Math.expm1(-months*log));
+};
+function simulate(balance,rate,n,lumpAt,lump,recast){
+ let principal=balance,monthly=payment(balance,rate,n),totalInterest=0,monthPaidOff=n,paidLump=false;
+ const months=[{month:0,balance:principal,interest:0,pi:0,lump:0}];
+ if(lumpAt===0&&lump>0){principal=Math.max(0,principal-lump);paidLump=true;if(recast)monthly=payment(principal,rate,n);months[0].balance=principal;months[0].lump=lump}
+ for(let k=1;k<=n;k++){
+  if(principal<=1e-8){monthPaidOff=k-1;break}
+  const interest=principal*rate;
+  const pi=Math.min(principal+interest,monthly);
+  principal=Math.max(0,principal-(pi-interest));
+  totalInterest+=interest;
+  let paidThisMonth=0;
+  if(k===lumpAt&&lump>0&&!paidLump){
+   paidThisMonth=Math.min(lump,principal);
+   principal=Math.max(0,principal-paidThisMonth);
+   paidLump=true;
+   if(recast&&k<n)monthly=payment(principal,rate,n-k);
+  }
+  months.push({month:k,balance:principal,interest,pi,lump:paidThisMonth});
+  if(principal<=1e-8){monthPaidOff=k;break}
+ }
+ return{monthly,interest:totalInterest,months,paidOff:monthPaidOff,ending:principal};
+}
+const setErr=msg=>{el("error").textContent=msg;el("error").classList.toggle("show",!!msg)};
+let current=null;
+function calculate(){
+ const v={};
+ for(const id of ids){
+  const input=el(id),s=input.value.trim(),n=Number(s);
+  if(!s||!Number.isFinite(n)||n<Number(input.min)||n>Number(input.max)){setErr("Check "+id+": enter a valid amount within its allowed range.");return null}
+  v[id]=n;
+ }
+ if(!Number.isInteger(v.years)||!Number.isInteger(v.months)||!Number.isInteger(v.delay)){setErr("Remaining years, months and recast delay must be whole numbers.");return null}
+ const n=v.years*12+v.months,r=v.rate/1200;
+ if(v.balance<=0||n<1||n>600){setErr("Enter a positive principal and a remaining term of 1–600 months.");return null}
+ if(v.delay>=n){setErr("Recast month must fall before the scheduled mortgage maturity.");return null}
+ const baseline=simulate(v.balance,r,n,-1,0,false);
+ const balanceAtDelay=baseline.months[v.delay]?.balance;
+ if(!Number.isFinite(balanceAtDelay)||v.lump>balanceAtDelay+0.00001){setErr("Lump sum cannot exceed the principal outstanding when it is applied ("+money(balanceAtDelay||0)+").");return null}
+ const recast=simulate(v.balance,r,n,v.delay,v.lump,true);
+ const prepay=simulate(v.balance,r,n,v.delay,v.lump,false);
+ const oldPay=payment(v.balance,r,n);
+ const remaining=n-v.delay,postLump=balanceAtDelay-v.lump;
+ const newPay=payment(postLump,r,remaining);
+ const reduction=oldPay-newPay;
+ const saved=baseline.interest-recast.interest;
+ const prepaySaved=baseline.interest-prepay.interest;
+ return{v,n,r,baseline,recast,prepay,oldPay,newPay,reduction,postLump,saved,netSaved:saved-(v.lump>0&&postLump>1e-8?v.fee:0),prepaySaved,remaining};
+}
+const row=(label,arr)=>"<tr><td>"+label+"</td>"+arr.map(x=>"<td>"+x+"</td>").join("")+"</tr>";
+function svgLine(d){
+ const W=610,H=224,L=56,R=13,T=15,B=37,n=d.n,scaleMax=d.v.balance,series=[d.baseline,d.recast,d.prepay],colors=["#335d9f","#0b9273","#db9860"];
+ const x=m=>L+(W-L-R)*m/n,y=bal=>T+(H-T-B)*(1-bal/Math.max(1,scaleMax));
+ let svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Monthly loan balance projections for baseline, recast and lump-only approaches">';
+ for(let tick=0;tick<=4;tick++){const value=scaleMax*tick/4,py=y(value);svg+='<line x1="'+L+'" y1="'+py+'" x2="'+(W-R)+'" y2="'+py+'" stroke="#e2ebf3"/><text x="'+(L-8)+'" y="'+(py+4)+'" font-size="11" text-anchor="end" fill="#687992">'+compact(value)+'</text>'}
+ for(let i=0;i<=5;i++){const m=n*i/5;svg+='<text x="'+x(m)+'" y="'+(H-10)+'" text-anchor="middle" fill="#687992" font-size="11">'+(m/12).toFixed(0)+'y</text>'}
+ series.forEach((s,i)=>{const pts=s.months.map(p=>x(p.month).toFixed(2)+','+y(p.balance).toFixed(2)).join(' ');const end=s.months[s.months.length-1];const tail=end.month<n?' '+x(end.month).toFixed(2)+','+y(0).toFixed(2):'';svg+='<polyline points="'+pts+tail+'" stroke="'+colors[i]+'" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>'});
+ return svg+'</svg>';
+}
+function svgBar(d){
+ const data=[["No lump",d.baseline.interest,"#335d9f"],["Recast",d.recast.interest,"#0b9273"],["Lump only",d.prepay.interest,"#db9860"]],max=Math.max(1,...data.map(a=>a[1]));
+ let svg='<svg viewBox="0 0 610 162" role="img" aria-label="Interest expense for three mortgage scenarios">';
+ data.forEach((item,i)=>{const y=13+i*49,w=415*item[1]/max;svg+='<text x="2" y="'+(y+16)+'" fill="#4c617b" font-size="12">'+item[0]+'</text><rect x="88" y="'+y+'" height="23" width="415" fill="#edf2f8" rx="5"/><rect x="88" y="'+y+'" height="23" width="'+w.toFixed(2)+'" fill="'+item[2]+'" rx="5"/><text x="603" y="'+(y+16)+'" font-size="12" fill="#253e5c" text-anchor="end">'+compact(item[1])+'</text>'});
+ return svg+'</svg>';
+}
+function render(){
+ const d=calculate();if(!d)return;
+ current=d;setErr("");
+ el("newPay").textContent=money(d.newPay);
+ el("oldPay").textContent=money(d.oldPay);
+ el("reduction").textContent=money(d.reduction);
+ el("saved").textContent=money(d.saved);
+ el("netSaved").textContent=money(d.netSaved);
+ el("newBalance").textContent=money(d.postLump);
+ el("withEscrow").textContent=money(d.newPay+d.v.escrow);
+ const monthsEarlier=d.baseline.paidOff-d.prepay.paidOff;
+ el("early").textContent=monthsEarlier>0?monthsEarlier+" months earlier":"No earlier payoff";
+ el("hero").classList.toggle("negative",d.reduction<0);
+ el("warning").textContent=(d.v.lump<d.v.minimum?"The principal payment is below the entered lender minimum; approval may not be available. ":"")+(d.postLump<=1e-8?"The lump sum pays off the mortgage; a recast is not needed. ":"")+(d.v.delay>0?"Payments continue at the original amount until month "+d.v.delay+". ":"")+"Recasting is subject to lender approval; mortgage insurance and escrow are not automatically reduced.";
+ el("comparison").innerHTML=
+ row("Required P&I",[money(d.oldPay),money(d.newPay),money(d.oldPay)])+
+ row("Total remaining interest",[money(d.baseline.interest),money(d.recast.interest),money(d.prepay.interest)])+
+ row("Interest saved",[money(0),money(d.saved),money(d.prepaySaved)])+
+ row("Recast fee",[money(0),money(d.v.lump>0&&d.postLump>0?d.v.fee:0),money(0)])+
+ row("Months to payoff",[d.baseline.paidOff,d.recast.paidOff,d.prepay.paidOff]);
+ el("balanceChart").innerHTML=svgLine(d);
+ el("interestChart").innerHTML=svgBar(d);
+ let t="";
+ for(let yr=1;yr<=Math.ceil(d.n/12);yr++){const m=Math.min(d.n,yr*12);const get=s=>{const p=s.months.find(q=>q.month===m);return p?p.balance:0};t+=row(String(yr),[money(get(d.baseline)),money(get(d.recast)),money(get(d.prepay))])}
+ el("schedule").innerHTML=t;
+}
+function reset(){Object.keys(defaults).forEach(id=>{el(id).value=defaults[id]});el("currency").value="USD";document.querySelectorAll("[data-sync]").forEach(r=>{r.value=el(r.dataset.sync).value});el("message").textContent="";render()}
+ids.forEach(id=>el(id).addEventListener("input",()=>{document.querySelectorAll('[data-sync="'+id+'"]').forEach(r=>{r.value=el(id).value});render()}));
+document.querySelectorAll("[data-sync]").forEach(r=>r.addEventListener("input",()=>{el(r.dataset.sync).value=r.value;render()}));
+el("currency").addEventListener("change",render);
+el("reset").addEventListener("click",reset);
+el("sample").addEventListener("click",()=>{reset();el("message").textContent="Sample mortgage loaded."});
+function summary(d){return[
+"Mortgage Recast Savings Calculator", "Currency: "+el("currency").value,
+"Current balance: "+money(d.v.balance),"Interest rate: "+d.v.rate+"%",
+"Remaining term: "+d.n+" months","Lump-sum principal: "+money(d.v.lump),
+"Month applied: "+d.v.delay,"Recast fee: "+money(d.v.fee),
+"Current monthly P&I: "+money(d.oldPay),"Recast monthly P&I: "+money(d.newPay),
+"Monthly P&I reduction: "+money(d.reduction),
+"Lifetime interest without lump sum: "+money(d.baseline.interest),
+"Lifetime interest with recast: "+money(d.recast.interest),
+"Lifetime interest with lump sum but no recast: "+money(d.prepay.interest),
+"Recast interest saved: "+money(d.saved),
+"Fee-adjusted recast interest savings: "+money(d.netSaved),
+"Lump-only months to payoff: "+d.prepay.paidOff,
+"Note: Lender approval and specific terms must be confirmed."
+].join("\n")}
+el("copy").addEventListener("click",async()=>{if(!current)return;try{await navigator.clipboard.writeText(summary(current));el("message").textContent="Analysis copied."}catch(e){el("message").textContent="Clipboard access unavailable. Try Print report."}});
+const csvCell=v=>'"'+String(v).replace(/"/g,'""')+'"';
+el("download").addEventListener("click",()=>{if(!current)return;const d=current,lines=[["Month","Baseline principal","Recast principal","Lump-only principal","Baseline interest","Recast interest","Lump-only interest"].map(csvCell).join(",")];const get=(s,m)=>{const r=s.months.find(q=>q.month===m);return r||{balance:0,interest:0}};for(let m=0;m<=d.n;m++){const b=get(d.baseline,m),r=get(d.recast,m),p=get(d.prepay,m);lines.push([m,b.balance,r.balance,p.balance,b.interest,r.interest,p.interest].map(v=>csvCell(typeof v==="number"?v.toFixed(2):v)).join(","))}const blob=new Blob(["\ufeff"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="mortgage-recast-amortization.csv";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);el("message").textContent="Amortization CSV exported."});
+el("print").addEventListener("click",()=>window.print());
+reset();
+})();
+</script>
+</body>
+</html>
