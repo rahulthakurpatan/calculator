@@ -152,27 +152,46 @@ function render(){
  }catch(e){last=null;put('error',e.message);clear();}
 }
 function rows(){
- const {v,r}=last;return [['Metric','Value'],['Currency',v.currency],['Beginning ARR',v.startARR],['Ending ARR',v.endARR],
- ['Net new ARR',r.netNewARR],['Growth %',r.growth],['Annual recognized revenue',v.revenue],
- ['Operating cash flow',v.operating],['Capital expenditures',v.capex],['FCF',r.fcf],['FCF margin %',r.margin],
- ['Rule of 40 score %',r.rule],['Selected target %',v.growthTarget],['Cash burn',r.burn],['Burn multiple',r.multiple===null?'N/A':r.multiple],
- ['Cash on hand',v.cash],['Estimated runway months',r.runway===null?'N/A':r.runway],
- ['FCF improvement required for target',r.fcfImprovement],['Same-revenue ARR needed for target',r.neededEndARR],
- ['Assumptions','Previous and current ARR 12 months apart, same annual FCF period, forward projections are hypothetical']];}
+ const {v,r}=last;return [
+ ['Metric','Value'],['Currency',v.currency],['ARR method',r.arrMode],
+ ['Beginning ARR',v.startARR],['Ending ARR (effective)',r.effectiveEndARR],
+ ['New ARR',r.arrMode==='bridge'?v.newARR:'Not selected'],['Expansion ARR',r.arrMode==='bridge'?v.expansionARR:'Not selected'],
+ ['Contraction ARR',r.arrMode==='bridge'?v.contractionARR:'Not selected'],['Churned ARR',r.arrMode==='bridge'?v.churnARR:'Not selected'],
+ ['Net new ARR',r.netNewARR],['ARR growth %',r.growth],
+ ['Annual recognized revenue',v.revenue],['Operating cash flow',v.operating],['Capital expenditures',v.capex],
+ ['FCF',r.fcf],['FCF margin %',r.fcfMargin],['Profit metric selected',r.marginMode],
+ ['EBITDA',r.marginMode==='ebitda'?v.ebitda:'Not selected'],
+ ['Selected profitability margin %',r.margin],['Rule of 40 score %',r.rule],['Selected target %',v.growthTarget],
+ ['Burn mode',r.burnMode],['Annual net cash burn',r.burn],['Burn multiple',r.multiple===null?'N/A':r.multiple],
+ ['Available cash',v.cash],['Simple runway months',r.runway===null?'N/A':r.runway],
+ ['Target profit improvement',r.fcfImprovement],['Ending ARR needed at same margin',r.neededEndARR],
+ ['Prior year Rule score',r.priorScore===null?'Not enabled':r.priorScore],
+ ['Change vs previous year in percentage points',r.scoreChange===null?'N/A':r.scoreChange],
+ ['Assumptions','Consistent twelve-month ARR and cash periods; selected margin may differ from benchmark definitions']
+ ];}
+
 function csv(){
  if(!last)return;const s=rows().map(row=>row.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');
  const u=URL.createObjectURL(new Blob(['\ufeff'+s],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');
  a.href=u;a.download='saas-rule-of-40-burn-multiple.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),900);
 }
 function copy(){
- if(!last)return;const {v,r}=last;const summary=['SaaS Rule of 40 & Burn Multiple',
+ if(!last)return;const {v,r}=last;
+ const summary=['SaaS Rule of 40 & Burn Multiple',
  'https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/',
- 'Annual ARR growth '+percent(r.growth),'FCF margin '+percent(r.margin),'Rule of 40 '+percent(r.rule),
- 'Annual net cash burn '+money(v.currency,r.burn),'Burn multiple '+(r.multiple===null?'N/A':format(r.multiple,2)+'×'),
- 'Runway '+(r.runway===null?'N/A':format(r.runway,1)+' months'),'Educational model; confirm accounting and cash flow definitions.'].join('\n');
+ 'ARR method: '+r.arrMode,'Ending ARR: '+money(v.currency,r.effectiveEndARR),
+ 'Annual ARR growth '+percent(r.growth),
+ 'Selected margin: '+(r.marginMode==='ebitda'?'EBITDA':'FCF')+' '+percent(r.margin),
+ 'FCF margin '+percent(r.fcfMargin),'Rule of 40 '+percent(r.rule),
+ 'Cash burn basis: '+r.burnMode,'Annual net cash burn '+money(v.currency,r.burn),
+ 'Burn multiple '+(r.multiple===null?'N/A':format(r.multiple,2)+'×'),
+ 'Runway '+(r.runway===null?'No current burn':format(r.runway,1)+' months'),
+ 'Prior-year Rule of 40 '+(r.priorScore===null?'Not enabled':percent(r.priorScore)),
+ 'Educational model; confirm the accounting and cash flow definitions.'].join('\n');
  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(summary).then(()=>put('error','Summary copied.')).catch(()=>put('error','Clipboard access denied.'));
  else put('error','Clipboard not available.');
 }
+
 $('rule-form').addEventListener('input',render);
 $('rule-form').addEventListener('change',render);
 $('rule-form').addEventListener('submit',e=>{e.preventDefault();render();});
