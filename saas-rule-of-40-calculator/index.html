@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#1769e0">
 <title>SaaS Rule of 40 & Burn Multiple Calculator | Free Tool</title>
-<meta name="description" content="Free SaaS Rule of 40 and Burn Multiple calculator. Compare ARR growth, FCF margin, cash efficiency, runway, target gaps and sensitivity graphs with live results.">
+<meta name="description" content="Free SaaS Rule of 40 and Burn Multiple calculator. Compare ARR growth, EBITDA or FCF margin, net burn, runway and capital efficiency.">
 <link rel="canonical" href="https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="InvestCalc">
 <meta property="og:title" content="SaaS Rule of 40 & Burn Multiple Calculator">
@@ -30,6 +30,8 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .panel h2{margin:0;font-size:20px;letter-spacing:-.4px;line-height:1.3}.pill{color:#0d806a;background:#e9f8f3;border-radius:40px;font-weight:850;font-size:11px;padding:5px 10px}
 .desc{font-size:13px;color:var(--muted);margin:8px 0 18px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.bridge-panel{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;background:#f7faff;border:1px solid #dce6f4;padding:14px;border-radius:12px}
+[hidden]{display:none!important}
 .field{min-width:0;display:flex;flex-direction:column;gap:5px}.full{grid-column:1/-1}
 .field label{font-size:12px;font-weight:760;color:#4f637d}
 .field input,.field select{height:46px;width:100%;border-radius:11px;border:1px solid #d5dfed;background:#fbfdff;color:#26384d;padding:0 11px}
@@ -65,7 +67,7 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 .formula{font:13px/1.85 ui-monospace,Consolas,monospace;background:#eff5fc;border-radius:11px;padding:14px;color:#28557e;white-space:pre-wrap;display:block;overflow-x:auto}
 @media(min-width:920px){.results{position:sticky;top:16px}}
 @media(max-width:910px){.calculator{grid-template-columns:1fr}.results{position:static}}
-@media(max-width:570px){.wrap{width:calc(100% - 24px)}.hero{padding:30px 0 25px}.intro{font-size:15px}.panel{padding:16px;border-radius:16px}.fields{gap:10px}.field input,.field select{height:44px;font-size:14px;padding:0 9px}.metric strong{font-size:19px}}
+@media(max-width:570px){.bridge-panel{grid-template-columns:1fr}.wrap{width:calc(100% - 24px)}.hero{padding:30px 0 25px}.intro{font-size:15px}.panel{padding:16px;border-radius:16px}.fields{gap:10px}.field input,.field select{height:44px;font-size:14px;padding:0 9px}.metric strong{font-size:19px}}
 @media print{#site-header,#site-footer,.actions,.crumb,.chips{display:none!important}.wrap{width:100%}body,.hero{background:#fff}.calculator{display:block}.panel{box-shadow:none;margin-bottom:14px}.results{position:static}}
 </style></head>
 <body><div id="site-header"></div>
@@ -73,7 +75,7 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/saas-ltv-cac-calculator/">SaaS metrics</a> / Rule of 40</nav>
 <div class="tag-top">SAAS CAPITAL EFFICIENCY • LIVE DASHBOARD</div>
 <h1>SaaS <span style="color:#1769e0">Rule of 40</span> &amp; Burn Multiple Calculator</h1>
-<p class="intro">Understand whether ARR growth and free cash flow are balanced. Calculate your Rule of 40, net cash burn, burn multiple and runway—in one real-time investor metrics dashboard.</p>
+<p class="intro">Compare ARR growth with free cash flow or EBITDA margin. Calculate Rule of 40, net new ARR, burn multiple, runway and historical score trends in one live dashboard.</p>
 <div class="chips"><span>✦ Annual ARR growth + FCF margin</span><span>✦ Burn multiple</span><span>✦ Cash runway</span><span>✦ Live sensitivity charts</span></div>
 </div></header>
 <main class="wrap"><div class="calculator">
@@ -83,17 +85,32 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 <form id="rule-form" novalidate><div class="fields">
 <div class="field full"><label for="currency">Company reporting currency</label><select id="currency"><option value="USD">USD — US Dollar</option><option value="GBP">GBP — British Pound</option><option value="EUR">EUR — Euro</option><option value="INR">INR — Indian Rupee</option><option value="CAD">CAD — Canadian Dollar</option><option value="AUD">AUD — Australian Dollar</option></select></div>
 <div class="section first">01 / Annual recurring revenue (ARR)</div>
+<div class="field full"><label for="arrMode">ARR growth input method</label><select id="arrMode"><option value="snapshot">Beginning and ending ARR snapshots</option><option value="bridge">ARR bridge: new, expansion, contraction and churn</option></select><small>Choose the bridge to calculate ending ARR from annualized subscription movements.</small></div>
 <div class="field"><label for="startARR">Beginning ARR (12 months ago)</label><input id="startARR" data-label="Beginning ARR" type="number" min="1" max="100000000000" step="any" value="1200000" required></div>
-<div class="field"><label for="endARR">Ending ARR (today)</label><input id="endARR" data-label="Ending ARR" type="number" min="0" max="100000000000" step="any" value="1800000" required></div>
+<div class="field" id="endARRField"><label for="endARR">Ending ARR (today)</label><input id="endARR" data-label="Ending ARR" type="number" min="0" max="100000000000" step="any" value="1800000" required></div>
+<div class="bridge-panel" id="bridgeFields" hidden>
+<div class="field"><label for="newARR">New customer ARR</label><input id="newARR" type="number" data-label="New ARR" min="0" max="100000000000" step="any" value="850000"></div>
+<div class="field"><label for="expansionARR">Expansion ARR</label><input id="expansionARR" type="number" data-label="Expansion ARR" min="0" max="100000000000" step="any" value="200000"></div>
+<div class="field"><label for="contractionARR">Contraction ARR lost</label><input id="contractionARR" type="number" data-label="Contraction ARR" min="0" max="100000000000" step="any" value="150000"></div>
+<div class="field"><label for="churnARR">Churned ARR lost</label><input id="churnARR" type="number" data-label="Churned ARR" min="0" max="100000000000" step="any" value="300000"></div>
+<div class="helper full">Closing ARR = beginning ARR + new ARR + expansion ARR − contraction ARR − churn ARR. All movements must cover the same twelve months.</div>
+</div>
 <div class="field full"><label for="revenue">Revenue recognized over the 12 months</label><input id="revenue" data-label="Annual recognized revenue" type="number" min="1" max="100000000000" step="any" value="1450000" required><small>Use earned revenue from this year's P&amp;L, not end-of-period ARR. This is the denominator for FCF margin.</small></div>
-<div class="section">02 / Free cash flow and burn</div>
+<div class="section">02 / Profitability and cash burn</div>
+<div class="field full"><label for="marginMode">Rule of 40 profitability basis</label><select id="marginMode"><option value="fcf">Free cash flow margin (recommended)</option><option value="ebitda">EBITDA margin (alternative)</option></select><small>FCF and EBITDA are different. Select one for the Rule of 40 score; cash burn remains a separate metric.</small></div>
 <div class="field"><label for="operating">Annual cash from operating activities</label><input id="operating" data-label="Cash from operating activities" type="number" min="-100000000000" max="100000000000" step="any" value="-150000" required><small>Enter negative values when operating cash outflows exceed inflows.</small></div>
 <div class="field"><label for="capex">Capital expenditures over 12 months</label><input id="capex" data-label="Capital expenditures" type="number" min="0" max="100000000000" step="any" value="90000" required></div>
+<div class="field" id="ebitdaField" hidden><label for="ebitda">Annual EBITDA (signed)</label><input id="ebitda" data-label="Annual EBITDA" type="number" min="-100000000000" max="100000000000" step="any" value="-180000"><small>Used only when EBITDA is selected for Rule of 40; not a proxy for cash burn.</small></div>
+<div class="field full"><label for="burnMode">Cash burn source for Burn Multiple</label><select id="burnMode"><option value="fcf">Derive from negative annual FCF</option><option value="direct">Enter direct annual net cash burn</option></select><small>Direct burn should represent annual net cash consumption, excluding financing proceeds.</small></div>
+<div class="field" id="directBurnField" hidden><label for="directBurn">Direct annual net cash burn</label><input id="directBurn" data-label="Direct annual burn" type="number" min="0" max="100000000000" step="any" value="240000"></div>
 <div class="field"><label for="cash">Available cash balance today</label><input id="cash" data-label="Cash available" type="number" min="0" max="100000000000" step="any" value="950000" required><small>Exclude undrawn credit lines unless you deliberately model them as liquid resources.</small></div>
 <div class="section">03 / Target and sensitivity</div>
 <div class="field"><label for="growthTarget">Target Rule of 40 score (%)</label><input id="growthTarget" data-label="Target rule score" type="number" min="0" max="100" step="any" value="40" required></div>
 <div class="field"><label for="sensitivity">ARR growth sensitivity (± points)</label><input id="sensitivity" data-label="ARR growth sensitivity" type="number" min="0" max="100" step="any" value="20" required><small>Stress-test the annual growth rate while holding FCF margin constant.</small></div>
-<div class="helper">The standard method uses <strong>ARR growth + free cash flow margin</strong>. We display positive net cash burn only if free cash flow is negative. When net new ARR is zero/negative or the company is cash-generating, a normal positive burn multiple does not apply.</div>
+<div class="section">04 / Historical comparison (optional)</div>
+<div class="field full"><label for="historyMode">Compare with a previous year</label><select id="historyMode"><option value="off">No previous-year comparison</option><option value="on">Enable score comparison</option></select><small>Use the same ARR and selected profitability margin definitions for both periods.</small></div>
+<div class="bridge-panel" id="historyFields" hidden><div class="field"><label for="previousGrowth">Previous ARR growth (%)</label><input id="previousGrowth" data-label="Previous ARR growth" type="number" min="-100" max="500" step="any" value="30"></div><div class="field"><label for="previousMargin">Previous FCF / EBITDA margin (%)</label><input id="previousMargin" data-label="Previous profitability margin" type="number" min="-300" max="300" step="any" value="-12"></div></div>
+<div class="helper">Rule of 40 uses ARR growth plus the selected FCF or EBITDA margin. Burn multiple uses positive net cash burn divided by positive net-new ARR, on a matching 12-month basis.</div>
 </div>
 <div class="actions"><button class="btn primary" type="button" id="copy">Copy summary</button><button class="btn secondary" type="button" id="download">Download CSV</button><button class="btn secondary" type="button" id="reset">Reset</button><button class="btn secondary" type="button" id="print">Print</button></div>
 <p id="error" class="error" role="status" aria-live="polite"></p><p class="privacy">🔒 Calculations run only in your browser. No SaaS business metrics are uploaded.</p>
