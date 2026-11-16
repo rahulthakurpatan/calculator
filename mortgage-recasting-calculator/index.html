@@ -225,7 +225,7 @@ function simulate(balance,rate,n,lumpAt,lump,recast){
  }
  return{monthly,interest:totalInterest,months,paidOff:monthPaidOff,ending:principal};
 }
-const setErr=msg=>{el("error").textContent=msg;el("error").classList.toggle("show",!!msg)};
+const setErr=msg=>{el("error").textContent=msg;el("error").classList.toggle("show",!!msg);if(msg){current=null;["newPay","oldPay","reduction","saved","netSaved","newBalance","withEscrow","early"].forEach(id=>el(id).textContent="—");["comparison","schedule","balanceChart","interestChart"].forEach(id=>el(id).innerHTML="")}};
 let current=null;
 function calculate(){
  const v={};
@@ -298,7 +298,7 @@ ids.forEach(id=>el(id).addEventListener("input",()=>{document.querySelectorAll('
 document.querySelectorAll("[data-sync]").forEach(r=>r.addEventListener("input",()=>{el(r.dataset.sync).value=r.value;render()}));
 el("currency").addEventListener("change",render);
 el("reset").addEventListener("click",reset);
-el("sample").addEventListener("click",()=>{reset();el("message").textContent="Sample mortgage loaded."});
+el("sample").addEventListener("click",()=>{reset();Object.entries({balance:420000,rate:5.75,years:24,months:0,escrow:525,lump:45000,fee:300,delay:3,minimum:10000}).forEach(([id,val])=>el(id).value=val);document.querySelectorAll("[data-sync]").forEach(r=>r.value=el(r.dataset.sync).value);render();el("message").textContent="Alternative sample deal loaded."});
 function summary(d){return[
 "Mortgage Recast Savings Calculator", "Currency: "+el("currency").value,
 "Current balance: "+money(d.v.balance),"Interest rate: "+d.v.rate+"%",
