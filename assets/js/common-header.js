@@ -176,6 +176,7 @@
     {
       "label": "Business & SaaS",
       "tools": [
+        ["Amazon FBA Profit & Fees Calculator", "/amazon-fba-profit-calculator/", "Analyze seller profit, FBA fulfilment and referral fees, PPC, ROI and break-even selling prices"],
         [
           "Gold Jewellery Resale & Break-Even Calculator",
           "/gold-jewellery-resale-break-even-calculator/",
