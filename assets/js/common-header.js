@@ -231,7 +231,6 @@
           "/break-even-calculator/",
           "Calculate break-even units, revenue, contribution margin, target profit and margin of safety"
         ],
-        ["BRRRR Real Estate Calculator", "/brrrr-calculator/", "Analyze buy, rehab, rent, refinance and repeat cash recovery and rental cash flow"],
         [
           "Short-Term Rental Occupancy Break-Even Calculator",
           "/airbnb-occupancy-break-even-calculator/",
@@ -292,6 +291,7 @@
     {
       "label": "Mortgages & Housing",
       "tools": [
+        ["Mortgage Recast Calculator", "/mortgage-recasting-calculator/", "Recalculate payments after a lump-sum principal reduction and compare lifetime interest savings"],
         [
           "Mortgage PMI Removal & Savings Calculator",
           "/mortgage-pmi-removal-calculator/",
@@ -402,6 +402,7 @@
     {
       "label": "Property & Vehicles",
       "tools": [
+        ["BRRRR Real Estate Calculator", "/brrrr-calculator/", "Analyze buy, rehab, rent, refinance and repeat cash recovery and rental cash flow"],
         [
           "EV vs Gas Total Cost Calculator",
           "/ev-vs-gas-cost-calculator/",
