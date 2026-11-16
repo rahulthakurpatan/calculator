@@ -80,7 +80,7 @@ function calculate(){
   const gross=row.quantity*row.price,slip=gross*v.slippage/100,saleFee=(gross-slip)*v.sellFee/100+v.fixedFee;
   const netSale=gross-slip-saleFee,cost=row.quantity*row.basis,loss=Math.max(0,cost-netSale),long=lotLong(row.acquired,v.saleDate),eligible=row.selected&&loss>0;
   if(row.selected&&!eligible)ignored++;
-  if(eligible){totalLoss+=loss;transactionCosts+=slip+saleFee+gross*v.buyFee/100;if(long)harvestLong+=loss;else harvestShort+=loss;}
+  if(eligible){totalLoss+=loss;transactionCosts+=slip+saleFee+((v.reacquire==="yes"||v.reacquire==="later")?gross*v.buyFee/100:0);if(long)harvestLong+=loss;else harvestShort+=loss;}
   return{...row,gross,netSale,cost,loss,long,eligible}
  });
  const baseShort=v.shortGain-(v.country==="US"?v.carryShort:0);
@@ -90,8 +90,8 @@ function calculate(){
  let review="";
  if(v.country==="IN")review="India: standard VDA transfer losses cannot offset gains or be carried forward.";
  else if(v.country==="US"&&v.securityLike)review="US security/tokenized-stock treatment may invoke wash-sale restrictions; consult a tax expert.";
- else if(v.country==="CA"&&v.reacquire!=="no")review="Canada: the superficial-loss acquisition and holding tests need transaction-level verification.";
- else if(v.country==="UK"&&v.reacquire!=="no")review="UK: same-day / 30-day matching requires a correct pooled and matched tax basis.";
+ else if(v.country==="CA"&&(v.reacquire==="yes"||v.reacquire==="unknown"))review="Canada: the superficial-loss acquisition and holding tests need transaction-level verification.";
+ else if(v.country==="UK"&&(v.reacquire==="yes"||v.reacquire==="unknown"))review="UK: same-day / 30-day matching requires a correct pooled and matched tax basis.";
  else if(v.country==="AU"&&v.washAU)review="Australia: potential wash-sale arrangement requires professional tax review.";
  const blocked=v.country!=="IN"&&Boolean(review);
  const modeledLoss=v.country==="IN"||blocked?0:totalLoss;
