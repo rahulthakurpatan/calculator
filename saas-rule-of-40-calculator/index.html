@@ -9,7 +9,7 @@
 <meta property="og:title" content="SaaS Rule of 40 & Burn Multiple Calculator">
 <meta property="og:description" content="Analyze SaaS ARR growth, FCF margin, capital efficiency and cash runway in a live two-column dashboard.">
 <meta property="og:url" content="https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/"><meta name="twitter:card" content="summary">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"SaaS Rule of 40 and Burn Multiple Calculator","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","description":"Compare annual recurring revenue growth, free cash flow margin and cash burn efficiency in a browser calculator."},{"@type":"SoftwareApplication","name":"SaaS Rule of 40 and Burn Multiple Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"SaaS Rule of 40 Calculator","item":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is SaaS Rule of 40 calculated?","acceptedAnswer":{"@type":"Answer","text":"Add annual ARR growth rate, measured as (ending ARR - beginning ARR) / beginning ARR, to free cash flow margin, measured as (cash from operations - capital expenditures) / annual recognized revenue."}},{"@type":"Question","name":"How do you calculate SaaS burn multiple?","acceptedAnswer":{"@type":"Answer","text":"Net cash burn divided by net new ARR generated over the same period. If free cash flow is positive or net new ARR is zero or negative, the usual positive burn multiple is not meaningful."}},{"@type":"Question","name":"Does a SaaS Rule of 40 score above 40 mean the company is profitable?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. Strong growth can offset a negative free cash flow margin. Review revenue growth, profitability, retention, capital requirements and cash runway separately."}},{"@type":"Question","name":"Are Rule of 40 and burn multiple the same metric?","acceptedAnswer":{"@type":"Answer","text":"No. Rule of 40 adds growth and FCF margin percentages; burn multiple measures the dollars of cash consumed per dollar of net new annual recurring revenue."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"SaaS Rule of 40 and Burn Multiple Calculator","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","description":"Analyze SaaS ARR growth, free cash flow or EBITDA margin, burn multiple, runway and historical Rule of 40 score."},{"@type":"SoftwareApplication","name":"SaaS Rule of 40 and Burn Multiple Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://returnoninvestmentcalculator.in/"},{"@type":"ListItem","position":2,"name":"SaaS Rule of 40 Calculator","item":"https://returnoninvestmentcalculator.in/saas-rule-of-40-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I use EBITDA margin or free cash flow margin?","acceptedAnswer":{"@type":"Answer","text":"FCF margin is the SaaS Metrics Standards Board's recommended Rule of 40 profitability measure, while EBITDA margin is an alternative. Compare scores only when both periods or companies use consistent definitions."}},{"@type":"Question","name":"Can Rule of 40 be above 40 if the SaaS business is losing money?","acceptedAnswer":{"@type":"Answer","text":"Yes. A company growing ARR at 70% with a negative 20% FCF margin scores 50%; it can be cash-negative but still beat the conventional Rule of 40 benchmark."}},{"@type":"Question","name":"What if SaaS ARR has declined?","acceptedAnswer":{"@type":"Answer","text":"The ARR growth percentage becomes negative. If the company also burns cash, burn multiple is not a useful ratio because net new ARR is nonpositive. The dashboard correctly marks it not applicable."}},{"@type":"Question","name":"Is burn multiple the same as burn rate?","acceptedAnswer":{"@type":"Answer","text":"No. Burn rate describes cash consumed over time; burn multiple compares cash consumed with net ARR growth over the same period."}},{"@type":"Question","name":"Can I use this calculator in the UK, Canada or India?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select a single consistent reporting currency. The ratios are dimensionless, so the same accounting definitions apply. This tool does not perform foreign-exchange conversion, enforce accounting standards or calculate local corporate taxes."}},{"@type":"Question","name":"Is the Rule of 40 a reliable valuation formula?","acceptedAnswer":{"@type":"Answer","text":"No. It is a performance heuristic, not a valuation multiple or a prediction of company worth. See our separate SaaS valuation calculator for scenario-based estimates."}}]}]}</script>
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5JP6QNKJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date())</script>
 <script src="/assets/js/common-branding.js" defer></script><script src="/assets/js/common-pushdotify.js" defer></script>
@@ -122,7 +122,7 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 <div class="metric blue"><div class="label">SaaS Rule of 40 score</div><strong id="rule">—</strong></div>
 <div class="metric purple"><div class="label">Burn multiple</div><strong id="multiple">—</strong></div>
 <div class="metric"><div class="label">Annual ARR growth</div><strong id="growth">—</strong></div>
-<div class="metric"><div class="label">Free cash flow margin</div><strong id="margin">—</strong></div>
+<div class="metric"><div class="label" id="marginLabel">Free cash flow margin</div><strong id="margin">—</strong></div>
 <div class="metric"><div class="label">Annual net cash burn</div><strong id="burn">—</strong></div>
 <div class="metric"><div class="label">Simple cash runway</div><strong id="runway">—</strong></div>
 </div>
@@ -140,10 +140,20 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 <h3 class="section-title">Path to your target</h3>
 <div class="breakdown">
 <div><span>Selected Rule of 40 target</span><strong id="target">—</strong></div>
-<div><span>FCF needed to reach target (given growth)</span><strong id="fcfTarget">—</strong></div>
-<div><span>Required improvement in annual FCF</span><strong id="targetGap">—</strong></div>
+<div><span id="targetProfitLabel">FCF needed to reach target (given growth)</span><strong id="fcfTarget">—</strong></div>
+<div><span id="targetGapLabel">Required improvement in annual FCF</span><strong id="targetGap">—</strong></div>
 <div><span>Ending ARR needed if margin unchanged</span><strong id="arrToTarget">—</strong></div>
 </div>
+<h3 class="section-title">Revenue bridge and historical comparison</h3>
+<div class="breakdown">
+<div><span>ARR growth method</span><strong id="arrMethod">—</strong></div>
+<div><span>Selected profitability basis</span><strong id="marginMethod">—</strong></div>
+<div><span>Annual EBITDA input</span><strong id="ebitdaOut">—</strong></div>
+<div><span>Cash burn method</span><strong id="burnMethod">—</strong></div>
+<div><span>Prior-year Rule of 40</span><strong id="priorScore">Not enabled</strong></div>
+<div><span>Change vs prior year</span><strong id="scoreChange">—</strong></div>
+</div>
+<p class="note"><strong>2026 industry context (2025 performance):</strong> Median Rule of 40: 25%; upper quartile: 43%+. Source: <a href="https://www.benchmarkit.ai/2026-saas-ai-native-metrics" rel="noopener noreferrer">Aleph × Benchmarkit 2026 study</a>. Only 110 of 342 companies reported Rule of 40; company stage and profitability definitions differ. This is context, not a directly comparable score.</p>
 <h3 class="section-title">Rule of 40 components</h3>
 <div class="graph"><svg id="rule-chart" viewBox="0 0 640 225" role="img" aria-labelledby="rule-title rule-desc"><title id="rule-title">Rule of 40 breakdown</title><desc id="rule-desc">ARR growth, FCF margin, total score and target.</desc></svg></div>
 <h3 class="section-title">Growth sensitivity analysis</h3>
@@ -153,14 +163,16 @@ main{padding:27px 0 68px}.calculator{display:grid;grid-template-columns:minmax(0
 </section></div>
 <article class="prose">
 <h2>What is the SaaS Rule of 40?</h2>
-<p>The Rule of 40 is a shorthand for the balance between a subscription company's growth and profitability. Under the SaaS Metrics Standards Board's recommended definition, add the company's <strong>annual recurring revenue (ARR) growth percentage</strong> to its <strong>free cash flow (FCF) margin percentage</strong>. A combined score of 40% is the conventional reference, not an industry law or a predictor of company value. Different investors sometimes substitute EBITDA or operating margins; this calculator deliberately uses FCF and states its definition.</p>
+<p>The Rule of 40 is a shorthand for the balance between a subscription company's growth and profitability. Under the SaaS Metrics Standards Board's recommended definition, add the company's <strong>annual recurring revenue (ARR) growth percentage</strong> to its <strong>free cash flow (FCF) margin percentage</strong>. A combined score of 40% is the conventional reference, not an industry law or a predictor of company value. Different investors sometimes substitute EBITDA margin. This calculator lets you select the FCF-recommended or EBITDA-based variant explicitly, while cash burn is assessed separately.</p>
 <div class="box"><h2>Rule of 40 and Burn Multiple formulas</h2>
 <div class="formula">ARR growth (%) = (Ending ARR − Beginning ARR) / Beginning ARR × 100
+ARR bridge (optional) = New ARR + Expansion ARR − Contraction ARR − Churned ARR
 Free Cash Flow = Operating cash flow − Capital expenditures
 FCF margin (%) = Free cash flow / Recognized annual revenue × 100
-Rule of 40 = ARR growth (%) + FCF margin (%)
+EBITDA margin (%) = Annual EBITDA / Recognized annual revenue × 100
+Rule of 40 = ARR growth (%) + Selected FCF or EBITDA margin
 Net new ARR = Ending ARR − Beginning ARR
-Annual net cash burn = max(0, −Free Cash Flow)
+Annual net cash burn = max(0, −FCF) OR direct annual cash burn
 Burn Multiple = Positive annual net cash burn / Positive net new ARR
 Simple cash runway (months) = Available cash / (Annual cash burn / 12)</div>
 <p>All changes and cash flows must cover the <strong>same 12-month observation period</strong>. ARR is a snapshot of expected annualized recurring revenue at a specific date; it is not the same as revenue recognized through the past twelve months. Financing raised or borrowed should not be counted as operating revenue or recurring business growth.</p>
@@ -173,7 +185,15 @@ Simple cash runway (months) = Available cash / (Annual cash burn / 12)</div>
 <h2>What is a good SaaS burn multiple?</h2>
 <p>There is no universal threshold for every stage of a company. David Sacks popularized a benchmark in which lower burn multiples indicate more capital-efficient ARR expansion. A result below 1× means less than one dollar of net cash burn per dollar of net ARR added; higher results suggest more funding needed for growth. Early-stage businesses and fast-growing mature SaaS firms can have very different economics. Avoid interpreting generic cutoff bands as lending or valuation advice.</p>
 <h2>How the Rule of 40 sensitivity chart works</h2>
-<p>Change the ARR growth sensitivity input to model up to five potential growth scenarios around your current observed ARR growth. In each scenario, the tool holds <strong>FCF margin constant</strong> and recomputes the Rule of 40. It does not assume that faster growth is free or that cash expenses would remain unchanged; the chart is intentionally an isolated sensitivity test.</p>
+<p>Change the ARR growth sensitivity input to model up to five potential growth scenarios around your current observed ARR growth. In each scenario, the tool holds <strong>the selected FCF or EBITDA margin constant</strong> and recomputes the Rule of 40. It does not assume that faster growth is free or that cash expenses would remain unchanged; the chart is intentionally an isolated sensitivity test.</p>
+<h2>Which Rule of 40 metric should you choose: FCF or EBITDA?</h2>
+<p>The <a href="https://www.saasmetricsboard.com/rule-of-40" rel="noopener noreferrer">SaaS Metrics Standards Board</a> recommends FCF margin alongside ARR growth. EBITDA-based versions also appear in investor analysis, but EBITDA and free cash flow can differ substantially because EBITDA excludes changes in working capital and capital expenditure. Choose one definition, label it and avoid mixing it with benchmarks that use different methods.</p>
+<h2>How to analyze ARR new, expansion, contraction and churn</h2>
+<p>Net-new ARR equals new customer ARR plus expansion ARR, less downgrade/contraction and churned ARR. The ARR bridge option derives ending ARR from these amounts so net-new ARR and annual growth use a consistent balance. The calculation does not infer movements from other metrics or count new sales before they become recurring revenue.</p>
+<h2>Comparing Rule of 40 across reporting periods</h2>
+<p>The optional prior-year comparison takes your previous ARR growth rate and your previous profitability margin under the same definition. The difference is a percentage-point movement in Rule-of-40 score, not a predictive growth rate. A rising score may reflect improved margins, faster growth or both.</p>
+<h2>2026 benchmarks — compare definitions carefully</h2>
+<p>The <a href="https://www.benchmarkit.ai/2026-saas-ai-native-metrics" rel="noopener noreferrer">2026 Aleph × Benchmarkit report</a>, based on 2025 performance, reported a 25% median Rule of 40 and a 43% top-quartile score. Only 110 of the 342 survey participants reported the metric. Variations in ARR scale, subscription model and profitability methodology make these reference statistics unsuitable as automatic company ratings.</p>
 <h2>Common mistakes in SaaS capital-efficiency analysis</h2>
 <ul>
 <li><strong>Comparing ARR to cash revenues:</strong> The FCF margin uses annual recognized revenue, but ARR growth uses comparable ARR snapshots 12 months apart.</li>
@@ -184,6 +204,8 @@ Simple cash runway (months) = Available cash / (Annual cash burn / 12)</div>
 <li><strong>Confusing cash with EBITDA:</strong> FCF includes operating cash and capital expenditures. EBITDA may diverge substantially.</li>
 </ul>
 <h2>Frequently asked questions</h2>
+<h3>Should I use EBITDA margin or free cash flow margin?</h3>
+<p>FCF margin is the SaaS Metrics Standards Board's recommended Rule of 40 profitability measure, while EBITDA margin is an alternative. Compare scores only when both periods or companies use consistent definitions.</p>
 <h3>Can Rule of 40 be above 40 if the SaaS business is losing money?</h3>
 <p>Yes. A company growing ARR at 70% with a negative 20% FCF margin scores 50%; it can be cash-negative but still beat the conventional Rule of 40 benchmark.</p>
 <h3>What if SaaS ARR has declined?</h3>
