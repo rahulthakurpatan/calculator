@@ -70,13 +70,13 @@ const svg=(tag,attrs={},val)=>{const el=document.createElementNS(NS,tag);for(con
 function put(id,s){$(id).textContent=s;}
 function ruleChart(v,r){
  const s=$('rule-chart');s.replaceChildren();
- s.append(svg('title',{id:'rule-title'},'Rule of 40 growth and free-cash-flow margin contribution'));
- s.append(svg('desc',{id:'rule-desc'},'Shows actual ARR growth, free cash flow margin, combined Rule of 40 result and selected target.'));
+ s.append(svg('title',{id:'rule-title'},'Rule of 40 growth and selected profitability margin contribution'));
+ s.append(svg('desc',{id:'rule-desc'},'Shows ARR growth, selected FCF or EBITDA margin, Rule of 40 score and selected target.'));
  const left=72,right=585,zero=155;
  const min=Math.min(-80,r.growth,r.margin,r.rule,v.growthTarget),max=Math.max(80,r.growth,r.margin,r.rule,v.growthTarget);
  const width=right-left,scale=x=>left+(x-min)/(max-min)*width;
  s.append(svg('line',{x1:scale(0),x2:scale(0),y1:24,y2:204,stroke:'#94a2bb','stroke-width':2}));
- const rows=[['ARR growth',r.growth,'#166de2'],['FCF margin',r.margin,'#da7a52'],['Rule of 40',r.rule,'#7b5bd2'],['Your target',v.growthTarget,'#0f9d85']];
+ const rows=[['ARR growth',r.growth,'#166de2'],[r.marginMode==='ebitda'?'EBITDA margin':'FCF margin',r.margin,'#da7a52'],['Rule of 40',r.rule,'#7b5bd2'],['Your target',v.growthTarget,'#0f9d85']];
  rows.forEach(([label,value,color],i)=>{
   const y=25+i*44,origin=scale(0),edge=scale(value),w=Math.abs(edge-origin);
   s.append(svg('text',{x:7,y:y+15,fill:'#566f89','font-size':11,'font-weight':700},label));
@@ -87,7 +87,7 @@ function ruleChart(v,r){
 function efficiencyChart(v,r){
  const s=$('efficiency-chart');s.replaceChildren();
  s.append(svg('title',{id:'eff-title'},'Rule of 40 sensitivity by annual ARR growth'));
- s.append(svg('desc',{id:'eff-desc'},'Hypothetical Rule of 40 score if the ARR growth rate changes and free cash flow margin stays constant.'));
+ s.append(svg('desc',{id:'eff-desc'},'Hypothetical Rule of 40 scores with constant selected EBITDA or free cash flow margin.'));
  const points=r.projections,minG=Math.min(...points.map(a=>a.nextGrowth)),maxG=Math.max(...points.map(a=>a.nextGrowth));
  const minR=Math.min(...points.map(a=>a.rule),v.growthTarget,0)-10,maxR=Math.max(...points.map(a=>a.rule),v.growthTarget,40)+10;
  const left=82,right=591,top=18,bottom=185;
@@ -105,31 +105,49 @@ function efficiencyChart(v,r){
  points.forEach((p)=>s.append(svg('text',{x:x(p.nextGrowth),y:206,'font-size':11,fill:'#73859c','text-anchor':'middle'},percent(p.nextGrowth))));
 }
 function clear(){
- ['rule','growth','margin','burn','multiple','runway','netnew','fcf','targetGap','arrToTarget','burnStatus','ruleStatus','ending','cashAvailable','fcfTarget','netBurn','target','operatingOut'].forEach(id=>put(id,'—'));
+ ['rule','growth','margin','burn','multiple','runway','netnew','fcf','targetGap','arrToTarget','burnStatus','ruleStatus','ending','cashAvailable','fcfTarget','netBurn','target','operatingOut','arrMethod','marginMethod','burnMethod','ebitdaOut','priorScore','scoreChange'].forEach(id=>put(id,'—'));
  $('rule-chart').replaceChildren();$('efficiency-chart').replaceChildren();$('status').className='status';
  put('statusHead','Correct inputs to calculate.');put('statusNote','Metrics will update instantly.');
 }
 let last=null;
+function updateModeVisibility(){
+ $('endARRField').hidden=$('arrMode').value==='bridge';
+ $('bridgeFields').hidden=$('arrMode').value!=='bridge';
+ $('ebitdaField').hidden=$('marginMode').value!=='ebitda';
+ $('directBurnField').hidden=$('burnMode').value!=='direct';
+ $('historyFields').hidden=$('historyMode').value!=='on';
+}
 function render(){
+ updateModeVisibility();
  try{
   const v=read(),r=calculate(v);
   if(!Number.isFinite(r.rule)||!Number.isFinite(r.fcfImprovement)||!Number.isFinite(r.neededEndARR))throw Error('Scenario values overflow numerical limits.');
   last={v,r};put('error','');
   put('rule',percent(r.rule));put('growth',percent(r.growth));put('margin',percent(r.margin));
   put('burn',money(v.currency,r.burn));put('netBurn',money(v.currency,r.burn));
-  put('multiple',r.multiple===null?(r.positiveCash?'No burn':'N/A'):format(r.multiple,2)+'×');
-  put('runway',r.runway===null?'Cash generating':format(r.runway,1)+' months');
+  put('multiple',r.multiple===null?(r.burn<=0?'No burn':'N/A'):format(r.multiple,2)+'×');
+  put('runway',r.runway===null?'No current burn':format(r.runway,1)+' months');
   put('netnew',money(v.currency,r.netNewARR));put('fcf',money(v.currency,r.fcf));
   put('targetGap',money(v.currency,r.fcfImprovement));put('arrToTarget',money(v.currency,r.neededEndARR));
-  put('burnStatus',r.burnStatus);put('ruleStatus',r.ruleTag);put('ending',money(v.currency,v.endARR));
+  const profitability=r.marginMode==='ebitda'?'EBITDA':'FCF';
+  put('marginLabel',profitability+' margin');
+  put('targetProfitLabel',profitability+' needed to reach target (given growth)');
+  put('targetGapLabel','Required improvement in annual '+profitability);
+  put('arrMethod',r.arrMode==='bridge'?'ARR movement bridge':'Beginning / ending snapshots');
+  put('marginMethod',profitability);
+  put('ebitdaOut',r.marginMode==='ebitda'?money(v.currency,v.ebitda):'Not used');
+  put('burnMethod',r.burnMode==='direct'?'Direct annual cash burn':'From negative FCF');
+  put('priorScore',r.priorScore===null?'Not enabled':percent(r.priorScore));
+  put('scoreChange',r.scoreChange===null?'—':(r.scoreChange>0?'+':'')+format(r.scoreChange,1)+' points');
+  put('burnStatus',r.burnStatus);put('ruleStatus',r.ruleTag);put('ending',money(v.currency,r.effectiveEndARR));
   put('cashAvailable',money(v.currency,v.cash));put('fcfTarget',money(v.currency,r.targetFCF));
   put('target',percent(v.growthTarget));put('operatingOut',money(v.currency,v.operating));
   const status=$('status');status.className='status '+(r.rule>=v.growthTarget?'good':'warn');
   put('statusHead',r.rule>=v.growthTarget?'TARGET MET FOR THE SELECTED YEAR':'BELOW THE SELECTED RULE-OF-40 TARGET');
   put('statusNote',r.rule>=v.growthTarget?'Growth plus annual free-cash-flow margin meets the benchmark. Review each component independently before drawing conclusions.':
-   'At this ARR growth and recognized revenue, improving annual free cash flow by '+money(v.currency,r.fcfImprovement)+' would reach the selected Rule-of-40 target, assuming revenue and ARR growth stay unchanged.');
+   'At this ARR growth and recognized revenue, improving annual '+profitability+' by '+money(v.currency,r.fcfImprovement)+' would reach the selected Rule-of-40 target, assuming revenue and ARR growth stay unchanged.');
   put('formulaNote',r.netNewARR<=0?'Burn multiple is undefined for zero or negative net new ARR; denominator must be positive.':
-   r.burn<=0?'Free cash flow is nonnegative, so cash burn multiple is not applicable.': 'Net burn and change in ARR are compared over the same 12-month period.');
+   r.burn<=0?'No positive net cash burn was entered or derived; a positive burn multiple is not applicable.': 'Net burn and net new ARR are compared over the same 12-month period. Burn mode: '+(r.burnMode==='direct'?'direct cash use':'FCF-based')+'.');
   ruleChart(v,r);efficiencyChart(v,r);
  }catch(e){last=null;put('error',e.message);clear();}
 }
