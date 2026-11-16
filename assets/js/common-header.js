@@ -231,6 +231,7 @@
           "/break-even-calculator/",
           "Calculate break-even units, revenue, contribution margin, target profit and margin of safety"
         ],
+        ["BRRRR Real Estate Calculator", "/brrrr-calculator/", "Analyze buy, rehab, rent, refinance and repeat cash recovery and rental cash flow"],
         [
           "Short-Term Rental Occupancy Break-Even Calculator",
           "/airbnb-occupancy-break-even-calculator/",
