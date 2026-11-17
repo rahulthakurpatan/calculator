@@ -409,6 +409,7 @@
     {
       "label": "Property & Vehicles",
       "tools": [
+        ["DSCR & Maximum Loan Calculator", "/dscr-noi-loan-sizing-calculator/", "Commercial real estate NOI, debt coverage and loan sizing"],
         ["BRRRR Real Estate Calculator", "/brrrr-calculator/", "Analyze buy, rehab, rent, refinance and repeat cash recovery and rental cash flow"],
         [
           "EV vs Gas Total Cost Calculator",
