@@ -55,6 +55,11 @@
           "Lump Sum Calculator",
           "/lump-sum-calculator/",
           "Estimate returns from a one-time investment"
+        ],
+        [
+          "DCA vs Lump Sum Calculator",
+          "/dca-vs-lump-sum-calculator/",
+          "Compare equal capital invested now versus monthly DCA with cash yield"
         ]
       ]
     },
