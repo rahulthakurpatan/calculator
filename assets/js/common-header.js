@@ -181,6 +181,7 @@
     {
       "label": "Business & SaaS",
       "tools": [
+        ["Cash Conversion Cycle Calculator", "/cash-conversion-cycle-calculator/", "Measure DSO, DIO, DPO and cash released by working-capital improvements"],
         ["Amazon FBA Profit & Fees Calculator", "/amazon-fba-profit-calculator/", "Analyze seller profit, FBA fulfilment and referral fees, PPC, ROI and break-even selling prices"],
         [
           "Gold Jewellery Resale & Break-Even Calculator",
