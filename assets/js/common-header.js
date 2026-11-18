@@ -181,6 +181,7 @@
     {
       "label": "Business & SaaS",
       "tools": [
+        ["Inventory Carrying Cost Calculator", "/inventory-carrying-cost-calculator/", "Calculate annual holding costs and realistic inventory savings"],
         ["EOQ & Order Quantity Calculator", "/economic-order-quantity-calculator/", "Optimize order quantity, supplier packs and annual inventory costs"],
         ["Inventory Turnover & DIO Calculator", "/inventory-turnover-calculator/", "Measure inventory turns, stock cash release and carrying-cost savings"],
         ["Cash Conversion Cycle Calculator", "/cash-conversion-cycle-calculator/", "Measure DSO, DIO, DPO and cash released by working-capital improvements"],
